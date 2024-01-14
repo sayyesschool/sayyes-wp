@@ -1,0 +1,169 @@
+{% extends 'layouts/base.twig' %}
+
+{% block content %}
+	{% include 'sections/mainscreen-big.twig' with {
+        mixin: 'vacancies',
+		title: 'Стань онлайн или офлайн преподавателем в SAY YES!',
+        description: 'Приглашаем в  команду увлеченных единомышленников для совместного роста и реализации.',
+        splitImg1: 'mainscreen-split-1',
+        splitImg2: 'mainscreen-split-2',
+        btnText: 'Хочу работать преподавателем',
+        showSplit: true,
+        showBtn: true
+	} %}
+
+	<section class="expectations">
+		<div class="section-container">
+			<h2 class="subtitle">Ожидание от кандидатов</h2>
+
+			<p class="expectations__description">Мы готовы вкладываться в ваше развитие, но базовый опыт и знания необходимы уже со старта работы у нас в школе.</p>
+
+			<div class="text-blocks text-blocks--expectations">
+				{% for item in [
+					{
+						title: 'Квалификация',
+						description: 'У вас есть профильное образование или международные сертификаты.',
+						class: 'text-block--diploma-bg text-block--yellow'
+					},
+					{
+						title: 'Личные качества',
+						description: 'Вы энергичны и дружелюбны. Вы обладаете способностью и желанием «заряжать» учеников.',
+						class: ' text-block--heart-bg text-block--yellow'
+					},
+					{
+						title: 'Опыт',
+						description: 'Вы преподаете английский взрослым или детям не менее одного года.',
+						class: 'text-block--clock-2-bg text-block--yellow'
+					},
+					{
+						title: 'Речь',
+						description: 'У вас хорошее произношение, близкое к носителям языка.',
+						class: 'text-block--comment-bg text-block--yellow'
+					},
+					{
+						title: 'Ценности',
+						description: 'Вы готовы стать частью корпоративной политики Школы и соблюдать этику Компании.',
+						class: 'text-block--leaves-bg text-block--yellow'
+					}
+				] %}
+					<div class="text-block {{item.class}}">
+						<h4 class="text-block__title">{{item.title}}</h4>
+						<p class="text-block__description">{{item.description}}</p>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+	{% include 'sections/big-cards.twig' with {
+		mixin: 'big-cards--vacancies',
+		title: 'Мы предлагаем:',
+		cards: [
+			{
+				title: 'Достойный доход',
+				list: [
+					{
+						property: 'Средний доход: ',
+						value: '55 тыс. руб.'
+					},
+					{
+						property: 'Максимальный доход: ',
+						value: '100 тыс. руб.'
+					}
+				]
+			},
+			{
+				title: 'Гарантия занятости',
+				list: [
+					{
+						property: 'Комфортная для вас нагрузка от 10 часов в неделю.',
+						value: ''
+					}
+				]
+			},
+			{
+				title: 'Обучение методике школы',
+				list: [
+					{
+						property: 'Комфортная для вас нагрузка от 10 часов в неделю.',
+						value: ''
+					}
+				]
+			},
+			{
+				title: 'Тренинги <br> для повышения уровня обучения',
+				list: [
+					{
+						property: 'Ежемесячно проводим мастерские для преподавателей.',
+						value: ''
+					}
+				]
+			},
+			{
+				title: 'Удобный онлайн класс',
+				list: [
+					{
+						property: 'Платформа с готовыми уроками и автоматической проверкой ДЗ.',
+						value: ''
+					}
+				]
+			},
+			{
+				title: 'Онлайн или офлайн в Москве',
+				list: [
+					{
+						property: 'Формат занятости выбираете вы.',
+						value: ''
+					}
+				]
+			}
+		]
+	} %}
+
+	{% include 'sections/cards-square.twig' with {
+		mixin: 'cards-square--vacancies',
+		title: 'Как стать частью команды?',
+		cards: [
+			{
+				title: 'Отклик',
+				description: 'Отправьте резюме на вакансию школы английского языка SAY YES!',
+				tip: 'Шаг 1',
+				class: 'text-block--mail-bg'
+			},
+			{
+				title: 'Знакомство',
+				description: 'Пройдите индивидуальное онлайн собеседование',
+				tip: 'Шаг 2',
+				class: 'text-block--contact-bg'
+			},
+			{
+				title: 'Обучение',
+				description: 'Пройдите обучение у лучших методистов школы',
+				tip: 'Шаг 3',
+				class: 'text-block--cap-bg'
+			},
+			{
+				title: 'Сотрудничество',
+				description: 'Начните сотрудничество с одной из современных школ английского языка',
+				tip: 'Шаг 4',
+				class: 'text-block--note-bg'
+			}
+		]
+	} %}
+
+	<section class="part-of-team">
+		<div class="section-container">
+			<h2 class="subtitle">Готовы стать частью нашей дружной команды?</h2>
+
+			<p class="part-of-team__description">
+				Ждем ваше резюме на почту
+				<a href="#" class="text text--violet">hr@sayes.ru</a>
+				с пометкой какой формат преподавания (онлайн/офлайн/взрослые/дети) вам интересен.
+			</p>
+		</div>
+		
+		<img class="part-of-team__img" src="{{theme.link}}/static/images/mainscreens/mainscreen-2.jpg" alt="Say Yes">
+	</section>
+
+	{% include 'sections/trial-lesson-mini.twig' %}
+{% endblock %}

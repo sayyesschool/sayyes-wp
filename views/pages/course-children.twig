@@ -1,0 +1,500 @@
+{% extends 'layouts/base.twig' %}
+
+{% block content %}
+	{% include 'sections/mainscreen-big.twig' with {
+        mixin: 'children-courses',
+		title: 'Курс английского языка для детей 5–7 лет “Bright ideas”',
+        description: 'Данный курс познакомит вашего ребенка с азами языка в игровой форме и привьет любовь к английскому.',
+        btnText: 'Оставить заявку',
+        img: 'mainscreen-11',
+        showBtn: true,
+	} %}
+
+	{% include 'sections/about-course.twig' with {
+		mixin: 'about-course--children-courses',
+		title: 'Курс “Bright ideas” разработан для детей 5-7 лет, кто только начинает знакомиться с английским языком.',
+		text: 'Обучение происходит с погружением в англоязычную среду через интерактивные игры, песни, мультфильмы и повторение за преподавателем.',
+		purpose: 'Цель данного курса — заинтересовать ребенка изучением английского, а также заложить качественные основы языка для дальнейшего обучения.'
+	} %}
+
+	{% include 'sections/learning-form.twig' with {
+		mixin: 'learning-form--children-courses',
+		title: 'Формы обучения на курсе для детей “Bright ideas”',
+		description: 'Ваш ребенок может проходить данный курс индивидуально в двух форматах. Стоимость обучения зависит от количества приобретенных уроков в пакете.',
+		courses: [
+			{
+				title: 'Офлайн индивидуально',
+				description: 'Если вы хотите личный контакт и персональный подход для своего ребенка',
+				class: 'big-course--white',
+				list: [
+					{
+						lessonType: 'Стоимость обучения:',
+						lessonPrice: '1.540 ₽',
+						lessonSince: 'от',
+						lessonTime: '/урок'
+					},
+					{
+						lessonType: 'Продолжительность урока:',
+						lessonTime: '45 минут'
+					}
+				]
+			},
+			{
+				title: 'Онлайн индивидуально',
+				description: 'Уроки в любом месте и в удобное для родителя время',
+				class: 'big-course--violet',
+				list: [
+					{
+						lessonType: 'Стоимость обучения:',
+						lessonPrice: '542 ₽',
+						lessonSince: 'от',
+						lessonTime: '/урок'
+					},
+					{
+						lessonType: 'Продолжительность урока:',
+						lessonTime: '25 минут'
+					}
+				]
+			}
+		]
+	} %}
+
+	<section class="knowledge-check">
+		<h2 class="subtitle">Узнайте уровень английского у вашего ребенка на пробном бесплатном уроке, где вы также:</h2>
+
+		<div class="knowledge-check__content">
+			{% include 'components/list.twig' with {
+				list: [
+					{
+						description: 'Познакомитесь с методикой и программой обучения.'
+					},
+					{
+						description: 'Получите план изучения языка.'
+					},
+					{
+						description: 'Оцените, нравится ли вам преподаватель.'
+					}
+				],
+				classes: 'list--ul-sm list--central-marker'
+			} %}
+
+			<form action="POST" class="knowledge-check__form">
+				<input type="text" placeholder="Имя родителя" class="knowledge-check__input">
+				<input type="text" placeholder="+7 (999)-99-99" class="knowledge-check__input">
+				<button class="btn">Записаться на бесплатный урок</button>
+
+				<div class="knowledge-check__policy">
+					<input type="checkbox">
+					Я согласен с
+					<span class="text text--underline">политикой обработки персональных данных</span>
+				</div>
+			</form>
+		</div>
+	</section>
+
+	<section class="children-advantages">
+		<div class="section-container">
+			<h2 class="subtitle">Почему дети начинают разговаривать на английском, любить язык и получать хорошие отметки в школе, обучаясь в SAY YES?</h2>
+			
+			<div class="children-advantages__blocks">
+				{% for item in [
+					{
+						title: 'Уроки построены на интересах вашего ребенка',
+						description: 'Включаем в программу обсуждение любимых игр, мультфильмов и книг. Даже непоседе не удастся заскучать!',
+						class: 'text-block--heart-2-bg'
+					},
+					{
+						title: 'Талантливые педагоги с профильным образованием',
+						description: 'Преподавателей отбираем  по опыту и дипломам, а также по отзывам родителей учеников.',
+						class: 'text-block--woman-bg'
+					},
+					{
+						title: 'Разговорный онлайн-клуб с носителями языка',
+						description: 'Организовываем дополнительную практику “живого” языка. Общение на английском с ровесниками и море позитивных эмоций.',
+						class: 'text-block--comments-2-bg'
+					},
+					{
+						title: 'Программа для конкретных целей',
+						description: 'Повышение успеваемости в школе? Нужно «разговорить» ребенка или «почистить» грамматику? Работаем над вашей целью до получения результата.',
+						class: 'text-block--target-bg'
+					}
+				] %}
+					<div class="text-block {{item.class}}">
+						<h4 class="text-block__title">{{item.title}}</h4>
+						<p class="text-block__description">{{item.description}}</p>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+	{% include 'sections/video.twig' with {
+		mixin: 'children-courses',
+		subtitle: 'Занятия онлайн — это удобно!',
+		description: [
+			'Обучение в комфортной и безопасной для вашего ребенка обстановке.', 
+			'Экономия времени на поездках к репетитору или в школу.'
+		],
+		videoImg: 'video-section-6',
+		videoId: 'video-11'
+	} %}
+
+	<section class="features">
+		<img class="features__img" src="{{theme.link}}/static/images/pictures/bright-ideas.jpg" alt="Bright Ideas">
+
+		<div class="features__info">
+			<div class="features__content">
+				<h3 class="features__title">Особенности обучения на курсе “Bright Ideas”:</h3>
+				<ul class="features__list">
+					<li class="features__item">Знакомимся с основами языка</li>
+					<li class="features__item">Влюбляемся в английский</li>
+					<li class="features__item">Начинаем говорить, читать и писать</li>
+					<li class="features__item">Готовимся к школьной программе</li>
+				</ul>
+
+				<h3 class="features__title">Результаты обучения  на курсе “Bright Ideas”:</h3>
+				<ul class="features__list">
+					<li class="features__item">Воспринимает на слух английскую речь</li>
+					<li class="features__item">Уверенно рассказывает о себе и любимых вещах</li>
+					<li class="features__item">Может составлять простые предложения</li>
+					<li class="features__item">Знает более 100 новых слов и выражений</li>
+				</ul>
+
+				<button class="btn btn--yellow">Записаться на бесплатный урок</button>
+			</div>
+		</div>
+	</section>
+
+	<section class="personal-approach">
+		<h2 class="subtitle">Наши преподаватели найдут подход к любому ребенку</h2>
+		<p class="personal-approach__description">В нашей команде только внимательные и заботливые преподаватели с опытом обучения детей</p>
+
+		<div class="slider swiper-personal-approach">
+			<div class="slider__arrows">
+				<button class="slider__left-arrow"></button>
+				<button class="slider__right-arrow"></button>
+			</div>
+
+			<div class="swiper-wrapper">
+				{% for item in [
+					{
+						name: 'Полина Сизова',
+						description: 'Полина безмерно увлечена своей работой и зажигает каждого своей мотивацией и энергией. Такие качества, как отзывчивость и душевность, помогают Полине сделать отмосферу уроков теплой и непринужденной. А ее педагогические знания и умения — получить неизменно устойчивый результат в обучении английскому языку!',
+						list: [
+							'Санкт-Петербургский Госудраственный Университет, Лингвистика, Дискурс и вариативность английского языка',
+							'Разрабатывет собственный программы обучения английскому',
+							'Имеет обширный успешный опыт обучения детей по игровой методике'
+						]
+					},
+					{
+						name: 'Полина Сизова',
+						description: 'Полина безмерно увлечена своей работой и зажигает каждого своей мотивацией и энергией. Такие качества, как отзывчивость и душевность, помогают Полине сделать отмосферу уроков теплой и непринужденной. А ее педагогические знания и умения — получить неизменно устойчивый результат в обучении английскому языку!',
+						list: [
+							'Санкт-Петербургский Госудраственный Университет, Лингвистика, Дискурс и вариативность английского языка',
+							'Разрабатывет собственный программы обучения английскому',
+							'Имеет обширный успешный опыт обучения детей по игровой методике'
+						]
+					},
+					{
+						name: 'Полина Сизова',
+						description: 'Полина безмерно увлечена своей работой и зажигает каждого своей мотивацией и энергией. Такие качества, как отзывчивость и душевность, помогают Полине сделать отмосферу уроков теплой и непринужденной. А ее педагогические знания и умения — получить неизменно устойчивый результат в обучении английскому языку!',
+						list: [
+							'Санкт-Петербургский Госудраственный Университет, Лингвистика, Дискурс и вариативность английского языка',
+							'Разрабатывет собственный программы обучения английскому',
+							'Имеет обширный успешный опыт обучения детей по игровой методике'
+						]
+					}
+				] %}
+					<div class="slider__slide swiper-slide">
+						<div class="teacher-card">
+							<div class="video">
+								<img src="{{theme.link}}/static/images/teachers-2/teacher-1.jpg" alt="Say Yes" class="video__bg">
+								<button class="play"></button>
+							</div>
+
+							<div class="teacher-card__info">
+								<h3 class="teacher-card__title">{{item.name}}</h3>
+
+								<p class="teacher-card__description">{{item.description}}</p>
+								
+								<ul class="teacher-card__list teacher-card__list--inside">
+									{% for listItem in item.list %}
+										<li class="teacher-card__list-item">{{listItem}}</li>
+									{% endfor %}
+								</ul>
+							</div>
+
+							<ul class="teacher-card__list  teacher-card__list--outside">
+								{% for listItem in item.list %}
+									<li class="teacher-card__list-item">{{listItem}}</li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		<div class="personal-approach__cards">
+			{% for item in [
+				{
+					title: 'Строгий кастинг педагогов',
+					description: 'Отбор проходит только 1 из 50 преподавателей',
+					class: 'text-block--white text-block--casting-bg'
+				},
+				{
+					title: 'Профильное образование',
+					description: 'Проверяем наличие  дипломов, сертификатов и профессионального образования',
+					class: 'text-block--diploma-2-bg'
+				},
+				{
+					title: 'Контроль качества обучения',
+					description: 'Регулярно собираем отзывы и контролируем результат и качество обучения',
+					class: 'text-block--comment-2-bg'
+				}
+			] %}
+				<div class="text-block {{item.class}}">
+					<h4 class="text-block__title">{{item.title}}</h4>
+					<p class="text-block__description">{{item.description}}</p>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+
+	{% include 'sections/course-feedback.twig' with {
+		mixin: 'course-feedback__adults-courses',
+		title: 'Отзывы о курсе для детей “Bright ideas”',
+		courseFeedback: [
+			{
+				score: '4,6',
+				stars: '5.5',
+				company: 'ZOON',
+				link: '#',
+				reviews: [
+					{
+						author: {
+							name: 'Anastasia Kostyuchenko',
+							dateTime: '23 июня 2016, 12:08',
+							stars: '5'
+						},
+						text: [
+							{
+								title: '',
+								description: 'Мое знакомство с английским языком началось в шестилетнем возрасте в спец-школе. Но уже через год последовала череда переездов, смена городов и школ. В итоге язык я изучала урывками и совершенно в разных условиях — от репетитора — учителя средней школы в маленьком городке, до носителя языка в BKC. И из всей череды разнообразных форм и способов изучения языка, школа Say Yes! оказалась первым и единственным местом, где изучение языка не только эффективно, но и доставляет удовольствие! Отличная команда преподавателей, которые своей энергией и позитивом «тормошат»...'
+							}
+						]
+					},
+					{
+						author: {
+							name: 'Сергей',
+							dateTime: '16 марта 2018, 11:45',
+							stars: '5'
+						},
+						text: [
+							{
+								title: '',
+								description: 'Я учусь уже третий месяц и сформировалось конкретное понимание. Say Yes, ставит перед собой цель научить разговаривать на английском языке. Максимальный акцент на переламывание языкового барьера.'
+							},
+							{
+								title: '',
+								description: 'Мы учимся говорить и через опыт на подсознательном уровне раскрывается легкость в освоения языка.'
+							},
+							{
+								title: '',
+								description: 'Доброжелательный преподавательский состав и вовлеченность в процесс, учат не для галочки, а на результат.'
+							},
+							{
+								title: '',
+								description: 'Мне нравится, чего и каждому желаю.'
+							}
+						]
+					}
+				]
+			},
+			{
+				score: '4,6',
+				stars: '5.5',
+				company: 'ZOON',
+				link: '#',
+				reviews: [
+					{
+						author: {
+							name: 'Anastasia Kostyuchenko',
+							dateTime: '23 июня 2016, 12:08',
+							stars: '5'
+						},
+						text: [
+							{
+								title: '',
+								description: 'Мое знакомство с английским языком началось в шестилетнем возрасте в спец-школе. Но уже через год последовала череда переездов, смена городов и школ. В итоге язык я изучала урывками и совершенно в разных условиях — от репетитора — учителя средней школы в маленьком городке, до носителя языка в BKC. И из всей череды разнообразных форм и способов изучения языка, школа Say Yes! оказалась первым и единственным местом, где изучение языка не только эффективно, но и доставляет удовольствие! Отличная команда преподавателей, которые своей энергией и позитивом «тормошат»...'
+							}
+						]
+					},
+					{
+						author: {
+							name: 'Сергей',
+							dateTime: '16 марта 2018, 11:45',
+							stars: '5'
+						},
+						text: [
+							{
+								title: '',
+								description: 'Я учусь уже третий месяц и сформировалось конкретное понимание. Say Yes, ставит перед собой цель научить разговаривать на английском языке. Максимальный акцент на переламывание языкового барьера.'
+							},
+							{
+								title: '',
+								description: 'Мы учимся говорить и через опыт на подсознательном уровне раскрывается легкость в освоения языка.'
+							},
+							{
+								title: '',
+								description: 'Доброжелательный преподавательский состав и вовлеченность в процесс, учат не для галочки, а на результат.'
+							},
+							{
+								title: '',
+								description: 'Мне нравится, чего и каждому желаю.'
+							}
+						]
+					}
+				]
+			}
+		]
+	} %}
+
+	<section class="result-children">
+		<div class="section-container">
+			<h2 class="subtitle">Лучшие показатели нашей работы — это ученики, владеющие языком и довольные родители!</h2>
+
+			<p class="result-children__description">Родители наших учеников рассказывают о результатах и процессе обучения детей в SAY YES!</p>
+
+			<div class="slider swiper-result-children">
+				<div class="slider__arrows">
+					<button class="slider__left-arrow"></button>
+					<button class="slider__right-arrow"></button>
+				</div>
+
+				<div class="swiper-wrapper">
+					{% for item in [
+						{
+							parent: {
+								name: 'Ольга',
+								icon: 'icon--fb',
+								url: '#'
+							},
+							baby: 'Мама ученицы Кати, 10 лет',
+							description: '«Всем привет! Моя дочь Катюша в 4 классе, где-то полгода назад мы начали заниматься в языковой школе Say Yes! Изначально я относилась немного скептически к идее...»',
+							img: 'review-1',
+							videoId: 'video-21',
+							videoUrl: 'https://www.youtube.com/embed/6ISA01NE2rY'
+						},
+						{
+							parent: {
+								name: 'Ирина',
+								icon: 'icon--inst',
+								url: '#'
+							},
+							baby: 'Мама ученицы Маши, 12 лет',
+							description: '«Меня зовут Ирина, моя дочь Маша занимается в школе Say Yes! В этом году мы решили заняться английским дополнительно, потому что появились проблемы в школе...»',
+							img: 'review-2',
+							videoId: 'video-22',
+							videoUrl: 'https://www.youtube.com/embed/6ISA01NE2rY'
+						},
+						{
+							parent: {
+								name: 'Ольга',
+								icon: 'icon--fb',
+								url: '#'
+							},
+							baby: 'Мама ученицы Кати, 10 лет',
+							description: '«Всем привет! Моя дочь Катюша в 4 классе, где-то полгода назад мы начали заниматься в языковой школе Say Yes! Изначально я относилась немного скептически к идее...»',
+							img: 'review-1',
+							videoId: 'video-21',
+							videoUrl: 'https://www.youtube.com/embed/6ISA01NE2rY'
+						},
+						{
+							parent: {
+								name: 'Ирина',
+								icon: 'icon--inst',
+								url: '#'
+							},
+							baby: 'Мама ученицы Маши, 12 лет',
+							description: '«Меня зовут Ирина, моя дочь Маша занимается в школе Say Yes! В этом году мы решили заняться английским дополнительно, потому что появились проблемы в школе...»',
+							img: 'review-2',
+							videoId: 'video-22',
+							videoUrl: 'https://www.youtube.com/embed/6ISA01NE2rY'
+						},
+						{
+							parent: {
+								name: 'Ольга',
+								icon: 'icon--fb',
+								url: '#'
+							},
+							baby: 'Мама ученицы Кати, 10 лет',
+							description: '«Всем привет! Моя дочь Катюша в 4 классе, где-то полгода назад мы начали заниматься в языковой школе Say Yes! Изначально я относилась немного скептически к идее...»',
+							img: 'review-1',
+							videoId: 'video-21',
+							videoUrl: 'https://www.youtube.com/embed/6ISA01NE2rY'
+						}
+					] %}
+						<div class="slider__slide swiper-slide">
+							<div class="result-children__cards">
+								<div class="video-block-2">
+									<div class="video">
+										<img class="video__bg" src="{{theme.link}}/static/images/children-reviews/{{item.img}}.jpg" alt="Say Yes">
+										<button class="play" id="{{item.videoId}}"></button>
+									</div>
+
+									<div class="video-block-2__content">
+										<a href="{{item.parent.url}}" class="video-block-2__title">
+											{{item.parent.name}}
+											{% include 'components/icon.twig' with { class: item.parent.icon } %}
+										</a>
+										<p class="video-block-2__subtitle">{{item.baby}}</p>
+										<p class="video-block-2__description">{{item.description}}</p>
+										<button class="video-block-2__btn">Развернуть</button>
+									</div>
+								</div>
+
+								{% include 'components/modal.twig' with {
+									modal: 'video',
+									url: item.videoUrl,
+									id: item.videoId
+								} %}
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+
+				<ul class="sli der__pagination"></ul>
+			</div>
+		</div>
+	</section>
+
+	{% include 'sections/video.twig' with {
+		mixin: 'children-courses-2',
+		subtitle: 'Единственная онлайн-школа, где снимают отчеты о прогрессе учеников на видео',
+		description: [
+			'Посмотрите не просто отзывы наших юных студентов, а то, как они говорят на английском'
+		],
+		videoImg: 'video-section-7',
+		videoId: 'video-12'
+	} %}
+
+	<section class="convenient-oc">
+		<div class="section-container">
+			<h2 class="subtitle">Удобный онлайн-класс</h2>
+
+			<div class="convenient-oc__content">
+				<div class="convenient-oc__description">
+					<p class="convenient-oc__paragraph">Занятия онлайн проходят на надежной платформе, специально разработанной нашей школой: ребенок общается с преподавателем и выполняет задания в одном окне браузера.</p>
+					<p class="convenient-oc__paragraph">Интерактивная комната, разработанная для детей, делает процесс обучения удобным и захватывающим. Игры, интерактивные задания, видео и аудио вовлекают ребенка в процесс обучения с первых минут.</p>
+				</div>
+				
+				<img src="{{theme.link}}/static/images/pictures/oc.jpg" alt="Say Yes" class="convenient-oc__img">
+			</div>
+		</div>
+	</section>
+
+	{% include 'sections/course-faq.twig' %}
+
+	{% include 'sections/trial-lesson.twig' %}
+{% endblock %}

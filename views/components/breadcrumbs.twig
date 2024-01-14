@@ -1,0 +1,31 @@
+<nav class="{{html_classes('breadcrumbs', class)}}" aria-label="breadcrumb" role="navigation">
+    <ol class="breadcrumbs__list">
+        <li class="breadcrumb-item">
+            <a href="{{ site.link }}">
+                <i class="fa fa-home"></i>
+            </a>
+        </li>
+
+        <li class="breadcrumb-item">
+            <a href="{{ site.link }}/blog">Блог</a>
+        </li>
+
+        {% if post.parent %}
+            <li class="breadcrumb-item">
+                <a href="{{ post.parent.link }}">{{ post.parent.title }}</a>
+            </li>
+        {% endif %}
+
+        {% if post.category %}
+            <li class="breadcrumb-item">
+                <a href="{{ post.category.link }}">{{ post.category.title }}</a>
+            </li>
+        {% endif %}
+
+        <li class="breadcrumb-item active" aria-current="page">{{ post.title }}</li>
+    </ol>
+    
+    {#<ol class="breadcrumbs__list">
+        {{ function('bcn_display') }}
+    </ol>#}
+</nav>

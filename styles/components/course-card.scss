@@ -1,0 +1,51 @@
+.course-card {
+    height: 100%;
+    overflow: hidden;
+    margin-bottom: 0;
+    
+    .card-image {
+        border-radius: 0;
+        height: 156px;
+        background-size: cover;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+        padding: 1rem;
+        
+        a {
+            font-weight: inherit;
+        }
+
+        // @include media-breakpoint-down(sm) {
+        //     order: -1;
+        // }
+
+        // @include media-breakpoint-up(sm) {
+        //     padding-bottom: .5rem;
+        // }
+    }
+
+    .card-body {
+        padding: 1rem;
+        padding-top: 0;
+        font-size: .9rem;
+
+        // @include media-breakpoint-down(sm) {
+        //     padding-top: 1rem;
+        // }
+    }
+
+    .card-footer {
+        padding-top: 0;
+        text-align: right;
+
+        .btn {
+            white-space: normal;
+            border-width: 1px;
+            font-weight: normal;
+            text-transform: none;
+        }
+    }
+}

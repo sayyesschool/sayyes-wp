@@ -1,0 +1,70 @@
+.course-results {
+	margin-bottom: 100px;
+
+	.subtitle {
+		max-width: 700px;
+		margin-bottom: 20px;
+	}
+
+	.list {
+		width: 568px;
+	}
+
+	&__content {
+		display: flex;
+		justify-content: space-between;
+		gap: 35px;
+	}
+
+	&__description {
+		width: 450px;
+		position: relative;
+
+		&::after {
+			content: "";
+			width: 254px;
+			height: 148px;
+			position: absolute;
+			top: 104px;
+			left: 115px;
+			background: url("./static/images/decoration/notes/free-2.svg")
+				center center/cover no-repeat;
+		}
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		.subtitle {
+			max-width: 500px;
+		}
+
+		&__description {
+			&::after {
+				width: 177px;
+				height: 102px;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		.subtitle {
+			max-width: 400px;
+		}
+
+		.list {
+			width: 100%;
+		}
+
+		&__content {
+			flex-direction: column;
+			gap: 25px;
+		}
+
+		&__description {
+			width: 100%;
+
+			&::after {
+				display: none;
+			}
+		}
+	}
+}

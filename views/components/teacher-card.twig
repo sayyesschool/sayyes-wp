@@ -1,0 +1,17 @@
+<div class="teacher-card card">
+    <div class="card__content">
+        <img class="card__img" src="{{teacher.thumbnail.src('medium')}}" alt="{{'Фото ' ~ teacher.title}}">
+
+        <h3 class="card__name">{{teacher.title}}</h3>
+
+        <ul class="card__description">
+            {% for merits in teacher.merits %}
+                <li>
+                    {{merits.merit}}: {{merits.description}}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <button id="{{teacher.id}}" class="btn btn--transparent btn--transparent-black btn--md">Подробнее</button>
+    </div>
+</div>

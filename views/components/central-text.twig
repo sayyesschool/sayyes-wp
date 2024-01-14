@@ -1,0 +1,15 @@
+<section class="central-text">
+	<h2 class="central-text__title">
+		{% block title %}
+			{{title}}
+		{% endblock %}
+	</h2>
+	
+	{% if content or block('content') is defined %}
+		<p class="central-text__description">
+			{% block content %}
+				{{content}}
+			{% endblock %}
+		</p>
+	{% endif %}
+</section>

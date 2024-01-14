@@ -1,0 +1,62 @@
+{% extends 'layouts/base.twig' %}
+
+{% block content %}
+	{% include 'sections/mainscreen-big.twig' with {
+        mixin: 'methodology',
+		title: 'Методика школы SA Y YES! — это оптимальный и современный способ изучения языков.',
+        description: 'Мы выбираем комбинацию из коммуникативного подхода и собственных разработок в обучении.',
+        img: 'mainscreen-3'
+	} %}
+
+	{% include 'sections/video.twig' with {
+		mixin: 'methodology',
+		subtitle: 'Посмотрите короткое видео о нашем подходе к обучению',
+		videoImg: 'video-section-2',
+		videoId: 'video-6'
+	} %}
+
+	<section class="effective-methods">
+		<div class="section-container">
+			<h2 class="subtitle">Мы применяем методики с доказанной эффективностью</h2>
+
+			<div class="methods">
+				{% for method in [
+					{
+						title: 'Коммуникативная методика (Communicative approach)',
+						description: 'Это продуманная система развития языковых навыков, эффективность которой была доказана научно на исследовании не одного поколения.',
+						comments: [
+							'В нашей школе студенты не зубрят грамматику ради грамматики и не читают бесконечные тексты вслух.',
+							'Они разыгрывают упражнения, максимально повторяющие ситуации, в которых они будут использовать иностранный язык в реальной жизни.'
+						]
+					},
+					{
+						title: 'Отработка беглости до автоматизма (Fluency Drill)',
+						description: 'Чтобы помочь студентам улучшить беглость и грамотность разговорной речи, наши методисты разработали методику «Отработка беглости» (Fluency Drill).',
+						comments: [
+							'Во время этого упражнения студент многократно повторяет изученную грамматическую структуру с напарником в паре или преподавателем в формате вопрос-ответ.',
+							'Это позволяет довести материал до беглого и грамотного использования в речи.'
+						]
+					}
+				] %}
+					<div class="methods__method">
+						<h2 class="methods__title">{{method.title}}</h2>
+
+						<p class="methods__description">{{method.description}}</p>
+
+						<div class="methods__comment">
+							{% for comment in method.comments %}
+								<p>{{comment}}</p>
+							{% endfor %}
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+	{% include 'sections/advantages.twig' with {
+		title: 'Важные факты о преимуществах обучения в SAY YES!'
+	} %}
+
+	{% include 'sections/trial-lesson.twig' %}
+{% endblock %}

@@ -1,0 +1,33 @@
+{% macro render(manager) %}
+<div class="card card-plain manager-card">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card-img-top">
+                <img class="img" src="{{ manager.thumbnail.src }}" alt="Фото {{ manager.title }}">
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="card-body text-left">
+                <h4 class="card-title">{{ manager.title }}</h4>
+                <h6 class="card-subtitle text-muted">{{ manager.position }}</h6>
+                
+                <div class="card-description">{{ manager.content }}</div>
+
+                <div class="card-footer">
+                    {% if manager.action %}
+                        <p>{{ manager.action }}</p>
+                    {% endif %}
+                    
+                    {% if manager.phone %}
+                        <a class="card-link phone" href="tel:{{ manager.phone }}"><i class="fa fa-phone"></i> {{ manager.phone }}</a>
+                        <a class="card-link" href="https://wa.me/{{ manager.phone }}" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    {% endif %}
+                    
+                    <a class="card-link" href="mailto:{{ manager.email }}"><i class="fa fa-envelope"></i> {{ manager.email }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endmacro %}

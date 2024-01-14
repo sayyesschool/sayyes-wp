@@ -1,0 +1,60 @@
+{% set rewards = [
+        {
+            year: '2017',
+            numbering: '1',
+            nomination: 'в номинации «Инноватор года»',
+            description: 'Мы любим придумывать новые  образовательные решения для наших студентов.'
+        },
+        {
+            year: '2018',
+            numbering: '1',
+            nomination: 'в номинации «Лучшие языковые мероприятия»',
+            description: 'Обеспечиваем студентов практикой языка с носителями в нашем разговорном клубе.'
+        },
+        {
+            year: '2019',
+            numbering: '1',
+            nomination: 'в номинации «Методика года»',
+            description: 'Методика нашей школы «Английский до автоматизма», позволяет студентам говорить более бегло и уверенно.'
+        },
+        {
+            year: '2020',
+            numbering: '1',
+            nomination: 'в номинации «Web-доверие»',
+            description: 'Нам доверяют: 8 из 10 наших студентов выбирают нас по рекомендациям и отзывам в Интернет.'
+        }
+    ]
+%}
+
+<section class="history">
+	<div class="section-container">
+		<h2 class="subtitle">
+			SAY YES! — это 10 лет проверенного качества обучения, подтвержденного
+			<a href="#" class="text text--violet">лицензией и наградами</a>
+			рейтинга Schoolrate
+		</h2>
+
+		<ul class="history__content">
+			{% for item in rewards %}
+				<li class="reward">
+					<h3 class="reward__title">{{item.year}}</h3>
+					<h4 class="reward__subtitle">
+						№{{item.numbering}}
+						{{item.nomination}}
+					</h4>
+					<p class="reward__description">{{item.description}}</p>
+				</li>
+			{% endfor %}
+
+			<div class="history__add-reward">
+				<img src="{{theme.link}}/static/images/pictures/founders-1.png" alt="Основатели" class="history__img">
+				<img src="{{theme.link}}/static/images/decoration/notes/founders.svg" alt="Основатели" class="history__note">
+				<div class="comment">
+					<h3 class="comment__title">Лицензия Министерства образования № 36801</h3>
+					<p class="comment__description">Соответствует международным стандартам обучения.</p>
+					<p class="comment__description">Вы также сможете получить налоговый вычет.</p>
+				</div>
+			</div>
+		</ul>
+	</div>
+</section>

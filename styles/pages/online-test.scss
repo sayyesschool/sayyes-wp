@@ -1,0 +1,60 @@
+#online-test-page {
+    #welcome {
+        .info {
+            .icon {
+                max-width: 72px;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+    #quiz {
+        .container {
+            max-width: 720px;
+        }
+
+        .card {
+            .card-header {
+                display: flex;
+                align-items: center;
+
+                .progress {
+                    width: 100%;
+                }
+
+                .fa-trophy {
+                    width: auto;
+                    margin-left: 1rem;
+                    color: $secondary-color;
+                }
+            }
+
+            .card-footer {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        .list-group {
+            .list-group-item {
+                border: none;
+                cursor: pointer;
+
+                input {
+                    margin-right: .5rem;
+                }
+
+                &.active {
+                    background-color: transparent;
+                    font-weight: bold;
+                    color: $primary-color;
+                }
+            }
+        }
+    }
+
+    #results {
+        
+    }
+}

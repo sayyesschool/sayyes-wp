@@ -1,0 +1,61 @@
+.btn {
+	display: inline-block;
+	min-height: 50px;
+	width: 100%;
+	max-width: 372px;
+	text-align: center;
+	font-family: "Raleway", sans-serif;
+	background-color: $black;
+	color: $white;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 15px;
+	border: none;
+	border-radius: $border-radius-bg;
+
+	&--yellow {
+		background-color: $yellow;
+		color: $black;
+	}
+
+	&--violet {
+		background-color: $violet;
+		color: $white;
+	}
+
+	&--transparent {
+		background-color: transparent;
+		border: 2px solid $white;
+		color: $white;
+
+		&-black {
+			border-color: $black;
+			color: $black;
+		}
+	}
+
+	&--uppercase {
+		text-transform: uppercase;
+	}
+
+	&--big {
+		max-width: 520px;
+	}
+
+	&--md {
+		width: 100%;
+		max-width: 273px;
+		min-height: 40px;
+	}
+
+	&--sm {
+		width: 100%;
+		max-width: 200px;
+		min-height: 40px;
+	}
+
+	&--full {
+		width: 100%;
+		min-width: auto;
+	}
+}

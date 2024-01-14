@@ -1,0 +1,24 @@
+.tag {
+	color: $black;
+	font-weight: 600;
+	font-size: 14px;
+	border: 2px solid $black;
+	border-radius: $border-radius-extra-sm;
+
+	padding: 6px 11px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&--no-border {
+		border: none;
+	}
+
+	&--yellow {
+		background-color: $yellow;
+	}
+
+  &--violet {
+		background-color: $medium-magenta;
+	}
+}

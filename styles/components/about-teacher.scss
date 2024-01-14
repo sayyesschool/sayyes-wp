@@ -1,0 +1,57 @@
+.about-teacher {
+	padding: 12px 4px 25px 25px;
+	background-color: $white;
+	border-radius: 0 0 $border-radius $border-radius;
+	font-size: 14px;
+	line-height: 15px;
+
+	ul.tabs {
+		font-size: 14px;
+		margin: 0;
+
+		.tabs__tab {
+			width: 33%;
+			min-height: auto;
+			border-radius: 0;
+			background-color: transparent;
+			padding-bottom: 10px;
+
+			&--active {
+				border-bottom: 2px solid $black;
+			}
+		}
+	}
+
+	&__experience {
+		margin: 25px 0 20px;
+	}
+
+	&__item {
+		display: flex;
+		margin-bottom: 12px;
+		font-weight: 600;
+
+		div:first-child {
+			font-weight: 800;
+			padding-right: 10px;
+		}
+	}
+
+	&__text {
+		font-weight: 600;
+	}
+
+	&__scroll {
+		max-height: 340px;
+		overflow: auto;
+	}
+
+	::-webkit-scrollbar {
+		width: 3px;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: $linen;
+		border-radius: 10%;
+	}
+}

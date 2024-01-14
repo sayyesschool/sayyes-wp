@@ -1,0 +1,70 @@
+.club-shortly {
+	margin-bottom: 100px;
+
+	.subtitle {
+		max-width: 550px;
+		margin-bottom: 45px;
+	}
+
+	.text-block {
+		width: calc(25% - 15px);
+		min-height: 275px;
+		padding: 123px 20px 16px 38px;
+
+		.text-block__title {
+			font-weight: 800;
+			font-size: 18px;
+			line-height: 20px;
+		}
+	}
+
+	&__blocks {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		.subtitle {
+			max-width: 450px;
+		}
+	}
+
+	@include breakpoint($breakpoint-md) {
+		.subtitle {
+			max-width: none;
+		}
+
+		.text-block {
+			width: calc(50% - 7.5px);
+			min-height: 210px;
+			padding-top: 40px;
+
+			.text-block__title {
+				margin-top: 0;
+			}
+
+			.text-block__description {
+				max-width: 128px;
+			}
+		}
+
+		&__blocks {
+			gap: 15px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		.text-block {
+			width: 100%;
+			min-height: 155px;
+			padding-top: 60px;
+		}
+	}
+
+	@include breakpoint($breakpoint-mobile) {
+		.subtitle {
+			max-width: 250px;
+		}
+	}
+}

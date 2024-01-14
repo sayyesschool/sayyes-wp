@@ -1,0 +1,25 @@
+<nav class="{{html_classes('pagination', class)}}">
+    <ul class="pagination__list justify-content-center">
+        {% if pagination.prev %}
+            <li class="pagination-item">
+                <a class="pagination-link" href="{{ pagination.prev.link }}">
+                    <i class="fa fa-chevron-left"></i>
+                </a>
+            </li>
+        {% endif %}
+
+        {% for page in pagination.pages %}
+            <li class="pagination-item{% if page.current %} active{% endif %}">
+                <a href="{{ page.link }}" class="pagination-link">{{ page.title }}</a>
+            </li>
+        {% endfor %}
+
+        {% if pagination.next %}
+            <li class="pagination-item">
+                <a class="pagination-link" href="{{ pagination.next.link }}">
+                    <i class="fa fa-chevron-right"></i>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>

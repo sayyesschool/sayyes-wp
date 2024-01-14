@@ -1,0 +1,21 @@
+.text {
+	&--violet {
+		color: $violet;
+	}
+
+	&--yellow {
+		color: $yellow;
+	}
+
+	&--underline {
+		text-decoration: underline;
+	}
+
+	&--weight-700 {
+		font-weight: 700;
+	}
+
+	&--weight-800 {
+		font-weight: 800;
+	}
+}

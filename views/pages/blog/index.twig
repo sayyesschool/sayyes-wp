@@ -1,0 +1,24 @@
+{% extends 'layouts/blog.twig' %}
+
+{% import 'macros/article-card.twig' as article_card %}
+
+{% block main %}
+    <h1 class="title page-title">{{ page.h1 }}</h1>
+
+    <div class="description page-description">
+        <p>Добро пожаловать в блог школы английского языка SAY YES! Здесь мы будем делиться с вами самым интересными и полезными материалами по английскому языку, а также новостями нашей школы!</p>
+        <p>Подписывайтесь на нашу рассылку - будьте в курсе всех обновлений нашего блога и узнавайте в числе первых о наших мероприятиях, акциях и конкурсах!</p>
+    </div>
+
+    <section class="blog-posts">
+        <div class="row">
+            {% for post in posts %}
+                <div class="column col-md-6">
+                    {{ article_card.render(post) }}
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    {% include 'components/blog-pagination.twig' %}
+{% endblock main %}

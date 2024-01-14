@@ -1,0 +1,131 @@
+{% extends 'layouts/base.twig' %}
+
+{% block content %}
+	{% include 'sections/mainscreen-big.twig' with {
+        mixin: 'offline',
+        title: 'Обучение английскому языку онлайн индивидуально',
+        description: 'Учите английский в любом удобном вам местепо привлекательной цене!',
+        btnText: 'Оставить заявку',
+        img: 'mainscreen-10',
+        showBtn: true
+    } %}
+
+	{% include 'sections/about-course.twig' with {
+       mixin: 'about-course--offline',
+       title: 'Наша школа предлагает индивидуальные онлайн уроки под ваши цели и темп обучения.',
+       text: 'Обучение проходит на платформе школы или в Zoom с русскоязычными преподавателями или носителями языка.',
+       purpose: 'Мы делаем ставку на живое общение и программу, которую учитель адаптирует лично под вас. В индивидуальном обучении студент практикует речь 80% времени.'
+    } %}
+
+	<section class="offline-shortly">
+        <div class="section-container">
+            <h2 class="subtitle">Коротко об индивидуальном онлайн обучении</h2>
+
+            <div class="text-blocks text-blocks--offline-shortly">
+                {% for item in [
+                    {
+                        image: 'lightning',
+                        title: 'Интенсивность  обучения',
+                        description: 'По желанию студента'
+                    },
+                    {
+                        image: 'clock',
+                        title: 'Длительность занятия',
+                        description: '50 минут'
+                    },
+                    {
+                        image: 'calendar',
+                        title: 'Расписание занятий',
+                        description: 'По желанию студента'
+                    },
+                    {
+                        image: 'levels-2',
+                        title: 'Продолжительность уровня',
+                        description: 'От 6 до 9 месяцев'
+                    },
+                    {
+                        image: 'rubles',
+                        title: 'Стоимость занятий',
+                        description: 'От 950 ₽/урок'
+                    }
+                ] %}
+                    <div class="text-block text-block--{{item.image}}-bg">
+                        <h4 class="text-block__title">{{item.title}}</h4>
+                        <p class="text-block__description">{{item.description}}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+	{% include 'sections/trial-lesson-mini.twig' %}
+
+	<section class="section">
+        <h2 class="section-title">Удобный онлайн-класс</h2>
+
+        <p class="section-description">Занятия проходят на надежной платформе, специально разработанной нашей школой. Общайтесь с преподавателем и выполняйте задания в одном окне браузера.</p>
+
+        <img>
+
+        {% include 'components/list.twig' with {
+            list: [
+                {
+                    title: 'Все в одном месте',
+                    description: 'Быстрый доступ ко всем материалам: учебникам, домашнему заданиюи словарю'
+                },
+                {
+                    title: 'Эффективное взаимодействие',
+                    description: 'Во время урока преподаватель видит ваши ответы, исправляет и объясняет ошибки'
+                },
+                {
+                    title: 'Удобный личный кабинет',
+                    description: 'Вы можете отслеживать в нем свой прогресс и следить за историей оплат'
+                }
+            ],
+            classes: 'list--ul-sm'
+        } %}
+    </section>
+
+	<section class="peculiarity">
+        <div class="section-container">
+            <h2 class="subtitle">Особенности индивидуального онлайн обучения в SAY YES!</h2>
+            
+            <div class="peculiarity__cards">
+                {% for item in [
+                    {
+                        title: 'Занятия по удобному расписанию',
+                        description: 'Занятия рано утром или поздно вечером? Мы постараемся подобрать удобное для вас время уроков.'
+                    },
+                    {
+                        title: 'Закрепление материала на онлайн платформе',
+                        description: 'Наша онлайн платформа позволяет вам выполнять домашку в удобном виде, интерактивно и эффективно.'
+                    },
+                    {
+                        title: 'Гибкая система оплаты',
+                        description: 'Пакетная оплата обучения от 5 до 60 уроков с возможностью переноса занятий и заморозки.'
+                    },
+                    {
+                        title: 'Возможность экономии',
+                        description: 'Приобретайте пакет из бóльшего количества уроков и получайте выгоду до 30%!'
+                    }
+                ] %}
+                    <div class="peculiarity__card">
+                        <h4 class="peculiarity__title">{{item.title}}</h4>
+                        <p class="peculiarity__description">{{item.description}}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+	{% include 'sections/course-feedback.twig' with {
+        mixin: 'course-feedback__offline',
+        title: 'Отзывы об индивидуальном онлайн обучении',
+        courseFeedback: data.courseFeedbackAdults,
+        btnColor: 'btn--yellow'
+    } %}
+
+	{% include 'sections/course-faq.twig' %}
+
+	{% include 'sections/trial-lesson.twig' %}
+{% endblock %}

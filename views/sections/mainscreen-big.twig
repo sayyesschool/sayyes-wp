@@ -1,0 +1,28 @@
+{% set showSplit = showSplit ?? false %}
+{% set showBtn = showBtn ?? false %}
+{% set btnColor = 'yellow' %}
+
+<section class="mainscreen-big mainscreen-big--{{mixin ?? ''}}">
+	<h1 class="title">{{title}}</h1>
+    
+	<div class="mainscreen-big__description">{{description}}</div>
+
+	{% if showBtn %}
+		<button class="btn btn--{{btnColor}}">{{btnText}}</button>
+	{% endif %}
+
+	{% if button %}
+		<button class="btn btn--{{button.color ?? 'yellow'}}">{{button.content}}</button>
+	{% endif %}
+
+	{% if showSplit %}
+		<div class="split-image">
+			<img class="split-image__first-img" src="{{theme.link}}/static/images/mainscreens/{{splitImg1}}.jpg" alt="Say Yes">
+			<img class="split-image__second-img" src="{{theme.link}}/static/images/mainscreens/{{splitImg2}}.jpg" alt="Say Yes">
+		</div>
+	{% elseif image %}
+		<img class="mainscreen-big__img" src="{{attribute(image, 'src') is defined ? image.src : '#{theme.link}/static/images/mainscreens/#{image}.jpg'}}" alt="Say Yes">
+	{% else %}
+		<img class="mainscreen-big__img" src="{{theme.link}}/static/images/mainscreens/{{img}}.jpg" alt="Say Yes">
+	{% endif %}
+</section>

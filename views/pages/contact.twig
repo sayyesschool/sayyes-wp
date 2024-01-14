@@ -1,0 +1,168 @@
+{% extends 'layouts/base.twig' %}
+
+{% set contacts = [
+	{
+		name: "Роман Сорочук",
+		post: "Управляющий директор",
+		about: "Обратная связь на работу школы",
+		img: "worker-1",
+		contacts: [
+			{
+				icon: "icon--pc",
+				value: "+7 925 091-58-19",
+				link: "#"
+			},
+			{
+				icon: "icon--tg",
+				value: "Telegram",
+				link: "#"
+			},
+			{
+				icon: "icon--email",
+				value: "r.sorochuk@sayes.ru",
+				link: "#"
+			}
+		],
+		type: "team-card"
+	},
+	{
+		name: "Анастасия Жителева",
+		post: "Менеджер по работе с клиентами офлайн",
+		about: "По вопросам офлайн обучения",
+		img: "worker-7",
+		contacts: [
+			{
+				icon: "icon--pc",
+				value: "+7 929 507-38-55",
+				link: "#"
+			},
+			{
+				icon: "icon--tg",
+				value: "Telegram",
+				link: "#"
+			},
+			{
+				icon: "icon--email",
+				value: "a.jiteleva@sayes.ru ",
+				link: "#"
+			}
+		],
+		type: "team-card"
+	},
+	{
+		name: "Татьяна Андреева",
+		post: "Менеджер по работе с клиентами онлайн",
+		about: "По вопросам онлайн обучения",
+		img: "worker-9",
+		contacts: [
+			{
+				icon: "icon--pc",
+				value: "+7 926 737-11-27",
+				link: "#"
+			},
+			{
+				icon: "icon--tg",
+				value: "Telegram",
+				link: "#"
+			},
+			{
+				icon: "icon--email",
+				value: "t.andreeva@sayes.ru ",
+				link: "#"
+			}
+		],
+		type: "team-card"
+	}
+] %}
+
+{% block content %}
+	<section class="contacts-section">
+		<h2 class="subtitle">Курсы английского языка SAY YES! в Москве и онлайн</h2>
+
+		<p class="contacts-section__description">Школа английского языка на Павелецкой</p>
+
+		<div class="contacts">
+			<div class="contacts__info">
+				<div class="contacts__content">
+					<div class="contacts__address">
+						<h4 class="contacts__title">Адрес школы:</h4>
+						<p class="contacts__text-address">г. Москва, ул. Кожевническая, дом 14, корпус 1,  строение 2</p>
+						<p class="contacts__text-address">5 минут пешком от метро  Павелецкая радиальная</p>
+					</div>
+
+					<div class="contacts__phone">
+						<h4 class="contacts__title">Телефон:</h4>
+						<div class="contacts__links">
+							{% include 'components/phone-numbers.twig' %}
+							{% include 'components/social.twig' %}
+						</div>
+					</div>
+
+					<div class="contacts__email">
+						<div class="contacts__email-content">
+							<h4 class="contacts__title">E-mail:</h4>
+							<a href="#" class="text text--violet">info@sayes.ru</a>
+						</div>
+
+						{% include 'components/social.twig' %}
+					</div>
+
+					<div class="contacts__time">
+						<h4 class="contacts__title">График работы</h4>
+						<ul class="contacts__schedule-list">
+							<li>
+								<span>Пн–Пт:</span>
+								<span>с 12:00 до 21:00</span>
+							</li>
+
+							<li>
+								<span>Сб–Вс:</span>
+								<span>с 11:00 до 16:00</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<button class="btn btn--yellow">Узнайте как нас найти на Павелецкой</button>
+			</div>
+
+			<div class="contacts__map">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2246.714305388802!2d37.644190977131984!3d55.72871699384578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54b20367e8b77%3A0x3093afcc6d7cf41!2z0JrQvtC20LXQstC90LjRh9C10YHQutCw0Y8g0YPQuy4sIDE0INC60L7RgNC_0YPRgSAxINGB0YLRgNC-0LXQvdC40LUgMiwg0JzQvtGB0LrQstCwLCAxMTUxMTQ!5e0!3m2!1sru!2sru!4v1693186433202!5m2!1sru!2sru" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			</div>
+		</div>
+	</section>
+
+	<section class="contact-us">
+		<div class="section-container">
+			<h2 class="subtitle">Свяжитесь с нами</h2>
+
+			<div class="contact-us__cards">
+				{% for person in contacts %}
+					<div class="card card--contact-card">
+						{% if person.type == 'team-card' %}
+							<img class="card__img" src="{{theme.link}}/static/images/managers/{{person.img}}.jpg" alt="{{person.name}}">
+
+							<div class="card__content">
+								<h3 class="card__name">{{person.name}}</h3>
+								<h4 class="card__post">{{person.post}}</h4>
+								<p class="card__description">{{person.about}}</p>
+								<ul class="card__description">
+									{% for contact in person.contacts %}
+										<li>
+											<span>{% include 'components/icon.twig' with { class: contact.icon } %}</span>
+											<span>{{contact.value}}</span>
+										</li>
+									{% endfor %}
+								</ul>
+							</div>
+						{% else %}
+							<p class="card__text">{{person.text}}</p>
+						{% endif %}
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+	{% include 'sections/trial-lesson.twig' %}
+{% endblock %}

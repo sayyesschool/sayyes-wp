@@ -1,0 +1,55 @@
+<section class="course-feedback {{mixin}}">
+	<div class="section-container">
+		<h2 class="subtitle">{{title}}</h2>
+		<p class="course-feedback__description">За 10 лет работы, обучили более 10 000 человек и получили более 800 отзывов</p>
+	</div>
+
+	<div class="slider swiper-course-feedback">
+		<div class="slider__arrows">
+			<button class="slider__left-arrow"></button>
+			<button class="slider__right-arrow"></button>
+		</div>
+
+		<div class="swiper-wrapper">
+			{% for item in courseFeedback %}
+				<div class="slider__slide swiper-slide">
+					<div class="course-feedback__block">
+						<div class="course-feedback__rating">
+							<div class="course-feedback__rating-value">{{item.score}}</div>
+							<div class="course-feedback__rating-info">
+								<div class="stars"></div>
+								<p class="course-feedback__zoon">наш рейтинг на
+									<span class="text text--underline">{{item.company}}</span>
+								</p>
+							</div>
+						</div>
+
+						<div class="course-feedback__cards">
+							{% for review in item.reviews %}
+								<div class="course-feedback__card">
+									{% for paragraph in review.text %}
+										<div class="course-feedback__paragraph">
+											<div class="text text--weight-700">{{paragraph.title}}</div>
+											{{paragraph.description}}
+										</div>
+									{% endfor %}
+									<a href="#" class="course-feedback__link">Читать весь отзыв</a>
+									<div class="course-feedback__info">
+										<div class="course-feedback__meta">
+											<p class="course-feedback__author">{{review.author.name}}</p>
+											<p class="course-feedback__date">{{review.author.dateTime}}</p>
+										</div>
+										<div class="stars"></div>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+						<button class="btn {{btnColor}}">Читать все отзывы на {{item.company}}</button>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+
+		<ul class="slider__pagination"></ul>
+	</div>
+</section>

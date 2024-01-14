@@ -1,0 +1,226 @@
+.card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background-color: $white;
+	border-radius: $border-radius;
+
+	&__img {
+		width: 100%;
+		height: 370px;
+		display: block;
+		object-fit: cover;
+		border-radius: $border-radius;
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		padding: 35px 30px 45px 50px;
+		flex-grow: 1;
+	}
+
+	&__name {
+		font-weight: 800;
+		margin-bottom: 5px;
+	}
+
+	&__post {
+		margin-bottom: 35px;
+	}
+
+	&__description {
+		max-width: 363px;
+
+		li {
+			&:not(:last-child) {
+				margin-bottom: 2px;
+			}
+		}
+	}
+
+	&__text {
+		font-size: 24px;
+		line-height: 25px;
+	}
+
+	&__title {
+		max-width: 300px;
+		margin-bottom: 18px;
+		font-size: 42px;
+		font-weight: 700;
+		line-height: 40px;
+	}
+
+	&__subtitle {
+		max-width: 287px;
+	}
+
+	&--comment-card {
+		min-height: 370px;
+		padding: 50px 35px 50px 50px;
+		align-self: flex-start;
+		background-color: $pink;
+		color: $white;
+
+		&:last-of-type {
+			margin-top: 60px;
+		}
+	}
+
+	&--text-card {
+		display: block;
+		background-color: transparent;
+
+		&::before {
+			content: "";
+			position: absolute;
+			width: 181px;
+			height: 116px;
+			bottom: 100px;
+			right: 55px;
+			background: url("./static/images/decoration/notes/superpowers.svg")
+				center center/cover no-repeat;
+		}
+	}
+
+	&--teacher-card {
+		.card__content {
+			padding-bottom: 50px;
+		}
+
+		.btn {
+			margin-top: auto;
+		}
+
+		.card__description {
+			margin-bottom: 20px;
+		}
+	}
+
+	&--team-card {
+		&::before {
+			content: "";
+			position: absolute;
+			bottom: 47px;
+			left: -12px;
+			width: 40px;
+			height: 55px;
+			background: url("./static/images/decoration/elements/lightning.svg")
+				center center/contain no-repeat;
+		}
+	}
+
+	&--contact-card {
+		width: calc((100% - 40px) / 3);
+
+		.card__content {
+			padding: 35px 50px;
+			min-height: 280px;
+		}
+
+		.card__name {
+			margin-bottom: 5px;
+		}
+
+		.card__post {
+			margin-bottom: auto;
+		}
+
+		.card__description {
+			margin-bottom: 10px;
+		}
+
+		li {
+			display: flex;
+			gap: 15px;
+			color: $violet;
+		}
+	}
+
+	@include breakpoint($breakpoint-md) {
+		&__content {
+			padding: 25px;
+		}
+
+		&__img {
+			height: 315px;
+		}
+
+		&--text-card {
+			&::before {
+				width: 145px;
+				height: 93px;
+			}
+		}
+
+		&--team-card {
+			&::before {
+				width: 30px;
+				height: 41px;
+				left: -15px;
+			}
+		}
+
+		&--comment-card {
+			padding: 25px;
+
+			&:last-of-type {
+				margin-top: 0;
+			}
+		}
+
+		&--contact-card {
+			.card__img {
+				height: 320px;
+			}
+
+			.card__content {
+				padding: 25px;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		&--contact-card {
+			width: 100%;
+			flex-direction: row;
+
+			.card__img {
+				width: 50%;
+				height: 370px;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		min-width: 213px;
+
+		&__img {
+			height: 215px;
+		}
+
+		&__text {
+			font-size: 14px;
+			line-height: 15px;
+		}
+
+		&--contact-card {
+			.card__img {
+				height: 320px;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-mobile) {
+		&--contact-card {
+			flex-direction: column;
+
+			.card__img {
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+}

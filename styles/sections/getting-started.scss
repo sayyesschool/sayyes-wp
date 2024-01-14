@@ -1,0 +1,26 @@
+.getting-started {
+	margin-bottom: 150px;
+
+	.subtitle {
+		max-width: 550px;
+		margin-bottom: 45px;
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		.subtitle {
+			max-width: 400px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		background-color: $white;
+		border-radius: $border-radius;
+
+		padding: 30px 20px;
+
+		.subtitle {
+			max-width: none;
+			margin-bottom: 20px;
+		}
+	}
+}

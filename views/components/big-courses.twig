@@ -1,0 +1,36 @@
+{% for course in courses %}
+	{% set color = cycle(['white', 'pink', 'violet'], loop.index0) %}
+
+	<div class="{{html_classes('big-course', 'big-course--' ~ color)}}">
+		{% if not withoutImg %}
+			<img class="big-course__img" src="{{course.image.src}}" alt="{{course.title}}">
+		{% endif %}
+		
+		<div class="big-course__content">
+			<h3 class="big-course__title">{{course.title}}</h3>
+			
+			<div class="big-course__description">
+				{{course.description}}
+			</div>
+
+			{% if not withoutInfo %}
+				<div class="big-course__info">
+					{% if not withoutPrice %}
+						<div class="big-course__lesson-cost">Стоимость обучения:</div>
+					{% endif %}
+					
+					<ul class="big-course__list">
+						{% for item in course.list %}
+							<li class="big-course__item">
+								<div class="big-course__lesson-type">{{item.type}}</div>
+								<div class="big-course__lesson-price">{{item.prefix}}
+									<span class="big-course__accent">{{item.value}}</span>{{item.postfix}}
+								</div>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+{% endfor %}

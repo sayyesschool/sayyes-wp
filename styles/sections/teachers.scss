@@ -1,0 +1,30 @@
+.teachers {
+	margin-bottom: 100px;
+
+	.subtitle {
+		text-align: center;
+
+		margin: 0 auto 15px;
+		max-width: 881px;
+	}
+
+	.tabs {
+		margin: 35px auto 40px;
+	}
+
+	.cards {
+		margin-bottom: 40px;
+	}
+
+	.btn {
+		display: block;
+		margin: 0 auto;
+	}
+
+	&__description {
+		text-align: center;
+
+		margin: 0 auto 10px;
+		max-width: 630px;
+	}
+}

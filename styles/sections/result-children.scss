@@ -1,0 +1,52 @@
+.result-children {
+	margin-bottom: 135px;
+
+	.subtitle {
+		max-width: 1000px;
+		margin-bottom: 20px;
+	}
+
+	.slider {
+		overflow: hidden;
+	}
+
+	&__description {
+		max-width: 500px;
+	}
+
+	&__cards {
+		display: flex;
+		justify-content: space-between;
+		gap: 20px;
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		.subtitle {
+			max-width: 700px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		.subtitle {
+			max-width: 460px;
+			margin-bottom: 15px;
+		}
+
+		.slider {
+			width: calc(100% + 15px);
+		}
+
+		.slider__arrows,
+		.slider__pagination {
+			display: none;
+		}
+
+		.swiper-wrapper {
+			overflow-x: auto;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+		}
+	}
+}

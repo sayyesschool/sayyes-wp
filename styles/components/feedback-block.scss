@@ -1,0 +1,30 @@
+.feedback-block {
+	max-width: 951px;
+	display: flex;
+	justify-content: space-between;
+	background-color: $pale-white;
+	border-radius: $border-radius;
+
+	&__title {
+		margin-bottom: 20px;
+		font-weight: 700;
+	}
+
+	&__description {
+		margin-bottom: 20px;
+		color: lighten($black, 30%);
+		font-size: 18px;
+		font-weight: 600;
+		line-height: 20px;
+	}
+
+	&__img {
+		width: 431px;
+		object-fit: cover;
+		border-radius: $border-radius 0 0 $border-radius;
+	}
+
+	&__content {
+		padding: 34px 54px;
+	}
+}

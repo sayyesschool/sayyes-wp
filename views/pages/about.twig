@@ -1,0 +1,234 @@
+{% extends 'layouts/base.twig' %}
+
+{% block content %}
+	{% include 'sections/mainscreen-big.twig' with {
+		title: page.heading,
+        description: 'Влюбляем в английский и исполняем ваши мечты с 2013 года',
+        image: 'mainscreen-2'
+	} %}
+
+	{% include 'sections/video.twig' with {
+		subtitle: 'Быть нашим студентом — это...',
+		videoImg: 'video-section-1',
+		videoId: 'video-5'
+	} %}
+
+	{% embed 'sections/img-comment.twig' with {
+		mixin: 'img-comment--about',
+		title: 'Обращение основателей школы',
+		img: 'founders-2.png'
+	} %}
+		{% block content %}
+			<p class="appeal__description">
+				Цель нашей Школы —
+				<span class="text text--violet">научить ГОВОРИТЬ</span>
+				на английском и
+				<span class="text text--violet">влюбить</span>
+				в сам процесс освоения языка. Ведь сам по себе путь может быть не менее прекрасен результата!
+			</p>
+			<p class="appeal__description">Мы не только обладаем эффективными методиками обучения, но и стремимся создать атмосферу дружелюбия и уюта, в которую вам захочется возвращаться снова и снова.</p>
+			<p class="appeal__description">Приходите к нам за новыми знаниями и приятным времяпрепровождением =)</p>
+			<p class="appeal__description">Ждем вас в Школе SAY YES! в Москве и онлайн!</p>
+		{% endblock %}
+	{% endembed %}
+
+	<section class="digits">
+		<h2 class="subtitle">SAY YES! в цифрах</h2>
+
+		<ul class="digits__list">
+			{% for item in [
+				{
+					title: '10',
+					description: 'лет успешной работы',
+					bg: 'default'
+				},
+				{
+					title: '2000+',
+					description: 'уроков каждый месяц',
+					bg: 'white'
+				},
+				{
+					title: '85',
+					description: 'сильных и харизматичных преподавателей',
+					bg: 'white'
+				},
+				{
+					title: '80%',
+					description: 'студентов по рекомендациям',
+					bg: 'default'
+				},
+				{
+					title: '5.0',
+					description: 'рейтинг на Яндекс Отзывы',
+					bg: 'default'
+				}
+			] %}
+				<li class="digits__item digits__item--{{item.bg}}">
+					<h4 class="digits__title">{{item.title}}</h4>
+					<p class="digits__description">{{item.description}}</p>
+				</li>
+			{% endfor %}
+		</ul>
+	</section>
+
+	<section class="back-office">
+		<div class="section-container">
+			<h2 class="subtitle">В бэк-офисе SAY YES! работает 24 человека.</h2>
+
+			<p class="back-office__description">Главное, что объединяет нас — это любовь к людям и английскому языку.</p>
+
+			<p class="back-office__description">Каждый из нас работает для того, чтобы наши студенты были окружены заботой и самыми последними инновациями в обучении.</p>
+
+			<div class="cards cards--back-office">
+				<div class="card card--text-card">
+					<h4 class="card__title">Команда мечты</h4>
+					<h5 class="card__subtitle">Создает для вас душевную атмосферу и обеспечивает комфорт в обучении</h5>
+				</div>
+
+				{% for person in [
+					{
+						name: 'Роман Сорочук',
+						post: 'Управляющий директор',
+						about: 'Очаровывает всех своей энергией и харизмой',
+						img: 'worker-1',
+						type: 'team-card'
+					},
+					{
+						name: 'Кристина Кремчанинова',
+						post: 'Академический директор',
+						about: 'Cвободно говорит на  китайском и французском',
+						img: 'worker-2',
+						type: 'team-card'
+					},
+					{
+						name: 'Мария Блисюк',
+						post: 'Методист офлайн обучения',
+						about: 'Научит преподавать группам не только весело, но и эффективно',
+						img: 'worker-3',
+						type: 'team-card'
+					},
+					{
+						name: 'Валерия Илюкович',
+						post: 'Методист детского онлайн обучения',
+						about: 'Кроме знаний детской психологии, знает язык жестов',
+						img: 'worker-4',
+						type: 'team-card'
+					},
+					{
+						name: 'Ирина Морозова',
+						post: 'Методист индивидуального обучения',
+						about: 'Может легко поддержать разговор на японском языке',
+						img: 'worker-5',
+						type: 'team-card'
+					},
+					{
+						name: 'Екатерина Петрякова',
+						post: 'Менеджер по работе с клиентами офлайн',
+						about: 'Окружает спокойствием, заботой и желанием помочь',
+						img: 'worker-6',
+						type: 'team-card'
+					},
+					{
+						name: 'Анастасия Жителева',
+						post: 'Менеджер по работе с клиентами офлайн',
+						about: 'Очаровывает улыбкой и профессионализмом с первого визита',
+						img: 'worker-7',
+						type: 'team-card'
+					},
+					{
+						text: 'Методисты школы имеют большой опыт работы по коммуникативной методике, организовывают образовательный процесс и следят за качеством обучения.',
+						type: 'comment-card'
+					},
+					{
+						text: 'Менеджеры школы — это «ангелы-хранители» наших студентов, готовые прийти на помощь и дать поддержку в процессе обучения.',
+						type: 'comment-card'
+					},
+					{
+						name: 'Алина Джумайло',
+						post: 'Менеджер по работе с клиентами онлайн',
+						about: 'Умеет находить подход к каждому клиенту',
+						img: 'worker-8',
+						type: 'team-card'
+					},
+					{
+						name: 'Татьяна Андреева',
+						post: 'Менеджер по работе с клиентами онлайн',
+						about: 'Самый душевный и отзывчивый менеджер Школы',
+						img: 'worker-9',
+						type: 'team-card'
+					},
+					{
+						name: 'Анна Олейник',
+						post: 'Контент менеджер, куратор спикинг клубов',
+						about: 'Организует спикинги, на которые выстраивается очередь',
+						img: 'worker-10',
+						type: 'team-card'
+					},
+					{
+						name: 'Дарья Мамцис',
+						post: 'Креативный менеджер',
+						about: 'Организует решение любой задачи Школы наилучшим способом',
+						img: 'worker-11',
+						type: 'team-card'
+					},
+					{
+						name: 'Альбина Ванзина',
+						post: 'HR специалист',
+						about: 'Шаман нашего времени — помогает людям найти свое место в Школе',
+						img: 'worker-12',
+						type: 'team-card'
+					},
+					{
+						name: 'Екатерина Гаврикова',
+						post: 'Организатор мероприятий и пиар менеджер',
+						about: 'Организовывает незабываемые встречи для клиентов Школы!',
+						img: 'worker-13',
+						type: 'team-card'
+					},
+					{
+						text: 'Хотите стать членом нашей команды мечты? <br><br> <span class="text text--weight-800">Напишите нам на почту info@sayes.ru</span>',
+						type: 'comment-card'
+					}
+				] %}
+					<div class="card card--{{person.type}}">
+						{% if person.type == 'team-card' %}
+							<img class="card__img" src="{{theme.link}}/static/images/managers/{{person.img}}.jpg" alt="{{person.name}}">
+							<div class="card__content">
+								<h3 class="card__name">{{person.name}}</h3>
+								<h4 class="card__post">{{person.post}}</h4>
+								<p class="card__description">{{person.about}}</p>
+							</div>
+						{% else %}
+							<p class="card__text">{{person.text}}</p>
+						{% endif %}
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+	<section class="behind-the-scenes">
+		<div class="section-container">
+			<h2 class="subtitle">Жизнь Школы за кулисами и не только</h2>
+
+			<p class="behind-the-scenes__description">Для нас Школа — это не только интересная работа, но и совместное времяпрепровождение.</p>
+
+			<p class="behind-the-scenes__description">Мы веселимся, вместе учимся новому и делаем жизнь нашего SAY YES! коммьюнити насыщенней яркими моментами и от того счастливее.</p>
+
+			<ul class="behind-the-scenes__gallery">
+				{% for i in 1..7 %}
+					<li class="behind-the-scenes__item">
+						<img src="{{theme.link}}/static/images/behind-the-scenes/bts-{{i}}.jpg" alt="Say Yes" class="behind-the-scenes__img">
+					</li>
+				{% endfor %}
+				
+				<li class="behind-the-scenes__item">
+					<img src="{{theme.link}}/static/images/behind-the-scenes/bts-8.jpg" alt="Say Yes" class="behind-the-scenes__img">
+					<img src="{{theme.link}}/static/images/behind-the-scenes/bts-3.jpg" alt="Say Yes" class="behind-the-scenes__img">
+				</li>
+			</ul>
+		</div>
+	</section>
+
+	{% include 'sections/trial-lesson.twig' %}
+{% endblock %}

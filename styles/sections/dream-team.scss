@@ -1,0 +1,119 @@
+.dream-team {
+	padding: 50px 0;
+	background-color: $white;
+
+	.btn {
+		margin-top: 20px;
+	}
+
+	&__content {
+		display: flex;
+		gap: 20px;
+		margin-top: 35px;
+	}
+
+	&__info {
+		max-width: 405px;
+		margin-right: auto;
+	}
+
+	&__description {
+		margin-bottom: 10px;
+	}
+
+	&__link {
+		font-weight: 700;
+		text-decoration: underline;
+		color: $black;
+	}
+
+	&__img {
+		width: 176px;
+		height: 370px;
+		object-fit: cover;
+		border-radius: $border-radius;
+	}
+
+	&__advantages {
+		width: 470px;
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		.btn {
+			max-width: 100%;
+		}
+
+		&__content {
+			justify-content: space-between;
+			margin-top: 15px;
+		}
+
+		&__info {
+			max-width: 295px;
+			margin-right: 0;
+		}
+
+		&__img {
+			width: 138px;
+			height: 265px;
+		}
+
+		&__advantages {
+			width: 368px;
+		}
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		&__info {
+			max-width: 195px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		&__content {
+			flex-direction: column;
+		}
+
+		&__info {
+			max-width: 700px;
+		}
+
+		&__img {
+			width: 50%;
+			height: 100%;
+			align-self: center;
+		}
+
+		&__advantages {
+			align-self: center;
+			width: 70%;
+
+			.advantage {
+				margin-bottom: 0;
+				border-radius: 0;
+
+				&:first-child {
+					border-top-left-radius: $border-radius;
+					border-top-right-radius: $border-radius;
+				}
+
+				&:last-child {
+					border-bottom-left-radius: $border-radius;
+					border-bottom-right-radius: $border-radius;
+				}
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-sm-mobile) {
+		&__img {
+			width: 100%;
+			height: 100%;
+			align-self: center;
+		}
+
+		&__advantages {
+			width: 100%;
+		}
+	}
+}

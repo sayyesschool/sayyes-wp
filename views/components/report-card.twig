@@ -1,0 +1,18 @@
+{% set video = report.get_field('videos')|last %}
+
+<div class="card card-video report-card">
+    <a class="card-image" href="https://www.youtube.com/watch?v={{ video.id }}" data-fancybox data-width="640" data-height="360">
+        <img src="https://img.youtube.com/vi/{{ video.id }}/maxresdefault.jpg">
+        <i class="fa fa-play"></i>
+    </a>
+
+    <div class="card-body text-center text-md-left">
+        <h3 class="card-title">{{ report.title }}</h3>
+        <h5 class="card-subtitle">Старт обучения: <strong>{{ report.started }}</strong></h5>
+        <h5 class="card-subtitle">Преподаватель: <strong>{{ report.teacher }}</strong></h5>
+        
+        {% if report.post_excerpt %}
+            <blockquote class="card-text">"{{ report.preview.read_more(false) }}"</blockquote>
+        {% endif %}
+    </div>
+</div>

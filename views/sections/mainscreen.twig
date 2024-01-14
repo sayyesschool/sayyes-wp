@@ -1,0 +1,19 @@
+<section class="mainscreen {{class}}">
+	<div class="mainscreen__left">
+		<h1 class="title">
+			{% block title %}
+				{{title}}
+			{% endblock %}
+		</h1>
+
+		<div class="mainscreen__description">
+			{% block content %}
+				{{content}}
+			{% endblock %}
+		</div>
+	</div>
+
+	{% if image %}
+		<img class="mainscreen__right" src="{{theme.link}}/static/images/mainscreens/{{image}}" alt="Команда мечты">
+	{% endif %}
+</section>

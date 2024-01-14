@@ -1,0 +1,43 @@
+{% for course in courses %}
+	<div class="course course--{{cycle(['black', 'pink', 'violet'], loop.index0)}}">
+		<div class="course__header">
+			<h3 class="course__title">{{course.title}}</h3>
+			<p class="course__description">{{course.excerpt({ read_more: '' })}}</p>
+		</div>
+
+		<div class="course__content">
+			<div class="course__lesson-cost">Стоимость обучения:</div>
+			
+			<ul class="course__list">
+				{% for item in [
+					{
+						type: 'офлайн группа',
+						prefix: course.prices.group_offline.prefix,
+						value: course.prices.group_offline.value,
+						postfix: course.prices.group_offline.postfix
+					},
+					{
+						type: 'онлайн группа',
+						prefix: course.prices.group_online.prefix,
+						value: course.prices.group_online.value,
+						postfix: course.prices.group_online.postfix
+					},
+					{
+						type: 'индвидиульано',
+						prefix: course.prices.individual_online.prefix,
+						value: course.prices.individual_online.value,
+						postfix: course.prices.individual_online.postfix
+					}
+				] %}
+					<li class="course__item">
+						<div class="course__lesson-type">{{item.type}}</div>
+						<div class="course__lesson-price">
+							{{item.prefix}}
+							<span class="course__accent">{{item.value}}</span>{{item.postfix}}
+						</div>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+{% endfor %}

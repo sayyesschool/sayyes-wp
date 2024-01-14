@@ -1,0 +1,112 @@
+.personal-approach {
+	padding: 55px 60px 60px;
+	margin-bottom: 100px;
+
+	background-color: $violet;
+	border-radius: $border-radius;
+	color: $white;
+
+	.subtitle {
+		max-width: 750px;
+		margin-bottom: 20px;
+	}
+
+	.slider {
+		margin-bottom: 20px;
+		overflow: hidden;
+	}
+
+	.text-block {
+		justify-content: flex-start;
+		padding-right: 25px;
+		padding-top: 200px;
+
+		.text-block__title {
+			position: absolute;
+			max-width: 260px;
+		}
+
+		.text-block__description {
+			margin-top: 65px;
+		}
+	}
+
+	&__description {
+		max-width: 500px;
+	}
+
+	&__cards {
+		display: flex;
+		justify-content: space-between;
+		gap: 20px;
+
+		color: $black;
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		.subtitle {
+			max-width: 500px;
+		}
+
+		&__cards {
+			gap: 15px;
+		}
+	}
+
+	@include breakpoint($breakpoint-md) {
+		padding: 30px;
+
+		.text-block {
+			padding: 140px 20px 20px;
+
+			.text-block__title {
+				font-size: 16px;
+				line-height: 18px;
+				font-weight: 800;
+				max-width: 180px;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		padding: 25px;
+
+		.slider {
+			width: calc(100% + 25px);
+			margin-bottom: 15px;
+		}
+
+		.slider__arrows,
+		.slider__pagination {
+			display: none;
+		}
+
+		.swiper-wrapper {
+			overflow-x: auto;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+		}
+
+		&__cards {
+			gap: 15px;
+		}
+	}
+
+	@include breakpoint($breakpoint-mobile) {
+		padding: 20px;
+
+		.slider {
+			width: calc(100% + 25px);
+		}
+
+		.text-block {
+			padding-top: 70px;
+		}
+
+		&__cards {
+			flex-wrap: wrap;
+		}
+	}
+}

@@ -1,0 +1,29 @@
+.request-form {
+    .info {
+        padding: 0;
+    }
+
+    .form-check-label {
+        font-size: .7rem;
+
+        .form-check-text {
+            line-height: 1;
+        }
+    }
+
+    .btn {
+        padding: 10px;
+        font-weight: normal;
+    }
+
+    small {
+        display: block;
+        font-size: 10px;
+        margin-top: .5rem;
+        text-align: center;
+
+        i {
+            margin-right: 4px;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+<div class="tabs">
+    <div class="tabs__nav tabs__nav--{{name}}">
+        {% for tab in tabs %}
+            <button class="tabs__tab{{tab.active ? ' active' : ''}}">{{tab.content}}</button>
+        {% endfor %}
+    </div>
+
+    <div class="tabs__content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>

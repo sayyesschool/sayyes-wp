@@ -1,0 +1,21 @@
+<div class="{{html_classes(class, 'card')}}">
+    {% if image %}
+        <img class="card__image" src="{{image.src}}" alt="{{image.alt}}">
+    {% endif %}
+
+    <div class="card__content">
+        {% block content %}
+            <h3 class="card__title">
+                {% block title %}
+                    {{title}}
+                {% endblock %}
+            </h3>
+
+            <div class="card__description">
+                {% block description %}
+                    {{description}}
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+</div>

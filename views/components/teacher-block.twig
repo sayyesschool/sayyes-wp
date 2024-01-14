@@ -1,0 +1,39 @@
+<div class="teacher-block">
+	<div class="teacher-block__person">
+		<div class="video">
+			<img class="video__bg" src="{{theme.link}}/static/images//teachers/{{teacher.img}}.jpg" alt="Say Yes">
+			<button class="play" id="{{teacher.teacherId}}"></button>
+		</div>
+		<h2 class="teacher-block__title">{{teacher.name}}</h2>
+		<p class="teacher-block__free-lesson">Бесплатный пробный урок с этим преподавателем</p>
+		<button class="btn btn--sm btn--transparent btn--transparent-black">Подробнее</button>
+	</div>
+
+	<div class="subtabs">
+		<div class="subtabs__nav subtabs__nav--teacher-block">
+			<button class="subtabs__tab active">Обо мне</button>
+			<button class="subtabs__tab">Специализации</button>
+			<button class="subtabs__tab">Отзывы</button>
+		</div>
+
+		<div class="subtabs__content">
+			<div class="subtabs__item active">
+				<div class="about-teacher">
+					<div class="about-teacher__scroll">
+						<div class="about-teacher__experience">
+							{% for merits in teacher.merits %}
+								<div class="about-teacher__item">
+									<div>{{merits.merit}}:</div>
+									<div>{{merits.description}}</div>
+								</div>
+							{% endfor %}
+						</div>
+						<p class="about-teacher__text">{{teacher.text}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="subtabs__item">test123</div>
+			<div class="subtabs__item">test321</div>
+		</div>
+	</div>
+</div>

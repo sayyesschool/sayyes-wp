@@ -1,0 +1,43 @@
+<article class="card pricing-card" itemscope itemtype="http://schema.org/Product">
+	<header class="card-header">
+		<h2 class="card-title" itemprop="name">{{ course.title }}</h2>
+		<meta itemprop="description" content="{{ course.post_excerpt }}">
+	</header>
+
+	<section class="card-body">
+		<ul class="list-group list-group-flush">
+			<li class="list-group-item">
+				<small class="caption">Продолжительность уровня</small>
+				<p class="value">{{ course.course_duration }}</p>
+			</li>
+
+			<li class="list-group-item">
+				<small class="caption">Интенсивность обучения</small>
+				<p class="value">{{ course.intensity }}</p>
+			</li>
+
+			<li class="list-group-item">
+				<small class="caption">Время обучения</small>
+				<p class="value">
+					{% for time in course.class_time %}
+						{{ time }}{% if not loop.last %} /{% endif %}
+					{% endfor %}
+				</p>
+			</li>
+
+			<li class="list-group-item">
+				<small class="caption">Количество ак. часов в месяц</small>
+				<p class="value">{{ course.hours }}</p>
+			</li>
+
+			<li class="list-group-item price-list-group-item" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+				<small class="caption">Стоимость в месяц</small>
+				<p class="value"><span itemprop="price">{{ course.price }}</span> <span itemprop="priceCurrency" content="RUB">₽</span></p>
+			</li>
+		</ul>
+	</section>
+
+	<footer class="card-footer">
+		<a class="btn btn-primary btn-lg btn-link" href="{{ course.link }}">Узнать больше о курсе</a>
+	</footer>
+</article>

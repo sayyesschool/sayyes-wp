@@ -1,0 +1,24 @@
+{
+    "name": "sayyes/site",
+    "description": "Web site for Say Yes",
+    "type": "project",
+    "require": {
+        "mailerlite/mailerlite-api-v2-php-sdk": "^0.3.2",
+        "timber/timber": "^2.0",
+        "twig/html-extra": "^3.7"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Oleg Polyakov",
+            "email": "olegpolyako@outlook.com"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true,
+            "composer/installers": true,
+            "nodejs-php-fallback/nodejs-php-fallback": true
+        }
+    }
+}

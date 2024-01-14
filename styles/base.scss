@@ -1,0 +1,143 @@
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+body {
+    background-color: $pearl-white;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 20px;
+	color: $black;
+	font-family: "Raleway", sans-serif;
+	font-variant-numeric: lining-nums proportional-nums;
+	overflow-x: hidden;
+	padding-top: 105px;
+
+	@include breakpoint($breakpoint-lg) {
+		font-size: 16px;
+		line-height: 18px;
+	}
+}
+
+a {
+	text-decoration: none;
+}
+
+p a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
+
+    &:hover {
+        color: $sy-primary;
+    }
+}
+
+.container {
+	max-width: 1320px;
+	margin: 0 auto;
+	padding: 0 20px;
+
+	.practice,
+	.dream-team,
+	.platform,
+	.atmosphere {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	.trial-lesson-mini,
+	.img-comment,
+	.digits,
+	.cards-square,
+	.about-course,
+	.features {
+		margin-right: 62px;
+		margin-left: 62px;
+
+		@include breakpoint($breakpoint-lg) {
+			margin-right: 0;
+			margin-left: 0;
+		}
+	}
+
+	@include breakpoint($breakpoint-md) {
+		padding: 0 15px;
+	}
+}
+
+.title {
+	font-size: 46px;
+	color: $white;
+	font-weight: 700;
+	line-height: 45px;
+}
+
+.subtitle {
+	font-size: 42px;
+	font-weight: 700;
+	line-height: 40px;
+
+	@include breakpoint($breakpoint-lg) {
+		font-size: 32px;
+		line-height: 30px;
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		font-size: 26px;
+		line-height: 25px;
+	}
+}
+
+.page {
+    background-color: #f4f3f1;
+
+    > .container {
+        padding-top: 1rem;
+        padding-bottom: 4rem;
+    }
+    
+    .page-title {
+        margin-top: 0;
+        margin-bottom: 2rem;
+
+        // @include media-breakpoint-down(md) {
+        //     font-size: 1.75rem;
+        // }
+    }
+    
+    .page-description {
+        margin-bottom: 2rem;
+    }
+}
+
+.section {
+    background-color: transparent;
+    padding: 4rem 0;
+
+    // @include media-breakpoint-down(md) {
+    //     padding: 2rem 0;
+    // }
+
+    .section-title {
+        margin-top: 0;
+        margin-bottom: 2rem;
+
+        // @include media-breakpoint-down(sm) {
+        //     font-size: 1.5rem;
+        // }
+    }
+    
+    .section-description,
+    .section-description p {
+        font-size: 1.2rem;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+}
+
+[v-cloak] {
+    display: none
+}

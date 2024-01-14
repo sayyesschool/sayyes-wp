@@ -1,0 +1,182 @@
+.mainscreen-big {
+	margin: 25px 0 100px;
+
+	.title {
+		font-size: 46px;
+		font-weight: 700;
+		line-height: 45px;
+		color: $black;
+		text-align: center;
+
+		max-width: 840px;
+		margin: 0 auto;
+	}
+
+	.btn {
+		display: block;
+		margin: 0 auto;
+	}
+
+	&__description {
+		text-align: center;
+		margin: 15px auto 25px;
+		max-width: 350px;
+
+		p:only-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&__img {
+		width: 100%;
+		height: 560px;
+		display: block;
+		object-fit: cover;
+		border-radius: $border-radius;
+		margin-top: 50px;
+	}
+
+	&--companies,
+	&--adults,
+	&--methodology {
+		.title {
+			max-width: 880px;
+		}
+	}
+
+	&--progress,
+	&--children,
+	&--adults-courses,
+	&--children-courses,
+	&--offline {
+		.title {
+			max-width: 680px;
+		}
+	}
+
+	&--progress {
+		.mainscreen-big__description {
+			max-width: 750px;
+		}
+	}
+
+	&--vacancies {
+		.mainscreen-big__description {
+			max-width: 650px;
+		}
+	}
+
+	&--children-courses {
+		.mainscreen-big__description {
+			max-width: 510px;
+		}
+	}
+
+	&--methodology {
+		.mainscreen-big__description {
+			max-width: 520px;
+		}
+	}
+
+	&--offline {
+		.mainscreen-big__description {
+			max-width: 470px;
+		}
+	}
+
+	&--companies {
+		.mainscreen-big__description {
+			max-width: 450px;
+		}
+	}
+
+	&--price {
+		.mainscreen-big__description {
+			max-width: 340px;
+		}
+	}
+
+	&--adults,
+	&--children {
+		.mainscreen-big__description {
+			max-width: 460px;
+		}
+	}
+
+	&--adults-courses {
+		.mainscreen-big__description {
+			max-width: 380px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xl) {
+		.split-image,
+		&__img {
+			height: 500px;
+		}
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		.split-image,
+		&__img {
+			height: 460px;
+		}
+	}
+
+	@include breakpoint($breakpoint-md) {
+		.title {
+			font-size: 36px;
+			line-height: 35px;
+		}
+
+		&__description {
+			margin: 10px auto 25px;
+		}
+
+		.split-image,
+		&__img {
+			height: 400px;
+			margin-top: 25px;
+		}
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		.split-image,
+		&__img {
+			height: 360px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xs) {
+		.title {
+			font-size: 28px;
+			line-height: 30px;
+		}
+
+		.split-image,
+		&__img {
+			height: 315px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		.split-image,
+		&__img {
+			height: 280px;
+		}
+	}
+
+	@include breakpoint($breakpoint-mobile) {
+		.split-image,
+		&__img {
+			height: 240px;
+		}
+	}
+
+	@include breakpoint($breakpoint-sm-mobile) {
+		.split-image,
+		&__img {
+			height: 190px;
+		}
+	}
+}

@@ -1,0 +1,29 @@
+.report-card {
+    margin: 0;
+
+    .card-title {
+        font-size: 1.5rem;
+        margin-bottom: 0;
+
+        // @include media-breakpoint-down(md) {
+        //     font-size: 1.25rem;
+        // }
+    }
+
+    .card-subtitle {
+        margin-top: .25rem;
+        font-size: 1.1rem;
+        font-weight: 300;
+
+        // @include media-breakpoint-down(md) {
+        //     font-size: 1rem;
+        // }
+    }
+
+    .card-text {
+        font-size: 1.1rem;
+        font-style: italic;
+        margin-top: 1rem;
+        padding-bottom: 0;
+    }
+}

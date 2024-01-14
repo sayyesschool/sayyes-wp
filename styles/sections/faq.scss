@@ -1,0 +1,23 @@
+.faq {
+	margin-bottom: 100px;
+
+	.subtitle {
+		max-width: 435px;
+		margin-bottom: 30px;
+	}
+
+	.accordion {
+		margin-bottom: 35px;
+	}
+
+	.btn {
+		margin: 0 auto;
+		display: block;
+	}
+
+	&__not-found {
+		margin: 0 auto 30px;
+		max-width: 350px;
+		text-align: center;
+	}
+}

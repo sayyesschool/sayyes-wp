@@ -1,0 +1,94 @@
+<section class="student-progress">
+    <div class="section-container">
+        <h2 class="subtitle">
+            Наши ученики рассказывают
+            <span class="text text--violet">о своем прогрессе</span>
+        </h2>
+
+        <p class="student-progress__description">
+            Лучшие показатели нашей работы — это студенты, уверенно владеющие языком.
+        </p>
+
+        <p class="student-progress__description">
+            Ученики рассказывают о своих результатах и процессе обучения в SAY YES! на английском:
+        </p>
+
+        <div class="slider swiper">
+            <div class="slider__arrows">
+                <button class="slider__left-arrow"></button>
+                <button class="slider__right-arrow"></button>
+            </div>
+            
+            <div class="swiper-wrapper">
+                {% for item in [
+                    {
+                        name: 'Анастасия Король',
+                        progress: 'Прогресс за 3 месяца:',
+                        description: 'Освоила закономерности и логику построения предложений, начала понимать на слух речь носителей на своем уровне лексики.',
+                        teacher: 'Ирина Прихожева',
+                        course: 'Интенсивный английский',
+                        img: 'slide-1',
+                        comment: '«Теперь я общаюсь даже с иностранными партнерами на работе!»',
+                        videoId: 'video-3',
+                        videoUrl: 'https://www.youtube.com/embed/6ISA01NE2rY'
+                    },
+                    {
+                        name: 'Анастасия Король',
+                        progress: 'Прогресс за 3 месяца:',
+                        description: 'Освоила закономерности и логику построения предложений, начала понимать на слух речь носителей на своем уровне лексики.',
+                        teacher: 'Ирина Прихожева',
+                        course: 'Интенсивный английский',
+                        img: 'slide-2',
+                        comment: '«Теперь я общаюсь даже с иностранными партнерами на работе!»',
+                        videoId: 'video-32342',
+                        videoUrl: 'https://www.youtube.com/embed/6ISA01NE2rY'
+                    },
+                    {
+                        name: 'Анастасия Король',
+                        progress: 'Прогресс за 3 месяца:',
+                        description: 'Освоила закономерности и логику построения предложений, начала понимать на слух речь носителей на своем уровне лексики.',
+                        teacher: 'Ирина Прихожева',
+                        course: 'Интенсивный английский',
+                        img: 'slide-1',
+                        comment: '«Теперь я общаюсь даже с иностранными партнерами на работе!»',
+                        videoId: 'video-33242',
+                        videoUrl: 'https://www.youtube.com/embed/6ISA01NE2rY'
+                    }
+                ] %}
+                    <div class="slider__slide swiper-slide">
+                        <div class="feedback feedback--student-progress">
+                            <div class="feedback__video">
+                                <div class="video">
+                                    <img src="{{theme.link}}/static/images/student-progress/{{item.img}}.jpg" alt="Анастасия Король" class="video__bg">
+                                    <button class="play" id="{{item.videoId}}"></button>
+                                </div>
+                                <div class="comment comment--sm comment--angle">
+                                    <p class="commet__description">{{item.comment}}</p>
+                                </div>
+                            </div>
+
+                            <div class="about-person">
+                                <h3 class="about-person__title">{{item.name}}</h3>
+                                <i class="about-person__comment">{{item.comment}}</i>
+                                <h4 class="about-person__mini-title">Прогресс за 3 месяца</h4>
+                                <p class="about-person__description">{{item.description}}</p>
+                                <h4 class="about-person__mini-title">Преподаватель:</h4>
+                                <a href="#" class="about-person__link">{{item.teacher}}</a>
+                                <h4 class="about-person__mini-title">Курс:</h4>
+                                <a href="#" class="about-person__link">{{item.course}}</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% include 'components/modal.twig' with {
+                        modal: 'video',
+                        id: item.videoId,
+                        url: item.videoUrl
+                    } %}
+                {% endfor %}
+            </div>
+
+            <div class="slider__pagination"></div>
+        </div>
+    </div>
+</section>

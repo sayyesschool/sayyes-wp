@@ -1,0 +1,9 @@
+<ul class="footer-courses">
+	<div class="footer__title">Курсы</div>
+
+	{% for item in data.footerNavItems.courses %}
+		<li class="footer__item">
+			<a href="{{item.url}}" class="footer__link">{{item.text}}</a>
+		</li>
+	{% endfor %}
+</ul>

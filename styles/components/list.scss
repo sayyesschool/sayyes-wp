@@ -1,0 +1,113 @@
+.list {
+	padding: 54px 40px 0px 130px;
+
+	background-color: $white;
+	border-radius: $border-radius;
+
+	&__item {
+		position: relative;
+
+		&:not(:last-child) {
+			margin-bottom: 15px;
+		}
+	}
+
+	&__title {
+		font-weight: 800;
+		margin-bottom: 10px;
+	}
+
+	&__description {
+		font-weight: 600;
+	}
+
+	&--ul,
+	&--ul-sm {
+		.list__item {
+			&::before {
+				content: "";
+				width: 42px;
+				height: 40px;
+				position: absolute;
+				top: 0;
+				left: -65px;
+				background: url("./static/images/icons/check.svg") center
+					center/contain no-repeat;
+			}
+		}
+	}
+
+	&--ul-sm {
+		padding: 38px 80px 45px 106px;
+
+		.list__item {
+			&::before {
+				width: 37px;
+				height: 37px;
+				left: -55px;
+			}
+		}
+	}
+
+	&--central-marker {
+		.list__item {
+			&::before {
+				top: 50%;
+				transform: translateY(-50%);
+			}
+		}
+	}
+
+	&--ol {
+		counter-reset: myCounter;
+
+		.list__item {
+			&::before {
+				content: "Шаг " counter(myCounter) ".";
+				counter-increment: myCounter;
+				position: absolute;
+				top: 0px;
+				left: -75px;
+				font-size: 18px;
+				font-weight: 800;
+				line-height: 20px;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		padding: 30px 30px 30px 70px;
+
+		&--ul,
+		&--ul-sm {
+			.list__item {
+				&::before {
+					width: 22px;
+					height: 21px;
+					top: -3px;
+					left: -35px;
+				}
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-md) {
+		&--ol {
+			.list__item {
+				&::before {
+					left: -60px;
+					font-size: 16px;
+					line-height: 18px;
+				}
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-xs) {
+		padding: 25px 35px 25px 70px;
+	}
+
+	@include breakpoint($breakpoint-mobile) {
+		padding: 20px 30px 20px 65px;
+	}
+}

@@ -1,0 +1,11 @@
+<ul class="footer-education-forms">
+	<div class="footer__title">Формы обучения</div>
+
+	{% for item in data.footerNavItems.programms %}
+		<li class="footer__item">
+			<a href="{{item.url}}" class="footer__link">{{item.text}}</a>
+		</li>
+	{% endfor %}
+
+	{% include 'components/footer-SAWC.twig' %}
+</ul>

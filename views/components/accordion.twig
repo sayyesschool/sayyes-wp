@@ -1,0 +1,8 @@
+<ul class="accordion">
+	{% for item in list %}
+		<li class="accordion__item {{item.status}}">
+			<button class="accordion__title">{{item.title}}</button>
+			<p class="accordion__content">{{item.description}}</p>
+		</li>
+	{% endfor %}
+</ul>

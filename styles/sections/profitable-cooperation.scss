@@ -1,0 +1,30 @@
+.profitable-cooperation {
+	margin-bottom: 115px;
+
+	.subtitle {
+		margin-bottom: 40px;
+	}
+
+	.btn {
+		font-size: 18px;
+		font-weight: 700;
+	}
+
+	@include breakpoint($breakpoint-md) {
+		.subtitle {
+			max-width: 400px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		background-color: $white;
+		border-radius: $border-radius;
+
+		padding: 30px 20px;
+
+		.subtitle {
+			max-width: none;
+			margin-bottom: 20px;
+		}
+	}
+}

@@ -1,0 +1,115 @@
+{% extends 'layouts/base.twig' %}
+
+{% block content %}
+	{% include 'sections/mainscreen-big.twig' with {
+        mixin: 'adults-courses',
+        title: course.title,
+        description: course.content,
+        image: course.thumbnail,
+        button: {
+            content: 'Оставить заявку'
+        },
+        img: 'mainscreen-9'
+    } %}
+
+	{% include 'sections/about-course.twig' with {
+        title: course.about.title,
+        content: course.about.content
+    } %}
+
+	{% include 'sections/learning-form.twig' with {
+        title: course.formats.title,
+        description: 'Вы можете проходить курс английского языка с нуля в различных форматах. Продолжительность и стоимость курса зависят от интенсивности и формата обучения.',
+        courses: [
+            {
+                title: 'Офлайн группа',
+                description: 'Живое общение с единомышленниками в центре Москвы',
+                class: 'big-course--white',
+                list: [
+                    {
+                        type: 'Стоимость обучения:',
+                        prefix: course.prices.group_offline.prefix,
+                        value: course.prices.group_offline.value,
+                        postfix: course.prices.group_offline.postfix
+                    }
+                ]
+            },
+            {
+                title: 'Онлайн группа',
+                description: 'Удобство онлайн обучения и доступная стоимость',
+                class: 'big-course--pink',
+                list: [
+                    {
+                        type: 'Стоимость обучения:',
+                        prefix: course.prices.group_online.prefix,
+                        value: course.prices.group_online.value,
+                        postfix: course.prices.group_online.postfix
+                    }
+                ]
+            },
+            {
+                title: 'Офлайн индивидуально',
+                description: 'Если вы предпочитаете личный контакт и персональный подход',
+                class: 'big-course--violet',
+                list: [
+                    {
+                        type: 'Стоимость обучения:',
+                        prefix: course.prices.individual_offline.prefix,
+                        value: course.prices.individual_offline.value,
+                        postfix: course.prices.individual_offline.postfix
+                    }
+                ]
+            },
+            {
+                title: 'Онлайн индивидуально',
+                description: 'Уроки в любом месте и в удобное для вас время',
+                class: 'big-course--white',
+                list: [
+                    {
+                        type: 'Стоимость обучения:',
+                        prefix: course.prices.individual_online.prefix,
+                        value: course.prices.individual_online.value,
+                        postfix: course.prices.individual_online.postfix
+                    }
+                ]
+            }
+        ]
+    } %}
+
+	{% include 'sections/trial-lesson-mini.twig' %}
+
+	{% include 'sections/advantages.twig' with {
+        title: 'Важные факты о курсе Английский с нуля'
+    } %}
+
+	<section class="course-results">
+        <div class="section-container">
+            <h2 class="subtitle">{{course.results.title}}</h2>
+
+            <div class="course-results__content">
+                <p class="course-results__description">Если вы посетили 100% занятий и выполнили все домашние работы, но не сдали успешно итоговый тест, вы можете пройти уровень повторно и абсолютно бесплатно.</p>
+                
+                {% if course.results.list_type == 'simple' %}
+                    {% include 'components/list.twig' with {
+                        list: course.results.simple_list,
+                        classes: 'list--ul-sm'
+                    } %}
+                {% elseif course.results.list_type == 'nested' %}
+                    {% include 'components/accordion.twig' with {
+                        list: course.results.nested_list
+                    } %}
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+	{% include 'sections/course-feedback.twig' with {
+        mixin: 'course-feedback__children-courses',
+        title: 'Отзывы о курсе Английский с нуля',
+        courseFeedback: data.courseFeedbackAdults
+    } %}
+
+	{% include 'sections/course-faq.twig' %}
+
+	{% include 'sections/trial-lesson.twig' %}
+{% endblock %}

@@ -1,0 +1,73 @@
+.reviews {
+	margin-bottom: 150px;
+
+	.subtitle {
+		max-width: 580px;
+	}
+
+	.slider {
+		overflow: hidden;
+	}
+
+	.slider__pagination {
+		margin-top: 40px;
+	}
+
+	&__list {
+		display: flex;
+		justify-content: space-between;
+		gap: 20px;
+	}
+
+	&__item {
+		width: 25%;
+	}
+
+	&__img {
+		width: 100%;
+		display: block;
+		object-fit: contain;
+		border-radius: $border-radius;
+	}
+
+	&__name {
+		font-weight: 800;
+
+		margin-top: 20px;
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		.subtitle {
+			max-width: 550px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		.slider {
+			width: calc(100% + 15px);
+		}
+
+		.slider__arrows,
+		.slider__pagination {
+			display: none;
+		}
+
+		.swiper-wrapper {
+			overflow-x: auto;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+		}
+
+		&__list {
+			display: grid;
+			grid-template-columns: repeat(4, 255px);
+			gap: 15px;
+		}
+
+		&__item {
+			width: 255px;
+		}
+	}
+}

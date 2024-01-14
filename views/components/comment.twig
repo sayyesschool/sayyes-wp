@@ -1,0 +1,15 @@
+<div class="blog-comment {{comment.comment_type}}" id="blog-comment-{{comment.ID}}">
+	<h5 class="comment-author">{{comment.author.name}}, <small>{{comment.date}}</small></h5>
+
+	<div class="comment-content">{{comment.comment_content|wpautop}}</div>
+
+    <div>{{comment.reply_link('Ответить')}}</div>
+    
+    {% if comment.children %}
+        <ul class="children">
+            {% for child in comment.children %}
+                <li class="child">{% include "components/comment.twig" with {comment:child} %}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>

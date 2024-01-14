@@ -1,0 +1,37 @@
+.trial-lesson {
+	margin-bottom: 100px;
+
+	.subtitle {
+		max-width: 701px;
+		line-height: 40px;
+		font-size: 42px;
+		margin-bottom: 20px;
+	}
+
+	&__description {
+		max-width: 380px;
+		margin-bottom: 35px;
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		.subtitle {
+			font-size: 32px;
+			line-height: 30px;
+		}
+
+		&__description {
+			margin-bottom: 30px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		.subtitle {
+			font-size: 26px;
+			line-height: 25px;
+		}
+
+		&__description {
+			margin-bottom: 65px;
+		}
+	}
+}

@@ -1,0 +1,72 @@
+.meeting-card {
+	width: calc((100% - 40px) / 3);
+
+	background-color: $white;
+	border-radius: $border-radius;
+
+	.tags {
+		margin-bottom: 20px;
+	}
+
+	.btn {
+		margin-top: auto;
+	}
+
+	&__content {
+		min-height: 360px;
+		padding: 25px 34px 50px 47px;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__img {
+		display: block;
+		width: 100%;
+		// height: 200px;
+		object-fit: contain;
+		border-radius: $border-radius;
+	}
+
+	&__info {
+		margin-bottom: 5px;
+	}
+
+	&__title {
+		font-size: 24px;
+		font-weight: 800;
+		line-height: 25px;
+
+		margin-bottom: 10px;
+	}
+
+	&__list {
+		margin-bottom: 15px;
+	}
+
+	&__list-item {
+		display: flex;
+		align-items: center;
+		gap: 14px;
+	}
+
+	&__name {
+		color: $black;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	&__price {
+		font-size: 24px;
+		font-weight: 800;
+		line-height: 25px;
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		&__content {
+			min-height: 340px;
+			padding: 25px 30px;
+		}
+	}
+}

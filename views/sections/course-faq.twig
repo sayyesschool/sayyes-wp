@@ -1,0 +1,38 @@
+<section class="course-faq">
+	<div class="section-container">
+		<h2 class="subtitle">На часто задаваемые вопросы о курсе отвечает Шаталова Вера, сооснователь SAY YES!</h2>
+
+		<div class="course-faq__block">
+			<img class="course-faq__img" src="{{theme.link}}/static/images/pictures/vera.jpg" alt="Say Yes">
+
+			{% include 'components/accordion.twig' with {
+				list: [
+					{
+						title: '1. Как долго проходит курс Английский для начинающих',
+						description: 'test'
+					},
+					{
+						title: '2. Сколько стоит данный курс?',
+						description: 'test'
+					},
+					{
+						title: '3. По какому расписанию проходит данный курс?',
+						description: 'test'
+					},
+					{
+						title: '4. Какие пособия вы используете на данном курсе? ',
+						description: 'test'
+					},
+					{
+						title: '5. Есть ли на курсе домашняя работа? Где она задается?',
+						description: 'test'
+					},
+					{
+						title: '6. Выдаете ли вы сертификат о прохождении курса?',
+						description: 'test'
+					}
+				]
+			} %}
+		</div>
+	</div>
+</section>

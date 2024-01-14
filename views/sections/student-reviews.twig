@@ -1,0 +1,119 @@
+{% set testimonials = [
+	{
+		name: 'Анастасия Король',
+		description: '«Теперь я общаюсь даже с иностранными партнёрами на работе!»',
+		startLevel: 'Elementary',
+		teacher: 'Ирина Прихожева',
+		img: 'review-1',
+		videoId: 'video-13',
+		videoUrl: 'https://www.youtube.com/embed/6ISA01NE2rY'
+	},
+	{
+		name: 'Лариса Муслюмова',
+		description: '«Здесь ты можешь забыть о скучной грамматике и наслаждаться общением».',
+		startLevel: 'Beginner',
+		teacher: 'Мария Наливайкина',
+		img: 'review-2',
+		videoId: 'video-14',
+		videoUrl: 'https://www.youtube.com/embed/5jmAozBOM_c'
+	},
+	{
+		name: 'Виктория Фалеева',
+		description: '«Если хочешь говорить по-английски бегло — приходи в SAY YES! Я пришла и ни о чем не жалею!»',
+		startLevel: 'Beginner',
+		teacher: 'Мария Наливайкина',
+		img: 'review-3',
+		videoId: 'video-15',
+		videoUrl: 'https://www.youtube.com/embed/6ISA01NE2rY'
+	},
+	{
+		name: 'Юлия Русак',
+		description: '«Первое, что я могу сказать о SAY YES!, это то, что учить английский здесь весело и позитивно!»',
+		startLevel: 'Beginner',
+		teacher: 'Полина Ангаткина',
+		img: 'review-4',
+		videoId: 'video-16',
+		videoUrl: 'https://www.youtube.com/embed/6ISA01NE2rY'
+	},
+	{
+		name: 'Александр Бубликов',
+		description: '«Учить язык после долгого перерыва — сложно, но очень интересно!»',
+		startLevel: 'Beginner',
+		teacher: 'Почерней Ирина',
+		img: 'review-5',
+		videoId: 'video-17',
+		videoUrl: 'https://www.youtube.com/embed/6ISA01NE2rY'
+	},
+	{
+		name: 'Галина Романова',
+		description: '«Учусь в школе SAY YES! 6 месяцев и мой муж уже замечает мой прогресс!»',
+		startLevel: 'Pre-intermediate',
+		teacher: 'Ирина Прихожева',
+		img: 'review-6',
+		videoId: 'video-18',
+		videoUrl: 'https://www.youtube.com/embed/6ISA01NE2rY'
+	},
+	{
+		name: 'Елена Ребеченкова',
+		description: '«Удивительно, что уже через три урока я вспомнила многое, что учила до этого».',
+		startLevel: 'Beginner',
+		teacher: 'Ксения Михайлова',
+		img: 'review-7',
+		videoId: 'video-19',
+		videoUrl: 'https://www.youtube.com/embed/6ISA01NE2rY'
+	},
+	{
+		name: 'Салеха Мамедханова',
+		description: '«Сотрудники школы всегда приветливы и добры».',
+		startLevel: 'Beginner',
+		teacher: 'Светлана Тимонина',
+		img: 'review-8',
+		videoId: 'video-20',
+		videoUrl: 'https://www.youtube.com/embed/6ISA01NE2rY'
+	}
+] %}
+
+<section class="student-reviews">
+    <div class="content-container">
+        <h2 class="subtitle">Лучшие показатели нашей работы — это студенты, уверенно владеющие языком.</h2>
+
+        <p class="student-reviews__description">Наши ученики рассказывают о своих результатах и процессе обучения в SAY YES! на английском.</p>
+
+        <div class="student-reviews__reviews">
+            {% for person in testimonials %}
+                <div class="video-block">
+                    <div class="video">
+                        <img class="video__bg" src="{{theme.link}}/static/images/student-reviews/{{person.img}}.jpg" alt="Say Yes">
+                        <button class="play" id="{{person.videoId}}"></button>
+                    </div>
+
+                    <div class="video-block__content">
+                        <h4 class="video-block__title">{{person.name}}</h4>
+
+                        <p class="video-block__description">{{person.description}}</p>
+
+                        <ul class="video-block__progress">
+                            <li class="video-block__item">
+                                <div class="video-block__start">Старт обучения:</div>
+                                <div class="video-block__level">{{person.startLevel}}</div>
+                            </li>
+
+                            <li class="video-block__item">
+                                <div class="video-block__teacher">Преподаватель:</div>
+                                <div class="block__teacher-name">{{person.teacher}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                {% include 'components/modal.twig' with {
+                    modal: 'video',
+                    id: person.videoId,
+                    url: person.videoUrl
+                } %}
+            {% endfor %}
+        </div>
+
+        <button class="btn btn--yellow">Показать ещё</button>
+    </div>
+</section>

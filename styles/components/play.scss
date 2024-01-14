@@ -1,0 +1,11 @@
+.play {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+
+	border-radius: 100%;
+	border: 2px solid $black;
+	background: url("./static/images/icons/play.svg") center no-repeat
+		#fffcff80;
+	cursor: pointer;
+}

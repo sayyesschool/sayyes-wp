@@ -1,0 +1,76 @@
+<section class="formats">
+	<div class="section-container">
+		<h2 class="subtitle">Как вы хотите учиться?</h2>
+
+		<p class="formats__description">
+			<span class="text text--violet">Очное</span>
+			обучение в школе в центре Москвы или удобство
+			<span class="text text--violet">онлайн</span>
+			занятий?
+		</p>
+
+		<img src="{{theme.link}}/static/images/decoration/notes/classes-at-school.svg" alt="Посмотрите видео" class="formats__note">
+
+		<div class="tabs">
+			<div class="tabs__nav tabs__nav--formats">
+				<button class="tabs__tab active">Офлайн в Москве</button>
+				<button class="tabs__tab">Онлайн по всему миру</button>
+			</div>
+
+			<div class="tabs__content">
+				<div class="tabs__item active">
+					<div class="feedback feedback--formats">
+						<div class="feedback__left">
+							<div class="video">
+								<img src="{{theme.link}}/static/images/lessons-type/slide-1.jpg" alt="Офлайн" class="video__bg">
+								<button class="play" id="video-4"></button>
+							</div>
+						</div>
+
+						<div class="feedback__right">
+							<div class="about-person">
+								<span class="about-person__tag">Офлайн группы</span>
+								<span class="about-person__tag">Индивидуально</span>
+								<h3 class="about-person__mini-title">Цените живое общение и живете в Москве?</h3>
+								<p class="about-person__description">Учите английский, обретайте новых друзей и весело проводите время с SAY YES! в кругу единомышленников.</p>
+								<p class="about-person__description">Наш офис разположен в пяти минутах ходьбы от метро Павелецкая.</p>
+							</div>
+						</div>
+					</div>
+
+					{% include 'components/modal.twig' with {
+						id: 'video-4',
+						modal: 'video',
+						url: 'https://www.youtube.com/embed/6ISA01NE2rY'
+					} %}
+				</div>
+
+				<div class="tabs__item">
+					<div class="feedback">
+						<div class="feedback__left">
+							<div class="video">
+								<img src="{{theme.link}}/static/images/lessons-type/slide-2.jpg" alt="Офлайн" class="video__bg">
+								<button class="play" id="video-4"></button>
+							</div>
+						</div>
+
+						<div class="feedback__right">
+							<div class="about-person">
+								<span class="about-person__tag">Онлайн группы</span>
+								<span class="about-person__tag">Индивидуально</span>
+								<h3 class="about-person__mini-title">Предпочитаете заниматься из любого места в удобное время?</h3>
+								<p class="about-person__description">Выбирайте формат онлайн уроков — в мини-группе в Zoom или индивидуально на нашей онлайн-платформе.</p>
+							</div>
+						</div>
+					</div>
+
+					{% include 'components/modal.twig' with {
+						id: 'video-4',
+						modal: 'video',
+						url: 'https://www.youtube.com/embed/6ISA01NE2rY'
+					} %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

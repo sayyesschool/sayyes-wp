@@ -1,0 +1,113 @@
+.club-events {
+	min-height: 305px;
+	padding: 40px 60px;
+	margin-bottom: 150px;
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+	position: relative;
+	overflow: hidden;
+
+	background-color: $yellow;
+	border-radius: $border-radius;
+
+	.btn {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		width: 642px;
+		height: 271px;
+		top: 135px;
+		left: -30px;
+		background: url("./static/images/decoration/elements/letter-sending.svg")
+			center center/cover no-repeat;
+	}
+
+	&__info {
+		max-width: 500px;
+	}
+
+	&__title {
+		font-size: 42px;
+		font-weight: 700;
+		line-height: 40px;
+
+		margin-bottom: 20px;
+	}
+
+	&__description {
+		max-width: 400px;
+	}
+
+	&__form {
+		max-width: 475px;
+	}
+
+	&__input {
+		background-color: $white;
+		border-radius: $border-radius;
+		border: none;
+		color: $grey;
+		font-weight: normal;
+
+		padding: 11px 20px;
+		width: 100%;
+		margin-bottom: 10px;
+
+		&:last-of-type {
+			margin-bottom: 40px;
+		}
+	}
+
+	&__policy {
+		font-size: 14px;
+		font-weight: 600;
+		line-height: 15px;
+	}
+
+	@include breakpoint($breakpoint-xl) {
+		&::before {
+			width: 513px;
+			height: 216px;
+			top: 172px;
+		}
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		&__title {
+			font-size: 32px;
+			font-weight: 700;
+			line-height: 30px;
+
+			max-width: 250px;
+		}
+
+		&::before {
+			width: 450px;
+			height: 190px;
+			top: 185px;
+		}
+	}
+
+	@include breakpoint($breakpoint-md) {
+		padding: 30px;
+		gap: 15px;
+
+		&::before {
+			display: none;
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		flex-direction: column;
+
+		&__title {
+			font-size: 26px;
+			line-height: 25px;
+		}
+	}
+}

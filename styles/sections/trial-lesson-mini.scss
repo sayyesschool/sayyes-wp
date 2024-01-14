@@ -1,0 +1,54 @@
+.trial-lesson-mini {
+	margin-bottom: 100px;
+	padding: 60px 175px 40px;
+	position: relative;
+
+	background-color: $yellow;
+	border-radius: $border-radius;
+
+	.central-text {
+		display: block;
+	}
+
+	&__pen-icon,
+	&__hourglass-icon,
+	&__book-icon,
+	&__statue-of-liberty-icon {
+		position: absolute;
+	}
+
+	&__pen-icon {
+		top: 47px;
+		left: 64px;
+	}
+
+	&__hourglass-icon {
+		top: -42.5px;
+		right: 300px;
+	}
+
+	&__book-icon {
+		bottom: -20px;
+		left: -20px;
+	}
+
+	&__statue-of-liberty-icon {
+		bottom: -25px;
+		right: 35px;
+	}
+
+	@include breakpoint($breakpoint-md) {
+		padding: 60px 145px 40px;
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		padding: 60px 25px 40px;
+
+		&__pen-icon,
+		&__hourglass-icon,
+		&__book-icon,
+		&__statue-of-liberty-icon {
+			display: none;
+		}
+	}
+}

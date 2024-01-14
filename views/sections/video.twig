@@ -1,0 +1,20 @@
+<section class="video-section video-section--{{mixin}}">
+	<div class="video-section__info">
+		<h2 class="subtitle">{{subtitle}}</h2>
+
+		{% for paragraph in description %}
+			<p class="video-section__description">{{paragraph}}</p>
+		{% endfor %}
+	</div>
+
+	<div class="video">
+		<img class="video__bg" src="{{theme.link}}/static/images/video-sections/{{videoImg}}.jpg" alt="Офлайн">
+		<button class="play" id="{{videoId}}"></button>
+	</div>
+
+	{% include 'components/modal.twig' with {
+		modal: 'video',
+		id: videoId,
+		url: 'https://www.youtube.com/embed/6ISA01NE2rY'
+	} %}
+</section>

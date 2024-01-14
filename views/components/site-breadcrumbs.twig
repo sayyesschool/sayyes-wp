@@ -1,0 +1,29 @@
+<nav class="site-breadcrumbs breadcrumbs" aria-label="breadcrumb" role="navigation">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{{ site.link }}">
+                <i class="fa fa-home"></i>
+            </a>
+        </li>
+
+        {% if parent_page %}
+            <li class="breadcrumb-item">
+                <a href="{{ parent_page.link }}">{{ parent_page.title }}</a>
+            </li>
+        {% elseif page.parent %}
+            <li class="breadcrumb-item">
+                <a href="{{ page.parent.link }}">{{ page.parent.title }}</a>
+            </li>
+        {% elseif page.type != 'page' %}
+            <li class="breadcrumb-item">
+                <a href="{{ site.link }}/{{ page.type.rewrite.slug }}">{{ page.type.label }}</a>
+            </li>
+        {% endif %}
+
+        <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
+    </ol>
+    
+    {#<ol class="breadcrumb">
+        {{ function('bcn_display') }}
+    </ol>#}
+</nav>

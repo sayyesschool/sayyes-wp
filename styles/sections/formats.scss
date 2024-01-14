@@ -1,0 +1,58 @@
+.formats {
+	margin-bottom: 100px;
+
+	position: relative;
+	z-index: 1;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: -35px;
+		right: -319px;
+		width: 508px;
+		height: 560px;
+		background: url("./static/images/decoration/elements/red-square.svg")
+			center center/contain no-repeat;
+		z-index: -1;
+	}
+
+	.about-person {
+		.about-person__mini-title {
+			margin-bottom: 15px;
+		}
+
+		.about-person__description {
+			margin-bottom: 10px;
+		}
+	}
+
+	.tabs {
+		margin-bottom: 40px;
+	}
+
+	&__description {
+		margin: 20px 0 25px;
+		max-width: 400px;
+	}
+
+	&__note {
+		position: absolute;
+		top: 55px;
+		right: 280px;
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		&__note {
+			top: 25px;
+			width: 192px;
+			height: 146px;
+		}
+	}
+
+	@include breakpoint($breakpoint-md) {
+		&::before,
+		&__note {
+			display: none;
+		}
+	}
+}

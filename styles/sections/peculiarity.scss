@@ -1,0 +1,62 @@
+.peculiarity {
+	margin-bottom: 100px;
+
+	.subtitle {
+		max-width: 580px;
+		margin-bottom: 40px;
+	}
+
+	&__cards {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 20px;
+	}
+
+	&__card {
+		background-color: $yellow;
+		border-radius: $border-radius;
+		line-height: 20px;
+
+		width: calc(25% - 15px);
+		min-height: 275px;
+		padding: 39px 35px 36px 39px;
+	}
+
+	&__title {
+		max-width: 202px;
+		position: absolute;
+
+		font-weight: 700;
+	}
+
+	&__description {
+		margin-top: 80px;
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		.subtitle {
+			max-width: 500px;
+		}
+
+		&__cards {
+			gap: 15px;
+		}
+
+		&__card {
+			width: calc(50% - 7.5px);
+			min-height: 175px;
+			padding: 25px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		.subtitle {
+			max-width: 400px;
+		}
+
+		&__card {
+			width: 100%;
+		}
+	}
+}

@@ -1,0 +1,49 @@
+.teacher-block {
+	max-width: 950px;
+	max-height: 530px;
+	padding: 50px;
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+
+	background-color: $pale-white;
+	border-radius: $border-radius;
+
+	.video {
+		width: 250px;
+		height: 250px;
+
+		.play {
+			bottom: 10px;
+			right: 10px;
+		}
+	}
+
+	button.btn {
+		margin: 0;
+		margin-top: auto;
+	}
+
+	&__person {
+		width: 250px;
+
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__title {
+		max-width: 150px;
+		font-weight: 700;
+		line-height: 25px;
+
+		margin-bottom: 20px;
+	}
+
+	&__free-lesson {
+		font-size: 14px;
+		font-weight: 600;
+		line-height: 15px;
+
+		margin-bottom: 15px;
+	}
+}

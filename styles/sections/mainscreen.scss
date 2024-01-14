@@ -1,0 +1,244 @@
+.mainscreen {
+	overflow: hidden;
+	position: relative;
+	display: flex;
+	max-width: 1280px;
+	height: 560px;
+	margin-bottom: 100px;
+	padding: 60px 0 0 51px;
+	color: white;
+	border-radius: $border-radius;
+	background: url('./static/images/mainscreens/mainscreen-1.jpg') right center/cover no-repeat;
+
+	.title {
+		font-size: 68px;
+		font-weight: 700;
+		line-height: 60px;
+
+		margin-bottom: 25px;
+	}
+
+	.btn {
+		margin-top: 84px;
+		font-size: 18px;
+	}
+
+	&__left {
+		max-width: 440px;
+	}
+
+	&__right {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		display: block;
+		width: 100%;
+		object-fit: contain;
+	}
+
+	&__text {
+		max-width: 270px;
+	}
+
+	&--main {
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 10%;
+			left: 40%;
+			width: 78px;
+			height: 105px;
+			background-image: url('./static/images/decoration/notes/dream-team.svg');
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+	}
+
+	&--speaking-club {
+		padding: 68px 0 0 106px;
+		background-image: url('./static/images/mainscreens/mainscreen-8.jpg');
+
+		.title {
+			margin-bottom: 38px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xl) {
+		height: 520px;
+
+		&--speaking-club {
+			.mainscreen__right {
+				width: 1100px;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		height: 490px;
+
+		.title {
+			font-size: 46px;
+			line-height: 45px;
+		}
+
+		.main-list {
+			font-size: 16px;
+			line-height: 18px;
+		}
+
+		&__left {
+			max-width: 400px;
+		}
+
+		&--main {
+			&::after {
+				width: 63px;
+				height: 85px;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-md) {
+		height: 420px;
+		padding: 40px 0 0 38px;
+
+		&__right {
+			width: 1000px;
+		}
+
+		&--main {
+			&::after {
+				left: 33%;
+			}
+		}
+
+		&--speaking-club {
+			.btn {
+				min-width: 267px;
+				margin-top: 50px;
+			}
+
+			.mainscreen__right {
+				width: 900px;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		height: 360px;
+
+		.title {
+			font-size: 42px;
+			line-height: 40px;
+		}
+
+		&__left {
+			max-width: 370px;
+		}
+
+		&__right {
+			width: 105%;
+		}
+
+		&--main {
+			&::after {
+				display: none;
+			}
+		}
+
+		&--speaking-club {
+			.title {
+				margin-bottom: 20px;
+			}
+
+			.btn {
+				margin-top: 20px;
+			}
+
+			.mainscreen__right {
+				width: 800px;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		height: 671px;
+		border-radius: $border-radius-sm;
+
+		.title {
+			margin-bottom: 45px;
+		}
+
+		&__left {
+			max-width: 500px;
+		}
+
+		&__right {
+			width: 930px;
+		}
+
+		&__text {
+			max-width: 280px;
+		}
+
+		&--speaking-club {
+			.mainscreen__left {
+				max-width: 440px;
+			}
+
+			.mainscreen__right {
+				width: 145%;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-mobile) {
+		height: 585px;
+		padding: 15px 0 0 20px;
+
+		.title {
+			margin-bottom: 20px;
+		}
+
+		&__left {
+			max-width: 370px;
+		}
+
+		&__right {
+			width: 760px;
+		}
+
+		&__text {
+			font-size: 16px;
+			font-weight: 500;
+			line-height: 18px;
+		}
+
+		&--speaking-club {
+			padding: 40px 0 0 38px;
+			height: 671px;
+
+			.mainscreen__right {
+				right: auto;
+				left: -80%;
+				width: 800px;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-sm-mobile) {
+		&__right {
+			width: 700px;
+		}
+
+		&--speaking-club {
+			padding: 25px 0 0 25px;
+
+			.mainscreen__right {
+				right: -40px;
+				left: auto;
+				width: 800px;
+			}
+		}
+	}
+}

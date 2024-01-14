@@ -1,0 +1,82 @@
+.about-course {
+	margin-bottom: 100px;
+	display: flex;
+	justify-content: space-between;
+	gap: 50px;
+
+	&__title {
+		width: calc(48% - 25px);
+		font-size: 42px;
+		font-weight: 700;
+		line-height: 40px;
+	}
+
+	&__info {
+		width: calc(52% - 25px);
+
+		p:not(:last-of-type) {
+			margin-bottom: 15px;
+		}
+	}
+
+	&__text {
+		margin-bottom: 15px;
+	}
+
+	&__purpose {
+		font-weight: 700;
+	}
+
+	&--children-courses {
+		.about-course__title {
+			max-width: 500px;
+		}
+	}
+
+	&--offline {
+		.about-course__title {
+			max-width: 530px;
+		}
+	}
+
+	&--offline-2 {
+		.about-course__title {
+			max-width: 490px;
+		}
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		&__title {
+			font-size: 32px;
+			line-height: 30px;
+		}
+	}
+
+	@include breakpoint($breakpoint-md) {
+		gap: 35px;
+
+		&__title {
+			width: calc(48% - 17.5px);
+		}
+
+		&__info {
+			width: calc(52% - 17.5px);
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		flex-direction: column;
+		gap: 15px;
+
+		&__title {
+			width: 100%;
+
+			font-size: 26px;
+			line-height: 25px;
+		}
+
+		&__info {
+			width: 100%;
+		}
+	}
+}

@@ -1,0 +1,106 @@
+{% extends 'layouts/base.twig' %}
+
+{% set formats = [
+    {
+        title: 'Группа офлайн',
+        description: 'Занятия проходят в школе в Москве по расписанию: утро/день/вечер/выходной день.',
+        class: 'big-course--white',
+        img: 'course-6',
+        list: [
+            {
+                lessonType: 'Стоимость обучения:',
+                lessonPrice: '9.000 ₽',
+                lessonSince: 'от',
+                lessonTime: '/мес.'
+            }
+        ]
+    },
+    {
+        title: 'Группа онлайн',
+        description: 'Занятия проходят в мини-группах на платформе Zoom с имитацией офлайн класса.',
+        class: 'big-course--pink',
+        img: 'course-2',
+        list: [
+            {
+                lessonType: 'Стоимость обучения:',
+                lessonPrice: '7.200 ₽',
+                lessonSince: 'от',
+                lessonTime: '/мес.'
+            }
+        ]
+    },
+    {
+        title: 'Индивидуально офлайн',
+        description: 'Занятия проходят в школе в Москве по выбранному расписанию.',
+        class: 'big-course--violet',
+        img: 'course-8',
+        list: [
+            {
+                lessonType: 'Стоимость обучения:',
+                lessonPrice: '1.650 ₽',
+                lessonSince: 'от',
+                lessonTime: '/урок'
+            }
+        ]
+    },
+    {
+        title: 'Индивидуально онлайн',
+        description: 'Занятия проходят на платформе Школы по выбранному расписанию.',
+        class: 'big-course--white',
+        img: 'course-14',
+        list: [
+            {
+                lessonType: 'Стоимость обучения:',
+                lessonPrice: '950 ₽',
+                lessonSince: 'от',
+                lessonTime: '/урок'
+            }
+        ]
+    },
+    {
+        title: 'Разговорный онлайн клуб',
+        description: 'Встречи проходят на платформе Zoom по расписанию Клуба.',
+        class: 'big-course--white',
+        img: 'course-9',
+        list: [
+            {
+                lessonType: 'Стоимость обучения:',
+                lessonPrice: '450 ₽',
+                lessonSince: 'от',
+                lessonTime: '/встреча'
+            }
+        ]
+    }
+] %}
+
+{% block content %}
+	{% include 'sections/mainscreen-big.twig' with {
+        mixin: 'education',
+        title: 'Формы обучения в школе SAY YES! для взрослых и детей.',
+        description: 'Оставьте заявку на обратный звонок, и мы подробно расскажем о курсах, формах обучения и стоимости.',
+        splitImg1: 'mainscreen-split-1',
+        splitImg2: 'mainscreen-split-2',
+        btnText: 'Оставить заявку',
+        showSplit: true,
+        showBtn: true
+    } %}
+
+	{% embed 'sections/img-courses-2.twig' with {
+        mixin: 'img-courses-2--education',
+        title: 'Наша школа предлагает курсы английского языка для разных уровней знаний и в разнообразных форматах.',
+        courses: formats,
+        withoutPrice: true
+    } %}
+        {% block content %}
+            <div class="course-selection">
+                <h3 class="course-selection__title">Затрудняетесь с выбором формы обучения?</h3>
+                <p class="course-selection__description">Подберем для вас удобный курс и формат обучения!</p>
+                <button class="btn btn--violet">Оставить заявку</button>
+            </div>
+        {% endblock %}
+    {% endembed %}
+
+	{% include 'sections/formats.twig' %}
+
+	{% include 'sections/trial-lesson.twig' %}
+{% endblock %}

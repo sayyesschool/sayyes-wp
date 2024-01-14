@@ -1,0 +1,33 @@
+.split-image {
+	height: 560px;
+	margin-top: 50px;
+	position: relative;
+	overflow: hidden;
+	border-radius: $border-radius;
+
+	img {
+		width: 100%;
+		height: 100%;
+		display: block;
+		object-fit: cover;
+		position: absolute;
+	}
+
+	&__first-img {
+		clip-path: polygon(0 0, 53.1% 0%, 44.5% 100%, 0% 100%);
+		z-index: 1;
+	}
+
+	&::before {
+		content: "";
+		width: 4px;
+		height: 110%;
+		display: block;
+		background-color: $white;
+		position: absolute;
+		top: -5px;
+		left: 48.4%;
+		transform: rotate(10.6deg);
+		z-index: 1;
+	}
+}

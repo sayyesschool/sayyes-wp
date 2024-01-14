@@ -1,0 +1,56 @@
+<section class="trial-lesson">
+	<div class="section-container">
+		<h2 class="subtitle">
+			Запишитесь на
+			<span class="text text--violet">бесплатный</span>
+			пробный урок
+		</h2>
+		
+		<p class="trial-lesson__description">На уроке вы узнаете свой уровень, оцените методику школы, познакомитесь с преподавателем</p>
+	</div>
+
+	<div class="tabs">
+		<div class="tabs__nav tabs__nav--feedback">
+			<button class="tabs__tab active">Взрослым</button>
+			<button class="tabs__tab">Детям</button>
+		</div>
+
+		<div class="tabs__content">
+			<div class="tabs__item active">
+				<div class="invite">
+					<div class="invite__content">
+						<div class="invite__left">
+							<div class="invite__title">Оставьте заявку на пробный урок</div>
+
+							<p class="invite__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы, и расскажем о курсах</p>
+						</div>
+
+						<div class="invite__right">
+							{% include 'components/feedback-form.twig' %}
+						</div>
+					</div>
+
+					<img src="{{theme.link}}/static/images/pictures/invite.png" alt="Invite" class="invite__bg">
+				</div>
+			</div>
+
+			<div class="tabs__item">
+				<div class="invite invite--children">
+					<div class="invite__content">
+						<div class="invite__left">
+							<div class="invite__title">Оставьте заявку на пробный урок</div>
+
+							<p class="invite__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы, и расскажем о курсах</p>
+						</div>
+
+						<div class="invite__right">
+							{% include 'components/feedback-form.twig' %}
+						</div>
+					</div>
+					
+					<img src="{{theme.link}}/static/images/pictures/invite-2.png" alt="Invite" class="invite__bg">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

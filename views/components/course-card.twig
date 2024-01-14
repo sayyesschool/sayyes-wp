@@ -1,0 +1,11 @@
+<div class="card course-card">
+	<div class="card-image" style="background-image: url('{{ course.thumbnail.src('medium') }}')"></div>
+
+	<h4 class="card-title">{{ course.title }}</h4>
+	
+	<div class="card-body">{{ course.post_excerpt }}</div>
+
+	<div class="card-footer">
+		<a class="btn btn-primary btn-outline-primary btn-sm" href="{{ course.link }}">Подробнее</a>
+	</div>
+</div>

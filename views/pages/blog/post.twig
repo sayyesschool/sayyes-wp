@@ -1,0 +1,47 @@
+{% extends 'layouts/blog.twig' %}
+
+{% block main %}
+    {% include 'components/blog-breadcrumbs.twig' %}
+
+    <article class="post-card card">
+        {% if post.thumbnail %}        
+            <img class="post-thumbnail img-fluid img-rounded" src="{{post.thumbnail.src}}" alt="{{post.thumbnail.alt}}">
+        {% endif %}
+
+        <header class="post-header card-header">
+            <div class="post-meta">
+                <span class="post-date badge">
+                    {{post.post_date|date}}
+                </span>
+
+                <a class="badge post-category" href="{{post.category.link}}">
+                    <i class="fa fa-{{post.category.icon}}"></i>
+                    {{post.category}}
+                </a>
+                
+                <span class="post-tags">
+                    {% for tag in post.tags %}
+                        <a class="badge badge-light" href="{{tag.link}}">
+                            <i class="fa fa-tag"></i>
+                            {{tag.name}}
+                        </a>
+                    {% endfor %}
+                </span>
+            </div>
+
+            <h1 class="post-title page-title title">{{post.title}}</h1>
+        </header>
+        
+        <section class="post-content card-body">
+            {{post.content}}
+        </section>
+
+        <footer class="post-footer card-footer">
+            {% filter shortcodes %}
+                [wp-social-likes]
+            {% endfilter %}
+
+            {{function('disqus_embed', 'sayyes2english', post)}}
+        </footer>
+    </article>
+{% endblock main %}

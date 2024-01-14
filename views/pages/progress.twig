@@ -1,0 +1,14 @@
+{% extends 'layouts/base.twig' %}
+
+{% block content %}
+	{% include 'sections/mainscreen-big.twig' with {
+        mixin: 'progress',
+		title: 'Отчёты о прогрессе студентов SAY YES!',
+        description: 'Одна из важных особенностей нашей школы — это то, что мы замеряем разговорный навык наших студентов по прошествии некоторого времени обучения. Посмотрите, как студенты SAY YES! уверенно говорят на видео!',
+        img: 'mainscreen-4'
+	} %}
+
+	{% include 'sections/student-reviews.twig' %}
+
+	{% include 'sections/trial-lesson.twig' %}
+{% endblock %}

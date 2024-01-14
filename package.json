@@ -1,0 +1,23 @@
+{
+  "name": "sayes",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "scripts": {
+    "start": "gulp"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.2",
+    "inputmask": "^5.0.8",
+    "lightbox2": "^2.11.4"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.69.7"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "ie 10"
+  ]
+}

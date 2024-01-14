@@ -1,0 +1,29 @@
+{% extends 'layouts/blog.twig' %}
+
+{% import 'macros/article-card.twig' as article_card %}
+
+{% block main %}
+    {% include 'components/blog-breadcrumbs.twig' %}
+
+    <h1 class="title page-title">{{ category.title }}</h1>
+
+    {% if category.description %}
+        <p class="description page-description">{{ category.description }}</p>
+    {% endif %}
+
+    <section id="blog-posts">
+        <div class="row">
+            {% if posts %}
+                {% for post in posts %}
+                    <div class="col-6">
+                        {{ article_card.render(post) }}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h2>В рубрике еще нет записей</h2>
+
+                <a href="{{ site.link }}/blog">Вернуться в блог</a>
+            {% endif %}
+        </div>
+    </section>
+{% endblock main %}

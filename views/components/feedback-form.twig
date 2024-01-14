@@ -1,0 +1,22 @@
+<form class="feedback-form">
+	<h3 class="feedback-form__format">Выберите желаемый формат обучения:</h3>
+
+	<div class="feedback-form__radio-buttons">
+		<label class="feedback-form__radio-btn">
+			<input type="radio" name="format">
+			Очно в Москве
+		</label>
+
+		<label class="feedback-form__radio-btn">
+			<input type="radio" name="format">
+			Онлайн
+		</label>
+
+		<label class="feedback-form__radio-btn">
+			<input type="radio" name="format">
+			Не знаю
+		</label>
+	</div>
+
+	{% include 'components/callback-form.twig' %}
+</form>

@@ -1,0 +1,36 @@
+<section class="advantages">
+	<div class="section-container">
+		<h2 class="subtitle">{{title}}</h2>
+
+		<div class="text-blocks text-blocks--advantages">
+			{% for item in [
+				{
+					title: 'Стандартизированная методика',
+					description: 'Практикуем один подход в офлайн и онлайн формате'
+				},
+				{
+					title: 'Современные пособия',
+					description: 'Используем новейшие пособия Oxford, Cambridge и Macmillan',
+					'class': 'text-block--books-bg'
+				},
+				{
+					title: '75 % практика языка',
+					description: 'Бóльшую часть занятия говорит студент'
+				},
+				{
+					title: 'Визиты носителей',
+					description: 'Дополнительная практика языка в группе'
+				},
+				{
+					title: 'Онлайн платформа',
+					description: 'Нескучная домашка в интерактивном виде'
+				}
+			] %}
+				<div class="text-block {{item.class}}">
+					<h4 class="text-block__title">{{item.title}}</h4>
+					<p class="text-block__description">{{item.description}}</p>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>

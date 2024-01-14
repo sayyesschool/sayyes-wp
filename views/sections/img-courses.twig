@@ -1,0 +1,12 @@
+<section class="img-courses">
+	<div class="section-container">
+		<h2 class="subtitle">{{title}}</h2>
+		
+		<div class="img-courses__blocks">
+			{% include 'components/big-courses.twig' with {
+				courses,
+				withoutInfo: true
+			} %}
+		</div>
+	</div>
+</section>

@@ -1,0 +1,86 @@
+.img-courses-2 {
+	margin-bottom: 100px;
+
+	.subtitle {
+		max-width: 560px;
+		margin-bottom: 40px;
+	}
+
+	.course-selection {
+		align-self: flex-start;
+		padding: 50px 92px;
+
+		&__title {
+			max-width: 290px;
+			font-size: 18px;
+			line-height: 20px;
+		}
+
+		&__description {
+			margin-bottom: 45px;
+		}
+	}
+
+	&__blocks {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+	}
+
+	&--children {
+		.big-course__content {
+			min-height: 235px;
+		}
+
+		.big-course__lesson-type {
+			max-width: 163px;
+		}
+
+		.big-course__lesson-price {
+			align-self: flex-end;
+		}
+
+		.big-course__title {
+			max-width: 390px;
+		}
+	}
+
+	&--education {
+		.subtitle {
+			max-width: 850px;
+		}
+
+		.big-course__content {
+			min-height: 180px;
+			padding-bottom: 46px;
+		}
+
+		.big-course__description {
+			max-width: 470px;
+		}
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		.subtitle {
+			max-width: 440px;
+		}
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		&--education {
+			.big-course__content {
+				min-height: 200px;
+			}
+
+			.big-course__lesson-type {
+				width: auto;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-md) {
+		&__blocks {
+			gap: 15px;
+		}
+	}
+}

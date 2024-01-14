@@ -1,0 +1,83 @@
+.student-progress {
+	margin-bottom: 130px;
+
+	.section-container {
+		max-width: 1098px;
+	}
+
+	.slider {
+		&__arrows {
+			right: 15%;
+		}
+
+		&__pagination {
+			display: block;
+			padding-left: 75%;
+		}
+	}
+
+	.subtitle {
+		max-width: 640px;
+		margin-bottom: 20px;
+	}
+
+	&__description {
+		margin-top: 10px;
+		max-width: 490px;
+	}
+
+	@include breakpoint($breakpoint-md) {
+		.slider {
+			&__arrows {
+				right: 0;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		.subtitle {
+			max-width: 490px;
+			margin-bottom: 15px;
+		}
+
+		.section-container {
+			max-width: 867px;
+		}
+
+		.slider {
+			margin-top: 10px;
+		}
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		.subtitle {
+			max-width: 400px;
+		}
+
+		.section-container {
+			max-width: 708px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		.slider {
+			&__pagination {
+				padding-left: 48%;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-mobile) {
+		.slider {
+			&__arrows {
+				display: none;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-sm-mobile) {
+		.subtitle {
+			max-width: 230px;
+		}
+	}
+}

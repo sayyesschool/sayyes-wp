@@ -1,0 +1,69 @@
+.pricing-card {
+    height: 100%;
+    text-align: center;
+    overflow: hidden;
+    margin: 0;
+
+    .card-header {
+        min-height: 81px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fbe9fd;
+        border-bottom: 1px solid rgba(0,0,0,0.125);
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin: 0;
+        }
+    }
+
+    .card-body {
+        padding: 0;
+
+        .list-group {
+            .list-group-item {
+                padding-top: .5rem;
+                padding-bottom: .5rem;
+    
+                .caption {
+                    font-size: .8rem;
+                    display: block;
+                }
+                
+                .value {
+                    display: block;
+                    font-weight: bold;
+                    font-size: 1rem;
+                    margin-bottom: 0;
+                }
+            }
+    
+            .price-list-group-item {
+                background-color: #fbe9fd;
+                color: #333;
+                font-size: 2rem;
+                font-weight: normal;
+                text-align: center;
+            
+                .caption {
+                    font-size: .8rem;
+                    display: block;
+                }
+            
+                .value {
+                    display: block;
+                    font-size: 1.25rem;
+                    font-weight: bold;
+                    margin-top: .25em;
+                }
+            }
+        }
+    }
+
+    .card-footer {
+        padding: 0;
+        border-top: 1px solid rgba(0,0,0,0.125);
+    }
+}

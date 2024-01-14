@@ -1,0 +1,18 @@
+.contact-us {
+	margin-bottom: 100px;
+
+	.subtitle {
+		margin-bottom: 40px;
+	}
+
+	&__cards {
+		display: flex;
+		gap: 20px;
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		&__cards {
+			flex-direction: column;
+		}
+	}
+}

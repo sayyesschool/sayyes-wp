@@ -1,0 +1,30 @@
+{% extends 'layouts/base.twig' %}
+
+{% block content %}
+	{% include 'sections/mainscreen-big.twig' with {
+        mixin: 'price',
+        title: 'Стоимость обучения в школе английского языка SAY YES!',
+        description: 'Оставьте заявку на обратный звонок, и мы подробно расскажем о ценах на курсы и действующих акциях.',
+        splitImg1: 'mainscreen-split-3',
+        splitImg2: 'mainscreen-split-4',
+        btnText: 'Оставить заявку',
+        showSplit: true,
+        showBtn: true
+    } %}
+
+    {% include 'sections/courses.twig' with {
+		class: 'courses--offer',
+        title: 'Мы предлагаем курсы для взрослых и детей в различных форматах: офлайн в Москве, онлайн в группе и индивидуально.',
+        description: 'Выберите необходимое для вас обучение.',
+		courses_adults,
+		courses_children
+	} %}
+
+	{% include 'sections/trial-lesson-mini.twig' %}
+
+	{% include 'sections/discounts.twig' %}
+
+	{% include 'sections/certificates.twig' %}
+
+	{% include 'sections/trial-lesson.twig' %}
+{% endblock %}

@@ -1,0 +1,68 @@
+.cards {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	margin-bottom: 100px;
+
+	@include breakpoint($breakpoint-md) {
+		gap: 15px;
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		grid-template-columns: repeat(2, 44%);
+		justify-content: center;
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		display: flex;
+		justify-content: space-between;
+		overflow-x: auto;
+		width: calc(100% + 15px);
+		padding-left: 15px;
+
+		&--back-office {
+			margin-top: 165px;
+		}
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		.card__post {
+			margin-bottom: 15px;
+		}
+
+		.card__description {
+			margin-top: auto;
+		}
+
+		.card--text-card {
+			position: absolute;
+			bottom: 470px;
+			left: 15px;
+
+			&::before {
+				display: none;
+			}
+
+			.card__title {
+				margin-bottom: 10px;
+				font-size: 26px;
+				line-height: 25px;
+			}
+
+			.card__subtitle {
+				max-width: 280px;
+			}
+		}
+
+		.card--comment-card {
+			justify-content: center;
+			
+			.card__text {
+				text-align: center;
+				line-height: 25px;
+			}
+		}
+	}
+}

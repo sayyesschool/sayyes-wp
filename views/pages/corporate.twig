@@ -1,0 +1,389 @@
+{% extends 'layouts/base.twig' %}
+
+{% set education_directions = [
+	{
+		title: 'Общий курс',
+		description: 'Обучение разговорному английскому языку',
+		class: 'text-block--yellow text-block--cap-2-bg'
+	},
+	{
+		title: 'Бизнес курс',
+		description: 'Обучение деловому английскому для работы',
+		class: 'text-block--yellow text-block--briefcase-bg'
+	},
+	{
+		title: 'Курсы для профессионалов',
+		description: 'Программы для конкретных профессий и должностей',
+		class: 'text-block--yellow text-block--person-bg'
+	},
+	{
+		title: 'Погружение в среду',
+		description: 'Разговорные клубы с носителями английского языка',
+		class: 'text-block--yellow text-block--comments-bg'
+	}
+] %}
+
+{% set education_formats = [
+    [
+        {
+            title: 'В школе в Москве ',
+            description: 'Наш офис находится в 7 минутах пешком от метро Павелецкая.',
+            class: 'big-course--white big-course--without-list big-course--sm',
+            img: 'format-1'
+        },
+        {
+            title: 'В офисе вашей компании',
+            description: 'Преподаватель приезжает к вам офис в удобное вам время',
+            class: 'big-course--white big-course--without-list big-course--sm',
+            img: 'format-2'
+        },
+        {
+            title: 'Обучение онлайн',
+            description: 'Мы обучаем онлайн в группах в Zoom или индивидуально на собственной платформе',
+            class: 'big-course--white big-course--without-list big-course--sm',
+            img: 'format-3'
+        }
+    ]
+] %}
+
+{% set advantages = [
+	{
+		id: 'contacts-bg',
+		content: 'Возможность посещения разговорного онлайн клуба'
+	},
+	{
+		id: 'video-bg',
+		content: 'Собственная онлайн-платформа с дополнительными материалами и тестами'
+	},
+	{
+		id: 'note-2-bg',
+		content: 'Бесплатные материалы в электронном виде'
+	},
+	{
+		id: 'notes-bg',
+		content: 'Отчеты по успеваемости сотрудников'
+	},
+	{
+		id: 'webcam-bg',
+		content: 'Поддержка персонального менеджера-куратора'
+	}
+] %}
+
+{% set organizations = [
+	{
+		name: "Сбербанк",
+		img: "organization-1"
+	},
+	{
+		name: "Get Taxi",
+		img: "organization-2"
+	},
+	{
+		name: "Логрус ",
+		img: "organization-3"
+	},
+	{
+		name: "Аури групп",
+		img: "organization-4"
+	},
+	{
+		name: "FIRCROFT ",
+		img: "organization-5"
+	},
+	{
+		name: "Московский Индустриальный Банк ",
+		img: "organization-6"
+	},
+	{
+		name: "Промсвязьбанк",
+		img: "organization-7"
+	},
+	{
+		name: "Роснефть",
+		img: "organization-8"
+	},
+	{
+		name: "РСПП",
+		img: "organization-9"
+	},
+	{
+		name: "ATRIUM",
+		img: "organization-10"
+	},
+	{
+		name: "МегаФон ",
+		img: "organization-11"
+	},
+	{
+		name: "МТС",
+		img: "organization-12"
+	},
+	{
+		name: "Ernst&Young",
+		img: "organization-13"
+	},
+	{
+		name: "2GIS ",
+		img: "organization-14"
+	},
+	{
+		name: "ГазФонд",
+		img: "organization-15"
+	},
+	{
+		name: "Центр терапии боли ",
+		img: "organization-16"
+	},
+	{
+		name: "Apex",
+		img: "organization-17"
+	},
+	{
+		name: "Бизнес-школа РСПП",
+		img: "organization-18"
+	}
+] %}
+
+{% set reviews = [
+	{
+		name: "МТС",
+		img: "review-1"
+	},
+	{
+		name: "2GIS",
+		img: "review-2"
+	},
+	{
+		name: "Газпромбанк",
+		img: "review-3"
+	},
+	{
+		name: "Love Radio",
+		img: "review-4"
+	}
+] %}
+
+{% block content %}
+	{% include 'sections/mainscreen-big.twig' with {
+        mixin: 'companies',
+        title: 'Корпоративное обучение английскому языку в SAY YES!',
+        description: 'Предлагаем компаниям лучшее соотношение цены и качества.',
+        img: 'mainscreen-7',
+        btnText: 'Оставить заявку на звонок',
+        btnColor: 'black',
+        showBtn: true
+    } %}
+
+	{% include 'sections/video.twig' with {
+        mixin: 'companies',
+        subtitle: 'Управляющий директор SAY YES! Роман Сорочук коротко расскажет о преимуществах нашего обучения и процессе работы с компаниями.',
+        videoId: 'video-7',
+        videoImg: 'video-section-3'
+    } %}
+
+	<section class="education-directions">
+        <div class="section-container">
+            <h2 class="subtitle">Более 10 лет мы
+                <span class="text text--violet">обучаем</span>
+                сотрудников компаний
+                <span class="text text--violet">по направлениям:</span>
+            </h2>
+
+            <div class="education-directions__blocks">
+                {% for item in education_directions %}
+                    <div class="text-block {{item.class}}">
+                        <h4 class="text-block__title">{{item.title}}</h4>
+                        <p class="text-block__description">{{item.description}}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+	{% include 'sections/img-courses.twig' with {
+        title: 'Наши <span class="text text--violet">форматы обучения</span> позволяют подстроиться под месторасположение и график компаний',
+        courses: education_formats
+    } %}
+
+	<section class="profitable-cooperation">
+        <div class="section-container">
+            <h2 class="subtitle">Сотрудничать с SAY YES! — выгодно</h2>
+
+            {% include 'components/cooperation.twig' with {
+                mixin: 'cooperation--profitable-cooperation',
+                name: 'Роман Сорочук',
+                aboutPerson: 'Руководитель корпоративного направления',
+                img: 'roman.png',
+                btnText : 'Рассчитать точную стоимость обучения',
+                listClasses: 'list--ul',
+                list: [
+                    {
+                        title: 'Простое начало работы',
+                        description: 'До начала сотрудничества мы бесплатно организуем для ваших сотрудников тестирование уровня и пробные уроки.'
+                    },
+                    {
+                        title: 'Гибкая стоимость и условия',
+                        description: 'Набор учебных программ и форматов обучения позволяют подстроиться почти под любой бюджет и требования.'
+                    },
+                    {
+                        title: 'Лицензия на образование',
+                        description: 'Ваша компания сможет экономить на налогах, сократив налог на прибыль и приняв к вычету НДС.'
+                    },
+                    {
+                        title: 'Разные варианты оплаты',
+                        description: 'Оплачивать обучение может как компания, так и сами сотрудники на выгодных условиях. Возможны и гибридные варианты.'
+                    }
+                ],
+            } %}
+        </div>
+    </section>
+
+	{% include 'sections/history.twig' %}
+
+	<section class="all-teachers">
+        <div class="section-container">
+            <h2 class="subtitle">
+                <span class="text text--violet">Наши</span>
+                харизматичные и профессиональные
+                <span class="text text--violet">преподаватели</span>
+            </h2>
+
+            <p class="all-teachers__description">Корпоративные курсы английского в школе “SAY YES!” проводят как носители языка, так и русскоязычные преподаватели с многолетним опытом преподавания, в том числе деловому английскому.</p>
+
+            <p class="all-teachers__description">Прежде, чем попасть в нашу команду, преподаватели проходят многоэтапный отбор и обучение методике школы. Это профессионалы, не лишенные чувства юмора и энергичности, с которыми учить английский вашим сотрудникам будет в удовольствие!</p>
+
+            <div class="cards">
+                {% for person in teachers %}
+                    {% embed 'components/card.twig' with {
+                        type: person.type,
+                        img: person.img,
+                        name: person.name,
+                        buttonId: person.teacherId
+                    } %}
+                        {% block content %}
+                            {% for merits in person.merits %}
+                                <li>
+                                    {{merits.merit}}:
+                                    {{merits.description}}
+                                </li>
+                            {% endfor %}
+                        {% endblock %}
+                    {% endembed %}
+
+                    {% include 'components/modal.twig' with {
+                        modal: 'teacher',
+                        id: person.teacherId,
+                        teacher: person
+                    } %}
+                {% endfor %}
+            </div>
+
+            <button class="btn btn--violet">Все преподаватели</button>
+        </div>
+    </section>
+
+	{% include 'sections/video.twig' with {
+        mixin: 'companies-2',
+        subtitle: 'Посмотрите короткое видео о нашем подходе к корпоративному обучению.',
+        videoImg: 'video-section-4',
+        videoId: 'video-8',
+    } %}
+
+	<section class="advantages-cooperation">
+        <div class="section-container">
+            <h2 class="subtitle">
+                Обучение в SAY YES! — это
+                <span class="text text--violet">больше, чем занятия</span>
+                с преподавателем. Сотрудничая с SAY YES! вы также получаете:
+            </h2>
+
+            <div class="text-blocks text-blocks--advantages-cooperation">
+                {% for item in advantages %}
+                    <div class="text-block text-block--yellow text-block--{{item.id}}">
+                        <p class="text-block__description">{{item.content}}</p>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <button class="btn btn--violet">Рассчитать стоимость обучения</button>
+        </div>
+    </section>
+
+	<section class="organizations">
+        <div class="section-container">
+            <h2 class="subtitle">Нас уже выбрали:</h2>
+
+            {% embed 'components/slider.twig' with { name: 'organizations' } %}
+                {% block content %}
+                    <ul class="organizations__list">
+                        {% for item in organizations %}
+                            <li class="organizations__item">
+                                <img class="organizations__img" src="{{theme.link}}/static/images/organizations/{{item.img}}.png" alt="{{item.name}}">
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endblock %}
+            {% endembed %}
+    </section>
+
+	<section class="reviews">
+        <div class="section-container">
+            <h2 class="subtitle">
+                Благодарственные
+                <span class="text text--violet">письма и отзывы</span>
+                руководителей компаний
+            </h2>
+
+            {% embed 'components/slider.twig' with { name: 'reviews' } %}
+                {% block content %}
+                    <ul class="reviews__list">
+                        {% for item in reviews %}
+                            <li class="reviews__item">
+                                <img class="reviews__img" src="{{theme.link}}/static/images/reviews/{{item.img}}.png" alt="{{item.name}}">
+
+                                <h4 class="reviews__name">{{item.name}}</h4>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endblock %}
+            {% endembed %}
+    </section>
+
+	<section class="getting-started">
+        <div class="section-container">
+            <h2 class="subtitle">Чтобы начать обучение вам осталось:</h2>
+
+            {% include 'components/cooperation.twig' with {
+                mixin: 'cooperation--getting-started',
+                name: 'Анастасия Жителева',
+                aboutPerson: 'Менеджер по работе с клиентами офлайн',
+                img: 'anastasia.png',
+                btnText: 'Заполнить заявку на обучение',
+                listClasses: 'list--ol',
+                list: [
+                    {
+                        description: "Заявка на сайте или звонок в школу"
+                    },
+                    {
+                        description: "Консультация по телефону исходя из вашего запроса"
+                    },
+                    {
+                        description: "Разработка коммерческого предложения"
+                    },
+                    {
+                        description: "Проведение тестирования сотрудников"
+                    },
+                    {
+                        description: "Пробные уроки по уровням"
+                    },
+                    {
+                        description: "Подписание договора и оплата обучения"
+                    },
+                    {
+                        description: "Начало обучения"
+                    }
+                ]
+            } %}
+        </div>
+    </section>
+{% endblock %}

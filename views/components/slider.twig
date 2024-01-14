@@ -1,0 +1,19 @@
+<div class="slider swiper-{{name}}">
+	<div class="slider__arrows">
+		<button class="slider__left-arrow"></button>
+		<button class="slider__right-arrow"></button>
+	</div>
+
+	<div class="swiper-wrapper">
+		<div class="slider__slide swiper-slide">
+			{% block content %}
+			{% endblock %}
+		</div>
+
+		<div class="slider__slide swiper-slide">
+			{{block('content')}}
+		</div>
+	</div>
+
+	<ul class="slider__pagination"></ul>
+</div>

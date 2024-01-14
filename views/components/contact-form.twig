@@ -1,0 +1,5 @@
+{% macro render(id, title) %}
+    {% filter shortcodes %}
+        [contact-form-7 id="{{ id }}" title="{{ title }}"]
+    {% endfilter %}
+{% endmacro %}

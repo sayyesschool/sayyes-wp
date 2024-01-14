@@ -1,0 +1,17 @@
+{% extends 'templates/page-onecol.twig' %}
+
+{% import 'macros/article-card.twig' as card %}
+
+{% block content %}
+<h1 class="page-heading">{{title}}</h1>
+
+<section class="posts">
+    <div class="row">
+        {% for post in posts %}
+        <div class="medium-4 columns{% if loop.last %} end{% endif %}">
+            {{card.render(post)}}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock content %}

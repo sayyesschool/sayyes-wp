@@ -1,0 +1,13 @@
+<a class="card card-outlined event-card" href="{{event.link}}">
+    <div class="card-image" style="background-image: url({{event.thumbnail.src|resize(600, 400)}})"></div>
+
+    <div class="card-body">
+        <h4 class="card-title event-title">{{event.title}}</h4>
+
+        <div class="card-subtitle text-muted event-datetime">{{event.datetime|date('F j, Y в G:i')}}</div>
+
+        <div class="card-description">
+            <p class="event-description">{{event.preview.length(24).force(true).read_more('')}}</p>
+        </div>
+    </div>
+</a>

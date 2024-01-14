@@ -1,0 +1,16 @@
+<section class="learning-form {{mixin}}">
+	<div class="section-container">
+		<h2 class="subtitle">{{title}}</h2>
+
+		<p class="learning-form__description">{{description}}</p>
+
+		<ul class="learning-form__blocks">
+			{% include 'components/big-courses.twig' with {
+				courses,
+				withoutImg: true,
+				withoutPrice: true,
+				cycleColors: true
+			} %}
+		</ul>
+	</div>
+</section>

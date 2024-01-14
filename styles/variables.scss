@@ -1,0 +1,41 @@
+$sy-purple: #6c167b;
+$sy-yellow: #ffdb4d;
+$sy-orange: #ff6a21;
+
+$sy-primary: $sy-purple;
+$sy-secondary: $sy-yellow;
+
+$body-color:                 #fbfbfb;
+$font-color:                 #222222 !default;
+$fill-font-color:            rgba(255, 255, 255, 0.8);
+$font-family-sans-serif:     'Open Sans', 'Helvetica', Arial, sans-serif;
+
+$black: #262626;
+$white: #fffcff;
+$grey: #e5e3e2;
+$yellow: #ffd754;
+$violet: #7831b2;
+$medium-magenta: #a68ad5;
+$pink: #e71985;
+$pale-pink: #f8dcd6;
+$pale-white: #f8f0ee;
+$linen: #f9e2de;
+$almond-crayola: #f6e7e5;
+$pearl-white: #f9f4f2;
+
+$primary-color: $violet;
+$secondary-color: $yellow;
+
+$border-radius-extra-sm: 10px;
+$border-radius-sm: 15px;
+$border-radius: 30px;
+$border-radius-bg: 40px;
+
+$breakpoint-xl: 1300px;
+$breakpoint-lg: 1160px;
+$breakpoint-md: 1024px;
+$breakpoint-sm: 900px;
+$breakpoint-xs: 800px;
+$breakpoint-xxs: 768px;
+$breakpoint-mobile: 540px;
+$breakpoint-sm-mobile: 480px;

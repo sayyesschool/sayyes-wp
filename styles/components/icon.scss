@@ -1,0 +1,78 @@
+.icon {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+
+	div {
+		display: none;
+	}
+
+	&--tg {
+		.icon__tg {
+			display: inline-flex;
+		}
+	}
+
+	&--ws {
+		.icon__ws {
+			display: inline-flex;
+		}
+	}
+
+	&--pc {
+		.icon__pc {
+			display: inline-flex;
+		}
+	}
+
+	&--yt {
+		.icon__yt {
+			display: inline-flex;
+		}
+	}
+
+	&--inst {
+		.icon__inst {
+			display: inline-flex;
+		}
+	}
+
+	&--fb {
+		.icon__fb {
+			display: inline-flex;
+		}
+	}
+
+	&--email {
+		.icon__email {
+			display: inline-flex;
+		}
+	}
+
+	&--teacher {
+		.icon__teacher {
+			display: inline-flex;
+		}
+	}
+
+	&--time {
+		.icon__time{
+			display: inline-flex;
+		}
+	}
+
+	&--sm {
+		svg {
+			width: 15px;
+			height: 15px;
+		}
+	}
+
+	&--white {
+		div {
+			svg * {
+				fill: $white;
+			}
+		}
+	}
+}

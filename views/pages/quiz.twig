@@ -1,0 +1,46 @@
+{% extends 'layouts/base.twig' %}
+
+{% block main %}
+<main id="app">
+    <router-view></router-view>
+</main>
+
+<div id="confirm-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h3 class="modal-title">Получилось!</h3>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </header>
+
+            <section class="modal-body text-center">
+                <p class="lead">Результаты были отправлены на указанный Вами почтовый адрес.</p>
+                <small>P.S. Если письма нет во <i>Входящих</i>, проверьте <i>Спам</i>!</small>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock main %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuex@3.1.0/dist/vuex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-router@3.0.6/dist/vue-router.min.js"></script>
+
+<script>
+    window.SITE_URL = '{{ theme.link }}';
+    window.API_URL = '{{ theme.link }}';
+    window.RECIPIENT_EMAIL = 'info@sayes.ru';
+</script>
+
+<script src="{{ theme.link }}/online-test/app/components/question.js"></script>
+<script src="{{ theme.link }}/online-test/app/components/quiz.js"></script>
+<script src="{{ theme.link }}/online-test/app/components/welcome.js"></script>
+<script src="{{ theme.link }}/online-test/app/components/results.js"></script>
+<script src="{{ theme.link }}/online-test/app/store.js"></script>
+<script src="{{ theme.link }}/online-test/app/router.js"></script>
+<script src="{{ theme.link }}/online-test/app/index.js"></script>
+{% endblock %}

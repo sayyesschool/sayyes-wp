@@ -1,0 +1,19 @@
+.advantages-cooperation {
+	margin-bottom: 100px;
+
+	.subtitle {
+		max-width: 800px;
+		margin-bottom: 45px;
+	}
+
+	.btn {
+		display: block;
+		margin: 20px auto 0;
+	}
+
+	&__blocks {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 30px;
+	}
+}
