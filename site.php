@@ -1,6 +1,5 @@
 <?php
 
-
 use Timber\Site;
 use Twig\Extension\StringLoaderExtension;
 use Twig\Extra\Html\HtmlExtension;
