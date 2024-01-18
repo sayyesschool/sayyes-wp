@@ -158,6 +158,8 @@
 	}
 
 	@include breakpoint($breakpoint-lg) {
+		padding: 70px 50px;
+		margin-bottom: 70px;
 		&__description {
 			max-width: 600px;
 		}
@@ -202,7 +204,7 @@
 	}
 
 	@include breakpoint($breakpoint-sm) {
-		padding: 100px 20px;
+		padding: 60px 20px;
 
 		&__gallery {
 			grid-template-areas:
@@ -284,7 +286,13 @@
 		}
 	}
 
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+	}
+
 	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
+
 		&::before {
 			display: none;
 		}

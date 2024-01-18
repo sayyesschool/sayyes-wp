@@ -7,7 +7,6 @@
 	}
 
 	.btn {
-		display: block;
 		margin: 0 auto;
 
 		font-weight: 700;
@@ -24,5 +23,17 @@
 		&:last-of-type {
 			margin-bottom: 40px;
 		}
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+	}
+
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
 	}
 }

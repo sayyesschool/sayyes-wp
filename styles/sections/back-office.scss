@@ -1,4 +1,5 @@
 .back-office {
+	margin-bottom: 100px;
 	position: relative;
 
 	.subtitle {
@@ -14,5 +15,17 @@
 			max-width: 500px;
 			margin-bottom: 35px;
 		}
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+	}
+
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
 	}
 }

@@ -10,7 +10,6 @@
 	}
 
 	.btn {
-		display: block;
 		margin: 0 auto;
 	}
 
@@ -29,9 +28,29 @@
 		margin-bottom: 40px;
 	}
 
+	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+
+		&__description {
+			margin-bottom: 40px;
+		}
+	}
+
 	@include breakpoint($breakpoint-md) {
 		&__reviews {
 			gap: 15px;
 		}
+	}
+
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+
+		&__description {
+			margin-bottom: 30px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
 	}
 }

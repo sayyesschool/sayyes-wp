@@ -1,6 +1,6 @@
 .footer {
-	padding: 42px 20px 0;
 	background-color: $white;
+	padding: 42px 20px 0;
 
 	.logo {
 		display: none;
@@ -50,6 +50,7 @@
 
 	&__call {
 		margin-bottom: 15px;
+
 		font-size: 16px;
 		font-weight: 600;
 		line-height: 15px;
@@ -99,11 +100,11 @@
 		}
 
 		&:last-child {
-			display: flex;
+			padding-top: 20px;
 			flex-basis: 372px;
+			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
-			padding-top: 20px;
 		}
 	}
 
@@ -112,10 +113,11 @@
 	}
 
 	&__item {
-		margin-bottom: 5px;
 		font-size: 16px;
 		font-weight: 600;
 		line-height: 15px;
+
+		margin-bottom: 5px;
 
 		&--test {
 			margin-bottom: 25px;
@@ -132,21 +134,23 @@
 	}
 
 	&__title {
-		margin-bottom: 10px;
 		text-transform: uppercase;
 		font-weight: 800;
 		font-size: 16px;
 		font-weight: 800;
 		line-height: 15px;
 		letter-spacing: 0.8px;
+
+		margin-bottom: 10px;
 	}
 
 	&__results-title {
-		max-width: 172px;
-		margin-top: 20px;
 		font-size: 15px;
 		font-weight: 700;
 		line-height: 15px;
+
+		max-width: 172px;
+		margin-top: 20px;
 	}
 
 	&__courses {
@@ -174,13 +178,14 @@
 	&__copyright,
 	&__with-love,
 	&__designer {
-		min-height: 70px;
-		margin-top: auto;
-		padding-top: 15px;
 		font-weight: 700;
 		font-size: 16px;
 		line-height: 15px;
 		border-top: 1px solid $pearl-white;
+
+		min-height: 70px;
+		margin-top: auto;
+		padding-top: 15px;
 	}
 
 	@include breakpoint($breakpoint-md) {
@@ -268,8 +273,8 @@
 		}
 
 		&__address {
-			max-width: 220px;
 			margin-bottom: 30px;
+			max-width: 220px;
 		}
 
 		&__call-item {
@@ -288,14 +293,15 @@
 
 		&__results-title {
 			margin: 40px 0 15px;
+
 			font-size: 16px;
 			line-height: 18px;
 			font-weight: 700;
 		}
 
 		&__designer {
-			margin-top: 80px;
 			flex-direction: column;
+			margin-top: 80px;
 
 			.social {
 				display: flex;
@@ -329,8 +335,8 @@
 			}
 
 			.footer-copyright {
-				display: block;
 				margin-top: 25px;
+				display: block;
 
 				p {
 					&:first-child {
@@ -341,10 +347,10 @@
 		}
 	}
 
-	@include breakpoint($breakpoint-xxs) {
+	@include breakpoint($breakpoint-mobile) {
 		.license {
-			max-width: 500px;
 			background-color: $pearl-white;
+			max-width: 500px;
 
 			&__info {
 				padding-left: 110px;
@@ -388,8 +394,8 @@
 
 		&__column {
 			&:first-child {
-				margin-bottom: 45px;
 				padding-top: 45px;
+				margin-bottom: 45px;
 				border-bottom: 1px solid $pearl-white;
 
 				.logo {

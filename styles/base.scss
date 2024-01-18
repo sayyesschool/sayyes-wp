@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: $pearl-white;
+	background-color: $pearl-white;
 	font-size: 18px;
 	font-weight: 600;
 	line-height: 20px;
@@ -19,9 +19,16 @@ body {
 		font-size: 16px;
 		line-height: 18px;
 	}
+
+	@include breakpoint($breakpoint-xxs) {
+		padding-top: 70px;
+	}
 }
 
-a {
+a,
+button {
+	font-family: Raleway, sans-serif;
+	color: $black;
 	text-decoration: none;
 }
 
@@ -89,53 +96,6 @@ p a {
 		font-size: 26px;
 		line-height: 25px;
 	}
-}
-
-.page {
-    background-color: #f4f3f1;
-
-    > .container {
-        padding-top: 1rem;
-        padding-bottom: 4rem;
-    }
-    
-    .page-title {
-        margin-top: 0;
-        margin-bottom: 2rem;
-
-        // @include media-breakpoint-down(md) {
-        //     font-size: 1.75rem;
-        // }
-    }
-    
-    .page-description {
-        margin-bottom: 2rem;
-    }
-}
-
-.section {
-    background-color: transparent;
-    padding: 4rem 0;
-
-    // @include media-breakpoint-down(md) {
-    //     padding: 2rem 0;
-    // }
-
-    .section-title {
-        margin-top: 0;
-        margin-bottom: 2rem;
-
-        // @include media-breakpoint-down(sm) {
-        //     font-size: 1.5rem;
-        // }
-    }
-    
-    .section-description,
-    .section-description p {
-        font-size: 1.2rem;
-        text-align: center;
-        margin-bottom: 2rem;
-    }
 }
 
 [v-cloak] {

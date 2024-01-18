@@ -1,13 +1,26 @@
 .trial-lesson-mini {
-	margin-bottom: 100px;
+	margin: 0 auto 100px;
 	padding: 60px 175px 40px;
+	text-align: center;
 	position: relative;
 
 	background-color: $yellow;
 	border-radius: $border-radius;
 
-	.central-text {
-		display: block;
+	&__title {
+		font-size: 42px;
+		font-weight: 700;
+		line-height: 40px;
+
+		margin-bottom: 20px;
+	}
+
+	&__btn {
+		border: none;
+		background-color: transparent;
+		color: $violet;
+		text-decoration: underline;
+		font-weight: 700;
 	}
 
 	&__pen-icon,
@@ -37,6 +50,17 @@
 		right: 35px;
 	}
 
+	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+
+		&__title {
+			font-size: 32px;
+			line-height: 30px;
+			max-width: 650px;
+			margin: 0 auto 20px;
+		}
+	}
+
 	@include breakpoint($breakpoint-md) {
 		padding: 60px 145px 40px;
 	}
@@ -49,6 +73,19 @@
 		&__book-icon,
 		&__statue-of-liberty-icon {
 			display: none;
+		}
+	}
+
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
+		
+		&__title {
+			font-size: 26px;
+			line-height: 25px;
 		}
 	}
 }

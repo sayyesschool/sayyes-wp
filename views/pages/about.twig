@@ -10,11 +10,11 @@
 	{% include 'sections/video.twig' with {
 		subtitle: 'Быть нашим студентом — это...',
 		videoImg: 'video-section-1',
-		videoId: 'video-5'
+		videoUrl: 'https://www.youtube.com/embed/Vsfz_1QzwDA'
 	} %}
 
 	{% embed 'sections/img-comment.twig' with {
-		mixin: 'img-comment--about',
+		class: 'img-comment--about',
 		title: 'Обращение основателей школы',
 		img: 'founders-2.png'
 	} %}
@@ -193,6 +193,7 @@
 					<div class="card card--{{person.type}}">
 						{% if person.type == 'team-card' %}
 							<img class="card__img" src="{{theme.link}}/static/images/managers/{{person.img}}.jpg" alt="{{person.name}}">
+
 							<div class="card__content">
 								<h3 class="card__name">{{person.name}}</h3>
 								<h4 class="card__post">{{person.post}}</h4>
@@ -218,13 +219,14 @@
 			<ul class="behind-the-scenes__gallery">
 				{% for i in 1..7 %}
 					<li class="behind-the-scenes__item">
-						<img src="{{theme.link}}/static/images/behind-the-scenes/bts-{{i}}.jpg" alt="Say Yes" class="behind-the-scenes__img">
+						<img class="behind-the-scenes__img" src="{{theme.link}}/static/images/behind-the-scenes/bts-{{i}}.jpg" alt="Say Yes">
 					</li>
 				{% endfor %}
 				
 				<li class="behind-the-scenes__item">
-					<img src="{{theme.link}}/static/images/behind-the-scenes/bts-8.jpg" alt="Say Yes" class="behind-the-scenes__img">
-					<img src="{{theme.link}}/static/images/behind-the-scenes/bts-3.jpg" alt="Say Yes" class="behind-the-scenes__img">
+					{% for i in [8, 3] %}
+					<img class="behind-the-scenes__img" src="{{theme.link}}/static/images/behind-the-scenes/bts-{{i}}.jpg" alt="Say Yes">
+					{% endfor %}
 				</li>
 			</ul>
 		</div>

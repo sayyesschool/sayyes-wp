@@ -1,0 +1,54 @@
+.test-overview {
+	margin-bottom: 100px;
+
+	.title {
+		margin: 25px auto 20px;
+		max-width: 840px;
+		color: $black;
+		text-align: center;
+	}
+
+	.btn {
+		margin: 40px auto 0;
+	}
+
+	&__description {
+		max-width: 550px;
+		margin: 0 auto 50px;
+		text-align: center;
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+	}
+
+	@include breakpoint($breakpoint-md) {
+		.title {
+			font-size: 36px;
+			line-height: 35px;
+		}
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		.title {
+			margin-bottom: 15px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+
+		.title {
+			font-size: 28px;
+			line-height: 30px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
+
+		.title {
+			margin-left: 15px;
+		}
+	}
+}

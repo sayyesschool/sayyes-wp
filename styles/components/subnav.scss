@@ -1,18 +1,46 @@
 .subnav {
+	opacity: 0;
+	visibility: hidden;
 	position: absolute;
 	top: 25px;
 	left: -40px;
 	width: 250px;
 	margin-top: -10px;
 	padding-top: 15px;
-	opacity: 0;
-	visibility: hidden;
+
 	transition: opacity 0.3s ease;
 	z-index: 1;
 
+	.subnav {
+		position: static;
+		opacity: 1;
+		overflow: hidden;
+		visibility: visible;
+		transition: 0.3s linear height;
+
+		height: 0;
+		padding-top: 0;
+		margin-top: 0;
+
+		.subnav__list {
+			padding: 0;
+			border-radius: 0;
+		}
+
+		.subnav__link {
+			padding-left: 48px;
+			padding-right: 0;
+		}
+	}
+
+	&__list {
+		padding: 30px 0;
+		border-radius: $border-radius-sm;
+		background-color: $white;
+	}
+
 	&__item {
 		position: relative;
-
 		&:hover {
 			background-color: $pale-white;
 
@@ -49,33 +77,6 @@
 		font-size: 14px;
 		font-weight: 700;
 		color: $black;
-	}
-
-	&__list {
-		padding: 30px 0;
-		border-radius: $border-radius-sm;
-		background-color: $white;
-	}
-
-	.subnav {
-		position: static;
-		height: 0;
-		margin-top: 0;
-		padding-top: 0;
-		opacity: 1;
-		overflow: hidden;
-		visibility: visible;
-		transition: 0.3s linear height;
-
-		.subnav__list {
-			padding: 0;
-			border-radius: 0;
-		}
-
-		.subnav__link {
-			padding-left: 48px;
-			padding-right: 0;
-		}
 	}
 
 	@include breakpoint($breakpoint-xxs) {

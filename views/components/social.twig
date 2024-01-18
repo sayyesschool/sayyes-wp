@@ -1,8 +1,10 @@
 <ul class="social">
-	{% for item in data.social %}
+	{% for key, url in settings.social_accounts %}
 		<li class="social__item">
-			<a href="{{item.href}}" class="social__link">
-				{% include 'components/icon.twig' with { class: item.icon } %}
+			<a class="social__link" href="{{url}}">
+				{% include 'components/icon.twig' with {
+					class: 'icon--' ~ key
+				} %}
 			</a>
 		</li>
 	{% endfor %}

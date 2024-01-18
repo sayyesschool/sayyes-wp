@@ -1,28 +1,5 @@
 {% extends 'layouts/base.twig' %}
 
-{% set education_directions = [
-	{
-		title: 'Общий курс',
-		description: 'Обучение разговорному английскому языку',
-		class: 'text-block--yellow text-block--cap-2-bg'
-	},
-	{
-		title: 'Бизнес курс',
-		description: 'Обучение деловому английскому для работы',
-		class: 'text-block--yellow text-block--briefcase-bg'
-	},
-	{
-		title: 'Курсы для профессионалов',
-		description: 'Программы для конкретных профессий и должностей',
-		class: 'text-block--yellow text-block--person-bg'
-	},
-	{
-		title: 'Погружение в среду',
-		description: 'Разговорные клубы с носителями английского языка',
-		class: 'text-block--yellow text-block--comments-bg'
-	}
-] %}
-
 {% set education_formats = [
     [
         {
@@ -44,29 +21,6 @@
             img: 'format-3'
         }
     ]
-] %}
-
-{% set advantages = [
-	{
-		id: 'contacts-bg',
-		content: 'Возможность посещения разговорного онлайн клуба'
-	},
-	{
-		id: 'video-bg',
-		content: 'Собственная онлайн-платформа с дополнительными материалами и тестами'
-	},
-	{
-		id: 'note-2-bg',
-		content: 'Бесплатные материалы в электронном виде'
-	},
-	{
-		id: 'notes-bg',
-		content: 'Отчеты по успеваемости сотрудников'
-	},
-	{
-		id: 'webcam-bg',
-		content: 'Поддержка персонального менеджера-куратора'
-	}
 ] %}
 
 {% set organizations = [
@@ -177,20 +131,42 @@
 	{% include 'sections/video.twig' with {
         mixin: 'companies',
         subtitle: 'Управляющий директор SAY YES! Роман Сорочук коротко расскажет о преимуществах нашего обучения и процессе работы с компаниями.',
-        videoId: 'video-7',
-        videoImg: 'video-section-3'
+        videoImg: 'video-section-3',
+        videoUrl: 'https://www.youtube.com/embed/Vsfz_1QzwDA'
     } %}
 
 	<section class="education-directions">
         <div class="section-container">
-            <h2 class="subtitle">Более 10 лет мы
+            <h2 class="subtitle">
+                Более 10 лет мы
                 <span class="text text--violet">обучаем</span>
                 сотрудников компаний
                 <span class="text text--violet">по направлениям:</span>
             </h2>
 
             <div class="education-directions__blocks">
-                {% for item in education_directions %}
+                {% for item in [
+                    {
+                        title: 'Общий курс',
+                        description: 'Обучение разговорному английскому языку',
+                        class: 'text-block--yellow text-block--cap-2-bg'
+                    },
+                    {
+                        title: 'Бизнес курс',
+                        description: 'Обучение деловому английскому для работы',
+                        class: 'text-block--yellow text-block--briefcase-bg'
+                    },
+                    {
+                        title: 'Курсы для профессионалов',
+                        description: 'Программы для конкретных профессий и должностей',
+                        class: 'text-block--yellow text-block--person-bg'
+                    },
+                    {
+                        title: 'Погружение в среду',
+                        description: 'Разговорные клубы с носителями английского языка',
+                        class: 'text-block--yellow text-block--comments-bg'
+                    }
+                ] %}
                     <div class="text-block {{item.class}}">
                         <h4 class="text-block__title">{{item.title}}</h4>
                         <p class="text-block__description">{{item.description}}</p>
@@ -210,7 +186,7 @@
             <h2 class="subtitle">Сотрудничать с SAY YES! — выгодно</h2>
 
             {% include 'components/cooperation.twig' with {
-                mixin: 'cooperation--profitable-cooperation',
+                class: 'cooperation--profitable-cooperation',
                 name: 'Роман Сорочук',
                 aboutPerson: 'Руководитель корпоративного направления',
                 img: 'roman.png',
@@ -253,14 +229,17 @@
             <p class="all-teachers__description">Прежде, чем попасть в нашу команду, преподаватели проходят многоэтапный отбор и обучение методике школы. Это профессионалы, не лишенные чувства юмора и энергичности, с которыми учить английский вашим сотрудникам будет в удовольствие!</p>
 
             <div class="cards">
-                {% for person in teachers %}
+                {% for teacher in teachers %}
                     {% embed 'components/card.twig' with {
-                        type: person.type,
-                        img: person.img,
-                        name: person.name,
+                        class: 'card--' ~ teacher.type,
+                        image: {
+                            src: teacher.thumbnail.src,
+                            alt: teacher.title
+                        },
+                        title: teacher.title,
                         buttonId: person.teacherId
                     } %}
-                        {% block content %}
+                        {% block description %}
                             {% for merits in person.merits %}
                                 <li>
                                     {{merits.merit}}:
@@ -270,15 +249,13 @@
                         {% endblock %}
                     {% endembed %}
 
-                    {% include 'components/modal.twig' with {
-                        modal: 'teacher',
-                        id: person.teacherId,
-                        teacher: person
-                    } %}
+                    {% block content %}
+                        <button class="teacher-btn btn btn--transparent btn--transparent-black btn--md" data-id="{{person.teacherId}}">Подробнее</button>
+                    {% endblock %}
                 {% endfor %}
             </div>
 
-            <button class="btn btn--violet">Все преподаватели</button>
+            <a class="btn btn--violet" href="#">Все преподаватели</a>
         </div>
     </section>
 
@@ -286,7 +263,7 @@
         mixin: 'companies-2',
         subtitle: 'Посмотрите короткое видео о нашем подходе к корпоративному обучению.',
         videoImg: 'video-section-4',
-        videoId: 'video-8',
+        videoUrl: 'https://www.youtube.com/embed/Vsfz_1QzwDA'
     } %}
 
 	<section class="advantages-cooperation">
@@ -298,7 +275,28 @@
             </h2>
 
             <div class="text-blocks text-blocks--advantages-cooperation">
-                {% for item in advantages %}
+                {% for item in [
+                    {
+                        id: 'contacts-bg',
+                        content: 'Возможность посещения разговорного онлайн клуба'
+                    },
+                    {
+                        id: 'video-bg',
+                        content: 'Собственная онлайн-платформа с дополнительными материалами и тестами'
+                    },
+                    {
+                        id: 'note-2-bg',
+                        content: 'Бесплатные материалы в электронном виде'
+                    },
+                    {
+                        id: 'notes-bg',
+                        content: 'Отчеты по успеваемости сотрудников'
+                    },
+                    {
+                        id: 'webcam-bg',
+                        content: 'Поддержка персонального менеджера-куратора'
+                    }
+                ] %}
                     <div class="text-block text-block--yellow text-block--{{item.id}}">
                         <p class="text-block__description">{{item.content}}</p>
                     </div>
@@ -354,7 +352,7 @@
             <h2 class="subtitle">Чтобы начать обучение вам осталось:</h2>
 
             {% include 'components/cooperation.twig' with {
-                mixin: 'cooperation--getting-started',
+                class: 'cooperation--getting-started',
                 name: 'Анастасия Жителева',
                 aboutPerson: 'Менеджер по работе с клиентами офлайн',
                 img: 'anastasia.png',
@@ -362,25 +360,25 @@
                 listClasses: 'list--ol',
                 list: [
                     {
-                        description: "Заявка на сайте или звонок в школу"
+                        description: 'Заявка на сайте или звонок в школу'
                     },
                     {
-                        description: "Консультация по телефону исходя из вашего запроса"
+                        description: 'Консультация по телефону исходя из вашего запроса'
                     },
                     {
-                        description: "Разработка коммерческого предложения"
+                        description: 'Разработка коммерческого предложения'
                     },
                     {
-                        description: "Проведение тестирования сотрудников"
+                        description: 'Проведение тестирования сотрудников'
                     },
                     {
-                        description: "Пробные уроки по уровням"
+                        description: 'Пробные уроки по уровням'
                     },
                     {
-                        description: "Подписание договора и оплата обучения"
+                        description: 'Подписание договора и оплата обучения'
                     },
                     {
-                        description: "Начало обучения"
+                        description: 'Начало обучения'
                     }
                 ]
             } %}

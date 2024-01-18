@@ -188,6 +188,7 @@
 	}
 
 	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
 		padding: 40px;
 
 		.video {
@@ -258,6 +259,7 @@
 			}
 		}
 	}
+
 	@include breakpoint($breakpoint-sm) {
 		.video {
 			width: 326px;
@@ -324,7 +326,12 @@
 		}
 	}
 
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+	}
+
 	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
 		padding: 10px;
 
 		flex-direction: column;

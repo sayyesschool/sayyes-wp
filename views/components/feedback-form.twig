@@ -1,22 +1,26 @@
-<form class="feedback-form">
+<form class="feedback-form" action="post">
 	<h3 class="feedback-form__format">Выберите желаемый формат обучения:</h3>
 
-	<div class="feedback-form__radio-buttons">
-		<label class="feedback-form__radio-btn">
-			<input type="radio" name="format">
-			Очно в Москве
-		</label>
+	{% include 'components/custom-radio-buttons.twig' with {
+		name: 'format' ~ (children ? '-children' : ''),
+		items: [
+			{
+				label: 'Офлайн',
+				value: 'online',
+				checked: 'checked'
+			},
+			{
+				label: 'Онлайн',
+				value: 'offline',
+			},
+			{
+				label: 'Не знаю',
+				value: 'unknown'
+			}
+		]
+	} %}
 
-		<label class="feedback-form__radio-btn">
-			<input type="radio" name="format">
-			Онлайн
-		</label>
-
-		<label class="feedback-form__radio-btn">
-			<input type="radio" name="format">
-			Не знаю
-		</label>
-	</div>
-
-	{% include 'components/callback-form.twig' %}
+	{% include 'components/callback-form.twig' with {
+		children
+	} %}
 </form>

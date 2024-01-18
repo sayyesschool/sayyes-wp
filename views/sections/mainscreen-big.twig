@@ -1,28 +1,26 @@
-{% set showSplit = showSplit ?? false %}
-{% set showBtn = showBtn ?? false %}
-{% set btnColor = 'yellow' %}
-
 <section class="mainscreen-big mainscreen-big--{{mixin ?? ''}}">
 	<h1 class="title">{{title}}</h1>
     
 	<div class="mainscreen-big__description">{{description}}</div>
 
 	{% if showBtn %}
-		<button class="btn btn--{{btnColor}}">{{btnText}}</button>
+		<button class="feedback-btn btn btn--{{btnColor ?? 'yellow'}}">{{btnText}}</button>
 	{% endif %}
 
 	{% if button %}
-		<button class="btn btn--{{button.color ?? 'yellow'}}">{{button.content}}</button>
+		<button class="feedback-btn btn btn--{{button.color ?? 'yellow'}}">{{button.content}}</button>
 	{% endif %}
 
-	{% if showSplit %}
+	{% if image %}
+		<img class="mainscreen-big__img" src="{{image.src}}" alt="{{image.alt}}">
+	{% elseif img %}
+		<img class="mainscreen-big__img" src="{{theme.link}}/static/images/mainscreens/{{img}}.jpg" alt="">
+	{% endif %}
+
+	{% showSplit %}
 		<div class="split-image">
-			<img class="split-image__first-img" src="{{theme.link}}/static/images/mainscreens/{{splitImg1}}.jpg" alt="Say Yes">
-			<img class="split-image__second-img" src="{{theme.link}}/static/images/mainscreens/{{splitImg2}}.jpg" alt="Say Yes">
+			<img class="split-image__first-img" src="{{theme.link}}/static/images/mainscreens/{{splitImg1}}.jpg" alt="">
+			<img class="split-image__second-img" src="{{theme.link}}/static/images/mainscreens/{{splitImg2}}.jpg" alt="">
 		</div>
-	{% elseif image %}
-		<img class="mainscreen-big__img" src="{{attribute(image, 'src') is defined ? image.src : '#{theme.link}/static/images/mainscreens/#{image}.jpg'}}" alt="Say Yes">
-	{% else %}
-		<img class="mainscreen-big__img" src="{{theme.link}}/static/images/mainscreens/{{img}}.jpg" alt="Say Yes">
 	{% endif %}
 </section>

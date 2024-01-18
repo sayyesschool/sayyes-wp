@@ -7,31 +7,6 @@
 	width: 100%;
 	z-index: 100;
 
-	&__overview {
-		width: 1280px;
-		max-width: calc(100% - 40px);
-		height: 65px;
-		background-color: #5e288a;
-		color: $white;
-		border-radius: $border-radius-sm;
-		margin: 0 auto;
-		transition: 0.2s linear all;
-
-		@include breakpoint($breakpoint-md) {
-			max-width: calc(100% - 30px);
-		}
-
-		.header-container {
-			max-width: 1280px;
-			margin: 0 auto;
-			height: 100%;
-			display: flex;
-			align-items: center;
-			padding: 0 60px;
-			transition: 0.3s all linear;
-		}
-	}
-
 	.logo {
 		margin-right: 45px;
 	}
@@ -41,14 +16,16 @@
 		line-height: 1;
 		border-width: 1.5px;
 		letter-spacing: 1.4px;
-		transition: 0.3s linear;
-
 		margin-right: 20px;
 
-		&:hover {
-			color: $medium-magenta;
-			border-color: $medium-magenta;
-		}
+		@include hover-active(
+			background-color,
+			transparent,
+			border-color,
+			$medium-magenta,
+			color,
+			$medium-magenta
+		);
 	}
 
 	.phone-numbers {
@@ -83,6 +60,32 @@
 		}
 	}
 
+	&__overview {
+		color: $white;
+		background-color: #5e288a;
+		border-radius: $border-radius-sm;
+		width: 1280px;
+		max-width: calc(100% - 40px);
+		height: 65px;
+		margin: 0 auto;
+		transition: 0.2s linear all;
+
+		@include breakpoint($breakpoint-md) {
+			max-width: calc(100% - 30px);
+		}
+
+		.header-container {
+			max-width: 1280px;
+			margin: 0 auto;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			padding: 0 60px;
+
+			transition: 0.3s all linear;
+		}
+	}
+
 	&__city {
 		margin-bottom: 5px;
 	}
@@ -98,11 +101,11 @@
 		}
 
 		&:nth-child(7) {
-			// display: none;
+			display: none;
 		}
 
 		&:last-child {
-			// display: none;
+			display: none;
 
 			.subnav {
 				right: -40px;
@@ -222,7 +225,7 @@
 
 		&__item {
 			&:nth-child(7) {
-				// display: block;
+				display: block;
 			}
 		}
 	}
@@ -276,7 +279,7 @@
 			}
 
 			&:last-child {
-				// display: block;
+				display: block;
 			}
 		}
 	}
@@ -327,13 +330,13 @@
 			}
 
 			&:last-child {
-				// display: none;
+				display: none;
 			}
 
 			&:has(.subnav) {
 				cursor: pointer;
 
-				.header__sublink {
+				.main-header__sublink {
 					pointer-events: none;
 				}
 
@@ -358,13 +361,13 @@
 			}
 		}
 
-		.header__navigation {
+		.main-header__navigation {
 			background-color: $white;
 			height: auto;
 			margin: 0 20px;
 		}
 
-		.header__list {
+		.main-header__list {
 			flex-direction: column;
 			align-items: flex-start;
 			width: auto;

@@ -6,11 +6,6 @@
 		margin-bottom: 30px;
 	}
 
-	&__description {
-		text-align: center;
-		margin-bottom: 40px;
-	}
-
 	&__course-blocks {
 		display: flex;
 		flex-wrap: wrap;
@@ -22,11 +17,29 @@
 		.subtitle {
 			max-width: 881px;
 			margin: 0 auto 20px;
+
 			text-align: center;
 		}
 
 		.tabs {
 			margin: 0 auto;
 		}
+
+		.courses__description {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+	}
+
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
 	}
 }

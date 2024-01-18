@@ -1,20 +1,14 @@
-.central-text {
+.tangible-result {
 	max-width: 876px;
-	margin: 0 auto;
+	margin: 0 auto 100px;
 	text-align: center;
 
 	&__title {
-		margin-bottom: 20px;
 		font-size: 42px;
 		font-weight: 700;
 		line-height: 40px;
 
-		@include breakpoint($breakpoint-lg) {
-			max-width: 650px;
-			margin: 0 auto 20px;
-			font-size: 32px;
-			line-height: 30px;
-		}
+		margin-bottom: 20px;
 	}
 
 	&__description {
@@ -23,13 +17,17 @@
 	}
 
 	@include breakpoint($breakpoint-lg) {
-		font-size: 32px;
-		line-height: 30px;
+    margin-bottom: 70px;
+    
+		&__title {
+			font-size: 32px;
+			line-height: 30px;
+			max-width: 650px;
+			margin: 0 auto 20px;
+		}
 	}
 
 	@include breakpoint($breakpoint-xxs) {
 		display: none;
-		font-size: 26px;
-		line-height: 25px;
 	}
 }

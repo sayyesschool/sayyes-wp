@@ -13,10 +13,6 @@
 
 	&__info {
 		width: calc(52% - 25px);
-
-		p:not(:last-of-type) {
-			margin-bottom: 15px;
-		}
 	}
 
 	&__text {
@@ -46,6 +42,8 @@
 	}
 
 	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+
 		&__title {
 			font-size: 32px;
 			line-height: 30px;
@@ -62,6 +60,10 @@
 		&__info {
 			width: calc(52% - 17.5px);
 		}
+	}
+
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
 	}
 
 	@include breakpoint($breakpoint-xxs) {

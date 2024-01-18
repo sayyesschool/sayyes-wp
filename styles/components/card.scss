@@ -3,6 +3,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+
 	background-color: $white;
 	border-radius: $border-radius;
 
@@ -23,6 +24,7 @@
 
 	&__name {
 		font-weight: 800;
+
 		margin-bottom: 5px;
 	}
 
@@ -48,6 +50,7 @@
 	&__title {
 		max-width: 300px;
 		margin-bottom: 18px;
+
 		font-size: 42px;
 		font-weight: 700;
 		line-height: 40px;
@@ -57,10 +60,15 @@
 		max-width: 287px;
 	}
 
+	&__link {
+		color: $violet;
+	}
+
 	&--comment-card {
 		min-height: 370px;
 		padding: 50px 35px 50px 50px;
 		align-self: flex-start;
+
 		background-color: $pink;
 		color: $white;
 
@@ -133,9 +141,10 @@
 		}
 
 		li {
+			color: $violet;
+
 			display: flex;
 			gap: 15px;
-			color: $violet;
 		}
 	}
 

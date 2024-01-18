@@ -26,6 +26,8 @@
 	}
 
 	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+
 		.subtitle {
 			max-width: 550px;
 			margin-bottom: 15px;
@@ -54,12 +56,16 @@
 	}
 
 	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+
 		&__img {
 			height: 315px;
 		}
 	}
 
 	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
+
 		.subtitle {
 			max-width: 450px;
 			margin-bottom: 15px;

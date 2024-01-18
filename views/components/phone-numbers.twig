@@ -1,11 +1,11 @@
 <ul class="phone-numbers">
-	{% for item in data.meta.phone_numbers %}
-		{% set combinedClasses = item.icon ~ ' ' ~ classes %}
-
+	{% for key, number in settings.phone_numbers %}
 		<li class="phone-numbers__item">
-			{% include 'components/icon.twig' with { class: combinedClasses } %}
+			{% include 'components/icon.twig' with {
+				class: 'icon--' ~ key ~ ' ' ~ icon_class
+			} %}
 			
-			<a id="callback" class="phone-numbers__link" href="#">{{item.text}}</a>
+			<a class="phone-numbers__link" href="tel:{{number|replace({ '+': '', '-': '', ' ': '' })}}">{{number}}</a>
 		</li>
 	{% endfor %}
 </ul>

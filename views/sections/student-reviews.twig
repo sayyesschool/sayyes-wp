@@ -84,7 +84,8 @@
                 <div class="video-block">
                     <div class="video">
                         <img class="video__bg" src="{{theme.link}}/static/images/student-reviews/{{person.img}}.jpg" alt="Say Yes">
-                        <button class="play" id="{{person.videoId}}"></button>
+                        
+						<button class="video-btn play" data-url="{{person.videoUrl}}"></button>
                     </div>
 
                     <div class="video-block__content">
@@ -105,15 +106,9 @@
                         </ul>
                     </div>
                 </div>
-
-                {% include 'components/modal.twig' with {
-                    modal: 'video',
-                    id: person.videoId,
-                    url: person.videoUrl
-                } %}
             {% endfor %}
         </div>
 
-        <button class="btn btn--yellow">Показать ещё</button>
+        <button id="show-more-review" class="btn btn--yellow">Показать ещё</button>
     </div>
 </section>

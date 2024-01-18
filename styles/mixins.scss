@@ -46,7 +46,7 @@
     }
 }
 
-@mixin fill-contanier() {
+@mixin fill-container() {
     position: absolute;
     top: 0;
     left: 0;
@@ -54,32 +54,33 @@
     height: 100%;
 }
 
-@mixin slider-buttons() {
-    .slider-button {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        color: gray;
-        padding: 0;
-        background: none;
-        font-size: 3rem;
-
-        &:focus {
-            outline: none;
-        }
-    }
-
-    .slider-prev-button {
-        left: -50px;
-    }
-
-    .slider-next-button {
-        right: -50px;
-    }
+@mixin breakpoint($bp) {
+	@media (max-width: $bp) {
+		@content;
+	}
 }
 
-@mixin breakpoint($bp) {
-    @media (max-width: $bp) {
-        @content;
-    }
+@mixin hover-active($styles...) {
+	$changes: ();
+
+	@for $i from 1 through calc(length($styles)) / 2 {
+		$property: nth($styles, $i * 2 - 1);
+		$value: nth($styles, $i * 2);
+
+		$changes: append($changes, ($property, $value), comma);
+	}
+
+	transition: 0.3s ease all;
+
+	&:hover {
+		@each $change in $changes {
+			#{nth($change, 1)}: lighten(nth($change, 2), 5%);
+		}
+	}
+
+	&:active {
+		@each $change in $changes {
+			#{nth($change, 1)}: darken(nth($change, 2), 5%);
+		}
+	}
 }

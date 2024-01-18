@@ -56,7 +56,7 @@
 	</section>
 
 	{% include 'sections/big-cards.twig' with {
-		mixin: 'big-cards--vacancies',
+		class: 'big-cards--vacancies',
 		title: 'Мы предлагаем:',
 		cards: [
 			{
@@ -121,7 +121,7 @@
 	} %}
 
 	{% include 'sections/cards-square.twig' with {
-		mixin: 'cards-square--vacancies',
+		class: 'cards-square--vacancies',
 		title: 'Как стать частью команды?',
 		cards: [
 			{
@@ -157,7 +157,7 @@
 
 			<p class="part-of-team__description">
 				Ждем ваше резюме на почту
-				<a href="#" class="text text--violet">hr@sayes.ru</a>
+				<a href="mailto:hr@sayes.ru" class="text text--violet">hr@sayes.ru</a>
 				с пометкой какой формат преподавания (онлайн/офлайн/взрослые/дети) вам интересен.
 			</p>
 		</div>

@@ -1,16 +1,16 @@
 export const slider = () => {
-	const swiper = new Swiper(".swiper", {
+	const swiper = new Swiper('.swiper', {
 		spaceBetween: 150,
 		navigation: {
-			nextEl: ".slider__right-arrow",
-			prevEl: ".slider__left-arrow",
+			nextEl: '.slider__right-arrow',
+			prevEl: '.slider__left-arrow',
 		},
 		pagination: {
-			el: ".slider__pagination",
+			el: '.slider__pagination',
 		},
 	});
 
-	const swiperOrganizations = new Swiper(".swiper-organizations", {
+	const swiperOrganizations = new Swiper('.swiper-organizations', {
 		enabled: false,
 		spaceBetween: 15,
 		width: 795,
@@ -20,17 +20,17 @@ export const slider = () => {
 				spaceBetween: 150,
 				width: null,
 				navigation: {
-					nextEl: ".slider__right-arrow",
-					prevEl: ".slider__left-arrow",
+					nextEl: '.slider__right-arrow',
+					prevEl: '.slider__left-arrow',
 				},
 				pagination: {
-					el: ".slider__pagination",
+					el: '.slider__pagination',
 				},
 			},
 		},
 	});
 
-	const swiperReviews = new Swiper(".swiper-reviews", {
+	const swiperReviews = new Swiper('.swiper-reviews', {
 		enabled: false,
 		spaceBetween: 15,
 		width: 1080,
@@ -40,17 +40,17 @@ export const slider = () => {
 				spaceBetween: 150,
 				width: null,
 				navigation: {
-					nextEl: ".slider__right-arrow",
-					prevEl: ".slider__left-arrow",
+					nextEl: '.slider__right-arrow',
+					prevEl: '.slider__left-arrow',
 				},
 				pagination: {
-					el: ".slider__pagination",
+					el: '.slider__pagination',
 				},
 			},
 		},
 	});
 
-	const swiperMeetings = new Swiper(".swiper-meetings", {
+	const swiperMeetings = new Swiper('.swiper-meetings', {
 		enabled: false,
 		spaceBetween: 15,
 		width: 900,
@@ -60,26 +60,26 @@ export const slider = () => {
 				spaceBetween: 150,
 				width: null,
 				navigation: {
-					nextEl: ".slider__right-arrow",
-					prevEl: ".slider__left-arrow",
+					nextEl: '.slider__right-arrow',
+					prevEl: '.slider__left-arrow',
 				},
 				pagination: {
-					el: ".slider__pagination",
+					el: '.slider__pagination',
 				},
 			},
 		},
 	});
 
-	const swiperFeedback = new Swiper(".swiper-feedback", {
+	const swiperFeedback = new Swiper('.swiper-feedback', {
 		enabled: false,
 		spaceBetween: 15,
 		width: null,
 		navigation: {
-			nextEl: ".slider__right-arrow",
-			prevEl: ".slider__left-arrow",
+			nextEl: '.slider__right-arrow',
+			prevEl: '.slider__left-arrow',
 		},
 		pagination: {
-			el: ".slider__pagination",
+			el: '.slider__pagination',
 		},
 		breakpoints: {
 			769: {
@@ -101,16 +101,16 @@ export const slider = () => {
 		},
 	});
 
-	const swiperCourseFeedback = new Swiper(".swiper-course-feedback", {
+	const swiperCourseFeedback = new Swiper('.swiper-course-feedback', {
 		enabled: false,
 		spaceBetween: 15,
 		width: null,
 		navigation: {
-			nextEl: ".slider__right-arrow",
-			prevEl: ".slider__left-arrow",
+			nextEl: '.slider__right-arrow',
+			prevEl: '.slider__left-arrow',
 		},
 		pagination: {
-			el: ".slider__pagination",
+			el: '.slider__pagination',
 		},
 		breakpoints: {
 			801: {
@@ -132,16 +132,16 @@ export const slider = () => {
 		},
 	});
 
-	const swiperPersonalApproach = new Swiper(".swiper-personal-approach", {
+	const swiperPersonalApproach = new Swiper('.swiper-personal-approach', {
 		enabled: false,
 		spaceBetween: 15,
 		width: null,
 		navigation: {
-			nextEl: ".slider__right-arrow",
-			prevEl: ".slider__left-arrow",
+			nextEl: '.slider__right-arrow',
+			prevEl: '.slider__left-arrow',
 		},
 		pagination: {
-			el: ".slider__pagination",
+			el: '.slider__pagination',
 		},
 		breakpoints: {
 			769: {
@@ -169,7 +169,7 @@ export const slider = () => {
 		},
 	});
 
-	const swiperResultChildren = new Swiper(".swiper-result-children", {
+	const swiperResultChildren = new Swiper('.swiper-result-children', {
 		breakpoints: {
 			769: {
 				slidesPerView: 2,
@@ -177,11 +177,11 @@ export const slider = () => {
 				spaceBetween: 20,
 				width: null,
 				navigation: {
-					nextEl: ".slider__right-arrow",
-					prevEl: ".slider__left-arrow",
+					nextEl: '.slider__right-arrow',
+					prevEl: '.slider__left-arrow',
 				},
 				pagination: {
-					el: ".slider__pagination",
+					el: '.slider__pagination',
 				},
 			},
 			400: {

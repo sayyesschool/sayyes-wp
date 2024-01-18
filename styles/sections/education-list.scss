@@ -1,0 +1,15 @@
+.education-list {
+	&__item {
+		&:not(:last-child) {
+			margin-bottom: 10px;
+		}
+	}
+
+	&__institution {
+		font-weight: 600;
+	}
+
+	&__faculty {
+		font-weight: 400;
+	}
+}

@@ -1,0 +1,39 @@
+{% extends 'layouts/base.twig' %}
+
+{% block content %}
+	<section class="training-choice">
+        <h1 class="title">Выберите свое обучение:</h1>
+
+        <div class="cards">
+            {% for person in [
+                {
+                    name: 'Офлайн индивидуально',
+                    description: 'Выберите это обучение, если вы занимаетесь с преподавателем лично — у нас в школе, дома или в офисе.',
+                    img: 'type-1'
+                },
+                {
+                    name: 'Онлайн индивидуально',
+                    description: 'Выберите это обучение, если вы занимаетесь дистанционно по Скайп.',
+                    img: 'type-2',
+                    'type': 'teacher-card'
+                },
+                {
+                    name: 'Онлайн в группе',
+                    description: 'Выберите это обучение, если вы занимаетесь в группе по Zoom.',
+                    img: 'type-3'
+                }
+            ] %}
+                <div class="card">
+                    <img src="./assets/images/training-type/{{person.img}}.jpg" alt="{{person.name}}" class="card__img">
+                    <div class="card__content">
+                        <h3 class="card__name">{{person.name}}</h3>
+                        <p class="card__description">{{person.description}}</p>
+                        <button class="btn btn--transparent btn--transparent-black btn--md">Выбрать и оплатить</button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <p class="training-choice__ps">Если у вас возникнут какие-либо вопросы в процессе оплаты, пожалуйста, свяжитесь с вашим менеджером или напишите нам на <a href="mailto:info@sayes.ru" class="text text--underline text--violet">info@sayes.ru</a>.</p>
+    </section>
+{% endblock %}

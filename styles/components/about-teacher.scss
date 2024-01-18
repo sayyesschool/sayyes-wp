@@ -1,7 +1,10 @@
 .about-teacher {
-	padding: 12px 4px 25px 25px;
+	padding: 25px;
+	height: 329px;
+	overflow-y: auto;
+
 	background-color: $white;
-	border-radius: 0 0 $border-radius $border-radius;
+	border-radius: 0 0 $border-radius-sm $border-radius-sm;
 	font-size: 14px;
 	line-height: 15px;
 
@@ -10,10 +13,10 @@
 		margin: 0;
 
 		.tabs__tab {
-			width: 33%;
-			min-height: auto;
 			border-radius: 0;
 			background-color: transparent;
+			width: 33%;
+			min-height: auto;
 			padding-bottom: 10px;
 
 			&--active {
@@ -23,7 +26,9 @@
 	}
 
 	&__experience {
-		margin: 25px 0 20px;
+		margin-bottom: 20px;
+		display: flex;
+		flex-direction: column;
 	}
 
 	&__item {
@@ -31,26 +36,26 @@
 		margin-bottom: 12px;
 		font-weight: 600;
 
-		div:first-child {
-			font-weight: 800;
-			padding-right: 10px;
+		&:first-child,
+		&:last-child {
+			order: -1;
 		}
+	}
+
+	&__item-key {
+		font-weight: 800;
+		padding-right: 10px;
 	}
 
 	&__text {
 		font-weight: 600;
 	}
 
-	&__scroll {
-		max-height: 340px;
-		overflow: auto;
-	}
-
-	::-webkit-scrollbar {
+	&::-webkit-scrollbar {
 		width: 3px;
 	}
 
-	::-webkit-scrollbar-thumb {
+	&::-webkit-scrollbar-thumb {
 		background: $linen;
 		border-radius: 10%;
 	}

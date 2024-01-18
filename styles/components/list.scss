@@ -58,7 +58,8 @@
 		}
 	}
 
-	&--ol {
+	&--ol,
+	&--ol-digits {
 		counter-reset: myCounter;
 
 		.list__item {
@@ -71,6 +72,16 @@
 				font-size: 18px;
 				font-weight: 800;
 				line-height: 20px;
+			}
+		}
+	}
+
+	&--ol-digits {
+		.list__item {
+			&::before {
+				content: "0" counter(myCounter) ".";
+				font-size: 14px;
+				left: -30px;
 			}
 		}
 	}

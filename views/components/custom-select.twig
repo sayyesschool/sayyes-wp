@@ -1,0 +1,15 @@
+<div class="custom-select {{class}}">
+	<button class="custom-select__select-button">{{options[0]}}</button>
+
+	<span class="custom-select__arrow">
+        {% include 'components/check.twig' with {
+			fill: fill or '#262626'
+		} %}
+    </span>
+
+	<ul class="custom-select__select-dropdown">
+		{% for option in options %}
+			<li class="custom-select__option">{{option}}</li>
+		{% endfor %}
+	</ul>
+</div>

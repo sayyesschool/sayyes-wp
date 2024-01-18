@@ -30,14 +30,11 @@
                     <div class="tabs__item active">
                         <div class="cards">
                             {% for teahcer in offline_teachers[0:6] %}
-                                {% include 'components/teacher-card.twig' with {
-                                    teahcer
-                                } %}
+                                <div class="card card--{{teahcer.type}}">
+                                    <img class="card__img" src="{{theme.link}}/static/images/teachers/{{teahcer.img}}.jpg" alt="{{teahcer.name}}">
 
-                                {# <div class="card card--{{person.type}}">
-                                    <img class="card__img" src="{{theme.link}}/static/images/teachers/{{person.img}}.jpg" alt="{{person.name}}">
                                     <div class="card__content">
-                                        <h3 class="card__name">{{person.name}}</h3>
+                                        <h3 class="card__name">{{teahcer.name}}</h3>
 
                                         <ul class="card__description">
                                             {% for merits in person.merits %}
@@ -48,46 +45,34 @@
                                             {% endfor %}
                                         </ul>
 
-                                        <button class="btn btn--transparent btn--transparent-black btn--md" id="{{person.teacherId}}">Подробнее</button>
+                                        <button class="teacher-btn btn btn--transparent btn--transparent-black btn--md" data-id="{{person.teacherId}}">Подробнее</button>
                                     </div>
-                                </div> #}
-
-                                {% include 'components/modal.twig' with {
-                                    modal: 'teacher',
-                                    id: person.teacherId,
-                                    teacher: person
-                                } %}
+                                </div>
                             {% endfor %}
                         </div>
                     </div>
 
                     <div class="tabs__item">
                         <div class="cards">
-                            {% for person in data.online_teachers[0:6] %}
-                                <div class="card card--{{person.type}}">
-                                    <img src="{{theme.link}}/static/images/teachers/{{person.img}}.jpg" alt="{{person.name}}" class="card__img">
+                            {% for teacher in data.online_teachers[0:6] %}
+                                <div class="card card--{{teacher.type}}">
+                                    <img class="card__img" src="{{theme.link}}/static/images/teachers/{{teacher.img}}.jpg" alt="{{teacher.name}}">
 
                                     <div class="card__content">
-                                        <h3 class="card__name">{{person.name}}</h3>
+                                        <h3 class="card__name">{{teacher.name}}</h3>
 
                                         <ul class="card__description">
-                                            {% for merits in person.merits %}
+                                            {% for merits in teacher.merits %}
                                                 <li>
-                                                    <span class="text text--weight-700">{{merits.merit}}</span>:
+                                                    {{merits.merit}}:
                                                     {{merits.description}}
                                                 </li>
                                             {% endfor %}
                                         </ul>
 
-                                        <button class="btn btn--transparent btn--transparent-black btn--md" id="{{person.teacherId}}">Подробнее</button>
+                                        <button class="teacher-btn btn btn--transparent btn--transparent-black btn--md" data-id="{{teacher.teacherId}}">Подробнее</button>
                                     </div>
                                 </div>
-
-                                {% include 'components/modal.twig' with {
-                                    modal: "teacher",
-                                    id: person.teacherId,
-                                    teacher: person
-                                } %}
                             {% endfor %}
                         </div>
                     </div>
@@ -101,14 +86,15 @@
     <section class="teachers">
         <div class="section-container">
             <div class="cards">
-                {% for person in teacherCards2 %}
-                    <div class="card card--{{person.type}}">
-                        <img class="card__img" src="{{theme.link}}/static/images/teachers/{{person.img}}.jpg" alt="{{person.name}}">
+                {% for teacher in teacherCards2 %}
+                    <div class="card card--{{teacher.type}}">
+                        <img class="card__img" src="{{theme.link}}/static/images/teachers/{{teacher.img}}.jpg" alt="{{teacher.title}}">
+
                         <div class="card__content">
-                            <h3 class="card__name">{{person.name}}</h3>
+                            <h3 class="card__name">{{teacher.name}}</h3>
 
                             <ul class="card__description">
-                                {% for merits in person.merits %}
+                                {% for merits in teacher.merits %}
                                     <li>
                                         <span class="text text--weight-700">{{merits.merit}}</span>:
                                         {{merits.description}}

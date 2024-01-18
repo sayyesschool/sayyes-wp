@@ -1,0 +1,66 @@
+.meeting {
+	margin-bottom: 100px;
+
+	.registration {
+		width: 50%;
+	}
+
+	.meeting-card {
+		.meeting-card__content {
+			min-height: auto;
+			flex-direction: row;
+			gap: 45px;
+			padding-top: 50px;
+		}
+
+		.meeting-card__info {
+			font-weight: 700;
+		}
+
+		.meeting-card__list,
+		.tags {
+			margin-bottom: 0;
+		}
+
+		.meeting-card__title {
+			margin-bottom: 20px;
+		}
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		.registration,
+		.meeting-card__left {
+			width: 100%;
+		}
+
+		.meeting-card {
+			.meeting-card__content {
+				flex-direction: column;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
+	}
+
+	@include breakpoint($breakpoint-sm-mobile) {
+		.meeting-card {
+			.tags {
+				order: -1;
+			}
+
+			.meeting-card__content {
+				padding: 30px 10px;
+			}
+		}
+	}
+}

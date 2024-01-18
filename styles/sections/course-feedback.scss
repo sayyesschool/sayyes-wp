@@ -8,7 +8,6 @@
 
 	.btn {
 		margin: 30px auto 0;
-		display: block;
 	}
 
 	.slider {
@@ -118,6 +117,8 @@
 	}
 
 	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+
 		.subtitle {
 			max-width: 400px;
 			margin-bottom: 15px;
@@ -147,6 +148,8 @@
 	}
 
 	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+
 		.slider {
 			width: calc(100% + 15px);
 		}
@@ -171,6 +174,10 @@
 		&__card {
 			width: 100%;
 		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
 	}
 
 	@include breakpoint($breakpoint-mobile) {

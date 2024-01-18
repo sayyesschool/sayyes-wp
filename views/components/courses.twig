@@ -1,8 +1,13 @@
 {% for course in courses %}
-	<div class="course course--{{cycle(['black', 'pink', 'violet'], loop.index0)}}">
+	<div class="course course--{{cycle(['black', 'pink', 'violet'], loop.index0)}} feedback-btn">
 		<div class="course__header">
 			<h3 class="course__title">{{course.title}}</h3>
+
 			<p class="course__description">{{course.excerpt({ read_more: '' })}}</p>
+
+			{% if course.age %}
+				<span class="course__age-tag course__age-tag-{{item.age.color}}">{{course.age.text}} лет</span>
+			{% endif %}
 		</div>
 
 		<div class="course__content">

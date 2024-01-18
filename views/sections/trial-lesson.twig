@@ -30,7 +30,7 @@
 						</div>
 					</div>
 
-					<img src="{{theme.link}}/static/images/pictures/invite.png" alt="Invite" class="invite__bg">
+					<img class="invite__bg" src="{{theme.link}}/static/images/pictures/invite.png" alt="Invite">
 				</div>
 			</div>
 
@@ -44,11 +44,13 @@
 						</div>
 
 						<div class="invite__right">
-							{% include 'components/feedback-form.twig' %}
+							{% include 'components/feedback-form.twig' with {
+								children: true
+							} %}
 						</div>
 					</div>
 					
-					<img src="{{theme.link}}/static/images/pictures/invite-2.png" alt="Invite" class="invite__bg">
+					<img class="invite__bg" src="{{theme.link}}/static/images/pictures/invite-2.png" alt="Invite">
 				</div>
 			</div>
 		</div>

@@ -8,4 +8,9 @@
 	background: url("./static/images/icons/play.svg") center no-repeat
 		#fffcff80;
 	cursor: pointer;
+	transition: 0.3s linear background-color;
+
+	&:hover {
+		background-color: $white;
+	}
 }

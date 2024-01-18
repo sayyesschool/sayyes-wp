@@ -25,6 +25,8 @@
 	}
 
 	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+
 		.subtitle {
 			max-width: 450px;
 		}
@@ -54,7 +56,13 @@
 		}
 	}
 
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+	}
+
 	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
+
 		.text-block {
 			width: 100%;
 			min-height: 155px;

@@ -1,0 +1,113 @@
+.training-choice {
+	margin-bottom: 100px;
+
+	.title {
+		margin: 25px auto 40px;
+		max-width: 840px;
+		color: $black;
+		text-align: center;
+	}
+
+	.cards {
+		margin-bottom: 30px;
+	}
+
+	.card {
+		.card__content {
+			padding: 35px 25px 50px 50px;
+		}
+
+		.card__name {
+			margin-bottom: 15px;
+		}
+
+		.card__description {
+			margin-bottom: 30px;
+		}
+
+		.btn {
+			margin-top: auto;
+		}
+	}
+
+	&__ps {
+		max-width: 680px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+
+		.title {
+			margin-top: 0;
+		}
+
+		&__ps {
+			max-width: 600px;
+		}
+	}
+
+	@include breakpoint($breakpoint-md) {
+		.title {
+			font-size: 36px;
+			line-height: 35px;
+		}
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		.title {
+			text-align: left;
+			margin-left: 40px;
+			margin-bottom: 20px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+
+		.title {
+			font-size: 28px;
+			line-height: 30px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
+
+		.title {
+			margin-left: 15px;
+		}
+
+		.card {
+			min-width: 290px;
+		}
+
+		&__ps {
+			margin-bottom: 20px;
+		}
+	}
+
+	@include breakpoint($breakpoint-sm-mobile) {
+		.cards {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 15px;
+			padding-left: 0;
+		}
+
+		.card {
+			.btn {
+				margin: 0 auto;
+			}
+
+			.card__content {
+				padding: 35px;
+			}
+
+			.card__img {
+				height: 80%;
+			}
+		}
+	}
+}

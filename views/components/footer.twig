@@ -1,4 +1,5 @@
 <footer class="footer">
+	{{dump(settings)}}
 	<div class="section-container">
 		<div class="footer__wrapper">
 			<div class="footer__column">
@@ -19,13 +20,13 @@
 				<div class="footer__email">
 					<div class="footer__title">E-MAIL:</div>
 					<div class="footer__item">
-						<a href="#" class="footer__link">{{meta.email}}</a>
+						<a class="footer__link" href="#">{{settings.email}}</a>
 					</div>
 				</div>
 
 				<div class="footer__address">
 					<div class="footer__title">Адрес школы</div>
-					<div class="footer__item">{{meta.address}}</div>
+					<div class="footer__item">{{settings.address}}</div>
 				</div>
 
 				<div class="footer__policy">
@@ -46,14 +47,23 @@
 
 				<ul class="footer__about">
 					<div class="footer__title">О SAY YES</div>
-					{% for item in footerNavItems.about %}
+					{% for item in data.footerNavItems.about %}
 						<li class="footer__item">
-							<a href="{{item.url}}" class="footer__link">{{item.text}}</a>
+							<a class="footer__link" href="{{item.url}}">{{item.text}}</a>
 						</li>
 					{% endfor %}
 				</ul>
 
-				{% include 'components/footer-courses.twig' %}
+				<ul class="footer-courses">
+					<div class="footer__title">Курсы</div>
+
+					{% for item in data.footerNavItems.courses %}
+						<li class="footer__item">
+							<a class="footer__link" href="{{item.url}}">{{item.text}}</a>
+						</li>
+					{% endfor %}
+				</ul>
+
 				{% include 'components/social.twig' %}
 
 				<div class="footer__with-love">
@@ -66,40 +76,38 @@
 					<div class="footer__title">Курсы и программы школы</div>
 
 					<div class="footer__courses">
-						<ul class="footer__subcolumn">
-							{% for item in footerNavItems.courses %}
+						{# <ul class="footer__subcolumn">
+							{% for item in data.footerNavItems.courses %}
 								<li class="footer__item">
-									<a href="{{item.url}}" class="footer__link">{{item.text}}</a>
+									<a class="footer__link" href="{{item.url}}">{{item.text}}</a>
 								</li>
 							{% endfor %}
-						</ul>
+						</ul> #}
 
 						<ul class="footer__subcolumn">
-							{% for item in footerNavItems.programms %}
+							{% for item in data.footerNavItems.programms %}
 								<li class="footer__item">
-									<a href="{{item.url}}" class="footer__link">{{item.text}}</a>
+									<a class="footer__link" href="{{item.url}}">{{item.text}}</a>
 								</li>
 							{% endfor %}
-							{% include 'components/footer-SAWC.twig' %}
 						</ul>
 					</div>
 
-					{# {% for item in footer_menu.items %}
-						<div class="col-md-4">
-							<h5 class="nav-title">{{ item.title }}</h5>
-
-							<ul class="nav flex-column">
-								{% for child in item.children %}
-									<li class="nav-item">
-										<a class="nav-link" href="{{ child.link }}" {% if child.is_external %}target="_blank"{% endif %}>{{ child.title }}</a>
-									</li>
-								{% endfor %}
-							</ul>
-						</div>
-					{% endfor %} #}
+					{% include 'components/footer-SAWC.twig' %}
 				</div>
 
-				{% include 'components/footer-education-forms.twig' %}
+				<ul class="footer-education-forms">
+					<div class="footer__title">Формы обучения</div>
+
+					{% for item in data.footerNavItems.programms %}
+						<li class="footer__item">
+							<a class="footer__link" href="{{item.url}}">{{item.text}}</a>
+						</li>
+					{% endfor %}
+
+					{% include 'components/footer-SAWC.twig' %}
+				</ul>
+
 				{% include 'components/license.twig' %}
 
 				<div class="footer__designer">

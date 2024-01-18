@@ -18,7 +18,7 @@
 	} %}
 
 	{% include 'sections/learning-form.twig' with {
-		mixin: 'learning-form--children-courses',
+		class: 'learning-form--children-courses',
 		title: 'Формы обучения на курсе для детей “Bright ideas”',
 		description: 'Ваш ребенок может проходить данный курс индивидуально в двух форматах. Стоимость обучения зависит от количества приобретенных уроков в пакете.',
 		courses: [
@@ -64,6 +64,7 @@
 
 		<div class="knowledge-check__content">
 			{% include 'components/list.twig' with {
+				classes: 'list--ul-sm list--central-marker',
 				list: [
 					{
 						description: 'Познакомитесь с методикой и программой обучения.'
@@ -74,20 +75,19 @@
 					{
 						description: 'Оцените, нравится ли вам преподаватель.'
 					}
-				],
-				classes: 'list--ul-sm list--central-marker'
+				]
 			} %}
 
-			<form action="POST" class="knowledge-check__form">
-				<input type="text" placeholder="Имя родителя" class="knowledge-check__input">
-				<input type="text" placeholder="+7 (999)-99-99" class="knowledge-check__input">
-				<button class="btn">Записаться на бесплатный урок</button>
+			<form action="post" class="knowledge-check__form">
+				<input class="knowledge-check__input" type="text" placeholder="Имя родителя">
 
-				<div class="knowledge-check__policy">
-					<input type="checkbox">
-					Я согласен с
-					<span class="text text--underline">политикой обработки персональных данных</span>
-				</div>
+				<input class="knowledge-check__input" type="text" placeholder="+7 (999)-99-99">
+
+				<button class="btn btn--full feedback-btn">Записаться на бесплатный урок</button>
+
+				{% include 'components/custom-checkbox.twig' with {
+					checkboxName: 'knowledgeCheckCheckbox'
+				} %}
 			</form>
 		</div>
 	</section>
@@ -136,7 +136,7 @@
 			'Экономия времени на поездках к репетитору или в школу.'
 		],
 		videoImg: 'video-section-6',
-		videoId: 'video-11'
+		videoUrl: 'https://www.youtube.com/embed/Vsfz_1QzwDA'
 	} %}
 
 	<section class="features">
@@ -145,28 +145,39 @@
 		<div class="features__info">
 			<div class="features__content">
 				<h3 class="features__title">Особенности обучения на курсе “Bright Ideas”:</h3>
+
 				<ul class="features__list">
-					<li class="features__item">Знакомимся с основами языка</li>
-					<li class="features__item">Влюбляемся в английский</li>
-					<li class="features__item">Начинаем говорить, читать и писать</li>
-					<li class="features__item">Готовимся к школьной программе</li>
+					{% for item in [
+						'Знакомимся с основами языка',
+						'Влюбляемся в английский',
+						'Начинаем говорить, читать и писать',
+						'Готовимся к школьной программе'
+					] %}
+						<li class="features__item">{{item}}</li>
+					{% endfor %}
 				</ul>
 
 				<h3 class="features__title">Результаты обучения  на курсе “Bright Ideas”:</h3>
+
 				<ul class="features__list">
-					<li class="features__item">Воспринимает на слух английскую речь</li>
-					<li class="features__item">Уверенно рассказывает о себе и любимых вещах</li>
-					<li class="features__item">Может составлять простые предложения</li>
-					<li class="features__item">Знает более 100 новых слов и выражений</li>
+					{% for item in [
+						'Воспринимает на слух английскую речь',
+						'Уверенно рассказывает о себе и любимых вещах',
+						'Может составлять простые предложения',
+						'Знает более 100 новых слов и выражений'
+					] %}
+						<li class="features__item">{{item}}</li>
+					{% endfor %}
 				</ul>
 
-				<button class="btn btn--yellow">Записаться на бесплатный урок</button>
+				<button class="feedback-btn btn btn--yellow">Записаться на бесплатный урок</button>
 			</div>
 		</div>
 	</section>
 
 	<section class="personal-approach">
 		<h2 class="subtitle">Наши преподаватели найдут подход к любому ребенку</h2>
+
 		<p class="personal-approach__description">В нашей команде только внимательные и заботливые преподаватели с опытом обучения детей</p>
 
 		<div class="slider swiper-personal-approach">
@@ -208,8 +219,9 @@
 					<div class="slider__slide swiper-slide">
 						<div class="teacher-card">
 							<div class="video">
-								<img src="{{theme.link}}/static/images/teachers-2/teacher-1.jpg" alt="Say Yes" class="video__bg">
-								<button class="play"></button>
+								<img class="video__bg" src="{{theme.link}}/static/images/teachers-2/teacher-1.jpg" alt="Say Yes">
+								
+								<button class="video-btn play"data-url="{{item.videoUrl}}"></button>
 							</div>
 
 							<div class="teacher-card__info">
@@ -262,7 +274,7 @@
 	</section>
 
 	{% include 'sections/course-feedback.twig' with {
-		mixin: 'course-feedback__adults-courses',
+		class: 'course-feedback__adults-courses',
 		title: 'Отзывы о курсе для детей “Bright ideas”',
 		courseFeedback: [
 			{
@@ -440,7 +452,8 @@
 								<div class="video-block-2">
 									<div class="video">
 										<img class="video__bg" src="{{theme.link}}/static/images/children-reviews/{{item.img}}.jpg" alt="Say Yes">
-										<button class="play" id="{{item.videoId}}"></button>
+
+										<button class="video-btn play" data-url="{{item.videoUrl}}"></button>
 									</div>
 
 									<div class="video-block-2__content">
@@ -448,23 +461,20 @@
 											{{item.parent.name}}
 											{% include 'components/icon.twig' with { class: item.parent.icon } %}
 										</a>
+										
 										<p class="video-block-2__subtitle">{{item.baby}}</p>
-										<p class="video-block-2__description">{{item.description}}</p>
-										<button class="video-block-2__btn">Развернуть</button>
+
+										<p class="video-block-2__description show-more-text-description">{{item.description}}</p>
+
+										<button class="video-block-2__btn show-more-text-btn">Развернуть</button>
 									</div>
 								</div>
-
-								{% include 'components/modal.twig' with {
-									modal: 'video',
-									url: item.videoUrl,
-									id: item.videoId
-								} %}
 							</div>
 						</div>
 					{% endfor %}
 				</div>
 
-				<ul class="sli der__pagination"></ul>
+				<ul class="slider__pagination"></ul>
 			</div>
 		</div>
 	</section>
@@ -476,7 +486,7 @@
 			'Посмотрите не просто отзывы наших юных студентов, а то, как они говорят на английском'
 		],
 		videoImg: 'video-section-7',
-		videoId: 'video-12'
+		videoUrl: 'https://www.youtube.com/embed/Vsfz_1QzwDA'
 	} %}
 
 	<section class="convenient-oc">
@@ -486,10 +496,11 @@
 			<div class="convenient-oc__content">
 				<div class="convenient-oc__description">
 					<p class="convenient-oc__paragraph">Занятия онлайн проходят на надежной платформе, специально разработанной нашей школой: ребенок общается с преподавателем и выполняет задания в одном окне браузера.</p>
+
 					<p class="convenient-oc__paragraph">Интерактивная комната, разработанная для детей, делает процесс обучения удобным и захватывающим. Игры, интерактивные задания, видео и аудио вовлекают ребенка в процесс обучения с первых минут.</p>
 				</div>
 				
-				<img src="{{theme.link}}/static/images/pictures/oc.jpg" alt="Say Yes" class="convenient-oc__img">
+				<img class="convenient-oc__img" src="{{theme.link}}/static/images/pictures/oc.jpg" alt="Say Yes">
 			</div>
 		</div>
 	</section>

@@ -1,0 +1,22 @@
+.specializations {
+	height: 329px;
+	overflow-y: auto;
+
+	.list {
+    height: 100%;
+		padding: 10px 25px 25px 55px;
+		border-radius: 0 0 $border-radius-sm $border-radius-sm;
+		font-size: 14px;
+		font-weight: 600;
+		line-height: 20px;
+	}
+
+	&::-webkit-scrollbar {
+		width: 3px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: $linen;
+		border-radius: 10%;
+	}
+}

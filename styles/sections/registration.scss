@@ -1,0 +1,28 @@
+.registration {
+	padding: 45px 35px;
+
+	background-color: $yellow;
+	border-radius: $border-radius;
+
+	.btn {
+		margin-bottom: 10px;
+	}
+
+	.input-text {
+		&:last-of-type {
+			margin-bottom: 35px;
+		}
+	}
+
+	&__title {
+		font-size: 24px;
+		font-weight: 800;
+		line-height: 25px;
+
+		margin-bottom: 25px;
+	}
+
+	@include breakpoint($breakpoint-sm-mobile) {
+		padding: 30px;
+	}
+}

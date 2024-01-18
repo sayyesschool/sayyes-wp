@@ -75,7 +75,7 @@
         mixin: 'offline',
         subtitle: 'Посмотрите видео о методике школы',
         videoImg: 'video-section-2',
-        videoId: 'video-10'
+        videoUrl: 'https://www.youtube.com/embed/Vsfz_1QzwDA'
     } %}
 
 	<section class="peculiarity">
@@ -111,7 +111,7 @@
     </section>
 
 	{% include 'sections/course-feedback.twig' with {
-        mixin: 'course-feedback__offline',
+        class: 'course-feedback__offline',
         title: 'Отзывы о групповом офлайн обучении',
         courseFeedback: data.courseFeedbackAdults,
         btnColor: 'btn--yellow'

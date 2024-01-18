@@ -21,17 +21,11 @@
 
 	{% include 'sections/trial-lesson.twig' %}
 
-	{% embed 'components/central-text.twig' %}
-		{% block title %}
-			Английский
-			<span class="text text--violet">с ощутимым результатом</span>
-			уже через месяц занятий
-		{% endblock %}
+	<section class="tangible-result">
+		<h2 class="tangible-result__title">Английский <span class="text text--violet">с ощутимым результатом</span> уже через месяц занятий</h2>
 
-		{% block content %}
-			Команда преподавателей отвечает за ваш прогресс, а менеджеры создают приятную атмосферу, в которую хочется возвращаться
-		{% endblock %}
-	{% endembed %}
+		<p class="tangible-result__description">Команда преподавателей отвечает за ваш прогресс, а менеджеры создают приятную атмосферу, в которую хочется возвращаться</p>
+	</section>
 
 	<section class="practice">
 		<div class="section-container">
@@ -56,7 +50,7 @@
 				<div class="dream-team__info">
 					<p class="dream-team__description">Влюблены в свое дело и не дадут скучать. Преподаватель SAY YES! — это опытный, харизматичный и современный педагог.</p>
 					<p class="dream-team__description">Оставьте заявку, мы подберем вам преподавателя и расскажем о курсах</p>
-					<button class="btn btn--yellow btn--full">Оставить заявку</button>
+					<button class="feedback-btn btn btn--yellow btn--full">Оставить заявку</button>
 				</div>
 
 				<img class="dream-team__img" src="{{theme.link}}/static/images/pictures/teacher.jpg" alt="Команда мечты">
@@ -86,7 +80,8 @@
 
 			<div class="video">
 				<img class="platform__img" src="{{theme.link}}/static/images/pictures/platform.jpg" alt="Собственная онлайн платформа">
-				<button class="play" id="video-1"></button>
+				
+				<button class="video-btn play" data-url="https://www.youtube.com/embed/6ISA01NE2rY"></button>
 			</div>
 		</div>
 
@@ -112,8 +107,9 @@
 						<li class="atmosphere__celebrations-item">Онлайн встречи</li>
 					</ul>
 					
-					<img src="{{theme.link}}/static/images/atmosphere/atmosphere-1.jpg" alt="Совместные выезды" class="atmosphere__trip-img">
-					<img src="{{theme.link}}/static/images/decoration/notes/picnic.svg" alt="Английский на пикнике" class="atmosphere__trip-tip">
+					<img class="atmosphere__trip-img" src="{{theme.link}}/static/images/atmosphere/atmosphere-1.jpg" alt="Совместные выезды">
+
+					<img class="atmosphere__trip-tip" src="{{theme.link}}/static/images/decoration/notes/picnic.svg" alt="Английский на пикнике">
 				</div>
 
 				<div class="atmosphere__celebrations">
@@ -123,17 +119,17 @@
 					</ul>
 
 					<div class="atmosphere__celebrations-images">
-						<img src="{{theme.link}}/static/images/atmosphere/atmosphere-2.jpg" alt="Отмечаем праздники вместе" class="atmosphere__celebration-img">
+						<img class="atmosphere__celebration-img" src="{{theme.link}}/static/images/atmosphere/atmosphere-2.jpg" alt="Отмечаем праздники вместе">
 
 						<div class="video">
 							<img src="{{theme.link}}/static/images/atmosphere/atmosphere-3.jpg" alt="Отмечаем праздники вместе" class="video__bg">
-							<button class="play" id="video-2"></button>
+							<button class="video-btn play" data-vertical="true" data-url="https://www.youtube.com/embed/CgqpaS5eoGQ"></button>
 						</div>
 
-						<img src="{{theme.link}}/static/images/atmosphere/atmosphere-4.jpg" alt="Отмечаем праздники вместе" class="atmosphere__celebration-img-2">
+						<img class="atmosphere__celebration-img-2" src="{{theme.link}}/static/images/atmosphere/atmosphere-4.jpg" alt="Отмечаем праздники вместе">
 					</div>
 
-					<img src="{{theme.link}}/static/images/decoration/notes/celebrating-completion.svg" alt="Отмечаем завевершение обучения" class="atmosphere__celebrations-tip">
+					<img class="atmosphere__celebrations-tip" src="{{theme.link}}/static/images/decoration/notes/celebrating-completion.svg" alt="Отмечаем завевершение обучения">
 				</div>
 			</div>
 		</div>

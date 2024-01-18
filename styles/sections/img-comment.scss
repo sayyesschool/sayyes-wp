@@ -79,6 +79,10 @@
 		}
 	}
 
+	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+	}
+
 	@include breakpoint($breakpoint-md) {
 		&__picture {
 			min-width: 242px;
@@ -117,7 +121,12 @@
 		}
 	}
 
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+	}
+
 	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
 		flex-direction: column-reverse;
 
 		&__img {

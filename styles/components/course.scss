@@ -3,9 +3,10 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+
 	background-color: $white;
 	border-radius: $border-radius;
-	transition: 0.3s all linear;
+	transition: 0.3s all ease;
 	cursor: pointer;
 
 	&:hover {
@@ -13,19 +14,23 @@
 	}
 
 	&__header {
-		min-height: 205px;
-		flex-grow: 1;
-		padding: 36px 40px 37px;
 		background-color: $black;
 		color: $white;
 		border-radius: $border-radius;
+
+		position: relative;
+		overflow: hidden;
+		padding: 36px 40px 37px;
+		min-height: 205px;
+		flex-grow: 1;
 	}
 
 	&__title {
-		margin-bottom: 10px;
 		font-size: 42px;
 		font-weight: 700;
 		line-height: 40px;
+
+		margin-bottom: 10px;
 	}
 
 	&__description {
@@ -33,10 +38,32 @@
 	}
 
 	&__content {
-		min-height: 145px;
 		display: flex;
 		justify-content: space-between;
+		min-height: 145px;
 		padding: 38px 40px;
+	}
+
+	&__age-tag {
+		position: absolute;
+		bottom: 46px;
+		right: -47px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 145px;
+		height: 52px;
+		border-top-right-radius: $border-radius-sm;
+		background-color: $black;
+		transform: rotate(-90deg);
+
+		&-purple {
+			background-color: $violet;
+		}
+
+		&-black {
+			background-color: $black;
+		}
 	}
 
 	&__lesson-cost {
@@ -92,15 +119,16 @@
 
 	@include breakpoint($breakpoint-lg) {
 		&__title {
-			margin-bottom: 12px;
 			font-size: 32px;
 			font-weight: 700;
 			line-height: 30px;
+
+			margin-bottom: 12px;
 		}
 
 		&__header {
-			min-height: 175px;
 			padding-top: 29px;
+			min-height: 175px;
 		}
 
 		&__lesson-cost {
@@ -115,6 +143,24 @@
 		&__list {
 			width: 100%;
 		}
+
+		&__age-tag {
+			top: 0;
+			left: 0;
+			right: auto;
+			width: 130px;
+			height: 33px;
+			transform: none;
+			border-radius: 0;
+			border-bottom-right-radius: $border-radius-sm;
+		}
+
+		&--children {
+			.course__header {
+				min-height: 190px;
+				padding-top: 46px;
+			}
+		}
 	}
 
 	@include breakpoint($breakpoint-sm) {
@@ -124,8 +170,8 @@
 		}
 
 		&__header {
-			min-height: 145px;
 			padding: 24px 30px;
+			min-height: 145px;
 		}
 
 		&__content {

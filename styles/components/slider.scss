@@ -59,12 +59,21 @@
 		border-radius: 100%;
 		border: none;
 		background-color: $white;
+		transition: 0.3s ease filter;
 
 		&.swiper-button-disabled {
 			&::before,
 			&::after {
 				background-color: lighten($black, 50%);
 			}
+
+			&:hover {
+				filter: none;
+			}
+		}
+
+		&:hover {
+			filter: drop-shadow(0px 0px 3.807px #f1efec);
 		}
 	}
 

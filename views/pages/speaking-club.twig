@@ -112,7 +112,7 @@
                 и улучшай свои разговорные навыки!
             </p>
 
-            <button class="btn btn--yellow">Записаться</button>
+            <button class="feedback-btn btn btn--yellow">Записаться</button>
 		{% endblock %}
     {% endembed %}
 
@@ -153,7 +153,7 @@
     </section>
 
 	{% include 'sections/big-cards.twig' with {
-        mixin: 'big-cards--speaking-club',
+        class: 'big-cards--speaking-club',
         title: 'Почему вам стоит посещать разговорные клубы?',
         cards: [
             {
@@ -208,7 +208,7 @@
     } %}
 
 	{% include 'sections/cards-square.twig' with {
-        mixin: 'cards-square--speaking-club',
+        class: 'cards-square--speaking-club',
         title: 'Как проходит встреча разговорного клуба в SAY YES?',
         cards: [
             {
@@ -277,7 +277,7 @@
 
                                 <p class="meeting-card__price">{{item.price}}</p>
 
-                                <button class="btn btn--md">Подробнее</button>
+                                <a class="btn btn--md" href="{{item.url}}" target="_blank">Подробнее</a>
                             </div>
                         </div>
                     {% endfor %}
@@ -287,7 +287,7 @@
     </section>
 
 	{% embed 'sections/img-comment.twig' with {
-        mixin: 'img-comment--speaking-club',
+        class: 'img-comment--speaking-club',
         title: 'Разговорный клуб проводят ТОП преподаватели SAY YES!',
         img: 'casey.png'
     } %}
@@ -301,7 +301,7 @@
         mixin: 'speaking-club',
         subtitle: 'Посмотрите, как проходят встречи нашего разговорного клуба',
         videoImg: 'video-section-5',
-        videoId: 'video-9'
+        videoUrl: 'https://www.youtube.com/embed/Vsfz_1QzwDA'
     } %}
 
 	<section class="participants-feedback">
@@ -363,6 +363,12 @@
                     <button class="tabs__tab active">О встречах</button>
                     <button class="tabs__tab">Об оплате</button>
                     <button class="tabs__tab">О технических проблемах</button>
+
+                    {% include 'components/custom-select.twig' with {
+                        class: 'custom-select--big',
+                        options: ['О встречах', 'Об оплате', 'О технических проблемах'],
+                        fill: '#ffffff'
+                    } %}
                 </div>
                 
                 <div class="tabs__content">
@@ -394,15 +400,15 @@
         </div>
 
         <form class="club-events__form">
-            <input type="text" placeholder="Имя" class="club-events__input"/>
-            <input type="text" placeholder="+7 (999) 999-99-99" class="club-events__input"/>
-            <button class="btn">Оставить заявку</button>
+            <input type="text" placeholder="Имя" class="club-events__input">
 
-            <div class="club-events__policy">
-                <input type="checkbox"/>
-                Я согласен с
-                <span class="text text--underline">политикой обработки персональных данных</span>
-            </div>
+            <input type="text" placeholder="+7 (999) 999-99-99" class="club-events__input">
+
+            <button class="btn btn--full">Оставить заявку</button>
+
+            {% include 'components/custom-checkbox.twig' with {
+                checkboxName: 'clubEventsCheckbox'
+            } %}
         </form>
     </section>
 {% endblock %}

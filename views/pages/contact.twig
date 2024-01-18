@@ -101,7 +101,7 @@
 					<div class="contacts__email">
 						<div class="contacts__email-content">
 							<h4 class="contacts__title">E-mail:</h4>
-							<a href="#" class="text text--violet">info@sayes.ru</a>
+							<a class="text text--violet" href="mailto:info@sayes.ru">info@sayes.ru</a>
 						</div>
 
 						{% include 'components/social.twig' %}
@@ -123,7 +123,7 @@
 					</div>
 				</div>
 
-				<button class="btn btn--yellow">Узнайте как нас найти на Павелецкой</button>
+				<a class="btn btn--yellow" href="https://maps.app.goo.gl/ZTjB8XZsKyQ1ozPLA" target="_blank">Узнайте как нас найти на Павелецкой</a>
 			</div>
 
 			<div class="contacts__map">
@@ -150,7 +150,8 @@
 									{% for contact in person.contacts %}
 										<li>
 											<span>{% include 'components/icon.twig' with { class: contact.icon } %}</span>
-											<span>{{contact.value}}</span>
+
+											<a class="card__link" href="{{contact.link}}">{{contact.value}}</a>
 										</li>
 									{% endfor %}
 								</ul>

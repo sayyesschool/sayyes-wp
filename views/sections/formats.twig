@@ -9,7 +9,7 @@
 			занятий?
 		</p>
 
-		<img src="{{theme.link}}/static/images/decoration/notes/classes-at-school.svg" alt="Посмотрите видео" class="formats__note">
+		<img class="formats__note" src="{{theme.link}}/static/images/decoration/notes/classes-at-school.svg" alt="Посмотрите видео">
 
 		<div class="tabs">
 			<div class="tabs__nav tabs__nav--formats">
@@ -22,8 +22,9 @@
 					<div class="feedback feedback--formats">
 						<div class="feedback__left">
 							<div class="video">
-								<img src="{{theme.link}}/static/images/lessons-type/slide-1.jpg" alt="Офлайн" class="video__bg">
-								<button class="play" id="video-4"></button>
+								<img class="video__bg" src="{{theme.link}}/static/images/lessons-type/slide-1.jpg" alt="Офлайн">
+
+								<button class="video-btn play" data-url="https://www.youtube.com/embed/Vsfz_1QzwDA"></button>
 							</div>
 						</div>
 
@@ -37,20 +38,14 @@
 							</div>
 						</div>
 					</div>
-
-					{% include 'components/modal.twig' with {
-						id: 'video-4',
-						modal: 'video',
-						url: 'https://www.youtube.com/embed/6ISA01NE2rY'
-					} %}
 				</div>
 
 				<div class="tabs__item">
 					<div class="feedback">
 						<div class="feedback__left">
 							<div class="video">
-								<img src="{{theme.link}}/static/images/lessons-type/slide-2.jpg" alt="Офлайн" class="video__bg">
-								<button class="play" id="video-4"></button>
+								<img class="video__bg" src="{{theme.link}}/static/images/lessons-type/slide-2.jpg" alt="Офлайн">
+								<button class="video-btn play" data-url="https://www.youtube.com/embed/2ceQfTSVloU"></button>
 							</div>
 						</div>
 
@@ -63,12 +58,6 @@
 							</div>
 						</div>
 					</div>
-
-					{% include 'components/modal.twig' with {
-						id: 'video-4',
-						modal: 'video',
-						url: 'https://www.youtube.com/embed/6ISA01NE2rY'
-					} %}
 				</div>
 			</div>
 		</div>

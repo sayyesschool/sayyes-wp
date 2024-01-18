@@ -26,6 +26,14 @@
 		max-width: 490px;
 	}
 
+	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+
+		.subtitle {
+			max-width: 470px;
+		}
+	}
+
 	@include breakpoint($breakpoint-md) {
 		.slider {
 			&__arrows {
@@ -41,7 +49,7 @@
 		}
 
 		.section-container {
-			max-width: 867px;
+			max-width: 708px;
 		}
 
 		.slider {
@@ -49,17 +57,13 @@
 		}
 	}
 
-	@include breakpoint($breakpoint-sm) {
-		.subtitle {
-			max-width: 400px;
-		}
-
-		.section-container {
-			max-width: 708px;
-		}
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
 	}
 
 	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
+		
 		.slider {
 			&__pagination {
 				padding-left: 48%;

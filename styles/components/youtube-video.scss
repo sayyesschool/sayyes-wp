@@ -2,5 +2,54 @@
 	background-color: $pale-white;
 	border-radius: $border-radius;
 
-	padding: 50px;
+	width: 80vh;
+	height: 50vh;
+	padding: 35px;
+
+	&--vertical {
+		width: 55vh;
+		height: 80vh;
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		width: 65vh;
+		height: 41vh;
+		padding: 20px;
+		border-radius: $border-radius-sm;
+
+		&--vertical {
+			width: 45vh;
+			height: 65vh;
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		width: 54vh;
+		height: 34vh;
+
+		&--vertical {
+			width: 37vh;
+			height: 54vh;
+		}
+	}
+
+	@include breakpoint($breakpoint-mobile) {
+		width: 48vh;
+		height: 30vh;
+
+		&--vertical {
+			width: 33vh;
+			height: 48vh;
+		}
+	}
+
+	@include breakpoint($breakpoint-sm-mobile) {
+		width: 35vh;
+		height: 22vh;
+
+		&--vertical {
+			width: 24vh;
+			height: 35vh;
+		}
+	}
 }

@@ -14,6 +14,10 @@
 		margin-bottom: 40px;
 	}
 
+	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+	}
+
 	@include breakpoint($breakpoint-md) {
 		.subtitle,
 		&__description {
@@ -42,7 +46,13 @@
 		}
 	}
 
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+	}
+
 	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
+
 		.subtitle,
 		&__description {
 			max-width: 530px;

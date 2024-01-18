@@ -18,6 +18,7 @@
     } %}
 
 	{% include 'sections/learning-form.twig' with {
+        class: 'learning-form--adults-courses',
         title: course.formats.title,
         description: 'Вы можете проходить курс английского языка с нуля в различных форматах. Продолжительность и стоимость курса зависят от интенсивности и формата обучения.',
         courses: [
@@ -104,7 +105,7 @@
     </section>
 
 	{% include 'sections/course-feedback.twig' with {
-        mixin: 'course-feedback__children-courses',
+        class: 'course-feedback__children-courses',
         title: 'Отзывы о курсе Английский с нуля',
         courseFeedback: data.courseFeedbackAdults
     } %}

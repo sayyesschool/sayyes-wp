@@ -87,12 +87,9 @@ class SayYesSite extends Site {
         $context['YANDEX_METRIKA_COUNTER'] = $this->yandex_metrika_counter;
         $context['GA_MEASUREMENT_ID'] = $this->google_analytics_id;
         $context['FACEBOOK_PIXEL_IDS'] = $this->facebook_pixel_ids;
-        $context['top_menu'] = Timber::get_menu('top_nav');
 		$context['main_menu'] = Timber::get_menu('main_nav');
-        $context['side_menu'] = Timber::get_menu('side_nav');
-		$context['mobile_menu'] = Timber::get_menu('mobile_nav');
         $context['footer_menu'] = Timber::get_menu('footer_nav');
-        $context['sidebar_reports'] = Timber::get_sidebar('sidebar-reports.php');
+        $context['settings'] = get_fields('options');
         
 		return $context;
 	}

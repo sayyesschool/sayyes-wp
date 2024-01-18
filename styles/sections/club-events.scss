@@ -16,6 +16,12 @@
 		margin-bottom: 10px;
 	}
 
+	.input-text {
+		&:last-of-type {
+			margin-bottom: 40px;
+		}
+	}
+
 	&::before {
 		content: "";
 		position: absolute;
@@ -47,28 +53,6 @@
 		max-width: 475px;
 	}
 
-	&__input {
-		background-color: $white;
-		border-radius: $border-radius;
-		border: none;
-		color: $grey;
-		font-weight: normal;
-
-		padding: 11px 20px;
-		width: 100%;
-		margin-bottom: 10px;
-
-		&:last-of-type {
-			margin-bottom: 40px;
-		}
-	}
-
-	&__policy {
-		font-size: 14px;
-		font-weight: 600;
-		line-height: 15px;
-	}
-
 	@include breakpoint($breakpoint-xl) {
 		&::before {
 			width: 513px;
@@ -78,6 +62,8 @@
 	}
 
 	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+
 		&__title {
 			font-size: 32px;
 			font-weight: 700;
@@ -102,7 +88,12 @@
 		}
 	}
 
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+	}
+
 	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
 		flex-direction: column;
 
 		&__title {

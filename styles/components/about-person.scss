@@ -5,16 +5,18 @@
 	border-radius: $border-radius;
 
 	&__title {
-		max-width: 220px;
-		margin-bottom: 20px;
 		font-size: 24px;
 		font-weight: 700;
+
+		max-width: 220px;
+		margin-bottom: 20px;
 	}
 
 	&__mini-title {
-		max-width: 230px;
-		margin-bottom: 5px;
 		font-weight: 800;
+
+		margin-bottom: 5px;
+		max-width: 230px;
 	}
 
 	&__description {
@@ -30,8 +32,9 @@
 
 	&__tag {
 		display: inline-block;
-		margin-bottom: 20px;
 		padding: 3px 5px;
+		margin-bottom: 20px;
+
 		border: 2px solid #262626;
 		border-radius: 10px;
 		font-size: 14px;
@@ -53,10 +56,11 @@
 		max-width: 326px;
 
 		&__title {
-			margin-bottom: 15px;
 			font-size: 18px;
 			font-weight: 800;
 			line-height: 20px;
+
+			margin-bottom: 15px;
 		}
 
 		&__mini-title {

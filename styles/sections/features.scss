@@ -6,7 +6,6 @@
 	margin-bottom: 100px;
 
 	.btn {
-		display: block;
 		margin: 40px auto 0;
 	}
 
@@ -79,6 +78,10 @@
 		}
 	}
 
+	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+	}
+
 	@include breakpoint($breakpoint-md) {
 		&::before {
 			width: 293px;
@@ -93,7 +96,12 @@
 		}
 	}
 
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+	}
+
 	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
 		flex-direction: column;
 		gap: 15px;
 

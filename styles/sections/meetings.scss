@@ -27,6 +27,10 @@
 		padding: 40px 35px;
 	}
 
+	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+	}
+
 	@include breakpoint($breakpoint-md) {
 		.slider {
 			width: calc(100% + 35px);
@@ -53,6 +57,14 @@
 				border-radius: 10px;
 			}
 		}
+	}
+
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
 	}
 
 	@include breakpoint($breakpoint-sm-mobile) {

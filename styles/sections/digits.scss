@@ -78,6 +78,8 @@
 	}
 
 	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+
 		.subtitle {
 			max-width: 150px;
 		}
@@ -117,12 +119,15 @@
 	}
 
 	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+
 		&__list {
 			width: 450px;
 		}
 	}
 
 	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
 		flex-direction: column;
 
 		.subtitle {

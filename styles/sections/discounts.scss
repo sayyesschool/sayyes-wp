@@ -6,10 +6,15 @@
 		text-align: center;
 	}
 
+	.text-block {
+		min-height: 370px;
+	}
+
 	&__description {
 		max-width: 400px;
 		margin: 0 auto;
 		margin-bottom: 45px;
+
 		text-align: center;
 	}
 
@@ -20,14 +25,15 @@
 		justify-content: space-between;
 	}
 
-	.text-block {
-		min-height: 370px;
-	}
-
 	&__ps {
 		max-width: 680px;
 		margin: 35px auto 0;
+
 		text-align: center;
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
 	}
 
 	@include breakpoint($breakpoint-md) {
@@ -40,12 +46,8 @@
 		&__description {
 			max-width: 200px;
 			margin: 0;
-			text-align: left;
-		}
 
-		&__blocks {
-			margin-top: -85px;
-			gap: 15px;
+			text-align: left;
 		}
 
 		.text-block {
@@ -59,22 +61,33 @@
 				margin-left: calc(50% + 7.5px);
 			}
 		}
+
+		&__blocks {
+			margin-top: -85px;
+			gap: 15px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
 	}
 
 	@include breakpoint($breakpoint-xxs) {
-		&__description {
-			max-width: none;
-			margin-bottom: 20px;
+		margin-bottom: 50px;
+
+		.text-block {
+			&:first-child {
+				margin-left: 0;
+			}
 		}
 
 		&__blocks {
 			margin-top: 0;
 		}
 
-		.text-block {
-			&:first-child {
-				margin-left: 0;
-			}
+		&__description {
+			max-width: none;
+			margin-bottom: 20px;
 		}
 	}
 
@@ -86,7 +99,7 @@
 		.text-block {
 			padding-right: 65px;
 
-			&__title {
+			.text-block__title {
 				max-width: 130px;
 			}
 		}

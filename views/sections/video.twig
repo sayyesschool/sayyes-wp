@@ -9,12 +9,7 @@
 
 	<div class="video">
 		<img class="video__bg" src="{{theme.link}}/static/images/video-sections/{{videoImg}}.jpg" alt="Офлайн">
-		<button class="play" id="{{videoId}}"></button>
+		
+		<button class="video-btn play" data-url="{{videoUrl}}"></button>
 	</div>
-
-	{% include 'components/modal.twig' with {
-		modal: 'video',
-		id: videoId,
-		url: 'https://www.youtube.com/embed/6ISA01NE2rY'
-	} %}
 </section>

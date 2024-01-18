@@ -58,7 +58,9 @@
         {% for modal in [
             'feedback',
             'callback',
-            'successful'
+            'successful',
+            'video',
+            'teacher'
         ] %}
             {% include 'components/modal.twig' with { modal, id: modal } %}
         {% endfor %}
@@ -74,13 +76,12 @@
         <script src="https://static.sayes.ru/js/crm.js"></script>
 
         {# <script src="{{ theme.link }}/static/lib/inputmask.js"></script> #}
-        <script src="{{ theme.link }}/scripts/sticky.js"></script>
         <script type="module" src="{{ theme.link }}/scripts/main.js"></script>
 
         <script>
-            $(document).ready(function () {
+            {# $(document).ready(function () {
                 $('input[type=tel]').mask('+7 (999) 999-9999');
-            });
+            }); #}
             
             {# $('#main-navigation .nav-item.dropdown').hover(
                 function() {

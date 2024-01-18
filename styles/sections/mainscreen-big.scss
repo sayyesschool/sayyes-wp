@@ -13,7 +13,6 @@
 	}
 
 	.btn {
-		display: block;
 		margin: 0 auto;
 	}
 
@@ -21,10 +20,6 @@
 		text-align: center;
 		margin: 15px auto 25px;
 		max-width: 350px;
-
-		p:only-child {
-			margin-bottom: 0;
-		}
 	}
 
 	&__img {
@@ -117,6 +112,8 @@
 	}
 
 	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+
 		.split-image,
 		&__img {
 			height: 460px;
@@ -148,6 +145,8 @@
 	}
 
 	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+
 		.title {
 			font-size: 28px;
 			line-height: 30px;
@@ -160,6 +159,8 @@
 	}
 
 	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
+
 		.split-image,
 		&__img {
 			height: 280px;

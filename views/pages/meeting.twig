@@ -1,338 +1,63 @@
-{% extends 'layouts/two-columns.twig' %}
+{% extends 'layouts/base.twig' %}
 
-{% set places = {
-    paveletskaya: 'Школа SAY YES! на Павелецкой',
-    belorusskaya: 'Школа SAY YES! на Белорусской',
-    '1905': 'Школа SAY YES! м. Улица 1905 года',
-    online: 'Онлайн платформа Zoom'
-} %}
+{% block content %}
+	<section class="meeting">
+        <div class="meeting-card">
+            <img class="meeting-card__img" src="./assets/images/meetings/{{meeting.img.src}}.jpg" alt="{{meeting.img.alt}}">
 
-{% block main %}
-<h1 class="page-title event-title">{{ event.title }}</h1>
+            <div class="meeting-card__content">
+                <div class="meeting-card__left">
+                    <div class="meeting-card__header">
+                        <p class="meeting-card__info">{{meeting.date}}</p>
 
-<section id="details">
-    <p class="event-description">{{ event.preview.read_more('') }}</p>
-
-    <div class="row">
-        {% if event.datetime %}
-            <div class="col">
-                <div class="info-block event-datetime">
-                    <div class="info-block__graphic">
-                        <img src="{{ theme.link }}/static/images/icons/dusk/timetable.png">
-                    </div>
-
-                    <div class="info-block__text">
-                        <div class="info-block__primary-text">Когда</div>
-
-                        <div class="info-block__secondary-text">
-                            {{ event.datetime|date('F j в G:i') }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
-        
-        {% if event.place %}
-            <div class="col">
-                <div class="info-block event-place">
-                    <div class="info-block__graphic">
-                        <img src="{{ theme.link }}/static/images/icons/dusk/address.png">
-                    </div>
-                    
-                    <div class="info-block__text">
-                        <div class="info-block__primary-text">Где</div>
-
-                        <div class="info-block__secondary-text">
-                            {{ places[event.place] }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
-        
-        {% if event.level %}
-            <div class="col">
-                <div class="info-block event-level">
-                    <div class="info-block__graphic">
-                        <img src="{{ theme.link }}/static/images/icons/dusk/rating.png">
-                    </div>
-                    
-                    <div class="info-block__text">
-                        <div class="info-block__primary-text">Уровень</div>
-
-                        <div class="info-block__secondary-text">
-                            {% for level in event.level %}
-                                <span>{{ level }}</span>
-
-                                {% if not loop.last %}
-                                /
-                                {% endif %}
+                        <div class="tags">
+                            {% for tag in meeting.tags %}
+                                <span class="tag {{tag.class}}">{{tag.text}}</span>
                             {% endfor %}
                         </div>
                     </div>
-                </div>
-            </div>
-        {% endif %}
 
-        {% if event.audience %}
-            <div class="col">
-                <div class="info-block event-audience">
-                    <div class="info-block__graphic">
-                        <img src="{{ theme.link }}/static/images/icons/dusk/user-group-man-woman.png">
+                    <h3 class="meeting-card__title">{{meeting.title}}</h3>
+
+                    <p class="meeting-card__description">{{meeting.description}}</p>
+
+                    <p class="meeting-card__address">{{meeting.address}}</p>
+
+                    <div class="meeting-card__footer">
+                        <ul class="meeting-card__list">
+                            <li class="meeting-card__list-item">
+                                {% include 'components/icon.twig' with {class: 'icon--teacher'} %}
+
+                                <a class="meeting-card__name" href="{{meeting.teacher.url}}">{{meeting.teacher.name}}</a>
+                            </li>
+
+                            <li class="meeting-card__list-item">
+                                {% include 'components/icon.twig' with {class: 'icon--time icon--white'} %}
+
+                                <span class="meeting-card__time">{{meeting.time}}</span>
+                            </li>
+                        </ul>
+
+                        <p class="meeting-card__price">{{meeting.price}}</p>
                     </div>
+                </div>
+
+                <form action="post" class="registration">
+                    <h3 class="registration__title">Регистрация на встречу</h3>
+
+                    <input type="text" placeholder="Имя" class="input-text">
+
+                    <input type="text" placeholder="+7 (999) 999-99-99" class="input-text">
                     
-                    <div class="info-block__text">
-                        <div class="info-block__primary-text">Для кого</div>
+                    <input type="text" placeholder="Email" class="input-text">
 
-                        <div class="info-block__secondary-text">
-                            {% if event.audience == 'students' %}
-                                Студенты SAY YES!
-                            {% elseif event.audience == 'anyone' %}
-                                Все желающие
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
+                    <button class="btn btn--full">Оставить заявку</button>
 
-        <div class="col">
-            <div class="info-block event-price">
-                <div class="info-block__graphic">
-                    <img src="{{ theme.link }}/static/images/icons/dusk/ruble.png">
-                </div>
-                
-                <div class="info-block__text">
-                    <div class="info-block__primary-text">Стоимость</div>
-
-                    <div class="info-block__secondary-text">
-                        {% if event.price %}
-                            {{ event.price }} руб.
-                        {% else %}
-                            БЕСПЛАТНО!
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-{% if event.datetime > 'now'|date('Y-m-d H:i:s') %}
-<section id="registration" class="section">
-    <div class="card card-outlined">
-        <div class="row no-gutters">
-            <div class="col-sm-7 d-flex">
-                <div class="card-image" style="background-image: url('{{ event.thumbnail.src }}')"></div>
-            </div>
-
-            <div class="col-sm-5">
-                <form id="event-form" @submit.prevent="submit" ref="form">
-                    <div class="card-body" v-if="!sent && !error">
-                        <h3 class="card-title">Регистрация на встречу</h3>
-
-                        <div class="form-group">
-                            <input type="text" ref="name" placeholder="Имя" class="form-control" :disabled="loading || sent" required>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="tel" ref="phone" placeholder="Телефон" class="form-control" :disabled="loading || sent" required>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="email" ref="email" placeholder="Email" class="form-control" :disabled="loading || sent" required>
-                        </div>
-
-                        {% if event.audience == 'students' %}
-                            <div class="form-group form-check">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" :disabled="loading || sent" required>
-                                    Я являюсь студентом школы
-                                    <span class="form-check-sign"></span>
-                                </label>
-                            </div>
-                        {% endif %}
-
-                        <button type="submit" class="btn btn-primary btn-block btn-lg" :disabled="!isFormValid || loading">
-                            <div class="uil-reload-css reload-small" v-if="loading">
-                                <div></div>
-                            </div>
-
-                            Зарегистрироваться
-                        </button>
-
-                        <small>Нажимая «Зарегистрироваться», вы принимаете условия <a href="https://sayes.ru/politika-konfidentsialnosti/" target="_blank">соглашения</a></small>
-                    </div>
-
-                    <div v-if="sent" class="card-body text-center">
-                        <img class="icon" src="{{ theme.link }}/static/images/icons/dusk/ok.png">
-
-                        <p class="lead">Спасибо!<br>Вы успешно зарегистрированы!</p>
-                        
-                        <p>За день до мероприятия Вам будет направлено СМС с подтверждением Вашего визита. Обязательно ответьте на него, чтобы мы могли понимать количество участников :)</p>
-                    </div>
-                    
-                    <div v-if="error" class="card-body text-center">
-                        <img class="icon" src="{{ theme.link }}/static/images/icons/dusk/error.png">
-
-                        <p class="lead">Не удалось отправить заявку :( Попробуйте еще раз.</p>
-                    </div>
+                    {% include 'components/custom-checkbox.twig' with {checkboxName: 'registrationMeetingCheckbox'} %}
                 </form>
             </div>
         </div>
-    </div>
-</section>
-{% endif %}
-
-<section id="host" class="section section-gray">
-    <h2 class="title section-title">Ведущий мероприятия</h2>
-
-    <div class="row">
-        <div class="col-md-3">
-            <img class="img-rounded" src="{{ event.host.thumbnail.src }}">
-        </div>
-        
-        <div class="col-md-9">
-            <div class="host-info">
-                <h3 class="host-name">{{ event.host.title }}</h3>
-
-                <p class="host-position text-muted">{{ event.host.position }}</p>
-
-                <div class="host-description">
-                    {{ event.host.content }}
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="about" class="section">
-    <h2 class="section-title">На встрече клуба мы</h2>
-
-    {{ event.content }}
-</section>
-
-<section id="audience" class="section">
-    <h2 class="section-title">Для кого</h2>
-
-    <ul>
-        {% for item in [
-            'Вам нужна практика языка для поддержания своего уровня знаний английского',
-            'Вы хотите преодолеть языковой барьер', 
-            'Вы хотите пополнить свой словарный запас новыми словами и выражениями',
-            'Вы желаете общаться с носителями языка'
-        ] %}
-            <li>
-                {{ item }}
-            </li>
-        {% endfor %}
-    </ul>
-</section>
-
-<section id="benefits" class="section">
-    <h2 class="section-title">Что вы получите</h2>
-
-    <ul>
-        {% for item in [
-            '2 часа эффективной разговорной практики с носителем языка и участниками вашего уровня',
-            'Знакомство с новыми интересными людьми', 
-            'Улучшение ваших разговорных навыков и понимания на слух'
-        ] %}
-            <li>
-                {{ item }}
-            </li>
-        {% endfor %}
-    </ul>
-</section>
-
-{% if event.datetime > 'now'|date('Y-m-d H:i:s') %}
-    <section>
-        {% if event.price %}
-            <p>Стоимость участия: <span>{{ event.price }}</span> руб.</p>
-        {% elseif event.audience == 'students' %}
-            <p>Стоимость участия: БЕСПЛАТНО для СТУДЕНТОВ SAY YES!</p>
-        {% else %}
-            <p>Стоимость участия: БЕСПЛАТНО!</p>
-        {% endif %}
-
-        <button class="btn btn-lg btn-primary btn-cta">Зарегистрироваться на встречу</button>
     </section>
-{% endif %}
-{% endblock main %}
 
-{% block scripts %}
-<script>
-new Vue({
-    el: '#event-form',
-
-    delimiters: ['${', '}'],
-
-    data: {
-        loading: false,
-        sent: false,
-        error: false
-    },
-
-    computed: {
-        name: function() {
-            return this.$refs.name ? this.$refs.name.value : '';
-        },
-        
-        phone: function() {
-            return this.$refs.phone ? this.$refs.phone.value : '';
-        },
-
-        email: function() {
-            return this.$refs.email ? this.$refs.email.value : '';
-        }
-    },
-
-    methods: {
-        isFormValid: function() {
-            return this.$refs.form.checkValidity();
-        },
-
-        submit: function() {
-            var vue = this;
-
-            if (this.isFormValid()) {
-                this.loading = true;
-
-                crm.addStudyRequest({
-                    type: 'Запись на мероприятие',
-                    name: this.name,
-                    phone: this.phone,
-                    email: this.email,
-                    description: '{{ event.title }}'
-                });
-
-                $.ajax({
-                    type: 'POST',
-                    url: '{{ theme.link }}/event.php',
-                    contentType: 'application/json; charset=utf-8',
-                    data: JSON.stringify({
-                        name: this.name,
-                        phone: this.phone,
-                        email: this.email,
-                        title: '{{ event.title }}'
-                    })
-                }).done(function() {
-                    vue.sent = true;
-                }).fail(function() {
-                    vue.error = true;
-                }).always(function() {
-                    vue.loading = false;
-                    vue.$refs.form.reset();
-                });
-            }
-        }
-    }
-});
-
-var formElement = document.querySelector('#event-form');
-
-$('.btn-cta').on('click', function(event) {
-    formElement.scrollIntoView({ block: 'center', behavior: 'smooth' });
-});
-</script>
-{% endblock scripts %}
+	{% include 'sections/faq.twig' %}
+{% endblock %}

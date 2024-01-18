@@ -29,6 +29,7 @@
 
 	&__right {
 		flex-basis: 473px;
+		z-index: 1;
 	}
 
 	&__bg {
@@ -162,6 +163,12 @@
 
 			max-width: 240px;
 			margin-bottom: 10px;
+		}
+	}
+
+	@include breakpoint($breakpoint-sm-mobile) {
+		&__content {
+			padding: 20px;
 		}
 	}
 }

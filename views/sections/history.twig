@@ -38,20 +38,26 @@
 			{% for item in rewards %}
 				<li class="reward">
 					<h3 class="reward__title">{{item.year}}</h3>
+
 					<h4 class="reward__subtitle">
 						№{{item.numbering}}
 						{{item.nomination}}
 					</h4>
+
 					<p class="reward__description">{{item.description}}</p>
 				</li>
 			{% endfor %}
 
 			<div class="history__add-reward">
-				<img src="{{theme.link}}/static/images/pictures/founders-1.png" alt="Основатели" class="history__img">
-				<img src="{{theme.link}}/static/images/decoration/notes/founders.svg" alt="Основатели" class="history__note">
+				<img class="history__img" src="{{theme.link}}/static/images/pictures/founders-1.png" alt="Основатели">
+
+				<img class="history__note" src="{{theme.link}}/static/images/decoration/notes/founders.svg" alt="Основатели">
+
 				<div class="comment">
 					<h3 class="comment__title">Лицензия Министерства образования № 36801</h3>
+
 					<p class="comment__description">Соответствует международным стандартам обучения.</p>
+
 					<p class="comment__description">Вы также сможете получить налоговый вычет.</p>
 				</div>
 			</div>

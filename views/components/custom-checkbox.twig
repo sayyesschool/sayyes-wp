@@ -1,0 +1,17 @@
+<div class="custom-checkbox">
+	{% set id = name ~ '-' ~ random() %}
+	
+	<label class="custom-checkbox__label" for="{{id}}">
+		Я согласен с
+		<a href="#" class="text text--underline">политикой обработки персональных данных</a>
+
+		<input id="{{id}}" class="custom-checkbox__input" type="checkbox" name="{{name}}" checked>
+
+		<span class="custom-checkbox__checkmark"></span>
+	</label>
+
+	<p class="custom-checkbox__description">
+		Оставляя заявку вы принимаете условия
+		<a class="text text--underline" href="#">Политикой обработки персональных данных</a>
+	</p>
+</div>

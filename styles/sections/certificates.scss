@@ -33,6 +33,10 @@
 		object-fit: cover;
 	}
 
+	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+	}
+
 	@include breakpoint($breakpoint-md) {
 		&__content {
 			flex-direction: column;
@@ -49,7 +53,13 @@
 		}
 	}
 
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+	}
+
 	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
+
 		&__text {
 			max-width: 470px;
 		}

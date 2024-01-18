@@ -42,6 +42,8 @@
 	}
 
 	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+
 		&__note {
 			top: 25px;
 			width: 192px;
@@ -54,5 +56,13 @@
 		&__note {
 			display: none;
 		}
+	}
+
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
 	}
 }

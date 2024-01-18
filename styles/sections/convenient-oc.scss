@@ -29,12 +29,16 @@
 	}
 
 	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+
 		&__description {
 			max-width: 440px;
 		}
 	}
 
 	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+
 		&__content {
 			flex-wrap: wrap;
 		}
@@ -45,6 +49,8 @@
 	}
 
 	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
+		
 		&__description {
 			max-width: 100%;
 		}

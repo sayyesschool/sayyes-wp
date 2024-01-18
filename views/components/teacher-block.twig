@@ -4,9 +4,14 @@
 			<img class="video__bg" src="{{theme.link}}/static/images//teachers/{{teacher.img}}.jpg" alt="Say Yes">
 			<button class="play" id="{{teacher.teacherId}}"></button>
 		</div>
-		<h2 class="teacher-block__title">{{teacher.name}}</h2>
-		<p class="teacher-block__free-lesson">Бесплатный пробный урок с этим преподавателем</p>
-		<button class="btn btn--sm btn--transparent btn--transparent-black">Подробнее</button>
+
+		<div class="teacher-block__info">
+			<h2 class="teacher-block__title">{{teacher.name}}</h2>
+
+			<p class="teacher-block__free-lesson">Бесплатный пробный урок с этим преподавателем</p>
+
+			<button class="btn btn--sm btn--transparent btn--transparent-black feedback-btn">Подробнее</button>
+		</div>
 	</div>
 
 	<div class="subtabs">
@@ -14,26 +19,71 @@
 			<button class="subtabs__tab active">Обо мне</button>
 			<button class="subtabs__tab">Специализации</button>
 			<button class="subtabs__tab">Отзывы</button>
+
+			{% include 'components/custom-select.twig' with {
+				class: 'custom-select--sm',
+				options: ['Обо мне', 'Специализации', 'Отзывы']
+			} %}
 		</div>
 
 		<div class="subtabs__content">
 			<div class="subtabs__item active">
 				<div class="about-teacher">
-					<div class="about-teacher__scroll">
-						<div class="about-teacher__experience">
-							{% for merits in teacher.merits %}
-								<div class="about-teacher__item">
-									<div>{{merits.merit}}:</div>
-									<div>{{merits.description}}</div>
-								</div>
-							{% endfor %}
+					<div class="about-teacher__experience">
+						{% for merits in teacher.merits %}
+							<div class="about-teacher__item">
+								<div class="about-teacher__item-key">{{merits.merit}}:</div>
+								<div class="about-teacher__item-value">{{merits.description}}</div>
+							</div>
+						{% endfor %}
+
+						<div class="about-teacher__item">
+							<div class="about-teacher__item-key">Образование:</div>
+
+							<div class="education-list">
+								{% for item in teacher.education %}
+									<div class="education-list__item">
+										<div class="education-list__institution">{{item.institution}}</div>
+										<div class="education-list__faculty">{{item.faculty}}</div>
+									</div>
+								{% endfor %}
+							</div>
 						</div>
-						<p class="about-teacher__text">{{teacher.text}}</p>
 					</div>
+					<p class="about-teacher__text">{{teacher.text}}</p>
 				</div>
 			</div>
-			<div class="subtabs__item">test123</div>
-			<div class="subtabs__item">test321</div>
+
+			<div class="subtabs__item">
+				<div class="specializations">
+					{% include 'components/list.twig' with {
+						classes: 'list--ol-digits',
+						list: teacher.specializationsList
+					} %}
+				</div>
+			</div>
+
+			<div class="subtabs__item">
+				<div class="teacher-reviews">
+					{% for review in teacher.reviews %}
+						<div class="teacher-reviews__review">
+							<div class="teacher-reviews__info">
+								<h4 class="teacher-reviews__name">{{review.name}}</h4>
+
+								<a class="teacher-reviews__social" href="{{review.social.url}}">
+									{% include 'components/icon.twig' with {class: review.social.icon} %}
+								</a>
+							</div>
+
+							<p class="teacher-reviews__description">{{review.description}}</p>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
 		</div>
 	</div>
+
+	<button class="teacher-block__share-link" data-share="{{teacher.shareLink}}">
+		<img src="{{theme.link}}/static/images/icons/share.svg" alt="">
+	</button>
 </div>

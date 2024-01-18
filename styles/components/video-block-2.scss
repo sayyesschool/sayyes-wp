@@ -33,6 +33,14 @@
 		margin-bottom: 15px;
 	}
 
+	&__description {
+		text-overflow: ellipsis;
+		overflow: hidden;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		display: -webkit-box;
+	}
+
 	&__btn {
 		border: none;
 		background-color: transparent;

@@ -7,7 +7,6 @@
 	}
 
 	.btn {
-		display: block;
 		margin: 20px auto 0;
 	}
 
@@ -15,5 +14,17 @@
 		display: flex;
 		justify-content: space-between;
 		margin-bottom: 30px;
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+	}
+
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
 	}
 }
