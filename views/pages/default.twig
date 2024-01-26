@@ -2,7 +2,7 @@
 
 {% block content %}
     {% include 'sections/mainscreen-big.twig' with {
-      mixin: page.id,
+      mixin: page.page_id,
       title: page.heading ? page.heading : page.title,
       description: page.content,
       image: page.thumbnail
