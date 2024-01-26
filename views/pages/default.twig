@@ -2,8 +2,9 @@
 
 {% block content %}
     {% include 'sections/mainscreen-big.twig' with {
-		title: page.heading ?? page.title,
-        description: page.content,
-        image: page.thumbnail
-	} %}
+      mixin: page.id,
+      title: page.heading ? page.heading : page.title,
+      description: page.content,
+      image: page.thumbnail
+    } %}
 {% endblock content %}
