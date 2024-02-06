@@ -109,7 +109,7 @@
 					<p class="card__text">Менеджеры школы — это «ангелы-хранители» наших студентов, готовые прийти на помощь и дать поддержку в процессе обучения.</p>
 				</div>
 
-				{% for person in managers|slice(7) %}
+				{% for manager in managers|slice(7) %}
 					<div class="card card--team-card">
 						<img class="card__img" src="{{manager.thumbnail.src}}" alt="{{manager.name}}">
 
