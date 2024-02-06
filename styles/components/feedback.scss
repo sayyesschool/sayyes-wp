@@ -3,19 +3,19 @@
 	display: flex;
 	gap: 20px;
 
-	.video {
-		width: 568px;
-		height: 310px;
-	}
-
 	&__video {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-end;
 	}
 
-	&__right {
+	&__content {
 		align-self: flex-end;
+	}
+
+	.video {
+		width: 568px;
+		height: 310px;
 	}
 
 	@include breakpoint($breakpoint-xl) {
@@ -28,7 +28,7 @@
 	}
 
 	@include breakpoint($breakpoint-lg) {
-		&__right {
+		&__content {
 			align-self: flex-start;
 		}
 	}
@@ -37,12 +37,6 @@
 		.video {
 			width: 327px;
 			height: 175px;
-		}
-
-		&--lessons-type {
-			.about-person {
-				max-width: 440px;
-			}
 		}
 	}
 
@@ -80,18 +74,6 @@
 
 			.about-person__comment {
 				display: block;
-			}
-		}
-
-		&--student-progress {
-			.video {
-				margin-bottom: -30px;
-			}
-
-			.about-person {
-				padding-top: 54px;
-				border-top-right-radius: 0;
-				border-top-left-radius: 0;
 			}
 		}
 	}

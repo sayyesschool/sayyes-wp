@@ -114,3 +114,13 @@
 
 	{% include 'sections/trial-lesson.twig' %}
 {% endblock %}
+
+{% block modal %}
+    {% embed 'components/modal.twig' with {
+        class: 'teacher-modal'
+    } %}
+        {% block content %}
+            {% include 'components/teacher-block.twig' %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

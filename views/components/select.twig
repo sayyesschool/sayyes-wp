@@ -1,0 +1,17 @@
+<div class="select">
+	<input class="select__input" type="hidden" name="{{name}}" value="{{options[0]}}">
+
+	<button class="select__button" type="input" >{{options[0]}}</button>
+
+	<span class="select__arrow">
+        {% include 'components/check.twig' with {
+			fill: fill ?? '#262626'
+		} %}
+    </span>
+
+	<ul class="select__list">
+		{% for option in options %}
+			<li class="select__option">{{option}}</li>
+		{% endfor %}
+	</ul>
+</div>

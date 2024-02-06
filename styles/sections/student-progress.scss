@@ -5,6 +5,18 @@
 		max-width: 1098px;
 	}
 
+	.subtitle {
+		max-width: 640px;
+		margin-bottom: 20px;
+	}
+
+	&__description {
+		max-width: 490px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
 	.slider {
 		&__arrows {
 			right: 15%;
@@ -14,16 +26,6 @@
 			display: block;
 			padding-left: 75%;
 		}
-	}
-
-	.subtitle {
-		max-width: 640px;
-		margin-bottom: 20px;
-	}
-
-	&__description {
-		margin-top: 10px;
-		max-width: 490px;
 	}
 
 	@include breakpoint($breakpoint-lg) {
@@ -67,6 +69,18 @@
 		.slider {
 			&__pagination {
 				padding-left: 48%;
+			}
+		}
+
+		.format {
+			.video {
+				margin-bottom: -30px;
+			}
+
+			.about-person {
+				padding-top: 54px;
+				border-top-right-radius: 0;
+				border-top-left-radius: 0;
 			}
 		}
 	}

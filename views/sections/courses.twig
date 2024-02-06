@@ -6,45 +6,48 @@
             <p class="courses__description">{{description}}</p>
         {% endif %}
 
-        <div class="tabs">
-            <div class="tabs__nav tabs__nav--courses">
-                <button class="tabs__tab active">Курсы для взрослых</button>
-                <button class="tabs__tab">Курсы для детей</button>
-            </div>
+        {% embed 'components/tabs.twig' with {
+			tabs: [
+				{
+					content: 'Курсы для взрослых',
+					target: '.course-blocks--adult',
+					active: true
+				},
+				{
+					content: 'Курсы для детей',
+					target: '.course-blocks--children'
+				}
+			]
+		} %}
+            {% block content %}
+                <div class="course-blocks course-blocks--adult">
+                    {% include 'components/courses.twig' with {
+                        courses: courses_adults
+                    } %}
 
-            <div class="tabs__content">
-                <div class="tabs__item active">
-                    <div class="courses__course-blocks">
-                        {% include 'components/courses.twig' with {
-                            courses: courses_adults
-                        } %}
-
-                        {% if with_help %}
-                            <div class="course-selection">
-                                <h3 class="course-selection__title">Затрудняетесь с выбором курса или ваша цель специфична?</h3>
-                                <p class="course-selection__description">Подберем курс под ваши цели или создадим индивидуальный курс под вас!</p>
-                                <button class="callback-btn btn btn--violet">Попробовать бесплатно</button>
-                            </div>
-                        {% endif %}
-                    </div>
+                    {% if with_help %}
+                        <div class="course-selection">
+                            <h3 class="course-selection__title">Затрудняетесь с выбором курса или ваша цель специфична?</h3>
+                            <p class="course-selection__description">Подберем курс под ваши цели или создадим индивидуальный курс под вас!</p>
+                            <button class="callback-btn btn btn--violet">Попробовать бесплатно</button>
+                        </div>
+                    {% endif %}
                 </div>
-                
-                <div class="tabs__item">
-                    <div class="courses__course-blocks">
-                        {% include 'components/courses.twig' with {
-                            courses: courses_children
-                        } %}
 
-                        {% if with_help %}
-                            <div class="course-selection">
-                                <h3 class="course-selection__title">Затрудняетесь с выбором курса или ваша цель специфична?</h3>
-                                <p class="course-selection__description">Подберем курс под ваши цели или создадим индивидуальный курс под вас!</p>
-                                <button class="callback-btn btn btn--violet">Оставить заявку</button>
-                            </div>
-                        {% endif %}
-                    </div>
+                <div class="course-blocks course-blocks--children hidden">
+                    {% include 'components/courses.twig' with {
+                        courses: courses_children
+                    } %}
+
+                    {% if with_help %}
+                        <div class="course-selection">
+                            <h3 class="course-selection__title">Затрудняетесь с выбором курса или ваша цель специфична?</h3>
+                            <p class="course-selection__description">Подберем курс под ваши цели или создадим индивидуальный курс под вас!</p>
+                            <button class="callback-btn btn btn--violet">Оставить заявку</button>
+                        </div>
+                    {% endif %}
                 </div>
-            </div>
-        </div>
+            {% endblock %}
+        {% endembed %}
     </div>
 </section>

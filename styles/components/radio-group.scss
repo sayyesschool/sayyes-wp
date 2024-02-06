@@ -1,0 +1,53 @@
+.radio {
+	&__input {
+		display: none;
+	}
+
+	&__label {
+		position: relative;
+		padding-left: 24px;
+		font-size: 18px;
+		font-weight: 500;
+		line-height: 20px;
+		user-select: none;
+		cursor: pointer;
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 0;
+			width: 14px;
+			height: 14px;
+			transform: translateY(-50%);
+			border-radius: 50%;
+			border: 2px solid $black;
+		}
+	}
+
+	&__input:checked ~ &__label {
+		&:before {
+			background: radial-gradient(
+				circle at center,
+				$black 0,
+				$black 3.25px,
+				transparent 3.25px
+			);
+		}
+	}
+
+	@include breakpoint($breakpoint-mobile) {
+		&__label {
+			padding-left: 18px;
+			font-size: 16px;
+			line-height: 18px;
+		}
+	}
+}
+
+.radio-group {
+	width: 100%;
+	max-width: 390px;
+	display: flex;
+	justify-content: space-between;
+}

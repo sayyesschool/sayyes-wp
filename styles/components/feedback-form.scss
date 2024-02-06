@@ -11,7 +11,6 @@
 
 	&__communication {
 		font-weight: 700;
-
 		margin-top: 15px;
 	}
 
@@ -20,22 +19,22 @@
 		align-items: flex-end;
 		gap: 10px;
 
-		.custom-select,
+		.select,
 		.input-text {
 			margin: 0;
 			margin-bottom: 10px;
 		}
 	}
 
-	.custom-radio-buttons {
+	.radio-group {
 		margin-bottom: 16px;
 	}
 
-	.custom-select {
+	.select {
 		margin: 5px 0 30px;
 	}
 
-	.custom-checkbox {
+	.checkbox {
 		margin-top: 12px;
 	}
 

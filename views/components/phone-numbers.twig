@@ -1,4 +1,4 @@
-<ul class="phone-numbers">
+<ul class="{{html_classes(class ?? [], 'phone-numbers')}}">
 	{% for key, number in settings.phone_numbers %}
 		<li class="phone-numbers__item">
 			{% include 'components/icon.twig' with {

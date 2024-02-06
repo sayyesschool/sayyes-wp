@@ -1,0 +1,11 @@
+<div class="radio-group">
+	{% for item in items %}
+		{% set id = name ~ '-' ~ random() %}
+
+		<div class="radio">
+			<input id="{{id}}" class="radio__input" type="radio" name="{{name}}" value="{{item.value}}"{{item.checked ? ' checked' : ''}}>
+            
+			<label class="radio__label" for="{{id}}">{{item.label}}</label>
+		</div>
+	{% endfor %}
+</div>

@@ -9,50 +9,48 @@
 		<p class="trial-lesson__description">На уроке вы узнаете свой уровень, оцените методику школы, познакомитесь с преподавателем</p>
 	</div>
 
-	<div class="tabs">
-		<div class="tabs__nav tabs__nav--feedback">
-			<button class="tabs__tab active">Взрослым</button>
-			<button class="tabs__tab">Детям</button>
-		</div>
+	{% embed 'components/tabs.twig' with {
+		tabs: [
+			{
+				content: 'Взрослым',
+				target: '.invite--adults',
+				active: true
+			},
+			{
+				content: 'Детям',
+				target: '.invite--children'
+			}
+		]
+	} %}
+		{% block content %}
+			<div class="invite invite--adults">
+				<div class="invite__left">
+					<div class="invite__title">Оставьте заявку на пробный урок</div>
 
-		<div class="tabs__content">
-			<div class="tabs__item active">
-				<div class="invite">
-					<div class="invite__content">
-						<div class="invite__left">
-							<div class="invite__title">Оставьте заявку на пробный урок</div>
+					<p class="invite__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы, и расскажем о курсах</p>
+				</div>
 
-							<p class="invite__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы, и расскажем о курсах</p>
-						</div>
-
-						<div class="invite__right">
-							{% include 'components/feedback-form.twig' %}
-						</div>
-					</div>
-
-					<img class="invite__bg" src="{{theme.link}}/static/images/pictures/invite.png" alt="Invite">
+				<div class="invite__right">
+					{% include 'components/request-form.twig' with {
+						format: true
+					} %}
 				</div>
 			</div>
 
-			<div class="tabs__item">
-				<div class="invite invite--children">
-					<div class="invite__content">
-						<div class="invite__left">
-							<div class="invite__title">Оставьте заявку на пробный урок</div>
+			<div class="invite invite--children hidden">
+				<div class="invite__left">
+					<div class="invite__title">Оставьте заявку на пробный урок</div>
 
-							<p class="invite__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы, и расскажем о курсах</p>
-						</div>
+					<p class="invite__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы, и расскажем о курсах</p>
+				</div>
 
-						<div class="invite__right">
-							{% include 'components/feedback-form.twig' with {
-								children: true
-							} %}
-						</div>
-					</div>
-					
-					<img class="invite__bg" src="{{theme.link}}/static/images/pictures/invite-2.png" alt="Invite">
+				<div class="invite__right">
+					{% include 'components/request-form.twig' with {
+						format: true,
+						children: true
+					} %}
 				</div>
 			</div>
-		</div>
-	</div>
+		{% endblock %}
+	{% endembed %}
 </section>

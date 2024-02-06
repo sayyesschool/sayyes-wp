@@ -1,14 +1,14 @@
 .header {
-	font-size: 14px;
 	position: fixed;
 	top: 0;
 	left: 0;
 	height: 0;
 	width: 100%;
+	font-size: 14px;
 	z-index: 100;
 
-	.logo {
-		margin-right: 45px;
+	&__logo {
+		margin-right: 32px;
 	}
 
 	&__free-lesson {
@@ -28,36 +28,8 @@
 		);
 	}
 
-	.phone-numbers {
+	&__phone-numbers {
 		margin-right: 20px;
-	}
-
-	&.expanded {
-		.header__overview {
-			max-width: 100%;
-			width: 100%;
-			border-radius: 0;
-		}
-	}
-
-	&.opened {
-		.header__navigation {
-			transform: translateY(-15px);
-		}
-
-		.header__burger-line {
-			&:first-child {
-				transform: rotate(45deg) translate(4px, 3.5px);
-			}
-
-			&:nth-child(2) {
-				opacity: 0;
-			}
-
-			&:last-child {
-				transform: rotate(-45deg) translate(4px, -3.5px);
-			}
-		}
 	}
 
 	&__overview {
@@ -212,6 +184,34 @@
 		margin: 0 auto;
 		display: none;
 		min-width: 326px;
+	}
+
+	&.expanded {
+		.header__overview {
+			max-width: 100%;
+			width: 100%;
+			border-radius: 0;
+		}
+	}
+
+	&.opened {
+		.header__navigation {
+			transform: translateY(-15px);
+		}
+
+		.header__burger-line {
+			&:first-child {
+				transform: rotate(45deg) translate(4px, 3.5px);
+			}
+
+			&:nth-child(2) {
+				opacity: 0;
+			}
+
+			&:last-child {
+				transform: rotate(-45deg) translate(4px, -3.5px);
+			}
+		}
 	}
 
 	@include breakpoint($breakpoint-xl) {

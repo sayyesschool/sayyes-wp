@@ -1,33 +1,18 @@
-.custom-checkbox {
+.checkbox {
+	position: relative;
 	font-size: 14px;
 	font-weight: 600;
 	line-height: 15px;
 	user-select: none;
 
-	&__label {
-		display: block;
-		position: relative;
-		padding-left: 20px;
-
-		cursor: pointer;
-	}
-
 	&__input {
 		position: absolute;
+		top: 0;
+		left: 0;
+		width: 12px;
+		height: 12px;
 		opacity: 0;
 		cursor: pointer;
-		height: 0;
-		width: 0;
-
-		&:checked {
-			~ {
-				.custom-checkbox__checkmark {
-					&::before {
-						display: block;
-					}
-				}
-			}
-		}
 	}
 
 	&__checkmark {
@@ -39,16 +24,28 @@
 		border: 2px solid $black;
 
 		&::before {
-			content: "";
+			content: '';
 			display: none;
 			position: absolute;
 			top: -3px;
 			left: 0px;
 			width: 14px;
 			height: 10px;
-			background: url("./static/images/icons/check-4.svg") center
-				center/cover no-repeat;
+			background: url('./static/images/icons/check-4.svg') center center/cover no-repeat;
 		}
+	}
+
+	&__input:checked ~ &__checkmark {
+		&::before {
+			display: block;
+		}
+	}
+
+	&__label {
+		display: block;
+		position: relative;
+		padding-left: 20px;
+		cursor: pointer;
 	}
 
 	&__description {
@@ -60,11 +57,11 @@
 	}
 
 	@include breakpoint($breakpoint-xs) {
-		.custom-checkbox__label {
+		&__label {
 			display: none;
 		}
 
-		.custom-checkbox__description {
+		&__description {
 			display: block;
 		}
 	}

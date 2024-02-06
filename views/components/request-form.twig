@@ -1,88 +1,120 @@
-<form id="{{ id }}" class="request-form" @submit.prevent="submit" ref="form" v-cloak>
-    <div v-if="!sent && !error">
-        <div class="form-group">
-            <input type="text" ref="name" placeholder="Имя*" class="form-control" :disabled="loading || sent" required>
-        </div>
+{% set id = 'request-form-' ~ random() %}
 
-        <div class="form-group">
-            <input type="text" ref="phone" placeholder="Телефон*" class="form-control" :disabled="loading || sent" required>
-        </div>
+<form id="{{id}}" class="request-form">
+    {% if format %}
+        <div class="request-form__format">
+            <h3>Выберите желаемый формат обучения:</h3>
 
-        {% if email %}
-            <div class="form-group">
-                <input type="email" ref="email" placeholder="Электронная почта*" class="form-control" :disabled="loading || sent" required>
+            {% include 'components/radio-group.twig' with {
+                name: 'format' ~ (children ? '-children' : ''),
+                items: [
+                    {
+                        label: 'Офлайн',
+                        value: 'offline',
+                        checked: true
+                    },
+                    {
+                        label: 'Онлайн',
+                        value: 'online',
+                    },
+                    {
+                        label: 'Не знаю',
+                        value: 'unknown'
+                    }
+                ]
+            } %}
+        </div>
+    {% endif %}
+
+    <div class="request-form__contact">
+        {% if children %}
+            <div class="request-form__children">
+                <input class="input" type="text" name="child-name" placeholder="Имя ребёнка" required>
+
+                {% include 'components/select.twig' with {
+                    options: [
+                        'От 6 до 11 лет',
+                        'От 11 до 16 лет'
+                    ]
+                } %}
             </div>
+
+            <input class="input" type="text" name="parent-name" placeholder="Имя родителя" required>
+        {% else %}
+            <input class="input" type="text" name="name" placeholder="Имя" required>
         {% endif %}
 
-        <button type="submit" class="btn btn-primary btn-lg btn-block" :disabled="!isFormValid || loading">
-            <div class="uil-reload-css reload-small" v-if="loading">
-                <div></div>
-            </div>
-
-            {% if button_text %}
-                {{ button_text }}
-            {% else %}
-                Записаться на бесплатный урок
-            {% endif %}
-        </button>
-
-        <small class="text-muted">
-            <i class="fas fa-check"></i>
-            Я согласен на обработку своих персональных данных
-        </small>
+        <input class="input" type="tel" name="phone" placeholder="+7 (999) 999-99-99" required>
     </div>
 
-    <div v-if="sent" class="info" v-cloak>
-        <img class="icon" src="{{ theme.link }}/static/images/icons/dusk/ok.png">
+    <div class="request-form__communication">
+        <h3>Выберите удобный способ связи:</h3>
 
-        <p class="lead">Ваша заявка принята. Мы скоро с вами свяжемся!</p>
+        {% include 'components/select.twig' with {
+            name: 'communication',
+            options: [
+                'Позвоните мне',
+                'Напишите мне в WhatsApp',
+                'Напишите мне в Telegram'
+            ]
+        } %}
     </div>
-    
-    <div v-if="error" class="info" v-cloak>
-        <img class="icon" src="{{ theme.link }}/static/images/icons/dusk/error.png">
 
-        <p class="lead">Не удалось отправить заявку =( Попробуйте еще раз.</p>
-    </div>
+    <button class="btn btn--full" type="submit">
+        {% if button_text %}
+            {{ button_text }}
+        {% else %}
+            Записаться на бесплатный урок
+        {% endif %}
+    </button>
+
+    {% include 'components/checkbox.twig' with {
+        name: 'consent'
+    } %}
 </form>
 
-<script>
+{# <script>
 document.addEventListener('DOMContentLoaded', function() {
     new Vue({
-        el: '#{{ id }}',
+        el: '#{{id}}',
 
         delimiters: ['${', '}'],
         
         data: {
-            title: '{{ title }}',
+            title: '{{title}}',
             loading: false,
             sent: false,
             error: false
         },
 
-        mounted: function() {
-            $(this.$refs.phone).mask('+7 (999) 999-9999');
+        components: {
+            Select
         },
 
+        // mounted() {
+            // $(this.$refs.phone).mask('+7 (999) 999-9999');
+        // },
+
         computed: {
-            name: function() {
+            name() {
                 return this.$refs.name ? this.$refs.name.value : '';
             },
 
-            phone: function() {
+            phone() {
                 return this.$refs.phone ? this.$refs.phone.value : '';
             },
 
-            email: function() {
+            email() {
                 return this.$refs.email ? this.$refs.email.value : '';
             }
         },
 
         methods: {
-            isFormValid: function() {
+            isFormValid() {
                 return this.name && this.phone;
             },
 
-            submit: function() {
+            submit() {
                 if (this.isFormValid()) {
                     var vue = this;
 
@@ -92,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
 						grecaptcha.execute('6LenTzMiAAAAABvM_nwArCX5rtvJQ3TUQS8EsN1q', {action: 'submit'}).then(function(token) {
 							$.ajax({
 								type: 'POST',
-								url: '{{ theme.link }}/recaptcha.php',
+								url: '{{theme.link}}/recaptcha.php',
 								contentType: 'application/json; charset=utf-8',
 								data: JSON.stringify({
 									name: vue.name,
@@ -101,7 +133,6 @@ document.addEventListener('DOMContentLoaded', function() {
 									token: token
 								})
 							}).done(function(response) {
-								console.log(response);
 								if (!response.success || response.score < 0.5) throw 'Bad request';
 								
 								crm.addStudyRequest({
@@ -119,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 								$.ajax({
 									type: 'POST',
-									url: '{{ theme.link }}/request.php',
+									url: '{{theme.link}}/request.php',
 									contentType: 'application/json; charset=utf-8',
 									data: JSON.stringify({
 										title: vue.title,
@@ -147,4 +178,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-</script>
+</script> #}

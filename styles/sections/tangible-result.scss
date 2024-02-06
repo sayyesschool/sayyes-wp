@@ -4,11 +4,10 @@
 	text-align: center;
 
 	&__title {
+		margin-bottom: 20px;
 		font-size: 42px;
 		font-weight: 700;
 		line-height: 40px;
-
-		margin-bottom: 20px;
 	}
 
 	&__description {
@@ -17,13 +16,13 @@
 	}
 
 	@include breakpoint($breakpoint-lg) {
-    margin-bottom: 70px;
+    	margin-bottom: 70px;
     
 		&__title {
-			font-size: 32px;
-			line-height: 30px;
 			max-width: 650px;
 			margin: 0 auto 20px;
+			font-size: 32px;
+			line-height: 30px;
 		}
 	}
 

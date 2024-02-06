@@ -364,8 +364,8 @@
                     <button class="tabs__tab">Об оплате</button>
                     <button class="tabs__tab">О технических проблемах</button>
 
-                    {% include 'components/custom-select.twig' with {
-                        class: 'custom-select--big',
+                    {% include 'components/select.twig' with {
+                        class: 'select--big',
                         options: ['О встречах', 'Об оплате', 'О технических проблемах'],
                         fill: '#ffffff'
                     } %}
@@ -406,8 +406,8 @@
 
             <button class="btn btn--full">Оставить заявку</button>
 
-            {% include 'components/custom-checkbox.twig' with {
-                checkboxName: 'clubEventsCheckbox'
+            {% include 'components/checkbox.twig' with {
+                name: 'clubEventsCheckbox'
             } %}
         </form>
     </section>

@@ -2,6 +2,7 @@
 
 {% block content %}
 	{% include 'sections/mainscreen-big.twig' with {
+		mixin: page.name ?? 'about',
 		title: page.title,
         description: 'Влюбляем в английский и исполняем ваши мечты с 2013 года',
         image: 'mainscreen-2'

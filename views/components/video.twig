@@ -1,0 +1,43 @@
+<div class="{{html_classes(class ?? [], 'video', {
+    'video--autoplay': autoplay,
+    'video--embed': youtube_id is not empty,
+    'video--hover': hover,
+    'video--modal': modal,
+    'video--vertical': vertical
+})}}">
+    {% if image or modal %}
+        <img class="video__bg" src="{{image.path ? theme.link ~ '/static/images/' ~ image.path : image.src}}" alt="{{image.alt}}">
+    {% else %}
+        <video
+            src="{{filename ? theme.link ~ '/static/videos/' ~ filename : src}}"
+            prealod="metadata"
+            {% if poster %}
+                poster="{{theme.link}}/{{poster}}"
+            {% endif %}
+            {% if autoplay or hover %}
+                muted
+            {% endif %}
+            {% if loop or hover %}
+                loop
+            {% endif %}
+        ></video>
+    {% endif %}
+
+    {% if not hover and not autoplay %}
+        <button
+            type="button"
+            class="video__btn"
+            {% if modal %}
+                {% if youtube_id %}
+                    data-embed-url="https://www.youtube.com/embed/{{youtube_id}}"
+                {% else %}
+                    data-video-url="{{filename ? theme.link ~ '/static/videos/' ~ filename : src}}"
+                {% endif %}
+            {% endif %}
+            {% if modal and vertical %}
+                data-vertical="true"
+            {% endif %}
+        ></button>
+    {% endif %}
+</div>
+

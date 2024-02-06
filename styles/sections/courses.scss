@@ -6,11 +6,46 @@
 		margin-bottom: 30px;
 	}
 
-	&__course-blocks {
+	.course-blocks {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 20px;
 		margin-top: 40px;
+	}
+
+	.tabs {
+		&__nav {
+			max-width: 560px;
+			margin-bottom: 40px;
+		}
+
+		&__tab {
+			background-color: $yellow;
+			border-radius: $border-radius 0 0 $border-radius;
+
+			&:last-of-type {
+				background-color: $medium-magenta;
+				border-radius: 0 $border-radius $border-radius 0;
+			}
+
+			&:not(.active) {
+				background-color: $white;
+			}
+		}
+
+		@include breakpoint($breakpoint-md) {
+			&__nav {
+				max-width: 520px;
+			}
+		}
+
+		@include breakpoint($breakpoint-sm-mobile) {
+			&__nav {
+				font-size: 14px;
+				font-weight: 700;
+				line-height: 20px;
+			}
+		}
 	}
 
 	&--offer {

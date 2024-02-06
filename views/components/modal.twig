@@ -1,20 +1,10 @@
-<div class="overlay overlay--{{id}}">
-	<div class="overlay__window">
-		<button class="overlay__close">+</button>
+<div class="{{html_classes(class ?? [], 'modal')}}">
+	<div class="modal__window">
+		<button class="modal__close">+</button>
 		
-		{% if modal == 'feedback' %}
-			{% include 'components/feedback-block.twig' %}
-		{% elseif modal == 'callback' %}
-			{% include 'components/feedback-block-2.twig' %}
-		{% elseif modal == 'successful' %}
-			{% include 'components/successful-block.twig' %}
-		{% elseif modal == 'video' %}
-			{% include 'components/youtube-video.twig' %}
-		{% elseif modal == 'teacher' %}
-			{% include 'components/teacher-block.twig' %}
-		{% endif %}
-
-		{% block content %}
-		{% endblock %}
+		<div class="modal__content">
+			{% block content %}
+			{% endblock %}
+		</div>
 	</div>
 </div>

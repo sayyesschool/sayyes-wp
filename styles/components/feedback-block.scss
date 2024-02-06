@@ -2,30 +2,27 @@
 	width: 955px;
 	display: flex;
 	justify-content: space-between;
-
 	background-color: $pale-white;
 	border-radius: $border-radius;
 
 	&__title {
-		font-weight: 700;
-
 		margin-bottom: 20px;
+		font-weight: 700;
 	}
 
 	&__description {
 		margin-bottom: 20px;
-
 		color: lighten($black, 30%);
 		font-size: 18px;
 		font-weight: 600;
 		line-height: 20px;
 	}
 
-	&__overview {
+	&::before {
+		content: '';
 		width: 42%;
 		border-radius: $border-radius 0 0 $border-radius;
-		background: url("./static/images/pictures/feedback.jpg") center
-			center/cover no-repeat;
+		background: var(--background-url) center center/cover no-repeat;
 	}
 
 	&__content {
@@ -34,21 +31,17 @@
 		min-height: 521px;
 	}
 
+	&--adults {
+		--background-url: url('./static/images/pictures/feedback.jpg');
+	}
+
 	&--children {
-		.feedback-block__overview {
-			background: url("./static/images/pictures/feedback-2.jpg")
-				center center/cover no-repeat;
-		}
+		--background-url: url('./static/images/pictures/feedback-2.jpg');
 	}
 
 	&--callback {
-		.feedback-block__overview {
-			background: url("./static/images/pictures/anastasia-2.jpg")
-				center center/cover no-repeat;
-		}
-	}
+		--background-url: url('./static/images/pictures/anastasia-2.jpg');
 
-	&--callback {
 		.feedback-block__content {
 			min-height: auto;
 		}
@@ -61,19 +54,21 @@
 			min-height: 552px;
 		}
 
-		.custom-checkbox__label {
-			display: none;
-		}
-
-		.custom-checkbox__description {
-			display: block;
+		.checkbox {
+			&__label {
+				display: none;
+			}
+	
+			&__description {
+				display: block;
+			}
 		}
 	}
 
 	@include breakpoint($breakpoint-sm) {
 		width: 670px;
 
-		&__overview {
+		&::before {
 			width: 38%;
 			background: $yellow;
 		}
@@ -84,13 +79,13 @@
 			min-height: 405px;
 		}
 
-		.custom-radio-buttons {
+		&__description {
 			position: absolute;
-			top: 80px;
+			top: 230px;
 			left: 30px;
-			width: 250px;
-			flex-direction: column;
-			gap: 20px;
+			width: 210px;
+			font-size: 16px;
+			line-height: 18px;
 		}
 
 		.feedback-form__format {
@@ -100,21 +95,23 @@
 			width: 200px;
 		}
 
-		.feedback-block__description {
+		.radio-group {
 			position: absolute;
-			top: 230px;
+			top: 80px;
 			left: 30px;
-			width: 210px;
-			font-size: 16px;
-			line-height: 18px;
+			width: 250px;
+			flex-direction: column;
+			gap: 20px;
 		}
 
-		.custom-checkbox__label {
-			display: none;
-		}
-
-		.custom-checkbox__description {
-			display: block;
+		.checkbox {
+			&__label {
+				display: none;
+			}
+	
+			&__description {
+				display: block;
+			}	
 		}
 
 		&--children {
@@ -124,31 +121,25 @@
 
 			.feedback-block__description,
 			.feedback-form__format,
-			.custom-radio-buttons {
+			.radio-group {
 				color: $white;
 			}
 
-			.custom-radio-buttons__btn {
-				label {
+			.radio {
+				&__label {
 					&:before {
 						border: 2px solid $white;
 					}
 				}
 
-				input[type="radio"] {
-					&:checked {
-						+ {
-							label {
-								&:before {
-									background: radial-gradient(
-										circle at center,
-										$white 0,
-										$white 3.25px,
-										transparent 3.25px
-									);
-								}
-							}
-						}
+				&__input:checked ~ &__label {
+					&:before {
+						background: radial-gradient(
+							circle at center,
+							$white 0,
+							$white 3.25px,
+							transparent 3.25px
+						);
 					}
 				}
 			}
@@ -165,7 +156,7 @@
 	@include breakpoint($breakpoint-xxs) {
 		width: 470px;
 
-		&__overview {
+		&::before {
 			display: none;
 		}
 
@@ -174,11 +165,10 @@
 			min-height: 470px;
 		}
 
-		.custom-radio-buttons {
+		&__description {
 			position: static;
+			max-width: 350px;
 			width: 100%;
-			flex-direction: row;
-			gap: 0;
 		}
 
 		.feedback-form__format {
@@ -186,10 +176,11 @@
 			width: 100%;
 		}
 
-		.feedback-block__description {
+		.radio-group {
 			position: static;
-			max-width: 350px;
 			width: 100%;
+			flex-direction: row;
+			gap: 0;
 		}
 
 		&--children {
@@ -199,31 +190,25 @@
 
 			.feedback-block__description,
 			.feedback-form__format,
-			.custom-radio-buttons {
+			.radio-group {
 				color: $black;
 			}
 
-			.custom-radio-buttons__btn {
-				label {
+			.radio {
+				&__label {
 					&:before {
 						border: 2px solid $black;
 					}
 				}
 
-				input[type="radio"] {
-					&:checked {
-						+ {
-							label {
-								&:before {
-									background: radial-gradient(
-										circle at center,
-										$black 0,
-										$black 3.25px,
-										transparent 3.25px
-									);
-								}
-							}
-						}
+				&__input:checked + &__label {
+					&:before {
+						background: radial-gradient(
+							circle at center,
+							$black 0,
+							$black 3.25px,
+							transparent 3.25px
+						);
 					}
 				}
 			}

@@ -1,0 +1,17 @@
+{% set id = name ~ '-' ~ random() %}
+
+<div class="checkbox">
+	<input id="{{id}}" class="checkbox__input" type="checkbox" name="{{name}}" checked>
+	
+	<span class="checkbox__checkmark"></span>
+
+	<label class="checkbox__label" for="{{id}}">
+		Я согласен с
+		<a href="{{links.policy}}" class="text text--underline">политикой обработки персональных данных</a>
+	</label>
+
+	<p class="checkbox__description">
+		Оставляя заявку вы принимаете условия
+		<a class="text text--underline" href="{{links.policy}}">Политикой обработки персональных данных</a>
+	</p>
+</div>

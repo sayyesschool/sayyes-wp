@@ -2,11 +2,11 @@
 
 $context = Timber::context();
 $page = Timber::get_post();
+$page_name = $page->name;
+$template = $page_name ?
+    ['pages/'.$page_name.'.twig', 'pages/default.twig'] :
+    'pages/default.twig';
 
 $context['page'] = $page;
-
-$template = $page->page_id ?
-    ['pages/'.$page->page_id.'.twig', 'pages/default.twig'] :
-    'pages/default.twig';
 
 Timber::render($template, $context);

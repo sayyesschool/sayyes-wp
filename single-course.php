@@ -2,9 +2,8 @@
 
 $context = Timber::context();
 $page = Timber::get_post();
+$page->name = $page->course_id;
 $template = 'pages/course-';
-
-$page->page_id = $page->course_id;
 
 $context['page'] = $page;
 $context['course'] = $page;

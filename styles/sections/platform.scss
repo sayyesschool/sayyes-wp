@@ -7,9 +7,8 @@
 		max-width: 490px;
 	}
 
-	.video {
-		z-index: 1;
-		height: 500px;
+	&__content {
+		display: flex;
 	}
 
 	&__description {
@@ -23,6 +22,10 @@
 		display: block;
 		object-fit: cover;
 		border-radius: $border-radius;
+	}
+
+	.video {
+		z-index: 1;
 	}
 
 	@include breakpoint($breakpoint-lg) {

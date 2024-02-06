@@ -27,12 +27,9 @@
 		color: $black;
 	}
 
-	&__img {
+	&__video {
 		width: 176px;
-		height: 370px;
-		object-fit: cover;
-
-		border-radius: $border-radius;
+		// height: 370px;
 	}
 
 	&__advantages {
@@ -54,7 +51,7 @@
 			margin-right: 0;
 		}
 
-		&__img {
+		&__video {
 			width: 138px;
 			height: 265px;
 		}
@@ -79,7 +76,7 @@
 			max-width: 700px;
 		}
 
-		&__img {
+		&__video {
 			width: 50%;
 			height: 100%;
 			align-self: center;
@@ -88,6 +85,7 @@
 		&__advantages {
 			align-self: center;
 			width: 70%;
+			
 			.advantage {
 				margin-bottom: 0;
 				border-radius: 0;
@@ -106,7 +104,7 @@
 	}
 
 	@include breakpoint($breakpoint-sm-mobile) {
-		&__img {
+		&__video {
 			width: 100%;
 			height: 100%;
 			align-self: center;

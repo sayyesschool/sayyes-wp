@@ -2,7 +2,6 @@
 
 {% block content %}
 	{% embed 'sections/mainscreen.twig' with {
-		class: 'mainscreen--main',
 		title: 'Исполняем мечты о свободном английском',
 		image: 'team.png'
 	} %}
@@ -24,7 +23,7 @@
 	<section class="tangible-result">
 		<h2 class="tangible-result__title">Английский <span class="text text--violet">с ощутимым результатом</span> уже через месяц занятий</h2>
 
-		<p class="tangible-result__description">Команда преподавателей отвечает за ваш прогресс, а менеджеры создают приятную атмосферу, в которую хочется возвращаться</p>
+		<p class="tangible-result__description">Команда преподавателей отвечает за ваш прогресс, а менеджеры создают приятную атмосферу, в которую хочется возвращаться.</p>
 	</section>
 
 	<section class="practice">
@@ -49,11 +48,15 @@
 			<div class="dream-team__content">
 				<div class="dream-team__info">
 					<p class="dream-team__description">Влюблены в свое дело и не дадут скучать. Преподаватель SAY YES! — это опытный, харизматичный и современный педагог.</p>
-					<p class="dream-team__description">Оставьте заявку, мы подберем вам преподавателя и расскажем о курсах</p>
+					<p class="dream-team__description">Оставьте заявку, мы подберем вам преподавателя и расскажем о курсах.</p>
 					<button class="feedback-btn btn btn--yellow btn--full">Оставить заявку</button>
 				</div>
 
-				<img class="dream-team__img" src="{{theme.link}}/static/images/pictures/teacher.jpg" alt="Команда мечты">
+				{% include 'components/video.twig' with {
+					class: 'dream-team__video',
+					filename: 'teacher.mp4',
+					autoplay: true
+				} %}
 
 				<div class="dream-team__advantages">
 					{% for item in [
@@ -62,8 +65,11 @@
 						{ number: 8, title: 'лет', description: 'средний стаж преподавателя' },
 					] %}
 						<div class="advantage">
-							<div class="advantage__numbering">{{item.number}}</div>
-							<div class="advantage__title">{{item.title}}</div>
+							<div class="advantage__value">
+								<strong class="advantage__number">{{item.number}}</strong>
+								<span class="advantage__text">{{item.title}}</span>
+							</div>
+							
 							<div class="advantage__description">{{item.description}}</div>
 						</div>
 					{% endfor %}
@@ -78,71 +84,101 @@
 
 			<p class="platform__description">Для удобного и нескучного закрепления материала дома и проведения онлайн уроков</p>
 
-			<div class="video">
-				<img class="platform__img" src="{{theme.link}}/static/images/pictures/platform.jpg" alt="Собственная онлайн платформа">
-				
-				<button class="video-btn play" data-url="https://www.youtube.com/embed/6ISA01NE2rY"></button>
+			<div class="platform__content">
+				{% include 'components/video.twig' with {
+					youtube_id: '6ISA01NE2rY',
+					image: {
+						path: 'pictures/platform.jpg',
+						alt: 'Собственная онлайн платформа'
+					},
+					modal: true
+				} %}
+
+				{% include 'components/list.twig' with {
+					classes: 'list--ul',
+					list: [
+						{
+							title: 'Все в одном месте',
+							description: 'Быстрый доступ к электронному учебнику, домашним заданиям и личному кабинету.'
+						},
+						{
+							title: 'Эффективное взаимодействие',
+							description: 'Во время урока преподаватель сразу видит ваши ответы и подробно объясняет ошибки.'
+						},
+						{
+							title: 'Удобный личный кабинет',
+							description: 'Преподаватель добавляет в электронный учебник упражнения, которые полезны именно вам.'
+						}
+					]
+				} %}
 			</div>
 		</div>
-
-		{% include 'components/modal.twig' with {
-			modal: 'video',
-			id: 'video-1',
-			url: 'https://www.youtube.com/embed/6ISA01NE2rY'
-		} %}
 	</section>
 
 	<section class="atmosphere">
 		<div class="section-container">
 			<h2 class="subtitle">Атмосфера «второго дома»</h2>
 
-			<p class="atmosphere__description">SAY YES! это место, куда хочется возвращаться.</p>
-
-			<p class="atmosphere__description">Мы создаем дружескую атмосфру и проводим мероприятия для погружения в языковую среду.</p>
+			<div class="atmosphere__description">
+				<p>SAY YES! это место, куда хочется возвращаться.</p>
+				<p>Мы создаем дружескую атмосфру и проводим мероприятия для погружения в языковую среду.</p>
+			</div>
 			
 			<div class="atmosphere__content">
 				<div class="atmosphere__trip">
-					<ul class="atmosphere__celebrations-list">
-						<li class="atmosphere__celebrations-item">Совместные выезды</li>
-						<li class="atmosphere__celebrations-item">Онлайн встречи</li>
+					<ul class="atmosphere__list">
+						<li class="atmosphere__list-item">Совместные выезды</li>
+						<li class="atmosphere__list-item">Онлайн встречи</li>
 					</ul>
 					
 					<img class="atmosphere__trip-img" src="{{theme.link}}/static/images/atmosphere/atmosphere-1.jpg" alt="Совместные выезды">
-
-					<img class="atmosphere__trip-tip" src="{{theme.link}}/static/images/decoration/notes/picnic.svg" alt="Английский на пикнике">
 				</div>
 
 				<div class="atmosphere__celebrations">
-					<ul class="atmosphere__celebrations-list">
-						<li class="atmosphere__celebrations-item">Отмечаем праздники вместе</li>
-						<li class="atmosphere__celebrations-item">Караоке на перемене</li>
+					<ul class="atmosphere__list">
+						<li class="atmosphere__list-item">Отмечаем праздники вместе</li>
+						<li class="atmosphere__list-item">Караоке на перемене</li>
 					</ul>
 
 					<div class="atmosphere__celebrations-images">
-						<img class="atmosphere__celebration-img" src="{{theme.link}}/static/images/atmosphere/atmosphere-2.jpg" alt="Отмечаем праздники вместе">
+						{% include 'components/video.twig' with {
+							class: 'atmosphere__celebration-img',
+							filename: 'graduation.mp4',
+							autoplay: true
+						} %}
 
-						<div class="video">
-							<img src="{{theme.link}}/static/images/atmosphere/atmosphere-3.jpg" alt="Отмечаем праздники вместе" class="video__bg">
-							<button class="video-btn play" data-vertical="true" data-url="https://www.youtube.com/embed/CgqpaS5eoGQ"></button>
-						</div>
+						{% include 'components/video.twig' with {
+							filename: 'singing.mp4',
+							image: {
+								path: 'atmosphere/atmosphere-3.jpg',
+								alt: 'Отмечаем праздники вместе'
+							},
+							modal: true,
+							vertical: true
+						} %}
 
-						<img class="atmosphere__celebration-img-2" src="{{theme.link}}/static/images/atmosphere/atmosphere-4.jpg" alt="Отмечаем праздники вместе">
+						{% include 'components/video.twig' with {
+							class: 'atmosphere__celebration-img-2',
+							filename: 'celebration.mp4',
+							autoplay: true
+						} %}
 					</div>
-
-					<img class="atmosphere__celebrations-tip" src="{{theme.link}}/static/images/decoration/notes/celebrating-completion.svg" alt="Отмечаем завевершение обучения">
 				</div>
 			</div>
 		</div>
 
 		{% include 'components/modal.twig' with {
-			modal: 'video',
 			id: 'video-2',
+			modal: 'video',
+			type: 'video',
 			url: 'https://www.youtube.com/embed/CgqpaS5eoGQ',
 			vertical: true
 		} %}
 	</section>
 
-	{% include 'sections/student-progress.twig' %}
+	{% include 'sections/student-progress.twig' with {
+		items: reports
+	} %}
 
 	{% include 'sections/trial-lesson-mini.twig' %}
 

@@ -7,36 +7,23 @@
 	padding: 60px 0 0 51px;
 	margin-bottom: 100px;
 	color: white;
-
 	border-radius: $border-radius;
-	background: url("./static/images/mainscreens/mainscreen-1.jpg") right
+	background: url('./static/images/mainscreens/mainscreen-1.jpg') right
 		center/cover no-repeat;
 
-	.title {
-		font-size: 68px;
-		font-weight: 700;
-		line-height: 60px;
-
-		margin-bottom: 25px;
-	}
-
-	.btn {
-		margin-top: 84px;
-		font-size: 18px;
-	}
-
-	&__note {
-		position: absolute;
-		bottom: 10%;
-		left: 40%;
-	}
-
-	&__left {
+	&__content {
 		max-width: 440px;
 		z-index: 1;
 	}
 
-	&__right {
+	&__title {
+		font-size: 68px;
+		font-weight: 700;
+		line-height: 60px;
+		margin-bottom: 25px;
+	}
+
+	&__image {
 		position: absolute;
 		bottom: 0;
 		right: 0;
@@ -49,30 +36,24 @@
 		max-width: 270px;
 	}
 
-	&--speaking-club {
-		padding: 68px 0 0 106px;
-		background-image: url("./static/images/mainscreens/mainscreen-8.jpg");
-
-		.title {
-			margin-bottom: 38px;
-		}
+	.btn {
+		margin-top: 84px;
+		font-size: 18px;
 	}
 
 	@include breakpoint($breakpoint-xl) {
 		height: 520px;
-
-		&--speaking-club {
-			.mainscreen__right {
-				width: 1100px;
-			}
-		}
 	}
 
 	@include breakpoint($breakpoint-lg) {
 		height: 490px;
 		margin-bottom: 70px;
 
-		.title {
+		&__content {
+			max-width: 400px;
+		}
+
+		&__title {
 			font-size: 46px;
 			line-height: 45px;
 		}
@@ -81,73 +62,31 @@
 			font-size: 16px;
 			line-height: 18px;
 		}
-
-		&__left {
-			max-width: 400px;
-		}
-
-		&__note {
-			width: 63px;
-			height: 85px;
-		}
 	}
 
 	@include breakpoint($breakpoint-md) {
 		padding: 40px 0 0 38px;
 		height: 420px;
 
-		&__right {
+		&__image {
 			width: 1000px;
-		}
-
-		&__note {
-			left: 33%;
-		}
-
-		&--speaking-club {
-			.btn {
-				margin-top: 50px;
-				min-width: 267px;
-			}
-
-			.mainscreen__right {
-				width: 900px;
-			}
 		}
 	}
 
 	@include breakpoint($breakpoint-sm) {
 		height: 360px;
 
-		.title {
+		&__content {
+			max-width: 370px;
+		}
+
+		&__title {
 			font-size: 42px;
 			line-height: 40px;
 		}
 
-		&__left {
-			max-width: 370px;
-		}
-
-		&__right {
+		&__image {
 			width: 105%;
-		}
-
-		&__note {
-			display: none;
-		}
-
-		&--speaking-club {
-			.title {
-				margin-bottom: 20px;
-			}
-
-			.btn {
-				margin-top: 20px;
-			}
-
-			.mainscreen__right {
-				width: 800px;
-			}
 		}
 	}
 
@@ -160,30 +99,20 @@
 		margin-bottom: 50px;
 		border-radius: $border-radius-sm;
 
-		.title {
-			margin-bottom: 45px;
-		}
-
-		&__left {
+		&__content {
 			max-width: 500px;
 		}
 
-		&__right {
+		&__title {
+			margin-bottom: 45px;
+		}
+
+		&__image {
 			width: 930px;
 		}
 
 		&__text {
 			max-width: 280px;
-		}
-
-		&--speaking-club {
-			.mainscreen__left {
-				max-width: 440px;
-			}
-
-			.mainscreen__right {
-				width: 145%;
-			}
 		}
 	}
 
@@ -191,15 +120,15 @@
 		height: 585px;
 		padding: 15px 0 0 20px;
 
-		.title {
-			margin-bottom: 20px;
-		}
-
-		&__left {
+		&__content {
 			max-width: 370px;
 		}
 
-		&__right {
+		&__title {
+			margin-bottom: 20px;
+		}
+
+		&__image {
 			width: 760px;
 		}
 
@@ -208,32 +137,11 @@
 			font-weight: 500;
 			line-height: 18px;
 		}
-
-		&--speaking-club {
-			padding: 40px 0 0 38px;
-			height: 671px;
-
-			.mainscreen__right {
-				right: auto;
-				left: -80%;
-				width: 800px;
-			}
-		}
 	}
 
 	@include breakpoint($breakpoint-sm-mobile) {
-		&__right {
+		&__image {
 			width: 700px;
-		}
-
-		&--speaking-club {
-			padding: 25px 0 0 25px;
-
-			.mainscreen__right {
-				right: -40px;
-				left: auto;
-				width: 800px;
-			}
 		}
 	}
 }

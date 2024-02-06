@@ -1,52 +1,72 @@
-#speaking-club-page {
-    .section-image {
-        &::before {
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 0;
+#events-page {
+    .mainscreen {
+        padding: 68px 0 0 106px;
+		background-image: url('./static/images/mainscreens/mainscreen-8.jpg');
+
+		&__title {
+			margin-bottom: 38px;
+		}
+
+        @include breakpoint($breakpoint-xl) {
+            &__image {
+                width: 1100px;
+            }
         }
 
-        .info {
-            color: white;
+        @include breakpoint($breakpoint-md) {
+            .btn {
+                margin-top: 50px;
+                min-width: 267px;
+            }
 
-            .description {
-                color: white;
+            &__image {
+                width: 900px;
+            }
+        }
+
+        @include breakpoint($breakpoint-sm) {
+            &__title {
+                margin-bottom: 20px;
+            }
+
+            .btn {
+                margin-top: 20px;
+            }
+
+            &__image {
+                width: 800px;
+            }
+        }
+
+        @include breakpoint($breakpoint-xxs) {
+            &__content {
+                max-width: 440px;
+            }
+
+            &__image {
+                width: 145%;
+            }
+        }
+
+        @include breakpoint($breakpoint-mobile) {
+            padding: 40px 0 0 38px;
+            height: 671px;
+
+            &__image {
+                right: auto;
+                left: -80%;
+                width: 800px;
+            }
+        }
+
+        @include breakpoint($breakpoint-sm-mobile) {
+            padding: 25px 0 0 25px;
+    
+            &__image {
+                right: -40px;
+                left: auto;
+                width: 800px;
             }
         }
     }
-}
-
-.single-event {
-    .event-image {
-        max-width: 500px;
-        width: 100%;
-    }
-    
-    .event-subtitle {
-        margin-top: 1em;
-    }
-    
-    .event-details {
-        margin-bottom: 1.5em;
-        
-        li {
-            margin: 1em 0;
-        }
-        
-        .fa-li {
-            margin-top: 3px;
-            color: white;
-            background-color: $sy-primary;
-            width: 30px;
-            height: 30px;
-            padding-top: 7px;
-            border-radius: 100%;
-            margin-top: 0;
-            top: -3px;
-        }
-    }
-    
-    .fa {
-        margin-right: .5em;
-    }
-
 }

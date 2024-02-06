@@ -81,6 +81,10 @@ class SayYesSite extends Site {
 	function add_to_context($context) {
         $json = file_get_contents(__DIR__ . '/data.json');
         $data = json_decode($json, true);
+        $settings = get_fields('options');
+
+        $main_phone = str_replace(['+', '-', ' '], [''], $settings['phone_numbers']['main']);
+        $wa_phone = str_replace(['+', '-', ' '], [''], $settings['phone_numbers']['whatsapp']);
 
         $context['site'] = $this;
         $context['data'] = $data;
@@ -89,8 +93,15 @@ class SayYesSite extends Site {
         $context['FACEBOOK_PIXEL_IDS'] = $this->facebook_pixel_ids;
 		$context['main_menu'] = Timber::get_menu('main_nav');
         $context['footer_menu'] = Timber::get_menu('footer_nav');
-        $context['settings'] = get_fields('options');
-        
+        $context['settings'] = $settings;
+        $context['links'] = [
+            'policy' => $this->link().'/politika-konfidentsialnosti',
+            'offer' => $this->link().'/dogovor-oferta',
+            'email' => 'mailto:'.$settings['email'],
+            'main_phone' => 'tel:'.$main_phone,
+            'wa_phone' => 'https://api.whatsapp.com/send/?phone='.$wa_phone.'&text&type=phone_number&app_absent=0'
+        ];
+
 		return $context;
 	}
 

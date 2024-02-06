@@ -10,15 +10,19 @@
 	font-size: 18px;
 	line-height: 20px;
 
-	&__numbering {
+	&__value {
+		
+	}
+
+	&__number {
 		padding-right: 20px;
 		font-size: 42px;
 		line-height: 45px;
 	}
 
-	&__title {
+	&__text {
+		display: inline-block;
 		max-width: 150px;
-		align-self: flex-end;
 	}
 
 	&__description {

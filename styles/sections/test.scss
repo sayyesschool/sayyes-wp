@@ -5,11 +5,11 @@
 		margin-top: auto;
 	}
 
-	.custom-radio-buttons {
+	.radio-group {
 		flex-direction: column;
 		gap: 10px;
 
-		.custom-radio-buttons__btn {
+		.radio {
 			transition: 0.3s ease color;
 
 			&:hover {
@@ -111,7 +111,7 @@
 	@include breakpoint($breakpoint-xxs) {
 		margin-bottom: 50px;
 		
-		.custom-radio-buttons {
+		.radio-group {
 			gap: 30px;
 		}
 

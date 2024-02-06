@@ -1,10 +1,8 @@
-.youtube-video {
-	background-color: $pale-white;
-	border-radius: $border-radius;
-
+.video-embed {
 	width: 80vh;
 	height: 50vh;
-	padding: 35px;
+	background-color: $pale-white;
+	border-radius: $border-radius;
 
 	&--vertical {
 		width: 55vh;

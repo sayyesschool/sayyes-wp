@@ -13,6 +13,74 @@
 		margin-bottom: 35px;
 	}
 
+	.tabs {
+		&__nav {
+			position: absolute;
+			top: -55px;
+			right: 63px;
+		}
+
+		&__tab {
+			min-height: 55px;
+			background-color: $yellow;
+			border-radius: $border-radius-sm $border-radius-sm 0 0;
+
+			&:last-of-type {
+				background-color: $medium-magenta;
+			}
+		}
+
+		@include breakpoint($breakpoint-md) {
+			&__nav {
+				max-width: 370px;
+				top: -40px;
+			}
+
+			&__tab {
+				min-height: 40px;
+			}
+		}
+
+		@include breakpoint($breakpoint-xxs) {
+			&__nav {
+				max-width: none;
+				width: 100%;
+				right: auto;
+				left: 0;
+			}
+
+			&__tab {
+				width: 100%;
+				position: relative;
+
+				&::before {
+					content: "";
+					position: absolute;
+					bottom: -50px;
+					width: 50px;
+					height: 50px;
+					background-color: $medium-magenta;
+				}
+
+				&:first-of-type {
+					&::before {
+						content: "";
+						left: 0;
+						background-color: $yellow;
+					}
+				}
+
+				&:last-of-type {
+					&::before {
+						content: "";
+						right: 0;
+						background-color: $medium-magenta;
+					}
+				}
+			}
+		}
+	}
+
 	@include breakpoint($breakpoint-lg) {
 		margin-bottom: 70px;
 
@@ -40,6 +108,168 @@
 
 		&__description {
 			margin-bottom: 65px;
+		}
+	}
+
+	.invite {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+		padding: 40px 60px 55px;
+		background-color: $yellow;
+		border-radius: $border-radius;
+	
+		&__title {
+			max-width: 381px;
+			margin-bottom: 20px;
+			font-size: 42px;
+			font-weight: 700;
+			line-height: 40px;
+		}
+	
+		&__description {
+			max-width: 290px;
+		}
+	
+		&__left {
+			flex-basis: 648px;
+		}
+	
+		&__right {
+			flex-basis: 473px;
+			z-index: 1;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 465px;
+			width: 545px;
+			height: 404px;
+			transform: translateX(-50%);
+			background-image: url('./static/images/pictures/invite.png');
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
+	
+		&--children {
+			padding: 40px 60px 105px;
+			background-color: $medium-magenta;
+
+			&::after {
+				left: 432px;
+				width: 566px;
+				height: 374px;
+				background-image: url('./static/images/pictures/invite-2.png');
+			}
+		}
+	
+		@include breakpoint($breakpoint-xl) {
+			&::after {
+				left: 390px;
+			}
+	
+			&--children {
+				&::after {
+					left: 330px;
+				}
+			}
+		}
+	
+		@include breakpoint($breakpoint-lg) {
+			&__right {
+				flex-basis: 70%;
+			}
+
+			&::after {
+				height: 309px;
+				left: 320px;
+			}
+	
+			&--children {
+				&::after {
+					height: 309px;
+					left: 250px;
+				}
+			}
+		}
+	
+		@include breakpoint($breakpoint-md) {
+			&__right {
+				flex-basis: 100%;
+			}
+
+			&__title {
+				font-size: 32px;
+				line-height: 30px;
+			}
+	
+			&__description {
+				max-width: 242px;
+			}
+
+			&::after {
+				height: 290px;
+				left: 220px;
+			}
+	
+			&--children {
+				.invite__right {
+					flex-basis: 80%;
+				}
+
+				&::after {
+					height: 270px;
+					left: 220px;
+				}
+			}
+		}
+	
+		@include breakpoint($breakpoint-sm) {
+			padding: 25px 30px 34px;
+	
+			&__title {
+				max-width: 300px;
+			}
+	
+			&::after {
+				height: 260px;
+				left: 200px;
+			}
+	
+			&--children {
+				padding: 25px 30px 34px;
+	
+				&::after {
+					height: 240px;
+					left: 200px;
+				}
+			}
+		}
+	
+		@include breakpoint($breakpoint-xxs) {
+			flex-direction: column;
+	
+			&__left {
+				flex-basis: auto;
+				margin-bottom: 25px;
+			}
+	
+			&__title {
+				max-width: 240px;
+				margin-bottom: 10px;
+				font-size: 26px;
+				line-height: 25px;
+			}
+
+			&::after {
+				display: none;
+			}
+		}
+	
+		@include breakpoint($breakpoint-sm-mobile) {
+			padding: 20px;
 		}
 	}
 }

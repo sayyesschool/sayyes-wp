@@ -1,0 +1,66 @@
+.feedback-modal {
+    z-index: 1001;
+
+    .tabs {
+        &__nav {
+            position: absolute;
+            top: -55px;
+            left: 42%;
+        }
+
+        &__tab {
+            min-height: 55px;
+            background-color: $white;
+            border-radius: $border-radius-sm $border-radius-sm 0 0;
+
+            &.active {
+                background-color: $pale-white;
+            }
+        }
+    }
+
+    @include breakpoint($breakpoint-lg) {
+        .tabs {
+            &__tab {
+                width: 180px;
+            }
+        }
+    }
+
+    @include breakpoint($breakpoint-sm) {
+        .tabs {
+            &__nav {
+                top: -40px;
+                left: 38%;
+            }
+
+            &__tab {
+                width: 130px;
+                min-height: 40px;
+            }
+        }
+    }
+
+    @include breakpoint($breakpoint-xxs) {
+        .tabs {
+            &__nav {
+                top: -40px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    }
+
+    @include breakpoint($breakpoint-sm-mobile) {
+        .tabs {
+            &__nav {
+                top: -35px;
+            }
+
+            &__tab {
+                width: 100px;
+                min-height: 35px;
+            }
+        }
+    }
+}

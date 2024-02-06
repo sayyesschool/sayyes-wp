@@ -55,15 +55,45 @@
 
         {% include 'components/footer.twig' %}
 
-        {% for modal in [
-            'feedback',
-            'callback',
-            'successful',
-            'video',
-            'teacher'
-        ] %}
-            {% include 'components/modal.twig' with { modal, id: modal } %}
-        {% endfor %}
+        {% embed 'components/modal.twig' with {
+            class: 'feedback-modal'
+        } %}
+            {% block content %}
+                {% include 'components/feedback-block.twig' %}
+            {% endblock %}
+        {% endembed %}
+
+        {% embed 'components/modal.twig' with {
+            class: 'callback-modal'
+        } %}
+            {% block content %}
+                {% include 'components/feedback-block-2.twig' %}
+            {% endblock %}
+        {% endembed %}
+
+        {% embed 'components/modal.twig' with {
+            class: 'success-modal'
+        } %}
+            {% block content %}
+                {% include 'components/success-block.twig' %}
+            {% endblock %}
+        {% endembed %}
+
+        {% embed 'components/modal.twig' with {
+            class: 'video-modal'
+        } %}
+            {% block content %}
+                <video class="video"></video>
+            {% endblock %}
+        {% endembed %}
+
+        {% embed 'components/modal.twig' with {
+            class: 'embed-modal'
+        } %}
+            {% block content %}
+                <iframe class="video-embed" width="100%" height="100%" src="" title="SAY YES!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            {% endblock %}
+        {% endembed %}
 
         {% block modal %}
         {% endblock %}
@@ -74,48 +104,34 @@
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
         <script src="https://static.sayes.ru/js/crm.js"></script>
-
-        {# <script src="{{ theme.link }}/static/lib/inputmask.js"></script> #}
-        <script type="module" src="{{ theme.link }}/scripts/main.js"></script>
-
         <script>
-            {# $(document).ready(function () {
-                $('input[type=tel]').mask('+7 (999) 999-9999');
-            }); #}
-            
-            {# $('#main-navigation .nav-item.dropdown').hover(
-                function() {
-                    $(this).addClass('show');
-                },
+            Vue.component('CustomSelect', {
+                template: `
+                    <div class="select">
+                        <button type="button" class="select__button" @click="handleButtonClick">
+                            {{options[0]}}
+                        </button>
 
-                function() {
-                    $(this).removeClass('show');
+                        <span class="select__arrow" />
+
+                        <ul class="select__list">
+                            <li class="select__option" v-for="(option, index) in options" :key="index">
+                                {{option}}
+                            </li>
+                        </ul>
+                    </div>
+                `.trim(),
+
+                props: ['options'],
+
+                methods: {
+                    handleButtonClick(event) {
+                        console.log('SELECT', event);
+                    }
                 }
-            );
-
-            $('.whatsapp-button').click(function() {
-                ym(YANDEX_METRIKA_COUNTER, 'reachGoal', 'WA');
-                gtag('event', 'click', { event_category: 'WA' });
-                fbq('track', 'InitiateCheckout');
-                
-                return true;
-            });
-
-            $('.ml-subscribe-form form').submit(function() {
-                ym(YANDEX_METRIKA_COUNTER, 'reachGoal', 'subscribe');
-                gtag('event', 'click', { event_category: 'subscribe' });
-                
-                return true;
-            }); #}
-
-            {#if (!document.cookie.includes('online_modal_shown')) {
-                $('#online-modal').modal('show');
-
-                $('#online-modal').on('hidden.bs.modal', function (e) {
-                    document.cookie = 'online_modal_shown=true; path=/; expires=' + new Date(Date.now() + 86400000).toUTCString();
-                });
-            #}
+            })
         </script>
+        <script src="{{theme.link}}/static/scripts.js"></script>
 
         {% block scripts %}
         {% endblock %}

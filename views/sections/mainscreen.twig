@@ -1,9 +1,7 @@
-<section class="mainscreen {{class}}">
-	<div class="mainscreen__left">
-		<h1 class="title">
-			{% block title %}
-				{{title}}
-			{% endblock %}
+<section class="mainscreen">
+	<div class="mainscreen__content">
+		<h1 class="mainscreen__title">
+			{% block title %}{{title}}{% endblock %}
 		</h1>
 
 		<div class="mainscreen__description">
@@ -14,6 +12,6 @@
 	</div>
 
 	{% if image %}
-		<img class="mainscreen__right" src="{{theme.link}}/static/images/mainscreens/{{image}}" alt="Команда мечты">
+		<img class="mainscreen__image" src="{{theme.link}}/static/images/mainscreens/{{image}}" alt="Команда мечты">
 	{% endif %}
 </section>

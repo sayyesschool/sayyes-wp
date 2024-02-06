@@ -1,15 +1,11 @@
 <div class="feedback-block feedback-block--callback">
-	<div class="feedback-block__overview"></div>
-
 	<div class="feedback-block__content">
 		<h2 class="feedback-block__title">Оперативно перезвоним</h2>
 
 		<p class="feedback-block__description">И подробно ответим на все ваши вопросы об условиях и ценах на обучение</p>
 
-		<form class="feedback-form">
-			{% include 'components/callback-form.twig' with {
-				checkboxName: 'communicationCheckboxAdults3'
-			} %}
-		</form>
+		{% include 'components/request-form.twig' with {
+			format: false
+		} %}
 	</div>
 </div>

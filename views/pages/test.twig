@@ -33,15 +33,14 @@
                 <p class="test__answer">Yes I am.</p>
             </div>
 
-            {% include 'components/custom-radio-buttons.twig' with {
-                radioBtns: [
+            {% include 'components/radio-group.twig' with {
+                items: [
                     { name: 'Yes, I be.' },
                     { name: 'Yes, I do.' },
                     { name: 'Yes, I is.' },
                     { name: 'Yes, I am.' },
                     { name: 'Не знаю' }
-                ],
-                radioBtnsName: 'testRadioButtons'
+                ]
             } %}
 
             <button class="btn btn--violet">Следующий вопрос</button>

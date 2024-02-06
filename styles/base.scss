@@ -98,6 +98,16 @@ p a {
 	}
 }
 
+.hidden {
+	display: none !important;
+}
+
+.admin-bar {
+	.header {
+		top: 32px;
+	}
+}
+
 [v-cloak] {
     display: none
 }

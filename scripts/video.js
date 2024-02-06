@@ -1,44 +1,37 @@
-export default class Video {
-    constructor($element) {
+class Video {
+    constructor(element) {
+        this.element = element;
+        this.video = element.querySelector('video');
+        this.playButton = element.querySelector('.play');
         this.playing = false;
         this.ended = false;
-        this.video = $element[0];
-        this.playButton = $element.parent().find('.play-button');
 
-        var video = this;
-
-        this.video.onended = function() {
-            video.stop();
+        this.video.onended = () => {
+            this.stop();
         };
 
-        this.playButton.on('click', function() {
-            video.toggle();
+        this.playButton?.addEventListener('click', () => {
+            this.toggle();
         });
     }
 
     play() {
-        this.video.play();
         this.playing = true;
-
-        $(this.video).toggleClass('playing');
-        this.playButton.toggleClass('fa-play').toggleClass('fa-pause');
+        this.video.play();
+        this.video.classList.toggle('video--playing');
     }
 
     pause() {
-        this.video.pause();
         this.playing = false;
-
-        $(this.video).toggleClass('playing');
-        this.playButton.toggleClass('fa-play').toggleClass('fa-pause');
+        this.video.pause();
+        this.video.classList.toggle('video--playing');
     }
 
     stop() {
-        this.video.pause();
         this.playing = false;
+        this.video.pause();
         this.video.currentTime = 0;
-
-        $(this.video).toggleClass('playing');
-        this.playButton.toggleClass('fa-play').toggleClass('fa-pause');
+        this.video.classList.toggle('video--playing');
     }
 
     toggle() {
@@ -49,3 +42,55 @@ export default class Video {
         }
     }
 }
+
+class AutoVideo extends Video {
+    constructor(element) {
+        super(element);
+
+        this.video.autoplay = true;
+        this.video.muted = true;
+        this.video.onended = () => {
+            this.play();
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting)
+                    this.play();
+                else
+                    this.pause();
+            });
+        }, {
+            root: null,
+            rootMargin: '0px',
+            threshold: 1.0
+        });
+
+        observer.observe(element);
+    }
+}
+
+class HoverVideo extends Video {
+    constructor(element) {
+        super(element);
+
+        this.element.addEventListener('mouseenter', this.handleMouseEnter.bind(this));
+        this.element.addEventListener('mouseleave', this.handleMouseLeave.bind(this));
+    }
+
+    handleMouseEnter() {
+        this.play();
+    }
+
+    handleMouseLeave() {
+        this.pause();
+    }
+}
+
+document.querySelectorAll('.video--autoplay').forEach(element => {
+    new AutoVideo(element);
+});
+
+document.querySelectorAll('.video--hover').forEach(element => {
+    new HoverVideo(element);
+});

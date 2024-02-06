@@ -6,8 +6,7 @@ $context['tags'] = Timber::get_terms('tags');
 $context['blog_sidebar'] = Timber::get_widgets('blog_sidebar');
 $context['comment_form'] = TimberHelper::get_comment_form();
 $page = Timber::get_post();
-
-$page->page_id = 'post';
+$page->name = 'post';
 
 $context['page'] = $page;
 $context['post'] = $page;

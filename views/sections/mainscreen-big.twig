@@ -1,4 +1,4 @@
-<section class="mainscreen-big mainscreen-big--{{mixin ?? ''}}">
+<section class="mainscreen-big{{mixin ? ' mainscreen-big--' ~ mixin : ''}}">
 	<h1 class="title">{{title}}</h1>
     
 	<div class="mainscreen-big__description">{{description}}</div>
@@ -23,4 +23,8 @@
 			<img class="split-image__second-img" src="{{theme.link}}/static/images/mainscreens/{{splitImg2}}.jpg" alt="">
 		</div>
 	{% endif %}
+
+	{% block content %}
+		{{content}}
+	{% endblock %}
 </section>

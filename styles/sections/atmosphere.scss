@@ -8,12 +8,17 @@
 		margin-bottom: 20px;
 	}
 
+	&__description {
+		max-width: 570px;
+		margin-bottom: 40px;
+	}
+
 	.video {
 		overflow: hidden;
 		margin-right: 20px;
 		border-radius: $border-radius;
 
-		.video__bg {
+		&__bg {
 			border-radius: 0;
 		}
 
@@ -23,19 +28,56 @@
 		}
 	}
 
-	&__description {
-		max-width: 570px;
-
-		&:last-of-type {
-			margin-bottom: 40px;
-		}
-	}
-
 	&__trip {
+		position: relative;
 		display: flex;
 		justify-content: space-between;
 		margin-bottom: 20px;
+
+		&-img {
+			width: 665px;
+			height: 360px;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: -120px;
+			right: 150px;
+			width: 92px;
+			height: 102px;
+			background-image: url('./static/images/decoration/notes/picnic.svg');
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+	}
+
+	&__celebrations {
 		position: relative;
+		display: flex;
+		justify-content: space-between;
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 235px;
+			left: 257px;
+			width: 133px;
+			height: 61px;
+			background-image: url('./static/images/decoration/notes/celebrating-completion.svg');
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+	}
+
+	&__list {
+		max-width: 207px;
+
+		&-item {
+			font-weight: 700;
+			max-width: 180px;
+			margin-bottom: 15px;
+		}
 	}
 
 	&__trip-img,
@@ -45,55 +87,20 @@
 		border-radius: $border-radius;
 	}
 
-	&__celebration-img-2 {
-		width: 176px;
-		height: 365px;
-		border-radius: $border-radius;
-	}
-
-	&__trip-img {
-		width: 666px;
-		height: 360px;
-	}
-
 	&__celebration-img {
 		width: 274px;
-		height: 495px;
 		margin-right: 20px;
 	}
 
-	&__trip-tip {
-		position: absolute;
-		top: -120px;
-		right: 150px;
-	}
-
-	&__celebrations {
-		display: flex;
-		justify-content: space-between;
-		position: relative;
-	}
-
-	&__celebrations-list {
-		max-width: 207px;
-	}
-
-	&__celebrations-item {
-		font-weight: 700;
-		max-width: 180px;
-		margin-bottom: 15px;
+	&__celebration-img-2 {
+		width: 176px;
+		border-radius: $border-radius;
 	}
 
 	&__celebrations-images {
 		display: flex;
 		justify-content: space-between;
 		align-items: flex-start;
-	}
-
-	&__celebrations-tip {
-		position: absolute;
-		top: 235px;
-		left: 257px;
 	}
 
 	@include breakpoint($breakpoint-lg) {
@@ -127,18 +134,24 @@
 	}
 
 	@include breakpoint($breakpoint-md) {
-		&__celebrations-tip {
-			left: 150px;
+		&__celebrations {
+			&::after {
+				left: 150px;
+			}
 		}
 
-		&__trip-tip {
-			right: 60px;
+		&__trip {
+			&::after {
+				right: 60px;
+			}
 		}
 	}
 
 	@include breakpoint($breakpoint-sm) {
-		&__celebrations-tip {
-			left: 30px;
+		&__celebrations {
+			&::after {
+				left: 30px;
+			}
 		}
 	}
 
@@ -160,22 +173,20 @@
 			}
 		}
 
-		&__trip {
-			.atmosphere__celebrations-list {
-				position: absolute;
-				bottom: 85px;
-				left: 0;
+		&__trip &__list {
+			position: absolute;
+			bottom: 85px;
+			left: 0;
 
-				.atmosphere__celebrations-item {
-					&:first-child {
-						margin-bottom: 3px;
-					}
+			&-item {
+				&:first-child {
+					margin-bottom: 3px;
 				}
 			}
 		}
 
-		&__celebrations {
-			.atmosphere__celebrations-item {
+		&__celebrations &__list {
+			&-item {
 				position: absolute;
 				bottom: -43px;
 
@@ -214,8 +225,10 @@
 			border-radius: $border-radius-sm;
 		}
 
-		&__celebrations-tip {
-			left: -170px;
+		&__celebrations {
+			&::after {
+				left: -170px;
+			}
 		}
 	}
 
@@ -226,6 +239,14 @@
 	@include breakpoint($breakpoint-mobile) {
 		&__content {
 			display: block;
+		}
+
+		&__celebrations {
+			overflow-x: auto;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
 		}
 
 		&__trip-img {
@@ -240,46 +261,38 @@
 			height: 395px;
 		}
 
-		&__celebrations-list {
+		&__list {
 			display: flex;
 			flex-direction: column-reverse;
+
+			&-item {
+				background-color: $white;
+				border-radius: $border-radius;
+				padding: 7px 10px;
+				max-width: none;
+				width: fit-content;
+				font-size: 14px;
+				line-height: 15px;
+			}
 		}
 
-		&__celebrations-item {
-			background-color: $white;
-			border-radius: $border-radius;
-			padding: 7px 10px;
-			max-width: none;
-			width: fit-content;
-			font-size: 14px;
-			line-height: 15px;
-		}
+		&__trip &__list {
+			bottom: 3px;
+			left: 5px;
 
-		&__trip {
-			.atmosphere__celebrations-list {
-				bottom: 3px;
-				left: 5px;
-
-				.atmosphere__celebrations-item {
-					&:last-child {
-						margin-bottom: 5px;
-					}
+			&-item {
+				&:last-child {
+					margin-bottom: 5px;
 				}
 			}
 		}
 
-		&__celebrations {
-			overflow-x: auto;
-
-			&::-webkit-scrollbar {
-				display: none;
-			}
-
-			.atmosphere__celebrations-item {
+		&__celebrations &__list {
+			&-item {
 				bottom: auto;
 				top: 5px;
-				z-index: 1;
 				width: 100%;
+				z-index: 1;
 
 				&:first-child {
 					left: 463px;

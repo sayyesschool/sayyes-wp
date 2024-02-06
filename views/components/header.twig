@@ -1,7 +1,9 @@
 <header class="header opened">
 	<div class="header__overview">
 		<div class="header-container">
-			{% include 'components/logo.twig' with { fill: '#fff' } %}
+			{% include 'components/logo.twig' with {
+				class: 'header__logo'
+			} %}
 
 			<button class="header__free-lesson feedback-btn btn btn--transparent btn--uppercase btn--sm">Бесплатный урок</button>
 
@@ -10,6 +12,7 @@
 			<button class="header__callback callback-btn">Обратный звонок</button>
 
 			{% include 'components/phone-numbers.twig' with {
+				class: 'header__phone-numbers',
 				icon_class: 'icon--white icon--sm' 
 			} %}
 
@@ -18,7 +21,7 @@
 				<div class="header__time">ПН-ПТ с 12:00 до 21:00</div>
 			</div>
 
-			<a class="header__login" href="#">Войти</a>
+			{# <a class="header__login" href="#">Войти</a> #}
 
 			<button class="header__burger">
 				<span class="header__burger-line"></span>

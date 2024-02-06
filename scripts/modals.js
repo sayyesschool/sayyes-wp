@@ -1,152 +1,155 @@
-export const modals = () => {
-	const calcScroll = () => {
-		const div = document.createElement('div');
-		div.style.cssText = `
-      width: 50px;
-      height: 50px;
-      overflow-y: scroll;
-      visibility: hidden;
-    `;
+function calcScrollWidth() {
+	const div = document.createElement('div');
+	div.style.cssText = `
+		width: 50px;
+		height: 50px;
+		overflow-y: scroll;
+		visibility: hidden;
+	`.trim();
 
-		document.body.appendChild(div);
+	document.body.appendChild(div);
 
-		const scrollWidth = div.offsetWidth - div.clientWidth;
-		div.remove();
+	const scrollWidth = div.offsetWidth - div.clientWidth;
+	div.remove();
 
-		return scrollWidth;
-	};
+	return scrollWidth;
+}
 
-	const toggleScroll = (enable) => {
-		const header = document.querySelector('.header');
-		const scroll = calcScroll();
-		const activeModals = document.querySelectorAll('.overlay.active');
+function toggleScroll(enable) {
+	const header = document.querySelector('.header');
+	const activeModals = document.querySelectorAll('.modal.active');
+	const scrollWidth = calcScrollWidth();
 
-		if (enable || activeModals.length) {
-			document.body.style.overflow = 'hidden';
-			header.style.paddingRight = `${scroll}px`;
-			document.body.style.paddingRight = `${scroll}px`;
-		} else {
-			document.body.style.overflow = '';
-			header.style.paddingRight = '0px';
-			document.body.style.paddingRight = '0px';
-		}
-	};
+	if (enable || activeModals.length) {
+		document.body.style.overflow = 'hidden';
+		header.style.paddingRight = `${scrollWidth}px`;
+		document.body.style.paddingRight = `${scrollWidth}px`;
+	} else {
+		document.body.style.overflow = '';
+		header.style.paddingRight = '0px';
+		document.body.style.paddingRight = '0px';
+	}
+}
 
-	const closeModal = (modal) => {
+class Modal {
+	constructor(modalSelector, triggerSelector) {
+		this.element = document.querySelector(modalSelector);
+		this.triggers = document.querySelectorAll(triggerSelector);
+		this.content = this.element.querySelector('.modal__content');
+		this.closeButton = this.element.querySelector('.modal__close');
+
+		const openModal = this.open.bind(this);
+		const closeModal = this.close.bind(this);
+
+		this.triggers.forEach(trigger => {
+			trigger.addEventListener('click', openModal);
+		});
+
+		this.closeButton.addEventListener('click', closeModal);
+
+		this.element.addEventListener('click', event => {
+			if (event.target === this.element) {
+				closeModal();
+			}
+		});
+	}
+
+	open() {
+		this.element.classList.add('active');
+		toggleScroll(true);
+	}
+
+	close() {
+		this.element.classList.remove('active');
 		setTimeout(() => {
 			toggleScroll(false);
 		}, 300);
+	}
+}
 
-		modal.classList.remove('active');
-	};
+class TeacherModal extends Modal {
+	constructor(modalSelector, triggerSelector) {
+		super(modalSelector, triggerSelector);
 
-	const openModal = (modal) => {
-		toggleScroll(true);
+		this.teacherBlocks = modal.querySelectorAll('.teacher-block');
+	}
 
-		modal.classList.add('active');
-	};
+	open(event) {
+		super.open();
 
-	const videoModal = (triggerSelector, modalSelector) => {
-		const triggers = document.querySelectorAll(triggerSelector);
-		const modal = document.querySelector(modalSelector);
-		const close = modal.querySelector('.overlay__close');
-		const youtubeVideo = modal.querySelector('.youtube-video');
-		const iframe = youtubeVideo.querySelector('#iframe-youtube');
+		const id = +event.target.dataset.id;
 
-		if (!(triggers.length && modal)) return;
+		this.teacherBlocks.forEach((block, index) => {
+			block.style.display = index === id ? 'flex' : 'none';
+		});
+	}
+}
 
-		triggers.forEach((trigger) => {
-			const openVideo = () => {
-				iframe.src = trigger.dataset.url;
+class VideoModal extends Modal {
+	constructor(modalSelector, triggersSelector) {
+		super(modalSelector, triggersSelector);
 
-				trigger.dataset.vertical
-					? youtubeVideo.classList.add('youtube-video--vertical')
-					: youtubeVideo.classList.remove('youtube-video--vertical');
+		this.video = this.element.querySelector('video');
+	}
 
-				openModal(modal);
-			};
+	open(event) {
+		const { videoUrl, vertical } = event.target.dataset;
+		const video = this.video;
 
-			trigger.addEventListener('click', openVideo);
+		if (!videoUrl) return;
+
+		super.open();
+
+		video.src = videoUrl;
+
+		video.addEventListener('loadeddata', () => {
+			if (video.readyState >= 2)
+				video.play();
 		});
 
-		const closeVideo = () => {
-			iframe.src = '';
-			closeModal(modal);
-		};
+		if (vertical)
+			this.video.classList.add('video--vertical');
+	}
 
-		close.addEventListener('click', closeVideo);
+	close() {
+		super.close();
 
-		modal.addEventListener('click', (e) => {
-			if (e.target === modal) {
-				closeVideo();
-			}
-		});
-	};
+		this.video.pause();
+		this.video.src = '';
+	}
+}
 
-	const teacherModal = (triggerSelector, modalSelector) => {
-		const triggers = document.querySelectorAll(triggerSelector);
-		const modal = document.querySelector(modalSelector);
-		const close = modal.querySelector('.overlay__close');
-		const blocks = modal.querySelectorAll('.teacher-block');
+class EmbedModal extends Modal {
+	constructor(modalSelector, triggersSelector) {
+		super(modalSelector, triggersSelector);
 
-		if (!(triggers.length && modal)) return;
+		this.iframe = this.element.querySelector('iframe');
+		console.log('EmbedModal', this);
+	}
 
-		triggers.forEach((trigger) => {
-			const openTeacher = () => {
-				const id = +trigger.dataset.id;
+	open(event) {
+		const { embedUrl, vertical } = event.target.dataset;
 
-				blocks.forEach((block, index) => {
-					block.style.display = index === id ? 'flex' : 'none';
-				});
+		if (!embedUrl) return;
 
-				openModal(modal);
-			};
+		super.open();
 
-			trigger.addEventListener('click', openTeacher);
-		});
+		this.iframe.src = embedUrl;
 
-		const closeTeacher = () => {
-			closeModal(modal);
-		};
+		if (vertical)
+			this.iframe.classList.add('video-embed--vertical');
+	}
 
-		close.addEventListener('click', closeTeacher);
+	close() {
+		super.close();
+		this.iframe.src = '';
+		this.iframe.classList.remove('video-embed--vertical');
+	}
+}
 
-		modal.addEventListener('click', (e) => {
-			if (e.target === modal) {
-				closeTeacher();
-			}
-		});
-	};
-
-	const simpleModal = (triggerSelector, modalSelector) => {
-		const triggers = document.querySelectorAll(triggerSelector);
-		const modal = document.querySelector(modalSelector);
-		const close = modal.querySelector('.overlay__close');
-
-		triggers.forEach((trigger) => {
-			const openModal1 = () => {
-				openModal(modal);
-			};
-
-			trigger.addEventListener('click', openModal1);
-		});
-
-		const closeModal1 = () => {
-			closeModal(modal);
-		};
-
-		close.addEventListener('click', closeModal1);
-
-		modal.addEventListener('click', (e) => {
-			if (e.target === modal) {
-				closeModal1();
-			}
-		});
-	};
-
-	videoModal('.video-btn', '.overlay--video');
-	teacherModal('.teacher-btn', '.overlay--teacher');
-	simpleModal('.feedback-btn', '.overlay--feedback');
-	simpleModal('.callback-btn', '.overlay--callback');
-	simpleModal('.successful-btn', '.overlay--successful');
-};
+new Modal('.feedback-modal', '.feedback-btn');
+// new Modal('.callback-modal', '.callback-btn');
+// new Modal('.success-modal', '.success-btn');
+// new TeacherModal('.teacher-modal', '.teacher-btn');
+new VideoModal('.video-modal', 'button[data-video-url]');
+new EmbedModal('.embed-modal', 'button[data-embed-url]');

@@ -3,8 +3,7 @@
 $context = Timber::get_context();
 $page = Timber::query_post();
 $host = new TimberPost($page->host);
-
-$page->page_id = 'event';
+$page->name = 'event';
 $page->host = $host;
 
 $context['page'] = $page;
