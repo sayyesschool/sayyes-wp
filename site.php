@@ -1,11 +1,20 @@
 <?php
 
 use Timber\Site;
+use Timber\Post;
 use Twig\Extension\StringLoaderExtension;
 use Twig\Extra\Html\HtmlExtension;
 
 include 'post-types.php';
 include 'taxonomies.php';
+
+class Page extends Post {
+    public function name()
+    {
+        $name = $this->meta('name');
+        return $name;
+    }
+}
 
 class SayYesSite extends Site {
     public $version = '2.3.0';
@@ -28,6 +37,13 @@ class SayYesSite extends Site {
 
         add_filter('timber/context', [$this, 'add_to_context']);
 		add_filter('timber/twig', [$this, 'add_to_twig']);
+        add_filter('timber/post/classmap', function ($classmap) {
+            $custom_classmap = [
+                'page' => Page::class,
+            ];
+        
+            return array_merge($classmap, $custom_classmap);
+        });
         
 		parent::__construct();
 	}

@@ -38,8 +38,8 @@
 
         {{ function('wp_head') }}
     </head>
-    
-    <body id="{{ page.page_id }}-page" class="{{ body_class }} {{ layout_class }}">
+
+    <body id="{{page.name}}-page" class="{{body_class}} {{layout_class}}">
         {% include 'components/header.twig' %}
 
         <main class="main">
