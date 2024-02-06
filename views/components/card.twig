@@ -4,7 +4,7 @@
     {% endif %}
 
     <div class="card__content">
-        {% title or block('title') is defined %}
+        {% if title or block('title') is defined %}
             <h3 class="card__name">
                 {% block title %}
                     {{title}}
@@ -12,7 +12,7 @@
             </h3>
         {% endif %}
 
-        {% description or block('description') is defined %}
+        {% if description or block('description') is defined %}
             <div class="card__description">
                 {% block description %}
                     {{description}}

@@ -247,11 +247,11 @@
                                 </li>
                             {% endfor %}
                         {% endblock %}
-                    {% endembed %}
 
-                    {% block content %}
-                        <button class="teacher-btn btn btn--transparent btn--transparent-black btn--md" data-id="{{person.teacherId}}">Подробнее</button>
-                    {% endblock %}
+                        {% block content %}
+                            <button class="teacher-btn btn btn--transparent btn--transparent-black btn--md" data-id="{{person.teacherId}}">Подробнее</button>
+                        {% endblock %}
+                    {% endembed %}
                 {% endfor %}
             </div>
 
