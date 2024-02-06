@@ -2,32 +2,67 @@
 
 {% block content %}
 	{% include 'sections/mainscreen-big.twig' with {
-        mixin: 'teachers',
 		title: 'Сильные и харизматичные преподаватели SAY YES! — главная причина вашего прогресса.',
         description: 'Доверьте свой английский экспертам, кто прошел наш строгий отбор.',
         button: true,
-        splitImg1: 'mainscreen-split-1',
-        splitImg2: 'mainscreen-split-2'
+        image: {
+			src: page.thumbnail.src,
+			alt: page.thumbnail.alt
+		}
 	} %}
 
 	<section class="teachers">
         <div class="section-container">
             <h2 class="subtitle">В нашей команде более 80 профессиональных преподавателей.</h2>
 
-            <p class="teachers__description">Мы ценим не только опыт и образование, но и энергичность, современность и жизнелюбие наших преподавателей.</p>
+            <div class="teachers__description">
+                <p>Мы ценим не только опыт и образование, но и энергичность, современность и жизнелюбие наших преподавателей.</p>
 
-            <p class="teachers__description">Выберите удобный формат обучения и познакомьтесь с настоящими фанатами своего дела.</p>
+                <p>Выберите удобный формат обучения и познакомьтесь с настоящими фанатами своего дела.</p>
+            </div>
 
-            <div class="tabs">
-                <div class="tabs__nav tabs__nav--teachers">
-                    <button class="tabs__tab active">Офлайн в Москве</button>
-                    <button class="tabs__tab">Онлайн по всему миру</button>
-                </div>
-
-                <div class="tabs__content">
-                    <div class="tabs__item active">
+            {% embed 'components/tabs.twig' with {
+                tabs: [
+                    {
+                        content: 'Офлайн в Москве',
+                        target: '.offline-teachers',
+                        active: true
+                    },
+                    {
+                        content: 'Онлайн по всему миру',
+                        target: '.online-teachers'
+                    }
+                ]
+            } %}
+                {% block content %}
+                    <div class="offline-teachers">
                         <div class="cards">
-                            {% for teahcer in offline_teachers[0:6] %}
+                            {% for teahcer in offline_teachers|slice(0, 6) %}
+                                <div class="card card--{{teahcer.type}}">
+                                    <img class="card__img" src="{{theme.link}}/static/images/teachers/{{teahcer.img}}.jpg" alt="{{teahcer.name}}">
+
+                                    <div class="card__content">
+                                        <h3 class="card__name">{{teahcer.name}}</h3>
+
+                                        <ul class="card__description">
+                                            {% for merits in person.merits %}
+                                                <li>
+                                                    {{merits.merit}}:
+                                                    {{merits.description}}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+
+                                        <button class="teacher-btn btn btn--transparent btn--transparent-black btn--md" data-id="{{person.teacherId}}">Подробнее</button>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        {% include 'sections/trial-lesson-mini.twig' %}
+
+                        <div class="cards">
+                            {% for teahcer in offline_teachers|slice(6) %}
                                 <div class="card card--{{teahcer.type}}">
                                     <img class="card__img" src="{{theme.link}}/static/images/teachers/{{teahcer.img}}.jpg" alt="{{teahcer.name}}">
 
@@ -50,9 +85,34 @@
                         </div>
                     </div>
 
-                    <div class="tabs__item">
+                    <div class="online-teachers hidden">
                         <div class="cards">
-                            {% for teacher in data.online_teachers[0:6] %}
+                            {% for teacher in online_teachers|slice(0, 6) %}
+                                <div class="card card--{{teacher.type}}">
+                                    <img class="card__img" src="{{theme.link}}/static/images/teachers/{{teacher.img}}.jpg" alt="{{teacher.name}}">
+
+                                    <div class="card__content">
+                                        <h3 class="card__name">{{teacher.name}}</h3>
+
+                                        <ul class="card__description">
+                                            {% for merits in teacher.merits %}
+                                                <li>
+                                                    {{merits.merit}}:
+                                                    {{merits.description}}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+
+                                        <button class="teacher-btn btn btn--transparent btn--transparent-black btn--md" data-id="{{teacher.teacherId}}">Подробнее</button>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        {% include 'sections/trial-lesson-mini.twig' %}
+
+                        <div class="cards">
+                            {% for teacher in online_teachers|slice(6) %}
                                 <div class="card card--{{teacher.type}}">
                                     <img class="card__img" src="{{theme.link}}/static/images/teachers/{{teacher.img}}.jpg" alt="{{teacher.name}}">
 
@@ -74,43 +134,10 @@
                             {% endfor %}
                         </div>
                     </div>
-                </div>
-            </div>
+                {% endblock %}
+            {% endembed %}
         </div>
     </section>
-
-    {% include 'sections/trial-lesson-mini.twig' %}
-
-    <section class="teachers">
-        <div class="section-container">
-            <div class="cards">
-                {% for teacher in teacherCards2 %}
-                    <div class="card card--{{teacher.type}}">
-                        <img class="card__img" src="{{theme.link}}/static/images/teachers/{{teacher.img}}.jpg" alt="{{teacher.title}}">
-
-                        <div class="card__content">
-                            <h3 class="card__name">{{teacher.name}}</h3>
-
-                            <ul class="card__description">
-                                {% for merits in teacher.merits %}
-                                    <li>
-                                        <span class="text text--weight-700">{{merits.merit}}</span>:
-                                        {{merits.description}}
-                                    </li>
-                                {% endfor %}
-                            </ul>
-
-                            <button class="btn btn--transparent btn--transparent-black btn--md">Подробнее</button>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-
-            <button class="btn btn--yellow">Показать ещё</button>
-        </div>
-    </section>
-
-	{% include 'sections/trial-lesson.twig' %}
 {% endblock %}
 
 {% block modal %}

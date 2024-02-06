@@ -4421,38 +4421,6 @@ p a:hover {
 .subtabs__nav--courses-2 {
   margin: 0 auto 40px;
 }
-.tabs__nav--teachers,
-.subtabs__nav--teachers {
-  margin: 0 auto 40px;
-}
-.tabs__nav--teachers .tabs__tab,
-.subtabs__nav--teachers .tabs__tab {
-  background-color: #fffcff;
-  border-radius: 30px 0 0 30px;
-}
-.tabs__nav--teachers .tabs__tab:last-of-type,
-.subtabs__nav--teachers .tabs__tab:last-of-type {
-  border-radius: 0 30px 30px 0;
-}
-.tabs__nav--teachers .tabs__tab.active,
-.subtabs__nav--teachers .tabs__tab.active {
-  color: #fffcff;
-  background-color: #a68ad5;
-}
-@media (max-width: 1024px) {
-  .tabs__nav--teachers .tabs__tab,
-  .subtabs__nav--teachers .tabs__tab {
-    max-width: 520px;
-  }
-}
-@media (max-width: 480px) {
-  .tabs__nav--teachers .tabs__tab,
-  .subtabs__nav--teachers .tabs__tab {
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 20px;
-  }
-}
 .tabs__nav--teacher-block,
 .subtabs__nav--teacher-block {
   gap: 0;
@@ -11326,40 +11294,69 @@ p a:hover {
   border-radius: 10%;
 }
 
-.team-of-teachers {
+.teachers {
   margin-bottom: 100px;
 }
-.team-of-teachers .subtitle {
-  text-align: center;
-  margin: 0 auto 15px;
+.teachers .subtitle {
   max-width: 881px;
+  margin: 0 auto 15px;
+  text-align: center;
 }
-.team-of-teachers .tabs {
+.teachers__description {
+  max-width: 630px;
+  margin: 0 auto 10px;
+  text-align: center;
+}
+.teachers__description p:not(:last-child) {
+  margin-bottom: 10px;
+}
+.teachers .tabs {
   margin: 35px auto 40px;
 }
-.team-of-teachers .cards {
+.teachers .tabs__nav {
+  margin: 0 auto 40px;
+}
+.teachers .tabs__tab {
+  background-color: #fffcff;
+  border-radius: 30px 0 0 30px;
+}
+.teachers .tabs__tab:last-of-type {
+  border-radius: 0 30px 30px 0;
+}
+.teachers .tabs__tab.active {
+  color: #fffcff;
+  background-color: #a68ad5;
+}
+@media (max-width: 1024px) {
+  .teachers .tabs__tab {
+    max-width: 520px;
+  }
+}
+@media (max-width: 480px) {
+  .teachers .tabs__tab {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+  }
+}
+.teachers .cards {
   margin-bottom: 40px;
 }
-.team-of-teachers .btn {
+.teachers .btn {
   margin: 0 auto;
 }
-.team-of-teachers__description {
-  text-align: center;
-  margin: 0 auto 10px;
-  max-width: 630px;
-}
 @media (max-width: 1160px) {
-  .team-of-teachers {
+  .teachers {
     margin-bottom: 70px;
   }
 }
 @media (max-width: 800px) {
-  .team-of-teachers {
+  .teachers {
     margin-bottom: 60px;
   }
 }
 @media (max-width: 768px) {
-  .team-of-teachers {
+  .teachers {
     margin-bottom: 50px;
   }
 }

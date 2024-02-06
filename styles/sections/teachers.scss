@@ -1,15 +1,52 @@
-.team-of-teachers {
+.teachers {
 	margin-bottom: 100px;
 
-	.subtitle {
+	.subtitle {		
+		max-width: 881px;
+		margin: 0 auto 15px;
+		text-align: center;
+	}
+
+	&__description {
+		max-width: 630px;
+		margin: 0 auto 10px;
 		text-align: center;
 
-		margin: 0 auto 15px;
-		max-width: 881px;
+		p:not(:last-child) {
+			margin-bottom: 10px;
+		}
 	}
 
 	.tabs {
 		margin: 35px auto 40px;
+
+		&__nav {
+			margin: 0 auto 40px;
+		}
+
+		&__tab {
+			background-color: $white;
+			border-radius: $border-radius 0 0 $border-radius;
+
+			&:last-of-type {
+				border-radius: 0 $border-radius $border-radius 0;
+			}
+
+			&.active {
+				color: $white;
+				background-color: $medium-magenta;
+			}
+
+			@include breakpoint($breakpoint-md) {
+				max-width: 520px;
+			}
+
+			@include breakpoint($breakpoint-sm-mobile) {
+				font-size: 14px;
+				font-weight: 700;
+				line-height: 20px;
+			}
+		}
 	}
 
 	.cards {
@@ -18,13 +55,6 @@
 
 	.btn {
 		margin: 0 auto;
-	}
-
-	&__description {
-		text-align: center;
-
-		margin: 0 auto 10px;
-		max-width: 630px;
 	}
 
 	@include breakpoint($breakpoint-lg) {
