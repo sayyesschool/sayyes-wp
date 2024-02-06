@@ -10,7 +10,7 @@
 		border-radius: $border-radius;
 
 		&::before {
-			content: "";
+			content: '';
 			position: absolute;
 		}
 	}
@@ -18,65 +18,7 @@
 	&__img {
 		position: absolute;
 		bottom: 0;
-		left: -19px;
 		object-fit: contain;
-	}
-
-	&--about {
-		.img-comment__picture {
-			background: rgb(118, 101, 170);
-			background: linear-gradient(
-				183deg,
-				rgba(118, 101, 170, 1) 0%,
-				rgba(58, 44, 99, 1) 40%
-			);
-
-			&::before {
-				top: 50px;
-				left: 160px;
-				transform: translateX(-50%);
-				width: 227px;
-				height: 71px;
-				background: url("./static/images/decoration/notes/founders-2.svg")
-					center center/contain no-repeat;
-			}
-		}
-	}
-
-	&--speaking-club {
-		.appeal {
-			.appeal__title {
-				max-width: 510px;
-			}
-
-			.appeal__text {
-				padding-left: 0;
-
-				&::before,
-				&::after {
-					content: none;
-				}
-			}
-		}
-
-		.img-comment__img {
-			left: -7px;
-		}
-
-		.img-comment__picture {
-			min-height: 450px;
-
-			background-color: $violet;
-
-			&::before {
-				top: 45px;
-				right: 30px;
-				width: 143px;
-				height: 151px;
-				background: url("./static/images/decoration/notes/casey-speaker.svg")
-					center center/contain no-repeat;
-			}
-		}
 	}
 
 	@include breakpoint($breakpoint-lg) {
@@ -88,37 +30,6 @@
 			min-width: 242px;
 			border-radius: $border-radius-sm;
 		}
-
-		&__img {
-			width: 268px;
-			height: 221px;
-		}
-
-		&--about {
-			.img-comment__picture {
-				min-height: 365px;
-
-				&::before {
-					width: 191px;
-					height: 60px;
-					top: 25px;
-					left: 122px;
-				}
-			}
-		}
-
-		&--speaking-club {
-			.img-comment__picture {
-				min-height: 350px;
-
-				&::before {
-					top: 15px;
-					right: 13px;
-					width: 109px;
-					height: 115px;
-				}
-			}
-		}
 	}
 
 	@include breakpoint($breakpoint-xs) {
@@ -128,41 +39,6 @@
 	@include breakpoint($breakpoint-xxs) {
 		margin-bottom: 50px;
 		flex-direction: column-reverse;
-
-		&__img {
-			left: auto;
-			right: 13px;
-			width: 244px;
-			height: 201px;
-		}
-
-		&--about {
-			.img-comment__picture {
-				min-height: 165px;
-
-				&::before {
-					width: 191px;
-					height: 60px;
-					top: 59px;
-					left: 140px;
-				}
-			}
-		}
-
-		&--speaking-club {
-			.img-comment__picture {
-				min-height: 165px;
-
-				&::before {
-					width: 122px;
-					height: 130px;
-					top: 20px;
-					left: auto;
-					right: 25%;
-					transform: rotate(8deg);
-				}
-			}
-		}
 	}
 
 	@include breakpoint($breakpoint-mobile) {
@@ -174,85 +50,6 @@
 			position: absolute;
 			top: 111px;
 			left: 25px;
-		}
-
-		&--about {
-			.appeal {
-				.appeal__title {
-					margin-bottom: 272px;
-					max-width: 270px;
-				}
-			}
-
-			.img-comment__picture {
-				min-height: 215px;
-				&::before {
-					width: 158px;
-					height: 49px;
-					top: 20px;
-					left: 98px;
-				}
-			}
-
-			.img-comment__img {
-				right: 9px;
-				width: 193px;
-				height: 153px;
-			}
-		}
-
-		&--speaking-club {
-			.appeal {
-				.appeal__title {
-					margin-bottom: 272px;
-					max-width: 90%;
-				}
-			}
-
-			.img-comment__picture {
-				min-height: 215px;
-				top: initial;
-				bottom: 38%;
-
-				&::before {
-					right: 50px;
-					transform: none;
-				}
-			}
-		}
-	}
-
-	@include breakpoint($breakpoint-sm-mobile) {
-		&__img {
-			right: 0px;
-		}
-
-		&--about {
-			.img-comment__picture {
-				&::before {
-					left: 90px;
-				}
-
-				.img-comment__img {
-					right: 0;
-				}
-			}
-		}
-
-		&--speaking-club {
-			.img-comment__picture {
-				&::before {
-					width: 95px;
-					height: 100px;
-					right: 25px;
-				}
-			}
-
-			.img-comment__img {
-				width: 160px;
-				height: 181px;
-				left: 9px;
-			}
 		}
 	}
 }

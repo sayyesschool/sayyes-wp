@@ -31,7 +31,7 @@
         {% include 'includes/yandex-metrika.twig' %}
         {% include 'includes/google-analytics.twig' %}
         {% include 'includes/facebook-pixel.twig' %}
-        {% include 'includes/jivosite.twig' %}
+        {# {% include 'includes/jivosite.twig' %} #}
 
         {% block head %}
         {% endblock %}
@@ -100,37 +100,7 @@
 
 		<script src="https://www.google.com/recaptcha/api.js?render=6LenTzMiAAAAABvM_nwArCX5rtvJQ3TUQS8EsN1q"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
         <script src="https://static.sayes.ru/js/crm.js"></script>
-        <script>
-            Vue.component('CustomSelect', {
-                template: `
-                    <div class="select">
-                        <button type="button" class="select__button" @click="handleButtonClick">
-                            {{options[0]}}
-                        </button>
-
-                        <span class="select__arrow" />
-
-                        <ul class="select__list">
-                            <li class="select__option" v-for="(option, index) in options" :key="index">
-                                {{option}}
-                            </li>
-                        </ul>
-                    </div>
-                `.trim(),
-
-                props: ['options'],
-
-                methods: {
-                    handleButtonClick(event) {
-                        console.log('SELECT', event);
-                    }
-                }
-            })
-        </script>
         <script src="{{theme.link}}/static/scripts.js"></script>
 
         {% block scripts %}

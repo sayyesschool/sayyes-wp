@@ -7,9 +7,7 @@
 		{% endfor %}
 	</div>
 
-	<div class="video">
-		<img class="video__bg" src="{{theme.link}}/static/images/video-sections/{{videoImg}}.jpg" alt="Офлайн">
-		
-		<button class="video-btn play" data-url="{{videoUrl}}"></button>
+	<div class="video-section__video">
+		{% include 'components/video.twig' with video %}
 	</div>
 </section>

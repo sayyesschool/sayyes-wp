@@ -1,4 +1,6 @@
-const swiper = new Swiper('.swiper', {
+import Swiper from 'swiper';
+
+new Swiper('.swiper', {
 	spaceBetween: 150,
 	navigation: {
 		nextEl: '.slider__right-arrow',
@@ -9,7 +11,7 @@ const swiper = new Swiper('.swiper', {
 	},
 });
 
-const swiperOrganizations = new Swiper('.swiper-organizations', {
+new Swiper('.swiper-organizations', {
 	enabled: false,
 	spaceBetween: 15,
 	width: 795,
@@ -29,7 +31,7 @@ const swiperOrganizations = new Swiper('.swiper-organizations', {
 	},
 });
 
-const swiperReviews = new Swiper('.swiper-reviews', {
+new Swiper('.swiper-reviews', {
 	enabled: false,
 	spaceBetween: 15,
 	width: 1080,
@@ -49,7 +51,7 @@ const swiperReviews = new Swiper('.swiper-reviews', {
 	},
 });
 
-const swiperMeetings = new Swiper('.swiper-meetings', {
+new Swiper('.swiper-meetings', {
 	enabled: false,
 	spaceBetween: 15,
 	width: 900,
@@ -69,7 +71,7 @@ const swiperMeetings = new Swiper('.swiper-meetings', {
 	},
 });
 
-const swiperFeedback = new Swiper('.swiper-feedback', {
+new Swiper('.swiper-feedback', {
 	enabled: false,
 	spaceBetween: 15,
 	width: null,
@@ -100,7 +102,7 @@ const swiperFeedback = new Swiper('.swiper-feedback', {
 	},
 });
 
-const swiperCourseFeedback = new Swiper('.swiper-course-feedback', {
+new Swiper('.swiper-course-feedback', {
 	enabled: false,
 	spaceBetween: 15,
 	width: null,
@@ -131,7 +133,7 @@ const swiperCourseFeedback = new Swiper('.swiper-course-feedback', {
 	},
 });
 
-const swiperPersonalApproach = new Swiper('.swiper-personal-approach', {
+new Swiper('.swiper-personal-approach', {
 	enabled: false,
 	spaceBetween: 15,
 	width: null,
@@ -168,7 +170,7 @@ const swiperPersonalApproach = new Swiper('.swiper-personal-approach', {
 	},
 });
 
-const swiperResultChildren = new Swiper('.swiper-result-children', {
+new Swiper('.swiper-result-children', {
 	breakpoints: {
 		769: {
 			slidesPerView: 2,

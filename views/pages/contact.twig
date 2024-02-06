@@ -139,26 +139,22 @@
 			<div class="contact-us__cards">
 				{% for person in contacts %}
 					<div class="card card--contact-card">
-						{% if person.type == 'team-card' %}
-							<img class="card__img" src="{{theme.link}}/static/images/managers/{{person.img}}.jpg" alt="{{person.name}}">
+						<img class="card__img" src="{{theme.link}}/static/images/managers/{{person.img}}.jpg" alt="{{person.name}}">
 
-							<div class="card__content">
-								<h3 class="card__name">{{person.name}}</h3>
-								<h4 class="card__post">{{person.post}}</h4>
-								<p class="card__description">{{person.about}}</p>
-								<ul class="card__description">
-									{% for contact in person.contacts %}
-										<li>
-											<span>{% include 'components/icon.twig' with { class: contact.icon } %}</span>
+						<div class="card__content">
+							<h3 class="card__name">{{person.name}}</h3>
+							<h4 class="card__post">{{person.post}}</h4>
+							<p class="card__description">{{person.about}}</p>
+							<ul class="card__description">
+								{% for contact in person.contacts %}
+									<li>
+										<span>{% include 'components/icon.twig' with { class: contact.icon } %}</span>
 
-											<a class="card__link" href="{{contact.link}}">{{contact.value}}</a>
-										</li>
-									{% endfor %}
-								</ul>
-							</div>
-						{% else %}
-							<p class="card__text">{{person.text}}</p>
-						{% endif %}
+										<a class="card__link" href="{{contact.link}}">{{contact.value}}</a>
+									</li>
+								{% endfor %}
+							</ul>
+						</div>
 					</div>
 				{% endfor %}
 			</div>

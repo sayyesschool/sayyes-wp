@@ -3,18 +3,12 @@
     
 	<div class="mainscreen-big__description">{{description}}</div>
 
-	{% if showBtn %}
-		<button class="feedback-btn btn btn--{{btnColor ?? 'yellow'}}">{{btnText}}</button>
-	{% endif %}
-
 	{% if button %}
-		<button class="feedback-btn btn btn--{{button.color ?? 'yellow'}}">{{button.content}}</button>
+		<button class="feedback-btn btn btn--{{button.color ?? 'yellow'}}">{{button.content ?? 'Оставить заявку'}}</button>
 	{% endif %}
 
 	{% if image %}
-		<img class="mainscreen-big__img" src="{{image.src}}" alt="{{image.alt}}">
-	{% elseif img %}
-		<img class="mainscreen-big__img" src="{{theme.link}}/static/images/mainscreens/{{img}}.jpg" alt="">
+		<img class="mainscreen-big__img" src="{{attribute(image, 'src') ? image.src : theme.link ~ '/static/images/mainscreens/' ~ image}}" alt="{{image.alt ?? ''}}">
 	{% endif %}
 
 	{% if showSplit %}

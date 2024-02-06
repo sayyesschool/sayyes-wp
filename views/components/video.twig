@@ -5,7 +5,7 @@
     'video--modal': modal,
     'video--vertical': vertical
 })}}">
-    {% if image or modal %}
+    {% if image %}
         <img class="video__bg" src="{{image.path ? theme.link ~ '/static/images/' ~ image.path : image.src}}" alt="{{image.alt}}">
     {% else %}
         <video

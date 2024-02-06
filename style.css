@@ -1107,8 +1107,8 @@ p a:hover {
           flex-grow: 1;
 }
 .card__name {
-  font-weight: 800;
   margin-bottom: 5px;
+  font-weight: 800;
 }
 .card__post {
   margin-bottom: 35px;
@@ -6226,6 +6226,76 @@ p a:hover {
   margin-bottom: 2rem;
 }
 
+#about-page .img-comment__picture {
+  background-color: #f8dcd6;
+}
+#about-page .img-comment__picture::before {
+  top: 50px;
+  left: 160px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 227px;
+  height: 71px;
+  background: url("./static/images/decoration/notes/founders-2.svg") center center/contain no-repeat;
+}
+#about-page .img-comment__img {
+  width: 120%;
+  left: -15%;
+}
+@media (max-width: 1024px) {
+  #about-page .img-comment__picture {
+    min-height: 365px;
+  }
+  #about-page .img-comment__picture::before {
+    width: 191px;
+    height: 60px;
+    top: 25px;
+    left: 122px;
+  }
+}
+@media (max-width: 768px) {
+  #about-page .img-comment__picture {
+    min-height: 165px;
+  }
+  #about-page .img-comment__picture::before {
+    width: 191px;
+    height: 60px;
+    top: 59px;
+    left: 140px;
+  }
+  #about-page .img-comment__img {
+    left: auto;
+    right: 0;
+    width: 260px;
+  }
+}
+@media (max-width: 540px) {
+  #about-page .img-comment .appeal__title {
+    margin-bottom: 272px;
+    max-width: 270px;
+  }
+  #about-page .img-comment__picture {
+    min-height: 215px;
+  }
+  #about-page .img-comment__picture::before {
+    width: 158px;
+    height: 49px;
+    top: 20px;
+    left: 98px;
+  }
+  #about-page .img-comment__img {
+    width: 260px;
+  }
+}
+@media (max-width: 480px) {
+  #about-page .img-comment__picture::before {
+    left: 90px;
+  }
+  #about-page .img-comment__img {
+    width: 220px;
+  }
+}
+
 #not-found-page .page-title {
   margin-top: 1rem;
 }
@@ -6388,6 +6458,82 @@ p a:hover {
     right: -40px;
     left: auto;
     width: 800px;
+  }
+}
+#events-page .img-comment .appeal__title {
+  max-width: 510px;
+}
+#events-page .img-comment .appeal__text {
+  padding-left: 0;
+}
+#events-page .img-comment .appeal__text::before, #events-page .img-comment .appeal__text::after {
+  content: none;
+}
+#events-page .img-comment__img {
+  left: -7px;
+}
+#events-page .img-comment__picture {
+  min-height: 450px;
+  background-color: #7831b2;
+}
+#events-page .img-comment__picture::before {
+  top: 45px;
+  right: 30px;
+  width: 143px;
+  height: 151px;
+  background: url("./static/images/decoration/notes/casey-speaker.svg") center center/contain no-repeat;
+}
+@media (max-width: 1024px) {
+  #events-page .img-comment__picture {
+    min-height: 350px;
+  }
+  #events-page .img-comment__picture::before {
+    top: 15px;
+    right: 13px;
+    width: 109px;
+    height: 115px;
+  }
+}
+@media (max-width: 768px) {
+  #events-page .img-comment__picture {
+    min-height: 165px;
+  }
+  #events-page .img-comment__picture::before {
+    width: 122px;
+    height: 130px;
+    top: 20px;
+    left: auto;
+    right: 25%;
+    -webkit-transform: rotate(8deg);
+            transform: rotate(8deg);
+  }
+}
+@media (max-width: 540px) {
+  #events-page .img-comment .appeal__title {
+    margin-bottom: 272px;
+    max-width: 90%;
+  }
+  #events-page .img-comment__picture {
+    min-height: 215px;
+    top: initial;
+    bottom: 38%;
+  }
+  #events-page .img-comment__picture::before {
+    right: 50px;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+@media (max-width: 480px) {
+  #events-page .img-comment__picture::before {
+    width: 95px;
+    height: 100px;
+    right: 25px;
+  }
+  #events-page .img-comment__img {
+    width: 160px;
+    height: 181px;
+    left: 9px;
   }
 }
 
@@ -6908,9 +7054,9 @@ p a:hover {
 }
 
 .behind-the-scenes {
+  position: relative;
   padding: 100px 60px;
   margin-bottom: 100px;
-  position: relative;
   border-radius: 30px;
   background-color: #fffcff;
   overflow: hidden;
@@ -6931,7 +7077,7 @@ p a:hover {
 .behind-the-scenes__description {
   max-width: 730px;
 }
-.behind-the-scenes__description:not(:last-of-type) {
+.behind-the-scenes__description p:not(:last-of-type) {
   margin-bottom: 10px;
 }
 .behind-the-scenes__gallery {
@@ -8378,10 +8524,10 @@ p a:hover {
   background-color: #fffcff;
 }
 .digits__title {
+  margin-bottom: 10px;
   font-size: 70px;
   font-weight: 700;
   line-height: 60px;
-  margin-bottom: 10px;
 }
 .digits__description {
   max-width: 140px;
@@ -9380,45 +9526,8 @@ p a:hover {
 .img-comment__img {
   position: absolute;
   bottom: 0;
-  left: -19px;
   -o-object-fit: contain;
      object-fit: contain;
-}
-.img-comment--about .img-comment__picture {
-  background: rgb(118, 101, 170);
-  background: linear-gradient(183deg, rgb(118, 101, 170) 0%, rgb(58, 44, 99) 40%);
-}
-.img-comment--about .img-comment__picture::before {
-  top: 50px;
-  left: 160px;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  width: 227px;
-  height: 71px;
-  background: url("./static/images/decoration/notes/founders-2.svg") center center/contain no-repeat;
-}
-.img-comment--speaking-club .appeal .appeal__title {
-  max-width: 510px;
-}
-.img-comment--speaking-club .appeal .appeal__text {
-  padding-left: 0;
-}
-.img-comment--speaking-club .appeal .appeal__text::before, .img-comment--speaking-club .appeal .appeal__text::after {
-  content: none;
-}
-.img-comment--speaking-club .img-comment__img {
-  left: -7px;
-}
-.img-comment--speaking-club .img-comment__picture {
-  min-height: 450px;
-  background-color: #7831b2;
-}
-.img-comment--speaking-club .img-comment__picture::before {
-  top: 45px;
-  right: 30px;
-  width: 143px;
-  height: 151px;
-  background: url("./static/images/decoration/notes/casey-speaker.svg") center center/contain no-repeat;
 }
 @media (max-width: 1160px) {
   .img-comment {
@@ -9429,28 +9538,6 @@ p a:hover {
   .img-comment__picture {
     min-width: 242px;
     border-radius: 15px;
-  }
-  .img-comment__img {
-    width: 268px;
-    height: 221px;
-  }
-  .img-comment--about .img-comment__picture {
-    min-height: 365px;
-  }
-  .img-comment--about .img-comment__picture::before {
-    width: 191px;
-    height: 60px;
-    top: 25px;
-    left: 122px;
-  }
-  .img-comment--speaking-club .img-comment__picture {
-    min-height: 350px;
-  }
-  .img-comment--speaking-club .img-comment__picture::before {
-    top: 15px;
-    right: 13px;
-    width: 109px;
-    height: 115px;
   }
 }
 @media (max-width: 800px) {
@@ -9466,33 +9553,6 @@ p a:hover {
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse;
   }
-  .img-comment__img {
-    left: auto;
-    right: 13px;
-    width: 244px;
-    height: 201px;
-  }
-  .img-comment--about .img-comment__picture {
-    min-height: 165px;
-  }
-  .img-comment--about .img-comment__picture::before {
-    width: 191px;
-    height: 60px;
-    top: 59px;
-    left: 140px;
-  }
-  .img-comment--speaking-club .img-comment__picture {
-    min-height: 165px;
-  }
-  .img-comment--speaking-club .img-comment__picture::before {
-    width: 122px;
-    height: 130px;
-    top: 20px;
-    left: auto;
-    right: 25%;
-    -webkit-transform: rotate(8deg);
-            transform: rotate(8deg);
-  }
 }
 @media (max-width: 540px) {
   .img-comment {
@@ -9504,59 +9564,6 @@ p a:hover {
     position: absolute;
     top: 111px;
     left: 25px;
-  }
-  .img-comment--about .appeal .appeal__title {
-    margin-bottom: 272px;
-    max-width: 270px;
-  }
-  .img-comment--about .img-comment__picture {
-    min-height: 215px;
-  }
-  .img-comment--about .img-comment__picture::before {
-    width: 158px;
-    height: 49px;
-    top: 20px;
-    left: 98px;
-  }
-  .img-comment--about .img-comment__img {
-    right: 9px;
-    width: 193px;
-    height: 153px;
-  }
-  .img-comment--speaking-club .appeal .appeal__title {
-    margin-bottom: 272px;
-    max-width: 90%;
-  }
-  .img-comment--speaking-club .img-comment__picture {
-    min-height: 215px;
-    top: initial;
-    bottom: 38%;
-  }
-  .img-comment--speaking-club .img-comment__picture::before {
-    right: 50px;
-    -webkit-transform: none;
-            transform: none;
-  }
-}
-@media (max-width: 480px) {
-  .img-comment__img {
-    right: 0px;
-  }
-  .img-comment--about .img-comment__picture::before {
-    left: 90px;
-  }
-  .img-comment--about .img-comment__picture .img-comment__img {
-    right: 0;
-  }
-  .img-comment--speaking-club .img-comment__picture::before {
-    width: 95px;
-    height: 100px;
-    right: 25px;
-  }
-  .img-comment--speaking-club .img-comment__img {
-    width: 160px;
-    height: 181px;
-    left: 9px;
   }
 }
 
@@ -10027,13 +10034,13 @@ p a:hover {
   margin: 25px 0 100px;
 }
 .mainscreen-big .title {
+  max-width: 840px;
+  margin: 0 auto;
   font-size: 46px;
   font-weight: 700;
   line-height: 45px;
   color: #262626;
   text-align: center;
-  max-width: 840px;
-  margin: 0 auto;
 }
 .mainscreen-big .btn {
   margin: 0 auto;

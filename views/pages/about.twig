@@ -2,22 +2,25 @@
 
 {% block content %}
 	{% include 'sections/mainscreen-big.twig' with {
-		mixin: page.name ?? 'about',
-		title: page.title,
+		title: page.heading ?? page.title,
         description: 'Влюбляем в английский и исполняем ваши мечты с 2013 года',
-        image: 'mainscreen-2'
+        image: 'mainscreen-2.jpg'
 	} %}
 
 	{% include 'sections/video.twig' with {
 		subtitle: 'Быть нашим студентом — это...',
-		videoImg: 'video-section-1',
-		videoUrl: 'https://www.youtube.com/embed/Vsfz_1QzwDA'
+		video: {
+			youtube_id: 'f3cBgWC2ljM',
+			image: {
+				path: 'video-sections/video-section-1.jpg'
+			},
+			modal: true
+		}
 	} %}
 
 	{% embed 'sections/img-comment.twig' with {
-		class: 'img-comment--about',
 		title: 'Обращение основателей школы',
-		img: 'founders-2.png'
+		img: 'founders-1.png'
 	} %}
 		{% block content %}
 			<p class="appeal__description">
@@ -83,128 +86,48 @@
 			<div class="cards cards--back-office">
 				<div class="card card--text-card">
 					<h4 class="card__title">Команда мечты</h4>
-					<h5 class="card__subtitle">Создает для вас душевную атмосферу и обеспечивает комфорт в обучении</h5>
+					<h5 class="card__subtitle">Создает для вас душевную атмосферу и обеспечивает комфорт в обучении.</h5>
 				</div>
 
-				{% for person in [
-					{
-						name: 'Роман Сорочук',
-						post: 'Управляющий директор',
-						about: 'Очаровывает всех своей энергией и харизмой',
-						img: 'worker-1',
-						type: 'team-card'
-					},
-					{
-						name: 'Кристина Кремчанинова',
-						post: 'Академический директор',
-						about: 'Cвободно говорит на  китайском и французском',
-						img: 'worker-2',
-						type: 'team-card'
-					},
-					{
-						name: 'Мария Блисюк',
-						post: 'Методист офлайн обучения',
-						about: 'Научит преподавать группам не только весело, но и эффективно',
-						img: 'worker-3',
-						type: 'team-card'
-					},
-					{
-						name: 'Валерия Илюкович',
-						post: 'Методист детского онлайн обучения',
-						about: 'Кроме знаний детской психологии, знает язык жестов',
-						img: 'worker-4',
-						type: 'team-card'
-					},
-					{
-						name: 'Ирина Морозова',
-						post: 'Методист индивидуального обучения',
-						about: 'Может легко поддержать разговор на японском языке',
-						img: 'worker-5',
-						type: 'team-card'
-					},
-					{
-						name: 'Екатерина Петрякова',
-						post: 'Менеджер по работе с клиентами офлайн',
-						about: 'Окружает спокойствием, заботой и желанием помочь',
-						img: 'worker-6',
-						type: 'team-card'
-					},
-					{
-						name: 'Анастасия Жителева',
-						post: 'Менеджер по работе с клиентами офлайн',
-						about: 'Очаровывает улыбкой и профессионализмом с первого визита',
-						img: 'worker-7',
-						type: 'team-card'
-					},
-					{
-						text: 'Методисты школы имеют большой опыт работы по коммуникативной методике, организовывают образовательный процесс и следят за качеством обучения.',
-						type: 'comment-card'
-					},
-					{
-						text: 'Менеджеры школы — это «ангелы-хранители» наших студентов, готовые прийти на помощь и дать поддержку в процессе обучения.',
-						type: 'comment-card'
-					},
-					{
-						name: 'Алина Джумайло',
-						post: 'Менеджер по работе с клиентами онлайн',
-						about: 'Умеет находить подход к каждому клиенту',
-						img: 'worker-8',
-						type: 'team-card'
-					},
-					{
-						name: 'Татьяна Андреева',
-						post: 'Менеджер по работе с клиентами онлайн',
-						about: 'Самый душевный и отзывчивый менеджер Школы',
-						img: 'worker-9',
-						type: 'team-card'
-					},
-					{
-						name: 'Анна Олейник',
-						post: 'Контент менеджер, куратор спикинг клубов',
-						about: 'Организует спикинги, на которые выстраивается очередь',
-						img: 'worker-10',
-						type: 'team-card'
-					},
-					{
-						name: 'Дарья Мамцис',
-						post: 'Креативный менеджер',
-						about: 'Организует решение любой задачи Школы наилучшим способом',
-						img: 'worker-11',
-						type: 'team-card'
-					},
-					{
-						name: 'Альбина Ванзина',
-						post: 'HR специалист',
-						about: 'Шаман нашего времени — помогает людям найти свое место в Школе',
-						img: 'worker-12',
-						type: 'team-card'
-					},
-					{
-						name: 'Екатерина Гаврикова',
-						post: 'Организатор мероприятий и пиар менеджер',
-						about: 'Организовывает незабываемые встречи для клиентов Школы!',
-						img: 'worker-13',
-						type: 'team-card'
-					},
-					{
-						text: 'Хотите стать членом нашей команды мечты? <br><br> <span class="text text--weight-800">Напишите нам на почту info@sayes.ru</span>',
-						type: 'comment-card'
-					}
-				] %}
-					<div class="card card--{{person.type}}">
-						{% if person.type == 'team-card' %}
-							<img class="card__img" src="{{theme.link}}/static/images/managers/{{person.img}}.jpg" alt="{{person.name}}">
+				{% for manager in managers|slice(0, 7) %}
+					<div class="card card--team-card">
+						<img class="card__img" src="{{manager.thumbnail.src}}" alt="{{manager.name}}">
 
-							<div class="card__content">
-								<h3 class="card__name">{{person.name}}</h3>
-								<h4 class="card__post">{{person.post}}</h4>
-								<p class="card__description">{{person.about}}</p>
-							</div>
-						{% else %}
-							<p class="card__text">{{person.text}}</p>
-						{% endif %}
+						<div class="card__content">
+							<h3 class="card__name">{{manager.name}}</h3>
+							<p class="card__post">{{manager.position}}</p>
+							<div class="card__description">{{manager.content}}</div>
+						</div>
 					</div>
 				{% endfor %}
+
+				<div class="card card--comment-card">
+					<p class="card__text">Методисты школы имеют большой опыт работы по коммуникативной методике, организовывают образовательный процесс и следят за качеством обучения.</p>
+				</div>
+
+				<div class="card card--comment-card">
+					<p class="card__text">Менеджеры школы — это «ангелы-хранители» наших студентов, готовые прийти на помощь и дать поддержку в процессе обучения.</p>
+				</div>
+
+				{% for person in managers|slice(7, 6) %}
+					<div class="card card--team-card">
+						<img class="card__img" src="{{manager.thumbnail.src}}" alt="{{manager.name}}">
+
+						<div class="card__content">
+							<h3 class="card__name">{{manager.name}}</h3>
+							<p class="card__post">{{manager.position}}</p>
+							<div class="card__description">{{manager.content}}</div>
+						</div>
+					</div>
+				{% endfor %}
+
+				<div class="card card--comment-card">
+					<p class="card__text">
+						Хотите стать членом нашей команды мечты?
+						<br><br>
+						<span class="text text--weight-800">Напишите нам на почту info@sayes.ru</span>
+					</p>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -213,9 +136,11 @@
 		<div class="section-container">
 			<h2 class="subtitle">Жизнь Школы за кулисами и не только</h2>
 
-			<p class="behind-the-scenes__description">Для нас Школа — это не только интересная работа, но и совместное времяпрепровождение.</p>
+			<div class="behind-the-scenes__description">
+				<p>Для нас Школа — это не только интересная работа, но и совместное времяпрепровождение.</p>
 
-			<p class="behind-the-scenes__description">Мы веселимся, вместе учимся новому и делаем жизнь нашего SAY YES! коммьюнити насыщенней яркими моментами и от того счастливее.</p>
+				<p>Мы веселимся, вместе учимся новому и делаем жизнь нашего SAY YES! коммьюнити насыщенней яркими моментами и от того счастливее.</p>
+			</div>
 
 			<ul class="behind-the-scenes__gallery">
 				{% for i in 1..7 %}
@@ -226,7 +151,7 @@
 				
 				<li class="behind-the-scenes__item">
 					{% for i in [8, 3] %}
-					<img class="behind-the-scenes__img" src="{{theme.link}}/static/images/behind-the-scenes/bts-{{i}}.jpg" alt="Say Yes">
+						<img class="behind-the-scenes__img" src="{{theme.link}}/static/images/behind-the-scenes/bts-{{i}}.jpg" alt="Say Yes">
 					{% endfor %}
 				</li>
 			</ul>

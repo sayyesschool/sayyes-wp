@@ -1,3 +1,96 @@
 #about-page {
+    .img-comment {
+        &__picture {
+            // background: rgb(118, 101, 170);
+            // background: linear-gradient(
+            //     183deg,
+            //     rgba(118, 101, 170, 1) 0%,
+            //     rgba(58, 44, 99, 1) 40%
+            // );
+
+            background-color: $pale-pink;
     
+            &::before {
+                top: 50px;
+                left: 160px;
+                transform: translateX(-50%);
+                width: 227px;
+                height: 71px;
+                background: url('./static/images/decoration/notes/founders-2.svg') center center/contain no-repeat;
+            }
+        }
+
+        &__img {
+            width: 120%;
+            left: -15%;
+        }
+    
+        @include breakpoint($breakpoint-md) {
+            &__picture {
+                min-height: 365px;
+    
+                &::before {
+                    width: 191px;
+                    height: 60px;
+                    top: 25px;
+                    left: 122px;
+                }
+            }
+        }
+    
+        @include breakpoint($breakpoint-xxs) {
+            &__picture {
+                min-height: 165px;
+    
+                &::before {
+                    width: 191px;
+                    height: 60px;
+                    top: 59px;
+                    left: 140px;
+                }
+            }
+
+            &__img {
+                left: auto;
+                right: 0;
+                width: 260px;
+            }
+        }
+    
+        @include breakpoint($breakpoint-mobile) {
+            .appeal {
+                &__title {
+                    margin-bottom: 272px;
+                    max-width: 270px;
+                }
+            }
+    
+            &__picture {
+                min-height: 215px;
+
+                &::before {
+                    width: 158px;
+                    height: 49px;
+                    top: 20px;
+                    left: 98px;
+                }
+            }
+    
+            &__img {
+                width: 260px;
+            }
+        }
+    
+        @include breakpoint($breakpoint-sm-mobile) {
+            &__picture {
+                &::before {
+                    left: 90px;
+                }
+            }
+
+            &__img {
+                width: 220px;
+            }
+        }
+    }
 }

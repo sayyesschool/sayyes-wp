@@ -69,4 +69,104 @@
             }
         }
     }
+
+    .img-comment {
+        .appeal {
+			&__title {
+				max-width: 510px;
+			}
+
+			&__text {
+				padding-left: 0;
+
+				&::before,
+				&::after {
+					content: none;
+				}
+			}
+		}
+
+		&__img {
+			left: -7px;
+		}
+
+		&__picture {
+			min-height: 450px;
+
+			background-color: $violet;
+
+			&::before {
+				top: 45px;
+				right: 30px;
+				width: 143px;
+				height: 151px;
+				background: url("./static/images/decoration/notes/casey-speaker.svg")
+					center center/contain no-repeat;
+			}
+		}
+
+        @include breakpoint($breakpoint-md) {
+            &__picture {
+                min-height: 350px;
+    
+                &::before {
+                    top: 15px;
+                    right: 13px;
+                    width: 109px;
+                    height: 115px;
+                }
+            }
+        }
+    
+        @include breakpoint($breakpoint-xxs) {
+            &__picture {
+                min-height: 165px;
+    
+                &::before {
+                    width: 122px;
+                    height: 130px;
+                    top: 20px;
+                    left: auto;
+                    right: 25%;
+                    transform: rotate(8deg);
+                }
+            }
+        }
+
+        @include breakpoint($breakpoint-mobile) {
+            .appeal {
+				&__title {
+					margin-bottom: 272px;
+					max-width: 90%;
+				}
+			}
+
+			&__picture {
+				min-height: 215px;
+				top: initial;
+				bottom: 38%;
+
+				&::before {
+					right: 50px;
+					transform: none;
+				}
+			}
+        }
+
+        @include breakpoint($breakpoint-sm-mobile) {
+            &__picture {
+				&::before {
+					width: 95px;
+					height: 100px;
+					right: 25px;
+				}
+			}
+
+			&__img {
+				width: 160px;
+				height: 181px;
+				left: 9px;
+			}
+        }
+    }
 }

@@ -2,14 +2,13 @@
 	margin: 25px 0 100px;
 
 	.title {
+		max-width: 840px;
+		margin: 0 auto;
 		font-size: 46px;
 		font-weight: 700;
 		line-height: 45px;
 		color: $black;
 		text-align: center;
-
-		max-width: 840px;
-		margin: 0 auto;
 	}
 
 	.btn {
