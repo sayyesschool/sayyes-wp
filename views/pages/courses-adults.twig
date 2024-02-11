@@ -3,12 +3,10 @@
 {% block content %}
 	{% include 'sections/mainscreen-big.twig' with {
         mixin: 'adults',
-        title: page.title,
+        title: page.heading ?? page.title,
         description: page.content,
-        image: 'mainscreen-5.jpg',
-        button: {
-            text: 'Оставить заявку'
-        }
+        button: true,
+        image: page.thumbnail
     } %}
 
 	{% include 'sections/img-courses.twig' with {

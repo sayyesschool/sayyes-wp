@@ -76,11 +76,10 @@
 {% block content %}
 	{% include 'sections/mainscreen-big.twig' with {
         mixin: 'education',
-        title: 'Формы обучения в школе SAY YES! для взрослых и детей.',
-        description: 'Оставьте заявку на обратный звонок, и мы подробно расскажем о курсах, формах обучения и стоимости.',
+        title: page.heading ?? page.title,
+        description: page.content,
         button: true,
-        splitImg1: 'mainscreen-split-1',
-        splitImg2: 'mainscreen-split-2'
+        image: page.thumbnail
     } %}
 
 	{% embed 'sections/img-courses-2.twig' with {

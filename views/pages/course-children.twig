@@ -3,12 +3,10 @@
 {% block content %}
 	{% include 'sections/mainscreen-big.twig' with {
         mixin: 'children-courses',
-		title: 'Курс английского языка для детей 5–7 лет “Bright ideas”',
-        description: 'Данный курс познакомит вашего ребенка с азами языка в игровой форме и привьет любовь к английскому.',
-        imgage: 'mainscreen-11.jpg',
-		button: {
-			text: 'Оставить заявку'
-		}
+		title: course.title,
+        description: course.content,
+        button: true,
+        image: course.thumbnail
 	} %}
 
 	{% include 'sections/about-course.twig' with {

@@ -3,12 +3,10 @@
 {% block content %}
 	{% include 'sections/mainscreen-big.twig' with {
         mixin: 'children',
-		title: 'Курсы английского языка SAY YES! для детей',
-        description: 'Оставьте заявку на обратный звонок, и мы подробно расскажем о курсах, форматах обучения и стоимости.',
-        image: 'mainscreen-6.jpg',
-        button: {
-			text: 'Оставить заявку'
-		}
+		title: page.heading ?? page.title,
+        description: page.content,
+        button: true,
+        image: page.thumbnail
 	} %}
 
 	{% include 'sections/img-courses.twig' with {

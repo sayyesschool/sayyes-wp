@@ -119,13 +119,13 @@
 
 {% block content %}
 	{% include 'sections/mainscreen-big.twig' with {
-        title: 'Корпоративное обучение английскому языку в SAY YES!',
-        description: 'Предлагаем компаниям лучшее соотношение цены и качества.',
+        title: page.heading ?? page.title,
+        description: page.content,
         button: {
-            text: 'Оставить заявку на звонок',
+            content: 'Оставить заявку на звонок',
             color: 'black'
         },
-        image: 'mainscreen-7.jpg'
+        image: page.thumbnail
     } %}
 
 	{% include 'sections/video.twig' with {

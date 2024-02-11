@@ -4,10 +4,7 @@
 	{% include 'sections/mainscreen-big.twig' with {
 		title: page.heading ?? page.title,
         description: page.content,
-        image: page.thumbnail and {
-			src: page.thumbnail.src,
-			alt: page.thumbnail.alt
-		}
+        image: page.thumbnail
 	} %}
 
 	{% include 'sections/video.twig' with {

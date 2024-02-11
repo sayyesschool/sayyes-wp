@@ -5,11 +5,8 @@
         mixin: 'adults-courses',
         title: course.title,
         description: course.content,
-        image: course.thumbnail,
-        button: {
-            content: 'Оставить заявку'
-        },
-        img: 'mainscreen-9'
+        button: true,
+        image: course.thumbnail
     } %}
 
 	{% include 'sections/about-course.twig' with {

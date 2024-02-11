@@ -2,11 +2,10 @@
 
 {% block content %}
 	{% include 'sections/mainscreen-big.twig' with {
-        title: 'Стоимость обучения в школе английского языка SAY YES!',
-        description: 'Оставьте заявку на обратный звонок, и мы подробно расскажем о ценах на курсы и действующих акциях.',
-        button: true
-        splitImg1: 'mainscreen-split-3',
-        splitImg2: 'mainscreen-split-4'
+        title: page.heading ?? page.title,
+        description: page.content,
+        button: true,
+        image: page.thumbnail
     } %}
 
     {% include 'sections/courses.twig' with {
