@@ -1,9 +1,6 @@
 .social {
 	display: flex;
-
-	.icon--tg {
-		transform: translate(-2px, 2px);
-	}
+	gap: 10px;
 
 	&__item {
 		display: flex;
@@ -14,15 +11,15 @@
 		border: 2px solid $black;
 		background-color: transparent;
 		border-radius: 100%;
-
-		&:not(:last-child) {
-			margin-right: 10px;
-		}
 	}
 
 	&__link {
 		display: flex;
 		justify-content: center;
 		align-items: center;
+	}
+
+	.icon--telegram {
+		transform: translate(-2px, 0px);
 	}
 }

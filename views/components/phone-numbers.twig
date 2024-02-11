@@ -2,7 +2,7 @@
 	{% for key, number in settings.phone_numbers %}
 		<li class="phone-numbers__item">
 			{% include 'components/icon.twig' with {
-				class: 'icon--' ~ key ~ ' ' ~ icon_class
+				name: key == 'main' ? 'phone' : key
 			} %}
 			
 			<a class="phone-numbers__link" href="tel:{{format_phone_number(number)}}">{{number}}</a>
