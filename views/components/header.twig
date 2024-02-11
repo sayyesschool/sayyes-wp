@@ -1,20 +1,23 @@
 <header class="header opened">
-	<div class="header__overview">
+	<div class="header__main">
 		<div class="header-container">
 			{% include 'components/logo.twig' with {
 				class: 'header__logo'
 			} %}
 
-			<button class="header__free-lesson feedback-btn btn btn--transparent btn--uppercase btn--sm" data-modal-trigger="request-modal">Бесплатный урок</button>
+			<button class="header__free-lesson btn btn--transparent btn--uppercase btn--sm" data-modal-trigger="request-modal">Бесплатный урок</button>
 
 			<button class="header__test">Онлайн тест</button>
 
 			<button class="header__callback" data-modal-trigger="callback-modal">Обратный звонок</button>
 
-			{% include 'components/phone-numbers.twig' with {
-				class: 'header__phone-numbers',
-				icon_class: 'icon--white icon--sm' 
-			} %}
+			<div class="header__phones">
+				{% include 'components/phone-numbers.twig' with {
+					class: 'header__phone-numbers',
+					small: true,
+					white: true
+				} %}
+			</div>
 
 			<div class="header__contacts">
 				<div class="header__city">Москва</div>

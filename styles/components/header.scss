@@ -7,37 +7,12 @@
 	font-size: 14px;
 	z-index: 100;
 
-	&__logo {
-		margin-right: 32px;
-	}
-
-	&__free-lesson {
-		font-size: 14px;
-		line-height: 1;
-		border-width: 1.5px;
-		letter-spacing: 1.4px;
-		margin-right: 20px;
-
-		@include hover-active(
-			background-color,
-			transparent,
-			border-color,
-			$medium-magenta,
-			color,
-			$medium-magenta
-		);
-	}
-
-	&__phone-numbers {
-		margin-right: 20px;
-	}
-
-	&__overview {
-		color: $white;
-		background-color: #5e288a;
-		border-radius: $border-radius-sm;
+	&__main {
 		width: 1280px;
 		max-width: calc(100% - 40px);
+		background-color: #5e288a;
+		color: $white;
+		border-radius: $border-radius-sm;
 		height: 65px;
 		margin: 0 auto;
 		transition: 0.2s linear all;
@@ -53,13 +28,29 @@
 			display: flex;
 			align-items: center;
 			padding: 0 60px;
-
 			transition: 0.3s all linear;
 		}
 	}
 
-	&__city {
-		margin-bottom: 5px;
+	&__logo {
+		margin-right: 32px;
+	}
+
+	&__free-lesson {
+		margin-right: 20px;
+		border-width: 1.5px;
+		font-size: 14px;
+		line-height: 1;
+		letter-spacing: 1.4px;
+
+		@include hover-active(
+			background-color,
+			transparent,
+			border-color,
+			$medium-magenta,
+			color,
+			$medium-magenta
+		);
 	}
 
 	&__test {
@@ -70,91 +61,40 @@
 		margin-right: 50px;
 	}
 
-	&__login {
-		letter-spacing: 1.4px;
+	&__phones {
+		margin-right: 20px;
+	}
 
+	&__contacts {
+		font-weight: 700;
+		line-height: 12px;
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+	}
+
+	&__login {
 		margin-left: auto;
+		letter-spacing: 1.4px;
 	}
 
 	&__test,
 	&__callback,
 	&__login,
 	.phone-numbers__link {
-		background-color: transparent;
+		padding: 0;
 		border: none;
+		background-color: transparent;
 		text-transform: uppercase;
 		color: $white;
 		font-family: "Raleway", sans-serif;
 		font-weight: 800;
-
-		padding: 0;
-
-		transition: color 0.3s linear;
 		letter-spacing: 1.4px;
 		line-height: normal;
+		transition: color 0.3s linear;
 
 		&:hover {
 			color: $medium-magenta;
-		}
-	}
-
-	&__contacts {
-		font-weight: 700;
-		line-height: 12px;
-	}
-
-	&__nav {
-		position: relative;
-		z-index: 1;
-		transition: 0.2s linear all;
-		z-index: -1;
-		height: 55px;
-		padding-top: 15px;
-		font-weight: 700;
-		background-color: $pearl-white;
-		transform: translateY(-120%);
-
-		&-list {
-			height: 100%;
-			width: 735px;
-			max-width: calc(100% - 120px);
-			margin: 0 auto;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-		}
-
-		&-item {
-			position: relative;
-
-			&:hover {
-				> .subnav {
-					opacity: 1;
-					visibility: visible;
-				}
-			}
-
-			&:nth-child(7) {
-				display: none;
-			}
-
-			&:last-child {
-				display: none;
-
-				.subnav {
-					right: -40px;
-					left: auto;
-				}
-			}
-		}
-
-		&-link {
-			color: $black;
-			transition: color 0.3s linear;
-
-			&:hover {
-				color: $violet;
-			}
 		}
 	}
 
@@ -179,6 +119,56 @@
 		}
 	}
 
+	&__nav {
+		position: relative;
+		height: 55px;
+		padding-top: 15px;
+		background-color: $pearl-white;
+		font-weight: 700;
+		transform: translateY(-120%);
+		transition: 0.2s linear all;
+		z-index: -1;
+
+		&-list {
+			width: 735px;
+			max-width: calc(100% - 120px);
+			height: 100%;
+			margin: 0 auto;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		&-item {
+			position: relative;
+
+			&:hover {
+				> .subnav {
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+
+			// &:last-child {
+			// 	display: none;
+
+			// 	.subnav {
+			// 		right: -40px;
+			// 		left: auto;
+			// 	}
+			// }
+		}
+
+		&-link {
+			color: $black;
+			transition: color 0.3s linear;
+
+			&:hover {
+				color: $violet;
+			}
+		}
+	}
+
 	&__trial-lesson {
 		margin: 0 auto;
 		display: none;
@@ -186,7 +176,7 @@
 	}
 
 	&.expanded {
-		.header__overview {
+		.header__main {
 			max-width: 100%;
 			width: 100%;
 			border-radius: 0;
@@ -221,12 +211,6 @@
 		&__test {
 			display: none;
 		}
-
-		&__item {
-			&:nth-child(7) {
-				display: block;
-			}
-		}
 	}
 
 	@include breakpoint($breakpoint-lg) {
@@ -252,12 +236,12 @@
 			padding: 0 30px;
 		}
 
-		.phone-numbers {
-			margin-left: auto;
+		&__callback {
 			margin-right: 0;
 		}
 
-		&__callback {
+		&__phones {
+			margin-left: auto;
 			margin-right: 0;
 		}
 	}
@@ -286,11 +270,7 @@
 	@include breakpoint($breakpoint-xxs) {
 		font-size: 16px;
 
-		.phone-numbers {
-			margin-left: 30px;
-		}
-
-		.logo {
+		&__logo {
 			margin-right: 10px;
 		}
 
@@ -298,11 +278,15 @@
 			display: none;
 		}
 
-		&__trial-lesson {
-			display: block;
+		&__phones {
+			margin-left: 30px;
 		}
 
 		&__burger {
+			display: block;
+		}
+
+		&__trial-lesson {
 			display: block;
 		}
 
@@ -373,14 +357,14 @@
 	}
 
 	@include breakpoint($breakpoint-mobile) {
-		.phone-numbers {
+		&__phones {
 			display: none;
 		}
 
 		&__trial-lesson {
+			width: 300px;
 			max-width: 100%;
 			min-width: auto;
-			width: 300px;
 		}
 	}
 }
