@@ -1,85 +1,10 @@
 {% extends 'layouts/base.twig' %}
 
-{% set contacts = [
-	{
-		name: "Роман Сорочук",
-		post: "Управляющий директор",
-		about: "Обратная связь на работу школы",
-		img: "worker-1",
-		contacts: [
-			{
-				icon: "icon--pc",
-				value: "+7 925 091-58-19",
-				link: "#"
-			},
-			{
-				icon: "icon--tg",
-				value: "Telegram",
-				link: "#"
-			},
-			{
-				icon: "icon--email",
-				value: "r.sorochuk@sayes.ru",
-				link: "#"
-			}
-		],
-		type: "team-card"
-	},
-	{
-		name: "Анастасия Жителева",
-		post: "Менеджер по работе с клиентами офлайн",
-		about: "По вопросам офлайн обучения",
-		img: "worker-7",
-		contacts: [
-			{
-				icon: "icon--pc",
-				value: "+7 929 507-38-55",
-				link: "#"
-			},
-			{
-				icon: "icon--tg",
-				value: "Telegram",
-				link: "#"
-			},
-			{
-				icon: "icon--email",
-				value: "a.jiteleva@sayes.ru ",
-				link: "#"
-			}
-		],
-		type: "team-card"
-	},
-	{
-		name: "Татьяна Андреева",
-		post: "Менеджер по работе с клиентами онлайн",
-		about: "По вопросам онлайн обучения",
-		img: "worker-9",
-		contacts: [
-			{
-				icon: "icon--pc",
-				value: "+7 926 737-11-27",
-				link: "#"
-			},
-			{
-				icon: "icon--tg",
-				value: "Telegram",
-				link: "#"
-			},
-			{
-				icon: "icon--email",
-				value: "t.andreeva@sayes.ru ",
-				link: "#"
-			}
-		],
-		type: "team-card"
-	}
-] %}
-
 {% block content %}
 	<section class="contacts-section">
-		<h2 class="subtitle">Курсы английского языка SAY YES! в Москве и онлайн</h2>
+		<h2 class="subtitle">{{page.heading ?? page.title}}</h2>
 
-		<p class="contacts-section__description">Школа английского языка на Павелецкой</p>
+		<div class="contacts-section__description">{{page.content}}</div>
 
 		<div class="contacts">
 			<div class="contacts__info">
@@ -134,25 +59,37 @@
 
 	<section class="contact-us">
 		<div class="section-container">
-			<h2 class="subtitle">Свяжитесь с нами</h2>
+			<h2 class="contact-us__title subtitle">Свяжитесь с нами</h2>
 
-			<div class="contact-us__cards">
-				{% for person in contacts %}
-					<div class="card card--contact-card">
-						<img class="card__img" src="{{theme.link}}/static/images/managers/{{person.img}}.jpg" alt="{{person.name}}">
+			<div class="contact-us__content">
+				{% for manager in managers %}
+					<div class="contact-card card">
+						<img class="card__img" src="{{manager.thumbnail.src}}" alt="{{manager.name}}">
 
 						<div class="card__content">
-							<h3 class="card__name">{{person.name}}</h3>
-							<h4 class="card__post">{{person.post}}</h4>
-							<p class="card__description">{{person.about}}</p>
+							<h3 class="card__name">{{manager.name}}</h3>
+							<h4 class="card__post">{{manager.position}}</h4>
+							<div class="card__description">{{manager.responsibility}}</div>
 							<ul class="card__description">
-								{% for contact in person.contacts %}
-									<li>
-										<span>{% include 'components/icon.twig' with { class: contact.icon } %}</span>
+								<li>
+									<span>
+										{% include 'components/icon.twig' with { 
+											name: 'phone'
+										} %}
+									</span>
 
-										<a class="card__link" href="{{contact.link}}">{{contact.value}}</a>
-									</li>
-								{% endfor %}
+									<a class="card__link" href="tel:{{format_phone_number(manager.phone)}}">{{manager.phone}}</a>
+								</li>
+
+								<li>
+									<span>
+										{% include 'components/icon.twig' with { 
+											name: 'email'
+										} %}
+									</span>
+
+									<a class="card__link" href="mailto:{{manager.email}}">{{manager.email}}</a>
+								</li>
 							</ul>
 						</div>
 					</div>
