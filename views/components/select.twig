@@ -1,13 +1,17 @@
 <div class="select">
 	<input class="select__input" type="hidden" name="{{name}}" value="{{options[0]}}">
+	
+	{% if label %}
+		<label class="select__label">{{label}}</label>
+	{% endif %}
 
-	<button class="select__button" type="input" >{{options[0]}}</button>
+	<button class="select__button" type="button">
+		{{options[0]}}
 
-	<span class="select__arrow">
-        {% include 'components/check.twig' with {
-			fill: fill ?? '#262626'
-		} %}
-    </span>
+		<span class="select__arrow">
+			{% include 'components/check.twig' %}
+		</span>
+	</button>
 
 	<ul class="select__list">
 		{% for option in options %}

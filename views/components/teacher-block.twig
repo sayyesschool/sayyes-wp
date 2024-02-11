@@ -1,89 +1,68 @@
-<div class="teacher-block">
-	<div class="teacher-block__person">
-		<div class="video">
-			<img class="video__bg" src="{{theme.link}}/static/images//teachers/{{teacher.img}}.jpg" alt="Say Yes">
-			<button class="play" id="{{teacher.teacherId}}"></button>
+<article class="teacher-block" v-if="teacher">
+	<div class="teacher-block__summary">
+		<div class="teacher-block__media">
+			<div class="video video--modal">
+				<img class="video__bg" :src="teacher.imageUrl" :alt="teacher.name">
+				<button class="video__btn" type="button" :data-embed-url="teacherVideoEmbedUrl">
+			</div>
 		</div>
 
 		<div class="teacher-block__info">
-			<h2 class="teacher-block__title">{{teacher.name}}</h2>
+			<h2 class="teacher-block__title">${teacher.name}</h2>
 
 			<p class="teacher-block__free-lesson">Бесплатный пробный урок с этим преподавателем</p>
 
-			<button class="btn btn--sm btn--transparent btn--transparent-black feedback-btn">Подробнее</button>
+			<button class="feedback-btn btn btn--sm btn--transparent btn--transparent-black">Подробнее</button>
 		</div>
 	</div>
 
-	<div class="subtabs">
-		<div class="subtabs__nav subtabs__nav--teacher-block">
-			<button class="subtabs__tab active">Обо мне</button>
-			<button class="subtabs__tab">Специализации</button>
-			<button class="subtabs__tab">Отзывы</button>
-
-			{% include 'components/select.twig' with {
-				class: 'select--sm',
-				options: ['Обо мне', 'Специализации', 'Отзывы']
-			} %}
-		</div>
-
-		<div class="subtabs__content">
-			<div class="subtabs__item active">
-				<div class="about-teacher">
-					<div class="about-teacher__experience">
-						{% for merits in teacher.merits %}
-							<div class="about-teacher__item">
-								<div class="about-teacher__item-key">{{merits.merit}}:</div>
-								<div class="about-teacher__item-value">{{merits.description}}</div>
-							</div>
-						{% endfor %}
-
-						<div class="about-teacher__item">
-							<div class="about-teacher__item-key">Образование:</div>
-
-							<div class="education-list">
-								{% for item in teacher.education %}
-									<div class="education-list__item">
-										<div class="education-list__institution">{{item.institution}}</div>
-										<div class="education-list__faculty">{{item.faculty}}</div>
-									</div>
-								{% endfor %}
-							</div>
-						</div>
+	<div class="teacher-block__details">
+		{% embed 'components/tabs.twig' with {
+			tabs: [
+				{
+					content: 'Обо мне',
+					target: '.teacher-details',
+					active: true
+				},
+				{
+					content: 'Отзывы',
+					target: '.teacher-reviews'
+				}
+			]
+		} %}
+			{% block content %}
+				<section class="teacher-details">
+					<div class="teacher-details__section" v-if="teacher.experience">
+						<h3 class="teacher-details__heading">Опыт работы:</h3>
+						<div class="teacher-details__content" v-html="teacher.experience"></div>
 					</div>
-					<p class="about-teacher__text">{{teacher.text}}</p>
-				</div>
-			</div>
 
-			<div class="subtabs__item">
-				<div class="specializations">
-					{% include 'components/list.twig' with {
-						classes: 'list--ol-digits',
-						list: teacher.specializationsList
-					} %}
-				</div>
-			</div>
+					<div class="teacher-details__section" v-if="teacher.education">
+						<h3 class="teacher-details__heading">Образование:</h3>
+						<div class="teacher-details__content" v-html="teacher.education"></div>
+					</div>
 
-			<div class="subtabs__item">
-				<div class="teacher-reviews">
-					{% for review in teacher.reviews %}
-						<div class="teacher-reviews__review">
-							<div class="teacher-reviews__info">
-								<h4 class="teacher-reviews__name">{{review.name}}</h4>
+					<div class="teacher-details__content" v-html="teacher.content"></div>
+				</section>
 
-								<a class="teacher-reviews__social" href="{{review.social.url}}">
-									{% include 'components/icon.twig' with {class: review.social.icon} %}
-								</a>
-							</div>
+				<section class="teacher-reviews hidden">
+					<div class="teacher-reviews__review" v-for="review in teacher.reviews">
+						<div class="teacher-reviews__info">
+							<h4 class="teacher-reviews__name">${review.name}</h4>
 
-							<p class="teacher-reviews__description">{{review.description}}</p>
+							<a class="teacher-reviews__social" href="${review.social.url}" target="_blank">
+								{# {% include 'components/icon.twig' with {class: review.social.icon} %} #}
+							</a>
 						</div>
-					{% endfor %}
-				</div>
-			</div>
-		</div>
+
+						<p class="teacher-reviews__description">${review.content}</p>
+					</div>
+				</section>
+			{% endblock %}
+		{% endembed %}
 	</div>
 
-	<button class="teacher-block__share-link" data-share="{{teacher.shareLink}}">
+	<button class="teacher-block__share-link" data-share="${teacher.shareLink}">
 		<img src="{{theme.link}}/static/images/icons/share.svg" alt="">
 	</button>
-</div>
+</article>

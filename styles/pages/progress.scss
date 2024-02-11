@@ -1,0 +1,11 @@
+#progress-page {
+    .mainscreen-big {
+        &__title {
+            max-width: 680px;
+        }
+
+        &__description {
+            max-width: 750px;
+        }
+    }
+}

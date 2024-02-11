@@ -1,14 +1,18 @@
-<ul class="list {{classes}}">
-	{% for item in list %}
-		<li class="list__item">
+<ul class="{{html_classes('list', {
+	'list--ul': type == 'ul',
+	'list--ol': type == 'ol',
+	'list--dl': type == 'dl'
+})}}">
+	{% for item in items %}
+		<li class="list-item">
 			{{item.content}}
 
 			{% if item.title %}
-				<h4 class="list__title">{{item.title}}</h4>
+				<h4 class="list-item__title">{{item.title}}</h4>
 			{% endif %}
 
 			{% if item.description %}
-				<p class="list__description">{{item.description}}</p>
+				<p class="list-item__description">{{item.description}}</p>
 			{% endif %}
 		</li>
 	{% endfor %}

@@ -1,21 +1,16 @@
-<section class="mainscreen-big{{mixin ? ' mainscreen-big--' ~ mixin : ''}}">
-	<h1 class="title">{{title}}</h1>
+<section class="mainscreen-big">
+	<h1 class="mainscreen-big__title title">{{title}}</h1>
     
 	<div class="mainscreen-big__description">{{description}}</div>
 
 	{% if button %}
-		<button class="feedback-btn btn btn--{{button.color ?? 'yellow'}}">{{button.content ?? 'Оставить заявку'}}</button>
+		<button class="feedback-btn btn btn--{{button.color ?? 'yellow'}}">
+			{{attribute(button, 'content') ? button.content : (button == true ? 'Оставить заявку' : button)}}
+		</button>
 	{% endif %}
 
 	{% if image %}
-		<img class="mainscreen-big__img" src="{{attribute(image, 'src') ? image.src : theme.link ~ '/static/images/mainscreens/' ~ image}}" alt="{{image.alt ?? ''}}">
-	{% endif %}
-
-	{% if showSplit %}
-		<div class="split-image">
-			<img class="split-image__first-img" src="{{theme.link}}/static/images/mainscreens/{{splitImg1}}.jpg" alt="">
-			<img class="split-image__second-img" src="{{theme.link}}/static/images/mainscreens/{{splitImg2}}.jpg" alt="">
-		</div>
+		<img class="mainscreen-big__img" src="{{attribute(image, 'src') ? (image.src ?? '') : theme.link ~ '/static/images/mainscreens/' ~ image}}" alt="{{image.alt ?? ''}}">
 	{% endif %}
 
 	{% block content %}

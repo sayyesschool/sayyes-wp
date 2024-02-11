@@ -1,17 +1,15 @@
-<div class="teacher-card card">
-    <div class="card__content">
-        <img class="card__img" src="{{teacher.thumbnail.src('medium')}}" alt="{{'Фото ' ~ teacher.title}}">
+{% macro teacher_card(teacher) %}
+    <div class="card card--teacher">
+        <img class="card__img" src="{{teacher.thumbnail.src('medium')}}" alt="{{teahcer.name}}" loading="lazy">
 
-        <h3 class="card__name">{{teacher.title}}</h3>
+        <div class="card__content">
+            <h3 class="card__name">{{teahcer.name}}</h3>
 
-        <ul class="card__description">
-            {% for merits in teacher.merits %}
-                <li>
-                    {{merits.merit}}: {{merits.description}}
-                </li>
-            {% endfor %}
-        </ul>
+            <div class="card__description">
+                {{teacher.experience}}
+            </div>
 
-        <button id="{{teacher.id}}" class="btn btn--transparent btn--transparent-black btn--md">Подробнее</button>
+            <button class="teacher-btn btn btn--transparent btn--transparent-black btn--md" data-id="{{teacher.id}}">Подробнее</button>
+        </div>
     </div>
-</div>
+{% endmacro %}

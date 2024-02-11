@@ -14,14 +14,25 @@
 	visibility: hidden;
 	z-index: 1000;
 
-	&__window {
+	&__surface {
 		position: relative;
 		opacity: 0;
 		transition: all 0.3s ease-in-out;
+		border-radius: $border-radius;
+		background-color: $pale-white;
+	}
 
-		&__check-icon {
-			margin-bottom: 30px;
-		}
+	&__title {
+		margin-bottom: 20px;
+		font-weight: 700;
+	}
+
+	&__description {
+		margin-bottom: 20px;
+		color: lighten($black, 30%);
+		font-size: 18px;
+		font-weight: 600;
+		line-height: 20px;
 	}
 
 	&__close {
@@ -47,8 +58,59 @@
 		opacity: 1;
 	}
 
-	&.active &__window {
+	&.active &__surface {
 		opacity: 1;
+	}
+
+	&--with-tabs {
+		.tabs {
+			&__nav {
+				position: absolute;
+				top: -55px;
+				left: 42%;
+			}
+	
+			&__tab {
+				min-height: 55px;
+			}
+
+			@include breakpoint($breakpoint-lg) {
+				&__tab {
+					width: 180px;
+				}
+			}
+		
+			@include breakpoint($breakpoint-sm) {
+				&__nav {
+					top: -40px;
+					left: 38%;
+				}
+	
+				&__tab {
+					width: 130px;
+					min-height: 40px;
+				}
+			}
+		
+			@include breakpoint($breakpoint-xxs) {
+				&__nav {
+					top: -40px;
+					left: 50%;
+					transform: translateX(-50%);
+				}
+			}
+		
+			@include breakpoint($breakpoint-sm-mobile) {
+				&__nav {
+					top: -35px;
+				}
+	
+				&__tab {
+					width: 100px;
+					min-height: 35px;
+				}
+			}
+		}
 	}
 
 	@include breakpoint($breakpoint-mobile) {
@@ -59,12 +121,5 @@
 			height: 40px;
 			font-size: 40px;
 		}
-	}
-}
-
-.success-modal {
-	.modal__content {
-		max-width: 628px;
-		text-align: center;
 	}
 }

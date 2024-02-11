@@ -62,30 +62,6 @@
 		margin-bottom: 5px;
 	}
 
-	&__item {
-		position: relative;
-
-		&:hover {
-			> .subnav {
-				opacity: 1;
-				visibility: visible;
-			}
-		}
-
-		&:nth-child(7) {
-			display: none;
-		}
-
-		&:last-child {
-			display: none;
-
-			.subnav {
-				right: -40px;
-				left: auto;
-			}
-		}
-	}
-
 	&__test {
 		margin-right: 20px;
 	}
@@ -127,7 +103,7 @@
 		line-height: 12px;
 	}
 
-	&__navigation {
+	&__nav {
 		position: relative;
 		z-index: 1;
 		transition: 0.2s linear all;
@@ -137,24 +113,48 @@
 		font-weight: 700;
 		background-color: $pearl-white;
 		transform: translateY(-120%);
-	}
 
-	&__list {
-		height: 100%;
-		width: 735px;
-		max-width: calc(100% - 120px);
-		margin: 0 auto;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
+		&-list {
+			height: 100%;
+			width: 735px;
+			max-width: calc(100% - 120px);
+			margin: 0 auto;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
 
-	&__sublink {
-		color: $black;
-		transition: color 0.3s linear;
+		&-item {
+			position: relative;
 
-		&:hover {
-			color: $violet;
+			&:hover {
+				> .subnav {
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+
+			&:nth-child(7) {
+				display: none;
+			}
+
+			&:last-child {
+				display: none;
+
+				.subnav {
+					right: -40px;
+					left: auto;
+				}
+			}
+		}
+
+		&-link {
+			color: $black;
+			transition: color 0.3s linear;
+
+			&:hover {
+				color: $violet;
+			}
 		}
 	}
 
@@ -166,17 +166,16 @@
 		margin-left: 40px;
 		border: none;
 		background-color: transparent;
-	}
 
-	&__burger-line {
-		height: 2px;
+		&-line {
+			height: 2px;
+			background-color: $white;
+			border-radius: 10px;
+			transition: 0.3s linear all;
 
-		background-color: $white;
-		border-radius: 10px;
-		transition: 0.3s linear all;
-
-		&:not(:last-child) {
-			margin-bottom: 3px;
+			&:not(:last-child) {
+				margin-bottom: 3px;
+			}
 		}
 	}
 
@@ -195,7 +194,7 @@
 	}
 
 	&.opened {
-		.header__navigation {
+		.header__nav {
 			transform: translateY(-15px);
 		}
 
@@ -307,72 +306,69 @@
 			display: block;
 		}
 
-		&__navigation {
-			padding-bottom: 30px;
-			border-radius: 0 0 $border-radius $border-radius;
-		}
-
-		&__item {
-			.subnav {
-				transition: 0.3s linear;
-			}
-
-			width: 100%;
-			padding: 12px 30px;
-
-			&:nth-child(7) {
-				order: 1;
-			}
-
-			&:nth-child(4),
-			&:nth-child(6) {
-				display: block;
-			}
-
-			&:last-child {
-				display: none;
-			}
-
-			&:has(.subnav) {
-				cursor: pointer;
-
-				.main-header__sublink {
-					pointer-events: none;
-				}
-
-				&::before {
-					content: "";
-					background: url("./static/images/icons/check-3.svg")
-						center center/cover no-repeat;
-					width: 12px;
-					height: 6px;
-					position: absolute;
-					top: 20px;
-					right: 28px;
-					transform: scaleY(-1);
-					transition: 0.3s linear transform;
-				}
-
-				&.active {
-					&::before {
-						transform: scaleY(1);
-					}
-				}
-			}
-		}
-
-		.main-header__navigation {
-			background-color: $white;
+		&__nav {
 			height: auto;
 			margin: 0 20px;
-		}
+			padding-bottom: 30px;
+			background-color: $white;
+			border-radius: 0 0 $border-radius $border-radius;
 
-		.main-header__list {
-			flex-direction: column;
-			align-items: flex-start;
-			width: auto;
-			max-width: none;
-			margin: 0;
+			&-list {
+				width: auto;
+				max-width: none;
+				flex-direction: column;
+				align-items: flex-start;
+				margin: 0;
+			}
+
+			&-item {
+				width: 100%;
+				padding: 12px 30px;
+
+				&:nth-child(7) {
+					order: 1;
+				}
+	
+				&:nth-child(4),
+				&:nth-child(6) {
+					display: block;
+				}
+	
+				&:last-child {
+					display: none;
+				}
+	
+				&:has(.subnav) {
+					cursor: pointer;
+	
+					.header__nav-link {
+						pointer-events: none;
+					}
+	
+					&::before {
+						content: "";
+						background: url("./static/images/icons/check-3.svg")
+							center center/cover no-repeat;
+						width: 12px;
+						height: 6px;
+						position: absolute;
+						top: 20px;
+						right: 28px;
+						transform: scaleY(-1);
+						transition: 0.3s linear transform;
+					}
+	
+					&.active {
+						&::before {
+							transform: scaleY(1);
+						}
+					}
+				}
+
+				.subnav {
+					transition: 0.3s linear;
+				}
+			}
 		}
 	}
 

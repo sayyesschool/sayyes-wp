@@ -2,14 +2,15 @@
 
 {% block content %}
 	{% include 'sections/mainscreen-big.twig' with {
-        mixin: 'vacancies',
-		title: 'Стань онлайн или офлайн преподавателем в SAY YES!',
-        description: 'Приглашаем в  команду увлеченных единомышленников для совместного роста и реализации.',
+		title: page.heading ?? page.title,
+        description: page.content,
         button: {
 			content: 'Хочу работать преподавателем'
 		},
-        splitImg1: 'mainscreen-split-1',
-        splitImg2: 'mainscreen-split-2'
+        image: page.thumbnail and {
+			src: page.thumbnail.src,
+			alt: page.thumbnail.alt
+		}
 	} %}
 
 	<section class="expectations">

@@ -1,3 +1,53 @@
 #methodology-page {
-    
+    .mainscreen-big {
+        &__title {
+            max-width: 880px;
+        }
+
+        &__description {
+            max-width: 520px;
+        }
+    }
+
+    .video-section {
+        &::before {
+			background-image: url('./static/images/decoration/notes/only-1.5-min.svg');
+		}
+
+        &__info {
+            max-width: 400px;
+        }
+    }
+
+    @include breakpoint($breakpoint-md) {
+        .video-section {
+            &__info {
+                max-width: 350px;
+            }
+        }
+    }
+
+    @include breakpoint($breakpoint-sm) {
+        .video-section {
+            &::before {
+				top: 145px;
+				left: 25%;
+				width: 207px;
+				height: 94px;
+			}
+        }
+    }
+
+    @include breakpoint($breakpoint-xxs) {
+        .video-section {
+            &::before {
+				top: auto;
+				bottom: 220px;
+				left: 35%;
+				width: 171px;
+				height: 70px;
+				background-image: url("./static/images/decoration/notes/only-1.5-min-3.svg");
+			}
+        }
+    }
 }

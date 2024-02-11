@@ -2,17 +2,23 @@
 
 {% block content %}
 	{% include 'sections/mainscreen-big.twig' with {
-        mixin: 'methodology',
-		title: 'Методика школы SA Y YES! — это оптимальный и современный способ изучения языков.',
-        description: 'Мы выбираем комбинацию из коммуникативного подхода и собственных разработок в обучении.',
-        img: 'mainscreen-3'
+		title: page.heading ?? page.title,
+        description: page.content,
+        image: page.thumbnail and {
+			src: page.thumbnail.src,
+			alt: page.thumbnail.alt
+		}
 	} %}
 
 	{% include 'sections/video.twig' with {
-		mixin: 'methodology',
-		subtitle: 'Посмотрите короткое видео о нашем подходе к обучению',
-		videoImg: 'video-section-2',
-		videoUrl: 'https://www.youtube.com/embed/Vsfz_1QzwDA'
+		title: 'Посмотрите короткое видео о нашем подходе к обучению',
+		video: {
+			youtube_id: 'Vsfz_1QzwDA',
+			image: {
+				path: 'video-sections/video-section-2.jpg'
+			},
+			modal: true
+		}
 	} %}
 
 	<section class="effective-methods">

@@ -1,4 +1,4 @@
-<section class="courses {{class}}">
+<section class="courses">
     <div class="section-container">
         <h2 class="subtitle">{{title}}</h2>
 
@@ -17,7 +17,9 @@
 					content: 'Курсы для детей',
 					target: '.course-blocks--children'
 				}
-			]
+			],
+            pills: true,
+            color: 'yellow'
 		} %}
             {% block content %}
                 <div class="course-blocks course-blocks--adult">
@@ -29,7 +31,7 @@
                         <div class="course-selection">
                             <h3 class="course-selection__title">Затрудняетесь с выбором курса или ваша цель специфична?</h3>
                             <p class="course-selection__description">Подберем курс под ваши цели или создадим индивидуальный курс под вас!</p>
-                            <button class="callback-btn btn btn--violet">Попробовать бесплатно</button>
+                            <button class="btn btn--violet" data-modal-trigger="callback-modal">Попробовать бесплатно</button>
                         </div>
                     {% endif %}
                 </div>
@@ -43,7 +45,7 @@
                         <div class="course-selection">
                             <h3 class="course-selection__title">Затрудняетесь с выбором курса или ваша цель специфична?</h3>
                             <p class="course-selection__description">Подберем курс под ваши цели или создадим индивидуальный курс под вас!</p>
-                            <button class="callback-btn btn btn--violet">Оставить заявку</button>
+                            <button class="btn btn--violet" data-modal-trigger="callback-modal">Оставить заявку</button>
                         </div>
                     {% endif %}
                 </div>

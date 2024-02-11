@@ -1,12 +1,11 @@
 {% set id = 'request-form-' ~ random() %}
 
-<form id="{{id}}" class="request-form">
+<form id="{{id}}" class="request-form" ref="form" @submit="handleSubmit">
     {% if format %}
         <div class="request-form__format">
-            <h3>Выберите желаемый формат обучения:</h3>
-
             {% include 'components/radio-group.twig' with {
                 name: 'format' ~ (children ? '-children' : ''),
+                label: 'Выберите желаемый формат обучения:',
                 items: [
                     {
                         label: 'Офлайн',
@@ -32,6 +31,7 @@
                 <input class="input" type="text" name="child-name" placeholder="Имя ребёнка" required>
 
                 {% include 'components/select.twig' with {
+                    name: 'age',
                     options: [
                         'От 6 до 11 лет',
                         'От 11 до 16 лет'
@@ -48,10 +48,9 @@
     </div>
 
     <div class="request-form__communication">
-        <h3>Выберите удобный способ связи:</h3>
-
         {% include 'components/select.twig' with {
             name: 'communication',
+            label: 'Выберите удобный способ связи:',
             options: [
                 'Позвоните мне',
                 'Напишите мне в WhatsApp',

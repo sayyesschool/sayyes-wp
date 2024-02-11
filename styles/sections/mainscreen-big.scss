@@ -11,10 +11,6 @@
 		text-align: center;
 	}
 
-	.btn {
-		margin: 0 auto;
-	}
-
 	&__description {
 		text-align: center;
 		margin: 15px auto 25px;
@@ -30,15 +26,16 @@
 		margin-top: 50px;
 	}
 
-	&--companies,
-	&--adults,
-	&--methodology {
+	.btn {
+		margin: 0 auto;
+	}
+
+	&--adults {
 		.title {
 			max-width: 880px;
 		}
 	}
 
-	&--progress,
 	&--children,
 	&--adults-courses,
 	&--children-courses,
@@ -48,45 +45,15 @@
 		}
 	}
 
-	&--progress {
-		.mainscreen-big__description {
-			max-width: 750px;
-		}
-	}
-
-	&--vacancies {
-		.mainscreen-big__description {
-			max-width: 650px;
-		}
-	}
-
 	&--children-courses {
 		.mainscreen-big__description {
 			max-width: 510px;
 		}
 	}
 
-	&--methodology {
-		.mainscreen-big__description {
-			max-width: 520px;
-		}
-	}
-
 	&--offline {
 		.mainscreen-big__description {
 			max-width: 470px;
-		}
-	}
-
-	&--companies {
-		.mainscreen-big__description {
-			max-width: 450px;
-		}
-	}
-
-	&--price {
-		.mainscreen-big__description {
-			max-width: 340px;
 		}
 	}
 

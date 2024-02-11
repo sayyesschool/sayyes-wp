@@ -1,3 +1,112 @@
 #corporate-page {
+    .mainscreen-big {
+        &__title {
+            max-width: 880px;
+        }
+
+        &__description {
+            max-width: 450px;
+        }
+    }
+
+    .video-section {
+        &::before {
+			width: 173px;
+			height: 38px;
+			top: 338px;
+			left: 60px;
+			background-image: url('./static/images/decoration/notes/only-1.5-min-2.svg');
+		}
+
+        &__info {
+            max-width: 530px;
+        }
+
+        .video {
+            &::before {
+				content: none;
+			}
+        }
+
+        @include breakpoint($breakpoint-xl) {
+            &__title {
+                font-size: 32px;
+                line-height: 30px;
+            }
+        }
     
+        @include breakpoint($breakpoint-lg) {
+            &::before {
+                width: 155px;
+                height: 34px;
+                top: 240px;
+                left: 60px;
+            }
+        }
+    
+        @include breakpoint($breakpoint-md) {
+            align-items: flex-start;
+    
+            &::before {
+                left: auto;
+                top: 210px;
+                right: 200px;
+            }
+
+            &__info {
+                max-width: 390px;
+            }
+
+            .video {
+                width: 326px;
+                height: 175px;
+            }
+        }
+    
+        @include breakpoint($breakpoint-sm) {
+            &::before {
+                width: 155px;
+                height: 34px;
+                left: auto;
+                top: 210px;
+                right: 200px;
+            }
+
+            &__info {
+                max-width: 330px;
+            }
+        }
+    
+        @include breakpoint($breakpoint-xxs) {
+            align-items: center;
+    
+            &::before {
+                top: initial;
+                bottom: 215px;
+                left: 35%;
+                width: 171px;
+                height: 70px;
+                background-image: url('./static/images/decoration/notes/only-1.5-min-2.svg');
+            }
+
+            &__info {
+                max-width: 530px;
+                margin-bottom: 80px;
+            }
+        }
+    
+        @include breakpoint($breakpoint-sm-mobile) {
+            &::before {
+                top: initial;
+                bottom: 190px;
+                left: 30%;
+                width: 171px;
+                height: 70px;
+            }
+
+            &__info {
+                max-width: none;
+            }
+        }
+    }
 }

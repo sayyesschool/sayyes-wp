@@ -1,0 +1,11 @@
+{% embed 'components/modal.twig' with {
+    class: 'success-modal'
+} %}
+    {% block content %}
+        <img class="success-modal__check-icon" src="{{theme.link}}/static/images/icons/check-2.svg" alt="">
+
+        <h2 class="success-modal__title">Заявка отправлена</h2>
+
+        <p class="success-modal__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы и расскажем о курсах.</p>
+    {% endblock %}
+{% endembed %}

@@ -1,37 +1,53 @@
-class Video {
-    constructor(element) {
-        this.element = element;
-        this.video = element.querySelector('video');
-        this.playButton = element.querySelector('.play');
-        this.playing = false;
-        this.ended = false;
+import Component from './component';
 
-        this.video.onended = () => {
-            this.stop();
-        };
+export default class Video extends Component {
+    static name = 'video';
 
-        this.playButton?.addEventListener('click', () => {
-            this.toggle();
+    static classes = {
+        root: this.name,
+        playButton: `${this.name}__btn`,
+        playing: `${this.name}--playing`
+    };
+
+    static init() {
+        document.querySelectorAll(`.${this.classes.root}`).forEach(element => {
+            if (element.classList.contains('autoplay'))
+                new AutoVideo(element);
+            else if (element.classList.contains('hover'))
+                new HoverVideo(element);
         });
+    }
+
+    playing = false;
+    ended = false;
+
+    constructor(element) {
+        super(element);
+
+        this.video = this.getElement('video');
+        this.playButton = this.getElement(`.${Video.classes.playButton}`);
+
+        this.video?.addEventListener('ended', this.stop.bind(this));
+        this.playButton?.addEventListener('click', this.toggle.bind(this));
     }
 
     play() {
         this.playing = true;
         this.video.play();
-        this.video.classList.toggle('video--playing');
+        this.video.classList.toggle(Video.classes.playing);
     }
 
     pause() {
         this.playing = false;
         this.video.pause();
-        this.video.classList.toggle('video--playing');
+        this.video.classList.toggle(Video.classes.playing);
     }
 
     stop() {
         this.playing = false;
         this.video.pause();
         this.video.currentTime = 0;
-        this.video.classList.toggle('video--playing');
+        this.video.classList.toggle(Video.classes.playing);
     }
 
     toggle() {
@@ -43,18 +59,17 @@ class Video {
     }
 }
 
-class AutoVideo extends Video {
+export class AutoplayVideo extends Video {
     constructor(element) {
         super(element);
 
         this.video.autoplay = true;
         this.video.muted = true;
-        this.video.onended = () => {
-            this.play();
-        };
+
+        this.video.addEventListener('ended', this.play.bind(this));
 
         const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach((entry) => {
+            entries.forEach(entry => {
                 if (entry.isIntersecting)
                     this.play();
                 else
@@ -70,7 +85,7 @@ class AutoVideo extends Video {
     }
 }
 
-class HoverVideo extends Video {
+export class HoverVideo extends Video {
     constructor(element) {
         super(element);
 
@@ -86,11 +101,3 @@ class HoverVideo extends Video {
         this.pause();
     }
 }
-
-document.querySelectorAll('.video--autoplay').forEach(element => {
-    new AutoVideo(element);
-});
-
-document.querySelectorAll('.video--hover').forEach(element => {
-    new HoverVideo(element);
-});

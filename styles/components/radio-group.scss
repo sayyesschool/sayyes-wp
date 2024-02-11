@@ -1,3 +1,21 @@
+.radio-group {
+	width: 100%;
+	max-width: 390px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+
+	&__label {
+		font-size: 16px;
+		font-weight: 700;
+	}
+
+	&__items {
+		display: flex;
+		justify-content: space-between;
+	}
+}
+
 .radio {
 	&__input {
 		display: none;
@@ -43,11 +61,4 @@
 			line-height: 18px;
 		}
 	}
-}
-
-.radio-group {
-	width: 100%;
-	max-width: 390px;
-	display: flex;
-	justify-content: space-between;
 }

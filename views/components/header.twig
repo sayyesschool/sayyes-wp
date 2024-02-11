@@ -5,11 +5,11 @@
 				class: 'header__logo'
 			} %}
 
-			<button class="header__free-lesson feedback-btn btn btn--transparent btn--uppercase btn--sm">Бесплатный урок</button>
+			<button class="header__free-lesson feedback-btn btn btn--transparent btn--uppercase btn--sm" data-modal-trigger="request-modal">Бесплатный урок</button>
 
 			<button class="header__test">Онлайн тест</button>
 
-			<button class="header__callback callback-btn">Обратный звонок</button>
+			<button class="header__callback" data-modal-trigger="callback-modal">Обратный звонок</button>
 
 			{% include 'components/phone-numbers.twig' with {
 				class: 'header__phone-numbers',
@@ -31,14 +31,14 @@
 		</div>
 	</div>
 
-	<nav class="header__navigation">
-		<ul class="header__list">
+	<nav class="header__nav">
+		<ul class="header__nav-list">
 			{% for item in main_menu.items %}
-				<li class="{{html_classes('header__item', item.classes|join(' '), {
+				<li class="{{html_classes('header__nav-item', item.classes|join(' '), {
 					'active': item.current,
 					'dropdown': item.children
 				})}}"{% if item.is_external %} target="_blank"{% endif %}>
-					<a class="header__sublink" href="{{item.link}}">{{item.title}}</a>
+					<a class="header__nav-link" href="{{item.link}}">{{item.title}}</a>
 
 					{% if item.children %}
 						{% include 'components/subnav.twig' with {
@@ -49,6 +49,6 @@
 			{% endfor %}
 		</ul>
 
-		<button class="header__trial-lesson feedback-btn btn btn--yellow">Записаться на пробный урок</button>
+		<button class="header__trial-lesson feedback-btn btn btn--yellow" data-modal-trigger="request-modal">Записаться на пробный урок</button>
 	</nav>
 </header>

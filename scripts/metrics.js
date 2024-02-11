@@ -1,4 +1,4 @@
-$('.whatsapp-button').click(function() {
+document.querySelector('.whatsapp-button').addEventListener('click', () => {
     ym(YANDEX_METRIKA_COUNTER, 'reachGoal', 'WA');
     gtag('event', 'click', { event_category: 'WA' });
     fbq('track', 'InitiateCheckout');
@@ -6,7 +6,7 @@ $('.whatsapp-button').click(function() {
     return true;
 });
 
-$('.ml-subscribe-form form').submit(function() {
+document.querySelector('.ml-subscribe-form form').addEventListener('submit', () => {
     ym(YANDEX_METRIKA_COUNTER, 'reachGoal', 'subscribe');
     gtag('event', 'click', { event_category: 'subscribe' });
 

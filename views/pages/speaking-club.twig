@@ -298,10 +298,14 @@
     {% endembed %}
 
 	{% include 'sections/video.twig' with {
-        mixin: 'speaking-club',
-        subtitle: 'Посмотрите, как проходят встречи нашего разговорного клуба',
-        videoImg: 'video-section-5',
-        videoUrl: 'https://www.youtube.com/embed/Vsfz_1QzwDA'
+        title: 'Посмотрите, как проходят встречи нашего разговорного клуба',
+        video: {
+			youtube_id: 'Vsfz_1QzwDA',
+			image: {
+				path: 'video-sections/video-section-2.jpg'
+			},
+			modal: true
+		}
     } %}
 
 	<section class="participants-feedback">

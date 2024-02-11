@@ -1,7 +1,21 @@
-<div class="tabs">
+<div class="{{html_classes('tabs', {
+    'tabs--centered': centered,
+    'tabs--pills': pills,
+    'tabs--yellow': color == 'yellow',
+    'tabs--magenta': color == 'magenta',
+})}}"{% if tabs[0].active and tabs[0].value %} data-value="{{tabs[0].value}}"{% endif %}>
     <div class="tabs__nav">
         {% for tab in tabs %}
-            <button class="tabs__tab{{tab.active ? ' active' : ''}}" data-tab-target="{{tab.target}}">{{tab.content}}</button>
+            <button
+                type="button"
+                class="tabs__tab{{tab.active ? ' tabs__tab--active' : ''}}"
+                {% if tab.value %}
+                    value="{{tab.value}}"
+                {% endif %}
+                {% if tab.target %}
+                    data-tab-target="{{tab.target}}"
+                {% endif %}
+            >{{tab.content}}</button>
         {% endfor %}
     </div>
 

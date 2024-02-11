@@ -1,0 +1,21 @@
+<form class="callback-form form">
+    <input class="input" type="text" name="name" placeholder="Имя" required>
+
+    <input class="input" type="tel" name="phone" placeholder="+7 (999) 999-99-99" required>
+
+    {% include 'components/select.twig' with {
+        name: 'communication',
+        label: 'Выберите удобный способ связи:',
+        options: [
+            'Позвоните мне',
+            'Напишите мне в WhatsApp',
+            'Напишите мне в Telegram'
+        ]
+    } %}
+
+    <button class="btn btn--full" type="submit">Оставить заявку</button>
+
+    {% include 'components/checkbox.twig' with {
+        name: 'consent'
+    } %}
+</form>

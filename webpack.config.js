@@ -3,8 +3,8 @@ const path = require('node:path');
 module.exports = argv => ({
     entry: './scripts/main.js',
     output: {
-        path: path.resolve(__dirname, 'static'),
-        filename: 'scripts.js'
+        path: path.resolve(__dirname, 'static', 'scripts'),
+        filename: 'main.js'
     },
     module: {
         rules: [

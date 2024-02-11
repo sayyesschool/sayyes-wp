@@ -25,18 +25,6 @@
 		}
 
 		&__tab {
-			background-color: $white;
-			border-radius: $border-radius 0 0 $border-radius;
-
-			&:last-of-type {
-				border-radius: 0 $border-radius $border-radius 0;
-			}
-
-			&.active {
-				color: $white;
-				background-color: $medium-magenta;
-			}
-
 			@include breakpoint($breakpoint-md) {
 				max-width: 520px;
 			}

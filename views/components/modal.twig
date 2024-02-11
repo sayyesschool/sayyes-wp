@@ -1,10 +1,22 @@
-<div class="{{html_classes(class ?? [], 'modal')}}">
-	<div class="modal__window">
+<div {% if id %} id="{{id}}"{% endif %} class="{{html_classes(class ?? [], 'modal', {
+	'modal--with-tabs': tabs
+})}}" data-component="{{component ?? 'Modal'}}">
+	<div class="modal__surface">
 		<button class="modal__close">+</button>
 		
-		<div class="modal__content">
-			{% block content %}
-			{% endblock %}
+		<div class="modal__body">
+			{% if title %}
+				<h2 class="modal__title">{{title}}</h2>
+			{% endif %}
+
+			{% if title %}
+				<div class="modal__description">{{description}}</div>
+			{% endif %}
+
+			<div class="modal__content">
+				{% block content %}
+				{% endblock %}
+			</div>
 		</div>
 	</div>
 </div>

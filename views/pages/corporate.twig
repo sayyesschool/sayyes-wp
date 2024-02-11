@@ -119,21 +119,24 @@
 
 {% block content %}
 	{% include 'sections/mainscreen-big.twig' with {
-        mixin: 'companies',
         title: 'Корпоративное обучение английскому языку в SAY YES!',
         description: 'Предлагаем компаниям лучшее соотношение цены и качества.',
-        image: 'mainscreen-7.jpg',
         button: {
             text: 'Оставить заявку на звонок',
             color: 'black'
-        }
+        },
+        image: 'mainscreen-7.jpg'
     } %}
 
 	{% include 'sections/video.twig' with {
-        mixin: 'companies',
-        subtitle: 'Управляющий директор SAY YES! Роман Сорочук коротко расскажет о преимуществах нашего обучения и процессе работы с компаниями.',
-        videoImg: 'video-section-3',
-        videoUrl: 'https://www.youtube.com/embed/Vsfz_1QzwDA'
+        title: 'Управляющий директор SAY YES! Роман Сорочук коротко расскажет о преимуществах нашего обучения и процессе работы с компаниями.',
+        video: {
+			youtube_id: 'Vsfz_1QzwDA',
+			image: {
+				path: 'video-sections/video-section-3.jpg'
+			},
+			modal: true
+		}
     } %}
 
 	<section class="education-directions">
@@ -261,10 +264,14 @@
     </section>
 
 	{% include 'sections/video.twig' with {
-        mixin: 'companies-2',
-        subtitle: 'Посмотрите короткое видео о нашем подходе к корпоративному обучению.',
-        videoImg: 'video-section-4',
-        videoUrl: 'https://www.youtube.com/embed/Vsfz_1QzwDA'
+        title: 'Посмотрите короткое видео о нашем подходе к корпоративному обучению.',
+        video: {
+			youtube_id: 'Vsfz_1QzwDA',
+			image: {
+				path: 'video-sections/video-section-4.jpg'
+			},
+			modal: true
+		}
     } %}
 
 	<section class="advantages-cooperation">

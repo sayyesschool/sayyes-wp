@@ -5,19 +5,6 @@
 	background-color: $pale-white;
 	border-radius: $border-radius;
 
-	&__title {
-		margin-bottom: 20px;
-		font-weight: 700;
-	}
-
-	&__description {
-		margin-bottom: 20px;
-		color: lighten($black, 30%);
-		font-size: 18px;
-		font-weight: 600;
-		line-height: 20px;
-	}
-
 	&::before {
 		content: '';
 		width: 42%;
@@ -29,6 +16,19 @@
 		width: 58%;
 		padding: 35px 45px;
 		min-height: 521px;
+	}
+
+	&__title {
+		margin-bottom: 20px;
+		font-weight: 700;
+	}
+
+	&__description {
+		margin-bottom: 20px;
+		color: lighten($black, 30%);
+		font-size: 18px;
+		font-weight: 600;
+		line-height: 20px;
 	}
 
 	&--adults {

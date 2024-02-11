@@ -2,10 +2,10 @@
 
 {% block content %}
 	{% include 'sections/mainscreen-big.twig' with {
-		title: 'Сильные и харизматичные преподаватели SAY YES! — главная причина вашего прогресса.',
-        description: 'Доверьте свой английский экспертам, кто прошел наш строгий отбор.',
+		title: page.heading ?? page.title,
+        description: page.content,
         button: true,
-        image: {
+        image: page.thumbnail and {
 			src: page.thumbnail.src,
 			alt: page.thumbnail.alt
 		}
@@ -32,55 +32,25 @@
                         content: 'Онлайн по всему миру',
                         target: '.online-teachers'
                     }
-                ]
+                ],
+                pills: true,
+                color: 'magenta'
             } %}
+                {% from 'components/teacher-card.twig' import teacher_card %}
+
                 {% block content %}
                     <div class="offline-teachers">
                         <div class="cards">
-                            {% for teahcer in offline_teachers|slice(0, 6) %}
-                                <div class="card card--{{teahcer.type}}">
-                                    <img class="card__img" src="{{theme.link}}/static/images/teachers/{{teahcer.img}}.jpg" alt="{{teahcer.name}}">
-
-                                    <div class="card__content">
-                                        <h3 class="card__name">{{teahcer.name}}</h3>
-
-                                        <ul class="card__description">
-                                            {% for merits in person.merits %}
-                                                <li>
-                                                    {{merits.merit}}:
-                                                    {{merits.description}}
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-
-                                        <button class="teacher-btn btn btn--transparent btn--transparent-black btn--md" data-id="{{person.teacherId}}">Подробнее</button>
-                                    </div>
-                                </div>
+                            {% for teacher in offline_teachers|slice(0, 6) %}
+                                {{teacher_card(teacher)}}
                             {% endfor %}
                         </div>
 
                         {% include 'sections/trial-lesson-mini.twig' %}
 
                         <div class="cards">
-                            {% for teahcer in offline_teachers|slice(6) %}
-                                <div class="card card--{{teahcer.type}}">
-                                    <img class="card__img" src="{{theme.link}}/static/images/teachers/{{teahcer.img}}.jpg" alt="{{teahcer.name}}">
-
-                                    <div class="card__content">
-                                        <h3 class="card__name">{{teahcer.name}}</h3>
-
-                                        <ul class="card__description">
-                                            {% for merits in person.merits %}
-                                                <li>
-                                                    {{merits.merit}}:
-                                                    {{merits.description}}
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-
-                                        <button class="teacher-btn btn btn--transparent btn--transparent-black btn--md" data-id="{{person.teacherId}}">Подробнее</button>
-                                    </div>
-                                </div>
+                            {% for teacher in offline_teachers|slice(6) %}
+                                {{teacher_card(teacher)}}
                             {% endfor %}
                         </div>
                     </div>
@@ -88,24 +58,7 @@
                     <div class="online-teachers hidden">
                         <div class="cards">
                             {% for teacher in online_teachers|slice(0, 6) %}
-                                <div class="card card--{{teacher.type}}">
-                                    <img class="card__img" src="{{theme.link}}/static/images/teachers/{{teacher.img}}.jpg" alt="{{teacher.name}}">
-
-                                    <div class="card__content">
-                                        <h3 class="card__name">{{teacher.name}}</h3>
-
-                                        <ul class="card__description">
-                                            {% for merits in teacher.merits %}
-                                                <li>
-                                                    {{merits.merit}}:
-                                                    {{merits.description}}
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-
-                                        <button class="teacher-btn btn btn--transparent btn--transparent-black btn--md" data-id="{{teacher.teacherId}}">Подробнее</button>
-                                    </div>
-                                </div>
+                                {{teacher_card(teacher)}}
                             {% endfor %}
                         </div>
 
@@ -113,24 +66,7 @@
 
                         <div class="cards">
                             {% for teacher in online_teachers|slice(6) %}
-                                <div class="card card--{{teacher.type}}">
-                                    <img class="card__img" src="{{theme.link}}/static/images/teachers/{{teacher.img}}.jpg" alt="{{teacher.name}}">
-
-                                    <div class="card__content">
-                                        <h3 class="card__name">{{teacher.name}}</h3>
-
-                                        <ul class="card__description">
-                                            {% for merits in teacher.merits %}
-                                                <li>
-                                                    {{merits.merit}}:
-                                                    {{merits.description}}
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-
-                                        <button class="teacher-btn btn btn--transparent btn--transparent-black btn--md" data-id="{{teacher.teacherId}}">Подробнее</button>
-                                    </div>
-                                </div>
+                                {{teacher_card(teacher)}}
                             {% endfor %}
                         </div>
                     </div>
@@ -148,4 +84,54 @@
             {% include 'components/teacher-block.twig' %}
         {% endblock %}
     {% endembed %}
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        const teachers = {{teachers|map(t => ({
+            id: t.id,
+            name: t.name,
+            imageUrl: t.thumbnail.src('medium'),
+            videoUrl: '',
+            content: t.content,
+            experience: t.experience,
+            certificates: t.certificates
+        }))|json_encode(
+            constant('JSON_PRETTY_PRINT') b-or constant('JSON_UNESCAPED_UNICODE')
+        )}}.reduce((result, t) => {
+            result[t.id] = t;
+            return result;
+        }, {});
+
+        const store = PetiteVue.reactive({
+            teacher: null,
+
+            setTeacher(teacher) {
+                this.teacher = teacher;
+            }
+        });
+
+        PetiteVue.createApp({
+            $delimiters: ['${', '}'],
+            store,
+            get teacher() {
+                return this.store.teacher;
+            },
+            get teacherVideoEmbedUrl() {
+                return this.teacher && `https://www.youtube.com/embed/${this.teacher.videoId}`;
+            },
+        }).mount('.teacher-block');
+
+        const teacherModal = new window.ui.Modal('.teacher-modal');
+
+        function handleTeacherButtonClick(event) {
+            const id = event.currentTarget.dataset.id;
+            store.setTeacher(teachers[id]);
+            teacherModal.open();
+        }
+
+        document.querySelectorAll('.teacher-btn').forEach(button => {
+            button.addEventListener('click', handleTeacherButtonClick);
+        });
+    </script>
 {% endblock %}

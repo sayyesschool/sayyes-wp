@@ -22,8 +22,10 @@
 
 		&__tab {
 			min-height: 55px;
-			background-color: $yellow;
-			border-radius: $border-radius-sm $border-radius-sm 0 0;
+			
+			&:first-of-type {
+				background-color: $yellow;
+			}
 
 			&:last-of-type {
 				background-color: $medium-magenta;
@@ -50,11 +52,11 @@
 			}
 
 			&__tab {
-				width: 100%;
 				position: relative;
+				width: 100%;
 
 				&::before {
-					content: "";
+					content: '';
 					position: absolute;
 					bottom: -50px;
 					width: 50px;
@@ -64,7 +66,7 @@
 
 				&:first-of-type {
 					&::before {
-						content: "";
+						content: '';
 						left: 0;
 						background-color: $yellow;
 					}
@@ -72,7 +74,7 @@
 
 				&:last-of-type {
 					&::before {
-						content: "";
+						content: '';
 						right: 0;
 						background-color: $medium-magenta;
 					}

@@ -12,6 +12,7 @@
     "classnames": "^2.5.1",
     "inputmask": "^5.0.8",
     "lightbox2": "^2.11.4",
+    "petite-vue": "^0.4.1",
     "preact": "^10.19.3",
     "preact-island": "^1.1.2",
     "swiper": "^11.0.6"

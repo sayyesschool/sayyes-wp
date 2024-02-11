@@ -2,13 +2,31 @@
 
 {% block content %}
 	{% include 'sections/mainscreen-big.twig' with {
-        mixin: 'progress',
-		title: 'Отчёты о прогрессе студентов SAY YES!',
-        description: 'Одна из важных особенностей нашей школы — это то, что мы замеряем разговорный навык наших студентов по прошествии некоторого времени обучения. Посмотрите, как студенты SAY YES! уверенно говорят на видео!',
-        img: 'mainscreen-4'
+		title: page.heading ?? page.title,
+        description: page.content,
+        image: page.thumbnail and {
+			src: page.thumbnail.src,
+			alt: page.thumbnail.alt
+		}
 	} %}
 
-	{% include 'sections/student-reviews.twig' %}
+	{% from 'components/progress-card.twig' import progress_card %}
+
+	<section class="student-results">
+		<div class="section-container">
+			<h2 class="subtitle">Лучшие показатели нашей работы — это студенты, уверенно владеющие языком.</h2>
+
+			<p class="student-results__description">Наши ученики рассказывают о своих результатах и процессе обучения в SAY YES! на английском.</p>
+
+			<div class="student-results__content">
+				{% for item in reports %}
+					{{progress_card(item)}}
+				{% endfor %}
+			</div>
+
+			<button id="show-more-review" class="btn btn--yellow">Показать ещё</button>
+		</div>
+	</section>
 
 	{% include 'sections/trial-lesson.twig' %}
 {% endblock %}

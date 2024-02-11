@@ -169,4 +169,71 @@
 			}
         }
     }
+
+    .tabs {
+        &__nav {
+            max-width: 100%;
+			margin-bottom: 45px;
+
+            @include breakpoint($breakpoint-lg) {
+				margin-bottom: 15px;
+			}
+        }
+        
+        &__tab {
+            width: 33%;
+				margin-right: 0;
+
+				&:first-of-type {
+					border-radius: $border-radius 0 0 $border-radius;
+				}
+
+				&:last-of-type {
+					border-radius: 0 $border-radius $border-radius 0;
+				}
+
+				&--active {
+					color: $white;
+					background-color: $violet;
+				}
+        }
+    }
+
+    .video-section {
+        background-color: $yellow;
+
+        &::before {
+			background-image: url("./static/images/decoration/notes/only-1.5-min.svg");
+		}
+
+		&__info {
+			max-width: 450px;
+		}
+
+        @include breakpoint($breakpoint-md) {
+            &__info {
+				max-width: 350px;
+			}
+        }
+
+        @include breakpoint($breakpoint-sm) {
+            &::before {
+				top: 145px;
+				left: 25%;
+				width: 207px;
+				height: 94px;
+			}
+        }
+
+        @include breakpoint($breakpoint-xxs) {
+            &::before {
+				top: auto;
+				bottom: 220px;
+				left: 35%;
+				width: 171px;
+				height: 70px;
+				background-image: url("./static/images/decoration/notes/only-1.5-min-3.svg");
+			}
+        }
+    }
 }

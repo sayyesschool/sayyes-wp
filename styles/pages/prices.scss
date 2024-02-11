@@ -1,3 +1,28 @@
 #prices-page {
-    
+    .mainscreen-big {
+        &__description {
+            max-width: 340px;
+        }
+    }
+
+    .courses {
+        .subtitle {
+            max-width: 881px;
+			margin: 0 auto 20px;
+			text-align: center;
+        }
+
+        &__description {
+            text-align: center;
+			margin-bottom: 40px;
+        }
+
+        .tabs {
+            margin: 0 auto;
+
+            &__nav {
+                margin: 0 auto 40px;
+            }
+        }
+    }
 }
