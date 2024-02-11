@@ -7,6 +7,7 @@ use Twig\Extra\Html\HtmlExtension;
 
 include 'post-types.php';
 include 'taxonomies.php';
+require 'utils.php';
 
 class Page extends Post {
     public function name()
@@ -36,13 +37,20 @@ class SayYesSite extends Site {
         add_action('wp_enqueue_scripts', [$this, 'include_scripts']);
 
         add_filter('timber/context', [$this, 'add_to_context']);
-		add_filter('timber/twig', [$this, 'add_to_twig']);
         add_filter('timber/post/classmap', function ($classmap) {
             $custom_classmap = [
                 'page' => Page::class,
             ];
         
             return array_merge($classmap, $custom_classmap);
+        });
+		add_filter('timber/twig', [$this, 'add_to_twig']);
+        add_filter('timber/twig/functions', function ($functions) {
+            $functions['format_phone_number'] = [
+                'callable' => 'format_phone_number'
+            ];
+        
+            return $functions;
         });
         
 		parent::__construct();
@@ -99,8 +107,8 @@ class SayYesSite extends Site {
         $data = json_decode($json, true);
         $settings = get_fields('options');
 
-        $main_phone = str_replace(['+', '-', ' '], [''], $settings['phone_numbers']['main']);
-        $wa_phone = str_replace(['+', '-', ' '], [''], $settings['phone_numbers']['whatsapp']);
+        $main_phone = format_phone_number($settings['phone_numbers']['main']);
+        $wa_phone = format_phone_number($settings['phone_numbers']['whatsapp']);
 
         $context['site'] = $this;
         $context['data'] = $data;

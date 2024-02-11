@@ -5,7 +5,7 @@
 				class: 'icon--' ~ key ~ ' ' ~ icon_class
 			} %}
 			
-			<a class="phone-numbers__link" href="tel:{{number|replace({ '+': '', '-': '', ' ': '' })}}">{{number}}</a>
+			<a class="phone-numbers__link" href="tel:{{format_phone_number(number)}}">{{number}}</a>
 		</li>
 	{% endfor %}
 </ul>

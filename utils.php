@@ -1,5 +1,9 @@
 <?php
 
+function format_phone_number($string) {
+    return str_replace(['+', '-', ' '], [''], $string);
+}
+
 function disqus_embed($disqus_shortname, $post) {
     wp_enqueue_script('disqus_embed','https://'.$disqus_shortname.'.disqus.com/embed.js');
     echo '<div id="disqus_thread"></div>
