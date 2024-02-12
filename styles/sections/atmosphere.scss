@@ -4,7 +4,7 @@
 	padding: 50px 0 95px;
 	margin-bottom: 150px;
 
-	.subtitle {
+	&__title {
 		margin-bottom: 20px;
 	}
 
@@ -13,60 +13,51 @@
 		margin-bottom: 40px;
 	}
 
-	.video {
-		overflow: hidden;
-		margin-right: 20px;
-		border-radius: $border-radius;
-
-		&__bg {
-			border-radius: 0;
-		}
-
-		.play {
-			right: 50%;
-			transform: translateX(50%);
-		}
+	&__content {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
 	}
 
-	&__trip {
+	&__trip,
+	&__celebration {
 		position: relative;
 		display: flex;
 		justify-content: space-between;
-		margin-bottom: 20px;
-
-		&-img {
-			width: 665px;
-			height: 360px;
-		}
 
 		&::after {
 			content: '';
 			position: absolute;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+	}
+
+	&__trip {
+		&-img {
+			width: 665px;
+			height: 360px;
+			display: block;
+			border-radius: $border-radius;
+			object-fit: cover;
+		}
+
+		&::after {
 			top: -120px;
 			right: 150px;
 			width: 92px;
 			height: 102px;
 			background-image: url('./static/images/decoration/notes/picnic.svg');
-			background-repeat: no-repeat;
-			background-size: cover;
 		}
 	}
 
-	&__celebrations {
-		position: relative;
-		display: flex;
-		justify-content: space-between;
-
+	&__celebration {
 		&::after {
-			content: '';
-			position: absolute;
 			top: 235px;
 			left: 257px;
 			width: 133px;
 			height: 61px;
 			background-image: url('./static/images/decoration/notes/celebrating-completion.svg');
-			background-repeat: no-repeat;
-			background-size: cover;
 		}
 	}
 
@@ -74,43 +65,36 @@
 		max-width: 207px;
 
 		&-item {
-			font-weight: 700;
 			max-width: 180px;
 			margin-bottom: 15px;
+			font-weight: 700;
 		}
 	}
 
-	&__trip-img,
-	&__celebration-img {
-		display: block;
-		object-fit: cover;
-		border-radius: $border-radius;
-	}
-
-	&__celebration-img {
-		width: 274px;
-		margin-right: 20px;
-	}
-
-	&__celebration-img-2 {
-		width: 176px;
-		border-radius: $border-radius;
-	}
-
-	&__celebrations-images {
+	&__celebration-media {
 		display: flex;
 		justify-content: space-between;
 		align-items: flex-start;
+		gap: 20px;
+
+		.video {
+			&__btn {
+				right: 50%;
+				transform: translateX(50%);
+			}
+
+			&:first-of-type {
+				width: 274px;
+			}
+
+			&:last-of-type {
+				width: 176px;
+			}
+		}
 	}
 
 	@include breakpoint($breakpoint-lg) {
 		margin-bottom: 70px;
-
-		.video {
-			width: 138px;
-			height: 265px;
-			margin-right: 15px;
-		}
 
 		&__description {
 			max-width: 500px;
@@ -121,34 +105,42 @@
 			height: 285px;
 		}
 
-		&__celebration-img {
-			width: 215px;
-			height: 385px;
-			margin-right: 15px;
-		}
+		&__celebration-media {
+			gap: 15px;
 
-		&__celebration-img-2 {
-			width: 138px;
-			height: 265px;
+			.video {
+				&:nth-of-type(1) {
+					width: 215px;
+				}
+
+				&:nth-of-type(2) {
+					width: 138px;
+				}
+
+				&:nth-of-type(3) {
+					width: 138px;
+				}
+			}
+
 		}
 	}
 
 	@include breakpoint($breakpoint-md) {
-		&__celebrations {
-			&::after {
-				left: 150px;
-			}
-		}
-
 		&__trip {
 			&::after {
 				right: 60px;
 			}
 		}
+		
+		&__celebration {
+			&::after {
+				left: 150px;
+			}
+		}
 	}
 
 	@include breakpoint($breakpoint-sm) {
-		&__celebrations {
+		&__celebration {
 			&::after {
 				left: 30px;
 			}
@@ -158,19 +150,22 @@
 	@include breakpoint($breakpoint-xs) {
 		margin-bottom: 60px;
 
-		.video {
-			margin-right: 15px;
-		}
-
 		&__content {
-			display: flex;
-			overflow-x: auto;
 			width: calc(100% + 35px);
 			padding-bottom: 30px;
+			display: flex;
+			flex-direction: row;
+			overflow-x: auto;
 
 			&::-webkit-scrollbar {
 				display: none;
 			}
+		}
+
+		&__trip-img {
+			width: 327px;
+			height: 175px;
+			border-radius: $border-radius-sm;
 		}
 
 		&__trip &__list {
@@ -185,7 +180,13 @@
 			}
 		}
 
-		&__celebrations &__list {
+		&__celebration {
+			&::after {
+				left: -170px;
+			}
+		}
+
+		&__celebration &__list {
 			&-item {
 				position: absolute;
 				bottom: -43px;
@@ -202,33 +203,13 @@
 			}
 		}
 
-		&__trip-img {
-			width: 327px;
-			height: 175px;
-			margin-right: 15px;
+		.video {
+			width: 212px;
 			border-radius: $border-radius-sm;
-		}
-
-		&__celebration-img {
-			margin-right: 15px;
 		}
 
 		&__celebration-img-2 {
 			margin-right: 40px;
-		}
-
-		.video,
-		&__celebration-img,
-		&__celebration-img-2 {
-			width: 212px;
-			height: 325px;
-			border-radius: $border-radius-sm;
-		}
-
-		&__celebrations {
-			&::after {
-				left: -170px;
-			}
 		}
 	}
 
@@ -241,7 +222,7 @@
 			display: block;
 		}
 
-		&__celebrations {
+		&__celebration {
 			overflow-x: auto;
 
 			&::-webkit-scrollbar {
@@ -287,7 +268,7 @@
 			}
 		}
 
-		&__celebrations &__list {
+		&__celebration &__list {
 			&-item {
 				bottom: auto;
 				top: 5px;

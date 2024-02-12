@@ -1,43 +1,26 @@
 .request-form {
-    .radio-group {
-		margin-bottom: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+
+	&__contact,
+	&__children {
+		display: flex;
+		gap: 10px;
 	}
 
-    .radio {
-        font-weight: 500;
-		line-height: 15px;
-    }
-
-	.select {
-		margin: 5px 0 30px;
-	}
-
-	.checkbox {
-		margin-top: 12px;
-	}
-
-	&__format {
-        display: flex;
+	&__contact {
         flex-direction: column;
-        gap: 5px;
-		font-weight: 700;
 	}
 
 	&__children {
-		display: flex;
-		align-items: flex-end;
-		gap: 10px;
-
-		.select,
-		.input {
-			margin: 0;
-			margin-bottom: 10px;
-		}
+		align-items: center;
 	}
 
-    &__communication {
-		font-weight: 700;
-		margin-top: 15px;
+	&__submit {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
 	}
 
 	@include breakpoint($breakpoint-mobile) {

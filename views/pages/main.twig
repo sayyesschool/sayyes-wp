@@ -52,11 +52,12 @@
 					<button class="feedback-btn btn btn--yellow btn--full">Оставить заявку</button>
 				</div>
 
-				{% include 'components/video.twig' with {
-					class: 'dream-team__video',
-					filename: 'teacher.mp4',
-					autoplay: true
-				} %}
+				<div class="dream-team__video">
+					{% include 'components/video.twig' with {
+						filename: 'teacher.mp4',
+						autoplay: true
+					} %}
+				</div>
 
 				<div class="dream-team__advantages">
 					{% for item in [
@@ -117,7 +118,7 @@
 
 	<section class="atmosphere">
 		<div class="section-container">
-			<h2 class="subtitle">Атмосфера «второго дома»</h2>
+			<h2 class="atmosphere__title subtitle">Атмосфера «второго дома»</h2>
 
 			<div class="atmosphere__description">
 				<p>SAY YES! это место, куда хочется возвращаться.</p>
@@ -134,13 +135,13 @@
 					<img class="atmosphere__trip-img" src="{{theme.link}}/static/images/atmosphere/atmosphere-1.jpg" alt="Совместные выезды">
 				</div>
 
-				<div class="atmosphere__celebrations">
+				<div class="atmosphere__celebration">
 					<ul class="atmosphere__list">
 						<li class="atmosphere__list-item">Отмечаем праздники вместе</li>
 						<li class="atmosphere__list-item">Караоке на перемене</li>
 					</ul>
 
-					<div class="atmosphere__celebrations-images">
+					<div class="atmosphere__celebration-media">
 						{% include 'components/video.twig' with {
 							class: 'atmosphere__celebration-img',
 							filename: 'graduation.mp4',

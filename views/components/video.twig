@@ -1,10 +1,19 @@
-<div class="{{html_classes(class ?? [], 'video', {
+<div class="{{html_classes('video', {
     'video--autoplay': autoplay,
-    'video--embed': youtube_id is not empty,
     'video--hover': hover,
     'video--modal': modal,
     'video--vertical': vertical
-})}}">
+})}}"
+    {% if autoplay %}
+        data-video-autoplay="true"
+    {% endif %}
+    {% if hover %}
+        data-video-hover="true"
+    {% endif %}
+    {% if hover %}
+        data-video-modal="true"
+    {% endif %}
+>
     {% if image %}
         <img class="video__bg" src="{{image.path ? theme.link ~ '/static/images/' ~ image.path : image.src}}" alt="{{image.alt}}">
     {% else %}
@@ -28,16 +37,15 @@
             type="button"
             class="video__btn"
             {% if modal %}
+                data-modal-trigger="video-modal"
                 {% if youtube_id %}
-                    data-modal-trigger="embed-modal"
                     data-embed-url="https://www.youtube.com/embed/{{youtube_id}}"
                 {% else %}
-                    data-modal-trigger="video-modal"
                     data-video-url="{{filename ? theme.link ~ '/static/videos/' ~ filename : src}}"
                 {% endif %}
-            {% endif %}
-            {% if modal and vertical %}
-                data-vertical="true"
+                {% if vertical %}
+                    data-vertical="true"
+                {% endif %}
             {% endif %}
         ></button>
     {% endif %}

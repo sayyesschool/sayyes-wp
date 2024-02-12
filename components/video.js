@@ -11,9 +11,11 @@ export default class Video extends Component {
 
     static init() {
         document.querySelectorAll(`.${this.classes.root}`).forEach(element => {
-            if (element.classList.contains('autoplay'))
-                new AutoVideo(element);
-            else if (element.classList.contains('hover'))
+            const { videoAutoplay, videoHover } = element.dataset;
+
+            if (videoAutoplay)
+                new AutoplayVideo(element);
+            else if (videoHover)
                 new HoverVideo(element);
         });
     }
@@ -81,7 +83,7 @@ export class AutoplayVideo extends Video {
             threshold: 1.0
         });
 
-        observer.observe(element);
+        observer.observe(this.element);
     }
 }
 

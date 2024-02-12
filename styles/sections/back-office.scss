@@ -1,19 +1,25 @@
 .back-office {
-	margin-bottom: 100px;
 	position: relative;
+	margin-bottom: 100px;
 
-	.subtitle {
+	&__title {
 		max-width: 700px;
 		margin-bottom: 15px;
 	}
 
 	&__description {
-		max-width: 470px;
-		margin-bottom: 10px;
+		margin-bottom: 35px;
 
-		&:last-of-type {
+		p:first-of-type {
+			max-width: 470px;
+		}
+		
+		p:last-of-type {
 			max-width: 500px;
-			margin-bottom: 35px;
+		}
+		
+		p:not(:last-of-type) {
+			margin-bottom: 10px;
 		}
 	}
 

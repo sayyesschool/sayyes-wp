@@ -66,13 +66,8 @@
 		min-height: 370px;
 		padding: 50px 35px 50px 50px;
 		align-self: flex-start;
-
 		background-color: $pink;
 		color: $white;
-
-		&:last-of-type {
-			margin-top: 60px;
-		}
 	}
 
 	&--text-card {

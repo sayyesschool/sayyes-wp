@@ -7,6 +7,7 @@ export default class Select extends Component {
 		root: this.name,
 		input: `${this.name}__input`,
 		button: `${this.name}__button`,
+		value: `${this.name}__value`,
 		option: `${this.name}__option`,
 		active: `${this.name}--active`
 	};
@@ -16,6 +17,7 @@ export default class Select extends Component {
 
 		this.input = this.getElement(`.${Select.classes.input}`);
 		this.button = this.getElement(`.${Select.classes.button}`);
+		this.value = this.getElement(`.${Select.classes.value}`);
 		this.options = this.getElements(`.${Select.classes.option}`);
 
 		this.button.addEventListener('click', this.handleButtonClick.bind(this));
@@ -36,7 +38,7 @@ export default class Select extends Component {
 		const { textContent } = event.target;
 
 		this.input.value = textContent;
-		this.button.textContent = textContent;
+		this.value.textContent = textContent;
 		this.element.classList.remove(Select.classes.active);
 	}
 }

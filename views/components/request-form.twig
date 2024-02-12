@@ -59,17 +59,19 @@
         } %}
     </div>
 
-    <button class="btn btn--full" type="submit">
-        {% if button_text %}
-            {{ button_text }}
-        {% else %}
-            Записаться на бесплатный урок
-        {% endif %}
-    </button>
+    <div class="request-form__submit">
+        <button class="btn btn--full" type="submit">
+            {% if button_text %}
+                {{ button_text }}
+            {% else %}
+                Записаться на бесплатный урок
+            {% endif %}
+        </button>
 
-    {% include 'components/checkbox.twig' with {
-        name: 'consent'
-    } %}
+        {% include 'components/checkbox.twig' with {
+            name: 'consent'
+        } %}
+    </div>
 </form>
 
 {# <script>

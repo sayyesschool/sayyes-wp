@@ -6,6 +6,10 @@
 		display: flex;
 		justify-content: space-between;
 		gap: 10px;
+
+		.select {
+			display: none;
+		}
 	}
 
 	&__tab {
@@ -22,10 +26,6 @@
 		&--active {
 			background-color: $pale-white;
 		}
-	}
-
-	.select {
-		display: none;
 	}
 
 	&--pills {

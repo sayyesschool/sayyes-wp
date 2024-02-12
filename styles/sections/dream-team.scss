@@ -2,10 +2,6 @@
 	padding: 50px 0;
 	background-color: $white;
 
-	.btn {
-		margin-top: 20px;
-	}
-
 	&__content {
 		display: flex;
 		gap: 20px;
@@ -29,11 +25,14 @@
 
 	&__video {
 		width: 176px;
-		// height: 370px;
 	}
 
 	&__advantages {
 		width: 470px;
+	}
+
+	.btn {
+		margin-top: 20px;
 	}
 
 	@include breakpoint($breakpoint-lg) {

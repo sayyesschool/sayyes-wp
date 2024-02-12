@@ -11,10 +11,16 @@ export default class Modal extends Component {
     };
 
     static init() {
-        const modals = super.init();
+        document.querySelectorAll(`.${this.classes.root}`).forEach(element => {
+            const id = element.id;
+            const { component } = element.dataset;
 
-        modals.forEach(modal => {
-            const id = modal.element.id;
+            let modal;
+
+            if (component === 'VideoModal')
+                modal = new VideoModal(element);
+            else
+                modal = new Modal(element);
 
             if (id) {
                 document.querySelectorAll(`[data-modal-trigger="${id}"`).forEach(trigger => {
@@ -27,7 +33,8 @@ export default class Modal extends Component {
     constructor(element) {
         super(element);
 
-        this.closeButton = this.getElement('.modal__close');
+        this.body = this.getElement(`.${Modal.classes.body}`);
+        this.closeButton = this.getElement(`.${Modal.classes.close}`);
 
         this.element.addEventListener('click', this.handleRootClick.bind(this));
         this.closeButton.addEventListener('click', this.close.bind(this));
@@ -54,65 +61,52 @@ export default class Modal extends Component {
     }
 }
 
-export class EmbedModal extends Modal {
-    constructor(element) {
-        super(element);
-
-        this.iframe = this.element.querySelector('iframe');
-    }
-
-    open(event) {
-        const { embedUrl, vertical } = event.target.dataset;
-
-        console.log(event.target.dataset);
-
-        if (!embedUrl) return;
-
-        super.open();
-
-        this.iframe.src = embedUrl;
-
-        if (vertical)
-            this.iframe.classList.add('video-embed--vertical');
-    }
-
-    close() {
-        super.close();
-        this.iframe.src = '';
-        this.iframe.classList.remove('video-embed--vertical');
-    }
-}
-
 export class VideoModal extends Modal {
     constructor(props) {
         super(props);
 
-        this.video = this.element.querySelector('video');
+        this.video = document.createElement('video');
+        this.video.className = 'video';
+
+        this.iframe = document.createElement('iframe');
+        this.iframe.className = 'video';
+        this.iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        this.iframe.allowFullscreen = true;
     }
 
     open(event) {
-        const { videoUrl, vertical } = event.target.dataset;
-        const video = this.video;
-
-        if (!videoUrl) return;
+        const { embedUrl, videoUrl, vertical } = event.target.dataset;
 
         super.open();
 
-        video.src = videoUrl;
+        if (videoUrl) {
+            const video = this.video;
 
-        video.addEventListener('loadeddata', () => {
-            if (video.readyState >= 2)
-                video.play();
-        });
+            video.src = videoUrl;
+            video.addEventListener('loadeddata', () => {
+                if (video.readyState >= 2)
+                    video.play();
+            });
+
+            this.media = video;
+        } else if (embedUrl) {
+            this.iframe.src = embedUrl;
+            this.media = this.iframe;
+        }
 
         if (vertical)
-            this.video.classList.add('video--vertical');
+            this.media.classList.add('video--vertical');
+
+        this.body.appendChild(this.media);
     }
 
     close() {
         super.close();
-        this.video.pause();
-        this.video.src = '';
+        if (this.media instanceof HTMLVideoElement)
+            this.media.pause();
+        this.media.src = '';
+        this.media.classList.remove('video--vertical');
+        this.body.removeChild(this.media);
     }
 }
 
