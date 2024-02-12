@@ -4463,6 +4463,7 @@ p a:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  gap: 20px;
 }
 .teacher-block__details {
   width: 67%;
@@ -4572,6 +4573,9 @@ p a:hover {
 }
 .teacher-block .teacher-details__content {
   font-weight: 600;
+}
+.teacher-block .teacher-details__content p:not(:last-of-type) {
+  margin-bottom: 10px;
 }
 .teacher-block button.btn {
   margin: 0;

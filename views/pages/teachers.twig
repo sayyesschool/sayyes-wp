@@ -22,12 +22,12 @@
                 tabs: [
                     {
                         content: 'Офлайн в Москве',
-                        target: '.offline-teachers',
+                        value: 'offline',
                         active: true
                     },
                     {
                         content: 'Онлайн по всему миру',
-                        target: '.online-teachers'
+                        value: 'online'
                     }
                 ],
                 pills: true,
@@ -36,7 +36,7 @@
                 {% from 'components/teacher-card.twig' import teacher_card %}
 
                 {% block content %}
-                    <div class="offline-teachers">
+                    <div class="offline-teachers" data-tab-panel="offline">
                         <div class="cards">
                             {% for teacher in offline_teachers|slice(0, 6) %}
                                 {{teacher_card(teacher)}}
@@ -52,7 +52,7 @@
                         </div>
                     </div>
 
-                    <div class="online-teachers hidden">
+                    <div class="online-teachers hidden" data-tab-panel="online">
                         <div class="cards">
                             {% for teacher in online_teachers|slice(0, 6) %}
                                 {{teacher_card(teacher)}}

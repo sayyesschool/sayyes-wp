@@ -11,6 +11,7 @@
 		width: 33%;
 		display: flex;
 		flex-direction: column;
+		gap: 20px;
 	}
 
 	&__details {
@@ -123,6 +124,10 @@
 	
 		&__content {
 			font-weight: 600;
+			
+			p:not(:last-of-type) {
+				margin-bottom: 10px;
+			}
 		}
 	}
 
