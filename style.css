@@ -4478,6 +4478,8 @@ p a:hover {
 }
 .teacher-block .tabs {
   height: 100%;
+  border-radius: 15px;
+  overflow: hidden;
 }
 .teacher-block .tabs__nav {
   gap: 0;
@@ -4495,13 +4497,12 @@ p a:hover {
   border-bottom: 2px solid #262626;
 }
 .teacher-block .tabs__content {
-  position: relative;
   max-height: calc(100% - 40px);
   overflow: auto;
 }
-.teacher-block .tabs__content::before {
+.teacher-block .tabs__content::after {
   content: "";
-  width: 100%;
+  width: calc(100% - 3px);
   height: 25px;
   position: absolute;
   bottom: 0;

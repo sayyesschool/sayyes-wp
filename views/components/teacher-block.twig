@@ -1,18 +1,19 @@
-<article class="teacher-block" v-if="teacher">
+<article class="teacher-block">
 	<div class="teacher-block__summary">
 		<div class="teacher-block__media">
-			<div class="video video--modal">
-				<img class="video__bg" :src="teacher.imageUrl" :alt="teacher.name">
-				<button class="video__btn" type="button" :data-embed-url="teacherVideoEmbedUrl">
+			<div class="video">
+				<img class="video__bg">
+				<button type="button" class="video__btn" data-modal-trigger="video-modal" 
+				></button>
 			</div>
 		</div>
 
 		<div class="teacher-block__info">
-			<h2 class="teacher-block__title">${teacher.name}</h2>
+			<h2 class="teacher-block__title"></h2>
 
 			<p class="teacher-block__free-lesson">Бесплатный пробный урок с этим преподавателем</p>
 
-			<button class="feedback-btn btn btn--sm btn--transparent btn--transparent-black">Подробнее</button>
+			<button class="feedback-btn btn btn--sm btn--transparent btn--transparent-black" data-modal-trigger="request-modal">Подробнее</button>
 		</div>
 	</div>
 
@@ -21,34 +22,39 @@
 			tabs: [
 				{
 					content: 'Обо мне',
-					target: '.teacher-details',
+					value: 'details',
 					active: true
 				},
 				{
 					content: 'Отзывы',
-					target: '.teacher-reviews'
+					target: 'reviews'
 				}
 			]
 		} %}
 			{% block content %}
-				<section class="teacher-details">
-					<div class="teacher-details__section" v-if="teacher.experience">
+				<section class="teacher-details" data-tab-panel="details">
+					<div class="teacher-details__section teacher-details__experience">
 						<h3 class="teacher-details__heading">Опыт работы:</h3>
-						<div class="teacher-details__content" v-html="teacher.experience"></div>
+						<div class="teacher-details__content"></div>
 					</div>
 
-					<div class="teacher-details__section" v-if="teacher.education">
+					<div class="teacher-details__section teacher-details__education">
 						<h3 class="teacher-details__heading">Образование:</h3>
-						<div class="teacher-details__content" v-html="teacher.education"></div>
+						<div class="teacher-details__content"></div>
 					</div>
 
-					<div class="teacher-details__content" v-html="teacher.content"></div>
+					<div class="teacher-details__section teacher-details__certificates">
+						<h3 class="teacher-details__heading">Сертификаты:</h3>
+						<div class="teacher-details__content"></div>
+					</div>
+
+					<div class="teacher-details__content teacher-details__description"></div>
 				</section>
 
-				<section class="teacher-reviews hidden">
-					<div class="teacher-reviews__review" v-for="review in teacher.reviews">
+				<section class="teacher-reviews hidden" data-tab-panel="testimonials">
+					<div class="teacher-reviews__review">
 						<div class="teacher-reviews__info">
-							<h4 class="teacher-reviews__name">${review.name}</h4>
+							<h4 class="teacher-reviews__name"></h4>
 
 							<a class="teacher-reviews__social" href="${review.social.url}" target="_blank">
 								{# {% include 'components/icon.twig' with {class: review.social.icon} %} #}

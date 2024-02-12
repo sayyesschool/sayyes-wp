@@ -23,6 +23,8 @@
 
 	.tabs {
 		height: 100%;
+		border-radius: 15px;
+    	overflow: hidden;
 
 		&__nav {
 			gap: 0;
@@ -43,13 +45,12 @@
 		}
 
 		&__content {
-			position: relative;
 			max-height: calc(100% - 40px);
 			overflow: auto;
 
-			&::before {
+			&::after {
 				content: '';
-				width: 100%;
+				width: calc(100% - 3px);
 				height: 25px;
 				position: absolute;
 				bottom: 0;
