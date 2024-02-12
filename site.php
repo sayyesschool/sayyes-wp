@@ -103,15 +103,12 @@ class SayYesSite extends Site {
 
 
 	function add_to_context($context) {
-        $json = file_get_contents(__DIR__ . '/data.json');
-        $data = json_decode($json, true);
         $settings = get_fields('options');
 
         $main_phone = format_phone_number($settings['phone_numbers']['main']);
         $wa_phone = format_phone_number($settings['phone_numbers']['whatsapp']);
 
         $context['site'] = $this;
-        $context['data'] = $data;
         $context['YANDEX_METRIKA_COUNTER'] = $this->yandex_metrika_counter;
         $context['GA_MEASUREMENT_ID'] = $this->google_analytics_id;
         $context['FACEBOOK_PIXEL_IDS'] = $this->facebook_pixel_ids;
