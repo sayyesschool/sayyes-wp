@@ -8,8 +8,7 @@
 	margin-bottom: 100px;
 	color: white;
 	border-radius: $border-radius;
-	background: url('./static/images/mainscreens/mainscreen-1.jpg') right
-		center/cover no-repeat;
+	background: url('./static/images/mainscreens/mainscreen-1.jpg') right center/cover no-repeat;
 
 	&__content {
 		max-width: 440px;
@@ -56,11 +55,6 @@
 		&__title {
 			font-size: 46px;
 			line-height: 45px;
-		}
-
-		.main-list {
-			font-size: 16px;
-			line-height: 18px;
 		}
 	}
 

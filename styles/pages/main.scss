@@ -1,5 +1,40 @@
 #main-page {
     .mainscreen {
+        ul {
+            color: $white;
+            margin-left: 25px;
         
+            li {
+                position: relative;
+
+                strong {
+                    color: $yellow;
+                }
+        
+                &::before {
+                    content: '';
+                    display: inline-block;
+                    width: 10px;
+                    height: 18px;
+                    position: absolute;
+                    top: 50%;
+                    left: -20px;
+                    transform: translateY(-50%);
+                    background: url("./static/images/icons/rhomb.svg") center
+                        center/cover no-repeat;
+                }
+        
+                &:not(:last-child) {
+                    margin-bottom: 5px;
+                }
+            }
+        }
+
+        @include breakpoint($breakpoint-lg) {
+            ul {
+                font-size: 16px;
+			    line-height: 18px;
+            }
+        }
     }
 }

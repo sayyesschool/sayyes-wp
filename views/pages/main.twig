@@ -1,22 +1,11 @@
 {% extends 'layouts/base.twig' %}
 
 {% block content %}
-	{% embed 'sections/mainscreen.twig' with {
-		title: 'Исполняем мечты о свободном английском',
+	{% include 'sections/mainscreen.twig' with {
+		title: page.heading ?? page.title,
+		description: page.content,
 		image: 'team.png'
 	} %}
-		{% block content %}
-			<ul class="main-list">
-				<li class="main-list__item">
-					<span class="main-list__primary">Очно</span>
-					в Москве и
-					<span class="main-list__primary">онлайн</span>
-				</li>
-				<li class="main-list__item">С заботой о вашем прогрессе</li>
-				<li class="main-list__item">В атмосфере дружбы и уюта</li>
-			</ul>
-		{% endblock %}
-	{% endembed %}
 
 	{% include 'sections/trial-lesson.twig' %}
 

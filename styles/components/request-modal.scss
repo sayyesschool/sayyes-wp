@@ -1,3 +1,218 @@
 #request-modal {
     z-index: 1001;
+
+    .feedback-block {
+        width: 955px;
+        display: flex;
+        justify-content: space-between;
+        background-color: $pale-white;
+        border-radius: $border-radius;
+    
+        &::before {
+            content: '';
+            width: 42%;
+            border-radius: $border-radius 0 0 $border-radius;
+            background: var(--background-url) center center/cover no-repeat;
+        }
+    
+        &__content {
+            width: 58%;
+            padding: 35px 45px;
+            min-height: 521px;
+        }
+    
+        &__title {
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+    
+        &__description {
+            margin-bottom: 20px;
+            color: lighten($black, 30%);
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 20px;
+        }
+    
+        &--adults {
+            --background-url: url('./static/images/pictures/feedback.jpg');
+        }
+    
+        &--children {
+            --background-url: url('./static/images/pictures/feedback-2.jpg');
+        }
+    
+        @include breakpoint($breakpoint-lg) {
+            width: 816px;
+    
+            &__content {
+                min-height: 552px;
+            }
+    
+            .checkbox {
+                &__label {
+                    display: none;
+                }
+        
+                &__description {
+                    display: block;
+                }
+            }
+        }
+    
+        @include breakpoint($breakpoint-sm) {
+            width: 670px;
+    
+            &::before {
+                width: 38%;
+                background: $yellow;
+            }
+    
+            &__content {
+                width: 62%;
+                padding: 30px;
+                min-height: 405px;
+            }
+    
+            &__description {
+                position: absolute;
+                top: 230px;
+                left: 30px;
+                width: 210px;
+                font-size: 16px;
+                line-height: 18px;
+            }
+    
+            .feedback-form__format {
+                position: absolute;
+                top: 30px;
+                left: 30px;
+                width: 200px;
+            }
+    
+            .radio-group {
+                position: absolute;
+                top: 80px;
+                left: 30px;
+                width: 250px;
+                flex-direction: column;
+                gap: 20px;
+            }
+    
+            .checkbox {
+                &__label {
+                    display: none;
+                }
+        
+                &__description {
+                    display: block;
+                }	
+            }
+    
+            &--children {
+                .feedback-block__overview {
+                    background: $violet;
+                }
+    
+                .feedback-block__description,
+                .feedback-form__format,
+                .radio-group {
+                    color: $white;
+                }
+    
+                .radio {
+                    &__label {
+                        &:before {
+                            border: 2px solid $white;
+                        }
+                    }
+    
+                    &__input:checked ~ &__label {
+                        &:before {
+                            background: radial-gradient(
+                                circle at center,
+                                $white 0,
+                                $white 3.25px,
+                                transparent 3.25px
+                            );
+                        }
+                    }
+                }
+            }
+        }
+    
+        @include breakpoint($breakpoint-xxs) {
+            width: 470px;
+    
+            &::before {
+                display: none;
+            }
+    
+            &__content {
+                width: 100%;
+                min-height: 470px;
+            }
+    
+            &__description {
+                position: static;
+                max-width: 350px;
+                width: 100%;
+            }
+    
+            .feedback-form__format {
+                position: static;
+                width: 100%;
+            }
+    
+            .radio-group {
+                position: static;
+                width: 100%;
+                flex-direction: row;
+                gap: 0;
+            }
+    
+            &--children {
+                .feedback-block__description {
+                    display: none;
+                }
+    
+                .feedback-block__description,
+                .feedback-form__format,
+                .radio-group {
+                    color: $black;
+                }
+    
+                .radio {
+                    &__label {
+                        &:before {
+                            border: 2px solid $black;
+                        }
+                    }
+    
+                    &__input:checked + &__label {
+                        &:before {
+                            background: radial-gradient(
+                                circle at center,
+                                $black 0,
+                                $black 3.25px,
+                                transparent 3.25px
+                            );
+                        }
+                    }
+                }
+            }
+        }
+    
+        @include breakpoint($breakpoint-mobile) {
+            width: 410px;
+        }
+    
+        @include breakpoint($breakpoint-sm-mobile) {
+            width: 300px;
+    
+            &__content {
+                padding: 20px;
+            }
+        }
+    }
 }

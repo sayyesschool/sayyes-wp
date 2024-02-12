@@ -8,18 +8,16 @@
                 {
                     content: 'Взрослым',
                     value: 'adults',
-                    target: '.feedback-block--adults',
                     active: true
                 },
                 {
                     content: 'Детям',
                     value: 'children',
-                    target: '.feedback-block--children'
                 }
             ]
         } %}
             {% block content %}
-                <div class="feedback-block feedback-block--adults">
+                <div class="feedback-block feedback-block--adults" data-tab-panel="adults">
                     <div class="feedback-block__content">
                         <p class="feedback-block__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы и расскажем о курсах</p>
 
@@ -27,7 +25,7 @@
                     </div>
                 </div>
 
-                <div class="feedback-block feedback-block--children hidden">
+                <div class="feedback-block feedback-block--children hidden" data-tab-panel="children">
                     <div class="feedback-block__content">
                         <p class="feedback-block__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы и расскажем о курсах</p>
 

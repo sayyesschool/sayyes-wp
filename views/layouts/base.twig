@@ -72,32 +72,6 @@
         <script>
             const GRECAPTCHA = '6LenTzMiAAAAABvM_nwArCX5rtvJQ3TUQS8EsN1q';
 
-            function validateRecaptcha() {
-                grecaptcha.ready(() => {
-                    grecaptcha.execute(GRECAPTCHA, { action: 'submit' })
-                        .then(token => {
-                            fetch({
-                                type: 'POST',
-                                url: '{{theme.link}}/recaptcha.php',
-                                headers: {
-                                    'Content-Type': 'application/json; charset=utf-8',
-                                },
-                                data: JSON.stringify({
-                                    action: 'submit',
-                                    token
-                                })
-                            })
-                                .then(res => res.json())
-                                .then(response => {
-                                    if (!response.success || response.score < 0.5)
-                                        throw 'Bad request';
-
-                                    return response;
-                                });
-                        });
-                });
-            }
-
             const requestForms = document.querySelectorAll('.request-form').forEach(element => {
                 PetiteVue.createApp({
                     $delimiters: ['${', '}'],
@@ -147,6 +121,32 @@
                     }
                 }).mount(`#${element.id}`);
             });
+
+            function validateRecaptcha() {
+                grecaptcha.ready(() => {
+                    grecaptcha.execute(GRECAPTCHA, { action: 'submit' })
+                        .then(token => {
+                            fetch({
+                                type: 'POST',
+                                url: '{{theme.link}}/recaptcha.php',
+                                headers: {
+                                    'Content-Type': 'application/json; charset=utf-8',
+                                },
+                                data: JSON.stringify({
+                                    action: 'submit',
+                                    token
+                                })
+                            })
+                                .then(res => res.json())
+                                .then(response => {
+                                    if (!response.success || response.score < 0.5)
+                                        throw 'Bad request';
+
+                                    return response;
+                                });
+                        });
+                });
+            }
         </script>
 
         {% block scripts %}

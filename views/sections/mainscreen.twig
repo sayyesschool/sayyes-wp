@@ -1,14 +1,20 @@
 <section class="mainscreen">
 	<div class="mainscreen__content">
 		<h1 class="mainscreen__title">
-			{% block title %}{{title}}{% endblock %}
+			{% block title %}
+				{{title}}
+			{% endblock %}
 		</h1>
 
 		<div class="mainscreen__description">
-			{% block content %}
-				{{content}}
+			{% block description %}
+				{{description}}
 			{% endblock %}
 		</div>
+
+		{% block content %}
+			{{content}}
+		{% endblock %}
 	</div>
 
 	{% if image %}
