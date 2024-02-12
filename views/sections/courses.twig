@@ -10,19 +10,19 @@
 			tabs: [
 				{
 					content: 'Курсы для взрослых',
-					target: '.course-blocks--adult',
+                    value: 'adults',
 					active: true
 				},
 				{
 					content: 'Курсы для детей',
-					target: '.course-blocks--children'
+                    value: 'children'
 				}
 			],
             pills: true,
             color: 'yellow'
 		} %}
             {% block content %}
-                <div class="course-blocks course-blocks--adult">
+                <div class="course-blocks" data-tab-panel="adults">
                     {% include 'components/courses.twig' with {
                         courses: courses_adults
                     } %}
@@ -36,7 +36,7 @@
                     {% endif %}
                 </div>
 
-                <div class="course-blocks course-blocks--children hidden">
+                <div class="course-blocks hidden" data-tab-panel="children">
                     {% include 'components/courses.twig' with {
                         courses: courses_children
                     } %}

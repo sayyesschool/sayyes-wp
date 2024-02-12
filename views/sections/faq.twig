@@ -1,0 +1,13 @@
+<section class="faq">
+	<div class="section-container">
+		<h2 class="faq__title subtitle">На часто задаваемые вопросы о курсе отвечает Шаталова Вера, сооснователь SAY YES!</h2>
+
+		<div class="faq__content">
+			<img class="faq__img" src="{{theme.link}}/static/images/pictures/vera.jpg" alt="Say Yes">
+
+			{% include 'components/accordion.twig' with {
+				list: items
+			} %}
+		</div>
+	</div>
+</section>

@@ -1,32 +1,68 @@
 .faq {
 	margin-bottom: 100px;
 
-	.subtitle {
-		max-width: 435px;
-		margin-bottom: 30px;
+	&__title {
+		max-width: 800px;
+		margin-bottom: 40px;
 	}
 
-	.custom-select {
-		display: none;
+	&__content {
+		display: flex;
+		justify-content: space-between;
+		gap: 20px;
+	}
+
+	&__img {
+		width: calc(33% - 10px);
+		height: 100%;
+		display: block;
+		object-fit: cover;
+		border-radius: $border-radius;
+		box-shadow: 0px 0px 20px 0px $white;
 	}
 
 	.accordion {
-		margin-bottom: 35px;
-	}
-
-	.btn {
-		margin: 0 auto;
-		display: block;
-	}
-
-	&__not-found {
-		margin: 0 auto 30px;
-		max-width: 350px;
-		text-align: center;
+		width: calc(67% - 10px);
 	}
 
 	@include breakpoint($breakpoint-lg) {
 		margin-bottom: 70px;
+
+		&__title {
+			max-width: 600px;
+		}
+
+		&__content {
+			gap: 15px;
+		}
+
+		&__img {
+			width: calc(33% - 7.5px);
+		}
+
+		.accordion {
+			width: calc(67% - 7.5px);
+		}
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		&__title {
+			max-width: 400px;
+		}
+
+		&__content {
+			margin-top: -190px;
+			flex-direction: column;
+		}
+
+		&__img {
+			width: 40%;
+			align-self: flex-end;
+		}
+
+		.accordion {
+			width: 100%;
+		}
 	}
 
 	@include breakpoint($breakpoint-xs) {
@@ -36,12 +72,27 @@
 	@include breakpoint($breakpoint-xxs) {
 		margin-bottom: 50px;
 
-		.tabs__tab {
-			display: none;
+		&__title {
+			max-width: 320px;
 		}
 
-		.custom-select {
-			display: block;
+		&__content {
+			margin-top: -170px;
+			flex-direction: column;
+		}
+
+		&__img {
+			width: 35%;
+		}
+	}
+
+	@include breakpoint($breakpoint-mobile) {
+		&__content {
+			margin-top: 0;
+		}
+
+		&__img {
+			width: 100%;
 		}
 	}
 }

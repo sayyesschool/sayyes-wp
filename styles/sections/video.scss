@@ -51,16 +51,6 @@
 		}
 	}
 
-	&--offline {
-		&::before {
-			background-image: url("./static/images/decoration/notes/only-1.5-min.svg");
-		}
-
-		.video-section__info {
-			max-width: 400px;
-		}
-	}
-
 	&--children-courses {
 		margin-bottom: 180px;
 	}
@@ -173,12 +163,6 @@
 	@include breakpoint($breakpoint-md) {
 		padding: 30px;
 
-		&--offline {
-			.video-section__info {
-				max-width: 350px;
-			}
-		}
-
 		&--children-courses {
 			&::before {
 				left: 180px;
@@ -208,15 +192,6 @@
 
 		&__info {
 			max-width: 330px;
-		}
-
-		&--offline {
-			&::before {
-				top: 145px;
-				left: 25%;
-				width: 207px;
-				height: 94px;
-			}
 		}
 
 		&--children-courses {
@@ -257,17 +232,6 @@
 			bottom: 210px;
 			left: 25%;
 			background-image: url("./static/images/decoration/notes/shortly-video-2.svg");
-		}
-
-		&--offline {
-			&::before {
-				top: auto;
-				bottom: 220px;
-				left: 35%;
-				width: 171px;
-				height: 70px;
-				background-image: url("./static/images/decoration/notes/only-1.5-min-3.svg");
-			}
 		}
 
 		&--children-courses {

@@ -1,7 +1,7 @@
 <section class="course-feedback {{class}}">
 	<div class="section-container">
-		<h2 class="subtitle">{{title}}</h2>
-		<p class="course-feedback__description">За 10 лет работы, обучили более 10 000 человек и получили более 800 отзывов</p>
+		<h2 class="course-feedback__title subtitle">{{title}}</h2>
+		<p class="course-feedback__description">{{description}}</p>
 	</div>
 
 	<div class="slider swiper-course-feedback">
@@ -27,18 +27,23 @@
 						<div class="course-feedback__cards">
 							{% for review in item.reviews %}
 								<div class="course-feedback__card">
-									{% for paragraph in review.text %}
+									{% for paragraph in review.content %}
 										<div class="course-feedback__paragraph">
-											<div class="text text--weight-700">{{paragraph.title}}</div>
-											{{paragraph.description}}
+											{% if attribute(paragraph, 'title') is defined %}
+												<div class="text text--weight-700">{{paragraph.title}}</div>
+												{{paragraph.description}}
+											{% else %}
+												{{paragraph}}
+											{% endif %}
 										</div>
 									{% endfor %}
 
 									<a class="course-feedback__link" href="https://zoon.ru/msk/trainings/shkola_anglijskogo_yazyka_online_ingleks/" target="blank">Читать весь отзыв</a>
+
 									<div class="course-feedback__info">
 										<div class="course-feedback__meta">
-											<p class="course-feedback__author">{{review.author.name}}</p>
-											<p class="course-feedback__date">{{review.author.dateTime}}</p>
+											<p class="course-feedback__author">{{review.author}}</p>
+											<p class="course-feedback__date">{{review.date}}</p>
 										</div>
 										<div class="stars"></div>
 									</div>

@@ -1,0 +1,161 @@
+.page-template-page-format {
+    .about {
+        &:first-of-type {
+            &__title {
+                max-width: 530px;
+            }
+        }
+
+        &:last-of-type {
+            &__title {
+                max-width: 490px;
+            }
+        }
+    }
+
+    .format-shortly {
+        margin-bottom: 100px;
+    
+        .subtitle {
+            max-width: 495px;
+            margin-bottom: 50px;
+        }
+    
+        .text-block {
+            padding-right: 110px;
+    
+            .text-block__title {
+                margin-top: 0;
+            }
+        }
+    
+        &__info,
+        &__number {
+            text-align: center;
+    
+            max-width: 650px;
+            margin: 0 auto;
+        }
+    
+        &__info {
+            margin: 15px auto 10px;
+        }
+    
+        @include breakpoint($breakpoint-lg) {
+            margin-bottom: 70px;
+        }
+    
+        @include breakpoint($breakpoint-xs) {
+            margin-bottom: 60px;
+        }
+    
+        @include breakpoint($breakpoint-xxs) {
+            margin-bottom: 50px;
+        }
+    }
+
+    .format-features {
+        margin-bottom: 100px;
+    
+        &__title {
+            max-width: 580px;
+            margin-bottom: 40px;
+        }
+    
+        &__content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .feature-card {
+            width: calc(25% - 15px);
+            min-height: 275px;
+            padding: 39px 35px 36px 39px;
+            background-color: $yellow;
+            border-radius: $border-radius;
+            line-height: 20px;
+
+            &__title {
+                position: absolute;
+                max-width: 202px;
+                font-weight: 700;
+            }
+        
+            &__description {
+                margin-top: 80px;
+            }
+        }
+    
+        @include breakpoint($breakpoint-lg) {
+            margin-bottom: 70px;
+    
+            &__title {
+                max-width: 500px;
+            }
+    
+            &__content {
+                gap: 15px;
+            }
+    
+            .feature-card {
+                width: calc(50% - 7.5px);
+                min-height: 175px;
+                padding: 25px;
+            }
+        }
+    
+        @include breakpoint($breakpoint-xs) {
+            margin-bottom: 60px;
+        }
+    
+        @include breakpoint($breakpoint-xxs) {
+            margin-bottom: 50px;
+            
+            &__title {
+                max-width: 400px;
+            }
+    
+            .feature-card {
+                width: 100%;
+            }
+        }
+    }
+
+    .video-section {
+        &::before {
+			background-image: url("./static/images/decoration/notes/only-1.5-min.svg");
+		}
+
+		&__info {
+			max-width: 400px;
+		}
+
+        @include breakpoint($breakpoint-md) {
+            &__info {
+                max-width: 350px;
+            }
+        }
+
+        @include breakpoint($breakpoint-sm) {
+            &::before {
+				top: 145px;
+				left: 25%;
+				width: 207px;
+				height: 94px;
+			}
+        }
+
+        @include breakpoint($breakpoint-xxs) {
+            &::before {
+				top: auto;
+				bottom: 220px;
+				left: 35%;
+				width: 171px;
+				height: 70px;
+				background-image: url('./static/images/decoration/notes/only-1.5-min-3.svg');
+			}
+        }
+    }
+}

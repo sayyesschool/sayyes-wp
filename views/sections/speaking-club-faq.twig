@@ -1,0 +1,39 @@
+<section class="speaking-club-faq">
+    <div class="section-container">
+        <h2 class="subtitle">Часто задаваемые вопросы</h2>
+
+        {% embed 'components/tabs.twig' with {
+            tabs: [
+                {
+                    content: 'О встречах',
+                    value: 'meeting',
+                    active: true
+                },
+                {
+                    content: 'Об оплате',
+                    value: 'payment'
+                },
+                {
+                    content: 'О технических проблемах',
+                    value: 'issues'
+                }
+            ]
+        } %}
+            <div data-tab-panel="meeting">
+                {% include 'components/accordion.twig' with { list: faq } %}
+            </div>
+
+            <div data-tab-panel="payment">
+                {% include 'components/accordion.twig' with { list: faq } %}
+            </div>
+
+            <div data-tab-panel="issues">
+                {% include 'components/accordion.twig' with { list: faq } %}
+            </div>
+        {% endembed %}
+
+        <p class="speaking-club-faq__not-found">Не нашли ответа на свой вопрос? Задайте его нам:</p>
+
+        <button class="btn btn--violet">Обратный звонок</button>
+    </div>
+</section>

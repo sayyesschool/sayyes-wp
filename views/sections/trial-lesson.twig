@@ -13,17 +13,17 @@
 		tabs: [
 			{
 				content: 'Взрослым',
-				target: '.invite--adults',
+				value: 'adults',
 				active: true
 			},
 			{
 				content: 'Детям',
-				target: '.invite--children'
+				value: 'children'
 			}
 		]
 	} %}
 		{% block content %}
-			<div class="invite invite--adults">
+			<div class="invite invite--adults" data-tab-panel="adults">
 				<div class="invite__left">
 					<div class="invite__title">Оставьте заявку на пробный урок</div>
 
@@ -37,7 +37,7 @@
 				</div>
 			</div>
 
-			<div class="invite invite--children hidden">
+			<div class="invite invite--children hidden" data-tab-panel="children">
 				<div class="invite__left">
 					<div class="invite__title">Оставьте заявку на пробный урок</div>
 

@@ -1,7 +1,7 @@
 .text-blocks {
 	display: flex;
-	gap: 20px;
 	flex-wrap: wrap;
+	gap: 20px;
 
 	.text-block {
 		align-self: flex-start;
@@ -24,11 +24,6 @@
 			min-height: 215px;
 			margin-top: -235px;
 		}
-	}
-
-	.subtitle {
-		max-width: 740px;
-		margin-bottom: 45px;
 	}
 
 	&--advantages {

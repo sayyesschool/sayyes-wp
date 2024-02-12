@@ -358,43 +358,7 @@
         </div>
     </section>
 
-	<section class="faq">
-        <div class="section-container">
-            <h2 class="subtitle">Часто задаваемые вопросы</h2>
-
-            <div class="tabs">
-                <div class="tabs__nav tabs__nav--accordion">
-                    <button class="tabs__tab active">О встречах</button>
-                    <button class="tabs__tab">Об оплате</button>
-                    <button class="tabs__tab">О технических проблемах</button>
-
-                    {% include 'components/select.twig' with {
-                        class: 'select--big',
-                        options: ['О встречах', 'Об оплате', 'О технических проблемах'],
-                        fill: '#ffffff'
-                    } %}
-                </div>
-                
-                <div class="tabs__content">
-                    <div class="tabs__item active">
-                        {% include 'components/accordion.twig' with { list: faq } %}
-                    </div>
-
-                    <div class="tabs__item">
-                        {% include 'components/accordion.twig' with { list: faq } %}
-                    </div>
-
-                    <div class="tabs__item">
-                        {% include 'components/accordion.twig' with { list: faq } %}
-                    </div>
-                </div>
-            </div>
-
-            <p class="faq__not-found">Не нашли ответа на свой вопрос? Задайте его нам:</p>
-
-            <button class="btn btn--violet">Обратный звонок</button>
-        </div>
-    </section>
+    {% include 'sections/speaking-club-faq.twig' %}
 
 	<section class="club-events">
         <div class="club-events__info">

@@ -1,4 +1,4 @@
-.about-course {
+.about {
 	margin-bottom: 100px;
 	display: flex;
 	justify-content: space-between;
@@ -11,20 +11,16 @@
 		line-height: 40px;
 	}
 
-	&__info {
+	&__content {
 		width: calc(52% - 25px);
-	}
 
-	&__text {
-		margin-bottom: 15px;
-	}
-
-	&__purpose {
-		font-weight: 700;
+		p + p {
+			margin-top: 15px;
+		}
 	}
 
 	&--children-courses {
-		.about-course__title {
+		.about__title {
 			max-width: 500px;
 		}
 	}
@@ -45,7 +41,7 @@
 			width: calc(48% - 17.5px);
 		}
 
-		&__info {
+		&__content {
 			width: calc(52% - 17.5px);
 		}
 	}
@@ -60,12 +56,11 @@
 
 		&__title {
 			width: 100%;
-
 			font-size: 26px;
 			line-height: 25px;
 		}
 
-		&__info {
+		&__content {
 			width: 100%;
 		}
 	}

@@ -4,6 +4,9 @@
 	<div class="about-course__info">
 		<p class="about-course__text">{{text}}</p>
 		<p class="about-course__purpose">{{purpose}}</p>
-		{{content}}
+		
+		{% block content %}
+			{{content}}
+		{% endblock %}
 	</div>
 </section>
