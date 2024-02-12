@@ -15,12 +15,10 @@ export default class Tabs extends Component {
 
 		this.buttons = this.getElements(`.${Tabs.classes.tab}`);
 
-		this.targets = new Map(this.buttons.map(button => {
-			return [
-				button.dataset.tabTarget,
-				this.getElement(button.dataset.tabTarget)
-			];
-		}));
+		this.targets = new Map(this.buttons.map(button => [
+			button.value,
+			this.getElement(`[data-tab-panel="${button.value}"]`)
+		]));
 
 		this.buttons.forEach(button => {
 			button.addEventListener('click', this.handleButtonClick.bind(this));
@@ -29,10 +27,7 @@ export default class Tabs extends Component {
 
 	handleButtonClick(event) {
 		const button = event.currentTarget;
-		const target = this.targets.get(button.dataset.tabTarget);
-
-		console.log('button', button);
-		console.log('target', target);
+		const target = this.targets.get(button.value);
 
 		this.buttons.forEach(b => {
 			b.classList.toggle(Tabs.classes.activeTab, b === button);

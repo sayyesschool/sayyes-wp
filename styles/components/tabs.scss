@@ -24,6 +24,10 @@
 		}
 	}
 
+	.select {
+		display: none;
+	}
+
 	&--pills {
 		.tabs__tab {
 			&:first-of-type {

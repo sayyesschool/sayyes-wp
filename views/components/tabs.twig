@@ -17,6 +17,12 @@
                 {% endif %}
             >{{tab.content}}</button>
         {% endfor %}
+
+        {# {% include 'components/select.twig' with {
+            class: 'select--big',
+            options: tabs|map(tab => tab.content),
+            fill: '#ffffff'
+        } %} #}
     </div>
 
     <div class="tabs__content">
