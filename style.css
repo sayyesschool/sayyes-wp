@@ -6169,55 +6169,70 @@ p a:hover {
   }
 }
 
+.single-format .about:first-of-type__title,
 .page-template-page-format .about:first-of-type__title {
   max-width: 530px;
 }
+.single-format .about:last-of-type__title,
 .page-template-page-format .about:last-of-type__title {
   max-width: 490px;
 }
+.single-format .format-shortly,
 .page-template-page-format .format-shortly {
   margin-bottom: 100px;
 }
+.single-format .format-shortly .subtitle,
 .page-template-page-format .format-shortly .subtitle {
   max-width: 495px;
   margin-bottom: 50px;
 }
+.single-format .format-shortly .text-block,
 .page-template-page-format .format-shortly .text-block {
   padding-right: 110px;
 }
+.single-format .format-shortly .text-block .text-block__title,
 .page-template-page-format .format-shortly .text-block .text-block__title {
   margin-top: 0;
 }
-.page-template-page-format .format-shortly__info, .page-template-page-format .format-shortly__number {
+.single-format .format-shortly__info, .single-format .format-shortly__number,
+.page-template-page-format .format-shortly__info,
+.page-template-page-format .format-shortly__number {
   text-align: center;
   max-width: 650px;
   margin: 0 auto;
 }
+.single-format .format-shortly__info,
 .page-template-page-format .format-shortly__info {
   margin: 15px auto 10px;
 }
 @media (max-width: 1160px) {
+  .single-format .format-shortly,
   .page-template-page-format .format-shortly {
     margin-bottom: 70px;
   }
 }
 @media (max-width: 800px) {
+  .single-format .format-shortly,
   .page-template-page-format .format-shortly {
     margin-bottom: 60px;
   }
 }
 @media (max-width: 768px) {
+  .single-format .format-shortly,
   .page-template-page-format .format-shortly {
     margin-bottom: 50px;
   }
 }
+.single-format .format-features,
 .page-template-page-format .format-features {
   margin-bottom: 100px;
 }
+.single-format .format-features__title,
 .page-template-page-format .format-features__title {
   max-width: 580px;
   margin-bottom: 40px;
 }
+.single-format .format-features__content,
 .page-template-page-format .format-features__content {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6229,6 +6244,7 @@ p a:hover {
           justify-content: space-between;
   gap: 20px;
 }
+.single-format .format-features .feature-card,
 .page-template-page-format .format-features .feature-card {
   width: calc(25% - 15px);
   min-height: 275px;
@@ -6237,24 +6253,30 @@ p a:hover {
   border-radius: 30px;
   line-height: 20px;
 }
+.single-format .format-features .feature-card__title,
 .page-template-page-format .format-features .feature-card__title {
   position: absolute;
   max-width: 202px;
   font-weight: 700;
 }
+.single-format .format-features .feature-card__description,
 .page-template-page-format .format-features .feature-card__description {
   margin-top: 80px;
 }
 @media (max-width: 1160px) {
+  .single-format .format-features,
   .page-template-page-format .format-features {
     margin-bottom: 70px;
   }
+  .single-format .format-features__title,
   .page-template-page-format .format-features__title {
     max-width: 500px;
   }
+  .single-format .format-features__content,
   .page-template-page-format .format-features__content {
     gap: 15px;
   }
+  .single-format .format-features .feature-card,
   .page-template-page-format .format-features .feature-card {
     width: calc(50% - 7.5px);
     min-height: 175px;
@@ -6262,33 +6284,41 @@ p a:hover {
   }
 }
 @media (max-width: 800px) {
+  .single-format .format-features,
   .page-template-page-format .format-features {
     margin-bottom: 60px;
   }
 }
 @media (max-width: 768px) {
+  .single-format .format-features,
   .page-template-page-format .format-features {
     margin-bottom: 50px;
   }
+  .single-format .format-features__title,
   .page-template-page-format .format-features__title {
     max-width: 400px;
   }
+  .single-format .format-features .feature-card,
   .page-template-page-format .format-features .feature-card {
     width: 100%;
   }
 }
+.single-format .video-section::before,
 .page-template-page-format .video-section::before {
   background-image: url("./static/images/decoration/notes/only-1.5-min.svg");
 }
+.single-format .video-section__info,
 .page-template-page-format .video-section__info {
   max-width: 400px;
 }
 @media (max-width: 1024px) {
+  .single-format .video-section__info,
   .page-template-page-format .video-section__info {
     max-width: 350px;
   }
 }
 @media (max-width: 900px) {
+  .single-format .video-section::before,
   .page-template-page-format .video-section::before {
     top: 145px;
     left: 25%;
@@ -6297,6 +6327,7 @@ p a:hover {
   }
 }
 @media (max-width: 768px) {
+  .single-format .video-section::before,
   .page-template-page-format .video-section::before {
     top: auto;
     bottom: 220px;

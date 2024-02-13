@@ -17,6 +17,14 @@ class Page extends Post {
     }
 }
 
+class Format extends Post {
+    public function name()
+    {
+        $name = $this->meta('name');
+        return $name;
+    }
+}
+
 class SayYesSite extends Site {
     public $version = '2.3.0';
     public $yandex_metrika_counter = 29661505;
@@ -40,6 +48,7 @@ class SayYesSite extends Site {
         add_filter('timber/post/classmap', function ($classmap) {
             $custom_classmap = [
                 'page' => Page::class,
+                'format' => Format::class
             ];
         
             return array_merge($classmap, $custom_classmap);
