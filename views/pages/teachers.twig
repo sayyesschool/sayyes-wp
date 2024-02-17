@@ -1,7 +1,7 @@
 {% extends 'layouts/base.twig' %}
 
 {% block content %}
-	{% include 'sections/mainscreen-big.twig' with {
+	{% include 'sections/main.twig' with {
 		title: page.heading ?? page.title,
         description: page.content,
         button: true,
@@ -37,7 +37,7 @@
 
                 {% block content %}
                     <div class="offline-teachers" data-tab-panel="offline">
-                        <div class="cards">
+                        <div class="cards-grid grid">
                             {% for teacher in offline_teachers|slice(0, 6) %}
                                 {{teacher_card(teacher)}}
                             {% endfor %}
@@ -45,7 +45,7 @@
 
                         {% include 'sections/trial-lesson-mini.twig' %}
 
-                        <div class="cards">
+                        <div class="cards-grid grid">
                             {% for teacher in offline_teachers|slice(6) %}
                                 {{teacher_card(teacher)}}
                             {% endfor %}
@@ -53,7 +53,7 @@
                     </div>
 
                     <div class="online-teachers hidden" data-tab-panel="online">
-                        <div class="cards">
+                        <div class="cards-grid grid">
                             {% for teacher in online_teachers|slice(0, 6) %}
                                 {{teacher_card(teacher)}}
                             {% endfor %}
@@ -61,7 +61,7 @@
 
                         {% include 'sections/trial-lesson-mini.twig' %}
 
-                        <div class="cards">
+                        <div class="cards-grid grid">
                             {% for teacher in online_teachers|slice(6) %}
                                 {{teacher_card(teacher)}}
                             {% endfor %}

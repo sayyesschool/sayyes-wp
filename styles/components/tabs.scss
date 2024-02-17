@@ -65,6 +65,19 @@
 		}
 	}
 
+	&--purple {
+		.tabs {
+		    &__tab {
+    		    background-color: $white;
+
+				&--active {
+					background-color: $violet;
+					color: $white;
+				}
+    		}
+		}
+	}
+
 	&--big {
 		max-width: 100%;
 		display: flex;

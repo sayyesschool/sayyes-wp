@@ -33,5 +33,9 @@
 
 	@include breakpoint($breakpoint-xxs) {
 		margin-bottom: 50px;
+
+		.cards-grid {
+			margin-top: 165px;
+		}
 	}
 }

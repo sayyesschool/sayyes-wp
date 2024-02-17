@@ -1,7 +1,7 @@
 {% extends 'layouts/base.twig' %}
 
 {% block content %}
-	{% include 'sections/mainscreen-big.twig' with {
+	{% include 'sections/main.twig' with {
 		title: page.heading ?? page.title,
         description: page.content,
         image: page.thumbnail

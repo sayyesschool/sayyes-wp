@@ -97,8 +97,7 @@
 ] %}
 
 {% block content %}
-	{% embed 'sections/mainscreen.twig' with {
-        class: 'mainscreen--speaking-club',
+	{% embed 'sections/hero.twig' with {
         image: 'person.png'
     } %}
         {% block title %}
@@ -106,7 +105,7 @@
         {% endblock %}
 
         {% block content %}
-			<p class="mainscreen__text">
+			<p>
                 Практикуй английский онлайн
                 <span class="text text--yellow">с носителями языка</span>
                 и улучшай свои разговорные навыки!

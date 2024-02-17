@@ -1,13 +1,21 @@
-<div class="section {{class}}">
-    <h3 class="section__title">
-        {% block title %}
-            {{title}}
-        {% endblock %}
-    </h3>
+<section class="{{html_classes(class, 'section')}}">
+    {% if not container %}
+        <div class="section__container">
+    {% endif %}
 
-	<div class="section__content">
-        {% block content %}
-            {{content}}
-        {% endblock %}
-	</div>
-</div>
+    {% if title or block('title') is defined %}
+        <h2 class="section__title">{{title ?? block('title')}}</h2>
+    {% endif %}
+
+    {% if description or block('description') is defined %}
+        <div class="section__description">{{description ?? block('description')}}</div>
+    {% endif %}
+
+    {% if content or block('content') is defined %}
+        <div class="section__content">{{content ?? block('content')}}</div>
+    {% endif %}
+
+    {% if not container %}
+        </div>
+    {% endif %}
+</section>

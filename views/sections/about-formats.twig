@@ -1,29 +1,31 @@
-<section class="formats">
-	<div class="section-container">
-		<h2 class="subtitle">Как вы хотите учиться?</h2>
+{% embed 'components/section.twig' with {
+	class: 'about-formats',
+	title: 'Как вы хотите учиться?'
+} %}
+	{% block description %}
+		<span class="text text--violet">Очное</span>
+		обучение в школе в центре Москвы или удобство
+		<span class="text text--violet">онлайн</span>
+		занятий?
+	{% endblock %}
 
-		<p class="formats__description">
-			<span class="text text--violet">Очное</span>
-			обучение в школе в центре Москвы или удобство
-			<span class="text text--violet">онлайн</span>
-			занятий?
-		</p>
-
+	{% block content %}
 		{% embed 'components/tabs.twig' with {
 			tabs: [
 				{
 					content: 'Офлайн в Москве',
-					target: '.feedback--offline',
+					value: 'offline',
 					active: true
 				},
 				{
 					content: 'Онлайн по всему миру',
-					target: '.feedback--online'
+					value: 'online'
 				}
-			]
+			],
+			color: 'purple'
 		} %}
 			{% block content %}
-				<div class="feedback feedback--offline">
+				<div class="feedback" data-tab-panel="offline">
 					<div class="feedback__video">
 						{% include 'components/video.twig' with {
 							youtube_id: 'f3cBgWC2ljM',
@@ -46,7 +48,7 @@
 					</div>
 				</div>
 
-				<div class="feedback feedback--online hidden">
+				<div class="feedback hidden" data-tab-panel="online">
 					<div class="feedback__video">
 						{% include 'components/video.twig' with {
 							youtube_id: 'f3cBgWC2ljM',
@@ -69,5 +71,5 @@
 				</div>
 			{% endblock %}
 		{% endembed %}
-	</div>
-</section>
+	{% endblock %}
+{% endembed %}

@@ -1,7 +1,7 @@
 {% extends 'layouts/base.twig' %}
 
 {% block content %}
-    {% include 'sections/mainscreen-big.twig' with {
+    {% include 'sections/main.twig' with {
       mixin: page.name,
       title: page.heading ?? page.title,
       description: page.content,

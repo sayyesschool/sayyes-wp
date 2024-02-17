@@ -54,38 +54,11 @@
 		}
 	}
 
-	&--education {
-		.subtitle {
-			max-width: 850px;
-		}
-
-		.big-course__content {
-			min-height: 180px;
-			padding-bottom: 46px;
-		}
-
-		.big-course__description {
-			max-width: 470px;
-		}
-	}
-
 	@include breakpoint($breakpoint-lg) {
 		margin-bottom: 70px;
 
 		.subtitle {
 			max-width: 440px;
-		}
-	}
-
-	@include breakpoint($breakpoint-sm) {
-		&--education {
-			.big-course__content {
-				min-height: 200px;
-			}
-
-			.big-course__lesson-type {
-				width: auto;
-			}
 		}
 	}
 

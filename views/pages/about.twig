@@ -1,7 +1,7 @@
 {% extends 'layouts/base.twig' %}
 
 {% block content %}
-	{% include 'sections/mainscreen-big.twig' with {
+	{% include 'sections/main.twig' with {
 		title: page.heading ?? page.title,
         description: page.content,
         image: page.thumbnail
@@ -84,7 +84,7 @@
 				<p>Каждый из нас работает для того, чтобы наши студенты были окружены заботой и самыми последними инновациями в обучении.</p>
 			</div>
 
-			<div class="cards cards--back-office">
+			<div class="card-grid grid">
 				<div class="card card--text-card">
 					<h4 class="card__title">Команда мечты</h4>
 					<h5 class="card__subtitle">Создает для вас душевную атмосферу и обеспечивает комфорт в обучении.</h5>

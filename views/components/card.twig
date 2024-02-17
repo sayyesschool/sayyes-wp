@@ -1,26 +1,27 @@
-<div class="{{html_classes('card', class)}}">
+<div class="{{html_classes(class ?: [], 'card', color ? 'card--' ~ color)}}">
     {% if image %}
         <img class="card__img" src="{{image.src}}" alt="{{image.alt}}">
     {% endif %}
-
-    <div class="card__content">
+	
+	<div class="card__body">
         {% if title or block('title') is defined %}
-            <h3 class="card__name">
-                {% block title %}
-                    {{title}}
-                {% endblock %}
-            </h3>
+            <h3 class="card__title">{{title ?? block('title')}}</h3>
         {% endif %}
 
         {% if description or block('description') is defined %}
-            <div class="card__description">
-                {% block description %}
-                    {{description}}
-                {% endblock %}
-            </div>
+            <div class="card__description">{{description ?? block('description')}}</div>
         {% endif %}
 
-        {% block content %}
+        {% if content or block('content') is defined %}
+            <div class="card__content">{{content ?? block('content')}}</div>
+        {% endif %}
+
+        {% block body %}
+            {{body}}
         {% endblock %}
     </div>
+
+    {% if link %}
+        <a class="card__wrapper" href="{{link}}"></a>
+    {% endif %}
 </div>

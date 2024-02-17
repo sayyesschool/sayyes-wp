@@ -118,7 +118,7 @@
 ] %}
 
 {% block content %}
-	{% include 'sections/mainscreen-big.twig' with {
+	{% include 'sections/main.twig' with {
         title: page.heading ?? page.title,
         description: page.content,
         button: {
@@ -232,7 +232,7 @@
 
             <p class="all-teachers__description">Прежде, чем попасть в нашу команду, преподаватели проходят многоэтапный отбор и обучение методике школы. Это профессионалы, не лишенные чувства юмора и энергичности, с которыми учить английский вашим сотрудникам будет в удовольствие!</p>
 
-            <div class="cards">
+            <div class="cards-grid grid">
                 {% for teacher in teachers %}
                     {% embed 'components/card.twig' with {
                         class: 'card--' ~ teacher.type,

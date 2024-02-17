@@ -1,7 +1,7 @@
 {% extends 'layouts/base.twig' %}
 
 {% block content %}
-	{% include 'sections/mainscreen.twig' with {
+	{% include 'sections/hero.twig' with {
 		title: page.heading ?? page.title,
 		description: page.content,
 		image: 'team.png'
@@ -180,7 +180,7 @@
 		with_help: true
 	} %}
 
-	{% include 'sections/formats.twig' %}
+	{% include 'sections/about-formats.twig' %}
 
 	{% include 'sections/trial-lesson.twig' %}
 {% endblock %}

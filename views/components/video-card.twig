@@ -1,9 +1,9 @@
-<div class="card card-video">
-    <a class="card-image" href="https://www.youtube.com/watch?v={{ video_id }}" data-fancybox data-width="640" data-height="360">
+<div class="video-card card">
+    <a class="card__image" href="https://www.youtube.com/watch?v={{video_id}}" data-fancybox data-width="640" data-height="360">
         {% if thumbnail_url %}
-            <img src="{{ thumbnail_url }}">
+            <img src="{{thumbnail_url}}">
         {% else %}
-            <img src="https://img.youtube.com/vi/{{ video_id }}/maxresdefault.jpg">
+            <img src="https://img.youtube.com/vi/{{video_id}}/maxresdefault.jpg">
         {% endif %}
         <i class="fa fa-play"></i>
     </a>

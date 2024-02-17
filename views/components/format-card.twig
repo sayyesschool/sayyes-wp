@@ -1,0 +1,19 @@
+{% embed 'components/card.twig' with {
+    class: 'format-card',
+    image: {
+        src: format.thumbnail.src,
+        alt: format.title
+    },
+    title: format.title,
+    description: format.description,
+    link: format.link,
+    color
+} %}
+    {% block content %}
+        Стоимость обучения:
+
+        <span>
+            {{format.price.prefix}} <strong>{{format.price.value}}</strong>{{format.price.postfix}}
+        </span>
+    {% endblock %}
+{% endembed %}
