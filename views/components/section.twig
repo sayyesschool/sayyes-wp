@@ -1,4 +1,4 @@
-<section class="{{html_classes(class, 'section')}}">
+<section class="{{html_classes(class ?? [], 'section')}}">
     {% if not container %}
         <div class="section__container">
     {% endif %}

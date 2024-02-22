@@ -11,7 +11,7 @@ new Swiper('.swiper', {
 	},
 });
 
-new Swiper('.swiper-organizations', {
+new Swiper('.organizations-slider', {
 	enabled: false,
 	spaceBetween: 15,
 	width: 795,
@@ -31,7 +31,7 @@ new Swiper('.swiper-organizations', {
 	},
 });
 
-new Swiper('.swiper-reviews', {
+new Swiper('.reviews-slider', {
 	enabled: false,
 	spaceBetween: 15,
 	width: 1080,
@@ -51,7 +51,7 @@ new Swiper('.swiper-reviews', {
 	},
 });
 
-new Swiper('.swiper-meetings', {
+new Swiper('.meetings-slider', {
 	enabled: false,
 	spaceBetween: 15,
 	width: 900,
@@ -71,7 +71,7 @@ new Swiper('.swiper-meetings', {
 	},
 });
 
-new Swiper('.swiper-feedback', {
+new Swiper('.feedback-slider', {
 	enabled: false,
 	spaceBetween: 15,
 	width: null,
@@ -102,7 +102,7 @@ new Swiper('.swiper-feedback', {
 	},
 });
 
-new Swiper('.swiper-course-feedback', {
+new Swiper('.course-testimonials-slider', {
 	enabled: false,
 	spaceBetween: 15,
 	width: null,
@@ -133,7 +133,7 @@ new Swiper('.swiper-course-feedback', {
 	},
 });
 
-new Swiper('.swiper-personal-approach', {
+new Swiper('.personal-approach-slider', {
 	enabled: false,
 	spaceBetween: 15,
 	width: null,
@@ -170,7 +170,7 @@ new Swiper('.swiper-personal-approach', {
 	},
 });
 
-new Swiper('.swiper-result-children', {
+new Swiper('.result-children-slider', {
 	breakpoints: {
 		769: {
 			slidesPerView: 2,

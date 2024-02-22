@@ -1,8 +1,9 @@
-<section class="advantages">
-	<div class="section-container">
-		<h2 class="subtitle">{{title}}</h2>
-
-		<div class="text-blocks text-blocks--advantages">
+{% embed 'components/section.twig' with {
+	class: 'advantages',
+	title
+} %}
+	{% block content %}
+		<div class="fact-cards">
 			{% for item in [
 				{
 					title: 'Стандартизированная методика',
@@ -11,10 +12,10 @@
 				{
 					title: 'Современные пособия',
 					description: 'Используем новейшие пособия Oxford, Cambridge и Macmillan',
-					'class': 'text-block--books-bg'
+					image: 'books'
 				},
 				{
-					title: '75 % практика языка',
+					title: '75% практика языка',
 					description: 'Бóльшую часть занятия говорит студент'
 				},
 				{
@@ -26,11 +27,13 @@
 					description: 'Нескучная домашка в интерактивном виде'
 				}
 			] %}
-				<div class="text-block {{item.class}}">
-					<h4 class="text-block__title">{{item.title}}</h4>
-					<p class="text-block__description">{{item.description}}</p>
+				<div class="{{html_classes('fact-card', 'text-card',
+					item.image ? 'text-card--' ~ item.image ~ '-bg' : [], 'card')
+				}}">
+					<h4 class="card__title">{{item.title}}</h4>
+					<p class="card__description">{{item.description}}</p>
 				</div>
 			{% endfor %}
 		</div>
-	</div>
-</section>
+	{% endblock %}
+{% endembed %}

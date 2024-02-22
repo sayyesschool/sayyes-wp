@@ -9,11 +9,18 @@
 
 	{% include 'sections/trial-lesson.twig' %}
 
-	<section class="tangible-result">
-		<h2 class="tangible-result__title">Английский <span class="text text--violet">с ощутимым результатом</span> уже через месяц занятий</h2>
+	{% embed 'components/section.twig' with {
+		class: 'tangible-result',
+		container: false
+	} %}
+		{% block title %}
+			Английский <span class="text text--violet">с ощутимым результатом</span> уже через месяц занятий
+		{% endblock %}
 
-		<p class="tangible-result__description">Команда преподавателей отвечает за ваш прогресс, а менеджеры создают приятную атмосферу, в которую хочется возвращаться.</p>
-	</section>
+		{% block description %}
+			<p>Команда преподавателей отвечает за ваш прогресс, а менеджеры создают приятную атмосферу, в которую хочется возвращаться.</p>
+		{% endblock %}
+	{% endembed %}
 
 	<section class="practice">
 		<div class="section-container">
@@ -85,8 +92,8 @@
 				} %}
 
 				{% include 'components/list.twig' with {
-					classes: 'list--ul',
-					list: [
+					type: 'ul',
+					items: [
 						{
 							title: 'Все в одном месте',
 							description: 'Быстрый доступ к электронному учебнику, домашним заданиям и личному кабинету.'

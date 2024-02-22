@@ -2,7 +2,6 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
 	border-radius: $border-radius;
 	background-color: $white;
 
@@ -14,36 +13,31 @@
 	}
 
 	&__body {
-		display: flex;
-		flex-direction: column;
 		flex-grow: 1;
 		padding: 35px 30px 45px 50px;
 	}
 
 	&__title {
-		margin-bottom: 18px;
+		margin-bottom: .5rem;
 		font-size: 24px;
 		font-weight: 700;
 	}
 
 	&__subtitle {
-		max-width: 287px;
+		margin-top: .5rem;
 	}
 
 	&__description {
-		
+		margin-top: 1rem;
 	}
 
-	&__text {
-		font-size: 24px;
-		line-height: 25px;
+	&__content {
+		margin-top: 1rem;
+		// font-size: 24px;
+		// line-height: 25px;
 	}
 
 	&__link {
-		color: $violet;
-	}
-
-	&__wrapper {
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -53,6 +47,11 @@
 
 	&--white {
 		background-color: $white;
+	}
+
+	&--black {
+		background-color: $black;
+		color: $white;
 	}
 
 	&--pink {
@@ -65,73 +64,31 @@
 		color: $white;
 	}
 
-	&--comment-card {
-		min-height: 370px;
-		padding: 50px 35px 50px 50px;
-		align-self: flex-start;
-		background-color: $pink;
-		color: $white;
+	&--yellow {
+		background-color: $yellow;
+		color: $black;
 	}
 
-	&--text-card {
-		display: block;
+	&--transparent {
 		background-color: transparent;
-
-		&::before {
-			content: "";
-			position: absolute;
-			width: 181px;
-			height: 116px;
-			bottom: 100px;
-			right: 55px;
-			background: url("./static/images/decoration/notes/superpowers.svg")
-				center center/cover no-repeat;
-		}
 	}
-	
-	&--team-card {
-		&::before {
-			content: "";
-			position: absolute;
-			bottom: 47px;
-			left: -12px;
-			width: 40px;
-			height: 55px;
-			background: url("./static/images/decoration/elements/lightning.svg")
-				center center/contain no-repeat;
+
+	&--hover {
+		transition: 0.3s all ease;
+		cursor: pointer;
+
+		&:hover {
+			box-shadow: 0px 0px 23.3288px 0px rgba(255, 219, 199, 0.9);
 		}
 	}
 
 	@include breakpoint($breakpoint-md) {
-		&__content {
-			padding: 25px;
-		}
-
 		&__img {
 			height: 315px;
 		}
 
-		&--text-card {
-			&::before {
-				width: 145px;
-				height: 93px;
-			}
-		}
-
-		&--team-card {
-			&::before {
-				width: 30px;
-				height: 41px;
-				left: -15px;
-			}
-		}
-
-		&--comment-card {
+		&__body {
 			padding: 25px;
-
-			&:last-of-type {
-				margin-top: 0;
-			}
 		}
 	}
 

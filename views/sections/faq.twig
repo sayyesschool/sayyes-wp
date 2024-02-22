@@ -1,13 +1,12 @@
-<section class="faq">
-	<div class="section-container">
-		<h2 class="faq__title subtitle">На часто задаваемые вопросы о курсе отвечает Шаталова Вера, сооснователь SAY YES!</h2>
+{% embed 'components/section.twig' with {
+	class: 'faq',
+	title: 'На часто задаваемые вопросы о курсе отвечает Шаталова Вера, сооснователь SAY YES!'
+} %}
+	{% block content %}
+		<img class="image" src="{{theme.link}}/static/images/pictures/vera.jpg" alt="Вера Шаталова">
 
-		<div class="faq__content">
-			<img class="faq__img" src="{{theme.link}}/static/images/pictures/vera.jpg" alt="Say Yes">
-
-			{% include 'components/accordion.twig' with {
-				list: items
-			} %}
-		</div>
-	</div>
-</section>
+		{% include 'components/accordion.twig' with {
+			items
+		} %}
+	{% endblock %}
+{% endembed %}

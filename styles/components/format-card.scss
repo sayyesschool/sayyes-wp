@@ -1,83 +1,53 @@
-.big-course {
-	width: calc(50% - 10px);
-	height: 100%;
+.format-card {
+    .card {
+        &__img {
+            height: 270px;
+            border-radius: $border-radius;
+        }
 
-	border-radius: $border-radius;
-	background-color: $white;
+        &__body {
+            min-height: 220px;
+            padding: 24px 31px 36px 39px;
+        }
 
-	&:not(&--white) {
-		color: $white;
-	}
+        &__title {
+            margin-bottom: 5px;
+            font-size: 24px;
+            font-weight: 800;
+            line-height: 25px;
+        }
 
-	&__img {
-		width: 100%;
-		height: 270px;
-		display: block;
-		object-fit: cover;
-		border-radius: $border-radius;
-	}
+        &__description {
+            font-weight: 600;
+        }
 
-	&__title {
-		margin-bottom: 5px;
-		font-size: 24px;
-		font-weight: 800;
-		line-height: 25px;
-	}
+        &__content {
+            margin-top: auto;
+            display: flex;
+			justify-content: space-between;
+        }
 
-	&__description {
-		font-weight: 600;
-	}
-
-	&__content {
-		display: flex;
-		flex-direction: column;
-		min-height: 220px;
-		padding: 24px 31px 36px 39px;
-	}
-
-	&__info {
-		display: flex;
-		margin-top: auto;
-	}
-
-	&__lesson-cost {
-		width: 176px;
-		font-weight: 700;
-	}
-
-	&__list {
-		flex-grow: 1;
-	}
-
-	&__item {
-		display: flex;
-		justify-content: space-between;
-
-		&:not(:last-child) {
-			margin-bottom: 5px;
-		}
-	}
-
-	&__lesson-price {
-		width: 156px;
-	}
-
-	&__accent {
-		font-weight: 800;
-	}
+        ul {
+            li {
+                display: flex;
+                justify-content: space-between;
+                gap: 35px;
+            }
+        }
+    }
 
 	&--without-list {
-		.big-course__title {
+		.card__title {
 			max-width: 410px;
 			margin-bottom: 10px;
 		}
 
-		.big-course__content {
+		.card__content {
 			padding: 33px 38px 37px;
 			min-height: auto;
 		}
 
-		.big-course__description {
+		.card__description {
 			max-width: 400px;
 		}
 	}
@@ -85,36 +55,20 @@
 	&--sm {
 		width: calc((100% - 40px) / 3);
 
-		.big-course__img {
+		.card__img {
 			height: 370px;
 		}
 
-		.big-course__title {
+		.card__title {
 			font-size: 18px;
 			line-height: 20px;
 
 			margin-bottom: 10px;
 		}
 
-		.big-course__content {
+		.card__content {
 			padding: 34px 39px 46px;
 		}
-	}
-
-	&--black {
-		background-color: $black;
-	}
-
-	&--white {
-		background-color: $white;
-	}
-
-	&--pink {
-		background-color: $pink;
-	}
-
-	&--violet {
-		background-color: $violet;
 	}
 
 	@include breakpoint($breakpoint-lg) {
@@ -126,18 +80,18 @@
 	@include breakpoint($breakpoint-md) {
 		width: calc(50% - 7.5px);
 
-		&__title {
+		.card__title {
 			font-size: 18px;
 			line-height: 20px;
 
 			margin-bottom: 15px;
 		}
 
-		&__img {
+		.card__img {
 			height: 220px;
 		}
 
-		&__content {
+		.card__content {
 			padding: 25px;
 		}
 
@@ -168,25 +122,25 @@
 	@include breakpoint($breakpoint-xxs) {
 		width: 100%;
 
-		&__img {
+		.card__img {
 			height: 60%;
 		}
 
-		&__lesson-cost {
+		.card__lesson-cost {
 			display: block;
 			margin-right: 80px;
 		}
 
-		&__lesson-type {
+		.card__lesson-type {
 			width: 135px;
 			margin-right: 15px;
 		}
 
-		&__info {
+		.card__info {
 			justify-content: space-between;
 		}
 
-		&__list {
+		.card__list {
 			flex-grow: 0.4;
 		}
 

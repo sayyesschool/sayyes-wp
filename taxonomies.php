@@ -92,5 +92,32 @@ $taxonomies = [
             'sort' => false,
             'show_in_graphql' => false,
         ]
+    ],
+    'testimonial_group' => [
+        ['testimonial'],
+        [
+            'label' => esc_html__( 'Группа отзыва', 'custom-post-type-ui' ),
+            'labels' => [
+                'name' => esc_html__( 'Группа отзыва', 'custom-post-type-ui' ),
+                'singular_name' => esc_html__( 'Группа отзыва', 'custom-post-type-ui' ),
+            ],
+            'public' => true,
+            'publicly_queryable' => true,
+            'hierarchical' => true,
+            'show_ui' => true,
+            'show_in_menu' => true,
+            'show_in_nav_menus' => true,
+            'query_var' => true,
+            'rewrite' => [ 'slug' => 'testimonial_group', 'with_front' => true, ],
+            'show_admin_column' => true,
+            'show_in_rest' => false,
+            'show_tagcloud' => true,
+            'rest_base' => 'testimonial_group',
+            'rest_controller_class' => 'WP_REST_Terms_Controller',
+            'rest_namespace' => 'wp/v2',
+            'show_in_quick_edit' => false,
+            'sort' => false,
+            'show_in_graphql' => false,
+        ]
     ]
 ];

@@ -22,8 +22,9 @@ class Post extends Timber\Post {
     }
 }
 
-class Page extends Post {}
+class Course extends Post {}
 class Format extends Post {}
+class Page extends Post {}
 
 class SayYesSite extends Site {
     public $version = '2.3.0';
@@ -47,9 +48,10 @@ class SayYesSite extends Site {
         add_filter('timber/context', [$this, 'add_to_context']);
         add_filter('timber/post/classmap', function ($classmap) {
             return array_merge($classmap, [
+                'course' => Course::class,
+                'format' => Format::class,
                 'post' => Post::class,
                 'page' => Post::class,
-                'format' => Format::class
             ]);
         });
 		add_filter('timber/twig', [$this, 'add_to_twig']);

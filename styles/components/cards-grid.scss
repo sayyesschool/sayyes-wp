@@ -1,4 +1,8 @@
-.cards-grid.grid {
+.grid.cards-grid {
+    .card {
+        height: 100%;
+    }
+
     &--color {
         .card {
             &:nth-child(n+1) {
@@ -21,46 +25,9 @@
 		width: calc(100% + 15px);
 		padding-left: 15px;
 		display: flex;
+        flex-wrap: nowrap;
 		justify-content: space-between;
 		overflow-x: auto;
-
-		.card__post {
-			margin-bottom: 15px;
-		}
-
-		.card__description {
-			margin-top: auto;
-		}
-
-		.card--text-card {
-			position: absolute;
-			bottom: 470px;
-			left: 15px;
-
-			&::before {
-				display: none;
-			}
-
-			.card__title {
-				font-size: 26px;
-				line-height: 25px;
-
-				margin-bottom: 10px;
-			}
-
-			.card__subtitle {
-				max-width: 280px;
-			}
-		}
-
-		.card--comment-card {
-			justify-content: center;
-            
-			.card__text {
-				text-align: center;
-				line-height: 25px;
-			}
-		}
 
         &::-webkit-scrollbar {
 			display: none;

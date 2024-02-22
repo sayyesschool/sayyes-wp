@@ -1,19 +1,21 @@
-{% embed 'components/card.twig' with {
-    class: 'format-card',
-    image: {
-        src: format.thumbnail.src,
-        alt: format.title
-    },
-    title: format.title,
-    description: format.description,
-    link: format.link,
-    color
-} %}
-    {% block content %}
-        Стоимость обучения:
+{% macro format_card(format, color) %}
+    {% embed 'components/card.twig' with {
+        class: 'format-card',
+        title: format.title,
+        description: format.description,
+        image: format.thumbnail ? {
+            src: format.thumbnail.src,
+            alt: format.title
+        },
+        link: format.link,
+        color
+    } %}
+        {% block content %}
+            Стоимость обучения:
 
-        <span>
-            {{format.price.prefix}} <strong>{{format.price.value}}</strong>{{format.price.postfix}}
-        </span>
-    {% endblock %}
-{% endembed %}
+            <span>
+                {{format.price.prefix}} <strong>{{format.price.value}}</strong>{{format.price.postfix}}
+            </span>
+        {% endblock %}
+    {% endembed %}
+{% endmacro %}

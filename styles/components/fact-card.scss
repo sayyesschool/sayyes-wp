@@ -1,0 +1,38 @@
+.fact-card {
+	min-height: 190px;
+	padding: 40px 50px;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+
+	&__title {
+		margin-top: auto;
+		margin-bottom: 15px;
+		font-size: 24px;
+		font-weight: 700;
+		line-height: 25px;
+	}
+
+	&__tip {
+		font-weight: 800;
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		padding: 25px;
+	}
+
+	@include breakpoint($breakpoint-md) {
+		&__title {
+			font-size: 18px;
+			line-height: 18px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		width: 100%;
+	}
+
+	@include breakpoint($breakpoint-sm-mobile) {
+		padding: 25px;
+	}
+}

@@ -1,9 +1,25 @@
 .advantages {
 	margin-bottom: 80px;
 
-	.subtitle {
+	.section__title {
 		max-width: 700px;
 		margin-bottom: 45px;
+	}
+
+	.text-block {
+		min-height: 195px;
+
+		.text-block__title {
+			max-width: 220px;
+		}
+
+		&:nth-child(2) {
+			overflow: hidden;
+
+			.text-block__title {
+				margin-top: 0;
+			}
+		}
 	}
 
 	@include breakpoint($breakpoint-lg) {

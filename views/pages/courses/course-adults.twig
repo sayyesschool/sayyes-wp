@@ -9,70 +9,53 @@
         image: course.thumbnail
     } %}
 
-	{% include 'sections/about-course.twig' with {
+	{% include 'components/section.twig' with {
+        class: 'about',
         title: course.about.title,
         content: course.about.content
     } %}
 
-	{% include 'sections/learning-form.twig' with {
-        class: 'learning-form--adults-courses',
+	{% embed 'components/section.twig' with {
+        class: 'learning-form',
         title: course.formats.title,
-        description: 'Вы можете проходить курс английского языка с нуля в различных форматах. Продолжительность и стоимость курса зависят от интенсивности и формата обучения.',
-        courses: [
-            {
-                title: 'Офлайн группа',
-                description: 'Живое общение с единомышленниками в центре Москвы',
-                class: 'big-course--white',
-                list: [
-                    {
-                        type: 'Стоимость обучения:',
-                        prefix: course.prices.group_offline.prefix,
-                        value: course.prices.group_offline.value,
-                        postfix: course.prices.group_offline.postfix
-                    }
-                ]
-            },
-            {
-                title: 'Онлайн группа',
-                description: 'Удобство онлайн обучения и доступная стоимость',
-                class: 'big-course--pink',
-                list: [
-                    {
-                        type: 'Стоимость обучения:',
-                        prefix: course.prices.group_online.prefix,
-                        value: course.prices.group_online.value,
-                        postfix: course.prices.group_online.postfix
-                    }
-                ]
-            },
-            {
-                title: 'Офлайн индивидуально',
-                description: 'Если вы предпочитаете личный контакт и персональный подход',
-                class: 'big-course--violet',
-                list: [
-                    {
-                        type: 'Стоимость обучения:',
-                        prefix: course.prices.individual_offline.prefix,
-                        value: course.prices.individual_offline.value,
-                        postfix: course.prices.individual_offline.postfix
-                    }
-                ]
-            },
-            {
-                title: 'Онлайн индивидуально',
-                description: 'Уроки в любом месте и в удобное для вас время',
-                class: 'big-course--white',
-                list: [
-                    {
-                        type: 'Стоимость обучения:',
-                        prefix: course.prices.individual_online.prefix,
-                        value: course.prices.individual_online.value,
-                        postfix: course.prices.individual_online.postfix
-                    }
-                ]
-            }
-        ]
+        description: 'Вы можете проходить курс английского языка с нуля в различных форматах. Продолжительность и стоимость курса зависят от интенсивности и формата обучения.'
     } %}
+        {% block content %}
+            {% from 'components/format-card.twig' import format_card %}
+
+            <div class="cards-grid grid grid--2">
+                {% for format in [
+                    {
+                        title: 'Офлайн группа',
+                        description: 'Живое общение с единомышленниками в центре Москвы',
+                        price: course.prices.group_offline
+                    },
+                    {
+                        title: 'Онлайн группа',
+                        description: 'Удобство онлайн обучения и доступная стоимость',
+                        price: course.prices.group_online
+                    },
+                    {
+                        title: 'Офлайн индивидуально',
+                        description: 'Если вы предпочитаете личный контакт и персональный подход',
+                        price: course.prices.individual_offline
+                    },
+                    {
+                        title: 'Онлайн индивидуально',
+                        description: 'Уроки в любом месте и в удобное для вас время',
+                        price: course.prices.individual_online
+                    }
+                ] %}
+                    {{format_card({
+                        title: format.title,
+                        description: format.description,
+                        price: format.price,
+                        link: false
+                    }, cycle(['white', 'pink', 'violet'], loop.index0))}}
+                {% endfor %}
+            </div>
+        {% endblock %}
+    {% endembed %}
 
 	{% include 'sections/trial-lesson-mini.twig' %}
 
@@ -80,34 +63,83 @@
         title: 'Важные факты о курсе Английский с нуля'
     } %}
 
-	<section class="course-results">
-        <div class="section-container">
-            <h2 class="subtitle">{{course.results.title}}</h2>
+    {% embed 'components/section.twig' with {
+        class: 'course-results',
+        title: course.results.title
+    } %}
+        {% block content %}
+            <p class="text">Если вы посетили 100% занятий и выполнили все домашние работы, но не сдали успешно итоговый тест, вы можете пройти уровень повторно и абсолютно бесплатно.</p>
 
-            <div class="course-results__content">
-                <p class="course-results__description">Если вы посетили 100% занятий и выполнили все домашние работы, но не сдали успешно итоговый тест, вы можете пройти уровень повторно и абсолютно бесплатно.</p>
-                
+            <div class="card">
                 {% if course.results.list_type == 'simple' %}
                     {% include 'components/list.twig' with {
-                        list: course.results.simple_list,
-                        classes: 'list--ul-sm'
+                        type: 'check',
+                        size: 'sm',
+                        items: course.results.simple_list
                     } %}
                 {% elseif course.results.list_type == 'nested' %}
                     {% include 'components/accordion.twig' with {
-                        list: course.results.nested_list
+                        items: course.results.nested_list
                     } %}
                 {% endif %}
             </div>
-        </div>
-    </section>
+        {% endblock %}
+    {% endembed %}
 
-	{% include 'sections/course-feedback.twig' with {
-        class: 'course-feedback__children-courses',
+    {% embed 'components/section.twig' with {
+        class: 'course-testimonials',
         title: 'Отзывы о курсе Английский с нуля',
-        courseFeedback: data.courseFeedbackAdults
+        description: 'За 10 лет работы, обучили более 10 000 человек и получили более 800 отзывов'
     } %}
+        {% block content %}
+            {% include 'components/course-testimonials-slider.twig' with {
+                groups: [
+                    {
+                        score: 5.0,
+                        company: 'Zoon',
+                        link: 'https://foo.bar',
+                        testimonials: [
+                            {
+                                author: 'Алиса',
+                                date: '17 мая 2020',
+                                link: 'https://foo.bar',
+                                content: 'Текст'
+                            },
+                            {
+                                author: 'Алиса',
+                                date: '17 мая 2020',
+                                link: 'https://foo.bar',
+                                content: 'Текст'
+                            }
+                        ]
+                    },
+                    {
+                        score: 5.0,
+                        company: 'Zoon',
+                        link: 'https://foo.bar',
+                        testimonials: [
+                            {
+                                author: 'Алиса',
+                                date: '17 мая 2020',
+                                link: 'https://foo.bar',
+                                content: 'Текст'
+                            },
+                            {
+                                author: 'Алиса',
+                                date: '17 мая 2020',
+                                link: 'https://foo.bar',
+                                content: 'Текст'
+                            }
+                        ]
+                    }
+                ]
+            } %}
+        {% endblock %}
+    {% endembed %}
 
-	{% include 'sections/course-faq.twig' %}
+	{% include 'sections/faq.twig' with {
+        items: []
+    } %}
 
 	{% include 'sections/trial-lesson.twig' %}
 {% endblock %}

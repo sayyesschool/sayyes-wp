@@ -1,11 +1,9 @@
-<section class="courses">
-    <div class="section-container">
-        <h2 class="subtitle">{{title}}</h2>
-
-        {% if description %}
-            <p class="courses__description">{{description}}</p>
-        {% endif %}
-
+{% embed 'components/section.twig' with {
+    class: 'courses',
+    title,
+    description
+} %}
+    {% block content %}
         {% embed 'components/tabs.twig' with {
 			tabs: [
 				{
@@ -22,34 +20,36 @@
             color: 'yellow'
 		} %}
             {% block content %}
-                <div class="course-blocks" data-tab-panel="adults">
-                    {% include 'components/courses.twig' with {
-                        courses: courses_adults
-                    } %}
+                {% from 'components/course-card.twig' import course_card %}
+
+                <div class="cards-grid grid grid--2" data-tab-panel="adults">
+                    {% for course in courses_adults %}
+                        {{course_card(course, cycle(['black', 'pink', 'violet'], loop.index0))}}
+                    {% endfor %}
 
                     {% if with_help %}
-                        <div class="course-selection">
-                            <h3 class="course-selection__title">Затрудняетесь с выбором курса или ваша цель специфична?</h3>
-                            <p class="course-selection__description">Подберем курс под ваши цели или создадим индивидуальный курс под вас!</p>
+                        <div class="info-card card">
+                            <h3 class="card__title">Затрудняетесь с выбором курса или ваша цель специфична?</h3>
+                            <p class="card__description">Подберем курс под ваши цели или создадим индивидуальный курс под вас!</p>
                             <button class="btn btn--violet" data-modal-trigger="callback-modal">Попробовать бесплатно</button>
                         </div>
                     {% endif %}
                 </div>
 
-                <div class="course-blocks hidden" data-tab-panel="children">
-                    {% include 'components/courses.twig' with {
-                        courses: courses_children
-                    } %}
+                <div class="cards-grid grid grid--2 hidden" data-tab-panel="children">
+                    {% for course in courses_children %}
+                        {{course_card(course, cycle(['black', 'pink', 'violet'], loop.index0))}}
+                    {% endfor %}
 
                     {% if with_help %}
-                        <div class="course-selection">
-                            <h3 class="course-selection__title">Затрудняетесь с выбором курса или ваша цель специфична?</h3>
-                            <p class="course-selection__description">Подберем курс под ваши цели или создадим индивидуальный курс под вас!</p>
+                        <div class="info-card card">
+                            <h3 class="card__title">Затрудняетесь с выбором курса или ваша цель специфична?</h3>
+                            <p class="card__description">Подберем курс под ваши цели или создадим индивидуальный курс под вас!</p>
                             <button class="btn btn--violet" data-modal-trigger="callback-modal">Оставить заявку</button>
                         </div>
                     {% endif %}
                 </div>
             {% endblock %}
         {% endembed %}
-    </div>
-</section>
+    {% endblock %}
+{% endembed %}

@@ -1,18 +1,18 @@
 .faq {
 	margin-bottom: 100px;
 
-	&__title {
+	.section__title {
 		max-width: 800px;
 		margin-bottom: 40px;
 	}
 
-	&__content {
+	.section__content {
 		display: flex;
 		justify-content: space-between;
 		gap: 20px;
 	}
 
-	&__img {
+	.image {
 		width: calc(33% - 10px);
 		height: 100%;
 		display: block;
@@ -28,15 +28,15 @@
 	@include breakpoint($breakpoint-lg) {
 		margin-bottom: 70px;
 
-		&__title {
+		.section__title {
 			max-width: 600px;
 		}
 
-		&__content {
+		.section__content {
 			gap: 15px;
 		}
 
-		&__img {
+		.image {
 			width: calc(33% - 7.5px);
 		}
 
@@ -46,16 +46,16 @@
 	}
 
 	@include breakpoint($breakpoint-sm) {
-		&__title {
+		.section__title {
 			max-width: 400px;
 		}
 
-		&__content {
+		.section__content {
 			margin-top: -190px;
 			flex-direction: column;
 		}
 
-		&__img {
+		.image {
 			width: 40%;
 			align-self: flex-end;
 		}
@@ -72,26 +72,26 @@
 	@include breakpoint($breakpoint-xxs) {
 		margin-bottom: 50px;
 
-		&__title {
+		.section__title {
 			max-width: 320px;
 		}
 
-		&__content {
+		.section__content {
 			margin-top: -170px;
 			flex-direction: column;
 		}
 
-		&__img {
+		.image {
 			width: 35%;
 		}
 	}
 
 	@include breakpoint($breakpoint-mobile) {
-		&__content {
+		.section__content {
 			margin-top: 0;
 		}
 
-		&__img {
+		.image__img {
 			width: 100%;
 		}
 	}

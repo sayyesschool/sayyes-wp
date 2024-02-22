@@ -75,63 +75,61 @@
 		</ul>
 	</section>
 
-	<section class="back-office">
-		<div class="section-container">
-			<h2 class="back-office__title subtitle">В бэк-офисе SAY YES! работает 24 человека.</h2>
+	{% embed 'components/section.twig' with {
+		class: 'back-office',
+		title: 'В бэк-офисе SAY YES! работает 24 человека.',
+	} %}
+		{% block description %}
+			<p>Главное, что объединяет нас — это любовь к людям и английскому языку.</p>
+			<p>Каждый из нас работает для того, чтобы наши студенты были окружены заботой и самыми последними инновациями в обучении.</p>
+		{% endblock %}
 
-			<div class="back-office__description">
-				<p>Главное, что объединяет нас — это любовь к людям и английскому языку.</p>
-				<p>Каждый из нас работает для того, чтобы наши студенты были окружены заботой и самыми последними инновациями в обучении.</p>
-			</div>
-
-			<div class="card-grid grid">
-				<div class="card card--text-card">
+		{% block content %}
+			<div class="cards-grid grid">
+				<div class="card card--transparent">
 					<h4 class="card__title">Команда мечты</h4>
 					<h5 class="card__subtitle">Создает для вас душевную атмосферу и обеспечивает комфорт в обучении.</h5>
 				</div>
 
 				{% for manager in managers|slice(0, 7) %}
-					<div class="card card--team-card">
+					<div class="manager-card card">
 						<img class="card__img" src="{{manager.thumbnail.src}}" alt="{{manager.name}}">
 
-						<div class="card__content">
-							<h3 class="card__name">{{manager.name}}</h3>
-							<p class="card__post">{{manager.position}}</p>
+						<div class="card__body">
+							<h3 class="card__title">{{manager.name}}</h3>
+							<p class="card__subtitle">{{manager.position}}</p>
 							<div class="card__description">{{manager.content}}</div>
 						</div>
 					</div>
 				{% endfor %}
 
-				<div class="card card--comment-card">
-					<p class="card__text">Методисты школы имеют большой опыт работы по коммуникативной методике, организовывают образовательный процесс и следят за качеством обучения.</p>
+				<div class="text-card card card--pink">
+					<p class="text text--larger">Методисты школы имеют большой опыт работы по коммуникативной методике, организовывают образовательный процесс и следят за качеством обучения.</p>
 				</div>
 
-				<div class="card card--comment-card">
-					<p class="card__text">Менеджеры школы — это «ангелы-хранители» наших студентов, готовые прийти на помощь и дать поддержку в процессе обучения.</p>
+				<div class="text-card card card--pink">
+					<p class="text text--larger">Менеджеры школы — это «ангелы-хранители» наших студентов, готовые прийти на помощь и дать поддержку в процессе обучения.</p>
 				</div>
 
 				{% for manager in managers|slice(7) %}
-					<div class="card card--team-card">
+					<div class="manager-card card">
 						<img class="card__img" src="{{manager.thumbnail.src}}" alt="{{manager.name}}">
 
 						<div class="card__content">
-							<h3 class="card__name">{{manager.name}}</h3>
-							<p class="card__post">{{manager.position}}</p>
+							<h3 class="card__title">{{manager.name}}</h3>
+							<p class="card__subtitle">{{manager.position}}</p>
 							<div class="card__description">{{manager.content}}</div>
 						</div>
 					</div>
 				{% endfor %}
 
-				<div class="card card--comment-card">
-					<p class="card__text">
-						Хотите стать членом нашей команды мечты?
-						<br><br>
-						<span class="text text--weight-800">Напишите нам на почту info@sayes.ru</span>
-					</p>
+				<div class="text-card card card--pink">
+					<p class="text text--block text--larger">Хотите стать членом нашей команды мечты?</p>
+					<p class="text text--larger text--weight-800">Напишите нам на почту info@sayes.ru</p>
 				</div>
 			</div>
-		</div>
-	</section>
+		{% endblock %}
+	{% endembed %}
 
 	<section class="behind-the-scenes">
 		<div class="section-container">

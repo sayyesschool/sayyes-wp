@@ -1,122 +1,5 @@
 {% extends 'layouts/base.twig' %}
 
-{% set education_formats = [
-    [
-        {
-            title: 'В школе в Москве ',
-            description: 'Наш офис находится в 7 минутах пешком от метро Павелецкая.',
-            class: 'big-course--white big-course--without-list big-course--sm',
-            img: 'format-1'
-        },
-        {
-            title: 'В офисе вашей компании',
-            description: 'Преподаватель приезжает к вам офис в удобное вам время',
-            class: 'big-course--white big-course--without-list big-course--sm',
-            img: 'format-2'
-        },
-        {
-            title: 'Обучение онлайн',
-            description: 'Мы обучаем онлайн в группах в Zoom или индивидуально на собственной платформе',
-            class: 'big-course--white big-course--without-list big-course--sm',
-            img: 'format-3'
-        }
-    ]
-] %}
-
-{% set organizations = [
-	{
-		name: "Сбербанк",
-		img: "organization-1"
-	},
-	{
-		name: "Get Taxi",
-		img: "organization-2"
-	},
-	{
-		name: "Логрус ",
-		img: "organization-3"
-	},
-	{
-		name: "Аури групп",
-		img: "organization-4"
-	},
-	{
-		name: "FIRCROFT ",
-		img: "organization-5"
-	},
-	{
-		name: "Московский Индустриальный Банк ",
-		img: "organization-6"
-	},
-	{
-		name: "Промсвязьбанк",
-		img: "organization-7"
-	},
-	{
-		name: "Роснефть",
-		img: "organization-8"
-	},
-	{
-		name: "РСПП",
-		img: "organization-9"
-	},
-	{
-		name: "ATRIUM",
-		img: "organization-10"
-	},
-	{
-		name: "МегаФон ",
-		img: "organization-11"
-	},
-	{
-		name: "МТС",
-		img: "organization-12"
-	},
-	{
-		name: "Ernst&Young",
-		img: "organization-13"
-	},
-	{
-		name: "2GIS ",
-		img: "organization-14"
-	},
-	{
-		name: "ГазФонд",
-		img: "organization-15"
-	},
-	{
-		name: "Центр терапии боли ",
-		img: "organization-16"
-	},
-	{
-		name: "Apex",
-		img: "organization-17"
-	},
-	{
-		name: "Бизнес-школа РСПП",
-		img: "organization-18"
-	}
-] %}
-
-{% set reviews = [
-	{
-		name: "МТС",
-		img: "review-1"
-	},
-	{
-		name: "2GIS",
-		img: "review-2"
-	},
-	{
-		name: "Газпромбанк",
-		img: "review-3"
-	},
-	{
-		name: "Love Radio",
-		img: "review-4"
-	}
-] %}
-
 {% block content %}
 	{% include 'sections/main.twig' with {
         title: page.heading ?? page.title,
@@ -139,50 +22,69 @@
 		}
     } %}
 
-	<section class="education-directions">
-        <div class="section-container">
-            <h2 class="subtitle">
-                Более 10 лет мы
-                <span class="text text--violet">обучаем</span>
-                сотрудников компаний
-                <span class="text text--violet">по направлениям:</span>
-            </h2>
+    {% embed 'components/section.twig' with {
+        class: 'education-directions'
+    } %}
+        {% block title %}
+            Более 10 лет мы
+            <span class="text text--violet">обучаем</span>
+            сотрудников компаний
+            <span class="text text--violet">по направлениям:</span>
+        {% endblock %}
 
-            <div class="education-directions__blocks">
-                {% for item in [
-                    {
-                        title: 'Общий курс',
-                        description: 'Обучение разговорному английскому языку',
-                        class: 'text-block--yellow text-block--cap-2-bg'
-                    },
-                    {
-                        title: 'Бизнес курс',
-                        description: 'Обучение деловому английскому для работы',
-                        class: 'text-block--yellow text-block--briefcase-bg'
-                    },
-                    {
-                        title: 'Курсы для профессионалов',
-                        description: 'Программы для конкретных профессий и должностей',
-                        class: 'text-block--yellow text-block--person-bg'
-                    },
-                    {
-                        title: 'Погружение в среду',
-                        description: 'Разговорные клубы с носителями английского языка',
-                        class: 'text-block--yellow text-block--comments-bg'
-                    }
-                ] %}
-                    <div class="text-block {{item.class}}">
-                        <h4 class="text-block__title">{{item.title}}</h4>
-                        <p class="text-block__description">{{item.description}}</p>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
+        {% block content %}
+            {% for item in [
+                {
+                    title: 'Общий курс',
+                    description: 'Обучение разговорному английскому языку',
+                    image: 'cap-2'
+                },
+                {
+                    title: 'Бизнес курс',
+                    description: 'Обучение деловому английскому для работы',
+                    image: 'briefcase'
+                },
+                {
+                    title: 'Курсы для профессионалов',
+                    description: 'Программы для конкретных профессий и должностей',
+                    image: 'person'
+                },
+                {
+                    title: 'Погружение в среду',
+                    description: 'Разговорные клубы с носителями английского языка',
+                    image: 'comments'
+                }
+            ] %}
+                <div class="text-card text-card--{{item.image}}-bg card card--yellow">
+                    <h4 class="card__title">{{item.title}}</h4>
+                    <p class="card__description">{{item.description}}</p>
+                </div>
+            {% endfor %}
+        {% endblock %}
+    {% endembed %}
 
 	{% include 'sections/img-courses.twig' with {
         title: 'Наши <span class="text text--violet">форматы обучения</span> позволяют подстроиться под месторасположение и график компаний',
-        courses: education_formats
+        courses: [
+            {
+                title: 'В школе в Москве ',
+                description: 'Наш офис находится в 7 минутах пешком от метро Павелецкая.',
+                class: 'big-course--white big-course--without-list big-course--sm',
+                img: 'format-1'
+            },
+            {
+                title: 'В офисе вашей компании',
+                description: 'Преподаватель приезжает к вам офис в удобное вам время',
+                class: 'big-course--white big-course--without-list big-course--sm',
+                img: 'format-2'
+            },
+            {
+                title: 'Обучение онлайн',
+                description: 'Мы обучаем онлайн в группах в Zoom или индивидуально на собственной платформе',
+                class: 'big-course--white big-course--without-list big-course--sm',
+                img: 'format-3'
+            }
+        ]
     } %}
 
 	<section class="profitable-cooperation">
@@ -322,7 +224,80 @@
             {% embed 'components/slider.twig' with { name: 'organizations' } %}
                 {% block content %}
                     <ul class="organizations__list">
-                        {% for item in organizations %}
+                        {% for item in [
+                            {
+                                name: 'Сбербанк',
+                                img: 'organization-1'
+                            },
+                            {
+                                name: 'Get Taxi',
+                                img: 'organization-2'
+                            },
+                            {
+                                name: 'Логрус ',
+                                img: 'organization-3'
+                            },
+                            {
+                                name: 'Аури групп',
+                                img: 'organization-4'
+                            },
+                            {
+                                name: 'FIRCROFT ',
+                                img: 'organization-5'
+                            },
+                            {
+                                name: 'Московский Индустриальный Банк ',
+                                img: 'organization-6'
+                            },
+                            {
+                                name: 'Промсвязьбанк',
+                                img: 'organization-7'
+                            },
+                            {
+                                name: 'Роснефть',
+                                img: 'organization-8'
+                            },
+                            {
+                                name: 'РСПП',
+                                img: 'organization-9'
+                            },
+                            {
+                                name: 'ATRIUM',
+                                img: 'organization-10'
+                            },
+                            {
+                                name: 'МегаФон ',
+                                img: 'organization-11'
+                            },
+                            {
+                                name: 'МТС',
+                                img: 'organization-12'
+                            },
+                            {
+                                name: 'Ernst&Young',
+                                img: 'organization-13'
+                            },
+                            {
+                                name: '2GIS ',
+                                img: 'organization-14'
+                            },
+                            {
+                                name: 'ГазФонд',
+                                img: 'organization-15'
+                            },
+                            {
+                                name: 'Центр терапии боли ',
+                                img: 'organization-16'
+                            },
+                            {
+                                name: 'Apex',
+                                img: 'organization-17'
+                            },
+                            {
+                                name: 'Бизнес-школа РСПП',
+                                img: 'organization-18'
+                            }
+                        ] %}
                             <li class="organizations__item">
                                 <img class="organizations__img" src="{{theme.link}}/static/images/organizations/{{item.img}}.png" alt="{{item.name}}">
                             </li>
@@ -343,7 +318,24 @@
             {% embed 'components/slider.twig' with { name: 'reviews' } %}
                 {% block content %}
                     <ul class="reviews__list">
-                        {% for item in reviews %}
+                        {% for item in [
+                            {
+                                name: 'МТС',
+                                img: 'review-1'
+                            },
+                            {
+                                name: '2GIS',
+                                img: 'review-2'
+                            },
+                            {
+                                name: 'Газпромбанк',
+                                img: 'review-3'
+                            },
+                            {
+                                name: 'Love Radio',
+                                img: 'review-4'
+                            }
+                        ] %}
                             <li class="reviews__item">
                                 <img class="reviews__img" src="{{theme.link}}/static/images/reviews/{{item.img}}.png" alt="{{item.name}}">
 

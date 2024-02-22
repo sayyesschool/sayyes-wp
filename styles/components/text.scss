@@ -1,4 +1,8 @@
 .text {
+	&--block {
+		margin-bottom: 1rem;
+	}
+
 	&--violet {
 		color: $violet;
 	}
@@ -11,6 +15,18 @@
 		text-decoration: underline;
 	}
 
+	&--italic {
+		font-style: italic;
+	}
+
+	&--uppercase {
+		text-transform: uppercase;
+	}
+
+	&--muted {
+		color: lighten($black, 50%);
+	}
+
 	&--weight-700 {
 		font-weight: 700;
 	}
@@ -19,7 +35,33 @@
 		font-weight: 800;
 	}
 
-	&--italic {
-		font-style: italic;
+	&--smallest {
+		font-size: 12px;
+	}
+
+	&--smaller {
+		font-size: 14px;
+	}
+
+	&--small {
+		font-size: 16px;
+	}
+
+	&--medium {
+		font-size: 18px;
+	}
+	
+	&--large {
+		font-size: 20px;
+	}
+
+	&--larger {
+		font-size: 24px;
+		line-height: 25px;
+	}
+
+	&--largest {
+		font-size: 28px;
+		line-height: 29px;
 	}
 }

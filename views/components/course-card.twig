@@ -1,11 +1,52 @@
-<div class="card course-card">
-	<div class="card-image" style="background-image: url('{{ course.thumbnail.src('medium') }}')"></div>
+{% macro course_card(course, color) %}
+	<div class="course-card card card--{{color}} card--hover">
+		<div class="card__header">
+			<h3 class="card__title">{{course.title}}</h3>
 
-	<h4 class="card-title">{{ course.title }}</h4>
-	
-	<div class="card-body">{{ course.post_excerpt }}</div>
+			<p class="card__description">{{course.description}}</p>
 
-	<div class="card-footer">
-		<a class="btn btn-primary btn-outline-primary btn-sm" href="{{ course.link }}">Подробнее</a>
+			{% if course.age %}
+				<span class="course__age-tag course__age-tag-{{item.age.color}}">{{course.age.text}} лет</span>
+			{% endif %}
+		</div>
+
+		<div class="card__body">
+			<p>Стоимость<br>обучения:</p>
+			
+			<ul>
+				{% for item in [
+					{
+						type: 'офлайн группа',
+						prefix: course.prices.group_offline.prefix,
+						value: course.prices.group_offline.value,
+						postfix: course.prices.group_offline.postfix
+					},
+					{
+						type: 'онлайн группа',
+						prefix: course.prices.group_online.prefix,
+						value: course.prices.group_online.value,
+						postfix: course.prices.group_online.postfix
+					},
+					{
+						type: 'индвидиульано',
+						prefix: course.prices.individual_online.prefix,
+						value: course.prices.individual_online.value,
+						postfix: course.prices.individual_online.postfix
+					}
+				] %}
+					<li>
+						{{item.type}}
+
+						<span>
+							{{item.prefix}}
+							<strong>{{item.value}}</strong>
+							{{item.postfix}}
+						</span>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+
+		<a class="card__link" href="{{course.link}}"></a>
 	</div>
-</div>
+{% endmacro %}

@@ -1,8 +1,10 @@
-<ul class="{{html_classes('list', {
-	'list--ul': type == 'ul',
-	'list--ol': type == 'ol',
-	'list--dl': type == 'dl'
-})}}">
+<{{element ?: 'ul'}} class="{{html_classes('list', {
+	'list--dl': type == 'dl',
+	'list--check': type == 'check',
+	'list--numbers': type == 'numbers',
+	'list--steps': type == 'steps',
+	'list--sm': size == 'sm'
+}, align_marker ? 'list--marker-' ~ align_marker : [])}}">
 	{% for item in items %}
 		<li class="list-item">
 			{{item.content}}
@@ -16,4 +18,4 @@
 			{% endif %}
 		</li>
 	{% endfor %}
-</ul>
+</{{element ?: 'ul'}}>
