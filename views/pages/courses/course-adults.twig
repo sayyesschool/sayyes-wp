@@ -1,9 +1,9 @@
 {% extends 'layouts/base.twig' %}
 
 {% block content %}
+    {{dump(course.formats)}}
 	{% include 'sections/main.twig' with {
-        mixin: 'adults-courses',
-        title: course.title,
+        title: course.heading ?? course.title,
         description: course.content,
         button: true,
         image: course.thumbnail
@@ -17,7 +17,7 @@
 
 	{% embed 'components/section.twig' with {
         class: 'learning-form',
-        title: course.formats.title,
+        title: course.formats.title ?: 'Формы обучения на курсе ' ~ course.title,
         description: 'Вы можете проходить курс английского языка с нуля в различных форматах. Продолжительность и стоимость курса зависят от интенсивности и формата обучения.'
     } %}
         {% block content %}
@@ -28,22 +28,22 @@
                     {
                         title: 'Офлайн группа',
                         description: 'Живое общение с единомышленниками в центре Москвы',
-                        price: course.prices.group_offline
+                        price: course.formats.group_offline.price
                     },
                     {
                         title: 'Онлайн группа',
                         description: 'Удобство онлайн обучения и доступная стоимость',
-                        price: course.prices.group_online
+                        price: course.formats.group_online.price
                     },
                     {
                         title: 'Офлайн индивидуально',
                         description: 'Если вы предпочитаете личный контакт и персональный подход',
-                        price: course.prices.individual_offline
+                        price: course.formats.individual_offline.price
                     },
                     {
                         title: 'Онлайн индивидуально',
                         description: 'Уроки в любом месте и в удобное для вас время',
-                        price: course.prices.individual_online
+                        price: course.formats.individual_online.price
                     }
                 ] %}
                     {{format_card({
@@ -60,12 +60,35 @@
 	{% include 'sections/trial-lesson-mini.twig' %}
 
 	{% include 'sections/advantages.twig' with {
-        title: 'Важные факты о курсе Английский с нуля'
+        title:  course.facts.title ?: 'Важные факты о курсе <br>' ~ course.title,
+        items: [
+            {
+                title: 'Стандартизированная методика',
+                description: 'Практикуем один подход в офлайн и онлайн формате'
+            },
+            {
+                title: 'Современные пособия',
+                description: 'Используем новейшие пособия Oxford, Cambridge и Macmillan',
+                image: 'books'
+            },
+            {
+                title: '75% практика языка',
+                description: 'Бóльшую часть занятия говорит студент'
+            },
+            {
+                title: 'Визиты носителей',
+                description: 'Дополнительная практика языка в группе'
+            },
+            {
+                title: 'Онлайн платформа',
+                description: 'Нескучная домашка в интерактивном виде'
+            }
+        ]
     } %}
 
     {% embed 'components/section.twig' with {
         class: 'course-results',
-        title: course.results.title
+        title: course.results.title ?: 'Результаты курса <br>' ~ course.title
     } %}
         {% block content %}
             <p class="text">Если вы посетили 100% занятий и выполнили все домашние работы, но не сдали успешно итоговый тест, вы можете пройти уровень повторно и абсолютно бесплатно.</p>
@@ -88,51 +111,12 @@
 
     {% embed 'components/section.twig' with {
         class: 'course-testimonials',
-        title: 'Отзывы о курсе Английский с нуля',
+        title: 'Отзывы о курсе <br>' ~ course.title,
         description: 'За 10 лет работы, обучили более 10 000 человек и получили более 800 отзывов'
     } %}
         {% block content %}
             {% include 'components/course-testimonials-slider.twig' with {
-                groups: [
-                    {
-                        score: 5.0,
-                        company: 'Zoon',
-                        link: 'https://foo.bar',
-                        testimonials: [
-                            {
-                                author: 'Алиса',
-                                date: '17 мая 2020',
-                                link: 'https://foo.bar',
-                                content: 'Текст'
-                            },
-                            {
-                                author: 'Алиса',
-                                date: '17 мая 2020',
-                                link: 'https://foo.bar',
-                                content: 'Текст'
-                            }
-                        ]
-                    },
-                    {
-                        score: 5.0,
-                        company: 'Zoon',
-                        link: 'https://foo.bar',
-                        testimonials: [
-                            {
-                                author: 'Алиса',
-                                date: '17 мая 2020',
-                                link: 'https://foo.bar',
-                                content: 'Текст'
-                            },
-                            {
-                                author: 'Алиса',
-                                date: '17 мая 2020',
-                                link: 'https://foo.bar',
-                                content: 'Текст'
-                            }
-                        ]
-                    }
-                ]
+                groups: testimonial_groups
             } %}
         {% endblock %}
     {% endembed %}
@@ -142,4 +126,27 @@
     } %}
 
 	{% include 'sections/trial-lesson.twig' %}
+{% endblock %}
+
+{% block modal %}
+    {% include 'components/modal.twig' with {
+        id: 'testimonial-modal'
+    } %}
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        const modal = new window.ui.Modal('#testimonial-modal');
+        const modalContent = modal.getElement('.modal__content');
+
+        document.querySelectorAll('.testimonial-modal-button').forEach(button => {
+            button.addEventListener('click', handleButtonClick);
+        });
+
+        function handleButtonClick(event) {
+            const card = event.target.parentElement.parentElement.parentElement;
+            modalContent.innerHTML = card.outerHTML;
+            modal.open();
+        }
+    </script>
 {% endblock %}

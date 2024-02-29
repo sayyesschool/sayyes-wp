@@ -1,0 +1,22 @@
+#testimonial-modal {
+    .testimonial-card {
+        width: 100%;
+        max-width: 950px;
+
+        .card__content {
+            order: 1;
+        }
+
+        .card__footer {
+            margin-top: 0;
+        }
+        
+        .testimonial-excerpt {
+            display: none;
+        }
+
+        .testimonial-content {
+            display: block;
+        }
+    }
+}

@@ -131,32 +131,6 @@
 		gap: 20px;
 	}
 
-	.card {
-		width: calc(50% - 10px);
-		min-height: 460px;
-		padding: 46px 40px 44px 49px;
-
-		&__content {
-			font-size: 16px;
-			font-weight: 600;
-		}
-
-		.link {
-			display: block;
-			margin-top: 1rem;
-			text-decoration: underline;
-			font-size: 16px;
-			line-height: 15px;
-		}
-
-		&__footer {
-			margin-top: auto;
-			display: flex;
-			justify-content: space-between;
-			align-items: flex-end;
-		}
-	}
-
 	@include breakpoint($breakpoint-lg) {
 		padding: 30px;
 

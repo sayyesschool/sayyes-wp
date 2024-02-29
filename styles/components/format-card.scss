@@ -23,18 +23,22 @@
 
         &__content {
             margin-top: auto;
-            display: flex;
-			justify-content: space-between;
-        }
-
-        ul {
-            li {
-                display: flex;
-                justify-content: space-between;
-                gap: 35px;
-            }
         }
     }
+
+	.list {
+		gap: 5px;
+		
+		.list-item {
+			display: flex;
+			justify-content: space-between;
+			gap: 35px;
+
+			span {
+				flex-basis: 156px;
+			}
+		}
+	}
 
 	&--without-list {
 		.card__title {

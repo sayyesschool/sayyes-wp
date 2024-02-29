@@ -1,9 +1,7 @@
-<section class="trial-lesson-mini">
-	<h2 class="trial-lesson-mini__title"><button class="trial-lesson-mini__btn feedback-btn">Оставьте заявку</button>на пробный урок, и уже через месяц вы почувствуете свой прогресс</h2>
-
-	<img class="trial-lesson-mini__hourglass-icon" src="{{theme.link}}/static/images/decoration/elements/hourglass.svg" alt="Песочные часы">
-
-	<img class="trial-lesson-mini__book-icon" src="{{theme.link}}/static/images/decoration/elements/book-with-pen.svg" alt="Книга">
-	
-	<img class="trial-lesson-mini__statue-of-liberty-icon" src="{{theme.link}}/static/images/decoration/elements/statue-of-liberty.svg" alt="Статуя свободы">
-</section>
+{% embed 'components/section.twig' with {
+	class: 'trial-lesson-cta'
+} %}
+	{% block title %}
+		<button class="feedback-btn">Оставьте заявку</button>на пробный урок, и уже через месяц вы почувствуете свой прогресс
+	{% endblock %}
+{% endembed %}

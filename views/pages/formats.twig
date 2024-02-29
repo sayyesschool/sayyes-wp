@@ -13,7 +13,7 @@
         title: 'Наша школа предлагает курсы английского языка для разных уровней знаний и в разнообразных форматах.'
     } %}
         {% block content %}
-            <div class="cards-grid grid grid--col-2">
+            <div class="cards-grid grid grid--2">
                 {% for format in formats %}
                     {% set color = cycle(['white', 'pink', 'violet'], loop.index0) %}
 

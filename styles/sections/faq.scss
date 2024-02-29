@@ -1,12 +1,10 @@
 .faq {
-	margin-bottom: 100px;
-
-	.section__title {
+	&__title {
 		max-width: 800px;
 		margin-bottom: 40px;
 	}
 
-	.section__content {
+	&__content {
 		display: flex;
 		justify-content: space-between;
 		gap: 20px;
@@ -26,8 +24,6 @@
 	}
 
 	@include breakpoint($breakpoint-lg) {
-		margin-bottom: 70px;
-
 		.section__title {
 			max-width: 600px;
 		}
@@ -65,13 +61,7 @@
 		}
 	}
 
-	@include breakpoint($breakpoint-xs) {
-		margin-bottom: 60px;
-	}
-
 	@include breakpoint($breakpoint-xxs) {
-		margin-bottom: 50px;
-
 		.section__title {
 			max-width: 320px;
 		}

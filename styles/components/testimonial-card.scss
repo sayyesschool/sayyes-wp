@@ -1,0 +1,36 @@
+.text-card.testimonial-card {
+    display: flex;
+    width: calc(50% - 10px);
+    min-height: 460px;
+    padding: 46px 40px 44px 49px;
+    gap: 1rem;
+
+    .card__content {
+        font-size: 16px;
+        font-weight: 600;
+        margin-top: 0;
+
+        p + p {
+            margin-top: 10px;
+        }
+    }
+
+    .card__footer {
+        margin-top: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    .testimonial-content {
+        display: none;
+    }
+
+    .link {
+        display: block;
+        margin-top: 1rem;
+        text-decoration: underline;
+        font-size: 16px;
+        line-height: 15px;
+    }
+}

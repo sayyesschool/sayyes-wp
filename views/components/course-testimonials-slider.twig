@@ -9,23 +9,29 @@
 					<div class="course-testimonial__rating-info">
 						<div class="stars"></div>
 						<p class="text text--weight-800">наш рейтинг на
-							<span class="text text--underline">{{group.company}}</span>
+							<span class="text text--underline">{{group.name}}</span>
 						</p>
 					</div>
 				</div>
 
 				<div class="course-testimonial__cards">
 					{% for testimonial in group.testimonials %}
-						<div class="text-card card">
+						<div class="testimonial-card text-card card">
 							<div class="card__content">
-								{{testimonial.content}}
+								<div class="testimonial-excerpt">
+									{{testimonial.excerpt({ length: 50, read_more: '', strip: false })}}
 
-								<a class="link" href="{{testimonial.link}}" target="blank">Читать весь отзыв</a>
+									<button class="testimonial-modal-button link">Читать весь отзыв</button>
+								</div>
+
+								<div class="testimonial-content">
+									{{testimonial.content}}
+								</div>
 							</div>
 
 							<div class="card__footer">
 								<div class="flex flex--column">
-									<p class="text text--small text--weight-800">{{testimonial.author}}</p>
+									<p class="text text--small text--weight-800">{{testimonial.name}}</p>
 									<p class="text text--small text--muted">{{testimonial.date}}</p>
 								</div>
 
@@ -35,7 +41,7 @@
 					{% endfor %}
 				</div>
 				
-				<a class="btn {{btnColor}}" href="{{item.link}}" target="blank">Читать все отзывы на {{item.company}}</a>
+				<a class="btn {{btnColor}}" href="{{item.link}}" target="_blank">Читать все отзывы на {{item.company}}</a>
 			</div>
 		{% endfor %}
 	{% endblock %}

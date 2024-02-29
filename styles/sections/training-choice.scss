@@ -1,6 +1,4 @@
 .training-choice {
-	margin-bottom: 100px;
-
 	.title {
 		margin: 25px auto 40px;
 		max-width: 840px;
@@ -37,8 +35,6 @@
 	}
 
 	@include breakpoint($breakpoint-lg) {
-		margin-bottom: 70px;
-
 		.title {
 			margin-top: 0;
 		}
@@ -63,18 +59,7 @@
 		}
 	}
 
-	@include breakpoint($breakpoint-xs) {
-		margin-bottom: 60px;
-
-		.title {
-			font-size: 28px;
-			line-height: 30px;
-		}
-	}
-
 	@include breakpoint($breakpoint-xxs) {
-		margin-bottom: 50px;
-
 		.title {
 			margin-left: 15px;
 		}

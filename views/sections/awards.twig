@@ -1,5 +1,5 @@
 {% embed 'components/section.twig' with {
-	class: 'history'
+	class: 'awards'
 } %}
 	{% block title %}
 		SAY YES! — это 10 лет проверенного качества обучения, подтвержденного
@@ -35,29 +35,30 @@
 					description: 'Нам доверяют: 8 из 10 наших студентов выбирают нас по рекомендациям и отзывам в Интернет.'
 				}
 			] %}
-				<div class="reward">
-					<h3 class="reward__title">{{item.year}}</h3>
+				<div class="award-card card">
+					<h3 class="card__title">{{item.year}}</h3>
 
-					<h4 class="reward__subtitle">
+					<h4 class="card__subtitle">
 						№{{item.number}}
 						{{item.nomination}}
 					</h4>
 
-					<p class="reward__description">{{item.description}}</p>
+					<p class="card__description">{{item.description}}</p>
 				</div>
 			{% endfor %}
 		</div>
 
-		<div class="comment">
-			<figure class="picture">
-				<img class="image" src="{{theme.link}}/static/images/pictures/founders-1.png" alt="Основатели">
-			</figure>
+		<div class="license-card card card--purple">
+			<picture>
+				<img src="{{theme.link}}/static/images/pictures/founders-1.png" alt="Основатели школы Вера и Ольга с наградами">
+			</picture>
 
-			<h3 class="comment__title">Лицензия Министерства образования № 36801</h3>
+			<h3 class="card__title">Лицензия Министерства образования № 36801</h3>
 
-			<p class="comment__description">Соответствует международным стандартам обучения.</p>
-
-			<p class="comment__description">Вы также сможете получить налоговый вычет.</p>
+			<div class="text">
+				<p>Соответствует международным стандартам обучения.</p>
+				<p>Вы также сможете получить налоговый вычет.</p>
+			</div>
 		</div>
 	{% endblock %}
 {% endembed %}

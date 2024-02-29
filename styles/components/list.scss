@@ -77,9 +77,10 @@
 
 	&--marker-center {
 		.list-item {
+			align-items: center;
+			
 			&::before {
-				top: 50%;
-				transform: translateY(-50%);
+				align-self: center;
 			}
 		}
 	}

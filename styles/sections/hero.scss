@@ -11,8 +11,19 @@
 	background: url('./static/images/mainscreens/mainscreen-1.jpg') right center/cover no-repeat;
 
 	&__content {
+		position: relative;
 		max-width: 440px;
 		z-index: 1;
+
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 10%;
+			right: -30%;
+			width: 78px;
+			height: 105px;
+			background: url('./static/images/decoration/notes/dream-team.svg');
+		}
 	}
 
 	&__title {

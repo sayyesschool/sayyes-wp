@@ -1,10 +1,12 @@
-<section class="video-section">
-	<div class="video-section__info">
+<section class="{{html_classes(class ?? [], 'video-section')}}">
+	<div class="video-section__content">
 		<h2 class="video-section__title subtitle">{{title}}</h2>
 
-		{% for paragraph in description %}
-			<p class="video-section__description">{{paragraph}}</p>
-		{% endfor %}
+		<div class="video-section__description">
+			{% for paragraph in description %}
+				<p>{{paragraph}}</p>
+			{% endfor %}
+		</div>
 	</div>
 
 	<div class="video-section__video">

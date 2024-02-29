@@ -1,62 +1,50 @@
 .knowledge-check {
-	padding: 56px 59px 64px;
 	margin-bottom: 100px;
-
+	padding: 56px 59px 64px;
 	background-color: $yellow;
 	border-radius: $border-radius;
 
-	.subtitle {
+	.section__title {
 		max-width: 900px;
 		margin-bottom: 35px;
 	}
 
-	.btn {
-		width: 100%;
-		margin-bottom: 10px;
-	}
-
-	.input-text {
-		&:last-of-type {
-			margin-bottom: 35px;
-		}
-	}
-
-	.list {
-		position: relative;
-		padding: 0;
-		margin-left: 55px;
-		width: 280px;
-
-		background-color: transparent;
-
-		.list__title {
-			display: none;
-		}
-
-		&::after {
-			content: "";
-			width: 254px;
-			height: 148px;
-			position: absolute;
-			top: 50%;
-			left: 198px;
-			background: url("./static/images/decoration/notes/free-2.svg")
-				center center/cover no-repeat;
-		}
-	}
-
-	&__content {
+	.section__content {
 		display: flex;
 		justify-content: space-between;
 		gap: 20px;
 	}
 
-	&__form {
-		padding: 50px;
-		width: 568px;
+	.list {
+		position: relative;
+		width: 360px;
+		padding: 0;
+		background-color: transparent;
 
+		&::after {
+			content: '';
+			width: 254px;
+			height: 148px;
+			position: absolute;
+			top: 50%;
+			left: 198px;
+			background: url('./static/images/decoration/notes/free-2.svg')
+				center center/cover no-repeat;
+		}
+	}
+
+	.form {
+		width: 568px;
+		padding: 50px;
+		gap: 10px;
 		background-color: #ffdf76;
 		border-radius: $border-radius;
+
+		.input {
+			&:last-of-type {
+				margin-bottom: 35px;
+			}
+		}
 	}
 
 	@include breakpoint($breakpoint-xl) {
@@ -81,12 +69,16 @@
 		margin-bottom: 70px;
 		padding: 40px;
 
-		.subtitle {
+		.section__title {
 			max-width: 650px;
 		}
 	}
 
 	@include breakpoint($breakpoint-sm) {
+		.section__content {
+			flex-direction: column;
+		}
+
 		.list {
 			width: 80%;
 			margin-left: 35px;
@@ -96,11 +88,7 @@
 			}
 		}
 
-		&__content {
-			flex-direction: column;
-		}
-
-		&__form {
+		.form {
 			width: 100%;
 		}
 	}
@@ -113,13 +101,13 @@
 		margin-bottom: 50px;
 		padding: 30px;
 
-		&__form {
+		.form {
 			padding: 25px;
 		}
 	}
 
 	@include breakpoint($breakpoint-mobile) {
-		&__form {
+		.form {
 			background-color: inherit;
 			padding: 0;
 		}

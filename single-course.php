@@ -2,16 +2,48 @@
 
 $context = Timber::context();
 $page = Timber::get_post();
-$page->name = $page->course_id;
-$template = 'pages/courses/course-';
+$course = $page;
+$course_type = $page->has_term('children') ? 'children' : 'adults';
 
 $context['page'] = $page;
 $context['course'] = $page;
+$context['layout_class'] = 'course-'.$course_type;
 
-if ($page->has_term('children')) {
-    $template .= 'children.twig';
-} else {
-    $template .= 'adults.twig';
-}
+$testimonials = $course->meta('testimonials');
+$testimonial_groups = array_reduce($testimonials ? $testimonials : [], function($result, $testimonial_id) {
+    $testimonial = Timber::get_post($testimonial_id);
 
-Timber::render($template, $context);
+    if ($testimonial->has_term('Zoon', 'testimonial_group'))
+        array_push($result['Zoon']['testimonials'], $testimonial);
+    else if ($testimonial->has_term('Yandex', 'testimonial_group'))
+        array_push($result['Yandex']['testimonials'], $testimonial);
+    else if ($testimonial->has_term('Schoolrate', 'testimonial_group'))
+        array_push($result['Schoolrate']['testimonials'], $testimonial);
+
+    return $result;
+}, [
+    'Zoon' => [
+        'name' => 'Zoon',
+        'score' => 5.0,
+        'link' => '',
+        'testimonials' => []
+    ],
+    'Yandex' => [
+        'name' => 'Yandex',
+        'score' => 5.0,
+        'link' => '',
+        'testimonials' => []
+    ],
+    'Schoolrate' => [
+        'name' => 'Schoolrate',
+        'score' => 5.0,
+        'link' => '',
+        'testimonials' => []
+    ]
+]);
+
+$context['testimonial_groups'] = array_filter($testimonial_groups, function($group) {
+    return count($group['testimonials']) > 0;
+});
+
+Timber::render('pages/courses/course-'.$course_type.'.twig', $context);

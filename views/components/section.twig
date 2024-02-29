@@ -1,21 +1,21 @@
 <section class="{{html_classes(class ?? [], 'section')}}">
-    {% if not container %}
-        <div class="section__container">
+    {% if not uncontained %}
+        <div class="{{class}}__container section__container">
     {% endif %}
 
     {% if title or block('title') is defined %}
-        <h2 class="section__title">{{title ?? block('title')}}</h2>
+        <h2 class="{{class}}__title section__title">{{title ?? block('title')}}</h2>
     {% endif %}
 
     {% if description or block('description') is defined %}
-        <div class="section__description">{{description ?? block('description')}}</div>
+        <div class="{{class}}__description section__description">{{description ?? block('description')}}</div>
     {% endif %}
 
     {% if content or block('content') is defined %}
-        <div class="section__content">{{content ?? block('content')}}</div>
+        <div class="{{class}}__content section__content">{{content ?? block('content')}}</div>
     {% endif %}
 
-    {% if not container %}
+    {% if not uncontained %}
         </div>
     {% endif %}
 </section>

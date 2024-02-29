@@ -1,0 +1,44 @@
+{% embed 'components/slider.twig' with {
+    name: 'student-progress'
+} %}
+    {% block content %}
+        {% for item in items %}
+            <div class="swiper-slide">
+                <div class="feedback">
+                    <div class="feedback__video">
+                        {% include 'components/video.twig' with {
+                            youtube_id: item.youtube_id,
+                            image: {
+                                src: item.thumbnail.src,
+                                alt: item.title
+                            },
+                            modal: true
+                        } %}
+
+                        <div class="comment comment--sm comment--angle">
+                            <p class="commet__description">{{item.excerpt({ read_more: false })}}</p>
+                        </div>
+                    </div>
+
+                    <div class="feedback__content">
+                        <div class="about-person">
+                            <h3 class="about-person__title">{{item.title}}</h3>
+
+                            <p class="about-person__comment">{{item.excerpt({ read_more: false })}}</p>
+
+                            <div class="about-person__description">{{item.content}}</div>
+
+                            <h4 class="about-person__mini-title">Преподаватель:</h4>
+
+                            <a class="about-person__link" href="{{item.teacher.link}}">{{item.teacher}}</a>
+
+                            <h4 class="about-person__mini-title">Курс:</h4>
+
+                            <a class="about-person__link" href="{{item.course.link}}">{{item.course}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endblock %}
+{% endembed %}

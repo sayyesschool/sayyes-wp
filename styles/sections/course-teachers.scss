@@ -1,14 +1,17 @@
-.personal-approach {
+.course-teachers {
 	padding: 55px 60px 60px;
 	margin-bottom: 100px;
-
-	background-color: $violet;
 	border-radius: $border-radius;
+	background-color: $violet;
 	color: $white;
 
-	.subtitle {
+	.section__title {
 		max-width: 750px;
 		margin-bottom: 20px;
+	}
+
+	.section__description {
+		max-width: 500px;
 	}
 
 	.slider {
@@ -16,31 +19,18 @@
 		overflow: hidden;
 	}
 
-	.text-block {
+	.text-card {
 		justify-content: flex-start;
 		padding-right: 25px;
 		padding-top: 200px;
 
-		.text-block__title {
-			position: absolute;
+		.card__title {
 			max-width: 260px;
 		}
 
-		.text-block__description {
-			margin-top: 65px;
+		.card__description {
+			
 		}
-	}
-
-	&__description {
-		max-width: 500px;
-	}
-
-	&__cards {
-		display: flex;
-		justify-content: space-between;
-		gap: 20px;
-
-		color: $black;
 	}
 
 	@include breakpoint($breakpoint-lg) {

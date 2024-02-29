@@ -30,43 +30,15 @@
 		margin: 0 auto;
 	}
 
-	&--adults {
-		.title {
-			max-width: 880px;
-		}
-	}
-
-	&--children,
-	&--adults-courses,
-	&--children-courses,
 	&--offline {
 		.title {
 			max-width: 680px;
 		}
 	}
 
-	&--children-courses {
-		.main__description {
-			max-width: 510px;
-		}
-	}
-
 	&--offline {
 		.main__description {
 			max-width: 470px;
-		}
-	}
-
-	&--adults,
-	&--children {
-		.main__description {
-			max-width: 460px;
-		}
-	}
-
-	&--adults-courses {
-		.main__description {
-			max-width: 380px;
 		}
 	}
 

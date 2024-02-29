@@ -1,29 +1,23 @@
-.result-children {
+.course-progress {
 	margin-bottom: 135px;
 
-	.subtitle {
+	.section__title {
 		max-width: 1000px;
 		margin-bottom: 20px;
+	}
+
+	.section__description {
+		max-width: 500px;
 	}
 
 	.slider {
 		overflow: hidden;
 	}
 
-	&__description {
-		max-width: 500px;
-	}
-
-	&__cards {
-		display: flex;
-		justify-content: space-between;
-		gap: 20px;
-	}
-
 	@include breakpoint($breakpoint-lg) {
 		margin-bottom: 70px;
 
-		.subtitle {
+		.section__title {
 			max-width: 700px;
 		}
 	}
@@ -35,7 +29,7 @@
 	@include breakpoint($breakpoint-xxs) {
 		margin-bottom: 50px;
 
-		.subtitle {
+		.section__title {
 			max-width: 460px;
 			margin-bottom: 15px;
 		}

@@ -18,7 +18,7 @@
 		background: url('./static/images/decoration/notes/shortly-video.svg') center center/contain no-repeat;
 	}
 
-	&__info {
+	&__content {
 		max-width: 430px;
 		align-self: flex-start;
 	}
@@ -51,71 +51,6 @@
 		}
 	}
 
-	&--children-courses {
-		margin-bottom: 180px;
-	}
-
-	&--children-courses,
-	&--children-courses-2 {
-		background-color: $violet;
-		color: $white;
-
-		padding-bottom: 55px;
-
-		.subtitle {
-			margin-bottom: 20px;
-		}
-
-		.video {
-			&::before {
-				content: none;
-			}
-		}
-
-		&::before {
-			width: 234px;
-			height: 104px;
-			top: 276px;
-			left: 367px;
-			background-image: url("./static/images/decoration/notes/only-2-min.svg");
-		}
-
-		.video-section__info {
-			max-width: 400px;
-		}
-
-		.video-section__description {
-			max-width: 350px;
-
-			&:not(:last-of-type) {
-				margin-bottom: 10px;
-			}
-		}
-	}
-
-	&--children-courses-2 {
-		&::before {
-			content: none;
-		}
-
-		.video-section__description {
-			font-weight: 600;
-			line-height: 20px;
-		}
-
-		.video {
-			&::before {
-				content: "";
-				width: 662px;
-				height: 352px;
-				top: -20px;
-				left: -43px;
-				background: url("./static/images/decoration/elements/being-student-border-2.svg")
-					center center/contain no-repeat;
-			}
-		}
-	}
-
 	@include breakpoint($breakpoint-xl) {
 		.video {
 			width: 482px;
@@ -124,13 +59,6 @@
 			&::before {
 				width: 564px;
 				height: 310px;
-			}
-		}
-
-		&--children-courses {
-			&::before {
-				top: 260px;
-				left: 240px;
 			}
 		}
 	}
@@ -145,7 +73,7 @@
 			height: 94px;
 		}
 
-		&__info {
+		&__content {
 			max-width: 370px;
 		}
 
@@ -162,15 +90,20 @@
 
 	@include breakpoint($breakpoint-md) {
 		padding: 30px;
-
-		&--children-courses {
-			&::before {
-				left: 180px;
-			}
-		}
 	}
 
 	@include breakpoint($breakpoint-sm) {
+		&::before {
+			top: 140px;
+			left: 15%;
+			width: 231px;
+			height: 94px;
+		}
+
+		&__content {
+			max-width: 330px;
+		}
+
 		.video {
 			width: 326px;
 			height: 175px;
@@ -182,32 +115,6 @@
 				left: -25px;
 			}
 		}
-
-		&::before {
-			top: 140px;
-			left: 15%;
-			width: 231px;
-			height: 94px;
-		}
-
-		&__info {
-			max-width: 330px;
-		}
-
-		&--children-courses {
-			padding-bottom: 40px;
-
-			&::before {
-				top: 150px;
-				left: 190px;
-			}
-		}
-
-		&--children-courses-2 {
-			.video-section__info {
-				max-width: 320px;
-			}
-		}
 	}
 
 	@include breakpoint($breakpoint-xs) {
@@ -217,42 +124,30 @@
 	@include breakpoint($breakpoint-xxs) {
 		margin-bottom: 50px;
 		padding: 10px;
-
 		flex-direction: column;
-
-		&__info {
-			text-align: center;
-			max-width: none;
-			margin: 0 auto 100px;
-		}
 
 		&::before {
 			display: block;
 			top: auto;
 			bottom: 210px;
 			left: 25%;
-			background-image: url("./static/images/decoration/notes/shortly-video-2.svg");
+			background-image: url('./static/images/decoration/notes/shortly-video-2.svg');
 		}
 
-		&--children-courses {
-			&::before {
-				top: initial;
-				bottom: 215px;
-				left: 35%;
-				width: 171px;
-				height: 70px;
-				background-image: url("./static/images/decoration/notes/only-2-min-2.svg");
-			}
-		}
-
-		&--children-courses-2 {
-			.video-section__info {
-				margin-bottom: 10px;
-			}
+		&__content {
+			text-align: center;
+			max-width: none;
+			margin: 0 auto 100px;
 		}
 	}
 
 	@include breakpoint($breakpoint-sm-mobile) {
+		&::before {
+			left: 30%;
+			width: 172px;
+			height: 53px;
+		}
+
 		.video {
 			width: 290px;
 			height: 155px;
@@ -263,12 +158,6 @@
 				top: -5px;
 				left: -15px;
 			}
-		}
-
-		&::before {
-			left: 30%;
-			width: 172px;
-			height: 53px;
 		}
 	}
 }

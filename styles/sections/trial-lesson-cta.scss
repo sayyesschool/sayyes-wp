@@ -1,0 +1,81 @@
+.trial-lesson-cta {
+	position: relative;
+	margin: 0 auto 100px;
+	padding: 60px 175px;
+	border-radius: $border-radius;
+	background-color: $yellow;
+	text-align: center;
+
+	&__title {
+		font-size: 42px;
+		font-weight: 700;
+		line-height: 40px;
+
+		button {
+			border: none;
+			background-color: transparent;
+			color: $violet;
+			font-weight: 700;
+			text-decoration: underline;
+		}
+	}
+
+	&__container {
+		position: static;
+		
+		// hourglass
+		&::before {
+			content: '';
+			position: absolute;
+			top: -42.5px;
+			right: 300px;
+			width: 75px;
+			height: 86px;
+			background-image: url('./static/images/decoration/elements/hourglass.svg');
+		}
+	}
+
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+	}
+
+	// book
+	&::before {
+		bottom: -20px;
+		left: -20px;
+		width: 175px;
+		height: 215px;
+		background-image: url('./static/images/decoration/elements/book-with-pen.svg');
+	}
+
+	// statue of liberty
+	&::after {
+		bottom: -25px;
+		right: 35px;
+		width: 124px;
+		height: 251px;
+		background-image: url('./static/images/decoration/elements/statue-of-liberty.svg');
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		&__title {
+			max-width: 650px;
+			margin: 0 auto;
+		}
+	}
+
+	@include breakpoint($breakpoint-md) {
+		padding: 60px 145px;
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		padding: 60px 25px;
+
+		::before,
+		::after {
+			display: none;
+		}
+	}
+}

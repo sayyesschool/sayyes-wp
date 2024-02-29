@@ -58,7 +58,30 @@
 	</section>
 
 	{% include 'sections/advantages.twig' with {
-		title: 'Важные факты о преимуществах обучения в SAY YES!'
+		title: 'Важные факты о преимуществах обучения в SAY YES!',
+		items: [
+			{
+				title: 'Стандартизированная методика',
+				description: 'Практикуем один подход в офлайн и онлайн формате'
+			},
+			{
+				title: 'Современные пособия',
+				description: 'Используем новейшие пособия Oxford, Cambridge и Macmillan',
+				image: 'books'
+			},
+			{
+				title: '75% практика языка',
+				description: 'Бóльшую часть занятия говорит студент'
+			},
+			{
+				title: 'Визиты носителей',
+				description: 'Дополнительная практика языка в группе'
+			},
+			{
+				title: 'Онлайн платформа',
+				description: 'Нескучная домашка в интерактивном виде'
+			}
+		]
 	} %}
 
 	{% include 'sections/trial-lesson.twig' %}

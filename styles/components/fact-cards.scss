@@ -1,38 +1,4 @@
 .fact-cards {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-template-rows: 1fr 1fr;
-	grid-template-areas: 
-		'a b c'
-		'd b e';
-	gap: 20px;
-
-	.fact-card {
-		&:nth-child(1) { grid-area: a; }
-		&:nth-child(2) { grid-area: b; }
-		&:nth-child(3) { grid-area: c; }
-		&:nth-child(4) { grid-area: d; }
-		&:nth-child(5) { grid-area: e; }
-	}
-
-	@include breakpoint($breakpoint-md) {
-		grid-template-columns: 1fr 1fr;
-		grid-template-rows: 1fr 1fr 1fr;
-		grid-template-areas: 
-		'a b'
-		'c b'
-		'd e';
-	}
-
-	@include breakpoint($breakpoint-xxs) {
-		display: flex;
-		flex-direction: column;
-
-		.fact-card {
-			min-height: unset;
-		}
-	}
-
 	&--advantages-cooperation,
 	&--test {
 		.text-block {
@@ -42,6 +8,15 @@
 			&__description {
 				margin-top: auto;
 			}
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		display: flex;
+		flex-direction: column;
+
+		.fact-card {
+			min-height: unset;
 		}
 	}
 

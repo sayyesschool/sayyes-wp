@@ -1,4 +1,6 @@
 .course-card {
+	display: flex;
+	flex-direction: column;
     background-color: $white;
     color: $black;
 

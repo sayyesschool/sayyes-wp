@@ -1,5 +1,5 @@
 <ul class="phone-numbers">
-	{% for key, number in settings.phone_numbers %}
+	{% for key, number in site_data.contacts.phone_numbers %}
 		<li class="phone-numbers__item">
 			{% include 'components/icon.twig' with {
 				name: key == 'main' ? 'phone' : key

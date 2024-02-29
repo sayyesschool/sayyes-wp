@@ -1,3 +1,163 @@
-#courses-children-page {
+.course-children {
+    .main {
+        .section__description {
+			max-width: 510px;
+		}
+    }
+
+    .about {
+        .section__title {
+			max-width: 500px;
+		}
+    }
+
+    .course-formats {
+        .format-card {
+            .card__body {
+                min-height: 265px;
+            }
+
+            .card__title {
+                max-width: 490px;
+            }
     
+            .card__content {
+                
+                padding-right: 30px;
+            }
+        }
+    }
+
+    .advantages {
+        .card {
+            &__title {
+                max-width: 360px;
+                font-size: 18px;
+                line-height: 20px;
+            }
+
+            &__description {
+                max-width: 300px;
+            }
+        }
+    }
+
+    .course-teachers {
+        
+    }
+
+    .video-section {
+		padding-bottom: 55px;
+        background-color: $violet;
+		color: $white;
+
+        &::before {
+			width: 234px;
+			height: 104px;
+			top: 276px;
+			left: 367px;
+			background-image: url('./static/images/decoration/notes/only-2-min.svg');
+		}
+
+        &__content {
+			max-width: 400px;
+		}
+
+		&__title {
+			margin-bottom: 20px;
+		}
+
+		&__description {
+			max-width: 350px;
+
+			p:not(:last-of-type) {
+				margin-bottom: 10px;
+			}
+		}
+
+        .video {
+			&::before {
+				content: none;
+			}
+		}
+
+        &.online-video-section {
+            margin-bottom: 180px;
+        }
+
+        &.progress-video-section {
+            &::before {
+                content: none;
+            }
+    
+            .video-section__description {
+                font-weight: 600;
+                line-height: 20px;
+            }
+    
+            .video {
+                &::before {
+                    content: '';
+                    width: 662px;
+                    height: 352px;
+                    top: -20px;
+                    left: -43px;
+                    background: url('./static/images/decoration/elements/being-student-border-2.svg') center center/contain no-repeat;
+                }
+            }
+        }
+
+        @include breakpoint($breakpoint-xl) {
+            &.online-video-section {
+                &::before {
+                    top: 260px;
+                    left: 240px;
+                }
+            }
+        }
+
+        @include breakpoint($breakpoint-md) {
+            &.online-video-section {
+                &::before {
+                    left: 180px;
+                }
+            }
+        }
+
+        @include breakpoint($breakpoint-sm) {
+            &.online-video-section {
+                padding-bottom: 40px;
+
+                &::before {
+                    top: 150px;
+                    left: 190px;
+                }
+            }
+
+            &.progress-video-section {
+                .video-section__info {
+                    max-width: 320px;
+                }
+            }
+        }
+
+        @include breakpoint($breakpoint-xxs) {
+            &.online-video-section {
+                &::before {
+                    top: initial;
+                    bottom: 215px;
+                    left: 35%;
+                    width: 171px;
+                    height: 70px;
+                    background-image: url("./static/images/decoration/notes/only-2-min-2.svg");
+                }
+            }
+
+            &.progress-video-section {
+                .video-section__info {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
 }

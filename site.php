@@ -113,22 +113,26 @@ class SayYesSite extends Site {
 
 
 	function add_to_context($context) {
-        $settings = get_fields('options');
+        $contacts = get_fields('options', 'contacts');
+        $prices = get_fields('options', 'prices');
 
-        $main_phone = format_phone_number($settings['phone_numbers']['main']);
-        $wa_phone = format_phone_number($settings['phone_numbers']['whatsapp']);
+        $main_phone = format_phone_number($contacts['phone_numbers']['main']);
+        $wa_phone = format_phone_number($contacts['phone_numbers']['whatsapp']);
 
         $context['site'] = $this;
+        $context['site_data'] = [
+            'contacts' => $contacts,
+            'prices' => $prices
+        ];
         $context['YANDEX_METRIKA_COUNTER'] = $this->yandex_metrika_counter;
         $context['GA_MEASUREMENT_ID'] = $this->google_analytics_id;
         $context['FACEBOOK_PIXEL_IDS'] = $this->facebook_pixel_ids;
 		$context['main_menu'] = Timber::get_menu('main_nav');
         $context['footer_menu'] = Timber::get_menu('footer_nav');
-        $context['settings'] = $settings;
         $context['links'] = [
             'policy' => $this->link().'/politika-konfidentsialnosti',
             'offer' => $this->link().'/dogovor-oferta',
-            'email' => 'mailto:'.$settings['email'],
+            'email' => 'mailto:'.$contacts['email'],
             'main_phone' => 'tel:'.$main_phone,
             'wa_phone' => 'https://api.whatsapp.com/send/?phone='.$wa_phone.'&text&type=phone_number&app_absent=0'
         ];

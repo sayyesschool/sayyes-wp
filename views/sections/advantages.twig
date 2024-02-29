@@ -1,32 +1,12 @@
 {% embed 'components/section.twig' with {
 	class: 'advantages',
-	title
+	title,
+	items,
+	grid
 } %}
 	{% block content %}
-		<div class="fact-cards">
-			{% for item in [
-				{
-					title: 'Стандартизированная методика',
-					description: 'Практикуем один подход в офлайн и онлайн формате'
-				},
-				{
-					title: 'Современные пособия',
-					description: 'Используем новейшие пособия Oxford, Cambridge и Macmillan',
-					image: 'books'
-				},
-				{
-					title: '75% практика языка',
-					description: 'Бóльшую часть занятия говорит студент'
-				},
-				{
-					title: 'Визиты носителей',
-					description: 'Дополнительная практика языка в группе'
-				},
-				{
-					title: 'Онлайн платформа',
-					description: 'Нескучная домашка в интерактивном виде'
-				}
-			] %}
+		<div class="fact-cards grid grid--{{grid ?? '2-1-2'}}">
+			{% for item in items %}
 				<div class="{{html_classes('fact-card', 'text-card',
 					item.image ? 'text-card--' ~ item.image ~ '-bg' : [], 'card')
 				}}">

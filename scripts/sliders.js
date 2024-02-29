@@ -133,7 +133,7 @@ new Swiper('.course-testimonials-slider', {
 	},
 });
 
-new Swiper('.personal-approach-slider', {
+new Swiper('.course-teachers-slider', {
 	enabled: false,
 	spaceBetween: 15,
 	width: null,
@@ -170,7 +170,7 @@ new Swiper('.personal-approach-slider', {
 	},
 });
 
-new Swiper('.result-children-slider', {
+new Swiper('.course-progress-slider', {
 	breakpoints: {
 		769: {
 			slidesPerView: 2,

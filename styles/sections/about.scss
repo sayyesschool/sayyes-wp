@@ -22,12 +22,6 @@
 		}
 	}
 
-	&--children-courses {
-		.section__title {
-			max-width: 500px;
-		}
-	}
-
 	@include breakpoint($breakpoint-lg) {
 		margin-bottom: 70px;
 

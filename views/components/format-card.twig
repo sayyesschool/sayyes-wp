@@ -11,11 +11,23 @@
         color
     } %}
         {% block content %}
-            Стоимость обучения:
+            <ul class="list">
+                <li class="list-item">
+                    Стоимость обучения:
 
-            <span>
-                {{format.price.prefix}} <strong>{{format.price.value}}</strong>{{format.price.postfix}}
-            </span>
+                    <span>
+                        {{format.price.prefix}} <strong>{{format.price.value}}</strong>{{format.price.postfix}}
+                    </span>
+                </li>
+
+                {% if format.lesson_duration %}
+                    <li class="list-item">
+                        Продолжительность урока:
+
+                        <span>{{format.lesson_duration}}</span>
+                    </li>
+                {% endif %}
+            </ul>
         {% endblock %}
     {% endembed %}
 {% endmacro %}
