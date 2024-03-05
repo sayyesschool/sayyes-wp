@@ -10,10 +10,10 @@
 	{% include 'sections/trial-lesson.twig' %}
 
 	{% embed 'components/section.twig' with {
-		class: 'tangible-result'
+		name: 'tangible-result'
 	} %}
 		{% block title %}
-			Английский <span class="text text--violet">с ощутимым результатом</span> уже через месяц занятий
+			Английский <span class="text text--purple">с ощутимым результатом</span> уже через месяц занятий
 		{% endblock %}
 
 		{% block description %}
@@ -22,7 +22,7 @@
 	{% endembed %}
 
 	{% embed 'components/section.twig' with {
-		class: 'practice',
+		name: 'practice',
 		title: 'Максимальная практика английского языка'
 	} %}
 		{% block content %}
@@ -38,7 +38,7 @@
 	{% endembed %}
 
 	{% embed 'components/section.twig' with {
-		class: 'dream-team',
+		name: 'dream-team',
 		title: 'Преподаватели мечты'
 	} %}
 		{% block content %}
@@ -79,7 +79,7 @@
 	{% endembed %}
 
 	{% embed 'components/section.twig' with {
-		class: 'platform',
+		name: 'platform',
 		title: 'Собственная онлайн платформа',
 		description: 'Для удобного и нескучного закрепления материала дома и проведения онлайн уроков'
 	} %}
@@ -114,7 +114,7 @@
 	{% endembed %}
 
 	{% embed 'components/section.twig' with {
-		class: 'atmosphere',
+		name: 'atmosphere',
 		title: 'Атмосфера «второго дома»',
 		description: 'Для удобного и нескучного закрепления материала дома и проведения онлайн уроков'
 	} %}
@@ -167,11 +167,11 @@
 	{% endembed %}
 
 	{% embed 'components/section.twig' with {
-		class: 'student-progress'
+		name: 'student-progress'
 	} %}
 		{% block title %}
 			Наши ученики рассказывают
-			<span class="text text--violet">о своем прогрессе</span>
+			<span class="text text--purple">о своем прогрессе</span>
 		{% endblock %}
 
 		{% block description %}
@@ -186,7 +186,7 @@
 		{% endblock %}
 	{% endembed %}
 
-	{% include 'sections/trial-lesson-mini.twig' %}
+	{% include 'sections/trial-lesson-cta.twig' %}
 
 	{% include 'sections/awards.twig' %}
 
@@ -196,7 +196,7 @@
 		with_help: true
 	} %}
 
-	{% include 'sections/about-formats.twig' %}
+	{% include 'sections/formats.twig' %}
 
 	{% include 'sections/trial-lesson.twig' %}
 {% endblock %}

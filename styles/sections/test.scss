@@ -13,7 +13,7 @@
 			transition: 0.3s ease color;
 
 			&:hover {
-				color: $violet;
+				color: $purple;
 			}
 		}
 	}
@@ -47,7 +47,7 @@
 	}
 
 	&__progress-bar-item--completed {
-		background-color: $violet;
+		background-color: $purple;
 	}
 
 	&__questions {
@@ -86,7 +86,7 @@
 	}
 
 	&__answer {
-		color: $violet;
+		color: $purple;
 
 		&::after {
 			content: "";

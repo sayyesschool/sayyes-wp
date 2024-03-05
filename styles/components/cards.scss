@@ -4,14 +4,42 @@
     gap: 20px;
 
     .card {
+        flex: 1;
         height: 100%;
     }
 
-    &--col-2 .card {
-        width: calc(50% - 10px);
+    &--color {
+        .card {
+            &:nth-child(n+1) {
+                background-color: $white;
+            }
+
+            &:nth-child(n+2) {
+                background-color: $pink;
+                color: $white;
+            }
+
+            &:nth-child(n+3) {
+                background-color: $purple;
+                color: $white;
+            }
+        }
     }
 
     @include breakpoint($breakpoint-md) {
-		gap: 15px;
+        gap: 15px;
+    }
+
+	@include breakpoint($breakpoint-xxs) {
+		width: calc(100% + 15px);
+		padding-left: 15px;
+		display: flex;
+        flex-wrap: nowrap;
+		justify-content: space-between;
+		overflow-x: auto;
+
+        &::-webkit-scrollbar {
+			display: none;
+		}
 	}
 }

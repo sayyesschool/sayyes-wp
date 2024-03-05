@@ -8,16 +8,16 @@
         image: page.thumbnail
 	} %}
 
-	<section class="teachers">
-        <div class="section-container">
-            <h2 class="subtitle">В нашей команде более 80 профессиональных преподавателей.</h2>
+    {% embed 'components/section.twig' with {
+        name: 'teachers',
+        title: 'В нашей команде более 80 профессиональных преподавателей.'
+    } %}
+        {% block description %}
+            <p>Мы ценим не только опыт и образование, но и энергичность, современность и жизнелюбие наших преподавателей.</p>
+            <p>Выберите удобный формат обучения и познакомьтесь с настоящими фанатами своего дела.</p>
+        {% endblock %}
 
-            <div class="teachers__description">
-                <p>Мы ценим не только опыт и образование, но и энергичность, современность и жизнелюбие наших преподавателей.</p>
-
-                <p>Выберите удобный формат обучения и познакомьтесь с настоящими фанатами своего дела.</p>
-            </div>
-
+        {% block content %}
             {% embed 'components/tabs.twig' with {
                 tabs: [
                     {
@@ -31,21 +31,21 @@
                     }
                 ],
                 pills: true,
-                color: 'magenta'
+                color: 'violet'
             } %}
-                {% from 'components/teacher-card.twig' import teacher_card %}
+                {% from 'blocks/teacher-card.twig' import teacher_card %}
 
                 {% block content %}
                     <div class="offline-teachers" data-tab-panel="offline">
-                        <div class="cards-grid grid">
+                        <div class="cards-grid grid grid--3">
                             {% for teacher in offline_teachers|slice(0, 6) %}
                                 {{teacher_card(teacher)}}
                             {% endfor %}
                         </div>
 
-                        {% include 'sections/trial-lesson-mini.twig' %}
+                        {% include 'sections/trial-lesson-cta.twig' %}
 
-                        <div class="cards-grid grid">
+                        <div class="cards-grid grid grid--3">
                             {% for teacher in offline_teachers|slice(6) %}
                                 {{teacher_card(teacher)}}
                             {% endfor %}
@@ -53,15 +53,15 @@
                     </div>
 
                     <div class="online-teachers hidden" data-tab-panel="online">
-                        <div class="cards-grid grid">
+                        <div class="cards-grid grid grid--3">
                             {% for teacher in online_teachers|slice(0, 6) %}
                                 {{teacher_card(teacher)}}
                             {% endfor %}
                         </div>
 
-                        {% include 'sections/trial-lesson-mini.twig' %}
+                        {% include 'sections/trial-lesson-cta.twig' %}
 
-                        <div class="cards-grid grid">
+                        <div class="cards-grid grid grid--3">
                             {% for teacher in online_teachers|slice(6) %}
                                 {{teacher_card(teacher)}}
                             {% endfor %}
@@ -69,8 +69,10 @@
                     </div>
                 {% endblock %}
             {% endembed %}
-        </div>
-    </section>
+        {% endblock %}
+    {% endembed %}
+
+    {% include 'sections/trial-lesson.twig' %}
 {% endblock %}
 
 {% block modal %}
@@ -78,7 +80,7 @@
         id: 'teacher-modal'
     } %}
         {% block content %}
-            {% include 'components/teacher-block.twig' %}
+            {% include 'blocks/teacher-block.twig' %}
         {% endblock %}
     {% endembed %}
 {% endblock %}

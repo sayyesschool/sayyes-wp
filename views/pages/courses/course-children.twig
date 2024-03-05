@@ -9,18 +9,18 @@
 	} %}
 
 	{% include 'components/section.twig' with {
-		class: 'about',
+		name: 'about',
 		title: course.about.title,
 		content: course.about.content
 	} %}
 
 	{% embed 'components/section.twig' with {
-		class: 'course-formats',
+		name: 'course-formats',
 		title: course.formats.title ?: 'Формы обучения на курсе для детей' ~ course.title,
 		description: 'Ваш ребенок может проходить данный курс индивидуально в двух форматах. Стоимость обучения зависит от количества приобретенных уроков в пакете.'
 	} %}
 		{% block content %}
-            {% from 'components/format-card.twig' import format_card %}
+            {% from 'blocks/format-card.twig' import format_card %}
 
             <div class="cards-grid grid grid--2">
                 {% for format in [
@@ -43,14 +43,14 @@
                         price: format.price,
 						lesson_duration: format.lesson_duration,
                         link: false
-                    }, cycle(['white', 'violet', 'pink'], loop.index0))}}
+                    }, cycle(['white', 'purple', 'pink'], loop.index0))}}
                 {% endfor %}
             </div>
         {% endblock %}
     {% endembed %}
 
 	{% embed 'components/section.twig' with {
-		class: 'knowledge-check',
+		name: 'knowledge-check',
 		title: 'Узнайте уровень английского у вашего ребенка на пробном бесплатном уроке, где вы также:'
 	} %}
 		{% block content %}
@@ -114,7 +114,7 @@
     } %}
 
 	{% include 'sections/video.twig' with {
-		class: 'online-video-section',
+		name: 'online-video',
 		title: 'Занятия онлайн — это удобно!',
 		description: [
 			'Обучение в комфортной и безопасной для вашего ребенка обстановке.', 
@@ -129,44 +129,49 @@
 		}
 	} %}
 
-	<section class="features">
-		<img class="features__img" src="{{theme.link}}/static/images/pictures/bright-ideas.jpg" alt="Bright Ideas">
+	{% embed 'components/section.twig' with {
+		name: 'course-features-results',
+		title: 'Особенности обучения на курсе “Bright Ideas”:'
+	} %}
+		{% block content %}
+			<img class="image" src="{{theme.link}}/static/images/pictures/bright-ideas.jpg" alt="Bright Ideas">
 
-		<div class="features__info">
-			<div class="features__content">
-				<h3 class="features__title">Особенности обучения на курсе “Bright Ideas”:</h3>
+			<div class="card">
+				<div class="features__content">
+					<h3 class="features__title">Особенности обучения на курсе “Bright Ideas”:</h3>
 
-				<ul class="features__list">
-					{% for item in [
-						'Знакомимся с основами языка',
-						'Влюбляемся в английский',
-						'Начинаем говорить, читать и писать',
-						'Готовимся к школьной программе'
-					] %}
-						<li class="features__item">{{item}}</li>
-					{% endfor %}
-				</ul>
+					<ul class="features__list">
+						{% for item in [
+							'Знакомимся с основами языка',
+							'Влюбляемся в английский',
+							'Начинаем говорить, читать и писать',
+							'Готовимся к школьной программе'
+						] %}
+							<li class="features__item">{{item}}</li>
+						{% endfor %}
+					</ul>
 
-				<h3 class="features__title">Результаты обучения  на курсе “Bright Ideas”:</h3>
+					<h3 class="features__title">Результаты обучения  на курсе “Bright Ideas”:</h3>
 
-				<ul class="features__list">
-					{% for item in [
-						'Воспринимает на слух английскую речь',
-						'Уверенно рассказывает о себе и любимых вещах',
-						'Может составлять простые предложения',
-						'Знает более 100 новых слов и выражений'
-					] %}
-						<li class="features__item">{{item}}</li>
-					{% endfor %}
-				</ul>
+					<ul class="features__list">
+						{% for item in [
+							'Воспринимает на слух английскую речь',
+							'Уверенно рассказывает о себе и любимых вещах',
+							'Может составлять простые предложения',
+							'Знает более 100 новых слов и выражений'
+						] %}
+							<li class="features__item">{{item}}</li>
+						{% endfor %}
+					</ul>
 
-				<button class="feedback-btn btn btn--yellow">Записаться на бесплатный урок</button>
+					<button class="feedback-btn btn btn--yellow">Записаться на бесплатный урок</button>
+				</div>
 			</div>
-		</div>
-	</section>
+		{% endblock %}
+	{% endembed %}
 
 	{% embed 'components/section.twig' with {
-		class: 'course-teachers',
+		name: 'course-teachers',
 		title: 'Наши преподаватели найдут подход к любому ребенку',
 		description: 'В нашей команде только внимательные и заботливые преподаватели с опытом обучения детей'
 	} %}
@@ -263,19 +268,19 @@
 	{% endembed %}
 
 	{% embed 'components/section.twig' with {
-        class: 'course-testimonials',
+        name: 'course-testimonials',
         title: 'Отзывы о курсе для детей<br>' ~ course.title,
         description: 'За 10 лет работы, обучили более 10 000 человек и получили более 800 отзывов'
     } %}
         {% block content %}
-            {% include 'components/course-testimonials-slider.twig' with {
+            {% include 'blocks/course-testimonials-slider.twig' with {
                 groups: testimonial_groups
             } %}
         {% endblock %}
     {% endembed %}
 
 	{% embed 'components/section.twig' with {
-        class: 'course-progress',
+        name: 'course-progress',
         title: 'Лучшие показатели нашей работы — это ученики, владеющие языком и довольные родители!',
         description: 'Родители наших учеников рассказывают о результатах и процессе обучения детей в SAY YES!'
     } %}
@@ -376,7 +381,7 @@
     {% endembed %}
 
 	{% include 'sections/video.twig' with {
-		class: 'progress-video-section',
+		name: 'progress-video',
 		title: 'Единственная онлайн-школа, где снимают отчеты о прогрессе учеников на видео',
 		description: [
 			'Посмотрите не просто отзывы наших юных студентов, а то, как они говорят на английском'
@@ -391,7 +396,7 @@
 	} %}
 
 	<section class="convenient-oc">
-		<div class="section-container">
+		<div class="section__container">
 			<h2 class="subtitle">Удобный онлайн-класс</h2>
 
 			<div class="convenient-oc__content">

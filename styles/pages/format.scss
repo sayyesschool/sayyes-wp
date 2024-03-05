@@ -1,64 +1,80 @@
 .single-format,
 .page-template-page-format {
-    .about {
-        &:first-of-type {
-            &__title {
-                max-width: 530px;
-            }
+    .about-format,
+    .about-lessons {
+        &__container {
+            gap: 50px;
         }
 
-        &:last-of-type {
-            &__title {
-                max-width: 490px;
+        &__header {
+            width: calc(48% - 25px);
+        }
+
+        &__content {
+            width: calc(52% - 25px);
+        }
+
+        @include breakpoint($breakpoint-md) {
+            &__container {
+                gap: 35px;
+            }
+    
+            &__header {
+                width: calc(48% - 17.5px);
+            }
+    
+            &__content {
+                width: calc(52% - 17.5px);
+            }
+        }
+    
+        @include breakpoint($breakpoint-xxs) {
+            &__container {
+                flex-direction: column;
+                gap: 15px;
+            }
+    
+            &__header,
+            &__content {
+                width: 100%;
             }
         }
     }
 
-    .format-shortly {
-        margin-bottom: 100px;
-    
-        .subtitle {
+    .about-format {
+        &__title {
+            max-width: 530px;
+        }
+    }
+
+    .about-lessons {
+        &__title {
+            max-width: 490px;
+        }
+    }
+
+    .format-facts {
+        &__header {
             max-width: 495px;
             margin-bottom: 50px;
         }
     
-        .text-block {
+        .card {
             padding-right: 110px;
     
-            .text-block__title {
+            &__title {
                 margin-top: 0;
             }
         }
-    
-        &__info,
-        &__number {
-            text-align: center;
-    
+
+        .text {
             max-width: 650px;
             margin: 0 auto;
-        }
-    
-        &__info {
-            margin: 15px auto 10px;
-        }
-    
-        @include breakpoint($breakpoint-lg) {
-            margin-bottom: 70px;
-        }
-    
-        @include breakpoint($breakpoint-xs) {
-            margin-bottom: 60px;
-        }
-    
-        @include breakpoint($breakpoint-xxs) {
-            margin-bottom: 50px;
         }
     }
 
     .format-features {
-        margin-bottom: 100px;
-    
-        &__title {
+        &__header {
             max-width: 580px;
             margin-bottom: 40px;
         }
@@ -119,6 +135,43 @@
             }
     
             .feature-card {
+                width: 100%;
+            }
+        }
+    }
+
+    .convenient-oc {
+        &__header {
+            max-width: 540px;
+            margin-bottom: 20px;
+        }
+    
+        &__content {
+            max-width: 500px;
+        }
+    
+        @include breakpoint($breakpoint-lg) {
+            &__content {
+                max-width: 440px;
+            }
+        }
+    
+        @include breakpoint($breakpoint-xs) {
+            &__container {
+                flex-wrap: wrap;
+            }
+    
+            &__content {
+                max-width: 350px;
+            }
+        }
+    
+        @include breakpoint($breakpoint-xxs) {
+            &__content {
+                max-width: 100%;
+            }
+    
+            &__media {
                 width: 100%;
             }
         }

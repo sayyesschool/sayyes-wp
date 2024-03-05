@@ -93,7 +93,7 @@
 		&__picture {
 			min-height: 450px;
 
-			background-color: $violet;
+			background-color: $purple;
 
 			&::before {
 				top: 45px;
@@ -194,7 +194,7 @@
 
 				&--active {
 					color: $white;
-					background-color: $violet;
+					background-color: $purple;
 				}
         }
     }
@@ -235,5 +235,16 @@
 				background-image: url("./static/images/decoration/notes/only-1.5-min-3.svg");
 			}
         }
+    }
+}
+
+.speaking-club-reasons {
+    &__title {
+        max-width: 273px;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        justify-content: flex-start;
     }
 }

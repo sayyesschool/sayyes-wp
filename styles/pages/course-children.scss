@@ -48,7 +48,7 @@
 
     .video-section {
 		padding-bottom: 55px;
-        background-color: $violet;
+        background-color: $purple;
 		color: $white;
 
         &::before {
@@ -160,4 +160,120 @@
             }
         }
     }
+}
+
+.knowledge-check {
+	margin-bottom: 100px;
+	padding: 56px 59px 64px;
+	background-color: $yellow;
+	border-radius: $border-radius;
+
+	.section__title {
+		max-width: 900px;
+		margin-bottom: 35px;
+	}
+
+	.section__content {
+		display: flex;
+		justify-content: space-between;
+		gap: 20px;
+	}
+
+	.list {
+		position: relative;
+		width: 360px;
+		padding: 0;
+		background-color: transparent;
+
+		&::after {
+			content: '';
+			width: 254px;
+			height: 148px;
+			position: absolute;
+			top: 50%;
+			left: 198px;
+			background: url('./static/images/decoration/notes/free-2.svg')
+				center center/cover no-repeat;
+		}
+	}
+
+	.form {
+		width: 568px;
+		padding: 50px;
+		gap: 10px;
+		background-color: #ffdf76;
+		border-radius: $border-radius;
+
+		.input {
+			&:last-of-type {
+				margin-bottom: 35px;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-xl) {
+		.list {
+			&::after {
+				width: 172px;
+				height: 100px;
+				left: 40px;
+			}
+
+			&--ul-sm {
+				.list__item {
+					&::before {
+						top: 10px;
+					}
+				}
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+		padding: 40px;
+
+		.section__title {
+			max-width: 650px;
+		}
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		.section__content {
+			flex-direction: column;
+		}
+
+		.list {
+			width: 80%;
+			margin-left: 35px;
+
+			&::after {
+				display: none;
+			}
+		}
+
+		.form {
+			width: 100%;
+		}
+	}
+
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
+		padding: 30px;
+
+		.form {
+			padding: 25px;
+		}
+	}
+
+	@include breakpoint($breakpoint-mobile) {
+		.form {
+			background-color: inherit;
+			padding: 0;
+		}
+	}
 }

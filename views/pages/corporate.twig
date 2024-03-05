@@ -12,6 +12,7 @@
     } %}
 
 	{% include 'sections/video.twig' with {
+        name: 'corporate-benefits-video',
         title: 'Управляющий директор SAY YES! Роман Сорочук коротко расскажет о преимуществах нашего обучения и процессе работы с компаниями.',
         video: {
 			youtube_id: 'Vsfz_1QzwDA',
@@ -23,118 +24,149 @@
     } %}
 
     {% embed 'components/section.twig' with {
-        class: 'education-directions'
+        name: 'corporate-directions'
     } %}
         {% block title %}
             Более 10 лет мы
-            <span class="text text--violet">обучаем</span>
+            <span class="text text--purple">обучаем</span>
             сотрудников компаний
-            <span class="text text--violet">по направлениям:</span>
+            <span class="text text--purple">по направлениям:</span>
         {% endblock %}
 
         {% block content %}
-            {% for item in [
-                {
-                    title: 'Общий курс',
-                    description: 'Обучение разговорному английскому языку',
-                    image: 'cap-2'
-                },
-                {
-                    title: 'Бизнес курс',
-                    description: 'Обучение деловому английскому для работы',
-                    image: 'briefcase'
-                },
-                {
-                    title: 'Курсы для профессионалов',
-                    description: 'Программы для конкретных профессий и должностей',
-                    image: 'person'
-                },
-                {
-                    title: 'Погружение в среду',
-                    description: 'Разговорные клубы с носителями английского языка',
-                    image: 'comments'
-                }
-            ] %}
-                <div class="text-card text-card--{{item.image}}-bg card card--yellow">
-                    <h4 class="card__title">{{item.title}}</h4>
-                    <p class="card__description">{{item.description}}</p>
-                </div>
-            {% endfor %}
+            <div class="cards">
+                {% for item in [
+                    {
+                        title: 'Общий курс',
+                        description: 'Обучение разговорному английскому языку',
+                        image: 'cap-2'
+                    },
+                    {
+                        title: 'Бизнес курс',
+                        description: 'Обучение деловому английскому для работы',
+                        image: 'briefcase'
+                    },
+                    {
+                        title: 'Курсы для профессионалов',
+                        description: 'Программы для конкретных профессий и должностей',
+                        image: 'person'
+                    },
+                    {
+                        title: 'Погружение в среду',
+                        description: 'Разговорные клубы с носителями английского языка',
+                        image: 'comments'
+                    }
+                ] %}
+                    <div class="text-card text-card--{{item.image}}-bg card card--yellow">
+                        <h4 class="card__title">{{item.title}}</h4>
+                        <p class="card__description">{{item.description}}</p>
+                    </div>
+                {% endfor %}
+            </div>
         {% endblock %}
     {% endembed %}
 
-	{% include 'sections/img-courses.twig' with {
-        title: 'Наши <span class="text text--violet">форматы обучения</span> позволяют подстроиться под месторасположение и график компаний',
-        courses: [
-            {
-                title: 'В школе в Москве ',
-                description: 'Наш офис находится в 7 минутах пешком от метро Павелецкая.',
-                class: 'big-course--white big-course--without-list big-course--sm',
-                img: 'format-1'
-            },
-            {
-                title: 'В офисе вашей компании',
-                description: 'Преподаватель приезжает к вам офис в удобное вам время',
-                class: 'big-course--white big-course--without-list big-course--sm',
-                img: 'format-2'
-            },
-            {
-                title: 'Обучение онлайн',
-                description: 'Мы обучаем онлайн в группах в Zoom или индивидуально на собственной платформе',
-                class: 'big-course--white big-course--without-list big-course--sm',
-                img: 'format-3'
-            }
-        ]
+    {% embed 'components/section.twig' with {
+        name: 'corporate-formats'
     } %}
+        {% block title %}
+            Наши <span class="text text--purple">форматы обучения</span> позволяют подстроиться под месторасположение и график компаний
+        {% endblock %}
 
-	<section class="profitable-cooperation">
-        <div class="section-container">
-            <h2 class="subtitle">Сотрудничать с SAY YES! — выгодно</h2>
-
-            {% include 'components/cooperation.twig' with {
-                class: 'cooperation--profitable-cooperation',
-                name: 'Роман Сорочук',
-                aboutPerson: 'Руководитель корпоративного направления',
-                img: 'roman.png',
-                btnText : 'Рассчитать точную стоимость обучения',
-                listClasses: 'list--ul',
-                list: [
+        {% block content %}
+            <div class="cards">
+                {% for item in [
                     {
-                        title: 'Простое начало работы',
-                        description: 'До начала сотрудничества мы бесплатно организуем для ваших сотрудников тестирование уровня и пробные уроки.'
+                        image: 'format-1',
+                        title: 'В школе в Москве ',
+                        description: 'Наш офис находится в 7 минутах пешком от метро Павелецкая.'
                     },
                     {
-                        title: 'Гибкая стоимость и условия',
-                        description: 'Набор учебных программ и форматов обучения позволяют подстроиться почти под любой бюджет и требования.'
+                        image: 'format-2',
+                        title: 'В офисе вашей компании',
+                        description: 'Преподаватель приезжает к вам офис в удобное вам время'
                     },
                     {
-                        title: 'Лицензия на образование',
-                        description: 'Ваша компания сможет экономить на налогах, сократив налог на прибыль и приняв к вычету НДС.'
-                    },
-                    {
-                        title: 'Разные варианты оплаты',
-                        description: 'Оплачивать обучение может как компания, так и сами сотрудники на выгодных условиях. Возможны и гибридные варианты.'
+                        image: 'format-3',
+                        title: 'Обучение онлайн',
+                        description: 'Мы обучаем онлайн в группах в Zoom или индивидуально на собственной платформе'
                     }
-                ],
-            } %}
-        </div>
-    </section>
+                ] %}
+                    {% include 'components/card.twig' with {
+                        title: item.title,
+                        description: item.description,
+                        image: {
+                            src: theme.link ~ '/static/images/courses/' ~ item.image ~ '.jpg',
+                            alt: item.title
+                        }
+                    } only %}
+                {% endfor %}
+            </div>
+        {% endblock %}
+    {% endembed %}
+
+    {% embed 'components/section.twig' with {
+        name: 'corporate-benefits',
+        title: 'Сотрудничать с SAY YES! — выгодно'
+    } %}
+        {% block content %}
+            <div class="flex">
+                <picture class="picture">
+                    <img class="picture__image" src="{{theme.link}}/static/images/pictures/roman.png" alt="Роман Сорочук">
+                    <div class="picture__caption">
+                        <h3 class="heading">Роман Сорочук</h3>
+                        <p class="text">Руководитель корпоративного направления</p>
+                    </div>
+                </picture>
+
+                <div class="card">
+                    {% include 'components/list.twig' with {
+                        type: 'check',
+                        items: [
+                            {
+                                title: 'Простое начало работы',
+                                description: 'До начала сотрудничества мы бесплатно организуем для ваших сотрудников тестирование уровня и пробные уроки.'
+                            },
+                            {
+                                title: 'Гибкая стоимость и условия',
+                                description: 'Набор учебных программ и форматов обучения позволяют подстроиться почти под любой бюджет и требования.'
+                            },
+                            {
+                                title: 'Лицензия на образование',
+                                description: 'Ваша компания сможет экономить на налогах, сократив налог на прибыль и приняв к вычету НДС.'
+                            },
+                            {
+                                title: 'Разные варианты оплаты',
+                                description: 'Оплачивать обучение может как компания, так и сами сотрудники на выгодных условиях. Возможны и гибридные варианты.'
+                            }
+                        ]
+                    } %}
+
+                    <button class="btn btn--big btn--purple" data-modal-trigger="callback-modal">Рассчитать точную стоимость обучения</button>
+                </div>
+            </div>
+        {% endblock %}
+    {% endembed %}
 
 	{% include 'sections/awards.twig' %}
 
-	<section class="all-teachers">
-        <div class="section-container">
-            <h2 class="subtitle">
-                <span class="text text--violet">Наши</span>
-                харизматичные и профессиональные
-                <span class="text text--violet">преподаватели</span>
-            </h2>
+    {% embed 'components/section.twig' with {
+        name: 'corporate-teachers'
+    } %}
+        {% block title %}
+            <span class="text text--purple">Наши</span>
+            харизматичные и профессиональные
+            <span class="text text--purple">преподаватели</span>
+        {% endblock %}
 
-            <p class="all-teachers__description">Корпоративные курсы английского в школе “SAY YES!” проводят как носители языка, так и русскоязычные преподаватели с многолетним опытом преподавания, в том числе деловому английскому.</p>
+        {% block description %}
+            <p>Корпоративные курсы английского в школе “SAY YES!” проводят как носители языка, так и русскоязычные преподаватели с многолетним опытом преподавания, в том числе деловому английскому.</p>
 
-            <p class="all-teachers__description">Прежде, чем попасть в нашу команду, преподаватели проходят многоэтапный отбор и обучение методике школы. Это профессионалы, не лишенные чувства юмора и энергичности, с которыми учить английский вашим сотрудникам будет в удовольствие!</p>
+            <p>Прежде, чем попасть в нашу команду, преподаватели проходят многоэтапный отбор и обучение методике школы. Это профессионалы, не лишенные чувства юмора и энергичности, с которыми учить английский вашим сотрудникам будет в удовольствие!</p>
+        {% endblock %}
 
-            <div class="cards-grid grid">
+        {% block content %}
+            <div class="cards grid grid--3">
                 {% for teacher in teachers %}
                     {% embed 'components/card.twig' with {
                         class: 'card--' ~ teacher.type,
@@ -161,11 +193,12 @@
                 {% endfor %}
             </div>
 
-            <a class="btn btn--violet" href="#">Все преподаватели</a>
-        </div>
-    </section>
+            <a class="btn btn--purple" href="#">Все преподаватели</a>
+        {% endblock %}
+    {% endembed %}
 
 	{% include 'sections/video.twig' with {
+        name: 'corporate-approach-video',
         title: 'Посмотрите короткое видео о нашем подходе к корпоративному обучению.',
         video: {
 			youtube_id: 'Vsfz_1QzwDA',
@@ -176,54 +209,57 @@
 		}
     } %}
 
-	<section class="advantages-cooperation">
-        <div class="section-container">
-            <h2 class="subtitle">
-                Обучение в SAY YES! — это
-                <span class="text text--violet">больше, чем занятия</span>
-                с преподавателем. Сотрудничая с SAY YES! вы также получаете:
-            </h2>
+    {% embed 'components/section.twig' with {
+        name: 'corporate-extra-benefits'
+    } %}
+        {% block title %}
+            Обучение в SAY YES! — это
+            <span class="text text--purple">больше, чем занятия</span>
+            с преподавателем. Сотрудничая с SAY YES! вы также получаете:
+        {% endblock %}
 
-            <div class="text-blocks text-blocks--advantages-cooperation">
+        {% block content %}
+            <div class="cards grid grid--2-1-2">
                 {% for item in [
                     {
-                        id: 'contacts-bg',
+                        image: 'contacts',
                         content: 'Возможность посещения разговорного онлайн клуба'
                     },
                     {
-                        id: 'video-bg',
-                        content: 'Собственная онлайн-платформа с дополнительными материалами и тестами'
-                    },
-                    {
-                        id: 'note-2-bg',
+                        image: 'note-2',
                         content: 'Бесплатные материалы в электронном виде'
                     },
                     {
-                        id: 'notes-bg',
+                        image: 'notes',
                         content: 'Отчеты по успеваемости сотрудников'
                     },
                     {
-                        id: 'webcam-bg',
+                        image: 'webcam',
                         content: 'Поддержка персонального менеджера-куратора'
+                    },
+                    {
+                        image: 'video',
+                        content: 'Собственная онлайн-платформа с дополнительными материалами и тестами'
                     }
                 ] %}
-                    <div class="text-block text-block--yellow text-block--{{item.id}}">
-                        <p class="text-block__description">{{item.content}}</p>
+                    <div class="text-card text-card--{{item.image}}-bg card card--yellow">
+                        {{item.content}}
                     </div>
                 {% endfor %}
             </div>
 
-            <button class="btn btn--violet">Рассчитать стоимость обучения</button>
-        </div>
-    </section>
+            <button class="btn btn--purple">Рассчитать стоимость обучения</button>
+        {% endblock %}
+    {% endembed %}
 
-	<section class="organizations">
-        <div class="section-container">
-            <h2 class="subtitle">Нас уже выбрали:</h2>
-
+    {% embed 'components/section.twig' with {
+        name: 'corporate-organizations',
+        title: 'Нас уже выбрали:'
+    } %}
+        {% block content %}
             {% embed 'components/slider.twig' with { name: 'organizations' } %}
                 {% block content %}
-                    <ul class="organizations__list">
+                    <ul class="grid grid--6 grid--sm-3">
                         {% for item in [
                             {
                                 name: 'Сбербанк',
@@ -298,26 +334,29 @@
                                 img: 'organization-18'
                             }
                         ] %}
-                            <li class="organizations__item">
-                                <img class="organizations__img" src="{{theme.link}}/static/images/organizations/{{item.img}}.png" alt="{{item.name}}">
-                            </li>
+                            <div class="card">
+                                <img src="{{theme.link}}/static/images/organizations/{{item.img}}.png" alt="{{item.name}}">
+                            </div>
                         {% endfor %}
                     </ul>
                 {% endblock %}
             {% endembed %}
-    </section>
+        {% endblock %}
+    {% endembed %}
 
-	<section class="reviews">
-        <div class="section-container">
-            <h2 class="subtitle">
-                Благодарственные
-                <span class="text text--violet">письма и отзывы</span>
-                руководителей компаний
-            </h2>
+    {% embed 'components/section.twig' with {
+        name: 'corporate-reviews'
+    } %}
+        {% block title %}
+            Благодарственные
+            <span class="text text--purple">письма и отзывы</span>
+            руководителей компаний
+        {% endblock %}
 
+        {% block content %}
             {% embed 'components/slider.twig' with { name: 'reviews' } %}
                 {% block content %}
-                    <ul class="reviews__list">
+                    <div class="cards">
                         {% for item in [
                             {
                                 name: 'МТС',
@@ -336,52 +375,63 @@
                                 img: 'review-4'
                             }
                         ] %}
-                            <li class="reviews__item">
-                                <img class="reviews__img" src="{{theme.link}}/static/images/reviews/{{item.img}}.png" alt="{{item.name}}">
+                            <div class="card">
+                                <img class="card__img" src="{{theme.link}}/static/images/reviews/{{item.img}}.png" alt="{{item.name}}">
 
-                                <h4 class="reviews__name">{{item.name}}</h4>
-                            </li>
+                                <h4 class="card__title">{{item.name}}</h4>
+                            </div>
                         {% endfor %}
-                    </ul>
+                    </div>
                 {% endblock %}
             {% endembed %}
-    </section>
+        {% endblock %}
+    {% endembed %}
 
-	<section class="getting-started">
-        <div class="section-container">
-            <h2 class="subtitle">Чтобы начать обучение вам осталось:</h2>
+    {% embed 'components/section.twig' with {
+        name: 'corporate-steps',
+        title: 'Чтобы начать обучение вам осталось:'
+    } %}
+        {% block content %}
+            <div class="flex">
+                <picture class="picture">
+                    <img class="picture__image" src="{{theme.link}}/static/images/pictures/anastasia.png" alt="Анастасия Жителева">
+                    <div class="picture__caption">
+                        <h3 class="heading">Анастасия Жителева</h3>
+                        <p class="text">Менеджер по работе с клиентами офлайн</p>
+                    </div>
+                </picture>
 
-            {% include 'components/cooperation.twig' with {
-                class: 'cooperation--getting-started',
-                name: 'Анастасия Жителева',
-                aboutPerson: 'Менеджер по работе с клиентами офлайн',
-                img: 'anastasia.png',
-                btnText: 'Заполнить заявку на обучение',
-                listClasses: 'list--ol',
-                list: [
-                    {
-                        description: 'Заявка на сайте или звонок в школу'
-                    },
-                    {
-                        description: 'Консультация по телефону исходя из вашего запроса'
-                    },
-                    {
-                        description: 'Разработка коммерческого предложения'
-                    },
-                    {
-                        description: 'Проведение тестирования сотрудников'
-                    },
-                    {
-                        description: 'Пробные уроки по уровням'
-                    },
-                    {
-                        description: 'Подписание договора и оплата обучения'
-                    },
-                    {
-                        description: 'Начало обучения'
-                    }
-                ]
-            } %}
-        </div>
-    </section>
+                <div class="card">
+                    {% include 'components/list.twig' with {
+                        type: 'steps',
+                        items: [
+                            {
+                                content: 'Заявка на сайте или звонок в школу'
+                            },
+                            {
+                                content: 'Консультация по телефону исходя из вашего запроса'
+                            },
+                            {
+                                content: 'Разработка коммерческого предложения'
+                            },
+                            {
+                                content: 'Проведение тестирования сотрудников'
+                            },
+                            {
+                                content: 'Пробные уроки по уровням'
+                            },
+                            {
+                                content: 'Подписание договора и оплата обучения'
+                            },
+                            {
+                                content: 'Начало обучения'
+                            }
+                        ]
+                    } %}
+
+                    <button class="btn btn--big btn--purple" data-modal-trigger="callback-modal">Заполнить заявку на обучение</button>
+                </div>
+            </div>
+        {% endblock %}
+    {% endembed %}
 {% endblock %}

@@ -8,6 +8,7 @@
 	} %}
 
 	{% include 'sections/video.twig' with {
+		name: 'about-video',
 		title: 'Быть нашим студентом — это...',
 		video: {
 			youtube_id: 'f3cBgWC2ljM',
@@ -18,65 +19,75 @@
 		}
 	} %}
 
-	{% embed 'sections/img-comment.twig' with {
+	{% embed 'components/section.twig' with {
+		class: 'image-section',
+		name: 'founders-announcement',
 		title: 'Обращение основателей школы',
-		img: 'founders-1.png'
+		horizontal: true
 	} %}
-		{% block content %}
-			<p class="appeal__description">
-				Цель нашей Школы —
-				<span class="text text--violet">научить ГОВОРИТЬ</span>
-				на английском и
-				<span class="text text--violet">влюбить</span>
-				в сам процесс освоения языка. Ведь сам по себе путь может быть не менее прекрасен результата!
-			</p>
-			<p class="appeal__description">Мы не только обладаем эффективными методиками обучения, но и стремимся создать атмосферу дружелюбия и уюта, в которую вам захочется возвращаться снова и снова.</p>
-			<p class="appeal__description">Приходите к нам за новыми знаниями и приятным времяпрепровождением =)</p>
-			<p class="appeal__description">Ждем вас в Школе SAY YES! в Москве и онлайн!</p>
+		{% block description %}
+			<div class="text">
+				<p>
+					Цель нашей Школы —
+					<span class="text text--purple">научить ГОВОРИТЬ</span>
+					на английском и
+					<span class="text text--purple">влюбить</span>
+					в сам процесс освоения языка. Ведь сам по себе путь может быть не менее прекрасен результата!
+				</p>
+				<p>Мы не только обладаем эффективными методиками обучения, но и стремимся создать атмосферу дружелюбия и уюта, в которую вам захочется возвращаться снова и снова.</p>
+				<p>Приходите к нам за новыми знаниями и приятным времяпрепровождением =)</p>
+				<p>Ждем вас в Школе SAY YES! в Москве и онлайн!</p>
+			</div>
+		{% endblock %}
+
+		{% block media %}
+			<img class="image" src="{{theme.link}}/static/images/pictures/founders-1.png" alt="Say Yes">
 		{% endblock %}
 	{% endembed %}
 
-	<section class="digits">
-		<h2 class="subtitle">SAY YES! в цифрах</h2>
-
-		<ul class="digits__list">
+	{% embed 'components/section.twig' with {
+		name: 'digits',
+		title: 'SAY YES! в цифрах',
+		horizontal: true
+	} %}
+		{% block content %}
 			{% for item in [
 				{
 					title: '10',
 					description: 'лет успешной работы',
-					bg: 'default'
+					color: 'yellow'
 				},
 				{
 					title: '2000+',
 					description: 'уроков каждый месяц',
-					bg: 'white'
+					color: 'white'
 				},
 				{
 					title: '85',
 					description: 'сильных и харизматичных преподавателей',
-					bg: 'white'
+					color: 'white'
 				},
 				{
 					title: '80%',
 					description: 'студентов по рекомендациям',
-					bg: 'default'
+					color: 'yellow'
 				},
 				{
 					title: '5.0',
 					description: 'рейтинг на Яндекс Отзывы',
-					bg: 'default'
+					color: 'yellow'
 				}
 			] %}
-				<li class="digits__item digits__item--{{item.bg}}">
-					<h4 class="digits__title">{{item.title}}</h4>
-					<p class="digits__description">{{item.description}}</p>
-				</li>
+				<div class="card card--{{item.color}}">
+					<h4 class="card__title">{{item.title}}</h4>
+					<p class="card__description">{{item.description}}</p>
+				</div>
 			{% endfor %}
-		</ul>
-	</section>
+		{% endblock %}
+	{% endembed %}
 
 	{% embed 'components/section.twig' with {
-		class: 'back-office',
+		name: 'back-office',
 		title: 'В бэк-офисе SAY YES! работает 24 человека.',
 	} %}
 		{% block description %}
@@ -85,7 +96,7 @@
 		{% endblock %}
 
 		{% block content %}
-			<div class="cards-grid grid">
+			<div class="cards-grid grid grid--2">
 				<div class="card card--transparent">
 					<h4 class="card__title">Команда мечты</h4>
 					<h5 class="card__subtitle">Создает для вас душевную атмосферу и обеспечивает комфорт в обучении.</h5>
@@ -131,31 +142,31 @@
 		{% endblock %}
 	{% endembed %}
 
-	<section class="behind-the-scenes">
-		<div class="section-container">
-			<h2 class="subtitle">Жизнь Школы за кулисами и не только</h2>
+	{% embed 'components/section.twig' with {
+		name: 'behind-the-scenes',
+		title: 'Жизнь Школы за кулисами и не только',
+	} %}
+		{% block description %}
+			<p>Для нас Школа — это не только интересная работа, но и совместное времяпрепровождение.</p>
+			<p>Мы веселимся, вместе учимся новому и делаем жизнь нашего SAY YES! коммьюнити насыщенней яркими моментами и от того счастливее.</p>
+		{% endblock %}
 
-			<div class="behind-the-scenes__description">
-				<p>Для нас Школа — это не только интересная работа, но и совместное времяпрепровождение.</p>
-
-				<p>Мы веселимся, вместе учимся новому и делаем жизнь нашего SAY YES! коммьюнити насыщенней яркими моментами и от того счастливее.</p>
-			</div>
-
-			<ul class="behind-the-scenes__gallery">
+		{% block content %}
+			<div class="behind-the-scenes__gallery">
 				{% for i in 1..7 %}
-					<li class="behind-the-scenes__item">
-						<img class="behind-the-scenes__img" src="{{theme.link}}/static/images/behind-the-scenes/bts-{{i}}.jpg" alt="Say Yes">
-					</li>
+					<picture class="behind-the-scenes__picture">
+						<img class="image" src="{{theme.link}}/static/images/behind-the-scenes/bts-{{i}}.jpg" alt="Say Yes">
+					</picture>
 				{% endfor %}
 				
-				<li class="behind-the-scenes__item">
+				<picture class="behind-the-scenes__picture">
 					{% for i in [8, 3] %}
-						<img class="behind-the-scenes__img" src="{{theme.link}}/static/images/behind-the-scenes/bts-{{i}}.jpg" alt="Say Yes">
+						<img class="image" src="{{theme.link}}/static/images/behind-the-scenes/bts-{{i}}.jpg" alt="Say Yes">
 					{% endfor %}
-				</li>
-			</ul>
-		</div>
-	</section>
+				</picture>
+			</div>
+		{% endblock %}
+	{% endembed %}
 
 	{% include 'sections/trial-lesson.twig' %}
 {% endblock %}

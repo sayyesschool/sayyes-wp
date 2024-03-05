@@ -59,6 +59,10 @@ class SayYesSite extends Site {
             $functions['format_phone_number'] = [
                 'callable' => 'format_phone_number'
             ];
+
+            $functions['is_link_external'] = [
+                'callable' => 'is_link_external'
+            ];
         
             return $functions;
         });
@@ -84,10 +88,8 @@ class SayYesSite extends Site {
     
     function register_menus() {
         register_nav_menus([
-            'main_nav' => 'Главная область навигации',
-            'side_nav' => 'Боковая область навигации',
-            'footer_nav' => 'Нижняя область навигации',
-            'mobile_nav' => 'Мобильная область навигации'
+            'header_nav' => 'Верхняя область навигации',
+            'footer_nav' => 'Нижняя область навигации'
         ]);
     }
     
@@ -127,8 +129,8 @@ class SayYesSite extends Site {
         $context['YANDEX_METRIKA_COUNTER'] = $this->yandex_metrika_counter;
         $context['GA_MEASUREMENT_ID'] = $this->google_analytics_id;
         $context['FACEBOOK_PIXEL_IDS'] = $this->facebook_pixel_ids;
-		$context['main_menu'] = Timber::get_menu('main_nav');
-        $context['footer_menu'] = Timber::get_menu('footer_nav');
+		$context['header_nav'] = Timber::get_menu('header_nav');
+        $context['footer_nav'] = Timber::get_menu('footer_nav');
         $context['links'] = [
             'policy' => $this->link().'/politika-konfidentsialnosti',
             'offer' => $this->link().'/dogovor-oferta',

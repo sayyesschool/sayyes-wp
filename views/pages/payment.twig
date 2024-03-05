@@ -1,39 +1,42 @@
 {% extends 'layouts/base.twig' %}
 
 {% block content %}
-	<section class="training-choice">
-        <h1 class="title">Выберите свое обучение:</h1>
+    {% embed 'components/section.twig' with {
+        name: 'training-choice',
+        title: 'Выберите свое обучение:'
+    } %}
+        {% block content %}
+            <div class="cards grid grid--3">
+                {% for item in [
+                    {
+                        image: 'type-1',
+                        name: 'Офлайн индивидуально',
+                        description: 'Выберите это обучение, если вы занимаетесь с преподавателем лично — у нас в школе, дома или в офисе.'
+                    },
+                    {
+                        image: 'type-2',
+                        name: 'Онлайн индивидуально',
+                        description: 'Выберите это обучение, если вы занимаетесь дистанционно по Скайп.'
+                    },
+                    {
+                        image: 'type-3',
+                        name: 'Онлайн в группе',
+                        description: 'Выберите это обучение, если вы занимаетесь в группе по Zoom.'
+                    }
+                ] %}
+                    <div class="card">
+                        <img src="./assets/images/training-type/{{item.img}}.jpg" alt="{{item.name}}" class="card__img">
 
-        <div class="cards-grid grid">
-            {% for person in [
-                {
-                    name: 'Офлайн индивидуально',
-                    description: 'Выберите это обучение, если вы занимаетесь с преподавателем лично — у нас в школе, дома или в офисе.',
-                    img: 'type-1'
-                },
-                {
-                    name: 'Онлайн индивидуально',
-                    description: 'Выберите это обучение, если вы занимаетесь дистанционно по Скайп.',
-                    img: 'type-2',
-                    'type': 'teacher-card'
-                },
-                {
-                    name: 'Онлайн в группе',
-                    description: 'Выберите это обучение, если вы занимаетесь в группе по Zoom.',
-                    img: 'type-3'
-                }
-            ] %}
-                <div class="card">
-                    <img src="./assets/images/training-type/{{person.img}}.jpg" alt="{{person.name}}" class="card__img">
-                    <div class="card__content">
-                        <h3 class="card__name">{{person.name}}</h3>
-                        <p class="card__description">{{person.description}}</p>
-                        <button class="btn btn--transparent btn--transparent-black btn--md">Выбрать и оплатить</button>
+                        <div class="card__content">
+                            <h3 class="card__title">{{item.name}}</h3>
+                            <p class="card__description">{{item.description}}</p>
+                            <button class="btn btn--transparent btn--transparent-black btn--md">Выбрать и оплатить</button>
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
-        </div>
+                {% endfor %}
+            </div>
 
-        <p class="training-choice__ps">Если у вас возникнут какие-либо вопросы в процессе оплаты, пожалуйста, свяжитесь с вашим менеджером или напишите нам на <a href="mailto:info@sayes.ru" class="text text--underline text--violet">info@sayes.ru</a>.</p>
-    </section>
+            <p class="text">Если у вас возникнут какие-либо вопросы в процессе оплаты, пожалуйста, свяжитесь с вашим менеджером или напишите нам на <a href="mailto:info@sayes.ru" class="text text--underline text--purple">info@sayes.ru</a>.</p>
+        {% endblock %}
+    {% endembed %}
 {% endblock %}

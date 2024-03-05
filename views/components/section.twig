@@ -1,18 +1,26 @@
-<section class="{{html_classes(class ?? [], 'section')}}">
+<section class="{{html_classes(name ?? [], class ?? [], 'section', {
+    'section--horizontal': horizontal
+}, color ? 'section--' ~ color : [])}}">
     {% if not uncontained %}
-        <div class="{{class}}__container section__container">
+        <div class="{{name}}__container section__container">
     {% endif %}
 
-    {% if title or block('title') is defined %}
-        <h2 class="{{class}}__title section__title">{{title ?? block('title')}}</h2>
-    {% endif %}
+    <div class="{{name}}__header section__header">
+        {% if title or block('title') is defined %}
+            <h2 class="{{name}}__title section__title">{{title ?? block('title')}}</h2>
+        {% endif %}
 
-    {% if description or block('description') is defined %}
-        <div class="{{class}}__description section__description">{{description ?? block('description')}}</div>
-    {% endif %}
+        {% if description or block('description') is defined %}
+            <div class="{{name}}__description section__description">{{description ?? block('description')}}</div>
+        {% endif %}
+    </div>
 
     {% if content or block('content') is defined %}
-        <div class="{{class}}__content section__content">{{content ?? block('content')}}</div>
+        <div class="{{name}}__content section__content">{{content ?? block('content')}}</div>
+    {% endif %}
+
+    {% if media or block('media') is defined %}
+        <div class="{{name}}__media section__media">{{media ?? block('media')}}</div>
     {% endif %}
 
     {% if not uncontained %}

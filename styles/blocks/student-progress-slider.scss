@@ -1,42 +1,27 @@
 .student-progress-slider {
+	overflow: hidden;
+
 	.slider {
 		&__arrows {
-			right: 15%;
+			right: 10%;
 		}
 
-		&__pagination {
-			display: block;
-			padding-left: 75%;
-		}
-	}
-
-	@include breakpoint($breakpoint-md) {
-		.slider__arrows {
-			right: 0;
-		}
-	}
-
-	@include breakpoint($breakpoint-xxs) {
-		.slider__pagination {
-			padding-left: 48%;
-		}
-
-		.format {
-			.video {
-				margin-bottom: -30px;
-			}
-
-			.about-person {
-				padding-top: 54px;
-				border-top-right-radius: 0;
-				border-top-left-radius: 0;
+		@include breakpoint($breakpoint-md) {
+			&__arrows {
+				right: 0;
 			}
 		}
-	}
-
-	@include breakpoint($breakpoint-mobile) {
-		.slider__arrows {
-			display: none;
+	
+		@include breakpoint($breakpoint-xxs) {
+			&__pagination {
+				padding-left: 48%;
+			}
+		}
+	
+		@include breakpoint($breakpoint-mobile) {
+			&__arrows {
+				display: none;
+			}
 		}
 	}
 }

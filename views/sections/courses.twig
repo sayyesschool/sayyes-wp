@@ -1,5 +1,5 @@
 {% embed 'components/section.twig' with {
-    class: 'courses',
+    name: 'courses',
     title,
     description
 } %}
@@ -20,34 +20,47 @@
             color: 'yellow'
 		} %}
             {% block content %}
-                {% from 'components/course-card.twig' import course_card %}
-
-                <div class="cards-grid grid grid--2" data-tab-panel="adults">
-                    {% for course in courses_adults %}
-                        {{course_card(course, cycle(['black', 'pink', 'violet'], loop.index0))}}
-                    {% endfor %}
-
-                    {% if with_help %}
-                        <div class="text-card card">
-                            <h3 class="card__title">Затрудняетесь с выбором курса или ваша цель специфична?</h3>
-                            <p class="card__description">Подберем курс под ваши цели или создадим индивидуальный курс под вас!</p>
-                            <button class="btn btn--violet" data-modal-trigger="callback-modal">Попробовать бесплатно</button>
-                        </div>
-                    {% endif %}
+                <div data-tab-panel="adults">
+                    {% embed 'blocks/courses-cards.twig' with {
+                        courses: courses_adults,
+                        colors: ['black', 'pink', 'purple'],
+                        formats: {
+                            group_offline: 'офлайн группа',
+                            group_online: 'онлайн группа',
+                            individual_online: 'индивидуально'
+                        }
+                    } %}
+                        {% block content %}
+                            {% if with_help %}
+                                <div class="text-card card">
+                                    <h3 class="card__title">Затрудняетесь с выбором курса или ваша цель специфична?</h3>
+                                    <p class="card__description">Подберем курс под ваши цели или создадим индивидуальный курс под вас!</p>
+                                    <button class="btn btn--purple" data-modal-trigger="callback-modal">Попробовать бесплатно</button>
+                                </div>
+                            {% endif %}
+                        {% endblock %}
+                    {% endembed %}
                 </div>
 
-                <div class="cards-grid grid grid--2 hidden" data-tab-panel="children">
-                    {% for course in courses_children %}
-                        {{course_card(course, cycle(['black', 'pink', 'violet'], loop.index0))}}
-                    {% endfor %}
-
-                    {% if with_help %}
-                        <div class="text-card card">
-                            <h3 class="card__title">Затрудняетесь с выбором курса или ваша цель специфична?</h3>
-                            <p class="card__description">Подберем курс под ваши цели или создадим индивидуальный курс под вас!</p>
-                            <button class="btn btn--violet" data-modal-trigger="callback-modal">Оставить заявку</button>
-                        </div>
-                    {% endif %}
+                <div class="hidden" data-tab-panel="children">
+                    {% embed 'blocks/courses-cards.twig' with {
+                        courses: courses_children,
+                        colors: ['black', 'pink', 'purple'],
+                        formats: {
+                            individual_online: 'офлайн индивидуально',
+                            individual_offline: 'онлайн индивидуально'
+                        }
+                    } %}
+                        {% block content %}
+                            {% if with_help %}
+                                <div class="text-card card">
+                                    <h3 class="card__title">Затрудняетесь с выбором курса или ваша цель специфична?</h3>
+                                    <p class="card__description">Подберем курс под ваши цели или создадим индивидуальный курс под вас!</p>
+                                    <button class="btn btn--purple" data-modal-trigger="callback-modal">Попробовать бесплатно</button>
+                                </div>
+                            {% endif %}
+                        {% endblock %}
+                    {% endembed %}
                 </div>
             {% endblock %}
         {% endembed %}

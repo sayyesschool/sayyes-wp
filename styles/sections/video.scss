@@ -1,162 +1,148 @@
 .video-section {
-	position: relative;
 	padding: 65px 60px 55px;
-	margin-bottom: 100px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
 	background-color: $white;
-	border-radius: $border-radius;
 
-	&::before {
-		content: '';
-		position: absolute;
-		top: 241px;
-		left: 20%;
-		width: 330px;
-		height: 135px;
-		background: url('./static/images/decoration/notes/shortly-video.svg') center center/contain no-repeat;
-	}
-
-	&__content {
-		max-width: 430px;
-		align-self: flex-start;
-	}
-
-	&__description {
-		font-weight: 700;
-		line-height: 20px;
-	}
-
-	&__bg {
-		width: 100%;
-		height: 100%;
-		display: block;
-		object-fit: cover;
-	}
-
-	.video {
-		position: relative;
-		width: 568px;
-		height: 310px;
-
-		&::before {
-			content: '';
-			position: absolute;
-			top: -21px;
-			left: -42px;
-			width: 664px;
-			height: 356px;
-			background: url('./static/images/decoration/elements/being-student-border.svg') center center/contain no-repeat;
+	.section {
+		&__container {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			gap: 40px;
 		}
-	}
-
-	@include breakpoint($breakpoint-xl) {
-		.video {
-			width: 482px;
-			height: 264px;
-
+	
+		&__header {
+			flex-basis: 50%;
+		}
+	
+		&__media {
+			position: relative;
+			flex-basis: 50%;
+	
 			&::before {
-				width: 564px;
-				height: 310px;
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: -75%;
+				width: 330px;
+				height: 135px;
+				background: url('./static/images/decoration/notes/shortly-video.svg') center center/contain no-repeat;
 			}
 		}
-	}
-
-	@include breakpoint($breakpoint-lg) {
-		margin-bottom: 70px;
-		padding: 40px;
-
-		&::before {
-			top: 170px;
-			width: 231px;
-			height: 94px;
-		}
-
-		&__content {
-			max-width: 370px;
-		}
 
 		.video {
-			width: 397px;
-			height: 217px;
-
-			&::before {
-				width: 464px;
-				height: 255px;
+			&::after {
+				content: '';
+				position: absolute;
+				top: -20px;
+				left: -20px;
+				width: 120%;
+				height: 120%;
+				background: url('./static/images/decoration/elements/being-student-border.svg') center center/contain no-repeat;
 			}
 		}
-	}
-
-	@include breakpoint($breakpoint-md) {
-		padding: 30px;
-	}
-
-	@include breakpoint($breakpoint-sm) {
-		&::before {
-			top: 140px;
-			left: 15%;
-			width: 231px;
-			height: 94px;
-		}
-
-		&__content {
-			max-width: 330px;
-		}
-
-		.video {
-			width: 326px;
-			height: 175px;
-
-			&::before {
-				width: 374px;
-				height: 199px;
-				top: -5px;
-				left: -25px;
+	
+		@include breakpoint($breakpoint-xl) {
+			.video {
+				width: 482px;
+				height: 264px;
+	
+				&::before {
+					width: 564px;
+					height: 310px;
+				}
 			}
 		}
-	}
-
-	@include breakpoint($breakpoint-xs) {
-		margin-bottom: 60px;
-	}
-
-	@include breakpoint($breakpoint-xxs) {
-		margin-bottom: 50px;
-		padding: 10px;
-		flex-direction: column;
-
-		&::before {
-			display: block;
-			top: auto;
-			bottom: 210px;
-			left: 25%;
-			background-image: url('./static/images/decoration/notes/shortly-video-2.svg');
-		}
-
-		&__content {
-			text-align: center;
-			max-width: none;
-			margin: 0 auto 100px;
-		}
-	}
-
-	@include breakpoint($breakpoint-sm-mobile) {
-		&::before {
-			left: 30%;
-			width: 172px;
-			height: 53px;
-		}
-
-		.video {
-			width: 290px;
-			height: 155px;
-
+	
+		@include breakpoint($breakpoint-lg) {
+			margin-bottom: 70px;
+			padding: 40px;
+	
 			&::before {
-				width: 323px;
-				height: 172px;
-				top: -5px;
-				left: -15px;
+				top: 170px;
+				width: 231px;
+				height: 94px;
+			}
+	
+			&__content {
+				max-width: 370px;
+			}
+	
+			.video {
+				width: 397px;
+				height: 217px;
+	
+				&::before {
+					width: 464px;
+					height: 255px;
+				}
+			}
+		}
+	
+		@include breakpoint($breakpoint-md) {
+			padding: 30px;
+		}
+	
+		@include breakpoint($breakpoint-sm) {
+			&::before {
+				top: 140px;
+				left: 15%;
+				width: 231px;
+				height: 94px;
+			}
+	
+			&__content {
+				max-width: 330px;
+			}
+	
+			.video {
+				width: 326px;
+				height: 175px;
+	
+				&::before {
+					width: 374px;
+					height: 199px;
+					top: -5px;
+					left: -25px;
+				}
+			}
+		}
+	
+		@include breakpoint($breakpoint-xxs) {
+			padding: 10px;
+			flex-direction: column;
+	
+			&::before {
+				display: block;
+				top: auto;
+				bottom: 210px;
+				left: 25%;
+				background-image: url('./static/images/decoration/notes/shortly-video-2.svg');
+			}
+	
+			&__content {
+				text-align: center;
+				max-width: none;
+				margin: 0 auto 100px;
+			}
+		}
+	
+		@include breakpoint($breakpoint-sm-mobile) {
+			&::before {
+				left: 30%;
+				width: 172px;
+				height: 53px;
+			}
+	
+			.video {
+				width: 290px;
+				height: 155px;
+	
+				&::before {
+					width: 323px;
+					height: 172px;
+					top: -5px;
+					left: -15px;
+				}
 			}
 		}
 	}

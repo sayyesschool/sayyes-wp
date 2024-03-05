@@ -3,8 +3,8 @@
 		margin-bottom: 1rem;
 	}
 
-	&--violet {
-		color: $violet;
+	&--purple {
+		color: $purple;
 	}
 
 	&--yellow {
@@ -23,6 +23,10 @@
 		text-transform: uppercase;
 	}
 
+	&--center {
+		text-align: center;
+	}
+
 	&--muted {
 		color: lighten($black, 50%);
 	}
@@ -31,6 +35,7 @@
 		font-weight: 700;
 	}
 
+	&--bold,
 	&--weight-800 {
 		font-weight: 800;
 	}
@@ -64,4 +69,8 @@
 		font-size: 28px;
 		line-height: 29px;
 	}
+}
+
+.asterisk-text {
+	
 }

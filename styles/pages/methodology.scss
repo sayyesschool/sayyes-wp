@@ -10,44 +10,216 @@
     }
 
     .video-section {
-        &::before {
-			background-image: url('./static/images/decoration/notes/only-1.5-min.svg');
-		}
-
-        &__info {
+        &__header {
             max-width: 400px;
         }
-    }
 
-    @include breakpoint($breakpoint-md) {
-        .video-section {
-            &__info {
+        &__media {
+            &::before {
+				top: 55%;
+				left: -55%;
+                width: 268px;
+                height: 141px;
+                background: url('./static/images/decoration/notes/only-1.5-min.svg');
+            }
+        }
+
+        @include breakpoint($breakpoint-md) {
+            &__header {
                 max-width: 350px;
             }
         }
-    }
-
-    @include breakpoint($breakpoint-sm) {
-        .video-section {
-            &::before {
-				top: 145px;
-				left: 25%;
-				width: 207px;
-				height: 94px;
-			}
+    
+        @include breakpoint($breakpoint-sm) {
+            &__media {
+                &::before {
+                    top: 145px;
+                    left: 25%;
+                    width: 207px;
+                    height: 94px;
+                }
+            }
+        }
+    
+        @include breakpoint($breakpoint-xxs) {
+            &__media {
+                &::before {
+                    top: auto;
+                    bottom: 220px;
+                    left: 35%;
+                    width: 171px;
+                    height: 70px;
+                    background-image: url("./static/images/decoration/notes/only-1.5-min-3.svg");
+                }
+            }
         }
     }
+}
 
-    @include breakpoint($breakpoint-xxs) {
-        .video-section {
-            &::before {
-				top: auto;
-				bottom: 220px;
-				left: 35%;
-				width: 171px;
-				height: 70px;
-				background-image: url("./static/images/decoration/notes/only-1.5-min-3.svg");
+.effective-methods {
+	position: relative;
+
+	&__header {
+		max-width: 715px;
+		margin-bottom: 40px;
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 13%;
+		width: 218px;
+		height: 85px;
+		background: url('./static/images/decoration/notes/combination-of-techniques.svg')
+			center center/contain no-repeat;
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		&__title {
+			max-width: 600px;
+		}
+
+		&::before {
+			right: 10%;
+		}
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		&::before {
+			right: 0;
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		&__title {
+			max-width: 500px;
+		}
+
+		&::before {
+			display: none;
+		}
+	}
+}
+
+.methods {
+	display: flex;
+
+	&__method {
+		position: relative;
+		min-height: 530px;
+		padding: 50px 54px;
+		flex-basis: 50%;
+		display: flex;
+		flex-direction: column;
+		border-radius: $border-radius;
+
+		&:first-child {
+			z-index: 1;
+			background-color: $violet;
+		}
+
+		&:last-child {
+			background-color: $yellow;
+			border-radius: 0 $border-radius $border-radius 0;
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -50px;
+				width: 50px;
+				height: 100%;
+				background-color: $yellow;
 			}
-        }
-    }
+		}
+	}
+
+	&__title {
+		margin-bottom: 15px;
+		font-size: 24px;
+		font-weight: 700;
+		line-height: 25px;
+	}
+
+	&__description {
+		margin-bottom: 20px;
+	}
+
+	&__comment {
+		min-height: 260px;
+		padding: 45px 30px 35px 50px;
+		margin-top: auto;
+		background-color: $white;
+		border-radius: $border-radius;
+
+		p {
+			margin-bottom: 10px;
+		}
+	}
+
+	@include breakpoint($breakpoint-md) {
+		&__method {
+			min-height: 500px;
+			padding: 40px;
+		}
+
+		&__comment {
+			min-height: 250px;
+			padding: 30px;
+		}
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		flex-direction: column;
+
+		&__method {
+			min-height: 350px;
+
+			&:first-child {
+				border-radius: $border-radius $border-radius 0 0;
+
+				&::before {
+					content: "";
+					position: absolute;
+					bottom: -50px;
+					left: 0;
+					width: 100%;
+					height: 50px;
+					background-color: $violet;
+				}
+			}
+
+			&:last-child {
+				border-radius: $border-radius;
+				z-index: 1;
+
+				&::before {
+					display: none;
+				}
+			}
+		}
+
+		&__comment {
+			min-height: 150px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		&__title {
+			max-width: 390px;
+			font-size: 18px;
+			line-height: 20px;
+		}
+	}
+
+	@include breakpoint($breakpoint-mobile) {
+		&__method {
+			padding: 30px;
+		}
+
+		&__comment {
+			padding: 20px;
+		}
+	}
 }

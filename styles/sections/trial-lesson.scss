@@ -1,16 +1,19 @@
 .trial-lesson {
-	margin-bottom: 100px;
+	&__container {
+		max-width: unset;
+	}
 
-	.subtitle {
-		max-width: 701px;
-		line-height: 40px;
-		font-size: 42px;
+	&__header {
+		max-width: 1156px;
+		margin: 0 auto 35px;
+	}
+
+	&__title {
 		margin-bottom: 20px;
 	}
 
 	&__description {
 		max-width: 380px;
-		margin-bottom: 35px;
 	}
 
 	.tabs {
@@ -28,7 +31,7 @@
 			}
 
 			&:last-of-type {
-				background-color: $medium-magenta;
+				background-color: $violet;
 			}
 		}
 
@@ -61,7 +64,7 @@
 					bottom: -50px;
 					width: 50px;
 					height: 50px;
-					background-color: $medium-magenta;
+					background-color: $violet;
 				}
 
 				&:first-of-type {
@@ -76,7 +79,7 @@
 					&::before {
 						content: '';
 						right: 0;
-						background-color: $medium-magenta;
+						background-color: $violet;
 					}
 				}
 			}
@@ -84,30 +87,12 @@
 	}
 
 	@include breakpoint($breakpoint-lg) {
-		margin-bottom: 70px;
-
-		.subtitle {
-			font-size: 32px;
-			line-height: 30px;
-		}
-
 		&__description {
 			margin-bottom: 30px;
 		}
 	}
 
-	@include breakpoint($breakpoint-xs) {
-		margin-bottom: 60px;
-	}
-
 	@include breakpoint($breakpoint-xxs) {
-		margin-bottom: 50px;
-
-		.subtitle {
-			font-size: 26px;
-			line-height: 25px;
-		}
-
 		&__description {
 			margin-bottom: 65px;
 		}
@@ -157,7 +142,7 @@
 	
 		&--children {
 			padding: 40px 60px 105px;
-			background-color: $medium-magenta;
+			background-color: $violet;
 
 			&::after {
 				left: 432px;
@@ -261,8 +246,6 @@
 			&__title {
 				max-width: 240px;
 				margin-bottom: 10px;
-				font-size: 26px;
-				line-height: 25px;
 			}
 
 			&::after {

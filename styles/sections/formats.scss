@@ -1,0 +1,92 @@
+.formats {
+	position: relative;
+	z-index: 1;
+
+	&__description {
+		max-width: 400px;
+		margin: 20px 0 25px;
+	}
+
+	.tabs {
+		&__nav {
+			margin-bottom: 40px;
+		}
+
+		&__tab {
+			border-radius: $border-radius 0 0 $border-radius;
+
+			&:last-of-type {
+				border-radius: 0 $border-radius $border-radius 0;
+			}
+
+			&.active {
+				color: $white;
+				background-color: $purple;
+			}
+		}
+	}
+
+	.block {
+		align-items: flex-start;
+	}
+
+	.video {
+		flex-basis: 50%;
+	}
+
+	.card {
+		flex-basis: 40%;
+		margin-top: 50px;
+    	padding: 45px 50px 25px;
+
+		&__title {
+			max-width: 230px;
+			margin-top: 20px;
+			margin-bottom: 15px;
+			font-size: 18px;
+			font-weight: 800;
+		}
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 55px;
+		right: 280px;
+		width: 241px;
+		height: 180px;
+		background: url('./static/images/decoration/notes/classes-at-school.svg') center center/contain no-repeat;
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+		top: -35px;
+		right: -319px;
+		width: 508px;
+		height: 560px;
+		background: url('./static/images/decoration/elements/red-square.svg') center center/contain no-repeat;
+		z-index: -1;
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		&::before {
+			top: 25px;
+			width: 192px;
+			height: 146px;
+		}
+	}
+
+	@include breakpoint($breakpoint-md) {
+		&::before,
+		&::after {
+			display: none;
+		}
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		.card {
+			max-width: 440px;
+		}
+	}
+}

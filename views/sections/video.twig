@@ -1,15 +1,10 @@
-<section class="{{html_classes(class ?? [], 'video-section')}}">
-	<div class="video-section__content">
-		<h2 class="video-section__title subtitle">{{title}}</h2>
-
-		<div class="video-section__description">
-			{% for paragraph in description %}
-				<p>{{paragraph}}</p>
-			{% endfor %}
-		</div>
-	</div>
-
-	<div class="video-section__video">
+{% embed 'components/section.twig' with {
+	class: 'video-section',
+	title,
+	description,
+	horizontal: true
+} %}
+	{% block media %}
 		{% include 'components/video.twig' with video %}
-	</div>
-</section>
+	{% endblock %}
+{% endembed %}

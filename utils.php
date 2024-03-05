@@ -1,7 +1,13 @@
 <?php
 
+use Timber\URLHelper;
+
 function format_phone_number($string) {
     return str_replace(['+', '-', ' '], [''], $string);
+}
+
+function is_link_external($link) {
+    return URLHelper::is_external($link);
 }
 
 function disqus_embed($disqus_shortname, $post) {

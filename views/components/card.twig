@@ -1,4 +1,4 @@
-<div class="{{html_classes(class ?: [], 'card', color ? 'card--' ~ color)}}">
+<div class="{{html_classes(class ?: [], 'card', color ? 'card--' ~ color : [])}}">
     {% if image %}
         <img class="card__img" src="{{image.src}}" alt="{{image.alt}}">
     {% endif %}

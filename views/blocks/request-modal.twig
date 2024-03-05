@@ -1,0 +1,40 @@
+{% embed 'components/modal.twig' with {
+    id: 'request-modal',
+    tabs: true
+} %}
+    {% block content %}
+        {% embed 'components/tabs.twig' with {
+            tabs: [
+                {
+                    content: 'Взрослым',
+                    value: 'adults',
+                    active: true
+                },
+                {
+                    content: 'Детям',
+                    value: 'children',
+                }
+            ]
+        } %}
+            {% block content %}
+                <div class="feedback-block feedback-block--adults" data-tab-panel="adults">
+                    <div class="feedback-block__content">
+                        <p class="feedback-block__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы и расскажем о курсах</p>
+
+                        {% include 'blocks/request-form.twig' %}
+                    </div>
+                </div>
+
+                <div class="feedback-block feedback-block--children hidden" data-tab-panel="children">
+                    <div class="feedback-block__content">
+                        <p class="feedback-block__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы и расскажем о курсах</p>
+
+                        {% include 'blocks/request-form.twig' with {
+                            children: true
+                        } %}
+                    </div>
+                </div>
+            {% endblock %}
+        {% endembed %}
+    {% endblock %}
+{% endembed %}

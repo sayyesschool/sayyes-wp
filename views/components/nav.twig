@@ -1,13 +1,19 @@
 <nav class="nav">
-    <ul class="nav-list" role="tablist">
-        {% for item in side_menu.items %}
+    <ul class="nav-list">
+        {% for item in items %}
             {% if item.link %}
                 <li class="nav-item">
-                    <a class="nav-link{% if item.current %} active{% endif %}" href="{{ item.link }}"{% if item.is_external %} target="_blank"{% endif %}>{{ item.title }}</a>
+                    <a
+                        class="{{html_classes('nav-link', {
+                            'nav-link--active': item.current
+                        })}}"
+                        href="{{ item.link }}"
+                        {% if item.is_external %} target="_blank"{% endif %}
+                    >{{item.title}}</a>
                 </li>
             {% else %}
                 <li class="nav-item">
-                    <span class="nav-link">{{ item.title }}:</span>
+                    <span class="nav-link">{{ item.title }}</span>
                 </li>
             {% endif %}
         {% endfor %}

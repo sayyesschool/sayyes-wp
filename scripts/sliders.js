@@ -1,6 +1,8 @@
 import Swiper from 'swiper';
+import { Navigation, Pagination, Scrollbar } from 'swiper/modules';
 
-new Swiper('.swiper', {
+new Swiper('.student-progress-slider', {
+	modules: [Navigation, Pagination, Scrollbar],
 	spaceBetween: 150,
 	navigation: {
 		nextEl: '.slider__right-arrow',
@@ -8,7 +10,7 @@ new Swiper('.swiper', {
 	},
 	pagination: {
 		el: '.slider__pagination',
-	},
+	}
 });
 
 new Swiper('.organizations-slider', {

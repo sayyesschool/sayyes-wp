@@ -2,77 +2,98 @@
 
 {% block content %}
 	{% include 'sections/main.twig' with {
-        mixin: 'adults',
         title: page.heading ?? page.title,
         description: page.content,
         button: true,
         image: page.thumbnail
     } %}
 
-	{% include 'sections/img-courses.twig' with {
-        title: 'Наша школа предлагает курсы английского языка для разных уровней знаний и в разнообразных форматах:',
-	    courses: [
-            {
-                title: 'Груповое обучение в школе в Москве',
-                description: 'Наш офис находится в 7 минутах пешком от метро Павелецкая.',
-                class: 'big-course--white big-course--without-list',
-                img: 'course-1'
-            },
-            {
-                title: 'Обучение онлайн в мини-группах и индивидуально',
-                description: 'Мы обучаем онлайн в группах в Zoom или индивидуально на собственной платформе.',
-                class: 'big-course--white big-course--without-list',
-                img: 'course-2'
-            }
-        ]
+	{% embed 'components/section.twig' with {
+        name: 'courses-formats',
+        title: 'Наша школа предлагает курсы английского языка для разных уровней знаний и в разнообразных форматах:'
     } %}
-
-	{% include 'sections/img-courses-2.twig' with {
-        title: 'Выберите необходимое для вас обучение:',
-	    courses: courses|map(course => ({
-            title: course.title,
-            description: course.excerpt({ read_more: false }),
-            image: course.thumbnail,
-            list: [
-                {
-                    type: 'офлайн группа',
-                    prefix: course.prices.group_offline.prefix,
-                    value: course.prices.group_offline.value,
-                    postfix: course.prices.group_offline.postfix
-                },
-                {
-                    type: 'онлайн группа',
-                    prefix: course.prices.group_online.prefix,
-                    value: course.prices.group_online.value,
-                    postfix: course.prices.group_online.postfix
-                },
-                {
-                    type: 'индвидиульано',
-                    prefix: course.prices.individual_online.prefix,
-                    value: course.prices.individual_online.value,
-                    postfix: course.prices.individual_online.postfix
-                }
-            ]
-        }))|merge([
-            {
-                title: 'Разговорный онлайн клуб',
-                description: 'Улучшит разговорные навыки!',
-                class: 'big-course--violet',
-                img: 'course-9',
-                image: {
-                    src: theme.link ~ '/static/images/courses/course-9.jpg'
-                },
-                list: [
+        {% block content %}
+            <div class="cards grid grid--2">
+                {% for item in [
                     {
-                        lessonType: 'встреча в группе <br> онлайн',
-                        lessonPrice: '490 ₽',
-                        lessonTime: '/встреча'
+                        title: 'Груповое обучение в школе в Москве',
+                        description: 'Наш офис находится в 7 минутах пешком от метро Павелецкая.',
+                        image: 'course-1'
+                    },
+                    {
+                        title: 'Обучение онлайн в мини-группах и индивидуально',
+                        description: 'Мы обучаем онлайн в группах в Zoom или индивидуально на собственной платформе.',
+                        image: 'course-2'
                     }
-                ]
-            }
-        ]),
-        cycleColors
+                ] %}
+                    {% include 'components/card.twig' with {
+                        title: item.title,
+                        description: item.description,
+                        image: {
+                            src: theme.link ~ '/static/images/courses/' ~ item.image ~ '.jpg',
+                            alt: item.title
+                        }
+                    } only %}
+                {% endfor %}
+            </div>
+        {% endblock %}
+    {% endembed %}
+
+	{% embed 'components/section.twig' with {
+        name: 'courses-list',
+        title: 'Выберите необходимое для вас обучение:'
     } %}
+        {% block content %}
+            {% from 'blocks/course-card.twig' import course_card %}
+
+            <div class="cards grid grid--2">
+                {% for course in courses|map(course => ({
+                    title: course.title,
+                    description: course.excerpt({ read_more: false }),
+                    image: course.thumbnail,
+                    prices: [
+                        {
+                            label: 'офлайн группа',
+                            prefix: course.formats.group_offline.prefix,
+                            value: course.formats.group_offline.value,
+                            postfix: course.formats.group_offline.postfix
+                        },
+                        {
+                            label: 'онлайн группа',
+                            prefix: course.formats.group_online.prefix,
+                            value: course.formats.group_online.value,
+                            postfix: course.formats.group_online.postfix
+                        },
+                        {
+                            label: 'индивидуально',
+                            prefix: course.formats.individual_online.prefix,
+                            value: course.formats.individual_online.value,
+                            postfix: course.formats.individual_online.postfix
+                        }
+                    ]
+                }))|merge([
+                    {
+                        title: 'Разговорный онлайн клуб',
+                        description: 'Улучшит разговорные навыки!',
+                        class: 'purple',
+                        image: {
+                            src: theme.link ~ '/static/images/courses/course-9.jpg'
+                        },
+                        prices: [
+                            {
+                                label: 'встреча в группе онлайн',
+                                prefix: '',
+                                value: '450 ₽',
+                                postfix: '/встреча'
+                            }
+                        ]
+                    }
+                ]) %}
+                    {{course_card(course, cycle(['white', 'pink', 'purple'], loop.index0))}}
+                {% endfor %}
+            </div>
+        {% endblock %}
+    {% endembed %}
 
 	{% include 'sections/trial-lesson.twig' %}
 {% endblock %}

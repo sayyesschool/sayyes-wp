@@ -9,15 +9,15 @@
     } %}
 
 	{% embed 'components/section.twig' with {
-        class: 'formats-cards',
+        name: 'formats-cards',
         title: 'Наша школа предлагает курсы английского языка для разных уровней знаний и в разнообразных форматах.'
     } %}
         {% block content %}
             <div class="cards-grid grid grid--2">
                 {% for format in formats %}
-                    {% set color = cycle(['white', 'pink', 'violet'], loop.index0) %}
+                    {% set color = cycle(['white', 'pink', 'purple'], loop.index0) %}
 
-                    {% include 'components/format-card.twig' with {
+                    {% include 'blocks/format-card.twig' with {
                         format,
                         color
                     } %}
@@ -29,14 +29,14 @@
                     color: 'white'
                 } only %}
                     {% block body %}
-                        <button class="btn btn--violet">Оставить заявку</button>
+                        <button class="btn btn--purple">Оставить заявку</button>
                     {% endblock %}
                 {% endembed %}
             </div>
         {% endblock %}
     {% endembed %}
 
-	{% include 'sections/about-formats.twig' %}
+	{% include 'sections/formats.twig' %}
 
 	{% include 'sections/trial-lesson.twig' %}
 {% endblock %}

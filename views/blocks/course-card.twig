@@ -1,0 +1,42 @@
+{% macro course_card(course, color, formats = true) %}
+	<div class="course-card card card--hover card--{{color}}">
+		{% if course.thumbnail %}
+			<img class="card__img" src="{{course.thumbnail.src}}" alt="{{course.thumbnail.alt}}">
+		{% endif %}
+
+		<div class="card__header">
+			<h3 class="card__title">{{course.title}}</h3>
+
+			{% if course.excerpt %}
+				<p class="card__description">{{course.excerpt({ read_more: false })}}</p>
+			{% endif %}
+
+			{% if course.age %}
+				<span class="course__age-tag course__age-tag-{{item.age.color}}">{{course.age.text}} лет</span>
+			{% endif %}
+		</div>
+
+		{% if formats %}
+			<div class="card__body">
+				<p>Стоимость<br>обучения:</p>
+				
+				<ul class="list">
+					{% for name, label in formats %}
+						{% set format = course.formats[name] %}
+
+						<li class="list-item">
+							{{label}}
+
+							<span>
+								{{format.price.prefix}}
+								<strong>{{format.price.value}}</strong>{{format.price.postfix}}
+							</span>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		{% endif %}
+
+		<a class="card__link" href="{{course.link}}"></a>
+	</div>
+{% endmacro %}

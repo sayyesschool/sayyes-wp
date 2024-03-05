@@ -1,7 +1,6 @@
 {% extends 'layouts/base.twig' %}
 
 {% block content %}
-    {{dump(course.formats)}}
 	{% include 'sections/main.twig' with {
         title: course.heading ?? course.title,
         description: course.content,
@@ -10,18 +9,18 @@
     } %}
 
 	{% include 'components/section.twig' with {
-        class: 'about',
+        name: 'about',
         title: course.about.title,
         content: course.about.content
     } %}
 
 	{% embed 'components/section.twig' with {
-        class: 'learning-form',
+        name: 'learning-form',
         title: course.formats.title ?: 'Формы обучения на курсе ' ~ course.title,
         description: 'Вы можете проходить курс английского языка с нуля в различных форматах. Продолжительность и стоимость курса зависят от интенсивности и формата обучения.'
     } %}
         {% block content %}
-            {% from 'components/format-card.twig' import format_card %}
+            {% from 'blocks/format-card.twig' import format_card %}
 
             <div class="cards-grid grid grid--2">
                 {% for format in [
@@ -51,13 +50,13 @@
                         description: format.description,
                         price: format.price,
                         link: false
-                    }, cycle(['white', 'pink', 'violet'], loop.index0))}}
+                    }, cycle(['white', 'pink', 'purple'], loop.index0))}}
                 {% endfor %}
             </div>
         {% endblock %}
     {% endembed %}
 
-	{% include 'sections/trial-lesson-mini.twig' %}
+	{% include 'sections/trial-lesson-cta.twig' %}
 
 	{% include 'sections/advantages.twig' with {
         title:  course.facts.title ?: 'Важные факты о курсе <br>' ~ course.title,
@@ -87,7 +86,7 @@
     } %}
 
     {% embed 'components/section.twig' with {
-        class: 'course-results',
+        name: 'course-results',
         title: course.results.title ?: 'Результаты курса <br>' ~ course.title
     } %}
         {% block content %}
@@ -110,12 +109,12 @@
     {% endembed %}
 
     {% embed 'components/section.twig' with {
-        class: 'course-testimonials',
+        name: 'course-testimonials',
         title: 'Отзывы о курсе <br>' ~ course.title,
         description: 'За 10 лет работы, обучили более 10 000 человек и получили более 800 отзывов'
     } %}
         {% block content %}
-            {% include 'components/course-testimonials-slider.twig' with {
+            {% include 'blocks/course-testimonials-slider.twig' with {
                 groups: testimonial_groups
             } %}
         {% endblock %}

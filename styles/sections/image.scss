@@ -1,0 +1,124 @@
+.image-section {
+	&__container {
+		display: flex;
+		gap: 20px;
+	}
+
+	&__header {
+		width: 100%;
+		padding: 70px 100px;
+		border-radius: $border-radius;
+		background-color: $white;
+	}
+
+	&__title {
+		max-width: 470px;
+		margin-bottom: 40px;
+		font-size: 42px;
+		font-weight: 700;
+		line-height: 40px;
+	}
+
+	&__description {
+		position: relative;
+		padding-left: 60px;
+
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			width: 45px;
+			height: 33px;
+			background: url('./static/images/icons/quotes.svg') center
+				center/contain no-repeat;
+		}
+
+		&::before {
+			top: -15px;
+			left: 0px;
+		}
+
+		&::after {
+			bottom: -10px;
+			right: 0px;
+			transform: rotate(180deg);
+		}
+	}
+
+	&__media {
+		position: relative;
+		min-width: 370px;
+		min-height: 500px;
+		border-radius: $border-radius;
+
+		&::before {
+			content: '';
+			position: absolute;
+		}
+
+		.image {
+			position: absolute;
+			bottom: 0;
+		}
+	}
+
+	@include breakpoint($breakpoint-xl) {
+		&__content {
+			padding: 35px 50px;
+		}
+
+		&__description {
+			&::after {
+				right: -40px;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-md) {
+		&__title {
+			font-size: 32px;
+			line-height: 30px;
+		}
+
+		&__description {
+			padding: 0;
+
+			&::before,
+			&::after {
+				display: none;
+			}
+		}
+
+		&__media {
+			min-width: 242px;
+			border-radius: $border-radius-sm;
+		}
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		&__content {
+			padding: 35px 25px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		flex-direction: column-reverse;
+	}
+
+	@include breakpoint($breakpoint-mobile) {
+		position: relative;
+
+		&__title {
+			font-size: 26px;
+			line-height: 25px;
+		}
+
+		&__image {
+			width: calc(100% - 50px);
+			min-height: 215px;
+			position: absolute;
+			top: 111px;
+			left: 25px;
+		}
+	}
+}

@@ -1,9 +1,9 @@
 <div class="{{html_classes('tabs', {
     'tabs--centered': centered,
     'tabs--pills': pills,
-    'tabs--yellow': color == 'yellow',
-    'tabs--magenta': color == 'magenta',
     'tabs--purple': color == 'purple',
+    'tabs--violet': color == 'violet',
+    'tabs--yellow': color == 'yellow'
 })}}"{% if tabs[0].active and tabs[0].value %} data-value="{{tabs[0].value}}"{% endif %}>
     <div class="tabs__nav">
         {% for tab in tabs %}

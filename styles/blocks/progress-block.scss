@@ -1,0 +1,61 @@
+.progress-block {
+    &__video {
+        flex-basis: 60%;
+    }
+
+    &__content {
+        flex-basis: 40%;
+    }
+
+    .speech-bubble {
+        margin-left: auto;
+        margin-top: 1rem;
+    }
+
+    .card {
+        padding: 45px 50px;
+    }
+
+    @include breakpoint($breakpoint-sm) {
+		padding: 25px 35px 30px 30px;
+
+		.card {
+            &__title {
+                margin-bottom: 15px;
+                font-size: 18px;
+                font-weight: 800;
+                line-height: 20px;
+            }
+    
+            &__subtitle {
+                font-size: 16px;
+                line-height: 18px;
+            }
+        }
+	}
+
+    @include breakpoint($breakpoint-xxs) {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+
+        &__video,
+        &__content {
+            flex-basis: auto;
+        }
+
+        .video {
+            margin-bottom: -30px;
+        }
+
+        .card {
+            padding-top: 54px;
+            border-top-right-radius: 0;
+            border-top-left-radius: 0;
+        }
+
+        .speech-bubble {
+            display: none;
+        }
+    }
+}

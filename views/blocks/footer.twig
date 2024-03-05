@@ -1,0 +1,140 @@
+<footer class="footer">
+	<div class="footer__container">
+		{% include 'blocks/logo.twig' with { color: 'purple' } %}
+
+		<div class="footer__row">
+			<div class="footer__column">
+				<div class="footer__call">
+					{% include 'blocks/phone-numbers.twig' %}
+
+					{% include 'components/list.twig' with {
+						items: [
+							{
+								content: 'Заказать звонок',
+								link: links.main_phone
+							},
+							{
+								content: 'Напишите нам в WhatsApp',
+								link: links.wa_phone
+							}
+						],
+						gap: 'xs'
+					} %}
+				</div>
+
+				<div class="footer__email">
+					<div class="footer__title">E-mail:</div>
+					<div class="footer__item">
+						<a class="footer__link" href="{{links.email}}">{{site_data.contacts.email}}</a>
+					</div>
+				</div>
+
+				<div class="footer__address">
+					<div class="footer__title">Адрес школы:</div>
+					<div class="footer__item">{{site_data.contacts.address}}</div>
+				</div>
+			</div>
+
+			<div class="footer__column"></div>
+
+			<div class="footer__column">
+				<div class="footer__about">
+					<div class="footer__title">О SAY YES</div>
+
+					<ul class="footer__nav">
+						{% for item in footer_nav.items[0].children %}
+							<li class="footer__item">
+								<a class="footer__link" href="{{item.link}}">{{item.title}}</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+
+				{% include 'blocks/social.twig' %}
+			</div>
+
+			<div class="footer__column">
+				<div class="footer__courses-formats">
+					<div class="footer__title">Курсы и программы школы</div>
+
+					<div class="flex">
+						<div class="footer__courses">
+							<div class="footer__title">Курсы</div>
+
+							<ul class="footer__nav">
+								{% for item in footer_nav.items[1].children %}
+									<li class="footer__item">
+										<a class="footer__link" href="{{item.link}}">{{item.title}}</a>
+									</li>
+								{% endfor %}
+							</ul>
+						</div>
+
+						<div class="flex flex--column">
+							<div class="footer__formats">
+								<div class="footer__title">Формы обучения</div>
+
+								<ul class="footer__nav">
+									{% for item in footer_nav.items[2].children %}
+										<li class="footer__item">
+											<a class="footer__link" href="{{item.link}}">{{item.title}}</a>
+										</li>
+									{% endfor %}
+								</ul>
+							</div>
+
+							{{ _self.sout }}
+						</div>
+					</div>
+				</div>
+
+				{{ _self.lisence }}
+			</div>
+		</div>
+
+		<div class="footer__row">
+			<div class="footer__column">
+				<div class="footer__policy">
+					<p><a href="{{links.policy}}">Политика конфиденциальности</a></p>
+					<p><a href="{{links.offer}}">Договор-оферта</a></p>
+				</div>
+			</div>
+
+			<div class="footer__column">
+				<div class="footer__copyright">
+					<p>© 2013–{{ "now"|date('Y') }} SAY YES!</p>
+					<p>Все права защищены</p>
+				</div>
+			</div>
+
+			<div class="footer__column">
+				<div class="footer__with-love">
+					Сделано с
+					<img class="footer__with-love-img" src="{{theme.link}}/static/images/decoration/elements/heart-2.svg" alt="С любовью">
+				</div>
+			</div>
+
+			<div class="footer__column">
+				<div class="footer__designer">
+					<p>Дизайн сайта</p>
+					<p>Насибуллина Екатерина</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+{% macro lisence() %}
+	<div class="footer__license">
+		<a class="license" href="{{site.link}}/licenzii/" title="Лицензия 77 Л01 №0007610">
+			<h4 class="license__title">Лицензия на доп. образование</h4>
+			<p class="license__series">серия 77 Л01 №0007610</p>
+		</a>
+	</div>
+{% endmacro %}
+
+{% macro sout() %}
+	<div class="footer__sout">
+		<a href="{{theme.link}}/static/documents/sout.pdf" target="_blank">Результаты проведения СОУТ</a>
+	</div>
+{% endmacro %}

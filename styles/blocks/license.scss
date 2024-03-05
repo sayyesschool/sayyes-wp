@@ -1,0 +1,59 @@
+.license {
+	position: relative;
+	height: 75px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding-left: 110px;
+	border-radius: $border-radius-sm;
+	background-color: $pearl-white;
+	font-size: 16px;
+	line-height: 15px;
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: -3px;
+		left: -4px;
+		width: 145px;
+		height: 79px;
+		display: block;
+		background-image: url('./static/images/pictures/license.png');
+		background-size: contain;
+	}
+
+	&__title {
+		font-weight: 700;
+    	margin-bottom: 5px;
+	}
+
+	&__series {
+		font-weight: 500;
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		background-color: transparent;
+		padding: 0;
+
+		&::before {
+			display: none;
+		}
+
+		&__title {
+			max-width: 150px;
+		}
+	}
+
+	@include breakpoint($breakpoint-mobile) {
+		background-color: $pearl-white;
+		padding-left: 110px;
+
+		&::before {
+			display: block;
+		}
+
+		&__title {
+			max-width: none;
+		}
+	}
+}

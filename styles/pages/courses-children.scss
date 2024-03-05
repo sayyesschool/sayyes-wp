@@ -1,11 +1,7 @@
 .page-template-page-courses-children {
     .main {
-        .section__title {
+        &__title {
             max-width: 680px;
-        }
-
-        .section__description {
-            max-width: 460px;
         }
     }
 }

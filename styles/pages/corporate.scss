@@ -10,6 +10,10 @@
     }
 
     .video-section {
+        &__info {
+            max-width: 530px;
+        }
+
         &::before {
 			width: 173px;
 			height: 38px;
@@ -18,12 +22,8 @@
 			background-image: url('./static/images/decoration/notes/only-1.5-min-2.svg');
 		}
 
-        &__info {
-            max-width: 530px;
-        }
-
         .video {
-            &::before {
+            &::after {
 				content: none;
 			}
         }
@@ -106,6 +106,365 @@
 
             &__info {
                 max-width: none;
+            }
+        }
+    }
+}
+
+.corporate-directions {    
+    &__header {
+        max-width: 900px;
+        margin-bottom: 40px;
+    }
+
+    .card {
+        flex: 1;
+        min-height: 275px;
+        padding: 123px 20px 16px 38px;
+
+        &__title {
+            max-width: 100px;
+            margin: 0 0 15px;
+            font-size: 18px;
+            line-height: 20px;
+        }
+    }
+
+    @include breakpoint($breakpoint-lg) {
+        &__header {
+            max-width: 650px;
+        }
+    }
+
+    @include breakpoint($breakpoint-md) {    
+        .card {
+            width: calc(50% - 7.5px);
+            min-height: 210px;
+            padding-top: 100px;
+
+            &__title {
+                max-width: none;
+            }
+        }
+    }
+
+    @include breakpoint($breakpoint-xxs) {
+        &__header {
+            max-width: 550px;
+        }
+
+        .card {
+            width: 100%;
+            min-height: 155px;
+            padding-top: 60px;
+        }
+    }
+
+    @include breakpoint($breakpoint-sm-mobile) {
+        .card {
+            &__title {
+                max-width: 100px;
+            }
+        }
+    }
+}
+
+.corporate-benefits,
+.corporate-steps {
+    &__header {
+        max-width: 550px;
+		margin-bottom: 45px;
+	}
+
+    .picture {
+        position: relative;
+        min-height: 510px;
+        padding: 38px 15px 0 0;
+        display: flex;
+        flex-basis: calc(32% - 10px);
+        justify-content: flex-end;
+        background-color: #e5e3e2;
+        border-radius: 30px;
+
+        &__image {
+            position: absolute;
+            left: -55px;
+            bottom: 0;
+            width: 362px;
+            height: 440px;
+            display: block;
+            object-fit: cover;
+        }
+
+        &__caption {
+            max-width: 160px;
+            font-size: 16px;
+            font-style: italic;
+            font-weight: 500;
+            line-height: 15px;
+
+            .heading {
+                font-size: 16px;
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    .card {
+        flex-basis: calc(68% - 10px);
+        padding: 54px 40px 0px 80px;
+    }
+
+	.btn {
+        margin: 30px auto 50px;
+		font-size: 18px;
+		font-weight: 700;
+	}
+
+    @include breakpoint($breakpoint-md) {
+		&__header {
+			max-width: 400px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		padding: 30px 20px;
+		border-radius: $border-radius;
+		background-color: $white;
+
+		&__title {
+			max-width: none;
+			margin-bottom: 20px;
+		}
+	}
+}
+
+.corporate-benefits {
+	margin-bottom: 135px;
+
+    .picture {
+        &__caption {
+            max-width: 160px;
+        }
+    }
+
+	@include breakpoint($breakpoint-md) {
+		margin-bottom: 125px;
+
+		&__header {
+			max-width: 400px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 115px;
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 105px;
+	}
+}
+
+.corporate-formats {
+    &__header {
+        max-width: 860px;
+        margin-bottom: 40px;
+    }
+}
+
+.corporate-teachers {
+    &__header {
+        margin-bottom: 40px;
+    }
+
+    &__title {
+        max-width: 880px;
+        margin-bottom: 20px;
+    }
+
+    &__description {
+        max-width: 720px;
+        margin-bottom: 10px;
+    }
+
+    .cards {
+        margin-bottom: 40px;
+    }
+
+    .btn {
+        margin: 0 auto;
+        font-weight: 700;
+    }
+
+    @include breakpoint($breakpoint-lg) {
+        margin-bottom: 70px;
+    }
+
+    @include breakpoint($breakpoint-xs) {
+        margin-bottom: 60px;
+    }
+
+    @include breakpoint($breakpoint-xxs) {
+        margin-bottom: 50px;
+    }
+}
+
+.corporate-extra-benefits {
+	&__header {
+		max-width: 800px;
+		margin-bottom: 45px;
+	}
+
+    &__content {
+		margin-bottom: 30px;
+	}
+
+    .card {
+        display: flex;
+        align-items: flex-end;
+        padding-right: 140px;
+    }
+
+	.btn {
+		margin: 40px auto 0;
+	}
+}
+
+.corporate-organizations {
+	margin-bottom: 130px;
+
+	.slider {
+		overflow: hidden;
+	}
+
+    .grid {
+        grid-template-rows: repeat(3, 175px);
+    }
+
+	.card {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 20px;
+
+        img {
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+        }
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		.slider {
+			width: calc(100% + 15px);
+
+            &__arrows,
+            &__pagination {
+                display: none;
+            }
+		}
+
+		.swiper-wrapper {
+			overflow-x: auto;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+		}
+	}
+}
+
+.corporate-reviews {
+	margin-bottom: 150px;
+
+	&__header {
+		max-width: 580px;
+	}
+
+	.slider {
+		overflow: hidden;
+
+        &__pagination {
+            margin-top: 40px;
+        }
+	}
+
+    .card {
+        background: none;
+
+        &__img {
+            width: 100%;
+            display: block;
+            object-fit: contain;
+            border-radius: $border-radius;
+        }
+    
+        &__title {
+            margin-top: 20px;
+            font-weight: 800;
+        }
+    }
+
+	@include breakpoint($breakpoint-lg) {
+		&__header {
+			max-width: 550px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		.slider {
+			width: calc(100% + 15px);
+
+            &__arrows,
+            &__pagination {
+                display: none;
+            }
+		}
+
+		.swiper-wrapper {
+			overflow-x: auto;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+		}
+	}
+}
+
+.corporate-steps {
+    margin-bottom: 150px;
+
+	&__header {
+		max-width: 550px;
+	}
+
+    .picture {
+        min-height: 450px;
+        
+        &__image {
+            width: 300px;
+            height: 366px;
+            left: -20px;
+        }
+
+        &__caption {
+            max-width: 175px;
+        }
+    }
+
+    .list {
+        align-items: flex-start;
+
+        .list-item:nth-child(4),
+        .list-item:nth-child(5) {
+            &::after {
+                content: '';
+                width: 63px;
+                height: 44px;
+                position: absolute;
+                top: -12px;
+                right: -78px;
+                background: url('./static/images/decoration/notes/free.svg') center center / contain no-repeat;
             }
         }
     }

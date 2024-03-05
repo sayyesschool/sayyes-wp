@@ -1,19 +1,8 @@
 .section {
+	position: relative;
 	margin-bottom: 100px;
+	border-radius: $border-radius;
 
-	@include breakpoint($breakpoint-lg) {
-		margin-bottom: 70px;
-	}
-
-	@include breakpoint($breakpoint-xs) {
-		margin-bottom: 60px;
-	}
-
-	@include breakpoint($breakpoint-xxs) {
-		margin-bottom: 50px;
-	}
-	
-	&-container,
 	&__container {
 		position: relative;
 		max-width: 1156px;
@@ -24,21 +13,6 @@
 		font-size: 42px;
 		font-weight: 700;
 		line-height: 40px;
-	
-		@include breakpoint($breakpoint-lg) {
-			font-size: 32px;
-			line-height: 30px;
-		}
-
-		@include breakpoint($breakpoint-xs) {
-			font-size: 28px;
-			line-height: 30px;
-		}
-	
-		@include breakpoint($breakpoint-xxs) {
-			font-size: 26px;
-			line-height: 25px;
-		}
 	}
 
 	&__description {
@@ -49,5 +23,45 @@
 
 	&__content {
 		position: relative;
+	}
+
+	&--purple {
+		background-color: $purple;
+		color: $white;
+	}
+
+	&--horizontal &__container {
+		display: flex;
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+
+		&__title {
+			font-size: 32px;
+			line-height: 30px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+
+		&__title {
+			font-size: 28px;
+			line-height: 30px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
+
+		&__title {
+			font-size: 26px;
+			line-height: 25px;
+		}
+	}
+
+	@include breakpoint($breakpoint-mobile) {
+		border-radius: 0;
 	}
 }

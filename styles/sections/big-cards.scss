@@ -1,14 +1,9 @@
 .big-cards {
 	padding: 65px 62px 80px;
-	margin-bottom: 100px;
 
-	background-color: $violet;
-	border-radius: $border-radius;
-
-	.subtitle {
+	&__title {
 		margin-bottom: 45px;
 		max-width: 660px;
-
 		color: $white;
 	}
 

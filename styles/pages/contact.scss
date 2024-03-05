@@ -1,3 +1,307 @@
 #contact-page {
     
 }
+
+.contacts-section {
+	margin: 25px 0 100px;
+
+	.subtitle {
+		max-width: 800px;
+		margin: 0 auto 20px;
+
+		font-size: 46px;
+		text-align: center;
+		line-height: 45px;
+	}
+
+	&__description {
+		margin: 0 auto;
+		margin-bottom: 50px;
+
+		text-align: center;
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+	}
+
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
+	}
+}
+
+.contacts {
+	display: flex;
+	justify-content: space-between;
+	gap: 50px;
+	padding: 60px;
+	border-radius: $border-radius;
+	background-color: $white;
+
+	.phone-numbers {
+		max-width: 240px;
+
+		a {
+			color: $purple;
+			font-size: 18px;
+		}
+
+		.phone-numbers__item {
+			gap: 20px;
+		}
+	}
+
+	.social {
+		&__item {
+			&:nth-child(2) {
+				margin-right: 0;
+			}
+
+			&:nth-child(3) {
+				display: none;
+			}
+		}
+	}
+
+	&__info {
+		max-width: 372px;
+	}
+
+	&__content {
+		margin-bottom: 40px;
+	}
+
+	&__phone,
+	&__email,
+	&__time {
+		margin-top: 20px;
+	}
+
+	&__email {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		.social {
+			display: none;
+		}
+	}
+
+	&__title {
+		margin-bottom: 5px;
+		font-weight: 800;
+		letter-spacing: 0.36px;
+		text-transform: uppercase;
+
+		margin-top: 20px;
+	}
+
+	&__text-address {
+		margin-bottom: 5px;
+	}
+
+	&__links {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__schedule-list {
+		max-width: 370px;
+
+		li {
+			display: flex;
+			justify-content: space-between;
+
+			&:first-child {
+				margin-bottom: 5px;
+			}
+
+			span {
+				&:first-child {
+					font-weight: 700;
+				}
+			}
+		}
+	}
+
+	&__map {
+		width: 100%;
+		border-radius: $border-radius;
+		overflow: hidden;
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		flex-direction: column;
+		padding: 40px 30px;
+
+		&__info {
+			max-width: 100%;
+		}
+
+		&__content {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 20px;
+		}
+
+		&__address,
+		&__phone,
+		&__email,
+		&__time {
+			width: calc(50% - 10px);
+			margin-top: 0;
+		}
+
+		&__phone {
+			.social {
+				display: none;
+			}
+		}
+
+		&__email {
+			order: 1;
+
+			.social {
+				display: flex;
+			}
+		}
+
+		&__title {
+			margin-bottom: 15px;
+		}
+
+		&__map {
+			height: 350px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		padding: 35px 25px;
+
+		&__content {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0;
+		}
+
+		&__address,
+		&__phone,
+		&__email,
+		&__time {
+			width: 100%;
+		}
+
+		&__email {
+			order: 0;
+		}
+	}
+
+	@include breakpoint($breakpoint-sm-mobile) {
+		&__map {
+			height: 200px;
+		}
+	}
+}
+
+.contact-us {
+	margin-bottom: 100px;
+
+	&__title {
+		margin-bottom: 40px;
+	}
+
+	&__content {
+		display: flex;
+		gap: 20px;
+	}
+
+	.contact-card {
+		width: calc((100% - 40px) / 3);
+
+		.card {
+			&__content {
+				padding: 35px 50px;
+				min-height: 280px;
+			}
+	
+			&__name {
+				margin-bottom: 5px;
+			}
+	
+			&__post {
+				margin-bottom: auto;
+			}
+	
+			&__description {
+				margin-bottom: 10px;
+			}
+		}
+
+		li {
+			color: $purple;
+
+			display: flex;
+			gap: 15px;
+		}
+
+		@include breakpoint($breakpoint-md) {
+			.card {
+				&__img {
+					height: 320px;
+				}
+	
+				&__content {
+					padding: 25px;
+				}
+			}
+		}
+
+		@include breakpoint($breakpoint-sm) {
+			width: 100%;
+			flex-direction: row;
+
+			.card__img {
+				width: 50%;
+				height: 370px;
+			}
+		}
+
+		@include breakpoint($breakpoint-xxs) {
+			.card__img {
+				height: 320px;
+			}
+		}
+
+		@include breakpoint($breakpoint-mobile) {
+			flex-direction: column;
+	
+			.card__img {
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		margin-bottom: 70px;
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		&__content {
+			flex-direction: column;
+		}
+	}
+
+	@include breakpoint($breakpoint-xs) {
+		margin-bottom: 60px;
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		margin-bottom: 50px;
+	}
+}

@@ -2,111 +2,75 @@
 
 {% block content %}
 	{% include 'sections/main.twig' with {
-        mixin: 'children',
 		title: page.heading ?? page.title,
         description: page.content,
         button: true,
         image: page.thumbnail
 	} %}
 
-	{% include 'sections/img-courses.twig' with {
-		title: 'Мы обучаем онлайн на собственной онлайн платформе.',
-		courses: [
-			{
-				title: 'Индивидуальное обучение в школе в Москве',
-				description: 'Наш офис находится в 7 минутах пешком от метро Павелецкая.',
-				class: 'big-course--white big-course--without-list',
-				img: 'course-1'
-			},
-			{
-				title: 'Индивидуальное обучение онлайн',
-				description: 'Мы обучаем онлайн в группах в Zoom или индивидуально на собственной платформе.',
-				class: 'big-course--white big-course--without-list',
-				img: 'course-3'
-			}
-		]
+	{% embed 'components/section.twig' with {
+		name: 'courses-formats',
+		title: 'Мы обучаем онлайн на собственной онлайн платформе.'
 	} %}
+		{% block content %}
+			<div class="cards grid grid--2">
+				{% for item in [
+					{
+						title: 'Индивидуальное обучение в школе в Москве',
+						description: 'Наш офис находится в 7 минутах пешком от метро Павелецкая.',
+						image: 'course-1'
+					},
+					{
+						title: 'Индивидуальное обучение онлайн',
+						description: 'Мы обучаем онлайн в группах в Zoom или индивидуально на собственной платформе.',
+						image: 'course-3'
+					}
+				] %}
+					{% include 'components/card.twig' with {
+						title: item.title,
+						description: item.description,
+						image: {
+							src: theme.link ~ '/static/images/courses/' ~ item.image ~ '.jpg',
+							alt: item.title
+						}
+					} only %}
+				{% endfor %}
+			</div>
+		{% endblock %}
+	{% endembed %}
 
-	{% include 'sections/img-courses-2.twig' with {
-		class: 'img-courses-2--children',
-		title: 'Выберите необходимое для вас обучение:',
-		courses: [
-			{
-				title: 'Курс “Bright ideas”',
-				description: 'Познакомит ребенка с азами языка в игровой форме и привьет любовь к языку.',
-				class: 'big-course--white',
-				img: 'course-10',
-				list: [
-					{
-						lessonType: 'онлайн индивидуально',
-						lessonPrice: '542 ₽',
-						lessonSince: 'от',
-						lessonTime: '/урок.'
-					},
-					{
-						lessonType: 'офлайн индивидуально',
-						lessonPrice: '1.550 ₽',
-						lessonSince: 'от',
-						lessonTime: '/урок'
-					}
-				]
-			},
-			{
-				title: 'Курс “Family and friends”',
-				description: 'Курс английского для начальной школы соответствует завершенному уровню Elementary.',
-				class: 'big-course--pink',
-				img: 'course-11',
-				list: [
-					{
-						lessonType: 'онлайн индивидуально',
-						lessonPrice: '950 ₽',
-						lessonSince: 'от',
-						lessonTime: '/урок.'
-					},
-					{
-						lessonType: 'офлайн индивидуально',
-						lessonPrice: '1.550 ₽',
-						lessonSince: 'от',
-						lessonTime: '/урок'
-					}
-				]
-			},
-			{
-				title: 'Курс “Go getter”',
-				description: 'По окончании курса слушатели владеют языком на уровне Upper-Intermediate.',
-				class: 'big-course--violet',
-				img: 'course-12',
-				list: [
-					{
-						lessonType: 'онлайн индивидуально',
-						lessonPrice: '950 ₽',
-						lessonSince: 'от',
-						lessonTime: '/урок.'
-					},
-					{
-						lessonType: 'офлайн индивидуально',
-						lessonPrice: '1.550 ₽',
-						lessonSince: 'от',
-						lessonTime: '/урок'
-					}
-				]
-			},
-			{
-				title: 'Подготовка к ОГЭ, ЕГЭ, YLE, KET, PET, FCE',
-				description: 'Подготовит вашего ребенка к успешной сдаче российских и международных экзаменов',
-				class: 'big-course--white',
-				img: 'course-13',
-				list: [
-					{
-						lessonType: 'индивидуально онлайн и офлайн',
-						lessonPrice: '1.650 ₽',
-						lessonSince: 'от',
-						lessonTime: '/урок'
-					}
-				]
-			}
-		]
-	} %}
+	{% embed 'components/section.twig' with {
+        name: 'courses-list',
+        title: 'Выберите необходимое для вас обучение:'
+    } %}
+        {% block content %}
+            {% from 'blocks/course-card.twig' import course_card %}
+
+            <div class="cards grid grid--2">
+                {% for course in courses|map(course => ({
+                    title: course.title,
+                    description: course.excerpt({ read_more: false }),
+                    image: course.thumbnail,
+                    prices: [
+                        {
+                            label: 'офлайн индвидиульано',
+                            prefix: course.prices.individual_offline.prefix,
+                            value: course.prices.individual_offline.value,
+                            postfix: course.prices.individual_offline.postfix
+                        },
+                        {
+                            label: 'онлайн индвидиульано',
+                            prefix: course.prices.individual_online.prefix,
+                            value: course.prices.individual_online.value,
+                            postfix: course.prices.individual_online.postfix
+                        }
+                    ]
+                })) %}
+                    {{course_card(course, cycle(['white', 'pink', 'purple'], loop.index0))}}
+                {% endfor %}
+            </div>
+        {% endblock %}
+    {% endembed %}
 
 	{% include 'sections/trial-lesson.twig' %}
 {% endblock %}

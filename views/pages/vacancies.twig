@@ -10,158 +10,175 @@
         image: page.thumbnail
 	} %}
 
-	<section class="expectations">
-		<div class="section-container">
-			<h2 class="subtitle">Ожидание от кандидатов</h2>
-
-			<p class="expectations__description">Мы готовы вкладываться в ваше развитие, но базовый опыт и знания необходимы уже со старта работы у нас в школе.</p>
-
-			<div class="text-blocks text-blocks--expectations">
+	{% embed 'components/section.twig' with {
+		name: 'vacancies-expectations',
+		title: 'Ожидание от кандидатов',
+		description: 'Мы готовы вкладываться в ваше развитие, но базовый опыт и знания необходимы уже со старта работы у нас в школе.'
+	} %}
+		{% block content %}
+			<div class="fact-cards grid grid--2-1-2">
 				{% for item in [
 					{
 						title: 'Квалификация',
 						description: 'У вас есть профильное образование или международные сертификаты.',
-						class: 'text-block--diploma-bg text-block--yellow'
-					},
-					{
-						title: 'Личные качества',
-						description: 'Вы энергичны и дружелюбны. Вы обладаете способностью и желанием «заряжать» учеников.',
-						class: ' text-block--heart-bg text-block--yellow'
+						image: 'diploma'
 					},
 					{
 						title: 'Опыт',
 						description: 'Вы преподаете английский взрослым или детям не менее одного года.',
-						class: 'text-block--clock-2-bg text-block--yellow'
+						image: 'clock-2'
 					},
 					{
 						title: 'Речь',
 						description: 'У вас хорошее произношение, близкое к носителям языка.',
-						class: 'text-block--comment-bg text-block--yellow'
+						image: 'comment'
 					},
 					{
 						title: 'Ценности',
 						description: 'Вы готовы стать частью корпоративной политики Школы и соблюдать этику Компании.',
-						class: 'text-block--leaves-bg text-block--yellow'
+						image: 'leaves'
+					},
+					{
+						title: 'Личные качества',
+						description: 'Вы энергичны и дружелюбны. Вы обладаете способностью и желанием «заряжать» учеников.',
+						image: 'heart'
 					}
 				] %}
-					<div class="text-block {{item.class}}">
-						<h4 class="text-block__title">{{item.title}}</h4>
-						<p class="text-block__description">{{item.description}}</p>
+					<div class="{{html_classes('fact-card', 'text-card',
+						item.image ? 'text-card--' ~ item.image ~ '-bg' : [], 'card', 'card--yellow')
+					}}">
+						<h4 class="card__title">{{item.title}}</h4>
+						<p class="card__description">{{item.description}}</p>
 					</div>
 				{% endfor %}
 			</div>
-		</div>
-	</section>
+		{% endblock %}
+	{% endembed %}
 
-	{% include 'sections/big-cards.twig' with {
-		class: 'big-cards--vacancies',
+	{% embed 'components/section.twig' with {
+		name: 'vacancies-offers',
 		title: 'Мы предлагаем:',
-		cards: [
-			{
-				title: 'Достойный доход',
-				list: [
+		color: 'purple'
+	} %}
+		{% block content %}
+			<div class="cards grid grid--3 grid--sm-2">
+				{% for item in [
 					{
-						property: 'Средний доход: ',
-						value: '55 тыс. руб.'
+						title: 'Достойный доход',
+						list: [
+							{
+								label: 'Средний доход: ',
+								value: '55 тыс. руб.'
+							},
+							{
+								label: 'Максимальный доход: ',
+								value: '100 тыс. руб.'
+							}
+						]
 					},
 					{
-						property: 'Максимальный доход: ',
-						value: '100 тыс. руб.'
-					}
-				]
-			},
-			{
-				title: 'Гарантия занятости',
-				list: [
+						title: 'Гарантия занятости',
+						description: 'Комфортная для вас нагрузка от 10 часов в неделю.'
+					},
 					{
-						property: 'Комфортная для вас нагрузка от 10 часов в неделю.',
-						value: ''
-					}
-				]
-			},
-			{
-				title: 'Обучение методике школы',
-				list: [
+						title: 'Обучение методике школы',
+						description: 'Комфортная для вас нагрузка от 10 часов в неделю.'
+					},
 					{
-						property: 'Комфортная для вас нагрузка от 10 часов в неделю.',
-						value: ''
-					}
-				]
-			},
-			{
-				title: 'Тренинги <br> для повышения уровня обучения',
-				list: [
+						title: 'Тренинги <br> для повышения уровня обучения',
+						description: 'Ежемесячно проводим мастерские для преподавателей.'
+					},
 					{
-						property: 'Ежемесячно проводим мастерские для преподавателей.',
-						value: ''
-					}
-				]
-			},
-			{
-				title: 'Удобный онлайн класс',
-				list: [
+						title: 'Удобный онлайн класс',
+						description: 'Платформа с готовыми уроками и автоматической проверкой ДЗ.'
+					},
 					{
-						property: 'Платформа с готовыми уроками и автоматической проверкой ДЗ.',
-						value: ''
+						title: 'Онлайн или офлайн в Москве',
+						description: 'Формат занятости выбираете вы.'
 					}
-				]
-			},
-			{
-				title: 'Онлайн или офлайн в Москве',
-				list: [
-					{
-						property: 'Формат занятости выбираете вы.',
-						value: ''
-					}
-				]
-			}
-		]
-	} %}
+				] %}
+					<div class="text-card card">
+						<h4 class="card__title">{{item.title}}</h4>
 
-	{% include 'sections/cards-square.twig' with {
-		class: 'cards-square--vacancies',
+						{% if item.description %}
+							<p class="card__description">{{item.description}}</p>
+						{% endif %}
+
+						{% if item.list %}
+							<div class="card__content">
+								<ul class="list">
+									{% for item in item.list %}
+										<li class="list-item">
+											{{item.label}}
+											<span>{{item.value}}</span>
+										</li>
+									{% endfor %}
+								</ul>
+							</div>
+						{% endif %}
+					</div>
+				{% endfor %}
+			</div>
+		{% endblock %}
+	{% endembed %}
+
+	{% embed 'components/section.twig' with {
+		name: 'vacancies-steps',
 		title: 'Как стать частью команды?',
-		cards: [
-			{
-				title: 'Отклик',
-				description: 'Отправьте резюме на вакансию школы английского языка SAY YES!',
-				tip: 'Шаг 1',
-				class: 'text-block--mail-bg'
-			},
-			{
-				title: 'Знакомство',
-				description: 'Пройдите индивидуальное онлайн собеседование',
-				tip: 'Шаг 2',
-				class: 'text-block--contact-bg'
-			},
-			{
-				title: 'Обучение',
-				description: 'Пройдите обучение у лучших методистов школы',
-				tip: 'Шаг 3',
-				class: 'text-block--cap-bg'
-			},
-			{
-				title: 'Сотрудничество',
-				description: 'Начните сотрудничество с одной из современных школ английского языка',
-				tip: 'Шаг 4',
-				class: 'text-block--note-bg'
-			}
-		]
+		horizontal: true
 	} %}
+		{% block content %}
+			<div class="cards grid grid--2">
+				{% for item in [
+					{
+						subtitle: 'Шаг 1',
+						title: 'Отклик',
+						description: 'Отправьте резюме на вакансию школы английского языка SAY YES!',
+						image: 'mail'
+					},
+					{
+						subtitle: 'Шаг 2',
+						title: 'Знакомство',
+						description: 'Пройдите индивидуальное онлайн собеседование',
+						image: 'contact'
+					},
+					{
+						subtitle: 'Шаг 3',
+						title: 'Обучение',
+						description: 'Пройдите обучение у лучших методистов школы',
+						image: 'cap'
+					},
+					{
+						subtitle: 'Шаг 4',
+						title: 'Сотрудничество',
+						description: 'Начните сотрудничество с одной из современных школ английского языка',
+						image: 'note'
+					}
+				] %}
+					<div class="text-card text-card--{{item.image}}-bg card">
+						<p class="card__subtitle">{{item.subtitle}}</p>
+						<h3 class="card__title">{{item.title}}</h3>
+						<p class="card__description">{{item.description}}</p>
+					</div>
+				{% endfor %}
+			</div>
+		{% endblock %}
+	{% endembed %}
 
-	<section class="part-of-team">
-		<div class="section-container">
-			<h2 class="subtitle">Готовы стать частью нашей дружной команды?</h2>
+	{% embed 'components/section.twig' with {
+		name: 'vacancies-action',
+		title: 'Готовы стать частью нашей дружной команды?'
+	} %}
+		{% block description %}
+			Ждем ваше резюме на почту
+			<a href="mailto:hr@sayes.ru" class="text text--purple">hr@sayes.ru</a>
+			с пометкой какой формат преподавания (онлайн/офлайн/взрослые/дети) вам интересен.
+		{% endblock %}
 
-			<p class="part-of-team__description">
-				Ждем ваше резюме на почту
-				<a href="mailto:hr@sayes.ru" class="text text--violet">hr@sayes.ru</a>
-				с пометкой какой формат преподавания (онлайн/офлайн/взрослые/дети) вам интересен.
-			</p>
-		</div>
-		
-		<img class="part-of-team__img" src="{{theme.link}}/static/images/mainscreens/mainscreen-2.jpg" alt="Say Yes">
-	</section>
+		{% block media %}
+			<img class="image" src="{{theme.link}}/static/images/mainscreens/mainscreen-2.jpg" alt="Say Yes">
+		{% endblock %}
+	{% endembed %}
 
-	{% include 'sections/trial-lesson-mini.twig' %}
+	{% include 'sections/trial-lesson-cta.twig' %}
 {% endblock %}

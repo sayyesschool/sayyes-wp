@@ -1,20 +1,42 @@
-<{{element ?: 'ul'}} class="{{html_classes('list', {
-	'list--dl': type == 'dl',
-	'list--check': type == 'check',
-	'list--numbers': type == 'numbers',
-	'list--steps': type == 'steps',
-	'list--sm': size == 'sm'
-}, align_marker ? 'list--marker-' ~ align_marker : [])}}">
+<{{element ?: 'ul'}} class="{{html_classes(class ?: [], 'list',
+	{
+		'list--dl': type == 'dl',
+		'list--check': type == 'check',
+		'list--numbers': type == 'numbers',
+		'list--steps': type == 'steps',
+		'list--sm': size == 'sm',
+	},
+	align_marker ? 'list--marker-' ~ align_marker : [],
+	gap ? 'list--gap-' ~ gap : []
+)}}">
 	{% for item in items %}
 		<li class="list-item">
-			{{item.content}}
-
-			{% if item.title %}
-				<h4 class="list-item__title">{{item.title}}</h4>
+			{% if item.link %}
+				<a href="{{item.link}}"{% if is_link_external(item.link) %} target="_blank"{% endif %}>
 			{% endif %}
 
-			{% if item.description %}
-				<p class="list-item__description">{{item.description}}</p>
+			{% if item.icon %}
+				{% include 'components/icon.twig' with {
+					name: icon
+				} %}
+			{% endif %}
+
+			{% if item.title %}
+				<div class="list-item__content">
+					<h4 class="list-item__title">{{item.title}}</h4>
+
+					{% if item.description %}
+						<p class="list-item__description">{{item.description}}</p>
+					{% endif %}
+				</div>
+			{% elseif item.content %}
+				{{item.content}}
+			{% else %}
+				{{item}}
+			{% endif %}
+
+			{% if item.link %}
+				</a>
 			{% endif %}
 		</li>
 	{% endfor %}

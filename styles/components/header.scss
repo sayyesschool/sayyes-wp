@@ -47,9 +47,9 @@
 			background-color,
 			transparent,
 			border-color,
-			$medium-magenta,
+			$violet,
 			color,
-			$medium-magenta
+			$violet
 		);
 	}
 
@@ -94,7 +94,7 @@
 		transition: color 0.3s linear;
 
 		&:hover {
-			color: $medium-magenta;
+			color: $violet;
 		}
 	}
 
@@ -164,7 +164,7 @@
 			transition: color 0.3s linear;
 
 			&:hover {
-				color: $violet;
+				color: $purple;
 			}
 		}
 	}

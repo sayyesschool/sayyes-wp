@@ -1,34 +1,37 @@
-<section class="discounts">
-    <div class="section-container">
-        <h2 class="subtitle">Акции и скидки</h2>
-
-        <p class="discounts__description">Ваше обучение может быть выгоднее!</p>
-
-        <div class="discounts__blocks">
+{% embed 'components/section.twig' with {
+	name: 'discounts',
+    title: 'Акции и скидки',
+    description: 'Ваше обучение может быть выгоднее!'
+} %}
+    {% block content %}
+        <div class="card grid grid--3">
             {% for item in [
                 {
                     title: 'Покупка всего курса',
                     description: 'Оплачивайте по три или шесть месяцев сразу и учитесь выгоднее.*',
-                    class: 'text-block--books-2-bg text-block--discount-bg'
+                    image: 'books-2',
+                    image2: 'discount'
                 },
                 {
                     title: 'Приведи друга',
                     description: 'Рекомендуйте нас друзьям, и мы подарим вам и другу 2 урока к любому курсу!*',
-                    class: 'text-block--student-bg text-block--free-lessons-bg'
+                    image: 'student',
+                    image2: 'free-lessons'
                 },
                 {
                     title: 'Семейное обучение',
                     description: 'Учите английский всей семьёй и получите постоянную скидку 20%.*',
-                    class: 'text-block--family-bg text-block--discount-2-bg'
+                    image: 'family',
+                    image2: 'discount-2'
                 }
             ] %}
-                <div class="text-block {{item.class}}">
-                    <h4 class="text-block__title">{{item.title}}</h4>
-                    <p class="text-block__description">{{item.description}}</p>
+                <div class="text-card text-card--{{item.image}}-bg text-card--{{item.image2}}-bg card">
+                    <h4 class="card__title">{{item.title}}</h4>
+                    <p class="card__description">{{item.description}}</p>
                 </div>
             {% endfor %}
         </div>
 
-        <p class="discounts__ps">* Узнавайте подробности и условия акции у менеджеров</p>
-    </div>
-</section>
+        <p class="asterisk-text text">* Узнавайте подробности и условия акции у менеджеров</p>
+    {% endblock %}
+{% endembed %}

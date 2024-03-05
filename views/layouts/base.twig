@@ -39,7 +39,7 @@
     </head>
 
     <body id="{{page.name}}-page" class="{{body_class}} {{layout_class}}">
-        {% include 'components/header.twig' %}
+        {% include 'blocks/header.twig' %}
 
         <main class="content">
             {% block content %}
@@ -50,12 +50,12 @@
             {{newsletter}}
         {% endif %}
 
-        {% include 'components/footer.twig' %}
+        {% include 'blocks/footer.twig' %}
 
-        {% include 'components/callback-modal.twig' %}
-        {% include 'components/request-modal.twig' %}
-        {% include 'components/success-modal.twig' %}
-        {% include 'components/video-modal.twig' %}
+        {% include 'blocks/callback-modal.twig' %}
+        {% include 'blocks/request-modal.twig' %}
+        {% include 'blocks/success-modal.twig' %}
+        {% include 'blocks/video-modal.twig' %}
 
         {% block modal %}
         {% endblock %}

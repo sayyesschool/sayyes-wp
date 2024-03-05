@@ -70,8 +70,17 @@
 .practice,
 .dream-team,
 .platform {
-    background-color: $white;
     margin-bottom: 0;
+	border-radius: 0;
+    background-color: $white;
+}
+
+.practice,
+.dream-team,
+.platform,
+.atmosphere {
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 .practice {
@@ -639,110 +648,11 @@
 		max-width: 1098px;
 	}
 
-	&__title {
+	&__header {
 		max-width: 640px;
-		margin-bottom: 20px;
-	}
-
-	&__description {
-		max-width: 490px;
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-	}
-
-	.slider {
-		&__arrows {
-			right: 15%;
-		}
-
-		&__pagination {
-			display: block;
-			padding-left: 75%;
-		}
-	}
-
-	@include breakpoint($breakpoint-lg) {
-		margin-bottom: 70px;
-
-		.subtitle {
-			max-width: 470px;
-		}
-	}
-
-	@include breakpoint($breakpoint-md) {
-		.slider {
-			&__arrows {
-				right: 0;
-			}
-		}
-	}
-
-	@include breakpoint($breakpoint-sm) {
-		.subtitle {
-			max-width: 490px;
-			margin-bottom: 15px;
-		}
-
-		.section-container {
-			max-width: 708px;
-		}
-
-		.slider {
-			margin-top: 10px;
-		}
-	}
-
-	@include breakpoint($breakpoint-xs) {
-		margin-bottom: 60px;
-	}
-
-	@include breakpoint($breakpoint-xxs) {
-		margin-bottom: 50px;
-		
-		.slider {
-			&__pagination {
-				padding-left: 48%;
-			}
-		}
-
-		.format {
-			.video {
-				margin-bottom: -30px;
-			}
-
-			.about-person {
-				padding-top: 54px;
-				border-top-right-radius: 0;
-				border-top-left-radius: 0;
-			}
-		}
-	}
-
-	@include breakpoint($breakpoint-mobile) {
-		.slider {
-			&__arrows {
-				display: none;
-			}
-		}
-	}
-
-	@include breakpoint($breakpoint-sm-mobile) {
-		.subtitle {
-			max-width: 230px;
-		}
-	}
-}
-
-.student-progress {
-	margin-bottom: 130px;
-
-	&__container {
-		max-width: 1098px;
 	}
 
 	&__title {
-		max-width: 640px;
 		margin-bottom: 20px;
 	}
 
@@ -755,7 +665,6 @@
 			max-width: 470px;
 		}
 	}
-
 	@include breakpoint($breakpoint-sm) {
 		&__container {
 			max-width: 708px;
@@ -765,11 +674,52 @@
 			max-width: 490px;
 			margin-bottom: 15px;
 		}
+
+		.slider {
+			margin-top: 10px;
+		}
 	}
 
 	@include breakpoint($breakpoint-sm-mobile) {
 		&__title {
 			max-width: 230px;
 		}
+	}
+}
+
+.courses {
+	.course-card {
+		background-color: $white;
+		color: $black;
+
+		.card {
+			&__img {
+				display: none;
+			}
+
+			&__header {
+				flex-grow: 1;
+				padding: 35px 40px;
+				border-radius: $border-radius;
+				overflow: hidden;
+			}
+
+			&__body {
+				background-color: $white;
+				color: $black;
+			}
+		
+			&__title {
+				margin-bottom: 10px;
+				font-size: 42px;
+				font-weight: 700;
+				line-height: 40px;
+			}
+		}
+	}
+
+	.course-card:nth-last-child(2) {
+		height: auto;
+		align-self: self-start;
 	}
 }

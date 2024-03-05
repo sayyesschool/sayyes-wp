@@ -7,21 +7,28 @@
         image: page.thumbnail
 	} %}
 
-	{% include 'sections/video.twig' with {
+	{% embed 'components/section.twig' with {
+		class: 'video-section',
+		name: 'methodology-video',
 		title: 'Посмотрите короткое видео о нашем подходе к обучению',
-		video: {
-			youtube_id: 'Vsfz_1QzwDA',
-			image: {
-				path: 'video-sections/video-section-2.jpg'
-			},
-			modal: true
-		}
+		horizontal: true
 	} %}
+		{% block media %}
+			{% include 'components/video.twig' with {
+				youtube_id: 'Vsfz_1QzwDA',
+				image: {
+					path: 'video-sections/video-section-2.jpg'
+				},
+				modal: true
+			} %}
+		{% endblock %}
+	{% endembed %}
 
-	<section class="effective-methods">
-		<div class="section-container">
-			<h2 class="subtitle">Мы применяем методики с доказанной эффективностью</h2>
-
+	{% embed 'components/section.twig' with {
+		name: 'effective-methods',
+		title: 'Мы применяем методики с доказанной эффективностью'
+	} %}
+		{% block content %}
 			<div class="methods">
 				{% for method in [
 					{
@@ -54,8 +61,8 @@
 					</div>
 				{% endfor %}
 			</div>
-		</div>
-	</section>
+		{% endblock %}
+	{% endembed %}
 
 	{% include 'sections/advantages.twig' with {
 		title: 'Важные факты о преимуществах обучения в SAY YES!',
@@ -63,11 +70,6 @@
 			{
 				title: 'Стандартизированная методика',
 				description: 'Практикуем один подход в офлайн и онлайн формате'
-			},
-			{
-				title: 'Современные пособия',
-				description: 'Используем новейшие пособия Oxford, Cambridge и Macmillan',
-				image: 'books'
 			},
 			{
 				title: '75% практика языка',
@@ -80,6 +82,11 @@
 			{
 				title: 'Онлайн платформа',
 				description: 'Нескучная домашка в интерактивном виде'
+			},
+			{
+				title: 'Современные пособия',
+				description: 'Используем новейшие пособия Oxford, Cambridge и Macmillan',
+				image: 'books'
 			}
 		]
 	} %}

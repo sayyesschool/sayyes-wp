@@ -61,5 +61,12 @@
         </div>
     </section>
 
-	{% include 'sections/speaking-club-faq.twig' %}
+	{% embed 'components/section.twig' with {
+        name: 'speaking-club-faq',
+        title: 'Часто задаваемые вопросы'
+    } %}
+        {% block content %}
+            {% include 'blocks/speaking-clug-faq.twig' %}
+        {% endblock %}
+    {% endembed %}
 {% endblock %}

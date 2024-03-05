@@ -1,36 +1,20 @@
 .advantages {
 	margin-bottom: 80px;
 
-	.section__title {
+	&__header {
 		max-width: 700px;
 		margin-bottom: 45px;
 	}
 
-	.text-block {
+	.card {
 		min-height: 195px;
 
-		.text-block__title {
+		&__title {
 			max-width: 220px;
 		}
 
 		&:nth-child(2) {
 			overflow: hidden;
-
-			.text-block__title {
-				margin-top: 0;
-			}
 		}
-	}
-
-	@include breakpoint($breakpoint-lg) {
-		margin-bottom: 70px;
-	}
-
-	@include breakpoint($breakpoint-xs) {
-		margin-bottom: 60px;
-	}
-
-	@include breakpoint($breakpoint-xxs) {
-		margin-bottom: 50px;
 	}
 }

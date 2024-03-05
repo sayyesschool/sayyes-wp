@@ -1,0 +1,14 @@
+{% from 'blocks/course-card.twig' import course_card %}
+
+<div class="cards grid grid--2">
+    {% for course in courses %}
+        {{course_card(
+            course,
+            cycle(colors ?? ['white', 'pink', 'purple'], loop.index0),
+            formats
+        )}}
+    {% endfor %}
+
+    {% block content %}
+    {% endblock %}
+</div>

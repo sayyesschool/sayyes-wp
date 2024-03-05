@@ -1,12 +1,15 @@
 {% embed 'components/section.twig' with {
-	class: 'faq',
-	title: 'На часто задаваемые вопросы о курсе отвечает Шаталова Вера, сооснователь SAY YES!'
+	name: 'faq',
+	title: 'На часто задаваемые вопросы о курсе отвечает Шаталова Вера, сооснователь SAY YES!',
+	horizontal: true
 } %}
 	{% block content %}
-		<img class="image" src="{{theme.link}}/static/images/pictures/vera.jpg" alt="Вера Шаталова">
-
 		{% include 'components/accordion.twig' with {
 			items
 		} %}
+	{% endblock %}
+
+	{% block media %}
+		<img class="image" src="{{theme.link}}/static/images/pictures/vera.jpg" alt="Вера Шаталова">
 	{% endblock %}
 {% endembed %}

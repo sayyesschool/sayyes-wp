@@ -14,6 +14,15 @@
 		&__description {
 			font-weight: 600;
 		}
+
+		> a {
+			color: inherit;
+			transition: 0.3s linear all;
+
+			&:hover {
+				color: $purple;
+			}
+		}
 	}
 
 	&--dl {
@@ -65,9 +74,7 @@
 			&::before {
 				content: 'Шаг ' counter(steps) '.';
 				counter-increment: steps;
-				position: absolute;
-				top: 0px;
-				left: -75px;
+				margin-right: 1rem;
 				font-size: 18px;
 				font-weight: 800;
 				line-height: 20px;
@@ -85,9 +92,23 @@
 		}
 	}
 
-	@include breakpoint($breakpoint-lg) {
-		padding: 30px 30px 30px 70px;
+	&--gap-xs {
+		gap: 5px;
+	}
 
+	&--gap-sm {
+		gap: 10px;
+	}
+
+	&--gap-md {
+		gap: 15px;
+	}
+
+	&--gap-lg {
+		gap: 20px;
+	}
+
+	@include breakpoint($breakpoint-lg) {
 		&--ul,
 		&--ul-sm {
 			.list__item {
@@ -111,13 +132,5 @@
 				}
 			}
 		}
-	}
-
-	@include breakpoint($breakpoint-xs) {
-		padding: 25px 35px 25px 70px;
-	}
-
-	@include breakpoint($breakpoint-mobile) {
-		padding: 20px 30px 20px 65px;
 	}
 }

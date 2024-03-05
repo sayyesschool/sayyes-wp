@@ -34,6 +34,10 @@
 
 	&__description {
 		margin-top: 1rem;
+
+		p + p {
+			margin-top: 10px;
+		}
 	}
 
 	&__content {
@@ -55,28 +59,32 @@
 		flex-direction: row;
 	}
 
-	&--white {
+	&--white,
+	&--white &__header {
 		background-color: $white;
 		color: $black;
 	}
 
-	&--black {
+	&--black,
+	&--black &__header {
 		background-color: $black;
 		color: $white;
 	}
 
-	&--pink {
+	&--pink,
+	&--pink &__header {
 		background-color: $pink;
 		color: $white;
 	}
 
 	&--purple,
-	&--violet {
-		background-color: $violet;
+	&--purple &__header {
+		background-color: $purple;
 		color: $white;
 	}
 
-	&--yellow {
+	&--yellow,
+	&--yellow &__header {
 		background-color: $yellow;
 		color: $black;
 	}

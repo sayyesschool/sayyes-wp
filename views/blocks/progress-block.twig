@@ -1,0 +1,31 @@
+<div class="progress-block block">
+    <div class="progress-block__video">
+        {% include 'components/video.twig' with {
+            youtube_id: item.youtube_id,
+            image: {
+                src: item.thumbnail.src,
+                alt: item.title
+            },
+            modal: true
+        } %}
+
+        <div class="speech-bubble speech-bubble--sm speech-bubble--angle">
+            {{item.excerpt({ read_more: false })}}
+        </div>
+    </div>
+
+    <div class="progress-block__content">
+        <div class="card">
+            <h3 class="card__title">{{item.title}}</h3>
+
+            <div class="card__description">{{item.content}}</div>
+            <p class="card__description">{{item.excerpt({ read_more: false })}}</p>
+
+            <h4 class="card__subtitle">Преподаватель:</h4>
+            <a class="link" href="{{item.teacher.link}}">{{item.teacher}}</a>
+
+            <h4 class="card__subtitle">Курс:</h4>
+            <a class="link" href="{{item.course.link}}">{{item.course}}</a>
+        </div>
+    </div>
+</div>

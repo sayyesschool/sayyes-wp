@@ -1,15 +1,18 @@
-<section class="certificates">
-    <div class="section-container">
-        <h2 class="subtitle">Подарочные сертификаты</h2>
+{% embed 'components/section.twig' with {
+	name: 'certificates',
+    title: 'Подарочные сертификаты',
+    horizontal: true
+} %}
+    {% block content %}
+        <div class="text">
+            <p>Практика английского — универсальный подарок для любого активного человека.</p>
+            <p>Подарите своим близким возможность развиваться и совершенствоваться</p>
+        </div>
 
-        <dic class="certificates__content">
-            <div class="certificates__text">
-                <p>Практика английского — универсальный подарок для любого активного человека.</p>
-                <p>Подарите своим близким возможность развиваться и совершенствоваться</p>
-                <button class="btn">Подарить сертификат</button>
-            </div>
+        <button class="btn">Подарить сертификат</button>
+    {% endblock %}
 
-            <img class="certificates__img" src="{{theme.link}}/static/images/pictures/certificates.png" alt="Say Yes">
-        </dic>
-    </div>
-</section>
+    {% block media %}
+        <img class="image" src="{{theme.link}}/static/images/pictures/certificates.png" alt="Say Yes">
+    {% endblock %}
+{% endembed %}

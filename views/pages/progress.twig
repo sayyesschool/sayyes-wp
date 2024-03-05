@@ -7,23 +7,19 @@
         image: page.thumbnail
 	} %}
 
-	{% from 'components/progress-card.twig' import progress_card %}
+	{% embed 'components/section.twig' with {
+		name: 'student-results',
+		title: 'Лучшие показатели нашей работы — это студенты, уверенно владеющие языком.',
+		description: 'Наши ученики рассказывают о своих результатах и процессе обучения в SAY YES! на английском.'
+	} %}
+		{% block content %}
+			{% from 'blocks/progress-card.twig' import progress_card %}
 
-	<section class="student-results">
-		<div class="section-container">
-			<h2 class="subtitle">Лучшие показатели нашей работы — это студенты, уверенно владеющие языком.</h2>
-
-			<p class="student-results__description">Наши ученики рассказывают о своих результатах и процессе обучения в SAY YES! на английском.</p>
-
-			<div class="student-results__content">
-				{% for item in reports %}
-					{{progress_card(item)}}
-				{% endfor %}
-			</div>
-
-			<button id="show-more-review" class="btn btn--yellow">Показать ещё</button>
-		</div>
-	</section>
+			{% for item in reports %}
+				{{progress_card(item)}}
+			{% endfor %}
+		{% endblock %}
+	{% endembed %}
 
 	{% include 'sections/trial-lesson.twig' %}
 {% endblock %}

@@ -1,0 +1,419 @@
+.footer {
+	padding: 40px 20px 0;
+	background-color: $white;
+	font-size: 18px;
+
+	.logo {
+		position: absolute;
+		display: block;
+		width: 163px;
+		height: 54px;
+		margin-bottom: 15px;
+	}
+
+	&__container {
+		position: relative;
+		max-width: 1156px;
+		margin: 0 auto;
+	}
+
+	&__row {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__row + &__row {
+		min-height: 70px;
+		margin-top: 20px;
+		border-top: 1px solid $pearl-white;
+		align-items: center;
+	}
+
+	&__column {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+
+		&:first-child {
+			flex-basis: 253px;
+		}
+
+		&:nth-child(2) {
+			flex-basis: 335px;
+		}
+
+		&:nth-child(3) {
+			flex-basis: 196px;
+		}
+
+		&:last-child {
+			flex-basis: 372px;
+			justify-content: space-between;
+		}
+	}
+
+	&__row:first-of-type &__column {
+		&:first-child {
+			margin-top: 69px;
+		}
+
+		&:nth-child(3) {
+			margin-top: 20px;
+		}
+
+		&:last-child {
+			margin-top: 20px;
+		}
+	}
+
+	&__title {
+		margin-bottom: 10px;
+		text-transform: uppercase;
+		font-weight: 800;
+		font-size: 16px;
+		font-weight: 800;
+		line-height: 15px;
+		letter-spacing: 0.8px;
+	}
+
+	&__call {
+		font-size: 16px;
+		line-height: 15px;
+	}
+
+	&__item {
+		font-size: 16px;
+		font-weight: 600;
+		line-height: 15px;
+
+		& + & {
+			margin-top: 5px;
+		}
+	}
+
+	&__link {
+		color: $black;
+		transition: 0.3s linear all;
+
+		&:hover {
+			color: $purple;
+		}
+	}
+
+	&__courses-formats {
+		
+	}
+
+	&__courses &__title,
+	&__formats &__title {	
+		display: none;
+	}
+
+	&__sout {
+		max-width: 172px;
+		font-size: 15px;
+		font-weight: 700;
+		line-height: 15px;
+	}
+
+	&__copyright {
+		padding-left: 40px;
+	}
+
+	&__with-love-img {
+		padding-left: 5px;
+	}
+
+	&__policy,
+	&__copyright,
+	&__with-love,
+	&__designer {
+		font-size: 16px;
+		font-weight: 700;
+		line-height: 15px;
+	}
+
+	.phone-numbers {
+		margin-bottom: 10px;
+
+		&__item {
+			font-size: 16px;
+			line-height: 15px;
+			font-weight: 800;
+		}
+
+		.icon {
+			display: none;
+		}
+	}
+
+	.social {
+		margin-top: auto;
+	}
+
+	@include breakpoint($breakpoint-md) {
+		&__column {
+			&:nth-child(2) {
+				display: none;
+			}
+		}
+
+		&__with-love {
+			.with-love {
+				display: none;
+			}
+		}
+
+		&__designer {
+			display: flex;
+			gap: 20px;
+
+			.designer {
+				display: none;
+			}
+
+			.with-love,
+			.footer-copyright {
+				display: block;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		padding-bottom: 48px;
+
+		&__wrapper {
+			justify-content: flex-start;
+		}
+
+		&__courses,
+		&__formats {
+			display: block;
+		}
+
+		.phone-numbers {
+			margin-bottom: 15px;
+
+			&__item {
+				&:not(:last-child) {
+					margin-bottom: 15px;
+				}
+			}
+		}
+
+		.logo {
+			margin-bottom: 30px;
+		}
+
+		.logo,
+		&__email,
+		&__address {
+			order: -1;
+		}
+
+		&__courses-programms {
+			display: none;
+		}
+
+		&__email {
+			margin-bottom: 5px;
+		}
+
+		&__address {
+			margin-bottom: 30px;
+			max-width: 220px;
+		}
+
+		&__call-item {
+			&:not(last-child) {
+				margin-bottom: 15px;
+			}
+		}
+
+		&__item {
+			margin-bottom: 15px;
+		}
+
+		&__about {
+			margin-bottom: 25px;
+		}
+
+		&__sout {
+			margin: 40px 0 15px;
+
+			font-size: 16px;
+			line-height: 18px;
+			font-weight: 700;
+		}
+
+		&__designer {
+			flex-direction: column;
+			margin-top: 80px;
+
+			.social {
+				display: flex;
+				margin-top: 0;
+			}
+		}
+
+		&__column {
+			&:first-child {
+				flex-basis: 39%;
+			}
+
+			&:nth-child(3) {
+				flex-basis: 28%;
+
+				.social {
+					display: none;
+				}
+			}
+
+			&:last-child {
+				flex-basis: auto;
+			}
+		}
+
+		&__policy {
+			margin-top: 10px;
+
+			p {
+				margin-bottom: 15px;
+			}
+
+			.footer-copyright {
+				margin-top: 25px;
+				display: block;
+
+				p {
+					&:first-child {
+						margin-bottom: 5px;
+					}
+				}
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-mobile) {
+		&__wrapper {
+			flex-direction: column;
+		}
+
+		&__license {
+			max-width: 500px;
+		}
+
+		&__courses,
+		&__formats,
+		&__designer,
+		&__with-love {
+			display: none;
+		}
+
+		&__address {
+			margin-bottom: 15px;
+		}
+
+		&__policy {
+			display: flex;
+			flex-direction: column;
+			margin-top: 0;
+			padding-top: 0;
+
+			.footer-policy,
+			.footer-copyright {
+				display: none;
+			}
+		}
+
+		&__column {
+			&:first-child {
+				padding-top: 45px;
+				margin-bottom: 45px;
+				border-bottom: 1px solid $pearl-white;
+
+				.logo {
+					display: none;
+				}
+
+				.social {
+					display: flex;
+					order: -1;
+					margin-top: 0;
+					margin-bottom: 50px;
+				}
+			}
+
+			&:nth-child(3) {
+				order: -1;
+				padding-top: 0;
+
+				.logo {
+					display: block;
+				}
+			}
+
+			&:last-child {
+				order: -1;
+				padding-top: 0;
+				border-bottom: 1px solid $pearl-white;
+
+				.footer__sout,
+				.footer__license {
+					display: none;
+				}
+			}
+		}
+
+		&__sout {
+			max-width: none;
+		}
+
+		&__about {
+			margin-bottom: 20px;
+		}
+
+		&__title {
+			margin-bottom: 20px;
+		}
+
+		&__item {
+			&:not(:last-child) {
+				margin-bottom: 20px;
+			}
+		}
+
+		&__courses {
+			margin-bottom: 25px;
+		}
+
+		&__courses-programms {
+			display: block;
+		}
+
+		&__address {
+			max-width: 380px;
+		}
+
+		&__mobile-block {
+			display: flex;
+			flex-direction: column;
+
+			.footer-copyright {
+				display: block;
+			}
+
+			.footer-policy {
+				p {
+					margin-bottom: 15px;
+				}
+
+				margin-bottom: 15px;
+			}
+
+			.with-love {
+				margin-bottom: 15px;
+			}
+		}
+	}
+}

@@ -12,7 +12,7 @@
             },
             {
                 text: 'Офлайн',
-                class: 'tag--violet tag--no-border'
+                class: 'tag--purple tag--no-border'
             }
         ],
         date: '28 мая в 15:00 МСК',
@@ -116,7 +116,7 @@
     {% endembed %}
 
 	<section class="club-shortly">
-        <div class="section-container">
+        <div class="section__container">
             <h2 class="subtitle">Коротко о разговорном клубе SAY YES!</h2>
 
             <div class="club-shortly__blocks">
@@ -297,6 +297,7 @@
     {% endembed %}
 
 	{% include 'sections/video.twig' with {
+        name: 'speaking-clug-video',
         title: 'Посмотрите, как проходят встречи нашего разговорного клуба',
         video: {
 			youtube_id: 'Vsfz_1QzwDA',
@@ -308,7 +309,7 @@
     } %}
 
 	<section class="participants-feedback">
-        <div class="section-container">
+        <div class="section__container">
             <h2 class="subtitle">Отзывы участников</h2>
 
             <p class="participants-feedback__description">Мы готовы вкладываться в ваше развитие, но базовый опыт и знания необходимы уже со старта работы у нас в школе.</p>

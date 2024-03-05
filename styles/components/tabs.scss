@@ -52,13 +52,13 @@
 		}
 	}
 
-	&--magenta {
+	&--violet {
 		.tabs {
 		    &__tab {
     		    background-color: $white;
 
 				&--active {
-					background-color: $medium-magenta;
+					background-color: $violet;
 					color: $white;
 				}
     		}
@@ -71,7 +71,7 @@
     		    background-color: $white;
 
 				&--active {
-					background-color: $violet;
+					background-color: $purple;
 					color: $white;
 				}
     		}

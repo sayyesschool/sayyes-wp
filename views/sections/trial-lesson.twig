@@ -1,56 +1,60 @@
-<section class="trial-lesson">
-	<div class="section-container">
-		<h2 class="subtitle">
-			Запишитесь на
-			<span class="text text--violet">бесплатный</span>
-			пробный урок
-		</h2>
-		
-		<p class="trial-lesson__description">На уроке вы узнаете свой уровень, оцените методику школы, познакомитесь с преподавателем</p>
-	</div>
+{% embed 'components/section.twig' with {
+	name: 'trial-lesson'
+} %}
+	{% block title %}
+		Запишитесь на
+		<span class="text text--purple">бесплатный</span>
+		пробный урок
+	{% endblock %}
 
-	{% embed 'components/tabs.twig' with {
-		tabs: [
-			{
-				content: 'Взрослым',
-				value: 'adults',
-				active: true
-			},
-			{
-				content: 'Детям',
-				value: 'children'
-			}
-		]
-	} %}
-		{% block content %}
-			<div class="invite invite--adults" data-tab-panel="adults">
-				<div class="invite__left">
-					<div class="invite__title">Оставьте заявку на пробный урок</div>
+	{% block description %}
+		На уроке вы узнаете свой уровень, оцените методику школы, познакомитесь с преподавателем
+	{% endblock %}
 
-					<p class="invite__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы, и расскажем о курсах</p>
+	{% block content %}
+		{% embed 'components/tabs.twig' with {
+			tabs: [
+				{
+					content: 'Взрослым',
+					value: 'adults',
+					active: true
+				},
+				{
+					content: 'Детям',
+					value: 'children'
+				}
+			]
+		} %}
+			{% block content %}
+				<div class="invite invite--adults" data-tab-panel="adults">
+					<div class="invite__left">
+						<div class="invite__title">Оставьте заявку на пробный урок</div>
+
+						<p class="invite__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы, и расскажем о курсах</p>
+					</div>
+
+					<div class="invite__right">
+						{% include 'blocks/request-form.twig' with {
+							format: true
+						} %}
+					</div>
 				</div>
 
-				<div class="invite__right">
-					{% include 'components/request-form.twig' with {
-						format: true
-					} %}
-				</div>
-			</div>
+				<div class="invite invite--children hidden" data-tab-panel="children">
+					<div class="invite__left">
+						<div class="invite__title">Оставьте заявку на пробный урок</div>
 
-			<div class="invite invite--children hidden" data-tab-panel="children">
-				<div class="invite__left">
-					<div class="invite__title">Оставьте заявку на пробный урок</div>
+						<p class="invite__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы, и расскажем о курсах</p>
+					</div>
 
-					<p class="invite__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы, и расскажем о курсах</p>
+					<div class="invite__right">
+						{% include 'blocks/request-form.twig' with {
+							format: true,
+							children: true
+						} %}
+					</div>
 				</div>
-
-				<div class="invite__right">
-					{% include 'components/request-form.twig' with {
-						format: true,
-						children: true
-					} %}
-				</div>
-			</div>
-		{% endblock %}
-	{% endembed %}
-</section>
+			{% endblock %}
+		{% endembed %}
+	{% endblock %}
+{% endembed %}

@@ -1,56 +1,50 @@
 .discounts {
-	margin-bottom: 100px;
-
-	.subtitle {
-		margin: 0 auto 20px;
+	&__header {
 		text-align: center;
+		margin-bottom: 45px;
 	}
 
-	.text-block {
-		min-height: 370px;
+	&__title {
+		margin: 0 auto 20px;
 	}
 
 	&__description {
 		max-width: 400px;
 		margin: 0 auto;
-		margin-bottom: 45px;
-
-		text-align: center;
 	}
 
-	&__blocks {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 20px;
-		justify-content: space-between;
-	}
-
-	&__ps {
+	.asterisk-text {
 		max-width: 680px;
 		margin: 35px auto 0;
 
 		text-align: center;
 	}
 
-	@include breakpoint($breakpoint-lg) {
-		margin-bottom: 70px;
+	.card {
+		min-height: 370px;
 	}
 
 	@include breakpoint($breakpoint-md) {
-		.subtitle {
-			margin: 0 0 20px;
-			max-width: calc(50% - 7.5px);
+		&__header {
 			text-align: left;
+		}
+
+		&__title {
+			max-width: calc(50% - 7.5px);
+			margin: 0 0 20px;
 		}
 
 		&__description {
 			max-width: 200px;
 			margin: 0;
-
-			text-align: left;
 		}
 
-		.text-block {
+		.cards {
+			margin-top: -85px;
+			gap: 15px;
+		}
+
+		.card {
 			min-height: 185px;
 
 			&::after {
@@ -61,45 +55,34 @@
 				margin-left: calc(50% + 7.5px);
 			}
 		}
-
-		&__blocks {
-			margin-top: -85px;
-			gap: 15px;
-		}
-	}
-
-	@include breakpoint($breakpoint-xs) {
-		margin-bottom: 60px;
 	}
 
 	@include breakpoint($breakpoint-xxs) {
-		margin-bottom: 50px;
-
-		.text-block {
-			&:first-child {
-				margin-left: 0;
-			}
-		}
-
-		&__blocks {
-			margin-top: 0;
-		}
-
 		&__description {
 			max-width: none;
 			margin-bottom: 20px;
 		}
+
+		.cards {
+			margin-top: 0;
+		}
+
+		.card {
+			&:first-child {
+				margin-left: 0;
+			}
+		}
 	}
 
 	@include breakpoint($breakpoint-sm-mobile) {
-		.subtitle {
+		&__title {
 			max-width: none;
 		}
 
-		.text-block {
+		.card {
 			padding-right: 65px;
 
-			.text-block__title {
+			&__title {
 				max-width: 130px;
 			}
 		}
