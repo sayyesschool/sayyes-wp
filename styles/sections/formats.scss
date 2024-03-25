@@ -37,14 +37,15 @@
 	.card {
 		flex-basis: 40%;
 		margin-top: 50px;
-    	padding: 45px 50px 25px;
+    	padding: 40px 50px;
 
-		&__title {
+		.tags {
+			margin-bottom: 20px;
+		}
+
+		.text:first-of-type {
 			max-width: 230px;
-			margin-top: 20px;
 			margin-bottom: 15px;
-			font-size: 18px;
-			font-weight: 800;
 		}
 	}
 

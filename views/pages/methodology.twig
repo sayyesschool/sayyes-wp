@@ -64,32 +64,38 @@
 		{% endblock %}
 	{% endembed %}
 
-	{% include 'sections/advantages.twig' with {
-		title: 'Важные факты о преимуществах обучения в SAY YES!',
-		items: [
-			{
-				title: 'Стандартизированная методика',
-				description: 'Практикуем один подход в офлайн и онлайн формате'
-			},
-			{
-				title: '75% практика языка',
-				description: 'Бóльшую часть занятия говорит студент'
-			},
-			{
-				title: 'Визиты носителей',
-				description: 'Дополнительная практика языка в группе'
-			},
-			{
-				title: 'Онлайн платформа',
-				description: 'Нескучная домашка в интерактивном виде'
-			},
-			{
-				title: 'Современные пособия',
-				description: 'Используем новейшие пособия Oxford, Cambridge и Macmillan',
-				image: 'books'
-			}
-		]
+	{% embed 'components/section.twig' with {
+		name: 'advantages',
+		title: 'Важные факты о преимуществах обучения в SAY YES!'
 	} %}
+		{% block content %}
+			{% include 'blocks/fact-cards.twig' with {
+				items: [
+					{
+						title: 'Стандартизированная методика',
+						description: 'Практикуем один подход в офлайн и онлайн формате'
+					},
+					{
+						title: '75% практика языка',
+						description: 'Бóльшую часть занятия говорит студент'
+					},
+					{
+						title: 'Визиты носителей',
+						description: 'Дополнительная практика языка в группе'
+					},
+					{
+						title: 'Онлайн платформа',
+						description: 'Нескучная домашка в интерактивном виде'
+					},
+					{
+						title: 'Современные пособия',
+						description: 'Используем новейшие пособия Oxford, Cambridge и Macmillan',
+						image: 'books'
+					}
+				]
+			} %}
+		{% endblock %}
+	{% endembed %}
 
 	{% include 'sections/trial-lesson.twig' %}
 {% endblock %}

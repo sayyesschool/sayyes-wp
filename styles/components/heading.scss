@@ -1,0 +1,69 @@
+@mixin heading {
+    font-family: Raleway;
+    letter-spacing: 0em;
+    font-weight: 700;
+}
+
+@mixin heading-1 {
+    @include heading;
+    font-size: 68px;
+    line-height: 60px;
+
+    @include bp(lt-lg) {
+        font-size: 42px;
+        line-height: 40px;
+    }
+}
+
+@mixin heading-2 {
+    @include heading;
+    font-size: 46px;
+    line-height: 45px;
+
+    @include bp(lt-lg) {
+        font-size: 36px;
+        line-height: 35px;
+    }
+}
+
+@mixin heading-3 {
+    @include heading;
+    font-size: 42px;
+    line-height: 40px;
+
+    @include bp(lt-lg) {
+        font-size: 32px;
+        line-height: 30px;
+    }
+}
+
+@mixin heading-4 {
+    @include heading;
+    font-size: 24px;
+    line-height: 25px;
+
+    @include bp(lt-lg) {
+        font-size: 18px;
+        line-height: 20px;
+    }
+}
+
+h1.heading,
+.heading-1 {
+    @include heading-1;
+}
+
+h2.heading,
+.heading-2 {
+    @include heading-2;
+}
+
+h3.heading,
+.heading-3 {
+    @include heading-3;
+}
+
+h4.heading,
+.heading-4 {
+    @include heading-4;
+}

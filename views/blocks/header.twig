@@ -1,19 +1,20 @@
 <header class="header opened">
 	<div class="header__main">
-		<div class="header-container">
+		<div class="header__container">
 			{% include 'blocks/logo.twig' with {
 				class: 'header__logo'
 			} %}
 
-			<button class="header__free-lesson btn btn--transparent btn--uppercase btn--sm" data-modal-trigger="request-modal">Бесплатный урок</button>
+			<div class="header__buttons">
+				<button class="btn btn--sm btn--outlined btn--uppercase btn--white" data-modal-trigger="request-modal">Бесплатный урок</button>
 
-			<button class="header__test">Онлайн тест</button>
+				<button class="header__test btn btn--sm btn--uppercase btn-white btn--transparent">Онлайн тест</button>
 
-			<button class="header__callback" data-modal-trigger="callback-modal">Обратный звонок</button>
+				<button class="header__callback btn btn--sm btn--uppercase btn-white btn--transparent" data-modal-trigger="callback-modal">Обратный звонок</button>
+			</div>
 
 			<div class="header__phones">
 				{% include 'blocks/phone-numbers.twig' with {
-					class: 'header__phone-numbers',
 					small: true,
 					white: true
 				} %}

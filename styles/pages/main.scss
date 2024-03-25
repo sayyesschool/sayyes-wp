@@ -99,7 +99,6 @@
 
     &__text {
         max-width: 380px;
-        padding-right: 10px;
     }
 
     &__image {
@@ -213,12 +212,19 @@
             display: inline-block;
             max-width: 150px;
         }
+
+		&__heading {
+			max-width: 50%;
+		}
     
         &__description {
-            margin-left: auto;
-            text-align: right;
-            max-width: 200px;
+			max-width: 50%;
         }
+
+		&:first-child .advantage__description {
+			max-width: 100px;
+			margin-right: auto;
+		}
     }
 
 	@include breakpoint($breakpoint-lg) {

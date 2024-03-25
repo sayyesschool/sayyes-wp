@@ -50,7 +50,9 @@
 		transform: rotate(45deg);
 		z-index: 1;
 		
-		@include hover-active(background-color, $black);
+		@include hover-active((
+			background-color: $black
+		));
 	}
 
 	&.active {

@@ -2,77 +2,102 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: 50px;
-	width: 100%;
 	max-width: 372px;
-	text-align: center;
-
-	font-family: 'Raleway', sans-serif;
-	background-color: $black;
-	color: $white;
-	font-size: 16px;
-	font-weight: 700;
-	line-height: 15px;
+	min-height: 50px;
 	border: none;
 	border-radius: $border-radius-bg;
+	padding: 0 20px;
+	background-color: $black;
+	color: $white;
+	font-family: 'Raleway', sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+	text-align: center;
+	white-space: nowrap;
 
-	@include hover-active(background-color, $black);
+	&:not(&--outlined):not(&--transparent) {
+		@include hover-active((
+			background-color: $black
+		));
+	}
 
-	&--yellow {
-		background-color: $yellow;
+	&--outlined {
+		border: 2px solid currentColor;
+		background-color: transparent;
+		color: inherit;
+	}
+
+	&--transparent {
+		background-color: transparent;
+		color: inherit;
+		padding: 0;
+	}
+
+	&--black {
 		color: $black;
+	}
 
-		@include hover-active(background-color, $yellow);
+	&--white {
+		color: $white;
 	}
 
 	&--purple {
 		background-color: $purple;
 		color: $white;
 
-		@include hover-active(background-color, $purple);
+		@include hover-active((
+			background-color: $purple
+		));
 	}
 
-	&--transparent {
-		background-color: transparent;
-		border: 2px solid $white;
+	&--yellow {
+		background-color: $yellow;
+		color: $black;
+
+		@include hover-active((
+			background-color: $yellow
+		));
+	}
+
+	&#{&}--outlined#{&}--white {
 		color: $white;
 
-		&-black {
-			border-color: $black;
-			color: $black;
-
-			@include hover-active(
-				background-color,
-				$black,
-				border-color,
-				$black,
-				color,
-				$white
-			);
-		}
+		@include hover-active((
+			border-color: $white,
+			color: $white
+		));
 	}
 
-	&--uppercase {
-		text-transform: uppercase;
+	&#{&}--outlined#{&}--black {
+		color: $black;
+
+		@include hover-active((
+			border-color: $black,
+			color: $black
+		));
 	}
 
-	&--big {
+	&--lg {
 		max-width: 520px;
+		font-size: 18px;
 	}
 
 	&--md {
-		width: 100%;
 		max-width: 273px;
 		min-height: 40px;
 	}
 
 	&--sm {
-		width: 100%;
 		max-width: 200px;
 		min-height: 40px;
+		font-size: 14px;
 	}
 
 	&--full {
-		max-width: 100%;
+		width: 100%;
+	}
+
+	&--uppercase {
+		text-transform: uppercase;
 	}
 }

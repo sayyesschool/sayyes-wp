@@ -1,20 +1,9 @@
-$sy-purple: #6c167b;
-$sy-yellow: #ffdb4d;
-$sy-orange: #ff6a21;
-
-$sy-primary: $sy-purple;
-$sy-secondary: $sy-yellow;
-
-$body-color:                 #fbfbfb;
-$font-color:                 #222222 !default;
-$fill-font-color:            rgba(255, 255, 255, 0.8);
-$font-family-sans-serif:     'Open Sans', 'Helvetica', Arial, sans-serif;
-
 $black: #262626;
 $white: #fffcff;
 $grey: #e5e3e2;
 $yellow: #ffd754;
 $purple: #7831b2;
+$dark-purple: #5e288a;
 $violet: #a68ad5;
 $pink: #e71985;
 $pale-pink: #f8dcd6;
@@ -25,6 +14,9 @@ $pearl-white: #f9f4f2;
 
 $primary-color: $purple;
 $secondary-color: $yellow;
+$body-color: $pearl-white;
+$font-color: $black;
+$font-family: 'Raleway', 'Open Sans', 'Helvetica', Arial, sans-serif;
 
 $border-radius-extra-sm: 10px;
 $border-radius-sm: 15px;
@@ -39,3 +31,20 @@ $breakpoint-xs: 800px;
 $breakpoint-xxs: 768px;
 $breakpoint-mobile: 540px;
 $breakpoint-sm-mobile: 480px;
+
+$lg: 1280px;
+$md: 768px;
+$sm: 320px;
+
+$breakpoints: (
+    sm: '(max-width: #{$sm - 1})',
+    gt-sm: '(min-width: #{$sm})',
+
+    lt-md: '(max-width: #{$sm - 1})',
+    md: '(min-width: #{$sm}) and (max-width: #{$md - 1})',
+    gt-md: '(min-width: #{$md})',
+
+    lt-lg: '(max-width: #{$md - 1})',
+    lg: '(min-width: #{$md}) and (max-width: #{$lg - 1})',
+    gt-lg: '(min-width: #{$lg})'
+);

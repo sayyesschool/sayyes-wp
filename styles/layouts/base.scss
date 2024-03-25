@@ -1,9 +1,50 @@
-.page-content {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+.page {
+    .main {
+        max-width: 1320px;
+        margin: 0 auto;
+        padding: 0 20px;
+    
+        @include breakpoint($breakpoint-md) {
+            padding: 0 15px;
+        }
+    }
+}
 
-    #site-footer {
-        margin-top: auto;
+.page-template-page-simple {
+    .main {
+        max-width: 1024px;
+        padding: 40px 20px 60px;
+    }
+
+    .title {
+        margin-bottom: 1.5rem;
+    }
+
+    .content {
+        h2 {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        > p + p {
+            margin-top: 10px;
+        }
+
+        ol, ul {
+            list-style: initial;
+            margin: 1rem 0 1rem 2rem;
+
+            li {
+                margin-top: 5px;
+            }
+        }
+
+        a {
+            color: $purple;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 }

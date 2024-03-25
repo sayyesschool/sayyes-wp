@@ -5,15 +5,15 @@
 }
 
 body {
-	background-color: $pearl-white;
+	background-color: $body-color;
+	padding-top: 105px;
 	font-size: 18px;
 	font-weight: 600;
 	line-height: 20px;
-	color: $black;
-	font-family: "Raleway", sans-serif;
+	color: $font-color;
+	font-family: $font-family;
 	font-variant-numeric: lining-nums proportional-nums;
 	overflow-x: hidden;
-	padding-top: 105px;
 
 	@include breakpoint($breakpoint-lg) {
 		font-size: 16px;
@@ -56,31 +56,6 @@ strong,
 	@include breakpoint($breakpoint-xxs) {
 		flex-direction: column;
 		align-items: center;
-	}
-}
-
-.content {
-	max-width: 1320px;
-	margin: 0 auto;
-	padding: 0 20px;
-
-	@include breakpoint($breakpoint-md) {
-		padding: 0 15px;
-	}
-
-	.trial-lesson-cta,
-	.img-comment,
-	.digits,
-	.cards-square,
-	.about-course,
-	.features {
-		margin-right: 62px;
-		margin-left: 62px;
-
-		@include breakpoint($breakpoint-lg) {
-			margin-right: 0;
-			margin-left: 0;
-		}
 	}
 }
 
@@ -183,6 +158,14 @@ button.link {
 	.header {
 		top: 32px;
 	}
+}
+
+.color-primary {
+	color: $purple;
+}
+
+.color-yellow {
+	color: $purple;
 }
 
 [v-cloak] {

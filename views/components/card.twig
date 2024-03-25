@@ -2,16 +2,18 @@
     {% if image %}
         <img class="card__img" src="{{image.src}}" alt="{{image.alt}}">
     {% endif %}
-	
-	<div class="card__body">
+
+    <div class="card__body">
         {% if title or block('title') is defined %}
-            <h3 class="card__title">{{title ?? block('title')}}</h3>
-        {% endif %}
+            <div class="card__header">
+                <h3 class="card__title">{{title ?? block('title')}}</h3>
 
-        {% if description or block('description') is defined %}
-            <div class="card__description">{{description ?? block('description')}}</div>
+                {% if description or block('description') is defined %}
+                    <p class="card__description">{{description ?? block('description')}}</p>
+                {% endif %}
+            </div>
         {% endif %}
-
+        
         {% if content or block('content') is defined %}
             <div class="card__content">{{content ?? block('content')}}</div>
         {% endif %}

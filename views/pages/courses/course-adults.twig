@@ -58,32 +58,38 @@
 
 	{% include 'sections/trial-lesson-cta.twig' %}
 
-	{% include 'sections/advantages.twig' with {
+    {% embed 'components/section.twig' with {
+        name: 'advantages',
         title:  course.facts.title ?: 'Важные факты о курсе <br>' ~ course.title,
-        items: [
-            {
-                title: 'Стандартизированная методика',
-                description: 'Практикуем один подход в офлайн и онлайн формате'
-            },
-            {
-                title: 'Современные пособия',
-                description: 'Используем новейшие пособия Oxford, Cambridge и Macmillan',
-                image: 'books'
-            },
-            {
-                title: '75% практика языка',
-                description: 'Бóльшую часть занятия говорит студент'
-            },
-            {
-                title: 'Визиты носителей',
-                description: 'Дополнительная практика языка в группе'
-            },
-            {
-                title: 'Онлайн платформа',
-                description: 'Нескучная домашка в интерактивном виде'
-            }
-        ]
     } %}
+        {% block content %}
+            {% include 'blocks/fact-cards.twig' with {
+				items: [
+                    {
+                        title: 'Стандартизированная методика',
+                        description: 'Практикуем один подход в офлайн и онлайн формате'
+                    },
+                    {
+                        title: 'Современные пособия',
+                        description: 'Используем новейшие пособия Oxford, Cambridge и Macmillan',
+                        image: 'books'
+                    },
+                    {
+                        title: '75% практика языка',
+                        description: 'Бóльшую часть занятия говорит студент'
+                    },
+                    {
+                        title: 'Визиты носителей',
+                        description: 'Дополнительная практика языка в группе'
+                    },
+                    {
+                        title: 'Онлайн платформа',
+                        description: 'Нескучная домашка в интерактивном виде'
+                    }
+                ]
+			} %}
+        {% endblock %}
+    {% endembed %}
 
     {% embed 'components/section.twig' with {
         name: 'course-results',

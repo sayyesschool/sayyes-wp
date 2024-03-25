@@ -13,25 +13,23 @@
         title: 'Наша школа предлагает курсы английского языка для разных уровней знаний и в разнообразных форматах.'
     } %}
         {% block content %}
-            <div class="cards-grid grid grid--2">
+            {% from 'blocks/format-card.twig' import format_card %}
+
+            <div class="cards grid grid--2">
                 {% for format in formats %}
                     {% set color = cycle(['white', 'pink', 'purple'], loop.index0) %}
 
-                    {% include 'blocks/format-card.twig' with {
+                    {{format_card(
                         format,
-                        color
-                    } %}
+                        cycle(colors ?? ['white', 'pink', 'purple'], loop.index0)
+                    )}}
                 {% endfor %}
 
-                {% embed 'components/card.twig' with {
-                    title: 'Затрудняетесь с выбором формы обучения?',
-                    description: 'Подберем для вас удобный курс и формат обучения!',
-                    color: 'white'
-                } only %}
-                    {% block body %}
-                        <button class="btn btn--purple">Оставить заявку</button>
-                    {% endblock %}
-                {% endembed %}
+                <div class="text-card card">
+                    <p class="text">Затрудняетесь с выбором формы обучения?</p>
+                    <h3 class="heading">Подберем для вас удобный курс и формат обучения!</h3>
+                    <button class="btn btn--purple">Оставить заявку</button>
+                </div>
             </div>
         {% endblock %}
     {% endembed %}

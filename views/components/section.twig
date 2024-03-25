@@ -5,15 +5,15 @@
         <div class="{{name}}__container section__container">
     {% endif %}
 
-    <div class="{{name}}__header section__header">
-        {% if title or block('title') is defined %}
+    {% if title or block('title') is defined %}
+        <div class="{{name}}__header section__header">
             <h2 class="{{name}}__title section__title">{{title ?? block('title')}}</h2>
-        {% endif %}
 
-        {% if description or block('description') is defined %}
-            <div class="{{name}}__description section__description">{{description ?? block('description')}}</div>
-        {% endif %}
-    </div>
+            {% if description or block('description') is defined %}
+                <div class="{{name}}__description section__description">{{description ?? block('description')}}</div>
+            {% endif %}
+        </div>
+    {% endif %}
 
     {% if content or block('content') is defined %}
         <div class="{{name}}__content section__content">{{content ?? block('content')}}</div>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html {{ site.language_attributes }}>
+<html {{site.language_attributes}}>
     <head>
         <meta charset="{{site.charset}}">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -41,14 +41,10 @@
     <body id="{{page.name}}-page" class="{{body_class}} {{layout_class}}">
         {% include 'blocks/header.twig' %}
 
-        <main class="content">
+        <main class="main">
             {% block content %}
             {% endblock %}
         </main>
-
-        {% if page.newsletter %}
-            {{newsletter}}
-        {% endif %}
 
         {% include 'blocks/footer.twig' %}
 

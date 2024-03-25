@@ -14,7 +14,7 @@
 }
 
 @mixin clearfix() {
-  content: "";
+  content: '';
   display: table;
   clear: both;
 }
@@ -54,33 +54,36 @@
     height: 100%;
 }
 
+@mixin hover-active($styles: ()) {
+	transition: 0.3s ease all;
+
+	&:hover {
+		@each $property, $color in $styles {
+			#{$property}: lighten($color, 5%);
+		}
+	}
+
+	&:active {
+		@each $property, $color in $styles {
+			#{$property}: darken($color, 5%);
+		}
+	}
+}
+
 @mixin breakpoint($bp) {
 	@media (max-width: $bp) {
 		@content;
 	}
 }
 
-@mixin hover-active($styles...) {
-	$changes: ();
+@mixin bp($point) {
+    $breakpoint: map-get($breakpoints, $point);
 
-	@for $i from 1 through calc(length($styles)) / 2 {
-		$property: nth($styles, $i * 2 - 1);
-		$value: nth($styles, $i * 2);
-
-		$changes: append($changes, ($property, $value), comma);
-	}
-
-	transition: 0.3s ease all;
-
-	&:hover {
-		@each $change in $changes {
-			#{nth($change, 1)}: lighten(nth($change, 2), 5%);
-		}
-	}
-
-	&:active {
-		@each $change in $changes {
-			#{nth($change, 1)}: darken(nth($change, 2), 5%);
-		}
-	}
+    @if not $breakpoint {
+        @error 'Invalid breakpoint';
+    } @else {
+        @media #{$breakpoint} {
+            @content;
+        }
+    }
 }

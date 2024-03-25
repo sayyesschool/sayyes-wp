@@ -1,5 +1,5 @@
 #vacancies-page {
-    .main {
+    .main-section {
         &__description {
 			max-width: 650px;
 		}
@@ -229,6 +229,77 @@
 		&__header {
 			max-width: 450px;
 			margin-bottom: 15px;
+		}
+	}
+}
+
+.vacancies-cta {
+	position: relative;
+	margin: 0 auto 100px;
+	padding: 60px 175px;
+	border-radius: $border-radius;
+	background-color: $yellow;
+	text-align: center;
+
+	&__title {
+		font-size: 42px;
+		font-weight: 700;
+		line-height: 40px;
+
+		button {
+			border: none;
+			background-color: transparent;
+			color: $purple;
+			font-weight: 700;
+			text-decoration: underline;
+		}
+	}
+
+	&__container {
+		position: static;
+	}
+
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+	}
+
+	// letter
+	&::before {
+		bottom: -20px;
+		left: -60px;
+		width: 262px;
+		height: 274px;
+		background-image: url('./static/images/decoration/elements/letter-sending.svg');
+	}
+
+	// statue of liberty
+	&::after {
+		bottom: -25px;
+		right: 35px;
+		width: 124px;
+		height: 251px;
+		background-image: url('./static/images/decoration/elements/statue-of-liberty.svg');
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		&__title {
+			max-width: 650px;
+			margin: 0 auto;
+		}
+	}
+
+	@include breakpoint($breakpoint-md) {
+		padding: 60px 145px;
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		padding: 60px 25px;
+
+		::before,
+		::after {
+			display: none;
 		}
 	}
 }

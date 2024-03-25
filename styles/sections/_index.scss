@@ -1,8 +1,6 @@
-@import './advantages';
 @import './awards';
 @import './big-cards';
 @import './cards-square';
-@import './certificates';
 @import './children-advantages';
 @import './club-events';
 @import './club-shortly';
@@ -12,7 +10,6 @@
 @import './course-teachers';
 @import './course-testimonials';
 @import './courses';
-@import './discounts';
 @import './faq';
 @import './features';
 @import './formats';
@@ -30,3 +27,19 @@
 @import './trial-lesson';
 @import './trial-lesson-cta';
 @import './video';
+
+.about-course,
+.cards-square,
+.digits,
+.features
+.img-comment,
+.trial-lesson-cta,
+.vacancies-cta {
+    margin-right: 62px;
+    margin-left: 62px;
+
+    @include breakpoint($breakpoint-lg) {
+        margin-right: 0;
+        margin-left: 0;
+    }
+}

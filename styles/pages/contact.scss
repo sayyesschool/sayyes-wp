@@ -35,12 +35,15 @@
 }
 
 .contacts {
-	display: flex;
-	justify-content: space-between;
-	gap: 50px;
-	padding: 60px;
 	border-radius: $border-radius;
 	background-color: $white;
+
+	&__content {
+		padding: 60px;
+		display: flex;
+		justify-content: space-between;
+		gap: 50px;
+	}
 
 	.phone-numbers {
 		max-width: 240px;
@@ -71,10 +74,6 @@
 		max-width: 372px;
 	}
 
-	&__content {
-		margin-bottom: 40px;
-	}
-
 	&__phone,
 	&__email,
 	&__time {
@@ -92,12 +91,11 @@
 	}
 
 	&__title {
+		margin-top: 20px;
 		margin-bottom: 5px;
 		font-weight: 800;
 		letter-spacing: 0.36px;
 		text-transform: uppercase;
-
-		margin-top: 20px;
 	}
 
 	&__text-address {

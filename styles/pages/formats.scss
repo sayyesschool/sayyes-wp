@@ -1,84 +1,28 @@
 #formats-page {
-    .formats-cards {
-        .section {
-            &__title {
-                max-width: 850px;
-                margin-bottom: 40px;
-            }
-        }
+    
+}
 
-        .card:last-of-type {
-            align-self: flex-start;
-            
-            .card__body {
-                padding: 50px 92px;
-                align-items: center;
-                text-align: center;
-            }
-
-            .card__title {
-                max-width: 290px;
-                font-size: 18px;
-                line-height: 20px;
-            }
-
-            .card__description {
-                max-width: 397px;
-                margin-bottom: 45px;
-                color: #262626;
-                font-size: 42px;
-                font-weight: 700;
-                line-height: 40px;
-            }
-        }
+.formats-cards {
+    &__title {
+        max-width: 850px;
+        margin-bottom: 40px;
     }
 
-    .format-card {
-        transition: 0.3s all ease;
-		cursor: pointer;
+    .card:last-child {
+        padding: 50px 92px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
 
-		&:hover {
-			box-shadow: 0px 0px 23.3288px 0px rgba(255, 219, 199, 0.9);
-		}
-
-        .card {
-            &__img {
-                height: 270px;
-                display: block;
-                object-fit: cover;
-            }
-
-            &__body {
-                min-height: 180px;
-			    padding-bottom: 46px;
-            }
-
-            &__title {
-                margin-bottom: 5px;
-                font-size: 24px;
-                font-weight: 800;
-                line-height: 25px;
-            }
-
-            &__description {
-                max-width: 470px;
-            }
-
-            &__content {
-                margin-top: auto;
-                display: flex;
-                justify-content: space-between;
-            }
+        .text {
+            max-width: 290px;
+            margin-bottom: 20px;
         }
 
-        @include breakpoint($breakpoint-sm) {
-            .big-course__content {
-                min-height: 200px;
-            }
-
-            .big-course__lesson-type {
-                width: auto;
-            }
+        .heading {
+            max-width: 397px;
+            margin-bottom: 45px;
         }
     }
 }

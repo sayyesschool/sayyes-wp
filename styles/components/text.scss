@@ -1,4 +1,20 @@
+@mixin text {
+	font-family: 'Raleway';
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 20px;
+
+	@include bp(lt-lg) {
+        font-size: 16px;
+        line-height: 18px;
+    }
+}
+
 .text {
+	font-family: 'Raleway';
+	font-weight: 600;
+	letter-spacing: 0em;
+
 	&--block {
 		margin-bottom: 1rem;
 	}
@@ -40,37 +56,42 @@
 		font-weight: 800;
 	}
 
-	&--smallest {
-		font-size: 12px;
-	}
-
-	&--smaller {
+	&--xs {
 		font-size: 14px;
+		line-height: 15px;
 	}
 
-	&--small {
+	&--sm {
 		font-size: 16px;
+		line-height: 15px;
 	}
 
-	&--medium {
+	&--md {
 		font-size: 18px;
+		line-height: 20px;
 	}
 	
-	&--large {
-		font-size: 20px;
-	}
-
-	&--larger {
+	&--lg {
 		font-size: 24px;
 		line-height: 25px;
 	}
 
-	&--largest {
-		font-size: 28px;
-		line-height: 29px;
+	&--xl {
+		font-size: 36px;
+		line-height: 35px;
 	}
 }
 
 .asterisk-text {
 	
+}
+
+.handwritten-text {
+	font-family: 'Shantell Sans';
+	font-size: 16px;
+	font-style: italic;
+	font-weight: 400;
+	line-height: 15px;
+	letter-spacing: 0em;
+	text-align: left;
 }

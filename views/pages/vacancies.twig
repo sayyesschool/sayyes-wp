@@ -171,7 +171,7 @@
 	} %}
 		{% block description %}
 			Ждем ваше резюме на почту
-			<a href="mailto:hr@sayes.ru" class="text text--purple">hr@sayes.ru</a>
+			<a href="mailto:hr@sayes.ru" class="color-primary">hr@sayes.ru</a>
 			с пометкой какой формат преподавания (онлайн/офлайн/взрослые/дети) вам интересен.
 		{% endblock %}
 
@@ -180,5 +180,11 @@
 		{% endblock %}
 	{% endembed %}
 
-	{% include 'sections/trial-lesson-cta.twig' %}
+	{% embed 'components/section.twig' with {
+		name: 'vacancies-cta'
+	} %}
+		{% block title %}
+			<button class="feedback-btn">Отправьте нам</button>свое резюме, а мы окружим вас заботой и мотивированными студентами
+		{% endblock %}
+	{% endembed %}
 {% endblock %}
