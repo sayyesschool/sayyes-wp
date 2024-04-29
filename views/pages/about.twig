@@ -96,10 +96,10 @@
 		{% endblock %}
 
 		{% block content %}
-			<div class="cards-grid grid grid--2">
+			<div class="cards-grid grid grid--3">
 				<div class="card card--transparent">
 					<h4 class="card__title">Команда мечты</h4>
-					<h5 class="card__subtitle">Создает для вас душевную атмосферу и обеспечивает комфорт в обучении.</h5>
+					<p class="card__subtitle">Создает для вас душевную атмосферу и обеспечивает комфорт в обучении.</p>
 				</div>
 
 				{% for manager in managers|slice(0, 7) %}
@@ -153,17 +153,38 @@
 
 		{% block content %}
 			<div class="behind-the-scenes__gallery">
-				{% for i in 1..7 %}
-					<picture class="behind-the-scenes__picture">
+				{% for i in 1..2 %}
+					<picture class="behind-the-scenes__media">
+						<img class="image" src="{{theme.link}}/static/images/behind-the-scenes/bts-{{i}}.jpg" alt="Say Yes">
+					</picture>
+				{% endfor %}
+
+				<div class="behind-the-scenes__media">
+					{% include 'components/video.twig' with {
+						class: 'atmosphere__celebration-img-2',
+						filename: 'celebration.mp4',
+						autoplay: true
+					} %}
+				</div>
+
+				{% for i in 4..7 %}
+					<picture class="behind-the-scenes__media">
 						<img class="image" src="{{theme.link}}/static/images/behind-the-scenes/bts-{{i}}.jpg" alt="Say Yes">
 					</picture>
 				{% endfor %}
 				
-				<picture class="behind-the-scenes__picture">
+				{# <picture class="behind-the-scenes__media">
 					{% for i in [8, 3] %}
 						<img class="image" src="{{theme.link}}/static/images/behind-the-scenes/bts-{{i}}.jpg" alt="Say Yes">
 					{% endfor %}
-				</picture>
+				</picture> #}
+
+				<div class="behind-the-scenes__media">
+					{% include 'components/video.twig' with {
+						filename: 'graduation.mp4',
+						autoplay: true
+					} %}
+				</div>
 			</div>
 		{% endblock %}
 	{% endembed %}

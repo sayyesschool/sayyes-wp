@@ -1,7 +1,7 @@
 <div class="progress-block block">
     <div class="progress-block__video">
         {% include 'components/video.twig' with {
-            youtube_id: item.youtube_id,
+            youtube_id: item.video.youtube_id,
             image: {
                 src: item.thumbnail.src,
                 alt: item.title
@@ -18,11 +18,18 @@
         <div class="card">
             <h3 class="card__title">{{item.title}}</h3>
 
-            <div class="card__description">{{item.content}}</div>
-            <p class="card__description">{{item.excerpt({ read_more: false })}}</p>
+            <div class="card__description">
+                <p class="progress-excerpt">
+                    {{item.excerpt({ read_more: false })}}
+                </p>
+                
+                <div class="progress-content">
+                    {{item.content}}
+                </div>
+            </div>
 
             <h4 class="card__subtitle">Преподаватель:</h4>
-            <a class="link" href="{{item.teacher.link}}">{{item.teacher}}</a>
+            <a class="link" href="{{item.teacher.url}}">{{item.teacher}}</a>
 
             <h4 class="card__subtitle">Курс:</h4>
             <a class="link" href="{{item.course.link}}">{{item.course}}</a>

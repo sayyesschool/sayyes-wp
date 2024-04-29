@@ -1,0 +1,27 @@
+.link {
+	color: $purple;
+	font-weight: 600;
+
+    &:hover {
+        color: $purple;
+		cursor: pointer;
+    }
+
+	p & {
+		border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
+		color: inherit;
+		font-weight: inherit;
+		line-height: inherit;
+		text-decoration: none;
+
+		&:hover {
+			color: $purple;
+		}
+	}
+}
+
+button.link {
+	border: none;
+	padding: 0;
+	background: none;
+}

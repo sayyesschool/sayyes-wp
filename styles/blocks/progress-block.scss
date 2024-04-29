@@ -16,8 +16,16 @@
         padding: 45px 50px;
     }
 
+    .progress-excerpt {
+        display: none;
+    }
+
     @include breakpoint($breakpoint-sm) {
 		padding: 25px 35px 30px 30px;
+        
+        .progress-excerpt {
+            display: block;
+        }
 
 		.card {
             &__title {

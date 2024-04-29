@@ -49,7 +49,7 @@
 					<p>Оставьте заявку, мы подберем вам преподавателя и расскажем о курсах.</p>
 				</div>
 
-				<button class="feedback-btn btn btn--yellow btn--full">Оставить заявку</button>
+				<button class="btn btn--yellow btn--full" data-modal-trigger="request-modal">Оставить заявку</button>
 			</div>
 
 			<div class="dream-team__video">
@@ -84,14 +84,16 @@
 		description: 'Для удобного и нескучного закрепления материала дома и проведения онлайн уроков'
 	} %}
 		{% block content %}
-			{% include 'components/video.twig' with {
+			{# {% include 'components/video.twig' with {
 				youtube_id: '6ISA01NE2rY',
 				image: {
 					path: 'platform/platform-desktop.png',
 					alt: 'Собственная онлайн платформа'
 				},
 				modal: true
-			} %}
+			} %} #}
+
+			<img class="image" src="{{theme.link ~ '/static/images/platform/platform-desktop.png'}}" alt="Онлайн платформа" />
 
 			{% include 'components/list.twig' with {
 				type: 'ul',
@@ -115,8 +117,7 @@
 
 	{% embed 'components/section.twig' with {
 		name: 'atmosphere',
-		title: 'Атмосфера «второго дома»',
-		description: 'Для удобного и нескучного закрепления материала дома и проведения онлайн уроков'
+		title: 'Атмосфера «второго дома»'
 	} %}
 		{% block description %}
 			<p>SAY YES! это место, куда хочется возвращаться.</p>

@@ -11,7 +11,8 @@
 						items: [
 							{
 								content: 'Заказать звонок',
-								link: links.main_phone
+								link: '#',
+								modal_open: 'callback-modal'
 							},
 							{
 								content: 'Напишите нам в WhatsApp',
@@ -83,12 +84,19 @@
 								</ul>
 							</div>
 
-							{{ _self.sout }}
+							<div class="footer__sout">
+								<a href="{{theme.link}}/static/documents/sout.pdf" target="_blank">Результаты проведения СОУТ</a>
+							</div>
 						</div>
 					</div>
 				</div>
 
-				{{ _self.lisence }}
+				<div class="footer__license">
+					<a class="license" href="{{site.link}}/licenzii/" title="Лицензия 77 Л01 №0007610">
+						<h4 class="license__title">Лицензия на доп. образование</h4>
+						<p class="license__series">серия 77 Л01 №0007610</p>
+					</a>
+				</div>
 			</div>
 		</div>
 
@@ -113,28 +121,6 @@
 					<img class="footer__with-love-img" src="{{theme.link}}/static/images/decoration/elements/heart-2.svg" alt="С любовью">
 				</div>
 			</div>
-
-			<div class="footer__column">
-				<div class="footer__designer">
-					<p>Дизайн сайта</p>
-					<p>Насибуллина Екатерина</p>
-				</div>
-			</div>
 		</div>
 	</div>
 </footer>
-
-{% macro lisence() %}
-	<div class="footer__license">
-		<a class="license" href="{{site.link}}/licenzii/" title="Лицензия 77 Л01 №0007610">
-			<h4 class="license__title">Лицензия на доп. образование</h4>
-			<p class="license__series">серия 77 Л01 №0007610</p>
-		</a>
-	</div>
-{% endmacro %}
-
-{% macro sout() %}
-	<div class="footer__sout">
-		<a href="{{theme.link}}/static/documents/sout.pdf" target="_blank">Результаты проведения СОУТ</a>
-	</div>
-{% endmacro %}

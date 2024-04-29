@@ -137,7 +137,7 @@
     {% embed 'components/section.twig' with {
         name: 'format-testimonials',
         title: 'Отзывы о формате <br>' ~ format.title,
-        description: 'За 10 лет работы, обучили более 10 000 человек и получили более 800 отзывов'
+        description: 'За ' ~ COMPANY_AGE ~ ' работы, обучили более 10 000 человек и получили более 800 отзывов'
     } %}
         {% block content %}
             {% include 'blocks/course-testimonials-slider.twig' with {

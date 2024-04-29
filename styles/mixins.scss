@@ -1,3 +1,5 @@
+@use 'sass:meta';
+
 @mixin raised() {
   -webkit-box-shadow: 0 1px 5px rgba(0,0,0,.15),0 1px 5px 1px rgba(0,0,0,.15);
   box-shadow: 0 1px 5px rgba(0,0,0,.15),0 1px 5px 1px rgba(0,0,0,.15);
@@ -58,14 +60,22 @@
 	transition: 0.3s ease all;
 
 	&:hover {
-		@each $property, $color in $styles {
-			#{$property}: lighten($color, 5%);
+		@each $property, $value in $styles {
+            @if (meta.type-of($value) == color) {
+                #{$property}: lighten($value, 5%);
+            } @else {
+                #{$property}: $value;
+            }
 		}
 	}
 
 	&:active {
-		@each $property, $color in $styles {
-			#{$property}: darken($color, 5%);
+		@each $property, $value in $styles {
+            @if (meta.type-of($value) == 'color') {
+                #{$property}: darken($value, 5%);
+            } @else {
+                #{$property}: $value;
+            }
 		}
 	}
 }

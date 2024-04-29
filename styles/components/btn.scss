@@ -15,12 +15,6 @@
 	text-align: center;
 	white-space: nowrap;
 
-	&:not(&--outlined):not(&--transparent) {
-		@include hover-active((
-			background-color: $black
-		));
-	}
-
 	&--outlined {
 		border: 2px solid currentColor;
 		background-color: transparent;
@@ -72,8 +66,9 @@
 		color: $black;
 
 		@include hover-active((
+			background-color: $black,
 			border-color: $black,
-			color: $black
+			color: $white
 		));
 	}
 

@@ -19,12 +19,24 @@ export default class Modal extends Component {
 
             if (component === 'VideoModal')
                 modal = new VideoModal(element);
+            else if (component === 'RequestModal')
+                modal = new RequestModal(element);
             else
                 modal = new Modal(element);
 
             if (id) {
-                document.querySelectorAll(`[data-modal-trigger="${id}"`).forEach(trigger => {
-                    trigger.addEventListener('click', modal.open.bind(modal));
+                document.querySelectorAll(`[data-modal-trigger="${id}"]`).forEach(trigger => {
+                    const options = trigger.dataset.modalOptions &&
+                        trigger.dataset.modalOptions.split(',')
+                            .map(item => item.trim().split(':'))
+                            .reduce((acc, [key, value]) => {
+                                acc[key] = value;
+                                return acc;
+                            }, {});
+
+                    console.log(options);
+
+                    trigger.addEventListener('click', modal.open.bind(modal, options));
                 });
             }
         });
@@ -58,6 +70,17 @@ export default class Modal extends Component {
         setTimeout(() => {
             toggleBodyScroll(false);
         }, 300);
+    }
+}
+
+export class RequestModal extends Modal {
+    open(options) {
+        super.open(options);
+
+        if (options?.tab) {
+            const tab = this.getElement(`button[value="${options.tab}"]`);
+            tab?.click();
+        }
     }
 }
 

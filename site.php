@@ -25,6 +25,11 @@ class Post extends Timber\Post {
 class Course extends Post {}
 class Format extends Post {}
 class Page extends Post {}
+class Teacher extends Post {
+    public function url() {
+        return remove_url_component($this->link, '/'.$this->slug.'/') . '#'.$this->slug;
+    }
+}
 
 class SayYesSite extends Site {
     public $version = '2.3.0';
@@ -52,6 +57,7 @@ class SayYesSite extends Site {
                 'format' => Format::class,
                 'post' => Post::class,
                 'page' => Post::class,
+                'teacher' => Teacher::class,
             ]);
         });
 		add_filter('timber/twig', [$this, 'add_to_twig']);
@@ -60,8 +66,16 @@ class SayYesSite extends Site {
                 'callable' => 'format_phone_number'
             ];
 
+            $functions['is_url'] = [
+                'callable' => 'is_url'
+            ];
+
             $functions['is_link_external'] = [
                 'callable' => 'is_link_external'
+            ];
+
+            $functions['remove_url_component'] = [
+                'callable' => 'remove_url_component'
             ];
         
             return $functions;
@@ -126,6 +140,7 @@ class SayYesSite extends Site {
             'contacts' => $contacts,
             'prices' => $prices
         ];
+        $context['COMPANY_AGE'] = date('Y') - 2013;
         $context['YANDEX_METRIKA_COUNTER'] = $this->yandex_metrika_counter;
         $context['GA_MEASUREMENT_ID'] = $this->google_analytics_id;
         $context['FACEBOOK_PIXEL_IDS'] = $this->facebook_pixel_ids;

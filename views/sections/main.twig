@@ -4,7 +4,7 @@
 	<div class="main-section__description">{{description}}</div>
 
 	{% if button %}
-		<button class="feedback-btn btn btn--{{button.color ?? 'yellow'}}">
+		<button class="btn btn--{{button.color ?? 'yellow'}}" data-modal-trigger="request-modal">
 			{{attribute(button, 'content') ? button.content : (button == true ? 'Оставить заявку' : button)}}
 		</button>
 	{% endif %}

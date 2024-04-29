@@ -339,32 +339,25 @@
         gap: 40px;
 	}
 
+	.image {
+		width: 50%;
+	}
+
 	@include breakpoint($breakpoint-lg) {
 		&__description {
 			max-width: 400px;
 			margin: 20px 0 40px;
 		}
-
-		.video {
-			height: 385px;
-		}
 	}
 
-	@include breakpoint($breakpoint-sm) {
-		.video {
-			height: 285px;
+	@include breakpoint($breakpoint-xs) {
+		&__content {
+			flex-direction: column;
+			gap: 20px;
 		}
-	}
 
-	@include breakpoint($breakpoint-xxs) {
-		.video {
-			height: 215px;
-		}
-	}
-
-	@include breakpoint($breakpoint-sm-mobile) {
-		.video {
-			height: 160px;
+		.image {
+			width: 100%;
 		}
 	}
 }
