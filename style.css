@@ -2567,6 +2567,7 @@ button.link {
       -ms-flex-pack: justify;
           justify-content: space-between;
   gap: 85px;
+  color: #262626;
 }
 .course-card .card__title {
   font-weight: 800;
