@@ -9062,14 +9062,11 @@ button.link {
     line-height: 20px;
   }
 }
-#teachers-page .teachers .cards-grid {
+#teachers-page .teachers .grid {
   margin-bottom: 40px;
 }
 #teachers-page .teachers .teacher-card .card__img {
   aspect-ratio: 1/1;
-}
-#teachers-page .teachers .teacher-card .card__body {
-  padding-bottom: 50px;
 }
 #teachers-page .teachers .teacher-card .card__title {
   font-weight: 800;
