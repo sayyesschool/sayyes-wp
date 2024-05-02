@@ -17,7 +17,7 @@ new Swiper('.student-progress-slider', {
 new Swiper('.organizations-slider', {
 	modules: [Grid, Navigation, Pagination, Scrollbar],
 	spaceBetween: 15,
-	slidesPerView: 4,
+	slidesPerView: 5,
 	grid: {
 		rows: 3,
 		fill: 'row'
