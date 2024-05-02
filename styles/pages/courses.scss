@@ -10,10 +10,13 @@
 .courses-formats {
     &__header {
         max-width: 860px;
-		margin-bottom: 40px;
     }
 
     .card {
+        &__img {
+            aspect-ratio: 2 / 1;
+        }
+
         &__body {
             padding: 33px 38px 37px;
         }

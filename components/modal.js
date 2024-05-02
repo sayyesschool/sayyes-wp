@@ -34,9 +34,9 @@ export default class Modal extends Component {
                                 return acc;
                             }, {});
 
-                    console.log(options);
-
-                    trigger.addEventListener('click', modal.open.bind(modal, options));
+                    trigger.addEventListener('click', (event) => {
+                        modal.open(event, options);
+                    });
                 });
             }
         });
@@ -74,8 +74,8 @@ export default class Modal extends Component {
 }
 
 export class RequestModal extends Modal {
-    open(options) {
-        super.open(options);
+    open(event, options) {
+        super.open(event, options);
 
         if (options?.tab) {
             const tab = this.getElement(`button[value="${options.tab}"]`);
@@ -97,10 +97,10 @@ export class VideoModal extends Modal {
         this.iframe.allowFullscreen = true;
     }
 
-    open(event) {
+    open(event, options) {
         const { embedUrl, videoUrl, vertical } = event.target.dataset;
 
-        super.open();
+        super.open(event, options);
 
         if (videoUrl) {
             const video = this.video;

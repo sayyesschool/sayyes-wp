@@ -1,10 +1,6 @@
 .awards {
-	margin-bottom: 100px;
-	position: relative;
-
-	&__title {
-		max-width: 921px;
-		margin-bottom: 40px;
+	&__header {
+		max-width: 920px;
 	}
 
 	&__content {
@@ -13,35 +9,28 @@
 		gap: 20px;
 	}
 
-	.cards-grid {
+	.grid {
 		flex: 1;
 	}
 
 	.award-card {
 		min-height: 215px;
 		padding: 30px 15px 30px 40px;
-		background-color: $white;
-		color: $black;
-		font-weight: 800;
 
 		.card {
 			&__title {
+				@include heading('md');
 				margin-bottom: 5px;
-				font-size: 42px;
-				line-height: 40px;
 			}
 		
 			&__subtitle {
+				@include text('sm');
 				max-width: 170px;
 				margin-bottom: 20px;
-				font-size: 16px;
-				line-height: 15px;
 			}
 		
 			&__description {
-				font-size: 16px;
-				font-weight: 600;
-				line-height: 15px;
+				@include text('sm');
 			}
 		}
 	

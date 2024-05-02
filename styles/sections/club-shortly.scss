@@ -1,9 +1,13 @@
 .club-shortly {
-	margin-bottom: 100px;
-
-	.subtitle {
+	&__header {
 		max-width: 550px;
 		margin-bottom: 45px;
+	}
+
+	&__blocks {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
 	}
 
 	.text-block {
@@ -18,23 +22,19 @@
 		}
 	}
 
-	&__blocks {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 20px;
-	}
-
 	@include breakpoint($breakpoint-lg) {
-		margin-bottom: 70px;
-
-		.subtitle {
+		&__header {
 			max-width: 450px;
 		}
 	}
 
 	@include breakpoint($breakpoint-md) {
-		.subtitle {
+		&__header {
 			max-width: none;
+		}
+
+		&__blocks {
+			gap: 15px;
 		}
 
 		.text-block {
@@ -50,19 +50,9 @@
 				max-width: 128px;
 			}
 		}
-
-		&__blocks {
-			gap: 15px;
-		}
-	}
-
-	@include breakpoint($breakpoint-xs) {
-		margin-bottom: 60px;
 	}
 
 	@include breakpoint($breakpoint-xxs) {
-		margin-bottom: 50px;
-
 		.text-block {
 			width: 100%;
 			min-height: 155px;
@@ -71,7 +61,7 @@
 	}
 
 	@include breakpoint($breakpoint-mobile) {
-		.subtitle {
+		&__header {
 			max-width: 250px;
 		}
 	}

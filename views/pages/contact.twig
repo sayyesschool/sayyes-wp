@@ -13,8 +13,11 @@
 			<div class="contacts__info">
 				<div class="contacts__address">
 					<h4 class="contacts__title">Адрес школы:</h4>
-					<p class="contacts__text-address">г. Москва, ул. Кожевническая, дом 14, корпус 1,  строение 2</p>
-					<p class="contacts__text-address">5 минут пешком от метро  Павелецкая радиальная</p>
+
+					<div class="text">
+						<p>г. Москва, ул. Кожевническая, дом 14, корпус 1,  строение 2</p>
+						<p>5 минут пешком от метро  Павелецкая радиальная</p>
+					</div>
 				</div>
 
 				<div class="contacts__phone">
@@ -28,7 +31,7 @@
 				<div class="contacts__email">
 					<div class="contacts__email-content">
 						<h4 class="contacts__title">E-mail:</h4>
-						<a class="text" href="mailto:info@sayes.ru">info@sayes.ru</a>
+						<a class="link" href="{{links.email}}">{{site_data.contacts.email}}</a>
 					</div>
 
 					{% include 'blocks/social.twig' %}
@@ -36,20 +39,22 @@
 
 				<div class="contacts__time">
 					<h4 class="contacts__title">График работы</h4>
-					<ul class="contacts__schedule-list">
-						<li>
-							<span>Пн–Пт:</span>
-							<span>с 12:00 до 21:00</span>
-						</li>
 
-						<li>
-							<span>Сб–Вс:</span>
-							<span>с 11:00 до 16:00</span>
-						</li>
-					</ul>
+					{% include 'components/list.twig' with {
+						items: [
+							{
+								title: 'Пн–Пт:',
+								description: 'с 12:00 до 21:00'
+							},
+							{
+								title: 'Сб–Вс:',
+								description: 'с 11:00 до 16:00'
+							}
+						]
+					} %}
 				</div>
 
-				<a class="btn btn--yellow" href="https://maps.app.goo.gl/ZTjB8XZsKyQ1ozPLA" target="_blank">Узнайте как нас найти на Павелецкой</a>
+				<a class="btn btn--yellow" href="{{theme.link}}/downloads/directions-paveletskaya.pdf" target="_blank">Узнайте как нас найти на Павелецкой</a>
 			</div>
 
 			<div class="contacts__map">
@@ -58,46 +63,51 @@
 		{% endblock %}
 	{% endembed %}
 
-	<section class="contact-us">
-		<div class="section__container">
-			<h2 class="contact-us__title subtitle">Свяжитесь с нами</h2>
-
-			<div class="contact-us__content">
+	{% embed 'components/section.twig' with {
+		name: 'contacts-us',
+		title: 'Свяжитесь с нами'
+	} %}
+		{% block content %}
+			<div class="cards-grid grid grid--3">
 				{% for manager in managers %}
 					<div class="contact-card card">
 						<img class="card__img" src="{{manager.thumbnail.src}}" alt="{{manager.name}}">
 
 						<div class="card__content">
-							<h3 class="card__name">{{manager.name}}</h3>
-							<h4 class="card__post">{{manager.position}}</h4>
-							<div class="card__description">{{manager.responsibility}}</div>
-							<ul class="card__description">
-								<li>
-									<span>
-										{% include 'components/icon.twig' with { 
-											name: 'phone'
-										} %}
-									</span>
+							<h3 class="card__title">{{manager.name}}</h3>
 
-									<a class="link" href="tel:{{format_phone_number(manager.phone)}}">{{manager.phone}}</a>
-								</li>
+							<h4 class="card__subttitle">{{manager.position}}</h4>
 
-								<li>
-									<span>
-										{% include 'components/icon.twig' with { 
-											name: 'email'
-										} %}
-									</span>
+							<div class="card__description">
+								<p class="text">{{manager.responsibility}}</p>
 
-									<a class="link" href="mailto:{{manager.email}}">{{manager.email}}</a>
-								</li>
-							</ul>
+								{% include 'components/list.twig' with {
+									items: [
+										{
+											icon: 'phone',
+											content: manager.phone,
+											link: 'tel:' ~ format_phone_number(manager.phone)
+										},
+										{
+											icon: 'email',
+											content: manager.email,
+											link: 'mailto:' ~ manager.email
+										},
+										{
+											icon: 'telegram',
+											content: manager.telegram,
+											link: ' https://t.me/' ~ manager.telegram
+										}
+									],
+									gap: 'xs'
+								} %}
+							</div>
 						</div>
 					</div>
 				{% endfor %}
 			</div>
-		</div>
-	</section>
+		{% endblock %}
+	{% endembed %}
 
 	{% include 'sections/trial-lesson.twig' %}
 {% endblock %}

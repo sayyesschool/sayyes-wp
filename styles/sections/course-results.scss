@@ -1,12 +1,10 @@
 .course-results {
-	margin-bottom: 100px;
-
-	.section__title {
+	&__header {
 		max-width: 700px;
 		margin-bottom: 20px;
 	}
 
-	.section__content {
+	&__content {
 		display: flex;
 		justify-content: space-between;
 		gap: 35px;
@@ -33,9 +31,7 @@
 	}
 
 	@include breakpoint($breakpoint-lg) {
-		margin-bottom: 70px;
-
-		.section__title {
+		&__header {
 			max-width: 500px;
 		}
 
@@ -47,18 +43,12 @@
 		}
 	}
 
-	@include breakpoint($breakpoint-xs) {
-		margin-bottom: 60px;
-	}
-
 	@include breakpoint($breakpoint-xxs) {
-		margin-bottom: 50px;
-
-		.section__title {
+		&__header {
 			max-width: 400px;
 		}
 
-		.section__content {
+		&__content {
 			flex-direction: column;
 			gap: 25px;
 		}

@@ -1,16 +1,14 @@
 .course-teachers {
 	padding: 55px 60px 60px;
-	margin-bottom: 100px;
-	border-radius: $border-radius;
 	background-color: $purple;
 	color: $white;
 
-	.section__title {
+	&__title {
 		max-width: 750px;
 		margin-bottom: 20px;
 	}
 
-	.section__description {
+	&__description {
 		max-width: 500px;
 	}
 
@@ -34,9 +32,7 @@
 	}
 
 	@include breakpoint($breakpoint-lg) {
-		margin-bottom: 70px;
-
-		.subtitle {
+		&__title {
 			max-width: 500px;
 		}
 
@@ -60,22 +56,16 @@
 		}
 	}
 
-	@include breakpoint($breakpoint-xs) {
-		margin-bottom: 60px;
-	}
-
 	@include breakpoint($breakpoint-xxs) {
-		margin-bottom: 50px;
 		padding: 25px;
 
 		.slider {
 			width: calc(100% + 25px);
 			margin-bottom: 15px;
-		}
 
-		.slider__arrows,
-		.slider__pagination {
-			display: none;
+			&__arrows {
+				display: none;
+			}
 		}
 
 		.swiper-wrapper {

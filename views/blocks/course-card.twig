@@ -1,37 +1,45 @@
 {% macro course_card(course, color, formats = true) %}
 	<div class="course-card card card--hover card--{{color}}">
 		{% if course.thumbnail %}
-			<img class="card__img" src="{{course.thumbnail.src}}" alt="{{course.thumbnail.alt}}">
+			<div class="card__media">
+				<img src="{{course.thumbnail.src}}" alt="{{course.thumbnail.alt}}">
+
+				{% if course.age %}
+					<span class="course-card__age-tag">{{course.age}}</span>
+				{% endif %}
+			</div>
 		{% endif %}
 
 		<div class="card__header">
 			<h3 class="card__title">{{course.title}}</h3>
 
-			{% if course.excerpt %}
-				<p class="card__description">{{course.excerpt({ read_more: false })}}</p>
+			{% if course.description %}
+				<p class="card__description">{{course.description}}</p>
 			{% endif %}
 
 			{% if course.age %}
-				<span class="course__age-tag course__age-tag-{{item.age.color}}">{{course.age.text}} лет</span>
+				<span class="course-card__age-tag">{{course.age}}</span>
 			{% endif %}
 		</div>
 
 		{% if formats %}
 			<div class="card__body">
-				<p>Стоимость<br>обучения:</p>
+				<p class="text">Стоимость<br>обучения:</p>
 				
 				<ul class="list">
 					{% for name, label in formats %}
 						{% set format = course.formats[name] %}
 
-						<li class="list-item">
-							{{label}}
+						{% if format %}
+							<li class="list-item">
+								{{label}}
 
-							<span>
-								{{format.price.prefix}}
-								<strong>{{format.price.value}}</strong>{{format.price.postfix}}
-							</span>
-						</li>
+								<span>
+									{{format.price.prefix}}
+									<strong>{{format.price.value}}</strong>{{format.price.postfix}}
+								</span>
+							</li>
+						{% endif %}
 					{% endfor %}
 				</ul>
 			</div>

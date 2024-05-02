@@ -1,6 +1,9 @@
-<section class="{{html_classes(name ?? [], class ?? [], 'section', {
-    'section--horizontal': horizontal
-}, color ? 'section--' ~ color : [])}}">
+<section
+    {% if id %}id="{{id}}"{% endif %}
+    class="{{html_classes(name ?? [], class ?? [], 'section', {
+        'section--horizontal': horizontal
+    }, color ? 'section--' ~ color : [])}}"
+>
     {% if not uncontained %}
         <div class="{{name}}__container section__container">
     {% endif %}

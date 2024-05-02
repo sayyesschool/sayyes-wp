@@ -1,9 +1,10 @@
 .btn {
+	width: 100%;
+	max-width: 372px;
+	min-height: 50px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	max-width: 372px;
-	min-height: 50px;
 	border: none;
 	border-radius: $border-radius-bg;
 	padding: 0 20px;
@@ -25,14 +26,6 @@
 		background-color: transparent;
 		color: inherit;
 		padding: 0;
-	}
-
-	&--black {
-		color: $black;
-	}
-
-	&--white {
-		color: $white;
 	}
 
 	&--purple {
@@ -72,18 +65,27 @@
 		));
 	}
 
+	&#{&}--filled#{&}--black {
+		background-color: $black;
+		color: $white;
+
+		@include hover-active((
+			background-color: $black,
+			border-color: $black
+		));
+	}
+
 	&--lg {
-		max-width: 520px;
+		min-height: 60px;
 		font-size: 18px;
 	}
 
 	&--md {
-		max-width: 273px;
-		min-height: 40px;
+		min-height: 50px;
+		font-size: 16px;
 	}
 
 	&--sm {
-		max-width: 200px;
 		min-height: 40px;
 		font-size: 14px;
 	}

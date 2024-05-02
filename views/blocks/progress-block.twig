@@ -2,9 +2,12 @@
     <div class="progress-block__video">
         {% include 'components/video.twig' with {
             youtube_id: item.video.youtube_id,
-            image: {
+            image: item.thumbnail ? {
                 src: item.thumbnail.src,
                 alt: item.title
+            } : {
+                src: theme.link ~ 'https://img.youtube.com/vi/' ~ item.video.youtube_id ~ '/maxresdefault.jpg',
+                alt: ''
             },
             modal: true
         } %}

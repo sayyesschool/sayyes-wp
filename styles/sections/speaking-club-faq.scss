@@ -1,6 +1,4 @@
 .speaking-club-faq {
-	margin-bottom: 100px;
-
 	.subtitle {
 		max-width: 435px;
 		margin-bottom: 30px;
@@ -25,17 +23,7 @@
 		text-align: center;
 	}
 
-	@include breakpoint($breakpoint-lg) {
-		margin-bottom: 70px;
-	}
-
-	@include breakpoint($breakpoint-xs) {
-		margin-bottom: 60px;
-	}
-
 	@include breakpoint($breakpoint-xxs) {
-		margin-bottom: 50px;
-
 		.tabs__tab {
 			display: none;
 		}

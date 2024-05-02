@@ -1,6 +1,4 @@
 .course-formats {
-	margin-bottom: 100px;
-
 	.section__title {
 		max-width: 600px;
 		margin-bottom: 20px;
@@ -28,10 +26,6 @@
 		.card__description {
 			margin-top: 0;
 		}
-	}
-
-	@include breakpoint($breakpoint-lg) {
-		margin-bottom: 70px;
 	}
 
 	@include breakpoint($breakpoint-md) {

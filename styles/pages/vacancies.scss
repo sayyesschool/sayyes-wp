@@ -18,9 +18,7 @@
 		margin-bottom: 40px;
 	}
 
-    .card-card {
-        display: flex;
-        flex-direction: column;
+    .fact-card {
         justify-content: flex-end;
     }
 
@@ -60,6 +58,10 @@
             font-weight: 700;
             line-height: 25px;
         }
+
+		.list {
+			gap: 8px;
+		}
 	}
 
 	@include breakpoint($breakpoint-lg) {

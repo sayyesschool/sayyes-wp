@@ -1,6 +1,6 @@
 .link {
 	color: $purple;
-	font-weight: 600;
+	font-weight: inherit;
 
     &:hover {
         color: $purple;
@@ -17,6 +17,10 @@
 		&:hover {
 			color: $purple;
 		}
+	}
+
+	&--underlined {
+		text-decoration: underline;
 	}
 }
 

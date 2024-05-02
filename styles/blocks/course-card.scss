@@ -4,21 +4,30 @@
 	overflow: hidden;
 
 	.card {
+		&__media {
+			img {
+				aspect-ratio: 2 / 1;
+			}
+		}
+
+		&__header {
+			position: relative;
+			padding: 25px 40px 0;
+		}
+
         &__body {
             flex-grow: unset;
 			display: flex;
 			justify-content: space-between;
+			gap: 85px;
         }
 
         &__title {
-			margin-bottom: 5px;
-			font-size: 24px;
 			font-weight: 800;
-			line-height: 25px;
         }
     
         &__description {
-            max-width: 360px;
+			margin-top: 0;
         }
 
         &__content {
@@ -27,37 +36,51 @@
             min-height: 145px;
             padding: 38px 40px;
         }
+	}
 
-        &__age-tag {
-            position: absolute;
-            bottom: 46px;
-            right: -47px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 145px;
-            height: 52px;
-            border-top-right-radius: $border-radius-sm;
-            background-color: $black;
-            transform: rotate(-90deg);
-    
-            &-purple {
-                background-color: $purple;
-            }
-    
-            &-black {
-                background-color: $black;
-            }
-        }
+	&__age-tag {
+		position: absolute;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 145px;
+		height: 52px;
+		background-color: $black;
+		color: $white;
+	}
+
+	.card__media &__age-tag {
+		bottom: 0;
+		left: 0;
+		border-top-right-radius: $border-radius-sm;
+		border-bottom-left-radius: $border-radius;
+	}
+
+	.card__header &__age-tag {
+		display: none;
+		bottom: 46px;
+		right: -47px;
+		border-top-right-radius: $border-radius-sm;
+		transform: rotate(-90deg);
+
+		.card--black & {
+			background-color: $purple;
+		}
 	}
 
 	.list {
+		margin-left: auto;
 		gap: 5px;
 
 		.list-item {
 			display: flex;
 			justify-content: space-between;
+			align-items: flex-end;
 			gap: 35px;
+
+			span {
+				flex-shrink: 0;
+			}
 		}
 	}
 

@@ -163,17 +163,15 @@
 }
 
 .knowledge-check {
-	margin-bottom: 100px;
 	padding: 56px 59px 64px;
 	background-color: $yellow;
-	border-radius: $border-radius;
 
-	.section__title {
+	&__header {
 		max-width: 900px;
 		margin-bottom: 35px;
 	}
 
-	.section__content {
+	&__content {
 		display: flex;
 		justify-content: space-between;
 		gap: 20px;

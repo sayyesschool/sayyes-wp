@@ -84,16 +84,11 @@
 		description: 'Для удобного и нескучного закрепления материала дома и проведения онлайн уроков'
 	} %}
 		{% block content %}
-			{# {% include 'components/video.twig' with {
-				youtube_id: '6ISA01NE2rY',
-				image: {
-					path: 'platform/platform-desktop.png',
-					alt: 'Собственная онлайн платформа'
-				},
-				modal: true
-			} %} #}
-
-			<img class="image" src="{{theme.link ~ '/static/images/platform/platform-desktop.png'}}" alt="Онлайн платформа" />
+			<img
+				class="image"
+				src="{{theme.link ~ '/static/images/platform/platform-desktop.jpg'}}"
+				alt="Онлайн платформа"
+			/>
 
 			{% include 'components/list.twig' with {
 				type: 'ul',

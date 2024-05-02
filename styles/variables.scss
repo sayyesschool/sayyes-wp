@@ -1,3 +1,5 @@
+$font-family: 'Raleway', 'Open Sans', 'Helvetica', Arial, sans-serif;
+
 $black: #262626;
 $white: #fffcff;
 $grey: #e5e3e2;
@@ -16,12 +18,27 @@ $primary-color: $purple;
 $secondary-color: $yellow;
 $body-color: $pearl-white;
 $font-color: $black;
-$font-family: 'Raleway', 'Open Sans', 'Helvetica', Arial, sans-serif;
 
 $border-radius-extra-sm: 10px;
 $border-radius-sm: 15px;
 $border-radius: 30px;
 $border-radius-bg: 40px;
+
+$heading-sizes: (
+	'xl': (68px, 60px), // (42px, 40px)
+	'lg': (46px, 45px), // (36px, 35px)
+	'md': (42px, 40px), // (32px, 30px)
+	'sm': (24px, 25px), // (18px, 20px)
+	'xs': (18px, 20px)  // (16px, 15px)
+);
+
+$text-sizes: (
+	'xl': (36px, 36px),
+	'lg': (24px, 25px),
+	'md': (18px, 20px),
+	'xs': (14px, 15px),
+	'sm': (16px, 15px)
+);
 
 $breakpoint-xl: 1300px;
 $breakpoint-lg: 1160px;
@@ -35,16 +52,3 @@ $breakpoint-sm-mobile: 480px;
 $lg: 1280px;
 $md: 768px;
 $sm: 320px;
-
-$breakpoints: (
-    sm: '(max-width: #{$sm - 1})',
-    gt-sm: '(min-width: #{$sm})',
-
-    lt-md: '(max-width: #{$sm - 1})',
-    md: '(min-width: #{$sm}) and (max-width: #{$md - 1})',
-    gt-md: '(min-width: #{$md})',
-
-    lt-lg: '(max-width: #{$md - 1})',
-    lg: '(min-width: #{$md}) and (max-width: #{$lg - 1})',
-    gt-lg: '(min-width: #{$lg})'
-);

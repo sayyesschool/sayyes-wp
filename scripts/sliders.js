@@ -1,5 +1,6 @@
 import Swiper from 'swiper';
-import { Navigation, Pagination, Scrollbar } from 'swiper/modules';
+import { Grid, Navigation, Pagination, Scrollbar } from 'swiper/modules';
+import 'swiper/scss/grid';
 
 new Swiper('.student-progress-slider', {
 	modules: [Navigation, Pagination, Scrollbar],
@@ -14,33 +15,51 @@ new Swiper('.student-progress-slider', {
 });
 
 new Swiper('.organizations-slider', {
-	enabled: false,
+	modules: [Grid, Navigation, Pagination, Scrollbar],
 	spaceBetween: 15,
-	width: 795,
-	breakpoints: {
-		769: {
-			enabled: true,
-			spaceBetween: 150,
-			width: null,
-			navigation: {
-				nextEl: '.slider__right-arrow',
-				prevEl: '.slider__left-arrow',
-			},
-			pagination: {
-				el: '.slider__pagination',
-			},
-		},
+	slidesPerView: 4,
+	grid: {
+		rows: 3,
+		fill: 'row'
 	},
+	// wrapperClass: 'slider__wrapper',
+	navigation: {
+		nextEl: '.slider__right-arrow',
+		prevEl: '.slider__left-arrow',
+	},
+	pagination: {
+		el: '.slider__pagination',
+	}
+	// breakpoints: {
+	// 	769: {
+	// 		enabled: true,
+	// 		// slidesPerView: 4,
+	// 		spaceBetween: 15,
+	// 		width: null,
+	// 		gird: {
+	// 			rows: 3,
+	// 			fill: 'row'
+	// 		},
+	// 		navigation: {
+	// 			nextEl: '.slider__right-arrow',
+	// 			prevEl: '.slider__left-arrow',
+	// 		},
+	// 		pagination: {
+	// 			el: '.slider__pagination',
+	// 		},
+	// 	},
+	// },
 });
 
-new Swiper('.reviews-slider', {
-	enabled: false,
+new Swiper('.corporate-reviews-slider', {
+	enabled: true,
+	modules: [Navigation, Pagination, Scrollbar],
 	spaceBetween: 15,
-	width: 1080,
 	breakpoints: {
 		769: {
 			enabled: true,
-			spaceBetween: 150,
+			slidesPerView: 4,
+			spaceBetween: 15,
 			width: null,
 			navigation: {
 				nextEl: '.slider__right-arrow',

@@ -1,5 +1,7 @@
 #corporate-page {
     .main-section {
+        position: relative;
+
         &__title {
             max-width: 880px;
         }
@@ -7,20 +9,35 @@
         &__description {
             max-width: 450px;
         }
+
+        .price-list-button {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
     }
 
     .video-section {
-        &__info {
-            max-width: 530px;
-        }
+        .section {
+            &__header {
+                max-width: 530px;
+            }
+    
+            &__media {
+                position: static;
 
-        &::before {
-			width: 173px;
-			height: 38px;
-			top: 338px;
-			left: 60px;
-			background-image: url('./static/images/decoration/notes/only-1.5-min-2.svg');
-		}
+                &::before {
+                    width: 173px;
+                    height: 38px;
+                    top: auto;
+                    bottom: 0;
+                    left: 0;
+                    background-image: url('./static/images/decoration/notes/only-1.5-min-2.svg');
+                }
+            }
+        }
+        
 
         .video {
             &::after {
@@ -176,6 +193,11 @@
 		margin-bottom: 45px;
 	}
 
+    &__content {
+        display: flex;
+        gap: 20px;
+    }
+
     .picture {
         position: relative;
         min-height: 510px;
@@ -198,13 +220,9 @@
 
         &__caption {
             max-width: 160px;
-            font-size: 16px;
             font-style: italic;
-            font-weight: 500;
-            line-height: 15px;
 
             .heading {
-                font-size: 16px;
                 margin-bottom: 5px;
             }
         }
@@ -216,9 +234,8 @@
     }
 
 	.btn {
+        min-width: 470px;
         margin: 30px auto 50px;
-		font-size: 18px;
-		font-weight: 700;
 	}
 
     @include breakpoint($breakpoint-md) {
@@ -270,6 +287,14 @@
         max-width: 860px;
         margin-bottom: 40px;
     }
+
+    .card {
+        height: auto;
+
+        &__title {
+            @include text('md');
+        }
+    }
 }
 
 .corporate-teachers {
@@ -287,25 +312,13 @@
         margin-bottom: 10px;
     }
 
-    .cards {
+    .grid {
         margin-bottom: 40px;
-    }
 
-    .btn {
-        margin: 0 auto;
-        font-weight: 700;
-    }
-
-    @include breakpoint($breakpoint-lg) {
-        margin-bottom: 70px;
-    }
-
-    @include breakpoint($breakpoint-xs) {
-        margin-bottom: 60px;
-    }
-
-    @include breakpoint($breakpoint-xxs) {
-        margin-bottom: 50px;
+        + .btn {
+            max-width: 372px;
+            margin: auto;
+        }
     }
 }
 
@@ -327,6 +340,7 @@
 
 	.btn {
 		margin: 40px auto 0;
+        min-width: 372px;
 	}
 }
 
@@ -337,19 +351,14 @@
 		overflow: hidden;
 	}
 
-    .grid {
-        grid-template-rows: repeat(3, 175px);
-    }
-
 	.card {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		border-radius: 20px;
+        height: 100%;
 
         img {
             width: 70%;
             height: 70%;
+            margin: auto;
+            aspect-ratio: 1;
             object-fit: contain;
         }
 	}
@@ -392,16 +401,17 @@
     .card {
         background: none;
 
-        &__img {
+        .image {
             width: 100%;
             display: block;
             object-fit: contain;
             border-radius: $border-radius;
         }
     
-        &__title {
+        .heading {
             margin-top: 20px;
             font-weight: 800;
+            text-align: center;
         }
     }
 
@@ -448,7 +458,7 @@
         }
 
         &__caption {
-            max-width: 175px;
+            max-width: 200px;
         }
     }
 

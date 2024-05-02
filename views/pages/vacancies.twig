@@ -5,7 +5,9 @@
 		title: page.heading ?? page.title,
         description: page.content,
         button: {
-			content: 'Хочу работать преподавателем'
+			content: 'Хочу работать преподавателем',
+			modal_trigger: false,
+			scroll_to: 'vacancies-cta'
 		},
         image: page.thumbnail
 	} %}
@@ -67,11 +69,11 @@
 						title: 'Достойный доход',
 						list: [
 							{
-								label: 'Средний доход: ',
+								label: 'Средний доход:<br>',
 								value: '55 тыс. руб.'
 							},
 							{
-								label: 'Максимальный доход: ',
+								label: 'Максимальный доход:<br>',
 								value: '100 тыс. руб.'
 							}
 						]
@@ -156,7 +158,7 @@
 					}
 				] %}
 					<div class="text-card text-card--{{item.image}}-bg card">
-						<p class="card__subtitle">{{item.subtitle}}</p>
+						<p class="card__subtitle bold">{{item.subtitle}}</p>
 						<h3 class="card__title">{{item.title}}</h3>
 						<p class="card__description">{{item.description}}</p>
 					</div>
@@ -181,10 +183,11 @@
 	{% endembed %}
 
 	{% embed 'components/section.twig' with {
+		id: 'vacancies-cta',
 		name: 'vacancies-cta'
 	} %}
 		{% block title %}
-			<button data-modal-trigger="request-modal">Отправьте нам</button>свое резюме, а мы окружим вас заботой и мотивированными студентами
+			<a class="link link--underlined" href="https://hh.ru/employer/1418679" target="_blank" rel="noopener">Отправьте нам свое резюме</a>, а мы окружим вас заботой и мотивированными студентами
 		{% endblock %}
 	{% endembed %}
 {% endblock %}

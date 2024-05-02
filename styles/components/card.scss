@@ -5,10 +5,16 @@
 	color: $black;
 
 	&__media {
+		position: relative;
 		width: 100%;
-		display: block;
-		object-fit: cover;
 		border-radius: $border-radius;
+
+		img {
+			width: 100%;
+			display: block;
+			object-fit: cover;
+			border-radius: $border-radius;
+		}
 	}
 
 	&__img {
@@ -19,12 +25,13 @@
 	}
 
 	&__body {
-		padding: 35px 30px 45px 50px;
+		padding: 40px;
 	}
 
 	&__title {
 		margin-bottom: .5rem;
 		font-size: 24px;
+		line-height: 25px;
 		font-weight: 700;
 	}
 
@@ -42,8 +49,6 @@
 
 	&__content {
 		margin-top: 1rem;
-		// font-size: 24px;
-		// line-height: 25px;
 	}
 
 	&__link {

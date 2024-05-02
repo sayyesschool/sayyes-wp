@@ -2,19 +2,17 @@
 	margin: 25px 0 100px;
 
 	&__title {
+		@include heading('lg');
 		max-width: 840px;
 		margin: 0 auto;
-		font-size: 46px;
-		font-weight: 700;
-		line-height: 45px;
-		color: $black;
 		text-align: center;
 	}
 
 	&__description {
-		text-align: center;
-		margin: 15px auto 25px;
+		@include text('md');
 		max-width: 350px;
+		margin: 15px auto 25px;
+		text-align: center;
 	}
 
 	&__image {
@@ -30,18 +28,6 @@
 		margin: 0 auto;
 	}
 
-	&--offline {
-		.title {
-			max-width: 680px;
-		}
-	}
-
-	&--offline {
-		.main__description {
-			max-width: 470px;
-		}
-	}
-
 	@include breakpoint($breakpoint-xl) {
 		&__image {
 			height: 500px;
@@ -49,8 +35,6 @@
 	}
 
 	@include breakpoint($breakpoint-lg) {
-		margin-bottom: 70px;
-
 		&__image {
 			height: 460px;
 		}
@@ -79,8 +63,6 @@
 	}
 
 	@include breakpoint($breakpoint-xs) {
-		margin-bottom: 60px;
-
 		&__title {
 			font-size: 28px;
 			line-height: 30px;
@@ -92,8 +74,6 @@
 	}
 
 	@include breakpoint($breakpoint-xxs) {
-		margin-bottom: 50px;
-
 		&__image {
 			height: 280px;
 		}

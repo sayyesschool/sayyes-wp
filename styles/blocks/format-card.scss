@@ -16,14 +16,13 @@
         }
 
         &__title {
+			@include heading('sm', 800);
             margin-bottom: 5px;
-			@include heading-4;
-            font-weight: 800;
         }
 
         &__description {
-			margin-top: 0;
 			@include text;
+			margin-top: 0;
         }
 
         &__content {

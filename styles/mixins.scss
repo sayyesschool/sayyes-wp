@@ -1,5 +1,7 @@
 @use 'sass:meta';
 
+@use './variables';
+
 @mixin raised() {
   -webkit-box-shadow: 0 1px 5px rgba(0,0,0,.15),0 1px 5px 1px rgba(0,0,0,.15);
   box-shadow: 0 1px 5px rgba(0,0,0,.15),0 1px 5px 1px rgba(0,0,0,.15);
@@ -48,7 +50,7 @@
     }
 }
 
-@mixin fill-container() {
+@mixin fill-container {
     position: absolute;
     top: 0;
     left: 0;
@@ -85,6 +87,19 @@
 		@content;
 	}
 }
+
+$breakpoints: (
+    sm: '(max-width: #{variables.$sm - 1})',
+    gt-sm: '(min-width: #{variables.$sm})',
+
+    lt-md: '(max-width: #{variables.$sm - 1})',
+    md: '(min-width: #{variables.$sm}) and (max-width: #{variables.$md - 1})',
+    gt-md: '(min-width: #{variables.$md})',
+
+    lt-lg: '(max-width: #{variables.$md - 1})',
+    lg: '(min-width: #{variables.$md}) and (max-width: #{variables.$lg - 1})',
+    gt-lg: '(min-width: #{variables.$lg})'
+);
 
 @mixin bp($point) {
     $breakpoint: map-get($breakpoints, $point);

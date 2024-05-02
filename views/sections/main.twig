@@ -1,16 +1,27 @@
-<section class="main-section">
-	<h1 class="main-section__title title">{{title}}</h1>
+<section class="main-section section">
+	<h1 class="main-section__title">{{title}}</h1>
     
 	<div class="main-section__description">{{description}}</div>
 
 	{% if button %}
-		<button class="btn btn--{{button.color ?? 'yellow'}}" data-modal-trigger="request-modal">
+		<button
+			class="btn btn--{{button.color ?? 'yellow'}}"
+			{% if button.modal_trigger or true %}
+				data-modal-trigger="{{button.modal_trigger ?? 'request-modal'}}"
+			{% endif %}
+			{% if button.modal_options %}
+				data-modal-options="{{button.modal_options}}"
+			{% endif %}
+			{% if button.scroll_to %}
+				data-scroll-to="{{button.scroll_to}}"
+			{% endif %}
+		>
 			{{attribute(button, 'content') ? button.content : (button == true ? 'Оставить заявку' : button)}}
 		</button>
 	{% endif %}
 
 	{% if image %}
-		<img class="main-section__image" src="{{attribute(image, 'src') ? (image.src ?? '') : theme.link ~ '/static/images/mainscreens/' ~ image}}" alt="{{image.alt ?? ''}}">
+		<img class="main-section__image image" src="{{attribute(image, 'src') ? (image.src ?? '') : theme.link ~ '/static/images/mainscreens/' ~ image}}" alt="{{image.alt ?? ''}}">
 	{% endif %}
 
 	{% block content %}

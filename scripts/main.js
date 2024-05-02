@@ -6,8 +6,9 @@ import Video from '../components/video';
 
 import './inputmask';
 import './modals';
-import './sliders';
+import './scroll';
 import './showMore';
+import './sliders';
 
 Accordion.init();
 Header.init();

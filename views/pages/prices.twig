@@ -23,30 +23,36 @@
         description: 'Ваше обучение может быть выгоднее!'
     } %}
         {% block content %}
-            <div class="card grid grid--3">
+            <div class="grid grid--3">
                 {% for item in [
                     {
                         title: 'Покупка всего курса',
+                        subtitle: 'Любой курс со скидкой до 20%',
                         description: 'Оплачивайте по три или шесть месяцев сразу и учитесь выгоднее.*',
                         image: 'books-2',
                         image2: 'discount'
                     },
                     {
                         title: 'Приведи друга',
+                        subtitle: '+ 2 урока каждому',
                         description: 'Рекомендуйте нас друзьям, и мы подарим вам и другу 2 урока к любому курсу!*',
                         image: 'student',
                         image2: 'free-lessons'
                     },
                     {
                         title: 'Семейное обучение',
+                        subtitle: 'Постоянная скидка 20%',
                         description: 'Учите английский всей семьёй и получите постоянную скидку 20%.*',
                         image: 'family',
                         image2: 'discount-2'
                     }
                 ] %}
                     <div class="text-card text-card--{{item.image}}-bg text-card--{{item.image2}}-bg card">
-                        <h4 class="card__title">{{item.title}}</h4>
-                        <p class="card__description">{{item.description}}</p>
+                        <div class="card__body">
+                            <p class="card__subtitle handwritten-text">{{item.subtitle}}</p>
+                            <h4 class="card__title">{{item.title}}</h4>
+                            <p class="card__description">{{item.description}}</p>
+                        </div>
                     </div>
                 {% endfor %}
             </div>
@@ -57,19 +63,18 @@
 
 	{% embed 'components/section.twig' with {
         name: 'certificates',
-        title: 'Подарочные сертификаты',
-        horizontal: true
+        title: 'Подарочные сертификаты'
     } %}
         {% block content %}
-            <div class="text">
-                <p>Практика английского — универсальный подарок для любого активного человека.</p>
-                <p>Подарите своим близким возможность развиваться и совершенствоваться</p>
+            <div class="content">
+                <div class="text">
+                    <p>Практика английского — универсальный подарок для любого активного человека.</p>
+                    <p>Подарите своим близким возможность развиваться и совершенствоваться</p>
+                </div>
+
+                <button class="btn" data-modal-trigger="callback-modal">Подарить сертификат</button>
             </div>
 
-            <button class="btn">Подарить сертификат</button>
-        {% endblock %}
-
-        {% block media %}
             <img class="image" src="{{theme.link}}/static/images/pictures/certificates.png" alt="Say Yes">
         {% endblock %}
     {% endembed %}

@@ -4,7 +4,9 @@
 	{% include 'sections/main.twig' with {
 		title: page.heading ?? page.title,
         description: page.content,
-        button: true,
+        button: {
+			modal_options: 'tab:children'
+		},
         image: page.thumbnail
 	} %}
 
@@ -13,7 +15,7 @@
 		title: 'Мы обучаем онлайн на собственной онлайн платформе.'
 	} %}
 		{% block content %}
-			<div class="cards grid grid--2">
+			<div class="grid grid--2">
 				{% for item in [
 					{
 						title: 'Индивидуальное обучение в школе в Москве',
@@ -44,31 +46,14 @@
         title: 'Выберите необходимое для вас обучение:'
     } %}
         {% block content %}
-            {% from 'blocks/course-card.twig' import course_card %}
-
-            <div class="cards grid grid--2">
-                {% for course in courses|map(course => ({
-                    title: course.title,
-                    description: course.excerpt({ read_more: false }),
-                    image: course.thumbnail,
-                    prices: [
-                        {
-                            label: 'офлайн индвидиульано',
-                            prefix: course.prices.individual_offline.prefix,
-                            value: course.prices.individual_offline.value,
-                            postfix: course.prices.individual_offline.postfix
-                        },
-                        {
-                            label: 'онлайн индвидиульано',
-                            prefix: course.prices.individual_online.prefix,
-                            value: course.prices.individual_online.value,
-                            postfix: course.prices.individual_online.postfix
-                        }
-                    ]
-                })) %}
-                    {{course_card(course, cycle(['white', 'pink', 'purple'], loop.index0))}}
-                {% endfor %}
-            </div>
+			{% include 'blocks/courses-cards.twig' with {
+				courses,
+				colors: ['white', 'pink', 'purple'],
+				formats: {
+                    individual_online: 'онлайн индивидуально',
+                    individual_offline: 'офлайн индивидуально'
+                }
+			} %}
         {% endblock %}
     {% endembed %}
 

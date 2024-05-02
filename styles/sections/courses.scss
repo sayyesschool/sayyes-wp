@@ -25,9 +25,15 @@
 		}
 	}
 
-	.course-card:last-of-type {
-		height: auto;
-		align-self: self-start;
+	.course-card {
+		.card__description {
+			max-width: 360px;
+		}
+
+		&:last-of-type {
+			height: auto;
+			align-self: self-start;
+		}
 	}
 
 	.text-card {

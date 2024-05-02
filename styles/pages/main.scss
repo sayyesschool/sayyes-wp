@@ -689,10 +689,9 @@
 .courses {
 	.course-card {
 		background-color: $white;
-		color: $black;
 
 		.card {
-			&__img {
+			&__media {
 				display: none;
 			}
 
@@ -702,11 +701,6 @@
 				border-radius: $border-radius;
 				overflow: hidden;
 			}
-
-			&__body {
-				background-color: $white;
-				color: $black;
-			}
 		
 			&__title {
 				margin-bottom: 10px;
@@ -715,10 +709,14 @@
 				line-height: 40px;
 			}
 		}
-	}
 
-	.course-card:nth-last-child(2) {
-		height: auto;
-		align-self: self-start;
+		.card__header .course-card__age-tag {
+			display: flex;
+		}
+
+		&:nth-last-child(2) {
+			height: auto;
+			align-self: self-start;
+		}
 	}
 }

@@ -5,16 +5,18 @@
 
 $context = Timber::context();
 $context['page'] = Timber::get_post();
-
-$courses = Timber::get_posts([
+$context['courses'] = Timber::get_posts([
     'post_type' => 'course',
     'posts_per_page' => -1,
     'orderby' => 'menu_order',
-    'order' => 'ASC'
+    'order' => 'ASC',
+    'tax_query' => [
+        [
+            'taxonomy' => 'course_type',
+            'field' => 'slug',
+            'terms' => 'adults'
+        ]
+    ]
 ])->to_array();
-
-$context['courses'] = array_filter($courses, function($course) {
-    return $course->has_term('adults');
-});
 
 Timber::render('pages/courses-adults.twig', $context);

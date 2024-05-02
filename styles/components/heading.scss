@@ -1,13 +1,21 @@
-@mixin heading {
-    font-family: Raleway;
+@use 'sass:list';
+@use 'sass:map';
+
+@use 'styles/variables';
+
+@mixin heading($size: 'md', $weight: 700) {
+    $sizes: map.get(variables.$heading-sizes, $size);
+    $font-size: list.nth($sizes, 1);
+	$line-height: list.nth($sizes, 2);
+
+    font-size: $font-size;
+    font-weight: $weight;
+    line-height: $line-height;
     letter-spacing: 0em;
-    font-weight: 700;
 }
 
-@mixin heading-1 {
-    @include heading;
-    font-size: 68px;
-    line-height: 60px;
+@mixin xl {
+    @include heading('xl');
 
     @include bp(lt-lg) {
         font-size: 42px;
@@ -15,10 +23,8 @@
     }
 }
 
-@mixin heading-2 {
-    @include heading;
-    font-size: 46px;
-    line-height: 45px;
+@mixin lg {
+    @include heading('lg');
 
     @include bp(lt-lg) {
         font-size: 36px;
@@ -26,10 +32,8 @@
     }
 }
 
-@mixin heading-3 {
-    @include heading;
-    font-size: 42px;
-    line-height: 40px;
+@mixin md {
+    @include heading('md');
 
     @include bp(lt-lg) {
         font-size: 32px;
@@ -37,10 +41,8 @@
     }
 }
 
-@mixin heading-4 {
-    @include heading;
-    font-size: 24px;
-    line-height: 25px;
+@mixin sm {
+    @include heading('sm');
 
     @include bp(lt-lg) {
         font-size: 18px;
@@ -48,22 +50,31 @@
     }
 }
 
-h1.heading,
-.heading-1 {
-    @include heading-1;
+@mixin xs {
+    @include heading('xs');
+
+    @include bp(lt-lg) {
+        font-size: 16px;
+        line-height: 15px;
+    }
 }
 
-h2.heading,
-.heading-2 {
-    @include heading-2;
+.heading--xl {
+    @include xl;
 }
 
-h3.heading,
-.heading-3 {
-    @include heading-3;
+.heading--lg {
+    @include lg;
 }
 
-h4.heading,
-.heading-4 {
-    @include heading-4;
+.heading--md {
+    @include md;
+}
+
+.heading--sm {
+    @include sm;
+}
+
+.heading--xs {
+    @include xs;
 }

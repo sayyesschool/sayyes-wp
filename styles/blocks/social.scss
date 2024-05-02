@@ -8,9 +8,15 @@
 		align-items: center;
 		width: 40px;
 		height: 40px;
-		border: 2px solid $black;
+		border: 2px solid currentColor;
 		background-color: transparent;
+		color: $black;
 		border-radius: 100%;
+
+		&:hover {
+			color: $purple;
+			cursor: pointer;
+		}
 	}
 
 	&__link {

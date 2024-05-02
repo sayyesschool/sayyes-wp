@@ -1,23 +1,41 @@
 {% extends 'layouts/base.twig' %}
 
 {% block content %}
-	{% include 'sections/main.twig' with {
+	{% embed 'sections/main.twig' with {
         title: page.heading ?? page.title,
         description: page.content,
         button: {
             content: 'Оставить заявку на звонок',
-            color: 'yellow'
+            color: 'black',
+            modal_trigger: false,
+            scroll_to: 'corporate-steps'
         },
         image: page.thumbnail
     } %}
+        {% block content %}
+            <button class="price-list-button btn btn--purple">Получить прайс-лист</button>
+        {% endblock %}
+    {% endembed %}
 
-	{% include 'sections/video.twig' with {
+	{# {% include 'sections/video.twig' with {
         name: 'corporate-benefits-video',
         title: 'Управляющий директор SAY YES! Роман Сорочук коротко расскажет о преимуществах нашего обучения и процессе работы с компаниями.',
         video: {
-			youtube_id: 'Vsfz_1QzwDA',
+			youtube_id: 'nz94F0sSF90',
 			image: {
 				path: 'video-sections/video-section-3.jpg'
+			},
+			modal: true
+		}
+    } %} #}
+
+    {% include 'sections/video.twig' with {
+        name: 'corporate-approach-video',
+        title: 'Посмотрите короткое видео о нашем подходе к корпоративному обучению.',
+        video: {
+			youtube_id: 'nz94F0sSF90',
+			image: {
+				path: 'video-sections/video-section-4.jpg'
 			},
 			modal: true
 		}
@@ -110,40 +128,39 @@
         title: 'Сотрудничать с SAY YES! — выгодно'
     } %}
         {% block content %}
-            <div class="flex">
-                <picture class="picture">
-                    <img class="picture__image" src="{{theme.link}}/static/images/pictures/roman.png" alt="Роман Сорочук">
-                    <div class="picture__caption">
-                        <h3 class="heading">Роман Сорочук</h3>
-                        <p class="text">Руководитель корпоративного направления</p>
-                    </div>
-                </picture>
+            <picture class="picture">
+                <img class="picture__image" src="{{theme.link}}/static/images/pictures/roman.png" alt="Роман Сорочук">
 
-                <div class="card">
-                    {% include 'components/list.twig' with {
-                        type: 'check',
-                        items: [
-                            {
-                                title: 'Простое начало работы',
-                                description: 'До начала сотрудничества мы бесплатно организуем для ваших сотрудников тестирование уровня и пробные уроки.'
-                            },
-                            {
-                                title: 'Гибкая стоимость и условия',
-                                description: 'Набор учебных программ и форматов обучения позволяют подстроиться почти под любой бюджет и требования.'
-                            },
-                            {
-                                title: 'Лицензия на образование',
-                                description: 'Ваша компания сможет экономить на налогах, сократив налог на прибыль и приняв к вычету НДС.'
-                            },
-                            {
-                                title: 'Разные варианты оплаты',
-                                description: 'Оплачивать обучение может как компания, так и сами сотрудники на выгодных условиях. Возможны и гибридные варианты.'
-                            }
-                        ]
-                    } %}
-
-                    <button class="btn btn--lg btn--purple" data-modal-trigger="callback-modal">Рассчитать точную стоимость обучения</button>
+                <div class="picture__caption">
+                    <h3 class="heading heading--xs">Роман Сорочук</h3>
+                    <p class="text text--sm">Руководитель корпоративного направления</p>
                 </div>
+            </picture>
+
+            <div class="card">
+                {% include 'components/list.twig' with {
+                    type: 'check',
+                    items: [
+                        {
+                            title: 'Простое начало работы',
+                            description: 'До начала сотрудничества мы бесплатно организуем для ваших сотрудников тестирование уровня и пробные уроки.'
+                        },
+                        {
+                            title: 'Гибкая стоимость и условия',
+                            description: 'Набор учебных программ и форматов обучения позволяют подстроиться почти под любой бюджет и требования.'
+                        },
+                        {
+                            title: 'Лицензия на образование',
+                            description: 'Ваша компания сможет экономить на налогах, сократив налог на прибыль и приняв к вычету НДС.'
+                        },
+                        {
+                            title: 'Разные варианты оплаты',
+                            description: 'Оплачивать обучение может как компания, так и сами сотрудники на выгодных условиях. Возможны и гибридные варианты.'
+                        }
+                    ]
+                } %}
+
+                <button class="btn btn--filled btn--md btn--black" data-modal-trigger="callback-modal">Рассчитать точную стоимость обучения</button>
             </div>
         {% endblock %}
     {% endembed %}
@@ -166,48 +183,17 @@
         {% endblock %}
 
         {% block content %}
-            <div class="cards grid grid--3">
-                {% for teacher in teachers %}
-                    {% embed 'components/card.twig' with {
-                        class: 'card--' ~ teacher.type,
-                        image: {
-                            src: teacher.thumbnail.src,
-                            alt: teacher.title
-                        },
-                        title: teacher.title,
-                        buttonId: person.teacherId
-                    } %}
-                        {% block description %}
-                            {% for merits in person.merits %}
-                                <li>
-                                    {{merits.merit}}:
-                                    {{merits.description}}
-                                </li>
-                            {% endfor %}
-                        {% endblock %}
+            {% from 'blocks/teacher-card.twig' import teacher_card %}
 
-                        {% block content %}
-                            <button class="teacher-btn btn btn--transparent btn--transparent-black btn--md" data-id="{{person.teacherId}}">Подробнее</button>
-                        {% endblock %}
-                    {% endembed %}
+            <div class="cards-grid grid grid--3">
+                {% for teacher in teachers %}
+                    {{teacher_card(teacher)}}
                 {% endfor %}
             </div>
 
-            <a class="btn btn--purple" href="#">Все преподаватели</a>
+            <a class="btn btn--purple" href="/prepodavateli">Все преподаватели</a>
         {% endblock %}
     {% endembed %}
-
-	{% include 'sections/video.twig' with {
-        name: 'corporate-approach-video',
-        title: 'Посмотрите короткое видео о нашем подходе к корпоративному обучению.',
-        video: {
-			youtube_id: 'Vsfz_1QzwDA',
-			image: {
-				path: 'video-sections/video-section-4.jpg'
-			},
-			modal: true
-		}
-    } %}
 
     {% embed 'components/section.twig' with {
         name: 'corporate-extra-benefits'
@@ -259,86 +245,86 @@
         {% block content %}
             {% embed 'components/slider.twig' with { name: 'organizations' } %}
                 {% block content %}
-                    <ul class="grid grid--6 grid--sm-3">
-                        {% for item in [
-                            {
-                                name: 'Сбербанк',
-                                img: 'organization-1'
-                            },
-                            {
-                                name: 'Get Taxi',
-                                img: 'organization-2'
-                            },
-                            {
-                                name: 'Логрус ',
-                                img: 'organization-3'
-                            },
-                            {
-                                name: 'Аури групп',
-                                img: 'organization-4'
-                            },
-                            {
-                                name: 'FIRCROFT ',
-                                img: 'organization-5'
-                            },
-                            {
-                                name: 'Московский Индустриальный Банк ',
-                                img: 'organization-6'
-                            },
-                            {
-                                name: 'Промсвязьбанк',
-                                img: 'organization-7'
-                            },
-                            {
-                                name: 'Роснефть',
-                                img: 'organization-8'
-                            },
-                            {
-                                name: 'РСПП',
-                                img: 'organization-9'
-                            },
-                            {
-                                name: 'ATRIUM',
-                                img: 'organization-10'
-                            },
-                            {
-                                name: 'МегаФон ',
-                                img: 'organization-11'
-                            },
-                            {
-                                name: 'МТС',
-                                img: 'organization-12'
-                            },
-                            {
-                                name: 'Ernst&Young',
-                                img: 'organization-13'
-                            },
-                            {
-                                name: '2GIS ',
-                                img: 'organization-14'
-                            },
-                            {
-                                name: 'ГазФонд',
-                                img: 'organization-15'
-                            },
-                            {
-                                name: 'Центр терапии боли ',
-                                img: 'organization-16'
-                            },
-                            {
-                                name: 'Apex',
-                                img: 'organization-17'
-                            },
-                            {
-                                name: 'Бизнес-школа РСПП',
-                                img: 'organization-18'
-                            }
-                        ] %}
+                    {% for item in [
+                        {
+                            name: 'Сбербанк',
+                            img: 'organization-1'
+                        },
+                        {
+                            name: 'Get Taxi',
+                            img: 'organization-2'
+                        },
+                        {
+                            name: 'Логрус ',
+                            img: 'organization-3'
+                        },
+                        {
+                            name: 'Аури групп',
+                            img: 'organization-4'
+                        },
+                        {
+                            name: 'FIRCROFT ',
+                            img: 'organization-5'
+                        },
+                        {
+                            name: 'Московский Индустриальный Банк ',
+                            img: 'organization-6'
+                        },
+                        {
+                            name: 'Промсвязьбанк',
+                            img: 'organization-7'
+                        },
+                        {
+                            name: 'Роснефть',
+                            img: 'organization-8'
+                        },
+                        {
+                            name: 'РСПП',
+                            img: 'organization-9'
+                        },
+                        {
+                            name: 'ATRIUM',
+                            img: 'organization-10'
+                        },
+                        {
+                            name: 'МегаФон ',
+                            img: 'organization-11'
+                        },
+                        {
+                            name: 'МТС',
+                            img: 'organization-12'
+                        },
+                        {
+                            name: 'Ernst&Young',
+                            img: 'organization-13'
+                        },
+                        {
+                            name: '2GIS ',
+                            img: 'organization-14'
+                        },
+                        {
+                            name: 'ГазФонд',
+                            img: 'organization-15'
+                        },
+                        {
+                            name: 'Центр терапии боли ',
+                            img: 'organization-16'
+                        },
+                        {
+                            name: 'Apex',
+                            img: 'organization-17'
+                        },
+                        {
+                            name: 'Бизнес-школа РСПП',
+                            img: 'organization-18'
+                        }
+                    ] %}
+                        <div class="swiper-slide">
                             <div class="card">
-                                <img src="{{theme.link}}/static/images/organizations/{{item.img}}.png" alt="{{item.name}}">
+                                <img class="image" src="{{theme.link}}/static/images/organizations/{{item.img}}.png" alt="{{item.name}}">
                             </div>
-                        {% endfor %}
-                    </ul>
+                        </div>
+                    {% endfor %}
                 {% endblock %}
             {% endembed %}
         {% endblock %}
@@ -354,10 +340,25 @@
         {% endblock %}
 
         {% block content %}
-            {% embed 'components/slider.twig' with { name: 'reviews' } %}
+            {% embed 'components/slider.twig' with { name: 'corporate-reviews' } %}
                 {% block content %}
-                    <div class="cards">
                         {% for item in [
+                            {
+                                name: 'МТС',
+                                img: 'review-1'
+                            },
+                            {
+                                name: '2GIS',
+                                img: 'review-2'
+                            },
+                            {
+                                name: 'Газпромбанк',
+                                img: 'review-3'
+                            },
+                            {
+                                name: 'Love Radio',
+                                img: 'review-4'
+                            },
                             {
                                 name: 'МТС',
                                 img: 'review-1'
@@ -375,63 +376,80 @@
                                 img: 'review-4'
                             }
                         ] %}
-                            <div class="card">
-                                <img class="card__img" src="{{theme.link}}/static/images/reviews/{{item.img}}.png" alt="{{item.name}}">
+                            <div class="swiper-slide">
+                                <div class="card">
+                                    <img class="image" src="{{theme.link}}/static/images/reviews/{{item.img}}.png" alt="{{item.name}}">
 
-                                <h4 class="card__title">{{item.name}}</h4>
+                                    <h4 class="heading heading--xs">{{item.name}}</h4>
+                                </div>
                             </div>
                         {% endfor %}
-                    </div>
                 {% endblock %}
             {% endembed %}
         {% endblock %}
     {% endembed %}
 
     {% embed 'components/section.twig' with {
+        id: 'corporate-steps',
         name: 'corporate-steps',
         title: 'Чтобы начать обучение вам осталось:'
     } %}
         {% block content %}
-            <div class="flex">
-                <picture class="picture">
-                    <img class="picture__image" src="{{theme.link}}/static/images/pictures/anastasia.png" alt="Анастасия Жителева">
-                    <div class="picture__caption">
-                        <h3 class="heading">Анастасия Жителева</h3>
-                        <p class="text">Менеджер по работе с клиентами офлайн</p>
-                    </div>
-                </picture>
+            <picture class="picture">
+                <img class="picture__image" src="{{theme.link}}/static/images/pictures/anastasia.png" alt="Анастасия Жителева">
 
-                <div class="card">
-                    {% include 'components/list.twig' with {
-                        type: 'steps',
-                        items: [
-                            {
-                                content: 'Заявка на сайте или звонок в школу'
-                            },
-                            {
-                                content: 'Консультация по телефону исходя из вашего запроса'
-                            },
-                            {
-                                content: 'Разработка коммерческого предложения'
-                            },
-                            {
-                                content: 'Проведение тестирования сотрудников'
-                            },
-                            {
-                                content: 'Пробные уроки по уровням'
-                            },
-                            {
-                                content: 'Подписание договора и оплата обучения'
-                            },
-                            {
-                                content: 'Начало обучения'
-                            }
-                        ]
-                    } %}
-
-                    <button class="btn btn--lg btn--purple" data-modal-trigger="callback-modal">Заполнить заявку на обучение</button>
+                <div class="picture__caption">
+                    <h3 class="heading heading--xs">Анастасия Жителева</h3>
+                    <p class="text text--sm">Менеджер по работе с клиентами офлайн</p>
                 </div>
+            </picture>
+
+            <div class="card">
+                {% include 'components/list.twig' with {
+                    type: 'steps',
+                    items: [
+                        {
+                            content: 'Заявка на сайте или звонок в школу'
+                        },
+                        {
+                            content: 'Консультация по телефону исходя из вашего запроса'
+                        },
+                        {
+                            content: 'Разработка коммерческого предложения'
+                        },
+                        {
+                            content: 'Проведение тестирования сотрудников'
+                        },
+                        {
+                            content: 'Пробные уроки по уровням'
+                        },
+                        {
+                            content: 'Подписание договора и оплата обучения'
+                        },
+                        {
+                            content: 'Начало обучения'
+                        }
+                    ]
+                } %}
+
+                <button class="btn btn--md btn--filled btn--purple" data-modal-trigger="callback-modal">Заполнить заявку на обучение</button>
             </div>
         {% endblock %}
     {% endembed %}
+{% endblock %}
+
+{% block modal %}
+    {% embed 'components/modal.twig' with {
+        id: 'teacher-modal'
+    } %}
+        {% block content %}
+            {% include 'blocks/teacher-block.twig' %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block scripts %}
+    {% include 'includes/teacher-modal-script.twig' with {
+        teachers
+    } %}
 {% endblock %}

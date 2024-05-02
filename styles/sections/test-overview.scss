@@ -1,6 +1,4 @@
 .test-overview {
-	margin-bottom: 100px;
-
 	.title {
 		margin: 25px auto 20px;
 		max-width: 840px;
@@ -18,10 +16,6 @@
 		text-align: center;
 	}
 
-	@include breakpoint($breakpoint-lg) {
-		margin-bottom: 70px;
-	}
-
 	@include breakpoint($breakpoint-md) {
 		.title {
 			font-size: 36px;
@@ -36,8 +30,6 @@
 	}
 
 	@include breakpoint($breakpoint-xs) {
-		margin-bottom: 60px;
-
 		.title {
 			font-size: 28px;
 			line-height: 30px;
@@ -45,8 +37,6 @@
 	}
 
 	@include breakpoint($breakpoint-xxs) {
-		margin-bottom: 50px;
-
 		.title {
 			margin-left: 15px;
 		}
