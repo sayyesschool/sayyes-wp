@@ -26,6 +26,12 @@ class Course extends Post {}
 class Format extends Post {}
 class Page extends Post {}
 class Teacher extends Post {
+    public function name()
+    {
+        $name = $this->title;
+        return $name;
+    }
+
     public function url() {
         return remove_url_component($this->link, '/'.$this->slug.'/') . '#'.$this->slug;
     }
