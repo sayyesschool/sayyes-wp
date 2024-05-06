@@ -2,7 +2,7 @@
     <div class="progress-card card">
         <div class="card__media">
             {% include 'components/video.twig' with {
-                youtube_id: progress.youtube_id,
+                youtube_id: progress.video.youtube_id,
                 image: {
                     src: progress.thumbnail.src,
                     alt: progress.title
