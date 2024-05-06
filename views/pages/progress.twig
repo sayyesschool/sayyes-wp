@@ -15,9 +15,11 @@
 		{% block content %}
 			{% from 'blocks/progress-card.twig' import progress_card %}
 
-			{% for item in reports %}
-				{{progress_card(item)}}
-			{% endfor %}
+			<div class="grid grid--2">
+				{% for item in reports %}
+					{{progress_card(item)}}
+				{% endfor %}
+			</div>
 		{% endblock %}
 	{% endembed %}
 

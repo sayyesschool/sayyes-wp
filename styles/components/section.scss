@@ -29,6 +29,10 @@
 		}
 	}
 
+	&__title + &__description {
+		margin-top: 20px;
+	}
+
 	&__content {
 		position: relative;
 	}
@@ -40,6 +44,7 @@
 
 	&--horizontal &__container {
 		display: flex;
+		gap: 40px;
 	}
 
 	@include breakpoint($breakpoint-lg) {

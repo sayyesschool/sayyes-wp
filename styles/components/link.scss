@@ -1,11 +1,21 @@
 .link {
-	color: $purple;
+	font-size: inherit;
 	font-weight: inherit;
+	cursor: pointer;
 
-    &:hover {
-        color: $purple;
-		cursor: pointer;
-    }
+	&--primary {
+		color: $purple;
+	}
+
+	&--interactive {
+		&:hover {
+			color: $purple;
+		}
+	}
+
+	&--underlined {
+		text-decoration: underline;
+	}
 
 	p & {
 		border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
@@ -17,10 +27,6 @@
 		&:hover {
 			color: $purple;
 		}
-	}
-
-	&--underlined {
-		text-decoration: underline;
 	}
 }
 

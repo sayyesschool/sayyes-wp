@@ -9,25 +9,21 @@ include 'taxonomies.php';
 require 'utils.php';
 
 class Post extends Timber\Post {
-    public function name()
-    {
-        $name = $this->meta('name');
-        return $name;
+    public function name() {
+        return $this->meta('name');
     }
 
-    public function description()
-    {
-        $description = $this->excerpt(['read_more' => '']);
-        return $description;
+    public function description() {
+        return $this->excerpt(['read_more' => '']);
     }
 }
 
 class Course extends Post {}
 class Format extends Post {}
 class Page extends Post {}
+class Report extends Post {}
 class Teacher extends Post {
-    public function name()
-    {
+    public function name() {
         $name = $this->title;
         return $name;
     }
@@ -41,6 +37,7 @@ class SayYesSite extends Site {
     public $version = '2.3.0';
     public $yandex_metrika_counter = 29661505;
     public $google_analytics_id = 'UA-47133492-2';
+    public $recaptcha_key = '6LenTzMiAAAAABvM_nwArCX5rtvJQ3TUQS8EsN1q';
     public $facebook_pixel_ids = ['758563291240040', '354901769006910', '1060189581084918'];
 
 	function __construct() {
@@ -62,8 +59,9 @@ class SayYesSite extends Site {
                 'course' => Course::class,
                 'format' => Format::class,
                 'post' => Post::class,
-                'page' => Post::class,
+                'page' => Page::class,
                 'teacher' => Teacher::class,
+                'report' => Report::class,
             ]);
         });
 		add_filter('timber/twig', [$this, 'add_to_twig']);
@@ -147,9 +145,10 @@ class SayYesSite extends Site {
             'prices' => $prices
         ];
         $context['COMPANY_AGE'] = date('Y') - 2013;
-        $context['YANDEX_METRIKA_COUNTER'] = $this->yandex_metrika_counter;
-        $context['GA_MEASUREMENT_ID'] = $this->google_analytics_id;
         $context['FACEBOOK_PIXEL_IDS'] = $this->facebook_pixel_ids;
+        $context['GA_MEASUREMENT_ID'] = $this->google_analytics_id;
+        $context['YANDEX_METRIKA_COUNTER'] = $this->yandex_metrika_counter;
+        $context['RECAPTCHA_KEY'] = $this->recaptcha_key;
 		$context['header_nav'] = Timber::get_menu('header_nav');
         $context['footer_nav'] = Timber::get_menu('footer_nav');
         $context['links'] = [

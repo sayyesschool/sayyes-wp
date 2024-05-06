@@ -1,33 +1,4 @@
 .progress-card {
-	width: calc(50% - 10px);
-	min-height: 510px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	border-radius: $border-radius;
-	background-color: $white;
-
-	&__media {
-		height: 310px;
-		margin: 0;
-	}
-
-	&__content {
-		display: flex;
-		flex-direction: column;
-		flex-grow: 1;
-		padding: 34px 55px 46px 50px;
-	}
-
-	&__title {
-		margin-bottom: 5px;
-		font-weight: 800;
-	}
-
-	&__description {
-		margin-bottom: 15px;
-	}
-
 	.list {
 		margin-top: auto;
 		padding: 0;

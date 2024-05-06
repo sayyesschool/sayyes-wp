@@ -2,6 +2,7 @@
 @use 'sass:map';
 
 @use 'styles/variables';
+@use 'styles/mixins';
 
 @mixin heading($size: 'md', $weight: 700) {
     $sizes: map.get(variables.$heading-sizes, $size);
@@ -17,7 +18,7 @@
 @mixin xl {
     @include heading('xl');
 
-    @include bp(lt-lg) {
+    @include mixins.bp(lt-lg) {
         font-size: 42px;
         line-height: 40px;
     }
@@ -26,7 +27,7 @@
 @mixin lg {
     @include heading('lg');
 
-    @include bp(lt-lg) {
+    @include mixins.bp(lt-lg) {
         font-size: 36px;
         line-height: 35px;
     }
@@ -35,7 +36,7 @@
 @mixin md {
     @include heading('md');
 
-    @include bp(lt-lg) {
+    @include mixins.bp(lt-lg) {
         font-size: 32px;
         line-height: 30px;
     }
@@ -44,7 +45,7 @@
 @mixin sm {
     @include heading('sm');
 
-    @include bp(lt-lg) {
+    @include mixins.bp(lt-lg) {
         font-size: 18px;
         line-height: 20px;
     }
@@ -53,7 +54,7 @@
 @mixin xs {
     @include heading('xs');
 
-    @include bp(lt-lg) {
+    @include mixins.bp(lt-lg) {
         font-size: 16px;
         line-height: 15px;
     }

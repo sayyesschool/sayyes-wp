@@ -233,9 +233,8 @@
 	}
 
 	.card {
-		min-height: 195px;
-
 		&__title {
+			margin-top: unset;
 			max-width: 220px;
 		}
 

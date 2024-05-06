@@ -1,0 +1,75 @@
+<script>
+    document.querySelectorAll('.request-form').forEach(element => {
+        PetiteVue.createApp({
+            $delimiters: ['${', '}'],
+
+            state: {
+                loading: false,
+                error: false,
+                sent: false
+            },
+
+            handleSubmit(event) {
+                event.preventDefault();
+
+                const formData = new FormData(this.$refs.form);
+                const data = Array.from(formData.entries()).reduce((data, [key, value]) => {
+                    data[key] = value;
+                    return data;
+                }, {});
+
+                validateRecaptcha()
+                    .then(recaptcha => {
+                        fbq('track', 'Lead');
+
+                        crm.addStudyRequest(data);
+
+                        fetch({
+                            type: 'POST',
+                            url: '{{theme.link}}/request.php',
+                            headers: {
+                                'Content-Type': 'application/json; charset=utf-8',
+                            },
+                            data: JSON.stringify({
+                                ...data,
+                                recaptcha
+                            })
+                        }).then(response => {
+                            this.sent = true;
+                        }).catch(error => {
+                            this.error = true;
+                        }).finally(() => {
+                            this.loading = false;
+                            this.$refs.form.reset();
+                        });
+                    });
+            }
+        }).mount(`#${element.id}`);
+    });
+
+    function validateRecaptcha() {
+        return grecaptcha.ready(() => {
+            grecaptcha.execute('{{RECAPTCHA_KEY}}', { action: 'submit' })
+                .then(token => {
+                    return fetch({
+                        type: 'POST',
+                        url: '{{theme.link}}/recaptcha.php',
+                        headers: {
+                            'Content-Type': 'application/json; charset=utf-8',
+                        },
+                        data: JSON.stringify({
+                            action: 'submit',
+                            token
+                        })
+                    })
+                        .then(res => res.json())
+                        .then(response => {
+                            if (!response.success || response.score < 0.5)
+                                throw 'Bad request';
+
+                            return response;
+                        });
+                });
+        });
+    }
+</script>

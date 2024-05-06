@@ -11,11 +11,12 @@
 	{% include 'components/section.twig' with {
         name: 'about',
         title: course.about.title,
-        content: course.about.content
+        content: course.about.content,
+        horizontal: true
     } %}
 
 	{% embed 'components/section.twig' with {
-        name: 'learning-form',
+        name: 'course-formats',
         title: course.formats.title ?: 'Формы обучения на курсе ' ~ course.title,
         description: 'Вы можете проходить курс английского языка с нуля в различных форматах. Продолжительность и стоимость курса зависят от интенсивности и формата обучения.'
     } %}
@@ -70,11 +71,6 @@
                         description: 'Практикуем один подход в офлайн и онлайн формате'
                     },
                     {
-                        title: 'Современные пособия',
-                        description: 'Используем новейшие пособия Oxford, Cambridge и Macmillan',
-                        image: 'books'
-                    },
-                    {
                         title: '75% практика языка',
                         description: 'Бóльшую часть занятия говорит студент'
                     },
@@ -85,6 +81,11 @@
                     {
                         title: 'Онлайн платформа',
                         description: 'Нескучная домашка в интерактивном виде'
+                    },
+                    {
+                        title: 'Современные пособия',
+                        description: 'Используем новейшие пособия Oxford, Cambridge и Macmillan',
+                        image: 'books'
                     }
                 ]
 			} %}

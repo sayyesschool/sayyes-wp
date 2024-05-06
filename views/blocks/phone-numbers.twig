@@ -1,11 +1,15 @@
 <ul class="phone-numbers">
-	{% for key, number in site_data.contacts.phone_numbers %}
+	{% for name, number in site_data.contacts.phone_numbers %}
 		<li class="phone-numbers__item">
 			{% include 'components/icon.twig' with {
-				name: key == 'main' ? 'phone' : key
+				name: name == 'main' ? 'phone' : name
 			} %}
 			
-			<a href="tel:{{format_phone_number(number)}}">{{number}}</a>
+			{% if name == 'whatsapp' %}
+				<a href="{{links.wa_phone}}" title="Написать в WhatsApp">{{number}}</a>
+			{% else %}
+				<a href="tel:{{format_phone_number(number)}}" title="Позвонить">{{number}}</a>
+			{% endif %}
 		</li>
 	{% endfor %}
 </ul>

@@ -26,7 +26,7 @@
 		border-radius: 100%;
 		background: url('./static/images/icons/play.svg') center no-repeat#fffcff80;
 		transition: 0.3s linear background-color;
-		cursor: pointer;
+		z-index: 1;
 
 		&:hover {
 			background-color: $white;

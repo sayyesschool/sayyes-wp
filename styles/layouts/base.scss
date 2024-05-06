@@ -1,12 +1,10 @@
-.page {
-    .main {
-        max-width: 1320px;
-        margin: 0 auto;
-        padding: 0 20px;
-    
-        @include breakpoint($breakpoint-md) {
-            padding: 0 15px;
-        }
+.main {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    @include breakpoint($breakpoint-md) {
+        padding: 0 15px;
     }
 }
 

@@ -4,4 +4,21 @@
             max-width: 680px;
         }
     }
+
+    .about {
+        &__header,
+        &__content {
+            flex: 1;
+        }
+
+        &__content {
+            p + p {
+                margin-top: 10px;
+            }
+        }
+    }
+
+    .course-formats {
+        
+    }
 }

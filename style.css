@@ -712,6 +712,71 @@ strong,
   text-transform: uppercase;
 }
 
+.heading--xl {
+  font-size: 68px;
+  font-weight: 700;
+  line-height: 60px;
+  letter-spacing: 0em;
+}
+
+@media (max-width: 767px) {
+  .heading--xl {
+    font-size: 42px;
+    line-height: 40px;
+  }
+}
+.heading--lg {
+  font-size: 46px;
+  font-weight: 700;
+  line-height: 45px;
+  letter-spacing: 0em;
+}
+
+@media (max-width: 767px) {
+  .heading--lg {
+    font-size: 36px;
+    line-height: 35px;
+  }
+}
+.heading--md {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: 0em;
+}
+
+@media (max-width: 767px) {
+  .heading--md {
+    font-size: 32px;
+    line-height: 30px;
+  }
+}
+.heading--sm {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+}
+
+@media (max-width: 767px) {
+  .heading--sm {
+    font-size: 18px;
+    line-height: 20px;
+  }
+}
+.heading--xs {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0em;
+}
+
+@media (max-width: 767px) {
+  .heading--xs {
+    font-size: 16px;
+    line-height: 15px;
+  }
+}
 .card {
   position: relative;
   border-radius: 30px;
@@ -741,16 +806,17 @@ strong,
   padding: 40px;
 }
 .card__title {
-  margin-bottom: 0.5rem;
   font-size: 24px;
+  font-weight: 800;
   line-height: 25px;
-  font-weight: 700;
+  letter-spacing: 0em;
+  margin-bottom: 0.5rem;
 }
 .card__subtitle {
   margin-top: 0.5rem;
 }
 .card__description {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 .card__description p + p {
   margin-top: 10px;
@@ -1127,12 +1193,18 @@ strong,
 }
 
 .link {
-  color: #7831b2;
+  font-size: inherit;
   font-weight: inherit;
-}
-.link:hover {
-  color: #7831b2;
   cursor: pointer;
+}
+.link--primary {
+  color: #7831b2;
+}
+.link--interactive:hover {
+  color: #7831b2;
+}
+.link--underlined {
+  text-decoration: underline;
 }
 p .link {
   border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
@@ -1143,9 +1215,6 @@ p .link {
 }
 p .link:hover {
   color: #7831b2;
-}
-.link--underlined {
-  text-decoration: underline;
 }
 
 button.link {
@@ -1183,7 +1252,7 @@ button.link {
 .list-item__description {
   font-weight: 600;
 }
-.list--dl .list-item {
+.list--dl .list-item__content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1479,6 +1548,9 @@ button.link {
 .section__description p + p {
   margin-top: 10px;
 }
+.section__title + .section__description {
+  margin-top: 20px;
+}
 .section__content {
   position: relative;
 }
@@ -1490,6 +1562,7 @@ button.link {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  gap: 40px;
 }
 @media (max-width: 1160px) {
   .section {
@@ -2093,7 +2166,7 @@ button.link {
   background: url("./static/images/icons/play.svg") center no-repeat rgba(255, 252, 255, 0.5019607843);
   -webkit-transition: 0.3s linear background-color;
   transition: 0.3s linear background-color;
-  cursor: pointer;
+  z-index: 1;
 }
 .video__btn:hover {
   background-color: #fffcff;
@@ -2803,7 +2876,6 @@ button.link {
 }
 
 .fact-card {
-  min-height: 190px;
   padding: 40px 50px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4011,46 +4083,6 @@ button.link {
   }
 }
 
-.progress-card {
-  width: calc(50% - 10px);
-  min-height: 510px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  border-radius: 30px;
-  background-color: #fffcff;
-}
-.progress-card__media {
-  height: 310px;
-  margin: 0;
-}
-.progress-card__content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  padding: 34px 55px 46px 50px;
-}
-.progress-card__title {
-  margin-bottom: 5px;
-  font-weight: 800;
-}
-.progress-card__description {
-  margin-bottom: 15px;
-}
 .progress-card .list {
   margin-top: auto;
   padding: 0;
@@ -5683,13 +5715,13 @@ button.link {
   }
 }
 
-.page .main {
+.main {
   max-width: 1320px;
   margin: 0 auto;
   padding: 0 20px;
 }
 @media (max-width: 1024px) {
-  .page .main {
+  .main {
     padding: 0 15px;
   }
 }
@@ -6891,7 +6923,7 @@ button.link {
 }
 .corporate-formats .card__title {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 800;
   line-height: 20px;
   letter-spacing: 0em;
 }
@@ -6982,6 +7014,7 @@ button.link {
 }
 .corporate-reviews .card {
   background: none;
+  cursor: pointer;
 }
 .corporate-reviews .card .image {
   width: 100%;
@@ -7051,7 +7084,14 @@ button.link {
 .single-course .main-section .section__title {
   max-width: 680px;
 }
-
+.single-course .about__header, .single-course .about__content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.single-course .about__content p + p {
+  margin-top: 10px;
+}
 .course-adults .main-section .section__description {
   max-width: 380px;
 }
@@ -8397,10 +8437,8 @@ button.link {
   max-width: 700px;
   margin-bottom: 45px;
 }
-.advantages .card {
-  min-height: 195px;
-}
 .advantages .card__title {
+  margin-top: unset;
   max-width: 220px;
 }
 .advantages .card:nth-child(2) {
@@ -8765,17 +8803,6 @@ button.link {
 .student-results__description {
   max-width: 600px;
   margin: 0 auto;
-}
-.student-results__content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  gap: 20px;
 }
 .student-results .btn {
   margin: 0 auto;
@@ -10053,32 +10080,23 @@ button.link {
   }
 }
 
-.course-formats .section__title {
+.course-formats__title {
   max-width: 600px;
   margin-bottom: 20px;
 }
-.course-formats .section__description {
+.course-formats__description {
   max-width: 550px;
   margin-bottom: 40px;
 }
 .course-formats .format-card .card__body {
-  padding: 36px 30px 36px 40px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  padding: 35px;
 }
 .course-formats .format-card .card__title {
-  margin-bottom: 10px;
   font-size: 42px;
   font-weight: 700;
   line-height: 40px;
-}
-.course-formats .format-card .card__description {
-  margin-top: 0;
+  letter-spacing: 0em;
+  margin-bottom: 10px;
 }
 @media (max-width: 1024px) {
   .course-formats .big-course__content {

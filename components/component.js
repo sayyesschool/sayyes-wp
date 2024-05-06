@@ -27,6 +27,15 @@ export default class Component {
         }
     }
 
+    once(event, handler) {
+        const handleOnce = payload => {
+            handler(payload);
+            this.off(event, handleOnce);
+        };
+
+        this.on(event, handleOnce);
+    }
+
     off(event, handler) {
         if (this.events.has(event)) {
             this.events.get(event).delete(handler);

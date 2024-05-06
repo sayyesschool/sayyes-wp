@@ -1,6 +1,6 @@
 {% macro progress_card(progress) %}
     <div class="progress-card card">
-        <div class="progress-card__media">
+        <div class="card__media">
             {% include 'components/video.twig' with {
                 youtube_id: progress.youtube_id,
                 image: {
@@ -11,24 +11,28 @@
             } %}
         </div>
 
-        <div class="progress-card__content">
-            <h4 class="progress-card__title">{{progress.title}}</h4>
+        <div class="card__body">
+            <div class="card__header">
+                <h4 class="card__title">{{progress.title}}</h4>
 
-            <p class="progress-card__description">{{progress.excerpt({ read_more: false })}}</p>
+                <p class="card__description">{{progress.description}}</p>
+            </div>
 
-            {% include 'components/list.twig' with {
-                items: [
-                    {
-                        title: 'Старт обучения:',
-                        description: progress.level
-                    },
-                    {
-                        title: 'Преподаватель:',
-                        description: progress.teacher
-                    }
-                ],
-                type: 'dl'
-            } %}
+            <div class="card__content">
+                {% include 'components/list.twig' with {
+                    type: 'dl',
+                    items: [
+                        {
+                            title: 'Старт обучения:',
+                            description: progress.level
+                        },
+                        {
+                            title: 'Преподаватель:',
+                            description: progress.teacher
+                        }
+                    ]
+                } %}
+            </div>
         </div>
     </div>
 {% endmacro %}

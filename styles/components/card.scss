@@ -1,3 +1,5 @@
+@use 'styles/components/heading' as *;
+
 .card {
 	position: relative;
 	border-radius: $border-radius;
@@ -28,11 +30,13 @@
 		padding: 40px;
 	}
 
+	&__header {
+		
+	}
+
 	&__title {
+		@include heading('sm', 800);
 		margin-bottom: .5rem;
-		font-size: 24px;
-		line-height: 25px;
-		font-weight: 700;
 	}
 
 	&__subtitle {
@@ -40,7 +44,7 @@
 	}
 
 	&__description {
-		margin-top: 1rem;
+		margin-top: .5rem;
 
 		p + p {
 			margin-top: 10px;

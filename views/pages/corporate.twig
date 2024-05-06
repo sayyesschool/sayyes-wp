@@ -13,7 +13,7 @@
         image: page.thumbnail
     } %}
         {% block content %}
-            <button class="price-list-button btn btn--purple" data-modal-trigger="callback-modal">Получить прайс-лист</button>
+            <button class="price-list-button btn btn--purple" data-modal-trigger="callback-modal">Скачать презентацию</button>
         {% endblock %}
     {% endembed %}
 
@@ -160,7 +160,7 @@
                     ]
                 } %}
 
-                <button class="btn btn--filled btn--md btn--black" data-modal-trigger="callback-modal">Рассчитать точную стоимость обучения</button>
+                <button class="btn btn--filled btn--md btn--black" data-modal-trigger="callback-modal">Получить точную стоимость обучения</button>
             </div>
         {% endblock %}
     {% endembed %}
@@ -234,7 +234,7 @@
                 {% endfor %}
             </div>
 
-            <button class="btn btn--purple">Рассчитать стоимость обучения</button>
+            <button class="btn btn--purple" data-scroll-to="corporate-steps">Получить стоимость обучения</button>
         {% endblock %}
     {% endembed %}
 
@@ -248,80 +248,76 @@
                     {% for item in [
                         {
                             name: 'Сбербанк',
-                            img: 'organization-1'
+                            image: 'sberbank'
                         },
                         {
                             name: 'Get Taxi',
-                            img: 'organization-2'
+                            image: 'get-taxi'
                         },
                         {
-                            name: 'Логрус ',
-                            img: 'organization-3'
+                            name: 'Логрус',
+                            image: 'logrus'
                         },
                         {
                             name: 'Аури групп',
-                            img: 'organization-4'
+                            image: 'auri-group'
                         },
                         {
-                            name: 'FIRCROFT ',
-                            img: 'organization-5'
+                            name: 'Fircroft',
+                            image: 'fircroft'
                         },
                         {
-                            name: 'Московский Индустриальный Банк ',
-                            img: 'organization-6'
+                            name: 'Московский Индустриальный Банк',
+                            image: 'mib'
                         },
                         {
                             name: 'Промсвязьбанк',
-                            img: 'organization-7'
+                            image: 'psb'
                         },
                         {
                             name: 'Роснефть',
-                            img: 'organization-8'
+                            image: 'rosneft'
                         },
                         {
                             name: 'РСПП',
-                            img: 'organization-9'
+                            image: 'rspp'
                         },
                         {
-                            name: 'ATRIUM',
-                            img: 'organization-10'
+                            name: 'Atrium',
+                            image: 'atrium'
                         },
                         {
                             name: 'МегаФон ',
-                            img: 'organization-11'
+                            image: 'megafon'
                         },
                         {
                             name: 'МТС',
-                            img: 'organization-12'
+                            image: 'mts'
                         },
                         {
                             name: 'Ernst&Young',
-                            img: 'organization-13'
+                            image: 'ey'
                         },
                         {
                             name: '2GIS ',
-                            img: 'organization-14'
+                            image: '2gis'
                         },
                         {
                             name: 'ГазФонд',
-                            img: 'organization-15'
-                        },
-                        {
-                            name: 'Центр терапии боли ',
-                            img: 'organization-16'
+                            image: 'gazfond'
                         },
                         {
                             name: 'Apex',
-                            img: 'organization-17'
+                            image: 'apex'
                         },
                         {
                             name: 'Бизнес-школа РСПП',
-                            img: 'organization-18'
+                            image: 'rspp-bs'
                         }
                     ] %}
                         <div class="swiper-slide">
                             <div class="card">
-                                <img class="image" src="{{theme.link}}/static/images/organizations/{{item.img}}.png" alt="{{item.name}}">
+                                <img class="image" src="{{theme.link}}/static/images/organizations/{{item.image}}.png" alt="{{item.name}}">
                             </div>
                         </div>
                     {% endfor %}
@@ -378,7 +374,7 @@
                         ] %}
                             <div class="swiper-slide">
                                 <div class="card">
-                                    <img class="image" src="{{theme.link}}/static/images/reviews/{{item.img}}.png" alt="{{item.name}}">
+                                    <img class="image" src="{{theme.link}}/static/images/reviews/{{item.img}}.png" alt="{{item.name}}" data-modal-trigger="image-modal">
 
                                     <h4 class="heading heading--xs">{{item.name}}</h4>
                                 </div>

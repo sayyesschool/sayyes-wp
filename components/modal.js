@@ -17,7 +17,9 @@ export default class Modal extends Component {
 
             let modal;
 
-            if (component === 'VideoModal')
+            if (component === 'ImageModal')
+                modal = new ImageModal(element);
+            else if (component === 'VideoModal')
                 modal = new VideoModal(element);
             else if (component === 'RequestModal')
                 modal = new RequestModal(element);
@@ -54,7 +56,7 @@ export default class Modal extends Component {
 
     handleRootClick(event) {
         if (event.target === this.element) {
-            this.close();
+            this.close(event);
         }
     }
 
@@ -69,9 +71,32 @@ export default class Modal extends Component {
         this.emit('close');
         setTimeout(() => {
             toggleBodyScroll(false);
+            this.emit('closed');
         }, 300);
     }
 }
+
+export class ImageModal extends Modal {
+    open(event) {
+        if (event.target.src) {
+            const image = document.createElement('img');
+            image.src = event.target.src;
+            image.className = 'image';
+            this.image = image;
+            this.body.appendChild(image);
+        }
+
+        super.open(event);
+    }
+
+    close(event) {
+        super.close(event);
+        this.once('closed', () => {
+            this.body.removeChild(this.image);
+        });
+    }
+}
+
 
 export class RequestModal extends Modal {
     open(event, options) {
@@ -123,8 +148,9 @@ export class VideoModal extends Modal {
         this.body.appendChild(this.media);
     }
 
-    close() {
-        super.close();
+    close(event) {
+        super.close(event);
+
         if (this.media instanceof HTMLVideoElement)
             this.media.pause();
         this.media.src = '';

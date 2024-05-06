@@ -49,6 +49,7 @@
         {% include 'blocks/footer.twig' %}
 
         {% include 'blocks/callback-modal.twig' %}
+        {% include 'blocks/image-modal.twig' %}
         {% include 'blocks/request-modal.twig' %}
         {% include 'blocks/success-modal.twig' %}
         {% include 'blocks/video-modal.twig' %}
@@ -62,85 +63,7 @@
         <script src="https://static.sayes.ru/js/crm.js"></script>
         <script src="{{theme.link}}/static/scripts/main.js"></script>
 
-        <script>
-            const GRECAPTCHA = '6LenTzMiAAAAABvM_nwArCX5rtvJQ3TUQS8EsN1q';
-
-            const requestForms = document.querySelectorAll('.request-form').forEach(element => {
-                PetiteVue.createApp({
-                    $delimiters: ['${', '}'],
-
-                    state: {
-                        loading: false,
-                        error: false,
-                        sent: false
-                    },
-
-                    handleSubmit(event) {
-                        event.preventDefault();
-
-                        const formData = new FormData(this.$refs.form);
-                        const data = Array.from(formData.entries()).reduce((data, [key, value]) => {
-                            data[key] = value;
-                            return data;
-                        }, {});
-
-                        validateRecaptcha()
-                            .then(recaptcha => {
-                                fbq('track', 'Lead');
-
-                                crm.addStudyRequest(data);
-
-                                fetch({
-                                    type: 'POST',
-                                    url: '{{theme.link}}/request.php',
-                                    headers: {
-                                        'Content-Type': 'application/json; charset=utf-8',
-                                    },
-                                    data: JSON.stringify({
-                                        ...data,
-                                        recaptcha
-                                    })
-                                }).then(response => {
-                                    console.log(response);
-                                    this.sent = true;
-                                }).catch(error => {
-                                    console.log(error);
-                                    this.error = true;
-                                }).finally(() => {
-                                    this.loading = false;
-                                    this.$refs.form.reset();
-                                });
-                            });
-                    }
-                }).mount(`#${element.id}`);
-            });
-
-            function validateRecaptcha() {
-                grecaptcha.ready(() => {
-                    grecaptcha.execute(GRECAPTCHA, { action: 'submit' })
-                        .then(token => {
-                            fetch({
-                                type: 'POST',
-                                url: '{{theme.link}}/recaptcha.php',
-                                headers: {
-                                    'Content-Type': 'application/json; charset=utf-8',
-                                },
-                                data: JSON.stringify({
-                                    action: 'submit',
-                                    token
-                                })
-                            })
-                                .then(res => res.json())
-                                .then(response => {
-                                    if (!response.success || response.score < 0.5)
-                                        throw 'Bad request';
-
-                                    return response;
-                                });
-                        });
-                });
-            }
-        </script>
+        {% include 'includes/request-form-script.twig' %}
 
         {% block scripts %}
         {% endblock %}
