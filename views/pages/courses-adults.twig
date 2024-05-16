@@ -8,71 +8,55 @@
         image: page.thumbnail
     } %}
 
-	{% embed 'components/section.twig' with {
-        name: 'courses-formats',
-        title: 'Наша школа предлагает курсы английского языка для разных уровней знаний и в разнообразных форматах:'
-    } %}
-        {% block content %}
-            <div class="grid grid--2">
-                {% for item in [
-                    {
-                        title: 'Груповое обучение в школе в Москве',
-                        description: 'Наш офис находится в 7 минутах пешком от метро Павелецкая.',
-                        image: 'course-1'
-                    },
-                    {
-                        title: 'Обучение онлайн в мини-группах и индивидуально',
-                        description: 'Мы обучаем онлайн в группах в Zoom или индивидуально на собственной платформе.',
-                        image: 'course-2'
-                    }
-                ] %}
-                    {% include 'components/card.twig' with {
-                        title: item.title,
-                        description: item.description,
-                        image: {
-                            src: theme.link ~ '/static/images/courses/' ~ item.image ~ '.jpg',
-                            alt: item.title
-                        }
-                    } only %}
-                {% endfor %}
-            </div>
-        {% endblock %}
-    {% endembed %}
-
-	{% embed 'components/section.twig' with {
-        name: 'courses-list',
-        title: 'Выберите необходимое для вас обучение:'
-    } %}
-        {% block content %}
-            {% include 'blocks/courses-cards.twig' with {
-                courses: courses|merge([
-                    {
-                        title: 'Разговорный онлайн клуб',
-                        description: 'Улучшит разговорные навыки!',
-                        class: 'purple',
-                        thumbnail: {
-                            src: theme.link ~ '/static/images/courses/course-9.jpg'
-                        },
-                        formats: {
-                            meeting_online: {
-                                price: {
-                                    prefix: '',
-                                    value: '450 ₽',
-                                    postfix: '/встреча'
-                                }
-                            }
-                        }
-                    }
-                ]),
-                formats: {
-                    group_offline: 'офлайн группа',
-                    group_online: 'онлайн группа',
-                    individual_online: 'индивидуально',
-                    meeting_online: 'встреча в группе онлайн'
+    {% include 'sections/formats.twig' with {
+        formats: [
+            {
+                title: 'Груповое обучение в школе в Москве',
+                description: 'Наш офис находится в 7 минутах пешком от метро Павелецкая.',
+                thumbnail: {
+                    src: theme.link ~ '/static/images/courses/course-1.jpg'
                 }
-            } %}
-        {% endblock %}
-    {% endembed %}
+            },
+            {
+                title: 'Обучение онлайн в мини-группах и индивидуально',
+                description: 'Мы обучаем онлайн в группах в Zoom или индивидуально на собственной платформе.',
+                thumbnail: {
+                    src: theme.link ~ '/static/images/courses/course-2.jpg'
+                }
+            }
+        ],
+        colors: false,
+        with_prices: false
+    } %}
+
+	{% include 'sections/courses.twig' with {
+        title: 'Выберите необходимое для вас обучение:',
+        courses: courses|merge([
+            {
+                title: 'Разговорный онлайн клуб',
+                description: 'Улучшит разговорные навыки!',
+                class: 'purple',
+                thumbnail: {
+                    src: theme.link ~ '/static/images/courses/course-9.jpg'
+                },
+                formats: {
+                    meeting_online: {
+                        price: {
+                            prefix: '',
+                            value: '450 ₽',
+                            postfix: '/встреча'
+                        }
+                    }
+                }
+            }
+        ]),
+        formats: {
+            group_offline: 'офлайн группа',
+            group_online: 'онлайн группа',
+            individual_online: 'индивидуально',
+            meeting_online: 'встреча в группе онлайн'
+        }
+    } %}
 
 	{% include 'sections/trial-lesson.twig' %}
 {% endblock %}

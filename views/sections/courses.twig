@@ -4,65 +4,75 @@
     description
 } %}
     {% block content %}
-        {% embed 'components/tabs.twig' with {
-			tabs: [
-				{
-					content: 'Курсы для взрослых',
-                    value: 'adults',
-					active: true
-				},
-				{
-					content: 'Курсы для детей',
-                    value: 'children'
-				}
-			],
-            pills: true,
-            color: 'yellow'
-		} %}
-            {% block content %}
-                <div data-tab-panel="adults">
-                    {% embed 'blocks/courses-cards.twig' with {
-                        courses: courses_adults,
-                        colors: ['black', 'pink', 'purple'],
-                        formats: {
-                            group_offline: 'офлайн группа',
-                            group_online: 'онлайн группа',
-                            individual_online: 'индивидуально'
-                        }
-                    } %}
-                        {% block content %}
-                            {% if with_help %}
-                                <div class="text-card card">
-                                    <p class="text text--lg">Затрудняетесь с выбором курса или ваша цель специфична?</p>
-                                    <h3 class="heading heading--md">Подберем курс под ваши цели или создадим индивидуальный курс под вас!</h3>
-                                    <button class="btn btn--purple btn--full" data-modal-trigger="request-modal" data-modal-options="tab:adults">Попробовать бесплатно</button>
-                                </div>
-                            {% endif %}
-                        {% endblock %}
-                    {% endembed %}
-                </div>
+        {% if not tabs %}
+            {% include 'blocks/courses-cards.twig' with {
+                courses,
+                formats,
+                colors: card_colors
+            } %}
+        {% else %}
+            {% embed 'components/tabs.twig' with {
+                tabs: [
+                    {
+                        content: 'Курсы для взрослых',
+                        value: 'adults',
+                        active: true
+                    },
+                    {
+                        content: 'Курсы для детей',
+                        value: 'children'
+                    }
+                ],
+                color: 'yellow',
+                pills: true
+            } %}
+                {% block content %}
+                    <div data-tab-panel="adults">
+                        {% embed 'blocks/courses-cards.twig' with {
+                            courses: courses|filter(course => course.type == 'adults'),
+                            colors: card_colors,
+                            formats: {
+                                group_offline: 'офлайн группа',
+                                group_online: 'онлайн группа',
+                                individual_online: 'индивидуально'
+                            },
+                            large_header
+                        } %}
+                            {% block content %}
+                                {% if with_help %}
+                                    <div class="text-card card">
+                                        <p class="text text--lg">Затрудняетесь с выбором курса или ваша цель специфична?</p>
+                                        <h3 class="heading heading--md">Подберем курс под ваши цели или создадим индивидуальный курс под вас!</h3>
+                                        <button class="btn btn--purple btn--full" data-modal-trigger="request-modal" data-modal-options="tab:adults">Попробовать бесплатно</button>
+                                    </div>
+                                {% endif %}
+                            {% endblock %}
+                        {% endembed %}
+                    </div>
 
-                <div class="hidden" data-tab-panel="children">
-                    {% embed 'blocks/courses-cards.twig' with {
-                        courses: courses_children,
-                        colors: ['black', 'pink', 'purple'],
-                        formats: {
-                            individual_online: 'офлайн индивидуально',
-                            individual_offline: 'онлайн индивидуально'
-                        }
-                    } %}
-                        {% block content %}
-                            {% if with_help %}
-                                <div class="text-card card">
-                                    <h4 class="text text--lg">Затрудняетесь с выбором курса или ваша цель специфична?</h4>
-                                    <h3 class="heading heading--md">Подберем курс под ваши цели или создадим индивидуальный курс под вас!</h3>
-                                    <button class="btn btn--purple btn-full" data-modal-trigger="request-modal" data-modal-options="tab:children">Попробовать бесплатно</button>
-                                </div>
-                            {% endif %}
-                        {% endblock %}
-                    {% endembed %}
-                </div>
-            {% endblock %}
-        {% endembed %}
+                    <div class="hidden" data-tab-panel="children">
+                        {% embed 'blocks/courses-cards.twig' with {
+                            courses: courses|filter(course => course.type == 'children'),
+                            colors: card_colors,
+                            formats: {
+                                individual_online: 'офлайн индивидуально',
+                                individual_offline: 'онлайн индивидуально'
+                            },
+                            large_header
+                        } %}
+                            {% block content %}
+                                {% if with_help %}
+                                    <div class="text-card card">
+                                        <h4 class="text text--lg">Затрудняетесь с выбором курса или ваша цель специфична?</h4>
+                                        <h3 class="heading heading--md">Подберем курс под ваши цели или создадим индивидуальный курс под вас!</h3>
+                                        <button class="btn btn--purple btn-full" data-modal-trigger="request-modal" data-modal-options="tab:children">Попробовать бесплатно</button>
+                                    </div>
+                                {% endif %}
+                            {% endblock %}
+                        {% endembed %}
+                    </div>
+                {% endblock %}
+            {% endembed %}
+        {% endif %}
     {% endblock %}
 {% endembed %}

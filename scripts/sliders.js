@@ -2,9 +2,9 @@ import Swiper from 'swiper';
 import { Grid, Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import 'swiper/scss/grid';
 
-new Swiper('.student-progress-slider', {
+const defaultOptions = {
 	modules: [Navigation, Pagination, Scrollbar],
-	spaceBetween: 150,
+	spaceBetween: 15,
 	navigation: {
 		nextEl: '.slider__right-arrow',
 		prevEl: '.slider__left-arrow',
@@ -12,24 +12,21 @@ new Swiper('.student-progress-slider', {
 	pagination: {
 		el: '.slider__pagination',
 	}
+};
+
+new Swiper('.student-progress-slider', {
+	...defaultOptions,
+	spaceBetween: 150
 });
 
 new Swiper('.organizations-slider', {
-	modules: [Grid, Navigation, Pagination, Scrollbar],
-	spaceBetween: 15,
+	...defaultOptions,
+	modules: [...defaultOptions.modules, Grid],
 	slidesPerView: 5,
 	grid: {
 		rows: 3,
 		fill: 'row'
 	},
-	// wrapperClass: 'slider__wrapper',
-	navigation: {
-		nextEl: '.slider__right-arrow',
-		prevEl: '.slider__left-arrow',
-	},
-	pagination: {
-		el: '.slider__pagination',
-	}
 	// breakpoints: {
 	// 	769: {
 	// 		enabled: true,
@@ -53,8 +50,6 @@ new Swiper('.organizations-slider', {
 
 new Swiper('.corporate-reviews-slider', {
 	enabled: true,
-	modules: [Navigation, Pagination, Scrollbar],
-	spaceBetween: 15,
 	breakpoints: {
 		769: {
 			enabled: true,
@@ -74,7 +69,6 @@ new Swiper('.corporate-reviews-slider', {
 
 new Swiper('.meetings-slider', {
 	enabled: false,
-	spaceBetween: 15,
 	width: 900,
 	breakpoints: {
 		1025: {
@@ -94,15 +88,7 @@ new Swiper('.meetings-slider', {
 
 new Swiper('.feedback-slider', {
 	enabled: false,
-	spaceBetween: 15,
 	width: null,
-	navigation: {
-		nextEl: '.slider__right-arrow',
-		prevEl: '.slider__left-arrow',
-	},
-	pagination: {
-		el: '.slider__pagination',
-	},
 	breakpoints: {
 		769: {
 			enabled: true,
@@ -123,88 +109,67 @@ new Swiper('.feedback-slider', {
 	},
 });
 
-new Swiper('.course-testimonials-slider', {
-	enabled: false,
-	spaceBetween: 15,
-	width: null,
-	navigation: {
-		nextEl: '.slider__right-arrow',
-		prevEl: '.slider__left-arrow',
-	},
-	pagination: {
-		el: '.slider__pagination',
-	},
-	breakpoints: {
-		801: {
-			enabled: true,
-			width: null,
-		},
-		700: {
-			width: 614,
-		},
-		600: {
-			width: 514,
-		},
-		540: {
-			width: 450,
-		},
-		320: {
-			width: null,
-		},
-	},
-});
-
 new Swiper('.course-teachers-slider', {
-	enabled: false,
-	spaceBetween: 15,
-	width: null,
-	navigation: {
-		nextEl: '.slider__right-arrow',
-		prevEl: '.slider__left-arrow',
-	},
-	pagination: {
-		el: '.slider__pagination',
-	},
-	breakpoints: {
-		769: {
-			enabled: true,
-			width: null,
-		},
-		700: {
-			width: 600,
-		},
-		600: {
-			width: 500,
-		},
-		540: {
-			width: 440,
-		},
-		400: {
-			width: 300,
-		},
-		360: {
-			width: 260,
-		},
-		320: {
-			width: null,
-		},
-	},
+	...defaultOptions
+	// width: null,
+	// breakpoints: {
+	// 	769: {
+	// 		enabled: true,
+	// 		width: null,
+	// 	},
+	// 	700: {
+	// 		width: 600,
+	// 	},
+	// 	600: {
+	// 		width: 500,
+	// 	},
+	// 	540: {
+	// 		width: 440,
+	// 	},
+	// 	400: {
+	// 		width: 300,
+	// 	},
+	// 	360: {
+	// 		width: 260,
+	// 	},
+	// 	320: {
+	// 		width: null,
+	// 	},
+	// },
 });
 
-new Swiper('.course-progress-slider', {
+new Swiper('.course-testimonials-slider', {
+	...defaultOptions,
+	enabled: true,
+	width: null,
+	// breakpoints: {
+	// 	801: {
+	// 		enabled: true,
+	// 		width: null,
+	// 	},
+	// 	700: {
+	// 		width: 614,
+	// 	},
+	// 	600: {
+	// 		width: 514,
+	// 	},
+	// 	540: {
+	// 		width: 450,
+	// 	},
+	// 	320: {
+	// 		width: null,
+	// 	},
+	// },
+});
+
+new Swiper('.course-results-slider', {
+	...defaultOptions,
 	breakpoints: {
 		769: {
-			slidesPerView: 2,
 			enabled: true,
+			slidesPerView: 2,
 			spaceBetween: 20,
-			width: null,
-			navigation: {
-				nextEl: '.slider__right-arrow',
-				prevEl: '.slider__left-arrow',
-			},
-			pagination: {
-				el: '.slider__pagination',
-			},
+			width: null
 		},
 		400: {
 			width: 327,

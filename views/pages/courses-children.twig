@@ -10,52 +10,38 @@
         image: page.thumbnail
 	} %}
 
-	{% embed 'components/section.twig' with {
-		name: 'courses-formats',
-		title: 'Мы обучаем онлайн на собственной онлайн платформе.'
-	} %}
-		{% block content %}
-			<div class="grid grid--2">
-				{% for item in [
-					{
-						title: 'Индивидуальное обучение в школе в Москве',
-						description: 'Наш офис находится в 7 минутах пешком от метро Павелецкая.',
-						image: 'course-1'
-					},
-					{
-						title: 'Индивидуальное обучение онлайн',
-						description: 'Мы обучаем онлайн в группах в Zoom или индивидуально на собственной платформе.',
-						image: 'course-3'
-					}
-				] %}
-					{% include 'components/card.twig' with {
-						title: item.title,
-						description: item.description,
-						image: {
-							src: theme.link ~ '/static/images/courses/' ~ item.image ~ '.jpg',
-							alt: item.title
-						}
-					} only %}
-				{% endfor %}
-			</div>
-		{% endblock %}
-	{% endembed %}
-
-	{% embed 'components/section.twig' with {
-        name: 'courses-list',
-        title: 'Выберите необходимое для вас обучение:'
-    } %}
-        {% block content %}
-			{% include 'blocks/courses-cards.twig' with {
-				courses,
-				colors: ['white', 'pink', 'purple'],
-				formats: {
-                    individual_online: 'онлайн индивидуально',
-                    individual_offline: 'офлайн индивидуально'
+	{% include 'sections/formats.twig' with {
+		title: 'Мы обучаем онлайн на собственной онлайн платформе.',
+        formats: [
+			{
+				title: 'Индивидуальное обучение в школе в Москве',
+				description: 'Наш офис находится в 7 минутах пешком от метро Павелецкая.',
+				thumbnail: {
+                    src: theme.link ~ '/static/images/courses/course-1.jpg'
                 }
-			} %}
-        {% endblock %}
-    {% endembed %}
+			},
+			{
+				title: 'Индивидуальное обучение онлайн',
+				description: 'Мы обучаем онлайн в группах в Zoom или индивидуально на собственной платформе.',
+				thumbnail: {
+                    src: theme.link ~ '/static/images/courses/course-3.jpg'
+                }
+			}
+        ],
+        colors: false,
+        with_prices: false
+    } %}
 
-	{% include 'sections/trial-lesson.twig' %}
+	{% include 'sections/courses.twig' with {
+        title: 'Выберите необходимое для вас обучение:',
+        courses,
+        formats: {
+			individual_online: 'онлайн индивидуально',
+			individual_offline: 'офлайн индивидуально'
+		}
+    } %}
+
+	{% include 'sections/trial-lesson.twig' with {
+		active_tab: 'children'
+	} %}
 {% endblock %}

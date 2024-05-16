@@ -688,32 +688,6 @@
 
 .courses {
 	.course-card {
-		background-color: $white;
-
-		.card {
-			&__media {
-				display: none;
-			}
-
-			&__header {
-				flex-grow: 1;
-				padding: 35px 40px;
-				border-radius: $border-radius;
-				overflow: hidden;
-			}
-		
-			&__title {
-				margin-bottom: 10px;
-				font-size: 42px;
-				font-weight: 700;
-				line-height: 40px;
-			}
-		}
-
-		.card__header .course-card__age-tag {
-			display: flex;
-		}
-
 		&:nth-last-child(2) {
 			height: auto;
 			align-self: self-start;

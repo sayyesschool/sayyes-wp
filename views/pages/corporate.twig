@@ -93,31 +93,32 @@
 
         {% block content %}
             <div class="cards">
+                {% from 'blocks/format-card.twig' import format_card %}
+
                 {% for item in [
                     {
-                        image: 'format-1',
                         title: 'В школе в Москве ',
-                        description: 'Наш офис находится в 7 минутах пешком от метро Павелецкая.'
+                        description: 'Наш офис находится в 7 минутах пешком от метро Павелецкая.',
+                        thumbnail: {
+                            src: theme.link ~ '/static/images/courses/format-1.jpg'
+                        }
                     },
                     {
-                        image: 'format-2',
                         title: 'В офисе вашей компании',
-                        description: 'Преподаватель приезжает к вам офис в удобное вам время'
+                        description: 'Преподаватель приезжает к вам офис в удобное вам время',
+                        thumbnail: {
+                            src: theme.link ~ '/static/images/courses/format-2.jpg'
+                        }
                     },
                     {
-                        image: 'format-3',
                         title: 'Обучение онлайн',
-                        description: 'Мы обучаем онлайн в группах в Zoom или индивидуально на собственной платформе'
+                        description: 'Мы обучаем онлайн в группах в Zoom или индивидуально на собственной платформе',
+                        thumbnail: {
+                            src: theme.link ~ '/static/images/courses/format-3.jpg'
+                        }
                     }
                 ] %}
-                    {% include 'components/card.twig' with {
-                        title: item.title,
-                        description: item.description,
-                        image: {
-                            src: theme.link ~ '/static/images/courses/' ~ item.image ~ '.jpg',
-                            alt: item.title
-                        }
-                    } only %}
+                    {{format_card(item)}}
                 {% endfor %}
             </div>
         {% endblock %}

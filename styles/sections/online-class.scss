@@ -1,0 +1,41 @@
+.online-class {
+    &__header {
+        max-width: 540px;
+        margin-bottom: 20px;
+    }
+
+    &__content {
+        display: flex;
+        gap: 40px;
+
+        .text {
+            max-width: 500px;
+        }
+    }
+
+    @include breakpoint($breakpoint-lg) {
+        &__content {
+            max-width: 440px;
+        }
+    }
+
+    @include breakpoint($breakpoint-xs) {
+        &__container {
+            flex-wrap: wrap;
+        }
+
+        &__content {
+            max-width: 350px;
+        }
+    }
+
+    @include breakpoint($breakpoint-xxs) {
+        &__content {
+            max-width: 100%;
+        }
+
+        &__media {
+            width: 100%;
+        }
+    }
+}

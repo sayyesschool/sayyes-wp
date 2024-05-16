@@ -69,7 +69,7 @@
 
         .text {
             max-width: 650px;
-            margin: 0 auto;
+            margin: 2rem auto 0;
         }
     }
 
@@ -86,28 +86,20 @@
             gap: 20px;
         }
 
-        .feature-card {
-            width: calc(25% - 15px);
-            min-height: 275px;
-            padding: 39px 35px 36px 39px;
+        .card {
             background-color: $yellow;
-            border-radius: $border-radius;
-            line-height: 20px;
+            padding: 40px 35px 35px 40px;
 
             &__title {
-                position: absolute;
-                max-width: 202px;
-                font-weight: 700;
+                @include heading('xs');
             }
         
             &__description {
-                margin-top: 80px;
+                margin-top: 20px;
             }
         }
     
         @include breakpoint($breakpoint-lg) {
-            margin-bottom: 70px;
-    
             &__title {
                 max-width: 500px;
             }
@@ -116,31 +108,19 @@
                 gap: 15px;
             }
     
-            .feature-card {
-                width: calc(50% - 7.5px);
-                min-height: 175px;
+            .card {
                 padding: 25px;
             }
         }
     
-        @include breakpoint($breakpoint-xs) {
-            margin-bottom: 60px;
-        }
-    
         @include breakpoint($breakpoint-xxs) {
-            margin-bottom: 50px;
-            
             &__title {
                 max-width: 400px;
-            }
-    
-            .feature-card {
-                width: 100%;
             }
         }
     }
 
-    .convenient-oc {
+    .online-class {
         &__header {
             max-width: 540px;
             margin-bottom: 20px;

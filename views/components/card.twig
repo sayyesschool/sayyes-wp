@@ -1,29 +1,51 @@
-<div class="{{html_classes(class ?: [], 'card', color ? 'card--' ~ color : [])}}">
-    {% if image %}
-        <img class="card__img" src="{{image.src}}" alt="{{image.alt}}">
-    {% endif %}
-
-    <div class="card__body">
-        {% if title or block('title') is defined %}
-            <div class="card__header">
-                <h3 class="card__title">{{title ?? block('title')}}</h3>
-
-                {% if description or block('description') is defined %}
-                    <p class="card__description">{{description ?? block('description')}}</p>
-                {% endif %}
-            </div>
-        {% endif %}
-        
-        {% if content or block('content') is defined %}
-            <div class="card__content">{{content ?? block('content')}}</div>
-        {% endif %}
-
-        {% block body %}
-            {{body}}
-        {% endblock %}
-    </div>
-
+<div class="{{html_classes(class ?: [], 'card', color ? 'card--' ~ color : [], {
+    'card--hover': hover,
+    'card--horizontal': horizontal
+})}}">
     {% if link %}
         <a class="card__link" href="{{link}}"></a>
+    {% endif %}
+
+    {% if image or block('media') is defined %}
+        <div class="card__media">
+            {% if image %}
+                <img class="image" src="{{image.src}}" alt="{{image.alt}}">
+            {% endif %}
+
+            {% block media %}
+            {% endblock %}
+        </div>
+    {% endif %}
+
+    {% if title or block('header') is defined %}
+        <div class="card__header">
+            {% if title %}
+                <h3 class="card__title">{{title}}</h3>
+            {% endif %}
+
+            {% if subtitle %}
+                <h4 class="card__subtitle">{{subtitle}}</h4>
+            {% endif %}
+
+            {% if description %}
+                <p class="card__description">{{description}}</p>
+            {% endif %}
+
+            {% block header %}
+            {% endblock %}
+        </div>
+    {% endif %}
+
+    {% if block('body') is defined %}
+        <div class="card__body">{% apply trim %}{{block('body')}}{% endapply %}</div>
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% if block('footer') is defined %}
+        <div class="card__footer">
+            {{block('footer')}}
+        </div>
     {% endif %}
 </div>

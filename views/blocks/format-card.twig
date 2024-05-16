@@ -1,4 +1,4 @@
-{% macro format_card(format, color) %}
+{% macro format_card(format, color, with_prices = false) %}
     {% embed 'components/card.twig' with {
         class: 'format-card',
         title: format.title,
@@ -11,23 +11,27 @@
         color
     } %}
         {% block content %}
-            <ul class="list">
-                <li class="list-item">
-                    Стоимость обучения:
+            {% if with_prices %}
+                <div class="card__body">
+                    <ul class="list">
+                        <li class="list-item">
+                            Стоимость обучения:
 
-                    <span>
-                        {{format.price.prefix}} <strong>{{format.price.value}}</strong>{{format.price.postfix}}
-                    </span>
-                </li>
+                            <span>
+                                {{format.price.prefix}} <strong>{{format.price.value}}</strong>{{format.price.postfix}}
+                            </span>
+                        </li>
 
-                {% if format.lesson_duration %}
-                    <li class="list-item">
-                        Продолжительность урока:
+                        {% if format.lesson_duration %}
+                            <li class="list-item">
+                                Продолжительность урока:
 
-                        <span>{{format.lesson_duration}}</span>
-                    </li>
-                {% endif %}
-            </ul>
+                                <span>{{format.lesson_duration}}</span>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            {% endif %}
         {% endblock %}
     {% endembed %}
 {% endmacro %}

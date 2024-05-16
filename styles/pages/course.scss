@@ -1,11 +1,19 @@
 .single-course {
     .main-section {
-        .section__title {
+        &__title {
             max-width: 680px;
+        }
+
+        &__description {
+            max-width: 510px;
         }
     }
 
     .about {
+        &__container {
+            gap: 80px;
+        }
+
         &__header,
         &__content {
             flex: 1;
@@ -19,6 +27,17 @@
     }
 
     .course-formats {
-        
+        .card {
+            &__body {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            &__content {
+                margin-top: auto;
+                padding-right: 30px;
+            }
+        }
     }
 }

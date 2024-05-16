@@ -71,14 +71,16 @@
 			<div class="cards-grid grid grid--3">
 				{% for manager in managers %}
 					<div class="contact-card card">
-						<img class="card__img" src="{{manager.thumbnail.src}}" alt="{{manager.name}}">
+						<div class="card__media">
+							<img class="image" src="{{manager.thumbnail.src}}" alt="{{manager.name}}">
+						</div>
 
-						<div class="card__content">
+						<div class="card__body">
 							<h3 class="card__title">{{manager.name}}</h3>
 
-							<h4 class="card__subttitle">{{manager.position}}</h4>
+							<h4 class="card__subtitle">{{manager.position}}</h4>
 
-							<div class="card__description">
+							<div class="card__content">
 								<p class="text">{{manager.responsibility}}</p>
 
 								{% include 'components/list.twig' with {

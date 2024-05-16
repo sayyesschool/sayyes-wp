@@ -186,6 +186,27 @@
     }
 }
 
+.corporate-formats {
+    &__header {
+        max-width: 860px;
+        margin-bottom: 40px;
+    }
+
+    .card {
+        height: auto;
+
+        &__media {
+            img {
+                aspect-ratio: 1;
+            }
+        }
+
+        &__title {
+            @include heading('xs', 800);
+        }
+    }
+}
+
 .corporate-benefits,
 .corporate-steps {
     &__header {
@@ -280,21 +301,6 @@
 	@include breakpoint($breakpoint-xxs) {
 		margin-bottom: 105px;
 	}
-}
-
-.corporate-formats {
-    &__header {
-        max-width: 860px;
-        margin-bottom: 40px;
-    }
-
-    .card {
-        height: auto;
-
-        &__title {
-            @include heading('xs', 800);
-        }
-    }
 }
 
 .corporate-teachers {

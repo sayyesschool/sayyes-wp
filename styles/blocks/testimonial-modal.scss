@@ -3,12 +3,8 @@
         width: 100%;
         max-width: 950px;
 
-        .card__content {
-            order: 1;
-        }
-
-        .card__footer {
-            margin-top: 0;
+        .testimonial-meta {
+            order: -1;
         }
         
         .testimonial-excerpt {

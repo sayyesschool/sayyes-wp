@@ -7,26 +7,20 @@
 	}
 
     .card {
-        &__img {
-            height: 270px;
-        }
-
-        &__body {
-            padding: 25px 30px 35px 40px;
+        &__media {
+            img {
+				aspect-ratio: 2 / 1;
+			}
         }
 
         &__title {
 			@include heading('sm', 800);
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
 
         &__description {
 			@include text;
 			margin-top: 0;
-        }
-
-        &__content {
-            margin-top: 20px;
         }
     }
 
@@ -64,7 +58,7 @@
 	&--sm {
 		width: calc((100% - 40px) / 3);
 
-		.card__img {
+		.card__media {
 			height: 370px;
 		}
 
@@ -96,7 +90,7 @@
 			margin-bottom: 15px;
 		}
 
-		.card__img {
+		.card__media {
 			height: 220px;
 		}
 
@@ -131,7 +125,7 @@
 	@include breakpoint($breakpoint-xxs) {
 		width: 100%;
 
-		.card__img {
+		.card__media {
 			height: 60%;
 		}
 

@@ -11,8 +11,10 @@
     {% include 'sections/courses.twig' with {
         title: 'Мы предлагаем курсы для взрослых и детей в различных форматах: офлайн в Москве, онлайн в группе и индивидуально.',
         description: 'Выберите необходимое для вас обучение.',
-		courses_adults,
-		courses_children
+        courses,
+        card_colors: ['black', 'pink', 'purple'],
+        tabs: true,
+        large_header: true
 	} %}
 
 	{% include 'sections/trial-lesson-cta.twig' %}

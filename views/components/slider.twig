@@ -1,8 +1,10 @@
 <div class="{{name}}-slider slider">
-	<div class="slider__arrows">
-		<button class="slider__left-arrow" type="button"></button>
-		<button class="slider__right-arrow" type="button"></button>
-	</div>
+	{% if not arrows %}
+		<div class="slider__arrows">
+			<button class="slider__left-arrow" type="button"></button>
+			<button class="slider__right-arrow" type="button"></button>
+		</div>
+	{% endif %}
 
 	<div class="swiper-wrapper">
 		{% block content %}
@@ -13,5 +15,7 @@
 		</div> #}
 	</div>
 
-	<ul class="slider__pagination"></ul>
+	{% if not pagination %}
+		<div class="slider__pagination"></div>
+	{% endif %}
 </div>

@@ -1,15 +1,15 @@
 {% embed 'components/section.twig' with {
 	name: 'faq',
-	title: 'На часто задаваемые вопросы о курсе отвечает Шаталова Вера, сооснователь SAY YES!',
-	horizontal: true
+	title: 'На часто задаваемые вопросы о курсе отвечает Шаталова Вера, сооснователь SAY YES!'
 } %}
 	{% block content %}
-		{% include 'components/accordion.twig' with {
-			items
-		} %}
-	{% endblock %}
-
-	{% block media %}
 		<img class="image" src="{{theme.link}}/static/images/pictures/vera.jpg" alt="Вера Шаталова">
+
+		{% include 'components/accordion.twig' with {
+			items: items|map(item => ({
+				title: item.question,
+				description: item.answer
+			}))
+		} %}
 	{% endblock %}
 {% endembed %}

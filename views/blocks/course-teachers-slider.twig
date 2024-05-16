@@ -1,0 +1,27 @@
+{% embed 'components/slider.twig' with {
+    name: 'course-teachers'
+} %}
+    {% block content %}
+        {% for teacher in teachers %}
+            <div class="swiper-slide">
+                <div class="card card--white card--horizontal">
+                    <div class="card__media">
+                        {% include 'components/video.twig' with {
+                            youtube_id: teacher.video.youtube_id,
+                            image: {
+                                src: teacher.thumbnail.src
+                            },
+                            modal: true
+                        } %}
+                    </div>
+
+                    <div class="card__body">
+                        <h3 class="card__title">{{teacher.name}}</h3>
+
+                        <div class="card__description">{{teacher.content}}</div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endblock %}
+{% endembed %}

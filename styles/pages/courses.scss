@@ -5,57 +5,34 @@
             max-width: 460px;
         }
     }
-}
 
-.courses-formats {
-    &__header {
-        max-width: 860px;
-    }
-
-    .card {
-        &__img {
-            aspect-ratio: 2 / 1;
-        }
-
-        &__body {
-            padding: 33px 38px 37px;
-        }
-
-        &__title {
-            font-size: 24px;
-            font-weight: 800;
-            line-height: 25px;
-        }
-    }
-
-    @include breakpoint($breakpoint-lg) {
-		&__header {
-			max-width: 650px;
-		}
-	}
-
-    @include breakpoint($breakpoint-xxs) {
+    .formats {
         &__header {
-			max-width: 550px;
-		}
-    }
-}
-
-.courses-list {
-    &__header {
-        max-width: 560px;
-		margin-bottom: 40px;
-    }
-
-    .card {
-        .card__img {
-            height: 270px;
+            max-width: 860px;
+        }
+    
+        @include breakpoint($breakpoint-lg) {
+            &__header {
+                max-width: 650px;
+            }
+        }
+    
+        @include breakpoint($breakpoint-xxs) {
+            &__header {
+                max-width: 550px;
+            }
         }
     }
-
-    @include breakpoint($breakpoint-lg) {
-		&__title {
-			max-width: 440px;
-		}
-	}
+    
+    .courses {
+        &__header {
+            max-width: 560px;
+        }
+    
+        @include breakpoint($breakpoint-lg) {
+            &__header {
+                max-width: 440px;
+            }
+        }
+    }
 }

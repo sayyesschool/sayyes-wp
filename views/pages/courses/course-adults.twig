@@ -1,158 +1,54 @@
-{% extends 'layouts/base.twig' %}
+{% extends 'pages/courses/course.twig' %}
 
-{% block content %}
-	{% include 'sections/main.twig' with {
-        title: course.heading ?? course.title,
-        description: course.content,
-        button: true,
-        image: course.thumbnail
-    } %}
+{% set sections = {
+	formats: {
+		items: [
+			{
+                title: 'Офлайн группа',
+                description: 'Живое общение с единомышленниками в центре Москвы',
+                price: course.formats.group_offline.price
+            },
+            {
+                title: 'Онлайн группа',
+                description: 'Удобство онлайн обучения и доступная стоимость',
+                price: course.formats.group_online.price
+            },
+            {
+                title: 'Офлайн индивидуально',
+                description: 'Если вы предпочитаете личный контакт и персональный подход',
+                price: course.formats.individual_offline.price
+            },
+            {
+                title: 'Онлайн индивидуально',
+                description: 'Уроки в любом месте и в удобное для вас время',
+                price: course.formats.individual_online.price
+            }
+		]
+	},
 
-	{% include 'components/section.twig' with {
-        name: 'about',
-        title: course.about.title,
-        content: course.about.content,
-        horizontal: true
-    } %}
-
-	{% embed 'components/section.twig' with {
-        name: 'course-formats',
-        title: course.formats.title ?: 'Формы обучения на курсе ' ~ course.title,
-        description: 'Вы можете проходить курс английского языка с нуля в различных форматах. Продолжительность и стоимость курса зависят от интенсивности и формата обучения.'
-    } %}
-        {% block content %}
-            {% from 'blocks/format-card.twig' import format_card %}
-
-            <div class="cards-grid grid grid--2">
-                {% for format in [
-                    {
-                        title: 'Офлайн группа',
-                        description: 'Живое общение с единомышленниками в центре Москвы',
-                        price: course.formats.group_offline.price
-                    },
-                    {
-                        title: 'Онлайн группа',
-                        description: 'Удобство онлайн обучения и доступная стоимость',
-                        price: course.formats.group_online.price
-                    },
-                    {
-                        title: 'Офлайн индивидуально',
-                        description: 'Если вы предпочитаете личный контакт и персональный подход',
-                        price: course.formats.individual_offline.price
-                    },
-                    {
-                        title: 'Онлайн индивидуально',
-                        description: 'Уроки в любом месте и в удобное для вас время',
-                        price: course.formats.individual_online.price
-                    }
-                ] %}
-                    {{format_card({
-                        title: format.title,
-                        description: format.description,
-                        price: format.price,
-                        link: false
-                    }, cycle(['white', 'pink', 'purple'], loop.index0))}}
-                {% endfor %}
-            </div>
-        {% endblock %}
-    {% endembed %}
-
-	{% include 'sections/trial-lesson-cta.twig' %}
-
-    {% embed 'components/section.twig' with {
-        name: 'advantages',
-        title:  course.facts.title ?: 'Важные факты о курсе <br>' ~ course.title,
-    } %}
-        {% block content %}
-            {% include 'blocks/fact-cards.twig' with {
-				items: [
-                    {
-                        title: 'Стандартизированная методика',
-                        description: 'Практикуем один подход в офлайн и онлайн формате'
-                    },
-                    {
-                        title: '75% практика языка',
-                        description: 'Бóльшую часть занятия говорит студент'
-                    },
-                    {
-                        title: 'Визиты носителей',
-                        description: 'Дополнительная практика языка в группе'
-                    },
-                    {
-                        title: 'Онлайн платформа',
-                        description: 'Нескучная домашка в интерактивном виде'
-                    },
-                    {
-                        title: 'Современные пособия',
-                        description: 'Используем новейшие пособия Oxford, Cambridge и Macmillan',
-                        image: 'books'
-                    }
-                ]
-			} %}
-        {% endblock %}
-    {% endembed %}
-
-    {% embed 'components/section.twig' with {
-        name: 'course-results',
-        title: course.results.title ?: 'Результаты курса <br>' ~ course.title
-    } %}
-        {% block content %}
-            <p class="text">Если вы посетили 100% занятий и выполнили все домашние работы, но не сдали успешно итоговый тест, вы можете пройти уровень повторно и абсолютно бесплатно.</p>
-
-            <div class="card">
-                {% if course.results.list_type == 'simple' %}
-                    {% include 'components/list.twig' with {
-                        type: 'check',
-                        size: 'sm',
-                        items: course.results.simple_list
-                    } %}
-                {% elseif course.results.list_type == 'nested' %}
-                    {% include 'components/accordion.twig' with {
-                        items: course.results.nested_list
-                    } %}
-                {% endif %}
-            </div>
-        {% endblock %}
-    {% endembed %}
-
-    {% embed 'components/section.twig' with {
-        name: 'course-testimonials',
-        title: 'Отзывы о курсе <br>' ~ course.title,
-        description: 'За ' ~ COMPANY_AGE ~ ' лет работы, обучили более 10 000 человек и получили более 800 отзывов'
-    } %}
-        {% block content %}
-            {% include 'blocks/course-testimonials-slider.twig' with {
-                groups: testimonial_groups
-            } %}
-        {% endblock %}
-    {% endembed %}
-
-	{% include 'sections/faq.twig' with {
-        items: []
-    } %}
-
-	{% include 'sections/trial-lesson.twig' %}
-{% endblock %}
-
-{% block modal %}
-    {% include 'components/modal.twig' with {
-        id: 'testimonial-modal'
-    } %}
-{% endblock %}
-
-{% block scripts %}
-    <script>
-        const modal = new window.ui.Modal('#testimonial-modal');
-        const modalContent = modal.getElement('.modal__content');
-
-        document.querySelectorAll('.testimonial-modal-button').forEach(button => {
-            button.addEventListener('click', handleButtonClick);
-        });
-
-        function handleButtonClick(event) {
-            const card = event.target.parentElement.parentElement.parentElement;
-            modalContent.innerHTML = card.outerHTML;
-            modal.open();
-        }
-    </script>
-{% endblock %}
+    facts: {
+        items: [
+            {
+                title: 'Стандартизированная методика',
+                description: 'Практикуем один подход в офлайн и онлайн формате'
+            },
+            {
+                title: '75% практика языка',
+                description: 'Бóльшую часть занятия говорит студент'
+            },
+            {
+                title: 'Визиты носителей',
+                description: 'Дополнительная практика языка в группе'
+            },
+            {
+                title: 'Онлайн платформа',
+                description: 'Нескучная домашка в интерактивном виде'
+            },
+            {
+                title: 'Современные пособия',
+                description: 'Используем новейшие пособия Oxford, Cambridge и Macmillan',
+                image: 'books'
+            }
+        ]
+    }
+} %}

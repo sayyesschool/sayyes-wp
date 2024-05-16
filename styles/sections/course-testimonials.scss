@@ -1,12 +1,11 @@
 .course-testimonials {
 	margin-bottom: 135px;
 
-	.section__title {
+	&__title {
 		max-width: 470px;
-		margin-bottom: 20px;
 	}
 
-	.section__description {
+	&__description {
 		max-width: 440px;
 	}
 
@@ -39,8 +38,6 @@
 	}
 
 	@include breakpoint($breakpoint-lg) {
-		margin-bottom: 70px;
-
 		.section__title {
 			max-width: 400px;
 			margin-bottom: 15px;
@@ -52,8 +49,6 @@
 	}
 
 	@include breakpoint($breakpoint-xs) {
-		margin-bottom: 60px;
-
 		.slider {
 			width: calc(100% + 15px);
 
@@ -74,10 +69,6 @@
 		&__cards {
 			flex-direction: column;
 		}
-	}
-
-	@include breakpoint($breakpoint-xxs) {
-		margin-bottom: 50px;
 	}
 
 	@include breakpoint($breakpoint-mobile) {
@@ -103,64 +94,6 @@
 			&::-webkit-scrollbar {
 				display: none;
 			}
-		}
-	}
-}
-
-.course-testimonial {
-	padding: 33px 62px 50px;
-	border-radius: $border-radius;
-	background-color: $yellow;
-
-	&__rating {
-		margin: 0 0 17px 48px;
-		display: flex;
-		align-items: center;
-		gap: 14px;
-
-		&-value {
-			font-size: 46px;
-			font-weight: 700;
-			line-height: 70px;
-		}
-	}
-
-	&__cards {
-		display: flex;
-		justify-content: space-between;
-		gap: 20px;
-	}
-
-	@include breakpoint($breakpoint-lg) {
-		padding: 30px;
-
-		&__rating-value {
-			font-size: 36px;
-			line-height: 35px;
-		}
-
-		&__rating {
-			margin-left: 0;
-		}
-
-		.card {
-			width: calc(50% - 7.5px);
-			padding: 25px 30px;
-		}
-	}
-
-	@include breakpoint($breakpoint-xs) {
-		.card {
-			width: 100%;
-		}
-	}
-
-	@include breakpoint($breakpoint-mobile) {
-		padding: 25px;
-
-		.card {
-			min-width: 85%;
-			padding: 15px;
 		}
 	}
 }

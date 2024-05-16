@@ -1,5 +1,5 @@
-{% macro course_card(course, color, formats = true) %}
-	<div class="course-card card card--hover card--{{color}}">
+{% macro course_card(course, color, formats = true, large_header) %}
+	<div class="{{html_classes('course-card', large_header ? 'course-card--large-header' : [], 'card', 'card--hover', color ? 'card--' ~ color : [])}}">
 		{% if course.thumbnail %}
 			<div class="card__media">
 				<img src="{{course.thumbnail.src}}" alt="{{course.thumbnail.alt}}">
@@ -17,7 +17,7 @@
 				<p class="card__description">{{course.description}}</p>
 			{% endif %}
 
-			{% if course.age %}
+			{% if large_header and course.age %}
 				<span class="course-card__age-tag">{{course.age}}</span>
 			{% endif %}
 		</div>

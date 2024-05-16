@@ -1,10 +1,13 @@
 @use 'styles/components/heading' as *;
 
 .card {
+	--card-background-color: #{$white};
+	--card-text-color: #{$black};
+
 	position: relative;
 	border-radius: $border-radius;
-	background-color: $white;
-	color: $black;
+	background-color: var(--card-background-color);
+	color: var(--card-text-color);
 
 	&__media {
 		position: relative;
@@ -19,19 +22,28 @@
 		}
 	}
 
-	&__img {
-		width: 100%;
-		display: block;
-		object-fit: cover;
-		border-radius: $border-radius;
+	&__header {
+		padding: 30px 40px 0;
+
+		&:last-child {
+			padding-bottom: 30px;
+		}
 	}
 
 	&__body {
 		padding: 40px;
+
+		&:empty {
+			padding: 0;
+		}
 	}
 
-	&__header {
-		
+	&__content {
+		margin-top: 1rem;
+	}
+
+	&__footer {
+		margin-top: auto;
 	}
 
 	&__title {
@@ -51,10 +63,6 @@
 		}
 	}
 
-	&__content {
-		margin-top: 1rem;
-	}
-
 	&__link {
 		position: absolute;
 		top: 0;
@@ -63,43 +71,33 @@
 		height: 100%;
 	}
 
-	&--horizontal {
-		display: flex;
-		flex-direction: row;
+	&--white {
+		--card-background-color: #{$white};
+		--card-text-color: #{$black};
 	}
 
-	&--white,
-	&--white &__header {
-		background-color: $white;
-		color: $black;
+	&--black {
+		--card-background-color: #{$black};
+		--card-text-color: #{$white};
 	}
 
-	&--black,
-	&--black &__header {
-		background-color: $black;
-		color: $white;
+	&--pink {
+		--card-background-color: #{$pink};
+		--card-text-color: #{$white};
 	}
 
-	&--pink,
-	&--pink &__header {
-		background-color: $pink;
-		color: $white;
+	&--purple {
+		--card-background-color: #{$purple};
+		--card-text-color: #{$white};
 	}
 
-	&--purple,
-	&--purple &__header {
-		background-color: $purple;
-		color: $white;
-	}
-
-	&--yellow,
-	&--yellow &__header {
-		background-color: $yellow;
-		color: $black;
+	&--yellow {
+		--card-background-color: #{$yellow};
+		--card-text-color: #{$black};
 	}
 
 	&--transparent {
-		background-color: transparent;
+		--card-background-color: transparent;
 	}
 
 	&--hover {
@@ -111,24 +109,23 @@
 		}
 	}
 
-	@include breakpoint($breakpoint-md) {
-		&__img {
-			height: 315px;
-		}
+	&--horizontal {
+		display: flex;
+		flex-direction: row;
+	}
 
+	&--horizontal &__media {
+		width: auto;
+	}
+
+	@include breakpoint($breakpoint-md) {
 		&__body {
 			padding: 25px;
 		}
 	}
 
 	@include breakpoint($breakpoint-xxs) {
-		min-width: 213px;
-
-		&__img {
-			height: 215px;
-		}
-
-		&__text {
+		&__content {
 			font-size: 14px;
 			line-height: 15px;
 		}

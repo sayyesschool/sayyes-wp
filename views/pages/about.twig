@@ -97,22 +97,16 @@
 		{% endblock %}
 
 		{% block content %}
-			<div class="cards-grid grid grid--3">
+			{% from 'blocks/manager-card.twig' import manager_card %}
+
+			<div class="cards grid grid--3">
 				<div class="card card--transparent">
 					<h4 class="card__title">Команда мечты</h4>
 					<p class="card__subtitle">Создает для вас душевную атмосферу и обеспечивает комфорт в обучении.</p>
 				</div>
 
 				{% for manager in managers|slice(0, 7) %}
-					<div class="manager-card card">
-						<img class="card__img" src="{{manager.thumbnail.src}}" alt="{{manager.name}}">
-
-						<div class="card__body">
-							<h3 class="card__title">{{manager.name}}</h3>
-							<p class="card__subtitle">{{manager.position}}</p>
-							<div class="card__description">{{manager.content}}</div>
-						</div>
-					</div>
+					{{manager_card(manager)}}
 				{% endfor %}
 
 				<div class="text-card card card--pink">
@@ -124,15 +118,7 @@
 				</div>
 
 				{% for manager in managers|slice(7) %}
-					<div class="manager-card card">
-						<img class="card__img" src="{{manager.thumbnail.src}}" alt="{{manager.name}}">
-
-						<div class="card__content">
-							<h3 class="card__title">{{manager.name}}</h3>
-							<p class="card__subtitle">{{manager.position}}</p>
-							<div class="card__description">{{manager.content}}</div>
-						</div>
-					</div>
+					{{manager_card(manager)}}
 				{% endfor %}
 
 				<div class="text-card card card--pink">

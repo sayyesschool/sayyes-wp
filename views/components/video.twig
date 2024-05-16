@@ -16,7 +16,7 @@
     {% endif %}
 >
     {% if image %}
-        <img class="video__media" src="{{image.path ? theme.link ~ '/static/images/' ~ image.path : image.src}}" alt="{{image.alt}}">
+        <img class="video__media" src="{{image.path ? (theme.link ~ '/static/images/' ~ image.path) : image.src}}" alt="{{image.alt}}">
     {% else %}
         <video
             src="{{filename ? theme.link ~ '/static/videos/' ~ filename : src}}"

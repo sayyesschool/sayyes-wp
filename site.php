@@ -4,34 +4,10 @@ use Timber\Site;
 use Twig\Extension\StringLoaderExtension;
 use Twig\Extra\Html\HtmlExtension;
 
+include 'post-classes.php';
 include 'post-types.php';
 include 'taxonomies.php';
 require 'utils.php';
-
-class Post extends Timber\Post {
-    public function name() {
-        return $this->meta('name');
-    }
-
-    public function description() {
-        return $this->excerpt(['read_more' => '']);
-    }
-}
-
-class Course extends Post {}
-class Format extends Post {}
-class Page extends Post {}
-class Report extends Post {}
-class Teacher extends Post {
-    public function name() {
-        $name = $this->title;
-        return $name;
-    }
-
-    public function url() {
-        return remove_url_component($this->link, '/'.$this->slug.'/') . '#'.$this->slug;
-    }
-}
 
 class SayYesSite extends Site {
     public $version = '2.3.0';
@@ -138,11 +114,19 @@ class SayYesSite extends Site {
 
         $main_phone = format_phone_number($contacts['phone_numbers']['main']);
         $wa_phone = format_phone_number($contacts['phone_numbers']['whatsapp']);
+        $links = [
+            'policy' => $this->link().'/politika-konfidentsialnosti',
+            'offer' => $this->link().'/dogovor-oferta',
+            'email' => 'mailto:'.$contacts['email'],
+            'main_phone' => 'tel:'.$main_phone,
+            'wa_phone' => 'https://api.whatsapp.com/send/?phone='.$wa_phone.'&text&type=phone_number&app_absent=0'
+        ];
 
         $context['site'] = $this;
         $context['site_data'] = [
             'contacts' => $contacts,
-            'prices' => $prices
+            'prices' => $prices,
+            'links' => $links
         ];
         $context['COMPANY_AGE'] = date('Y') - 2013;
         $context['FACEBOOK_PIXEL_IDS'] = $this->facebook_pixel_ids;
@@ -151,13 +135,7 @@ class SayYesSite extends Site {
         $context['RECAPTCHA_KEY'] = $this->recaptcha_key;
 		$context['header_nav'] = Timber::get_menu('header_nav');
         $context['footer_nav'] = Timber::get_menu('footer_nav');
-        $context['links'] = [
-            'policy' => $this->link().'/politika-konfidentsialnosti',
-            'offer' => $this->link().'/dogovor-oferta',
-            'email' => 'mailto:'.$contacts['email'],
-            'main_phone' => 'tel:'.$main_phone,
-            'wa_phone' => 'https://api.whatsapp.com/send/?phone='.$wa_phone.'&text&type=phone_number&app_absent=0'
-        ];
+        $context['links'] = $links;
 
 		return $context;
 	}

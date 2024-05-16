@@ -1,8 +1,9 @@
 <div class="fact-cards grid grid--{{grid ?? '2-1-2'}}">
     {% for item in items %}
-        <div class="{{html_classes('fact-card', 'text-card',
-            item.image ? 'text-card--' ~ item.image ~ '-bg' : [], 'card')
-        }}">
+        <div class="{{html_classes('fact-card', 'text-card', 'card',
+            item.image ? 'text-card--' ~ item.image ~ '-bg' : [], 
+            color ? 'card--' ~ color : []
+        )}}">
             <h4 class="card__title">{{item.title}}</h4>
             <p class="card__description">{{item.description}}</p>
         </div>

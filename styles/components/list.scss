@@ -22,6 +22,11 @@
 		}
 	}
 
+	&--ol,
+	&--ul {
+		list-style: inside;
+	}
+
 	&--dl {
 		.list-item__content {
 			display: flex;

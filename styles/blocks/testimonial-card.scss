@@ -1,29 +1,31 @@
-.text-card.testimonial-card {
+.testimonial-card {
+    padding: 45px 40px 45px 50px;
     display: flex;
-    width: calc(50% - 10px);
-    min-height: 460px;
-    padding: 46px 40px 44px 49px;
+    flex-direction: column;
     gap: 1rem;
 
-    .card__content {
+    .testimonial-excerpt,
+    .testimonial-content {
         font-size: 16px;
         font-weight: 600;
-        margin-top: 0;
-
-        p + p {
-            margin-top: 10px;
-        }
-    }
-
-    .card__footer {
-        margin-top: auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
     }
 
     .testimonial-content {
         display: none;
+    }
+
+    .testimonial-meta {
+        margin-top: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+
+        &__info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
     }
 
     .link {
@@ -33,4 +35,12 @@
         font-size: 16px;
         line-height: 15px;
     }
+
+    @include breakpoint($breakpoint-lg) {
+        padding: 25px 30px;
+    }
+
+    @include breakpoint($breakpoint-mobile) {
+		padding: 15px;
+	}
 }

@@ -42,9 +42,18 @@
 		color: $white;
 	}
 
+	&--yellow {
+		background-color: $yellow;
+		color: $black;
+	}
+
 	&--horizontal &__container {
 		display: flex;
 		gap: 40px;
+	}
+
+	&--horizontal &__header {
+		margin-bottom: 0;
 	}
 
 	@include breakpoint($breakpoint-lg) {

@@ -20,7 +20,6 @@
 			display: flex;
 			justify-content: space-between;
 			gap: 85px;
-			color: $black;
         }
 
         &__title {
@@ -35,7 +34,7 @@
             display: flex;
             justify-content: space-between;
             min-height: 145px;
-            padding: 38px 40px;
+            padding: 40px;
         }
 	}
 
@@ -81,6 +80,37 @@
 
 			span {
 				flex-shrink: 0;
+			}
+		}
+	}
+
+	&--large-header {
+		background-color: $white;
+		color: $black;
+		
+		.card {
+			&__media {
+				display: none;
+			}
+
+			&__header {
+				flex-grow: 1;
+				padding: 35px 40px;
+				border-radius: $border-radius;
+				background-color: var(--card-background-color);
+				color: var(--card-text-color);
+				overflow: hidden;
+			}
+
+			&__title {
+				margin-bottom: 10px;
+				font-size: 42px;
+				font-weight: 700;
+				line-height: 40px;
+			}
+
+			&__description {
+				max-width: 360px;
 			}
 		}
 	}

@@ -49,4 +49,3 @@ const activateBtnText = (elementSelector) => {
 
 activateBtnBlocks('#show-more-review', '.student-reviews__reviews');
 activateBtnBlocks('#show-more-teachers', '.cards-show-more');
-activateBtnText('.video-block-2');

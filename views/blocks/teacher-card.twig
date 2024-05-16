@@ -1,6 +1,8 @@
 {% macro teacher_card(teacher) %}
     <div class="teacher-card card">
-        <img class="card__img" src="{{teacher.thumbnail.src('medium')}}" alt="{{teahcer.name}}" loading="lazy">
+        <div class="card__media">
+            <img class="image" src="{{teacher.thumbnail.src('medium')}}" alt="{{teahcer.name}}" loading="lazy">
+        </div>
 
         <div class="card__body">
             <h3 class="card__title">{{teacher.name}}</h3>

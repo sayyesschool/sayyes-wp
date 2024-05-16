@@ -61,7 +61,6 @@ strong,
 
 .flex {
 	display: flex;
-	gap: 20px;
 
 	&--column {
 		flex-direction: column;
@@ -69,6 +68,10 @@ strong,
 
 	&--wrap {
 		flex-wrap: wrap;
+	}
+
+	&--gap-lg {
+		gap: 20px;
 	}
 
 	&--gap-md {
@@ -119,7 +122,6 @@ strong,
 }
 
 .text {
-	& + &,
 	p + p {
 		margin-top: 10px;
 	}
@@ -143,6 +145,20 @@ strong,
 
 .color-yellow {
 	color: $purple;
+}
+
+.content {
+	p + p {
+		margin-top: 10px;
+	}
+	
+	ol,
+	ul {
+		list-style: inside;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
 }
 
 [v-cloak] {

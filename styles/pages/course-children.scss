@@ -1,243 +1,173 @@
 .course-children {
-    .main-section {
-        .section__description {
-			max-width: 510px;
-		}
-    }
-
-    .about {
-        .section__title {
-			max-width: 500px;
-		}
-    }
-
-    .course-formats {
-        .format-card {
-            .card__body {
-                min-height: 265px;
-            }
-
-            .card__title {
-                max-width: 490px;
-            }
-    
-            .card__content {
-                
-                padding-right: 30px;
-            }
-        }
-    }
-
     .advantages {
+		.grid {
+			grid-template-rows: 1fr 1fr;
+		}
+
         .card {
+			padding-right: 182px;
+
             &__title {
-                max-width: 360px;
+				max-width: unset;
                 font-size: 18px;
                 line-height: 20px;
             }
 
             &__description {
-                max-width: 300px;
-            }
-        }
-    }
-
-    .course-teachers {
-        
-    }
-
-    .video-section {
-		padding-bottom: 55px;
-        background-color: $purple;
-		color: $white;
-
-        &::before {
-			width: 234px;
-			height: 104px;
-			top: 276px;
-			left: 367px;
-			background-image: url('./static/images/decoration/notes/only-2-min.svg');
-		}
-
-        &__content {
-			max-width: 400px;
-		}
-
-		&__title {
-			margin-bottom: 20px;
-		}
-
-		&__description {
-			max-width: 350px;
-
-			p:not(:last-of-type) {
-				margin-bottom: 10px;
-			}
-		}
-
-        .video {
-			&::before {
-				content: none;
-			}
-		}
-
-        &.online-video-section {
-            margin-bottom: 180px;
-        }
-
-        &.progress-video-section {
-            &::before {
-                content: none;
-            }
-    
-            .video-section__description {
-                font-weight: 600;
-                line-height: 20px;
-            }
-    
-            .video {
-                &::before {
-                    content: '';
-                    width: 662px;
-                    height: 352px;
-                    top: -20px;
-                    left: -43px;
-                    background: url('./static/images/decoration/elements/being-student-border-2.svg') center center/contain no-repeat;
-                }
-            }
-        }
-
-        @include breakpoint($breakpoint-xl) {
-            &.online-video-section {
-                &::before {
-                    top: 260px;
-                    left: 240px;
-                }
-            }
-        }
-
-        @include breakpoint($breakpoint-md) {
-            &.online-video-section {
-                &::before {
-                    left: 180px;
-                }
-            }
-        }
-
-        @include breakpoint($breakpoint-sm) {
-            &.online-video-section {
-                padding-bottom: 40px;
-
-                &::before {
-                    top: 150px;
-                    left: 190px;
-                }
-            }
-
-            &.progress-video-section {
-                .video-section__info {
-                    max-width: 320px;
-                }
-            }
-        }
-
-        @include breakpoint($breakpoint-xxs) {
-            &.online-video-section {
-                &::before {
-                    top: initial;
-                    bottom: 215px;
-                    left: 35%;
-                    width: 171px;
-                    height: 70px;
-                    background-image: url("./static/images/decoration/notes/only-2-min-2.svg");
-                }
-            }
-
-            &.progress-video-section {
-                .video-section__info {
-                    margin-bottom: 10px;
-                }
+				margin-top: 1rem;
             }
         }
     }
 }
 
-.knowledge-check {
-	padding: 56px 59px 64px;
-	background-color: $yellow;
+.online-video {
+	margin-bottom: 180px;
+	background-color: $purple;
+	color: $white;
 
+	&__container {
+		&::before {
+			content: '';
+			position: absolute;
+			width: 234px;
+			height: 104px;
+			top: 200px;
+			left: 331px;
+			background-image: url('./static/images/decoration/notes/only-2-min.svg');
+			background-size: contain;
+		}
+	}
+
+	&__description {
+		max-width: 350px;
+	}
+
+	&__media {
+		&::before {
+			content: none;
+		}
+	}
+
+	@include breakpoint($breakpoint-xl) {
+		&__container {
+			&::before {
+				top: 260px;
+				left: 240px;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-md) {
+		&__container {
+			&::before {
+				left: 180px;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-sm) {
+		&__container {
+			padding-bottom: 40px;
+
+			&::before {
+				top: 150px;
+				left: 190px;
+			}
+		}
+
+		&.progress-video-section {
+			.video-section__info {
+				max-width: 320px;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		&__container {
+			&::before {
+				top: initial;
+				bottom: 215px;
+				left: 35%;
+				width: 171px;
+				height: 70px;
+				background-image: url("./static/images/decoration/notes/only-2-min-2.svg");
+			}
+		}
+
+		&.progress-video-section {
+			.video-section__info {
+				margin-bottom: 10px;
+			}
+		}
+	}
+}
+
+.course-fesults {
 	&__header {
-		max-width: 900px;
-		margin-bottom: 35px;
+		max-width: 700px;
+		margin-bottom: 20px;
 	}
 
 	&__content {
 		display: flex;
 		justify-content: space-between;
-		gap: 20px;
+		gap: 35px;
+
+		.image {
+			flex-basis: 33%;
+		}
+
+		.card {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			gap: 40px;
+			padding: 40px 100px;
+
+			&__body {
+				padding: 0;
+			}
+
+			&__title {
+				@include heading('xs', 800);
+			}
+
+			.btn {
+				margin: 0 auto;
+			}
+		}
+	}
+}
+
+.request-lesson {
+	padding: 55px 60px 60px;
+
+	&__header {
+		@include decoration('notes/free-2.svg') {
+			bottom: 0;
+			right: 0;
+			width: 200px;
+			height: 117px;
+		}
 	}
 
 	.list {
-		position: relative;
 		width: 360px;
-		padding: 0;
-		background-color: transparent;
-
-		&::after {
-			content: '';
-			width: 254px;
-			height: 148px;
-			position: absolute;
-			top: 50%;
-			left: 198px;
-			background: url('./static/images/decoration/notes/free-2.svg')
-				center center/cover no-repeat;
-		}
 	}
 
-	.form {
+	.card {
 		width: 568px;
 		padding: 50px;
-		gap: 10px;
 		background-color: #ffdf76;
-		border-radius: $border-radius;
-
-		.input {
-			&:last-of-type {
-				margin-bottom: 35px;
-			}
-		}
-	}
-
-	@include breakpoint($breakpoint-xl) {
-		.list {
-			&::after {
-				width: 172px;
-				height: 100px;
-				left: 40px;
-			}
-
-			&--ul-sm {
-				.list__item {
-					&::before {
-						top: 10px;
-					}
-				}
-			}
-		}
 	}
 
 	@include breakpoint($breakpoint-lg) {
-		margin-bottom: 70px;
 		padding: 40px;
-
-		.section__title {
-			max-width: 650px;
-		}
 	}
 
 	@include breakpoint($breakpoint-sm) {
-		.section__content {
+		&__content {
 			flex-direction: column;
 		}
 
@@ -250,28 +180,37 @@
 			}
 		}
 
-		.form {
+		.card {
 			width: 100%;
 		}
 	}
 
-	@include breakpoint($breakpoint-xs) {
-		margin-bottom: 60px;
-	}
-
 	@include breakpoint($breakpoint-xxs) {
-		margin-bottom: 50px;
 		padding: 30px;
 
-		.form {
+		.card {
 			padding: 25px;
 		}
 	}
 
 	@include breakpoint($breakpoint-mobile) {
-		.form {
+		.card {
 			background-color: inherit;
 			padding: 0;
+		}
+	}
+}
+
+.progress-video {
+	@include breakpoint($breakpoint-sm) {
+		&__header {
+			max-width: 320px;
+		}
+	}
+
+	@include breakpoint($breakpoint-xxs) {
+		&__header {
+			margin-bottom: 10px;
 		}
 	}
 }

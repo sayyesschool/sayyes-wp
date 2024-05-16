@@ -25,9 +25,11 @@
                     }
                 ] %}
                     <div class="card">
-                        <img src="./assets/images/training-type/{{item.img}}.jpg" alt="{{item.name}}" class="card__img">
+                        <div class="card__media">
+                            <img class="image" src="./assets/images/training-type/{{item.img}}.jpg" alt="{{item.name}}">
+                        </div>
 
-                        <div class="card__content">
+                        <div class="card__body">
                             <h3 class="card__title">{{item.name}}</h3>
                             <p class="card__description">{{item.description}}</p>
                             <button class="btn btn--transparent btn--transparent-black btn--md">Выбрать и оплатить</button>

@@ -1,0 +1,30 @@
+<div class="testimonial-group">
+    <div class="testimonial-group__header">
+        <div class="testimonial-group__rating">
+            <div class="testimonial-group__rating-value">{{group.score}}</div>
+            
+            <div class="testimonial-group__rating-info">
+                <div class="stars"></div>
+
+                <p class="text">
+                    наш рейтинг на
+                    <span class="text text--underline">{{group.name}}</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="testimonial-group__body">
+        <div class="grid grid--2">
+            {% for testimonial in group.testimonials %}
+                {% include 'blocks/testimonial-card.twig' with {
+                    testimonial
+                } %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="testimonial-group__footer">
+        <a class="btn {{btnColor}}" href="{{group.link}}" target="_blank">Читать все отзывы на {{group.name}}</a>
+    </div>
+</div>

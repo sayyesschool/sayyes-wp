@@ -5,10 +5,10 @@ export default class Accordion extends Component {
 
     static classes = {
         root: this.name,
-        item: `${this.name}__item`,
-        title: `${this.name}__title`,
-        content: `${this.name}__content`,
-        activeItem: `${this.name}__item--active`
+        item: `${this.name}-item`,
+        title: `${this.name}-item__title`,
+        content: `${this.name}-item__content`,
+        activeItem: `${this.name}-item--active`
     };
 
     constructor(element) {

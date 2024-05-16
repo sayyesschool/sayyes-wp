@@ -18,8 +18,9 @@
 		description: 'Мы готовы вкладываться в ваше развитие, но базовый опыт и знания необходимы уже со старта работы у нас в школе.'
 	} %}
 		{% block content %}
-			<div class="fact-cards grid grid--2-1-2">
-				{% for item in [
+			{% include 'blocks/fact-cards.twig' with {
+				color: 'yellow',
+				items: [
 					{
 						title: 'Квалификация',
 						description: 'У вас есть профильное образование или международные сертификаты.',
@@ -45,15 +46,8 @@
 						description: 'Вы энергичны и дружелюбны. Вы обладаете способностью и желанием «заряжать» учеников.',
 						image: 'heart'
 					}
-				] %}
-					<div class="{{html_classes('fact-card', 'text-card',
-						item.image ? 'text-card--' ~ item.image ~ '-bg' : [], 'card', 'card--yellow')
-					}}">
-						<h4 class="card__title">{{item.title}}</h4>
-						<p class="card__description">{{item.description}}</p>
-					</div>
-				{% endfor %}
-			</div>
+				]
+			} %}
 		{% endblock %}
 	{% endembed %}
 

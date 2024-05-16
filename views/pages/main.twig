@@ -187,12 +187,15 @@
 	{% include 'sections/awards.twig' %}
 
 	{% include 'sections/courses.twig' with {
-		courses_adults,
-		courses_children,
+		title: 'Какой курс английского языка подойдет вам?',
+		courses,
+		card_colors: ['black', 'pink', 'purple'],
+		tabs: true,
+		large_header: true,
 		with_help: true
 	} %}
 
-	{% include 'sections/formats.twig' %}
+	{% include 'sections/formats-tabs.twig' %}
 
 	{% include 'sections/trial-lesson.twig' %}
 {% endblock %}

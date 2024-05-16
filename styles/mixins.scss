@@ -2,18 +2,34 @@
 
 @use './variables';
 
-@mixin raised() {
-  -webkit-box-shadow: 0 1px 5px rgba(0,0,0,.15),0 1px 5px 1px rgba(0,0,0,.15);
-  box-shadow: 0 1px 5px rgba(0,0,0,.15),0 1px 5px 1px rgba(0,0,0,.15);
-  -webkit-transition: background-color .3s cubic-bezier(.4,0,.2,1),box-shadow .3s cubic-bezier(.4,0,.2,1);
-  transition: background-color .3s cubic-bezier(.4,0,.2,1),box-shadow .3s cubic-bezier(.4,0,.2,1);
-  -ms-user-select: none;
-	
-	&:hover {
-		outline: 0;
-		text-decoration: none;
-		-webkit-box-shadow: 0 1px 5px rgba(0,0,0,.15),0 5px 10px 1px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.15);
-		box-shadow: 0 1px 5px rgba(0,0,0,.15),0 5px 10px 1px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.15);
+$breakpoints: (
+    sm: '(max-width: #{variables.$sm - 1})',
+    gt-sm: '(min-width: #{variables.$sm})',
+
+    lt-md: '(max-width: #{variables.$sm - 1})',
+    md: '(min-width: #{variables.$sm}) and (max-width: #{variables.$md - 1})',
+    gt-md: '(min-width: #{variables.$md})',
+
+    lt-lg: '(max-width: #{variables.$md - 1})',
+    lg: '(min-width: #{variables.$md}) and (max-width: #{variables.$lg - 1})',
+    gt-lg: '(min-width: #{variables.$lg})'
+);
+
+@mixin bp($point) {
+    $breakpoint: map-get($breakpoints, $point);
+
+    @if not $breakpoint {
+        @error 'Invalid breakpoint';
+    } @else {
+        @media #{$breakpoint} {
+            @content;
+        }
+    }
+}
+
+@mixin breakpoint($bp) {
+	@media (max-width: $bp) {
+		@content;
 	}
 }
 
@@ -21,6 +37,28 @@
   content: '';
   display: table;
   clear: both;
+}
+
+@mixin decoration($path, $position: 'after') {
+    position: relative;
+
+    &::#{$position} {
+        content: '';
+        position: absolute;
+        background-image: url('./static/images/decoration/#{$path}');
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        @content;
+    }
+}
+
+@mixin fill-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 @mixin placeholder-color($color) {
@@ -43,19 +81,12 @@
 
 @mixin position-in-container($position) {
     position: absolute;
+    
     @if $position == center {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
-}
-
-@mixin fill-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
 }
 
 @mixin hover-active($styles: ()) {
@@ -82,33 +113,17 @@
 	}
 }
 
-@mixin breakpoint($bp) {
-	@media (max-width: $bp) {
-		@content;
-	}
-}
-
-$breakpoints: (
-    sm: '(max-width: #{variables.$sm - 1})',
-    gt-sm: '(min-width: #{variables.$sm})',
-
-    lt-md: '(max-width: #{variables.$sm - 1})',
-    md: '(min-width: #{variables.$sm}) and (max-width: #{variables.$md - 1})',
-    gt-md: '(min-width: #{variables.$md})',
-
-    lt-lg: '(max-width: #{variables.$md - 1})',
-    lg: '(min-width: #{variables.$md}) and (max-width: #{variables.$lg - 1})',
-    gt-lg: '(min-width: #{variables.$lg})'
-);
-
-@mixin bp($point) {
-    $breakpoint: map-get($breakpoints, $point);
-
-    @if not $breakpoint {
-        @error 'Invalid breakpoint';
-    } @else {
-        @media #{$breakpoint} {
-            @content;
-        }
+@mixin raised() {
+-webkit-box-shadow: 0 1px 5px rgba(0,0,0,.15),0 1px 5px 1px rgba(0,0,0,.15);
+box-shadow: 0 1px 5px rgba(0,0,0,.15),0 1px 5px 1px rgba(0,0,0,.15);
+-webkit-transition: background-color .3s cubic-bezier(.4,0,.2,1),box-shadow .3s cubic-bezier(.4,0,.2,1);
+transition: background-color .3s cubic-bezier(.4,0,.2,1),box-shadow .3s cubic-bezier(.4,0,.2,1);
+-ms-user-select: none;
+    
+    &:hover {
+        outline: 0;
+        text-decoration: none;
+        -webkit-box-shadow: 0 1px 5px rgba(0,0,0,.15),0 5px 10px 1px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.15);
+        box-shadow: 0 1px 5px rgba(0,0,0,.15),0 5px 10px 1px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.15);
     }
 }

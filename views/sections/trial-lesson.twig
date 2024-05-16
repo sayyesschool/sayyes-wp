@@ -17,16 +17,17 @@
 				{
 					content: 'Взрослым',
 					value: 'adults',
-					active: true
+					active: active_tab == 'adults'
 				},
 				{
 					content: 'Детям',
-					value: 'children'
+					value: 'children',
+					active: active_tab == 'children'
 				}
 			]
 		} %}
 			{% block content %}
-				<div class="invite invite--adults" data-tab-panel="adults">
+				<div class="invite invite--adults{{(active_tab == '' or active_tab == 'adults') ? '' : ' hidden'}}" data-tab-panel="adults">
 					<div class="invite__left">
 						<div class="invite__title">Оставьте заявку на пробный урок</div>
 
@@ -40,7 +41,7 @@
 					</div>
 				</div>
 
-				<div class="invite invite--children hidden" data-tab-panel="children">
+				<div class="invite invite--children{{active_tab == 'children' ? '' : ' hidden'}}" data-tab-panel="children">
 					<div class="invite__left">
 						<div class="invite__title">Оставьте заявку на пробный урок</div>
 

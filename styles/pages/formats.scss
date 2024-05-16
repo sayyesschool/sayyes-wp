@@ -1,26 +1,24 @@
 #formats-page {
+    .formats {
+        &__title {
+            max-width: 850px;
+            margin-bottom: 40px;
+        }
     
-}
-
-.formats-cards {
-    &__title {
-        max-width: 850px;
-        margin-bottom: 40px;
-    }
-
-    .card:last-child {
-        padding: 50px 92px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-
-        .text {
-            margin-bottom: 20px;
+        .card:last-child {
+            padding: 50px 92px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+    
+            .text {
+                margin-bottom: 20px;
+            }
+    
+            .heading {
+                margin-bottom: 45px;
+            }
         }
-
-        .heading {
-            margin-bottom: 45px;
-        }
-    }
+    }   
 }

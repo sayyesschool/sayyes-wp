@@ -1,0 +1,20 @@
+<div class="testimonial-card card">
+    <div class="testimonial-excerpt content">
+        {{testimonial.excerpt({ length: 50, read_more: '', strip: false })}}
+
+        <button class="testimonial-modal-button link">Читать весь отзыв</button>
+    </div>
+
+    <div class="testimonial-content content">
+        {{testimonial.content}}
+    </div>
+
+    <div class="testimonial-meta">
+        <div class="testimonial-meta__info">
+            <span class="text text--md text--weight-800">{{testimonial.name}}</span>
+            <span class="text text--sm text--muted">{{testimonial.date}}</span>
+        </div>
+
+        <div class="stars"></div>
+    </div>
+</div>

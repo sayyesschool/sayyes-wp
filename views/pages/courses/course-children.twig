@@ -1,250 +1,173 @@
-{% extends 'layouts/base.twig' %}
+{% extends 'pages/courses/course.twig' %}
 
-{% block content %}
-	{% include 'sections/main.twig' with {
-		title: course.heading ?? course.title,
-        description: course.content,
-        button: true,
-        image: course.thumbnail
-	} %}
+{% set sections = {
+	formats: {
+		title: 'Формы обучения на курсе для детей “' ~ course.title ~ '”',
+		description: 'Ваш ребенок может проходить данный курс индивидуально в двух форматах. Стоимость обучения зависит от количества приобретенных уроков в пакете.',
+		items: [
+			{
+				title: 'Офлайн индивидуально',
+				description: 'Если вы хотите личный контакт и персональный подход для своего ребенка',
+				price: course.formats.individual_offline.price,
+				lesson_duration: course.formats.individual_offline.lesson_duration
+			},
+			{
+				title: 'Онлайн индивидуально',
+				description: 'Уроки в любом месте и в удобное для родителя время',
+				price: course.formats.individual_online.price,
+				lesson_duration: course.formats.individual_online.lesson_duration
+			}
+		]
+	},
 
-	{% include 'components/section.twig' with {
-		name: 'about',
-		title: course.about.title,
-		content: course.about.content
-	} %}
+	facts: {
+		description: 'Почему дети начинают разговаривать на английском, любить язык и получать хорошие отметки в школе, обучаясь в SAY YES?',
+		grid: 2,
+		items: [
+			{
+				title: 'Уроки построены на интересах вашего ребенка',
+				description: 'Включаем в программу обсуждение любимых игр, мультфильмов и книг. Даже непоседе не удастся заскучать!',
+				image: 'heart-2'
+			},
+			{
+				title: 'Талантливые педагоги с профильным образованием',
+				description: 'Преподавателей отбираем  по опыту и дипломам, а также по отзывам родителей учеников.',
+				image: 'woman'
+			},
+			{
+				title: 'Разговорный онлайн-клуб с носителями языка',
+				description: 'Организовываем дополнительную практику “живого” языка. Общение на английском с ровесниками и море позитивных эмоций.',
+				image: 'comments-2'
+			},
+			{
+				title: 'Программа для конкретных целей',
+				description: 'Повышение успеваемости в школе? Нужно «разговорить» ребенка или «почистить» грамматику? Работаем над вашей целью до получения результата.',
+				image: 'target'
+			}
+		]
+	},
 
+	testimonials: {
+		title: 'Отзывы о курсе для детей<br>' ~ course.title
+	}
+} %}
+
+
+{% block trial_lesson %}
 	{% embed 'components/section.twig' with {
-		name: 'course-formats',
-		title: course.formats.title ?: 'Формы обучения на курсе для детей' ~ course.title,
-		description: 'Ваш ребенок может проходить данный курс индивидуально в двух форматах. Стоимость обучения зависит от количества приобретенных уроков в пакете.'
+		name: 'request-lesson',
+		title: 'Узнайте уровень английского у вашего ребенка на пробном бесплатном уроке, где вы также:',
+		color: 'yellow',
+		horizontal: true
 	} %}
-		{% block content %}
-            {% from 'blocks/format-card.twig' import format_card %}
-
-            <div class="cards-grid grid grid--2">
-                {% for format in [
-                    {
-                        title: 'Офлайн индивидуально',
-                        description: 'Если вы хотите личный контакт и персональный подход для своего ребенка',
-                        price: course.formats.individual_offline.price,
-						lesson_duration: course.formats.individual_offline.lesson_duration
-                    },
-                    {
-                        title: 'Онлайн индивидуально',
-                        description: 'Уроки в любом месте и в удобное для родителя время',
-                        price: course.formats.individual_online.price,
-						lesson_duration: course.formats.individual_online.lesson_duration
-                    }
-                ] %}
-                    {{format_card({
-                        title: format.title,
-                        description: format.description,
-                        price: format.price,
-						lesson_duration: format.lesson_duration,
-                        link: false
-                    }, cycle(['white', 'purple', 'pink'], loop.index0))}}
-                {% endfor %}
-            </div>
-        {% endblock %}
-    {% endembed %}
-
-	{% embed 'components/section.twig' with {
-		name: 'knowledge-check',
-		title: 'Узнайте уровень английского у вашего ребенка на пробном бесплатном уроке, где вы также:'
-	} %}
-		{% block content %}
+		{% block description %}
 			{% include 'components/list.twig' with {
-				classes: 'list--ul-sm list--central-marker',
 				items: [
-					{
-						content: 'Познакомитесь с методикой и программой обучения.'
-					},
-					{
-						content: 'Получите план изучения языка.'
-					},
-					{
-						content: 'Оцените, нравится ли вам преподаватель.'
-					}
+					'Познакомитесь с методикой и программой обучения.',
+					'Получите план изучения языка.',
+					'Оцените, нравится ли вам преподаватель.'
 				],
 				type: 'check',
 				size: 'sm',
 				align_marker: 'center'
 			} %}
-
-			<form class="form">
-				<input class="input" type="text" placeholder="Имя родителя">
-
-				<input class="input" type="text" placeholder="+7 (999)-99-99">
-
-				<button class="btn btn--full" data-modal-trigger="request-modal">Записаться на бесплатный урок</button>
-
-				{% include 'components/checkbox.twig' with {
-					checkboxName: 'knowledgeCheckCheckbox'
-				} %}
-			</form>
 		{% endblock %}
-	{% endembed %}
 
-	{% embed 'components/section.twig' with {
-        name: 'Почему дети начинают разговаривать на английском, любить язык и получать хорошие отметки в школе, обучаясь в SAY YES?',
-        title:  course.facts.title ?: 'Важные факты о курсе <br>' ~ course.title,
-    } %}
-        {% block content %}
-            {% include 'blocks/fact-cards.twig' with {
-				grid: '2',
-				items: [
-					{
-						title: 'Уроки построены на интересах вашего ребенка',
-						description: 'Включаем в программу обсуждение любимых игр, мультфильмов и книг. Даже непоседе не удастся заскучать!',
-						image: 'heart-2'
-					},
-					{
-						title: 'Талантливые педагоги с профильным образованием',
-						description: 'Преподавателей отбираем  по опыту и дипломам, а также по отзывам родителей учеников.',
-						image: 'woman'
-					},
-					{
-						title: 'Разговорный онлайн-клуб с носителями языка',
-						description: 'Организовываем дополнительную практику “живого” языка. Общение на английском с ровесниками и море позитивных эмоций.',
-						image: 'comments-2'
-					},
-					{
-						title: 'Программа для конкретных целей',
-						description: 'Повышение успеваемости в школе? Нужно «разговорить» ребенка или «почистить» грамматику? Работаем над вашей целью до получения результата.',
-						image: 'target'
-					}
-				]
-			} %}
-        {% endblock %}
-    {% endembed %}
-
-	{% include 'sections/video.twig' with {
-		name: 'online-video',
-		title: 'Занятия онлайн — это удобно!',
-		description: [
-			'Обучение в комфортной и безопасной для вашего ребенка обстановке.', 
-			'Экономия времени на поездках к репетитору или в школу.'
-		],
-		video: {
-			youtube_id: 'Vsfz_1QzwDA',
-			image: {
-				path: 'video-sections/video-section-6.jpg'
-			},
-			modal: true
-		}
-	} %}
-
-	{% embed 'components/section.twig' with {
-		name: 'course-features-results',
-		title: 'Особенности обучения на курсе “Bright Ideas”:'
-	} %}
 		{% block content %}
-			<img class="image" src="{{theme.link}}/static/images/pictures/bright-ideas.jpg" alt="Bright Ideas">
-
 			<div class="card">
-				<div class="features__content">
-					<h3 class="features__title">Особенности обучения на курсе “Bright Ideas”:</h3>
-
-					<ul class="features__list">
-						{% for item in [
-							'Знакомимся с основами языка',
-							'Влюбляемся в английский',
-							'Начинаем говорить, читать и писать',
-							'Готовимся к школьной программе'
-						] %}
-							<li class="features__item">{{item}}</li>
-						{% endfor %}
-					</ul>
-
-					<h3 class="features__title">Результаты обучения  на курсе “Bright Ideas”:</h3>
-
-					<ul class="features__list">
-						{% for item in [
-							'Воспринимает на слух английскую речь',
-							'Уверенно рассказывает о себе и любимых вещах',
-							'Может составлять простые предложения',
-							'Знает более 100 новых слов и выражений'
-						] %}
-							<li class="features__item">{{item}}</li>
-						{% endfor %}
-					</ul>
-
-					<button class="btn btn--yellow" data-modal-trigger="request-modal">Записаться на бесплатный урок</button>
-				</div>
+				{% include 'blocks/request-form.twig' with {
+					children: true
+				} %}
 			</div>
 		{% endblock %}
 	{% endembed %}
+{% endblock %}
 
+
+{% block results %}
+	{% embed 'components/section.twig' with {
+		name: 'course-fesults'
+	} %}
+		{% block content %}
+			<img class="image" src="{{theme.link}}/static/images/pictures/{{course.name}}.jpg" alt="">
+
+			<div class="card">
+				{% if course.features %}	
+					<div class="card__body">
+						<h3 class="card__title">
+							{% if course.features.title %}
+								{{course.features.title}}
+							{% else %}
+								Особенности обучения на курсе “{{course.title}}”:
+							{% endif %}
+						</h3>
+
+						<div class="card__content content">
+							{{course.features.content}}
+						</div>
+					</div>
+				{% endif %}
+
+				{% if course.results %}	
+					<div class="card__body">
+						<h3 class="card__title">
+							{% if course.results.title %}
+								{{course.results.title}}
+							{% else %}
+								Результаты обучения на курсе “{{course.title}}”:
+							{% endif %}
+						</h3>
+
+						<div class="card__content content">
+							{{course.results.content}}
+						</div>
+					</div>
+				{% endif %}
+
+				<button class="btn btn--yellow btn--full" data-modal-trigger="request-modal" data-modal-options="tab:children">Записаться на бесплатный урок</button>
+			</div>
+		{% endblock %}
+	{% endembed %}
+{% endblock %}
+
+
+{% block video %}
+	{% embed 'components/section.twig' with {
+		name: 'online-video',
+		class: 'video-section',
+		title: 'Занятия онлайн — это удобно!',
+		horizontal: true
+	} %}
+		{% block description %}
+			<div class="text">
+				<p>Обучение в комфортной и безопасной для вашего ребенка обстановке.</p>
+				<p>Экономия времени на поездках к репетитору или в школу.</p>
+			</div>
+		{% endblock %}
+
+		{% block media %}
+			{% include 'components/video.twig' with {
+				youtube_id: 'Vsfz_1QzwDA',
+				image: {
+					path: 'video-sections/video-section-6.jpg'
+				},
+				modal: true
+			} %}
+		{% endblock %}
+	{% endembed %}
+{% endblock %}
+
+
+{% block teachers %}
 	{% embed 'components/section.twig' with {
 		name: 'course-teachers',
 		title: 'Наши преподаватели найдут подход к любому ребенку',
 		description: 'В нашей команде только внимательные и заботливые преподаватели с опытом обучения детей'
 	} %}
 		{% block content %}
-			{% embed 'components/slider.twig' with {
-				name: 'course-teachers'
+			{% include 'blocks/course-teachers-slider.twig' with {
+				teachers
 			} %}
-				{% block content %}
-					{% for item in [
-						{
-							name: 'Полина Сизова',
-							description: 'Полина безмерно увлечена своей работой и зажигает каждого своей мотивацией и энергией. Такие качества, как отзывчивость и душевность, помогают Полине сделать отмосферу уроков теплой и непринужденной. А ее педагогические знания и умения — получить неизменно устойчивый результат в обучении английскому языку!',
-							list: [
-								'Санкт-Петербургский Госудраственный Университет, Лингвистика, Дискурс и вариативность английского языка',
-								'Разрабатывет собственный программы обучения английскому',
-								'Имеет обширный успешный опыт обучения детей по игровой методике'
-							]
-						},
-						{
-							name: 'Полина Сизова',
-							description: 'Полина безмерно увлечена своей работой и зажигает каждого своей мотивацией и энергией. Такие качества, как отзывчивость и душевность, помогают Полине сделать отмосферу уроков теплой и непринужденной. А ее педагогические знания и умения — получить неизменно устойчивый результат в обучении английскому языку!',
-							list: [
-								'Санкт-Петербургский Госудраственный Университет, Лингвистика, Дискурс и вариативность английского языка',
-								'Разрабатывет собственный программы обучения английскому',
-								'Имеет обширный успешный опыт обучения детей по игровой методике'
-							]
-						},
-						{
-							name: 'Полина Сизова',
-							description: 'Полина безмерно увлечена своей работой и зажигает каждого своей мотивацией и энергией. Такие качества, как отзывчивость и душевность, помогают Полине сделать отмосферу уроков теплой и непринужденной. А ее педагогические знания и умения — получить неизменно устойчивый результат в обучении английскому языку!',
-							list: [
-								'Санкт-Петербургский Госудраственный Университет, Лингвистика, Дискурс и вариативность английского языка',
-								'Разрабатывет собственный программы обучения английскому',
-								'Имеет обширный успешный опыт обучения детей по игровой методике'
-							]
-						}
-					] %}
-						<div class="swiper-slide">
-							<div class="teacher-card card card--white card--horizontal">
-								<div class="video">
-									<img class="video__media" src="{{theme.link}}/static/images/teachers-2/teacher-1.jpg" alt="Say Yes">
-									
-									<button class="video__btn play" data-url="{{item.videoUrl}}"></button>
-								</div>
-
-								<div class="teacher-card__info">
-									<h3 class="teacher-card__title">{{item.name}}</h3>
-
-									<p class="teacher-card__description">{{item.description}}</p>
-									
-									<ul class="teacher-card__list teacher-card__list--inside">
-										{% for listItem in item.list %}
-											<li class="teacher-card__list-item">{{listItem}}</li>
-										{% endfor %}
-									</ul>
-								</div>
-
-								<ul class="teacher-card__list  teacher-card__list--outside">
-									{% for listItem in item.list %}
-										<li class="teacher-card__list-item">{{listItem}}</li>
-									{% endfor %}
-								</ul>
-							</div>
-						</div>
-					{% endfor %}
-				{% endblock %}
-			{% endembed %}
 
 			<div class="grid grid--3">
 				{% for item in [
@@ -272,152 +195,76 @@
 			</div>
 		{% endblock %}
 	{% endembed %}
+{% endblock %}
 
-	{% embed 'components/section.twig' with {
-        name: 'course-testimonials',
-        title: 'Отзывы о курсе для детей<br>' ~ course.title,
-        description: 'За ' ~ COMPANY_AGE ~ ' лет работы, обучили более 10 000 человек и получили более 800 отзывов'
-    } %}
-        {% block content %}
-            {% include 'blocks/course-testimonials-slider.twig' with {
-                groups: testimonial_groups
-            } %}
-        {% endblock %}
-    {% endembed %}
 
+{% block progress %}
 	{% embed 'components/section.twig' with {
         name: 'course-progress',
         title: 'Лучшие показатели нашей работы — это ученики, владеющие языком и довольные родители!',
         description: 'Родители наших учеников рассказывают о результатах и процессе обучения детей в SAY YES!'
     } %}
         {% block content %}
-			{% embed 'components/slider.twig' with {
-				name: 'course-progress'
+			{% include 'blocks/course-results-slider.twig' with {
+				items: [
+					{
+						parent: {
+							name: 'Ольга',
+							icon: 'icon--fb',
+							url: '#'
+						},
+						baby: 'Мама ученицы Кати, 10 лет',
+						description: '«Всем привет! Моя дочь Катюша в 4 классе, где-то полгода назад мы начали заниматься в языковой школе Say Yes! Изначально я относилась немного скептически к идее...»',
+						img: 'review-1',
+						videoId: 'video-21',
+						videoUrl: 'https://www.youtube.com/embed/6ISA01NE2rY'
+					},
+					{
+						parent: {
+							name: 'Ирина',
+							icon: 'icon--inst',
+							url: '#'
+						},
+						baby: 'Мама ученицы Маши, 12 лет',
+						description: '«Меня зовут Ирина, моя дочь Маша занимается в школе Say Yes! В этом году мы решили заняться английским дополнительно, потому что появились проблемы в школе...»',
+						img: 'review-2',
+						videoId: 'video-22',
+						videoUrl: 'https://www.youtube.com/embed/6ISA01NE2rY'
+					}
+				]
 			} %}
-				{% block content %}
-					{% for item in [
-						{
-							parent: {
-								name: 'Ольга',
-								icon: 'icon--fb',
-								url: '#'
-							},
-							baby: 'Мама ученицы Кати, 10 лет',
-							description: '«Всем привет! Моя дочь Катюша в 4 классе, где-то полгода назад мы начали заниматься в языковой школе Say Yes! Изначально я относилась немного скептически к идее...»',
-							img: 'review-1',
-							videoId: 'video-21',
-							videoUrl: 'https://www.youtube.com/embed/6ISA01NE2rY'
-						},
-						{
-							parent: {
-								name: 'Ирина',
-								icon: 'icon--inst',
-								url: '#'
-							},
-							baby: 'Мама ученицы Маши, 12 лет',
-							description: '«Меня зовут Ирина, моя дочь Маша занимается в школе Say Yes! В этом году мы решили заняться английским дополнительно, потому что появились проблемы в школе...»',
-							img: 'review-2',
-							videoId: 'video-22',
-							videoUrl: 'https://www.youtube.com/embed/6ISA01NE2rY'
-						},
-						{
-							parent: {
-								name: 'Ольга',
-								icon: 'icon--fb',
-								url: '#'
-							},
-							baby: 'Мама ученицы Кати, 10 лет',
-							description: '«Всем привет! Моя дочь Катюша в 4 классе, где-то полгода назад мы начали заниматься в языковой школе Say Yes! Изначально я относилась немного скептически к идее...»',
-							img: 'review-1',
-							videoId: 'video-21',
-							videoUrl: 'https://www.youtube.com/embed/6ISA01NE2rY'
-						},
-						{
-							parent: {
-								name: 'Ирина',
-								icon: 'icon--inst',
-								url: '#'
-							},
-							baby: 'Мама ученицы Маши, 12 лет',
-							description: '«Меня зовут Ирина, моя дочь Маша занимается в школе Say Yes! В этом году мы решили заняться английским дополнительно, потому что появились проблемы в школе...»',
-							img: 'review-2',
-							videoId: 'video-22',
-							videoUrl: 'https://www.youtube.com/embed/6ISA01NE2rY'
-						},
-						{
-							parent: {
-								name: 'Ольга',
-								icon: 'icon--fb',
-								url: '#'
-							},
-							baby: 'Мама ученицы Кати, 10 лет',
-							description: '«Всем привет! Моя дочь Катюша в 4 классе, где-то полгода назад мы начали заниматься в языковой школе Say Yes! Изначально я относилась немного скептически к идее...»',
-							img: 'review-1',
-							videoId: 'video-21',
-							videoUrl: 'https://www.youtube.com/embed/6ISA01NE2rY'
-						}
-					] %}
-						<div class="swiper-slide">
-							<div class="card">
-								<div class="card__media">
-									{% include 'components/video.twig' with {
-										youtube_id: 'Vsfz_1QzwDA',
-										image: {
-											path: 'video-sections/video-section-7.jpg'
-										},
-										modal: true
-									} %}
-								</div>
-
-								<div class="card__body">
-									<h3 class="card__title">{{item.parent.name}}</h3>
-									
-									<p class="card__subtitle">{{item.baby}}</p>
-
-									<p class="card__description show-more-text-description">{{item.description}}</p>
-
-									<button class="link card__btn show-more-text-btn">Развернуть</button>
-								</div>
-							</div>
-						</div>
-					{% endfor %}
-				{% endblock %}
-			{% endembed %}
 		{% endblock %}
     {% endembed %}
 
 	{% include 'sections/video.twig' with {
 		name: 'progress-video',
 		title: 'Единственная онлайн-школа, где снимают отчеты о прогрессе учеников на видео',
-		description: [
-			'Посмотрите не просто отзывы наших юных студентов, а то, как они говорят на английском'
-		],
+		description: 'Посмотрите не просто отзывы наших юных студентов, а то, как они говорят на английском',
 		video: {
 			youtube_id: 'Vsfz_1QzwDA',
 			image: {
 				path: 'video-sections/video-section-7.jpg'
 			},
+			framed: true,
 			modal: true
 		}
 	} %}
+{% endblock %}
 
-	<section class="convenient-oc">
-		<div class="section__container">
-			<h2 class="subtitle">Удобный онлайн-класс</h2>
 
-			<div class="convenient-oc__content">
-				<div class="convenient-oc__description">
-					<p class="convenient-oc__paragraph">Занятия онлайн проходят на надежной платформе, специально разработанной нашей школой: ребенок общается с преподавателем и выполняет задания в одном окне браузера.</p>
+{% block platform %}
+	{% embed 'components/section.twig' with {
+        name: 'online-class',
+        title: 'Удобный онлайн-класс'
+    } %}
+        {% block content %}
+			<div class="text">
+				<p>Занятия онлайн проходят на надежной платформе, специально разработанной нашей школой: ребенок общается с преподавателем и выполняет задания в одном окне браузера.</p>
 
-					<p class="convenient-oc__paragraph">Интерактивная комната, разработанная для детей, делает процесс обучения удобным и захватывающим. Игры, интерактивные задания, видео и аудио вовлекают ребенка в процесс обучения с первых минут.</p>
-				</div>
-				
-				<img class="convenient-oc__img" src="{{theme.link}}/static/images/pictures/oc.jpg" alt="Say Yes">
+				<p>Интерактивная комната, разработанная для детей, делает процесс обучения удобным и захватывающим. Игры, интерактивные задания, видео и аудио вовлекают ребенка в процесс обучения с первых минут.</p>
 			</div>
-		</div>
-	</section>
-
-	{% include 'sections/faq.twig' %}
-
-	{% include 'sections/trial-lesson.twig' %}
+			
+			<img class="image" src="{{theme.link}}/static/images/pictures/oc.jpg" alt="Say Yes">
+		{% endblock %}
+    {% endembed %}
 {% endblock %}
