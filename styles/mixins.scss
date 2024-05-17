@@ -39,7 +39,7 @@ $breakpoints: (
   clear: both;
 }
 
-@mixin decoration($path, $position: 'after') {
+@mixin decoration($path, $position: after) {
     position: relative;
 
     &::#{$position} {

@@ -57,6 +57,16 @@
 		@include xl;
 	}
 
+	&--inline {
+		display: inline;
+		margin: 0;
+	}
+
+	&--block {
+		display: block;
+		margin-bottom: 1rem;
+	}
+
 	&--muted {
 		color: lighten(variables.$black, 50%);
 	}
@@ -69,33 +79,36 @@
 		color: variables.$yellow;
 	}
 
-	&--underline {
-		text-decoration: underline;
-	}
-
 	&--italic {
 		font-style: italic;
 	}
 
-	&--weight-700 {
+	&--semibold{
 		font-weight: 700;
 	}
 
-	&--bold,
-	&--weight-800 {
+	&--bold {
 		font-weight: 800;
 	}
 
-	&--uppercase {
-		text-transform: uppercase;
+	&--left {
+		text-align: left;
 	}
 
 	&--center {
 		text-align: center;
 	}
 
-	&--block {
-		margin-bottom: 1rem;
+	&--right {
+		text-align: right;
+	}
+
+	&--uppercase {
+		text-transform: uppercase;
+	}
+
+	&--underline {
+		text-decoration: underline;
 	}
 }
 

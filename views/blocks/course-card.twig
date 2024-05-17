@@ -30,11 +30,11 @@
 					{% for name, label in formats %}
 						{% set format = course.formats[name] %}
 
-						{% if format %}
+						{% if format.price.value %}
 							<li class="list-item">
-								{{label}}
+								<span>{{label}}</span>
 
-								<span>
+								<span class="price">
 									{{format.price.prefix}}
 									<strong>{{format.price.value}}</strong>{{format.price.postfix}}
 								</span>

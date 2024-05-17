@@ -338,15 +338,11 @@
 	}
 
 	.manager-card {
-		&::before {
-			content: '';
-			position: absolute;
+		@include decoration('elements/lightning.svg', before) {
 			bottom: 47px;
 			left: -12px;
 			width: 40px;
 			height: 55px;
-			background: url('./static/images/decoration/elements/lightning.svg')
-				center center/contain no-repeat;
 		}
 	}
 

@@ -54,7 +54,7 @@
 		{% block content %}
 			{% for item in [
 				{
-					title: '10',
+					title: COMPANY_AGE,
 					description: 'лет успешной работы',
 					color: 'yellow'
 				},
@@ -110,11 +110,11 @@
 				{% endfor %}
 
 				<div class="text-card card card--pink">
-					<p class="text text--larger">Методисты школы имеют большой опыт работы по коммуникативной методике, организовывают образовательный процесс и следят за качеством обучения.</p>
+					<p class="text text--lg">Методисты школы имеют большой опыт работы по коммуникативной методике, организовывают образовательный процесс и следят за качеством обучения.</p>
 				</div>
 
 				<div class="text-card card card--pink">
-					<p class="text text--larger">Менеджеры школы — это «ангелы-хранители» наших студентов, готовые прийти на помощь и дать поддержку в процессе обучения.</p>
+					<p class="text text--lg">Менеджеры школы — это «ангелы-хранители» наших студентов, готовые прийти на помощь и дать поддержку в процессе обучения.</p>
 				</div>
 
 				{% for manager in managers|slice(7) %}
@@ -122,8 +122,8 @@
 				{% endfor %}
 
 				<div class="text-card card card--pink">
-					<p class="text text--block text--larger">Хотите стать членом нашей команды мечты?</p>
-					<p class="text text--larger text--weight-800">Напишите нам на почту info@sayes.ru</p>
+					<p class="text text--block text--lg">Хотите стать членом нашей команды мечты?</p>
+					<p class="text text--lg text--weight-bold">Напишите нам на почту info@sayes.ru</p>
 				</div>
 			</div>
 		{% endblock %}

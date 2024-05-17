@@ -1,7 +1,29 @@
-.flex {
+$gaps: (
+    xxs: 5px,
+    xs: 10px,
+    s: 15px,
+    m: 20px,
+    l: 30px,
+    xl: 40px,
+    xxl: 50px
+);
+
+.flex,
+.flex-row {
     display: flex;
     
     &--column {
         flex-direction: column;
+    }
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+@each $gap, $value in $gaps {
+    .gap-#{$gap} {
+        gap: $value;
     }
 }
