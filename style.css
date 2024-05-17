@@ -2306,7 +2306,7 @@ button.link {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 50px;
+  gap: 60px;
 }
 .course-card .card__title {
   font-weight: 800;
@@ -2370,7 +2370,7 @@ button.link {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  gap: 35px;
+  gap: 20px;
 }
 .course-card .list .list-item span {
   -webkit-box-flex: 1;

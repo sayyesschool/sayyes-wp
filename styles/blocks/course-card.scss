@@ -18,7 +18,7 @@
         &__body {
             flex-grow: unset;
 			display: flex;
-			gap: 50px;
+			gap: 60px;
         }
 
         &__title {
@@ -74,15 +74,11 @@
 		.list-item {
 			display: flex;
 			align-items: flex-end;
-			gap: 35px;
+			gap: 20px;
 
 			span {
 				flex: 1;
 				text-wrap: nowrap;
-			}
-
-			.price {
-				
 			}
 		}
 	}
