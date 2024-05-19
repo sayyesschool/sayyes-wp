@@ -7,6 +7,7 @@ import Video from '../components/video';
 import './inputmask';
 import './modals';
 import './scroll';
+import './share';
 import './showMore';
 import './sliders';
 

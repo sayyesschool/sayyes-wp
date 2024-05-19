@@ -5,10 +5,9 @@
 
 $context = Timber::context();
 $context['page'] = Timber::get_post();
-$context['side_menu'] = Timber::get_menu(65);
 $reports = Timber::get_posts([
     'post_type' => 'report',
-    'posts_per_page' => 10,
+    'posts_per_page' => -1,
     'orderby' => 'menu_order',
     'order' => 'ASC'
 ])->to_array();

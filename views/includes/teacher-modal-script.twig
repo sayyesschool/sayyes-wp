@@ -4,11 +4,12 @@
         slug: t.slug,
         name: t.name,
         imageUrl: t.thumbnail.src('medium'),
-        videoUrl: 'https://www.youtube.com/embed/' ~ t.youtube_id,
+        videoUrl: 'https://www.youtube.com/embed/' ~ t.video.youtube_id,
         content: t.content,
         experience: t.experience,
         education: t.education,
-        certificates: t.certificates
+        certificates: t.certificates,
+        link: t.url
     }))|json_encode(
         constant('JSON_PRETTY_PRINT') b-or constant('JSON_UNESCAPED_UNICODE')
     )}}.reduce((result, t) => {
@@ -46,15 +47,21 @@
     }
 
     function setTeacherData(teacherBlock, teacher) {
+        console.log(teacher)
         const video = teacherBlock.querySelector('.video');
+
         const videoImage = video.children[0];
         videoImage.src = teacher.imageUrl;
         videoImage.alt = teacher.name;
+
         const videoButton = video.children[1];
         videoButton.setAttribute('data-embed-url', teacher.videoUrl);
 
         const title = teacherBlock.querySelector('.teacher-block__title');
         title.textContent = teacher.name;
+
+        const content = teacherBlock.querySelector('.teacher-details__description');
+        content.innerHTML = teacher.content;
 
         const experience = teacherBlock.querySelector('.teacher-details__experience');
         experience.classList.toggle('hidden', !teacher.experience);
@@ -71,7 +78,17 @@
         const certificatesContent = certificates.children[1];
         certificatesContent.innerHTML = teacher.certificates;
 
-        const content = teacherBlock.querySelector('.teacher-details__description');;
-        content.innerHTML = teacher.content;
+        const shareLink = teacherBlock.querySelector('.teacher-block__share-link');
+
+        shareLink.onclick = async () => {
+            try {
+                await navigator.share({
+                    title: `${teacher.name} / Say Yes`,
+                    text: 'Познакомьтесь с нашим преподавателем',
+                    url: teacher.link
+                });
+            } catch (error) {
+            }
+        };
     }
 </script>

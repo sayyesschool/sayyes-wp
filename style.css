@@ -4062,7 +4062,8 @@ button.link {
   border-bottom: 2px solid #262626;
 }
 .teacher-block .tabs__content {
-  max-height: calc(100% - 40px);
+  max-height: 100%;
+  padding-bottom: 25px;
   overflow: auto;
 }
 .teacher-block .tabs__content::after {
