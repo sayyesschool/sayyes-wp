@@ -17,7 +17,7 @@
 >
     {% if image %}
         <img class="video__media" src="{{image.path ? (theme.link ~ '/static/images/' ~ image.path) : image.src}}" alt="{{image.alt ?? ''}}">
-    {% else if youtube_id %}
+    {% elseif youtube_id %}
         <img class="video__media" src="https://img.youtube.com/vi/{{youtube_id}}/maxresdefault.jpg" alt="{{image.alt ?? ''}}">
     {% else %}
         <video
