@@ -49,6 +49,13 @@ $breakpoint-xxs: 768px;
 $breakpoint-mobile: 540px;
 $breakpoint-sm-mobile: 480px;
 
+$screen-sizes: (
+	desktop: 1280px,
+	laptop: 1024px,
+	tablet: 768px,
+	phone: 320px
+);
+
 $lg: 1280px;
 $md: 768px;
 $sm: 320px;

@@ -350,7 +350,7 @@
 	}
 }
 
-.corporate-organizations {
+.corporate-clients {
 	margin-bottom: 130px;
 
 	.slider {
@@ -359,11 +359,12 @@
 
 	.card {
         height: 100%;
+        display: flex;
 
         img {
             width: 70%;
             height: 70%;
-            margin: auto;
+            margin: 1rem auto;
             aspect-ratio: 1;
             object-fit: contain;
         }

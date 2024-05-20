@@ -34,13 +34,12 @@
 .digits,
 .features
 .img-comment,
-.trial-lesson-cta,
 .vacancies-cta {
-    margin-right: 62px;
     margin-left: 62px;
-
+    margin-right: 62px;
+    
     @include breakpoint($breakpoint-lg) {
-        margin-right: 0;
         margin-left: 0;
+        margin-right: 0;
     }
 }

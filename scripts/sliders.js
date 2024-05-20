@@ -19,7 +19,7 @@ new Swiper('.student-progress-slider', {
 	spaceBetween: 150
 });
 
-new Swiper('.organizations-slider', {
+new Swiper('.corporate-clients-slider', {
 	...defaultOptions,
 	modules: [...defaultOptions.modules, Grid],
 	slidesPerView: 5,
@@ -49,22 +49,12 @@ new Swiper('.organizations-slider', {
 });
 
 new Swiper('.corporate-reviews-slider', {
-	enabled: true,
+	...defaultOptions,
 	breakpoints: {
 		769: {
-			enabled: true,
-			slidesPerView: 4,
-			spaceBetween: 15,
-			width: null,
-			navigation: {
-				nextEl: '.slider__right-arrow',
-				prevEl: '.slider__left-arrow',
-			},
-			pagination: {
-				el: '.slider__pagination',
-			},
-		},
-	},
+			slidesPerView: 4
+		}
+	}
 });
 
 new Swiper('.meetings-slider', {

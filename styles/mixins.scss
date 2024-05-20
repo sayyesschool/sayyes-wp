@@ -15,9 +15,28 @@ $breakpoints: (
     gt-lg: '(min-width: #{variables.$lg})'
 );
 
+@mixin mq($from, $to: null) {
+    $from-size: map-get(variables.$screen-sizes, $from);
+    $to-size: map-get(variables.$screen-sizes, $to);
+
+    @if $from-size and $to-size {
+        @media (min-width: $from-size) and (max-width: $to-size) {
+            @content;
+        }
+    } @else if $from-size {
+        @media (min-width: $from-size) {
+            @content;
+        }
+    } @else if $to-size {
+        @media (max-width: $to-size) {
+            @content;
+        }
+    }
+}
+
 @mixin bp($point) {
     $breakpoint: map-get($breakpoints, $point);
-
+    
     @if not $breakpoint {
         @error 'Invalid breakpoint';
     } @else {

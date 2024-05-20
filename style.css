@@ -2376,6 +2376,8 @@ button.link {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+}
+.course-card .list .list-item span.price {
   text-wrap: nowrap;
 }
 .course-card--large-header {
@@ -4248,109 +4250,18 @@ button.link {
   }
 }
 
-.teacher-card .video {
-  margin: 0;
+.teacher-card .card__img {
+  aspect-ratio: 1/1;
 }
-.teacher-card .video .play {
-  bottom: 30px;
-  right: 30px;
+.teacher-card .card__title {
+  font-weight: 800;
+  margin-bottom: 5px;
 }
-.teacher-card .teacher-btn {
-  margin-top: 2rem;
-}
-.teacher-card__info {
-  width: 687px;
-  padding: 47px 60px 0px 48px;
-}
-.teacher-card__title {
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 25px;
-  margin-bottom: 15px;
-}
-.teacher-card__description {
+.teacher-card .card__description {
   margin-bottom: 20px;
 }
-.teacher-card__list {
-  padding-left: 15px;
-}
-.teacher-card__list--outside {
-  display: none;
-}
-.teacher-card__list-item {
-  position: relative;
-}
-.teacher-card__list-item::before {
-  content: "";
-  width: 4px;
-  height: 4px;
-  position: absolute;
-  top: 8px;
-  left: -14px;
-  background-color: #262626;
-  border-radius: 50%;
-}
-.teacher-card__list-item:not(:last-child) {
-  margin-bottom: 15px;
-}
-@media (max-width: 1160px) {
-  .teacher-card__info {
-    padding: 30px;
-  }
-}
-@media (max-width: 1024px) {
-  .teacher-card .video .play {
-    bottom: 20px;
-    right: 20px;
-  }
-  .teacher-card__info {
-    padding: 20px;
-  }
-}
-@media (max-width: 900px) {
-  .teacher-card {
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-  }
-  .teacher-card .video {
-    -ms-flex-preferred-size: 35%;
-        flex-basis: 35%;
-  }
-  .teacher-card .video .play {
-    bottom: 10px;
-    right: 10px;
-  }
-  .teacher-card__info {
-    -ms-flex-preferred-size: 65%;
-        flex-basis: 65%;
-  }
-  .teacher-card__description {
-    margin-bottom: 0;
-  }
-  .teacher-card__list--inside {
-    display: none;
-  }
-  .teacher-card__list--outside {
-    display: block;
-    -ms-flex-preferred-size: 100%;
-        flex-basis: 100%;
-    padding: 20px 30px;
-  }
-}
-@media (max-width: 540px) {
-  .teacher-card .video {
-    -ms-flex-preferred-size: 100%;
-        flex-basis: 100%;
-  }
-  .teacher-card__title {
-    font-size: 18px;
-    line-height: 20px;
-  }
-  .teacher-card__info {
-    -ms-flex-preferred-size: 100%;
-        flex-basis: 100%;
-    padding-bottom: 0;
-  }
+.teacher-card .btn {
+  margin-bottom: auto;
 }
 
 .testimonial-card {
@@ -7798,59 +7709,59 @@ button.link {
 }
 
 .trial-lesson-cta {
-  position: relative;
-  margin: 0 auto 100px;
-  padding: 60px 175px;
-  border-radius: 30px;
-  background-color: #ffd754;
+  margin: 100px auto;
   text-align: center;
 }
-.trial-lesson-cta__title {
-  font-size: 42px;
-  font-weight: 700;
-  line-height: 40px;
-}
-.trial-lesson-cta__title button {
-  border: none;
-  background-color: transparent;
-  color: #7831b2;
-  font-weight: 700;
-  text-decoration: underline;
-}
-.trial-lesson-cta__container {
-  position: static;
-}
-.trial-lesson-cta__container::before {
-  content: "";
-  position: absolute;
-  top: -42.5px;
-  right: 300px;
-  width: 75px;
-  height: 86px;
-  background-image: url("./static/images/decoration/elements/hourglass.svg");
-}
-.trial-lesson-cta::before, .trial-lesson-cta::after {
-  content: "";
-  position: absolute;
-}
-.trial-lesson-cta::before {
-  bottom: -20px;
-  left: -20px;
-  width: 175px;
-  height: 215px;
-  background-image: url("./static/images/decoration/elements/book-with-pen.svg");
-}
-.trial-lesson-cta::after {
-  bottom: -25px;
-  right: 35px;
-  width: 124px;
-  height: 251px;
-  background-image: url("./static/images/decoration/elements/statue-of-liberty.svg");
-}
-@media (max-width: 1160px) {
-  .trial-lesson-cta__title {
-    max-width: 650px;
-    margin: 0 auto;
+@media (min-width: 1280px) {
+  .trial-lesson-cta {
+    padding: 60px 204px;
+    position: relative;
+    position: relative;
+  }
+  .trial-lesson-cta__container {
+    position: relative;
+  }
+  .trial-lesson-cta__container::before {
+    content: "";
+    position: absolute;
+    background-image: url("./static/images/decoration/elements/hourglass.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: -100px;
+    right: 130px;
+    width: 75px;
+    height: 85px;
+  }
+  .trial-lesson-cta__content {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: 0em;
+  }
+  .trial-lesson-cta::before {
+    content: "";
+    position: absolute;
+    background-image: url("./static/images/decoration/elements/book-with-pen.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    bottom: -20px;
+    left: -20px;
+    width: 175px;
+    height: 215px;
+  }
+  .trial-lesson-cta::after {
+    content: "";
+    position: absolute;
+    background-image: url("./static/images/decoration/elements/statue-of-liberty.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    bottom: -25px;
+    right: 35px;
+    width: 124px;
+    height: 251px;
   }
 }
 @media (max-width: 1024px) {
@@ -7861,10 +7772,6 @@ button.link {
 @media (max-width: 900px) {
   .trial-lesson-cta {
     padding: 60px 25px;
-  }
-  .trial-lesson-cta ::before,
-  .trial-lesson-cta ::after {
-    display: none;
   }
 }
 
@@ -8000,20 +7907,18 @@ button.link {
 .cards-square,
 .digits,
 .features .img-comment,
-.trial-lesson-cta,
 .vacancies-cta {
-  margin-right: 62px;
   margin-left: 62px;
+  margin-right: 62px;
 }
 @media (max-width: 1160px) {
   .about-course,
   .cards-square,
   .digits,
   .features .img-comment,
-  .trial-lesson-cta,
   .vacancies-cta {
-    margin-right: 0;
     margin-left: 0;
+    margin-right: 0;
   }
 }
 
@@ -9205,34 +9110,37 @@ button.link {
   min-width: 372px;
 }
 
-.corporate-organizations {
+.corporate-clients {
   margin-bottom: 130px;
 }
-.corporate-organizations .slider {
+.corporate-clients .slider {
   overflow: hidden;
 }
-.corporate-organizations .card {
+.corporate-clients .card {
   height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
-.corporate-organizations .card img {
+.corporate-clients .card img {
   width: 70%;
   height: 70%;
-  margin: auto;
+  margin: 1rem auto;
   aspect-ratio: 1;
   -o-object-fit: contain;
      object-fit: contain;
 }
 @media (max-width: 768px) {
-  .corporate-organizations .slider {
+  .corporate-clients .slider {
     width: calc(100% + 15px);
   }
-  .corporate-organizations .slider__arrows, .corporate-organizations .slider__pagination {
+  .corporate-clients .slider__arrows, .corporate-clients .slider__pagination {
     display: none;
   }
-  .corporate-organizations .swiper-wrapper {
+  .corporate-clients .swiper-wrapper {
     overflow-x: auto;
   }
-  .corporate-organizations .swiper-wrapper::-webkit-scrollbar {
+  .corporate-clients .swiper-wrapper::-webkit-scrollbar {
     display: none;
   }
 }
@@ -11244,7 +11152,7 @@ button.link {
 }
 
 #teachers-page .teachers__title {
-  max-width: 881px;
+  max-width: 880px;
   margin: 0 auto 15px;
   text-align: center;
 }
@@ -11273,19 +11181,6 @@ button.link {
 }
 #teachers-page .teachers .grid {
   margin-bottom: 40px;
-}
-#teachers-page .teachers .teacher-card .card__img {
-  aspect-ratio: 1/1;
-}
-#teachers-page .teachers .teacher-card .card__title {
-  font-weight: 800;
-  margin-bottom: 5px;
-}
-#teachers-page .teachers .teacher-card .card__description {
-  margin-bottom: 20px;
-}
-#teachers-page .teachers .teacher-card .btn {
-  margin-bottom: auto;
 }
 #teachers-page .teachers .btn {
   margin: 0 auto;

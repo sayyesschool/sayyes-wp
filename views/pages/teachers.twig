@@ -43,7 +43,7 @@
                             {% endfor %}
                         </div>
 
-                        {% include 'sections/trial-lesson-cta.twig' %}
+                        {% include 'sections/trial-lesson-cta.twig' only %}
 
                         <div class="cards-grid grid grid--3">
                             {% for teacher in offline_teachers|slice(6) %}
@@ -59,7 +59,7 @@
                             {% endfor %}
                         </div>
 
-                        {% include 'sections/trial-lesson-cta.twig' %}
+                        {% include 'sections/trial-lesson-cta.twig' only %}
 
                         <div class="cards-grid grid grid--3">
                             {% for teacher in online_teachers|slice(6) %}

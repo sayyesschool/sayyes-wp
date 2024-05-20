@@ -13,7 +13,7 @@
         image: page.thumbnail
     } %}
         {% block content %}
-            <button class="price-list-button btn btn--purple" data-modal-trigger="callback-modal">Скачать презентацию</button>
+            <button class="price-list-button btn btn--purple" data-modal-trigger="callback-modal">Получить стоимость обучения</button>
         {% endblock %}
     {% endembed %}
 
@@ -240,85 +240,103 @@
     {% endembed %}
 
     {% embed 'components/section.twig' with {
-        name: 'corporate-organizations',
+        name: 'corporate-clients',
         title: 'Нас уже выбрали:'
     } %}
         {% block content %}
-            {% embed 'components/slider.twig' with { name: 'organizations' } %}
+            {% embed 'components/slider.twig' with {
+                name: 'corporate-clients'
+            } %}
                 {% block content %}
                     {% for item in [
                         {
                             name: 'Сбербанк',
-                            image: 'sberbank'
+                            image: 'sberbank.svg'
                         },
                         {
                             name: 'Get Taxi',
-                            image: 'get-taxi'
+                            image: 'get-taxi.png'
                         },
                         {
                             name: 'Логрус',
-                            image: 'logrus'
+                            image: 'logrus.svg'
                         },
                         {
                             name: 'Аури групп',
-                            image: 'auri-group'
+                            image: 'auri-group.png'
                         },
                         {
                             name: 'Fircroft',
-                            image: 'fircroft'
+                            image: 'fircroft.svg'
                         },
                         {
                             name: 'Московский Индустриальный Банк',
-                            image: 'mib'
+                            image: 'mib.png'
                         },
                         {
                             name: 'Промсвязьбанк',
-                            image: 'psb'
+                            image: 'psb.png'
                         },
                         {
                             name: 'Роснефть',
-                            image: 'rosneft'
+                            image: 'rosneft.png'
                         },
                         {
                             name: 'РСПП',
-                            image: 'rspp'
+                            image: 'rspp.png'
                         },
                         {
                             name: 'Atrium',
-                            image: 'atrium'
+                            image: 'atrium.svg'
                         },
                         {
                             name: 'МегаФон ',
-                            image: 'megafon'
+                            image: 'megafon.png'
                         },
                         {
                             name: 'МТС',
-                            image: 'mts'
+                            image: 'mts.svg'
                         },
                         {
                             name: 'Ernst&Young',
-                            image: 'ey'
+                            image: 'ey.svg'
                         },
                         {
                             name: '2GIS ',
-                            image: '2gis'
+                            image: '2gis.png'
                         },
                         {
                             name: 'ГазФонд',
-                            image: 'gazfond'
+                            image: 'gazfond.png'
                         },
                         {
                             name: 'Apex',
-                            image: 'apex'
+                            image: 'apex.svg'
                         },
                         {
                             name: 'Бизнес-школа РСПП',
-                            image: 'rspp-bs'
+                            image: 'rspp-bs.svg'
+                        },
+                        {
+                            name: 'Flipper',
+                            image: 'flipper.svg'
+                        },
+                        {
+                            name: 'iSpring',
+                            image: 'ispring.svg'
+                        },
+                        {
+                            name: 'Джум',
+                            image: 'joom.svg'
+                        },
+                        {
+                            name: 'Reliz',
+                            image: 'reliz.svg'
                         }
                     ] %}
                         <div class="swiper-slide">
                             <div class="card">
-                                <img class="image" src="{{theme.link}}/static/images/organizations/{{item.image}}.png" alt="{{item.name}}">
+                                <img class="image" src="{{theme.link}}/static/images/corporate-clients/{{item.image}}" alt="{{item.name}}">
                             </div>
                         </div>
                     {% endfor %}
@@ -337,45 +355,47 @@
         {% endblock %}
 
         {% block content %}
-            {% embed 'components/slider.twig' with { name: 'corporate-reviews' } %}
+            {% embed 'components/slider.twig' with {
+                name: 'corporate-reviews'
+            } %}
                 {% block content %}
                         {% for item in [
                             {
+                                name: 'Design Heroes',
+                                image: 'design-heroes'
+                            },
+                            {
+                                name: 'Exalter',
+                                image: 'exalter'
+                            },
+                            {
+                                name: 'Джум',
+                                image: 'joom'
+                            },
+                            {
+                                name: 'Richmedia',
+                                image: 'richmedia'
+                            },
+                            {
                                 name: 'МТС',
-                                img: 'review-1'
+                                image: 'mts'
                             },
                             {
                                 name: '2GIS',
-                                img: 'review-2'
+                                image: '2gis'
                             },
                             {
                                 name: 'Газпромбанк',
-                                img: 'review-3'
+                                image: 'gazprombank'
                             },
                             {
                                 name: 'Love Radio',
-                                img: 'review-4'
-                            },
-                            {
-                                name: 'МТС',
-                                img: 'review-1'
-                            },
-                            {
-                                name: '2GIS',
-                                img: 'review-2'
-                            },
-                            {
-                                name: 'Газпромбанк',
-                                img: 'review-3'
-                            },
-                            {
-                                name: 'Love Radio',
-                                img: 'review-4'
+                                image: 'radio-love'
                             }
                         ] %}
                             <div class="swiper-slide">
                                 <div class="card">
-                                    <img class="image" src="{{theme.link}}/static/images/reviews/{{item.img}}.png" alt="{{item.name}}" data-modal-trigger="image-modal">
+                                    <img class="image" src="{{theme.link}}/static/images/corporate-testimonials/{{item.image}}.png" alt="{{item.name}}" data-modal-trigger="image-modal">
 
                                     <h4 class="heading heading--xs">{{item.name}}</h4>
                                 </div>

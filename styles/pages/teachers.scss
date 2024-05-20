@@ -1,7 +1,7 @@
 #teachers-page {
     .teachers {
         &__title {		
-            max-width: 881px;
+            max-width: 880px;
             margin: 0 auto 15px;
             text-align: center;
         }
@@ -34,25 +34,6 @@
     
         .grid {
             margin-bottom: 40px;
-        }
-    
-        .teacher-card {
-            .card__img {
-                aspect-ratio: 1 / 1;
-            }
-    
-            .card__title {
-                font-weight: 800;
-                margin-bottom: 5px;
-            }
-    
-            .card__description {
-                margin-bottom: 20px;
-            }
-    
-            .btn {
-                margin-bottom: auto;
-            }
         }
     
         .btn {
