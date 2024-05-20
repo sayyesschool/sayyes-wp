@@ -32,13 +32,19 @@
 
                 <div class="grid grid--2">
                     {% for format in sections.formats.items %}
-                        {{format_card({
-                            title: format.title,
-                            description: format.description,
-                            price: format.price,
-                            lesson_duration: format.lesson_duration,
-                            link: false
-                        }, cycle(['white', 'pink', 'purple'], loop.index0))}}
+                        {{format_card(
+                            {
+                                title: format.title,
+                                description: format.description,
+                                price: format.price,
+                                lesson_duration: format.lesson_duration,
+                                link: false
+                            },
+                            {
+                                color: cycle(['white', 'pink', 'purple'], loop.index0),
+                                with_prices: true
+                            }
+                        )}}
                     {% endfor %}
                 </div>
             {% endblock %}

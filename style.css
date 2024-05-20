@@ -2943,10 +2943,6 @@ button.link {
           justify-content: space-between;
   gap: 35px;
 }
-.format-card .list .list-item span {
-  -ms-flex-preferred-size: 156px;
-      flex-basis: 156px;
-}
 .format-card--without-list .card__title {
   max-width: 410px;
   margin-bottom: 10px;
@@ -5933,9 +5929,6 @@ button.link {
   max-width: 550px;
   margin-bottom: 40px;
 }
-.course-formats .format-card .card__body {
-  padding: 35px;
-}
 .course-formats .format-card .card__title {
   font-size: 42px;
   font-weight: 700;
@@ -5944,9 +5937,6 @@ button.link {
   margin-bottom: 10px;
 }
 @media (max-width: 1024px) {
-  .course-formats .big-course__content {
-    min-height: 210px;
-  }
   .course-formats .big-course__title {
     font-size: 24px;
     line-height: 25px;
@@ -5961,16 +5951,6 @@ button.link {
   }
   .course-formats__blocks {
     gap: 15px;
-  }
-}
-@media (max-width: 800px) {
-  .course-formats {
-    margin-bottom: 60px;
-  }
-}
-@media (max-width: 768px) {
-  .course-formats {
-    margin-bottom: 50px;
   }
 }
 
@@ -9222,7 +9202,7 @@ button.link {
 .single-course .about__content p + p {
   margin-top: 10px;
 }
-.single-course .course-formats .card__body {
+.single-course .course-formats .card {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9230,11 +9210,9 @@ button.link {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 20px;
 }
-.single-course .course-formats .card__content {
+.single-course .course-formats .card__body {
   margin-top: auto;
-  padding-right: 30px;
 }
 
 .course-children .advantages .grid {

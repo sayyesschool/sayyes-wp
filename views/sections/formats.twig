@@ -9,8 +9,10 @@
             {% for format in formats %}
                 {{format_card(
                     format,
-                    cycle(colors ?? ['white', 'pink', 'purple'], loop.index0),
-                    with_prices
+                    options: {
+                        color: cycle(colors ?? ['white', 'pink', 'purple'], loop.index0),
+                        with_prices
+                    }
                 )}}
             {% endfor %}
 

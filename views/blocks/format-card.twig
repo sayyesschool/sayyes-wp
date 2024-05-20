@@ -1,4 +1,4 @@
-{% macro format_card(format, color, with_prices = false) %}
+{% macro format_card(format, options = {}) %}
     {% embed 'components/card.twig' with {
         class: 'format-card',
         title: format.title,
@@ -8,14 +8,14 @@
             alt: format.title
         },
         link: format.link,
-        color
+        color: options.color
     } %}
         {% block content %}
-            {% if with_prices %}
+            {% if options.with_prices %}
                 <div class="card__body">
                     <ul class="list">
                         <li class="list-item">
-                            Стоимость обучения:
+                            <span class="text text--semibold">Стоимость обучения:</span>
 
                             <span>
                                 {{format.price.prefix}} <strong>{{format.price.value}}</strong>{{format.price.postfix}}

@@ -28,15 +28,11 @@
 
     .course-formats {
         .card {
+            display: flex;
+            flex-direction: column;
+            
             &__body {
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            &__content {
                 margin-top: auto;
-                padding-right: 30px;
             }
         }
     }
