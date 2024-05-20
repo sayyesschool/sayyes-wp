@@ -2,10 +2,6 @@
     'card--hover': hover,
     'card--horizontal': horizontal
 })}}">
-    {% if link %}
-        <a class="card__link" href="{{link}}"></a>
-    {% endif %}
-
     {% if image or block('media') is defined %}
         <div class="card__media">
             {% if image %}
@@ -47,5 +43,9 @@
         <div class="card__footer">
             {{block('footer')}}
         </div>
+    {% endif %}
+
+    {% if link %}
+        <a class="card__link" href="{{link}}"></a>
     {% endif %}
 </div>

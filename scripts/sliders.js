@@ -57,48 +57,6 @@ new Swiper('.corporate-reviews-slider', {
 	}
 });
 
-new Swiper('.meetings-slider', {
-	enabled: false,
-	width: 900,
-	breakpoints: {
-		1025: {
-			enabled: true,
-			spaceBetween: 150,
-			width: null,
-			navigation: {
-				nextEl: '.slider__right-arrow',
-				prevEl: '.slider__left-arrow',
-			},
-			pagination: {
-				el: '.slider__pagination',
-			},
-		},
-	},
-});
-
-new Swiper('.feedback-slider', {
-	enabled: false,
-	width: null,
-	breakpoints: {
-		769: {
-			enabled: true,
-			width: null,
-		},
-		540: {
-			width: 895,
-		},
-		480: {
-			width: 815,
-		},
-		360: {
-			width: 595,
-		},
-		320: {
-			width: 595,
-		},
-	},
-});
-
 new Swiper('.course-teachers-slider', {
 	...defaultOptions
 	// width: null,
@@ -172,6 +130,48 @@ new Swiper('.course-results-slider', {
 			enabled: false,
 			slidesPerView: 1,
 			spaceBetween: 15,
+		},
+	},
+});
+
+new Swiper('.meetings-slider', {
+	enabled: false,
+	width: 900,
+	breakpoints: {
+		1025: {
+			enabled: true,
+			spaceBetween: 150,
+			width: null,
+			navigation: {
+				nextEl: '.slider__right-arrow',
+				prevEl: '.slider__left-arrow',
+			},
+			pagination: {
+				el: '.slider__pagination',
+			},
+		},
+	},
+});
+
+new Swiper('.feedback-slider', {
+	enabled: false,
+	width: null,
+	breakpoints: {
+		769: {
+			enabled: true,
+			width: null,
+		},
+		540: {
+			width: 895,
+		},
+		480: {
+			width: 815,
+		},
+		360: {
+			width: 595,
+		},
+		320: {
+			width: 595,
 		},
 	},
 });
