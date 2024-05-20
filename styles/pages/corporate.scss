@@ -353,10 +353,6 @@
 .corporate-clients {
 	margin-bottom: 130px;
 
-	.slider {
-		overflow: hidden;
-	}
-
 	.card {
         height: 100%;
         display: flex;
@@ -398,8 +394,6 @@
 	}
 
 	.slider {
-		overflow: hidden;
-
         &__pagination {
             margin-top: 40px;
         }

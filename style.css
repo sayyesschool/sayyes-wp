@@ -1799,6 +1799,7 @@ button.link {
   margin-top: -30px;
   padding-top: 70px;
   position: relative;
+  overflow: hidden;
 }
 .slider__arrows {
   display: -webkit-box;
@@ -3987,9 +3988,6 @@ button.link {
           transform: translate(-2px, 0px);
 }
 
-.student-progress-slider {
-  overflow: hidden;
-}
 .student-progress-slider .slider__arrows {
   right: 10%;
 }
@@ -5979,21 +5977,18 @@ button.link {
 .course-progress {
   margin-bottom: 135px;
 }
-.course-progress .section__title {
+.course-progress__title {
   max-width: 1000px;
   margin-bottom: 20px;
 }
-.course-progress .section__description {
+.course-progress__description {
   max-width: 500px;
-}
-.course-progress .slider {
-  overflow: hidden;
 }
 @media (max-width: 1160px) {
   .course-progress {
     margin-bottom: 70px;
   }
-  .course-progress .section__title {
+  .course-progress__title {
     max-width: 700px;
   }
 }
@@ -6006,7 +6001,7 @@ button.link {
   .course-progress {
     margin-bottom: 50px;
   }
-  .course-progress .section__title {
+  .course-progress__title {
     max-width: 460px;
     margin-bottom: 15px;
   }
@@ -6100,7 +6095,6 @@ button.link {
 }
 .course-teachers .slider {
   margin-bottom: 20px;
-  overflow: hidden;
 }
 .course-teachers .text-card {
   -webkit-box-pack: start;
@@ -6179,9 +6173,6 @@ button.link {
 }
 .course-testimonials__description {
   max-width: 440px;
-}
-.course-testimonials .slider {
-  overflow: hidden;
 }
 .course-testimonials .btn {
   margin: 30px auto 0;
@@ -7012,9 +7003,6 @@ button.link {
 .meetings .subtitle {
   margin-bottom: 20px;
 }
-.meetings .slider {
-  overflow: hidden;
-}
 .meetings__description {
   max-width: 550px;
 }
@@ -7120,9 +7108,6 @@ button.link {
 }
 .participants-feedback .subtitle {
   margin-bottom: 20px;
-}
-.participants-feedback .slider {
-  overflow: hidden;
 }
 .participants-feedback__description {
   max-width: 500px;
@@ -9113,9 +9098,6 @@ button.link {
 .corporate-clients {
   margin-bottom: 130px;
 }
-.corporate-clients .slider {
-  overflow: hidden;
-}
 .corporate-clients .card {
   height: 100%;
   display: -webkit-box;
@@ -9150,9 +9132,6 @@ button.link {
 }
 .corporate-reviews__header {
   max-width: 580px;
-}
-.corporate-reviews .slider {
-  overflow: hidden;
 }
 .corporate-reviews .slider__pagination {
   margin-top: 40px;

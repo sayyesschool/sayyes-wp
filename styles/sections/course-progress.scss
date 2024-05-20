@@ -1,23 +1,19 @@
 .course-progress {
 	margin-bottom: 135px;
 
-	.section__title {
+	&__title {
 		max-width: 1000px;
 		margin-bottom: 20px;
 	}
 
-	.section__description {
+	&__description {
 		max-width: 500px;
-	}
-
-	.slider {
-		overflow: hidden;
 	}
 
 	@include breakpoint($breakpoint-lg) {
 		margin-bottom: 70px;
 
-		.section__title {
+		&__title {
 			max-width: 700px;
 		}
 	}
@@ -29,7 +25,7 @@
 	@include breakpoint($breakpoint-xxs) {
 		margin-bottom: 50px;
 
-		.section__title {
+		&__title {
 			max-width: 460px;
 			margin-bottom: 15px;
 		}
