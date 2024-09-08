@@ -1,72 +1,48 @@
+@use 'styles/mixins' as *;
+@use 'styles/variables' as *;
+
 .format-card {
-	transition: 0.3s all ease;
-	cursor: pointer;
-
-	&:hover {
-		box-shadow: 0px 0px 23.3288px 0px rgba(255, 219, 199, 0.9);
-	}
-
-    .card {
-        &__media {
-            img {
-				aspect-ratio: 2 / 1;
-			}
-        }
-
-        &__title {
-			@include heading('sm', 800);
-            margin-bottom: 10px;
-        }
-
-        &__description {
-			@include text;
-			margin-top: 0;
-        }
-    }
-
 	.list {
-		width: 100%;
-		gap: 5px;
-		
 		.list-item {
 			display: flex;
 			justify-content: space-between;
-			gap: 35px;
+			gap: 30px;
 		}
 	}
 
 	&--without-list {
-		.card__title {
-			max-width: 410px;
-			margin-bottom: 10px;
-		}
-
-		.card__content {
-			padding: 33px 38px 37px;
-			min-height: auto;
-		}
-
-		.card__description {
-			max-width: 400px;
+		.card {
+			&__title {
+				max-width: 410px;
+				margin-bottom: 10px;
+			}
+	
+			&__content {
+				padding: 33px 38px 37px;
+				min-height: auto;
+			}
+	
+			&__description {
+				max-width: 400px;
+			}
 		}
 	}
 
 	&--sm {
-		width: calc((100% - 40px) / 3);
-
-		.card__media {
-			height: 370px;
-		}
-
-		.card__title {
-			font-size: 18px;
-			line-height: 20px;
-
-			margin-bottom: 10px;
-		}
-
-		.card__content {
-			padding: 34px 39px 46px;
+		.card {
+			&__media {
+				height: 370px;
+			}
+	
+			&__title {
+				margin-bottom: 10px;
+				font-size: 18px;
+				line-height: 20px;
+			}
+	
+			&__content {
+				padding: 34px 39px 46px;
+			}
 		}
 	}
 
@@ -77,70 +53,31 @@
 	}
 
 	@include breakpoint($breakpoint-md) {
-		width: calc(50% - 7.5px);
-
-		.card__title {
-			font-size: 18px;
-			line-height: 20px;
-
-			margin-bottom: 15px;
-		}
-
-		.card__media {
-			height: 220px;
-		}
-
-		.card__content {
-			padding: 25px;
-		}
-
-		&--without-list {
-			.big-course__title {
-				max-width: 310px;
-			}
-
-			.big-course__description {
-				max-width: 400px;
-			}
-		}
-
 		&--sm {
 			width: 100%;
 			display: flex;
 		}
 	}
 
-	@include breakpoint($breakpoint-sm) {
-		&--without-list {
-			.big-course__content {
-				padding: 30px 25px;
-			}
-		}
-	}
-
 	@include breakpoint($breakpoint-xxs) {
-		width: 100%;
-
-		.card__media {
-			height: 60%;
-		}
-
-		.card__lesson-cost {
-			display: block;
-			margin-right: 80px;
-		}
-
-		.card__lesson-type {
-			width: 135px;
-			margin-right: 15px;
-		}
-
-		.card__info {
-			justify-content: space-between;
-		}
-
-		.card__list {
-			flex-grow: 0.4;
+		.card {
+			.card__lesson-cost {
+				display: block;
+				margin-right: 80px;
+			}
+	
+			.card__lesson-type {
+				width: 135px;
+				margin-right: 15px;
+			}
+	
+			.card__info {
+				justify-content: space-between;
+			}
+	
+			.card__list {
+				flex-grow: 0.4;
+			}
 		}
 
 		&--without-list {

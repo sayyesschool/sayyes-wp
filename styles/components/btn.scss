@@ -1,3 +1,6 @@
+@use 'styles/mixins' as *;
+@use 'styles/variables' as *;
+
 .btn {
 	width: 100%;
 	max-width: 372px;
@@ -6,7 +9,7 @@
 	justify-content: center;
 	align-items: center;
 	border: none;
-	border-radius: $border-radius-bg;
+	border-radius: $border-radius-lg;
 	padding: 0 20px;
 	background-color: $black;
 	color: $white;

@@ -15,42 +15,48 @@
         data-video-modal="true"
     {% endif %}
 >
-    {% if image %}
-        <img class="video__media" src="{{image.path ? (theme.link ~ '/static/images/' ~ image.path) : image.src}}" alt="{{image.alt ?? ''}}">
-    {% elseif youtube_id %}
-        <img class="video__media" src="https://img.youtube.com/vi/{{youtube_id}}/maxresdefault.jpg" alt="{{image.alt ?? ''}}">
-    {% else %}
-        <video
-            src="{{filename ? theme.link ~ '/static/videos/' ~ filename : src}}"
-            prealod="metadata"
-            {% if poster %}
-                poster="{{theme.link}}/{{poster}}"
-            {% endif %}
-            {% if autoplay or hover %}
-                muted
-            {% endif %}
-            {% if loop or hover %}
-                loop
-            {% endif %}
-        ></video>
-    {% endif %}
+    <div class="video__media">
+        {% if image %}
+            <img src="{{image.path ? (theme.link ~ '/static/images/' ~ image.path) : image.src}}" alt="{{image.alt ?? ''}}">
+        {% elseif youtube_id %}
+            <img src="https://img.youtube.com/vi/{{youtube_id}}/maxresdefault.jpg" alt="{{image.alt ?? ''}}">
+        {% else %}
+            <video
+                src="{{filename ? theme.link ~ '/static/videos/' ~ filename : src}}"
+                prealod="metadata"
+                {% if poster %}
+                    poster="{{theme.link}}/{{poster}}"
+                {% endif %}
+                {% if autoplay or hover %}
+                    muted
+                {% endif %}
+                {% if loop or hover %}
+                    loop
+                {% endif %}
+            ></video>
+        {% endif %}
 
-    {% if not hover and not autoplay %}
-        <button
-            type="button"
-            class="video__btn"
-            {% if modal %}
-                data-modal-trigger="video-modal"
-                {% if youtube_id %}
-                    data-embed-url="https://www.youtube.com/embed/{{youtube_id}}"
-                {% else %}
-                    data-video-url="{{filename ? theme.link ~ '/static/videos/' ~ filename : src}}"
+        {% if not hover and not autoplay %}
+            <button
+                type="button"
+                class="video__btn"
+                {% if modal %}
+                    data-modal-trigger="video-modal"
+                    {% if youtube_id %}
+                        data-embed-url="https://www.youtube.com/embed/{{youtube_id}}"
+                    {% else %}
+                        data-video-url="{{filename ? theme.link ~ '/static/videos/' ~ filename : src}}"
+                    {% endif %}
+                    {% if vertical %}
+                        data-vertical="true"
+                    {% endif %}
                 {% endif %}
-                {% if vertical %}
-                    data-vertical="true"
-                {% endif %}
-            {% endif %}
-        ></button>
+            ></button>
+        {% endif %}
+    </div>
+
+    {% if caption %}
+        <p class="video__caption caption">{{caption}}</p>
     {% endif %}
 </div>
 

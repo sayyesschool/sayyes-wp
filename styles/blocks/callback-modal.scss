@@ -1,18 +1,22 @@
+@use 'styles/variables' as *;
+
 #callback-modal {
-    .modal__surface {
-        width: 955px;
-        display: flex;
+    .modal {
+        &__surface {
+            width: 955px;
+            display: flex;
 
-        &::before {
-            content: '';
-            width: 42%;
-            border-radius: $border-radius 0 0 $border-radius;
-            background: url('./static/images/pictures/anastasia-2.jpg') center center/cover no-repeat;
+            &::before {
+                content: '';
+                width: 42%;
+                border-radius: $border-radius 0 0 $border-radius;
+                background: url('./static/images/pictures/anastasia-2.jpg') center center/cover no-repeat;
+            }
         }
-    }
 
-    .modal__body {
-        width: 58%;
-		padding: 35px 45px;
+        &__body {
+            width: 58%;
+		    padding: 35px 45px;
+        }
     }
 }

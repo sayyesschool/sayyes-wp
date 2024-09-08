@@ -2,13 +2,13 @@
 	name: 'awards'
 } %}
 	{% block title %}
-		SAY YES! — это {{COMPANY_AGE}} лет проверенного качества обучения, подтвержденного
+		{{COMPANY_NAME}} — это {{COMPANY_AGE}} лет проверенного качества обучения, подтвержденного
 		<a href="#" class="color-primary">лицензией и наградами</a>
 		рейтинга Schoolrate
 	{% endblock %}
 
 	{% block content %}
-		<div class="grid grid--2">
+		<div class="grid grid-4-sm grid-2-md">
 			{% for item in [
 				{
 					year: '2017',
@@ -48,17 +48,6 @@
 			{% endfor %}
 		</div>
 
-		<div class="license-card card card--purple">
-			<picture>
-				<img src="{{theme.link}}/static/images/pictures/founders-1.png" alt="Основатели школы Вера и Ольга с наградами">
-			</picture>
-
-			<h3 class="card__title">Лицензия Министерства образования № 36801</h3>
-
-			<div class="text">
-				<p>Соответствует международным стандартам обучения.</p>
-				<p>Вы также сможете получить налоговый вычет.</p>
-			</div>
-		</div>
+		{% include 'blocks/founders-card.twig' %}
 	{% endblock %}
 {% endembed %}

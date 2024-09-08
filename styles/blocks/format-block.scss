@@ -1,0 +1,66 @@
+@use 'styles/mq';
+@use 'styles/variables';
+
+.format-block {
+	position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+	@include mq.to(md) {
+		.card {
+			padding: 20px;
+	
+			.tags {
+				margin-bottom: 15px;
+			}
+		}
+
+		.caption {
+			display: none;
+		}
+	}
+
+    @include mq.from(md) {
+		flex-direction: row;
+		align-items: flex-start;
+	
+		.video {
+			flex-basis: 50%;
+		}
+	
+		.card {
+			flex-basis: 50%;
+			padding: 30px;
+	
+			.tags {
+				margin-bottom: 20px;
+			}
+		}
+
+		// TODO: Adjust position and add arrow
+		.caption {
+			position: absolute;
+			bottom: 0;
+			max-width: 150px;
+			color: variables.$primary-color;
+		}
+	}
+
+	@include mq.from(lg) {
+		.video {
+			flex-basis: 60%;
+		}
+
+		.card {
+			flex-basis: 40%;
+			margin-top: 40px;
+			padding: 40px;
+
+			.text:first-of-type {
+				max-width: 230px;
+				margin-bottom: 15px;
+			}
+		}
+	}
+}

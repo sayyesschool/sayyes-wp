@@ -1,6 +1,7 @@
 <div class="{{html_classes('tabs', {
     'tabs--centered': centered,
     'tabs--pills': pills,
+    'tabs--underline': underline,
     'tabs--purple': color == 'purple',
     'tabs--violet': color == 'violet',
     'tabs--yellow': color == 'yellow'
@@ -9,7 +10,7 @@
         {% for tab in tabs %}
             <button
                 type="button"
-                class="tabs__tab{{tab.active ? ' tabs__tab--active' : ''}}"
+                class="tab{{tab.active ? ' tab--active' : ''}}"
                 {% if tab.value %}
                     value="{{tab.value}}"
                 {% endif %}

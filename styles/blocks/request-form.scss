@@ -1,3 +1,5 @@
+@use 'styles/mq';
+
 .request-form {
 	display: flex;
 	flex-direction: column;
@@ -23,10 +25,9 @@
 		gap: 12px;
 	}
 
-	@include breakpoint($breakpoint-mobile) {
+	@include mq.to(md) {
 		&__children {
 			flex-direction: column;
-			gap: 0;
 		}
 	}
 }

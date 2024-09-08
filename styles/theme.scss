@@ -1,0 +1,54 @@
+@use 'sass:list';
+
+@use './mq';
+@use './variables';
+
+@mixin border-radius($dirs: ()) {
+    @if list.length($dirs) > 0 {
+        @each $dir in $dirs {
+            @include mq.to(lg) {
+                border-#{$dir}-radius: variables.$border-radius-sm;
+            }
+            
+            @include mq.from(lg) {
+                border-#{$dir}-radius: variables.$border-radius-md;
+            }
+        }
+    } @else {
+        @include mq.to(lg) {
+            border-radius: variables.$border-radius-sm;
+        }
+        
+        @include mq.from(lg) {
+            border-radius: variables.$border-radius-md;
+        }
+    }
+}
+
+@mixin scrollable($fade: true, $color: variables.$linen) {
+    overflow: auto;
+
+    @if ($fade) {
+        padding-bottom: 25px;
+
+        &::after {
+            content: '';
+            width: calc(100% - 3px);
+            height: 25px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            box-shadow: 0px -30px 20px -10px variables.$white inset;
+            border-radius: 0 0 variables.$border-radius-sm variables.$border-radius-sm;
+        }
+    }
+
+    &::-webkit-scrollbar {
+        width: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $color;
+        border-radius: 10%;
+    }
+}

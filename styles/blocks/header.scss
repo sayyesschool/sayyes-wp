@@ -1,3 +1,7 @@
+@use 'styles/components/text';
+@use 'styles/mq';
+@use 'styles/variables' as *;
+
 .header {
 	position: fixed;
 	top: 0;
@@ -8,18 +12,14 @@
 	z-index: 100;
 
 	&__main {
+		max-width: calc(100% - 20px);
 		width: 1280px;
-		max-width: calc(100% - 40px);
-		background-color: $dark-purple;
-		color: $white;
-		border-radius: $border-radius-sm;
 		height: 65px;
 		margin: 0 auto;
+		border-radius: $border-radius-sm;
+		background-color: $dark-purple;
+		color: $white;
 		transition: 0.2s linear all;
-
-		@include breakpoint($breakpoint-md) {
-			max-width: calc(100% - 30px);
-		}
 	}
 
 	&__container {
@@ -28,82 +28,66 @@
 		margin: 0 auto;
 		display: flex;
 		align-items: center;
-		padding: 0 60px;
+		gap: 30px;
+		padding: 0 20px;
 		transition: 0.3s all linear;
 	}
 
-	&__logo {
-		margin-right: 32px;
+	&__content,
+	&__buttons,
+	&__contacts,
+	&__address {
+		display: flex;
+		align-items: center;
+	}
+
+	&__content {
+		flex: 1;
+		justify-content: space-between;
+		gap: 30px;
 	}
 
 	&__buttons {
-		margin-right: 50px;
-		display: flex;
 		gap: 20px;
 
 		.btn {
-			letter-spacing: 1.4px;
-			font-weight: 800;
+			@include text.label;
 		}
-	}
-
-	&__phones {
-		margin-right: 20px;
 	}
 
 	&__contacts {
-		font-weight: 700;
-		line-height: 12px;
+		gap: 20px;
+	}
+
+	&__address {
 		display: flex;
 		flex-direction: column;
+		align-items: flex-start;
 		gap: 5px;
-	}
-
-	&__login {
-		margin-left: auto;
-	}
-
-	&__login {
-		padding: 0;
-		border: none;
-		background-color: transparent;
-		text-transform: uppercase;
-		color: $white;
-		font-family: "Raleway", sans-serif;
-		font-size: 14px;
-		font-weight: 800;
-		line-height: 1;
-		transition: color 0.3s linear;
-
-		&:hover {
-			color: $violet;
+		
+		span {
+			font-weight: 700;
+			line-height: 12px;
 		}
-	}
-
-	&__free-lesson {
-		border: 1.5px solid #fffcff;
-
-		@include hover-active((
-			background-color: transparent,
-			border-color: $violet,
-			color: $violet
-		));
 	}
 
 	&__burger {
 		position: relative;
-		display: none;
 		width: 22px;
+		margin-left: auto;
 		padding: 0;
-		margin-left: 40px;
 		border: none;
-		background-color: transparent;
+		display: inline-flex;
+		flex-direction: column;
+		gap: 3px;
 
 		&-line {
+			display: block;
+			width: 100%;
 			height: 2px;
 			background-color: $white;
 			border-radius: 10px;
-			transition: 0.3s linear all;
+			transition: 0.2s linear all;
 
 			&:not(:last-child) {
 				margin-bottom: 3px;
@@ -113,14 +97,15 @@
 
 	&__nav {
 		position: relative;
-		height: 55px;
-		padding-top: 15px;
+		height: 40px;
 		background-color: $pearl-white;
 		font-weight: 700;
 		transform: translateY(-120%);
 		transition: 0.2s linear all;
 		z-index: -1;
-
+		backdrop-filter: blur(5px);
+		background-color: rgba(249, 244, 242, .75);
+	
 		&-list {
 			width: 735px;
 			max-width: calc(100% - 120px);
@@ -140,15 +125,6 @@
 					visibility: visible;
 				}
 			}
-
-			// &:last-child {
-			// 	display: none;
-
-			// 	.subnav {
-			// 		right: -40px;
-			// 		left: auto;
-			// 	}
-			// }
 		}
 
 		&-link {
@@ -162,9 +138,7 @@
 	}
 
 	&__trial-lesson {
-		margin: 0 auto;
-		display: none;
-		min-width: 326px;
+		margin: auto;
 	}
 
 	&.expanded {
@@ -177,12 +151,13 @@
 
 	&.opened {
 		.header__nav {
-			transform: translateY(-15px);
+			transform: translateY(0);
 		}
 
 		.header__burger-line {
 			&:first-child {
-				transform: rotate(45deg) translate(4px, 3.5px);
+				transform: rotate(45deg);
+				transform-origin: top left;
 			}
 
 			&:nth-child(2) {
@@ -190,40 +165,36 @@
 			}
 
 			&:last-child {
-				transform: rotate(-45deg) translate(4px, -3.5px);
+				transform: rotate(-45deg);
+				transform-origin: bottom left;
 			}
 		}
 	}
 
-	@include breakpoint($breakpoint-xl) {
-		&__container {
-			padding: 0 40px;
+	.phone-numbers {
+		&__item {
+			@include text.label($weight: 700);
 		}
+	}
 
-		&__test {
+	@include mq.to(sm) {
+		&__content {
 			display: none;
 		}
 	}
 
-	@include breakpoint($breakpoint-lg) {
-		.logo {
-			margin-right: 20px;
-		}
-
-		&__free-lesson {
-			margin-right: 15px;
-		}
-
-		&__callback {
-			margin-right: 110px;
-		}
-
-		&__contacts {
+	@include mq.to(lg, true) {
+		&__test,
+		&__address {
 			display: none;
 		}
 	}
 
-	@include breakpoint($breakpoint-md) {
+	@include mq.to(md) {
+		&__main {
+			max-width: calc(100% - 30px);
+		}
+
 		&__container {
 			padding: 0 30px;
 		}
@@ -233,53 +204,18 @@
 		}
 
 		&__phones {
-			margin-left: auto;
-			margin-right: 0;
+			display: none;
 		}
 	}
 
-	@include breakpoint($breakpoint-sm) {
-		&__callback {
+	@include mq.to(lg) {
+		&__content {
+			justify-content: unset;
+		}
+
+		&__callback,
+		&__test {
 			display: none;
-		}
-
-		&__item {
-			&:nth-child(7) {
-				order: -1;
-			}
-
-			&:nth-child(4),
-			&:nth-child(6) {
-				display: none;
-			}
-
-			&:last-child {
-				display: block;
-			}
-		}
-	}
-
-	@include breakpoint($breakpoint-xxs) {
-		font-size: 16px;
-
-		&__logo {
-			margin-right: 10px;
-		}
-
-		&__free-lesson {
-			display: none;
-		}
-
-		&__phones {
-			margin-left: 30px;
-		}
-
-		&__burger {
-			display: block;
-		}
-
-		&__trial-lesson {
-			display: block;
 		}
 
 		&__nav {
@@ -322,8 +258,8 @@
 					}
 	
 					&::before {
-						content: "";
-						background: url("./static/images/icons/check-3.svg")
+						content: '';
+						background: url('./static/images/icons/check-3.svg')
 							center center/cover no-repeat;
 						width: 12px;
 						height: 6px;
@@ -348,15 +284,23 @@
 		}
 	}
 
-	@include breakpoint($breakpoint-mobile) {
-		&__phones {
+	@include mq.from(md) {
+		&__trial-lesson {
 			display: none;
 		}
+	}
 
-		&__trial-lesson {
-			width: 300px;
-			max-width: 100%;
-			min-width: auto;
+	@include mq.from(lg) {
+		&__container {
+			padding: 0 60px;
+		}
+
+		&__free-lesson {
+			margin-right: 15px;
+		}
+
+		&__burger {
+			display: none;
 		}
 	}
 }

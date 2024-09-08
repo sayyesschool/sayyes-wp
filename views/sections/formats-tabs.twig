@@ -1,6 +1,7 @@
 {% embed 'components/section.twig' with {
 	name: 'formats-tabs',
-	title: 'Как вы хотите учиться?'
+	title: 'Как вы хотите учиться?',
+	padded: true
 } %}
 	{% block description %}
 		<span class="color-primary">Очное</span>
@@ -13,19 +14,20 @@
 		{% embed 'components/tabs.twig' with {
 			tabs: [
 				{
-					content: 'Офлайн в Москве',
+					content: 'Офлайн<span class="hidden-md-down">&nbsp;в Москве</span>',
 					value: 'offline',
 					active: true
 				},
 				{
-					content: 'Онлайн по всему миру',
+					content: 'Онлайн<span class="hidden-md-down">&nbsp;по всему миру</span>',
 					value: 'online'
 				}
 			],
-			color: 'purple'
+			color: 'purple',
+			pills: true
 		} %}
 			{% block content %}
-				<div class="block" data-tab-panel="offline">
+				<div class="format-block" data-tab-panel="offline">
 					{% include 'components/video.twig' with {
 						youtube_id: 'f3cBgWC2ljM',
 						image: {
@@ -41,13 +43,17 @@
 							<span class="tag">Индивидуально</span>
 						</div>
 
-						<p class="text text--bold">Цените живое общение и живете в Москве?</p>
-						<p class="text">Учите английский, обретайте новых друзей и весело проводите время с SAY YES! в кругу единомышленников.</p>
-						<p class="text">Наш офис разположен в пяти минутах ходьбы от метро Павелецкая.</p>
+						<div class="text">
+							<p class="bold">Цените живое общение и живете в Москве?</p>
+							<p>Учите английский, обретайте новых друзей и весело проводите время с {{COMPANY_NAME}} в кругу единомышленников.</p>
+							<p>Наш офис разположен в пяти минутах ходьбы от метро Павелецкая.</p>
+						</div>
 					</div>
+
+					<p class="caption handwritten">Посмотрите как проходят занятия в школе</p>
 				</div>
 
-				<div class="block hidden" data-tab-panel="online">
+				<div class="format-block hidden" data-tab-panel="online">
 					{% include 'components/video.twig' with {
 						youtube_id: 'f3cBgWC2ljM',
 						image: {
@@ -63,10 +69,13 @@
 							<span class="tag">Индивидуально</span>
 						</div>
 
-						<p class="text text--bold">Предпочитаете заниматься из любого места в удобное время?</p>
-
-						<p class="text">Выбирайте формат онлайн уроков — в мини-группе в Zoom или индивидуально на нашей онлайн-платформе.</p>
+						<div class="text">
+							<p class="bold">Предпочитаете заниматься из любого места в удобное время?</p>
+							<p>Выбирайте формат онлайн уроков — в мини-группе в Zoom или индивидуально на нашей онлайн-платформе.</p>
+						</div>
 					</div>
+
+					<p class="caption handwritten">Посмотрите как проходят онлайн-занятия в школе</p>
 				</div>
 			{% endblock %}
 		{% endembed %}

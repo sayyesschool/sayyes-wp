@@ -1,7 +1,5 @@
 .page-template-page-courses-adults {
     .main-section {
-        &__title {
-            max-width: 880px;
-        }
+        --title-max-width: 880px;
     }
 }

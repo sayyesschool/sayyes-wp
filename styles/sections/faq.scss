@@ -1,85 +1,42 @@
-.faq {
-	&__title {
-		max-width: 800px;
-		margin-bottom: 40px;
-	}
+@use 'styles/mq';
+@use 'styles/mixins' as *;
+@use 'styles/variables' as *;
 
+.faq {
 	&__content {
 		display: flex;
-		justify-content: space-between;
+		flex-direction: column;
 		gap: 20px;
 	}
 
-	.image {
-		width: calc(33% - 10px);
-		height: 100%;
-		box-shadow: 0px 0px 20px 0px $white;
-	}
-
-	.accordion {
-		width: calc(67% - 10px);
-	}
-
-	@include breakpoint($breakpoint-lg) {
-		&__title {
-			max-width: 600px;
-		}
-
-		&__content {
-			gap: 15px;
-		}
-
-		.image {
-			width: calc(33% - 7.5px);
-		}
-
-		.accordion {
-			width: calc(67% - 7.5px);
-		}
-	}
-
-	@include breakpoint($breakpoint-sm) {
-		&__title {
-			max-width: 400px;
-		}
-
-		&__content {
-			margin-top: -190px;
-			flex-direction: column;
-		}
-
-		.image {
-			width: 40%;
-			align-self: flex-end;
-		}
-
-		.accordion {
-			width: 100%;
-		}
-	}
-
-	@include breakpoint($breakpoint-xxs) {
-		&__title {
-			max-width: 320px;
-		}
-
-		&__content {
-			margin-top: -170px;
-			flex-direction: column;
+	@include mq.for(md) {
+		&__header {
+			max-width: 55%;
+			position: absolute;
+			top: 0;
 		}
 
 		.image {
 			width: 35%;
+			margin-left: auto;
 		}
 	}
 
-	@include breakpoint($breakpoint-mobile) {
+	@include mq.from(lg) {
+		--title-max-width: 750px;
+
 		&__content {
-			margin-top: 0;
+			flex-direction: row;
+			gap: 15px;
 		}
 
 		.image {
-			width: 100%;
+			width: 30%;
+			height: fit-content;
+		}
+
+		.accordion {
+			width: 70%;
 		}
 	}
 }

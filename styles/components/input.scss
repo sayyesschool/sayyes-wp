@@ -1,8 +1,10 @@
+@use 'styles/variables' as *;
+
 .input {
     display: block;
     width: 100%;
     height: 40px;
     padding: 10px 20px;
-    border-radius: $border-radius;
     border: none;
+    border-radius: $border-radius;
 }

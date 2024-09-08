@@ -1,187 +1,184 @@
+@use 'styles/mq';
+@use 'styles/mixins' as *;
+@use 'styles/variables' as *;
+
 #prices-page {
     .main-section {
-        &__description {
-            max-width: 340px;
-        }
+		--description-max-width: 340px;
     }
 
     .courses {
-        &__title {
-            max-width: 880px;
-			margin: 0 auto 20px;
-			text-align: center;
-        }
+		@include mq.from(sm) {
+			&__header {
+				text-align: center;
+			}
+		}
 
-        &__description {
-            text-align: center;
-			margin-bottom: 40px;
-        }
-
-        .tabs {
-            margin: 0 auto;
-
-            &__nav {
-                margin: 0 auto 40px;
-            }
-        }
+		@include mq.from(lg) {
+			&__title {
+				max-width: 880px;
+			}
+		}
     }
 }
 
 .discounts {
-	&__header {
-		text-align: center;
-		margin-bottom: 45px;
-	}
-
-	&__title {
-		margin: 0 auto 20px;
-	}
-
-	&__description {
-		max-width: 400px;
-		margin: 0 auto;
-	}
-
 	.card {
-		min-height: 370px;
 		display: flex;
 		flex-direction: column;
-		padding: 0;
 		justify-content: flex-end;
 
-		&__subtitle {
-			position: absolute;
-			top: 58px;
-			left: 45px;
-			max-width: 142px;
-			color: $purple;
-			font-size: 24px;
-			line-height: 23px;
-			transform: rotate(-15deg);
+		&::before {
+			top: -5%;
+			right: -5%;
+			background-size: contain;
+			background-position: right top;
 		}
 	}
 
 	.asterisk-text {
-		max-width: 680px;
-		margin: 35px auto 0;
+		max-width: 700px;
+		margin: 20px auto 0;
 		text-align: center;
 	}
 
-	@include breakpoint($breakpoint-md) {
-		&__header {
-			text-align: left;
-		}
-
-		&__title {
-			max-width: calc(50% - 7.5px);
-			margin: 0 0 20px;
-		}
-
-		&__description {
-			max-width: 200px;
-			margin: 0;
-		}
-
-		.cards {
-			margin-top: -85px;
-			gap: 15px;
-		}
-
+	@include mq.to(lg) {
 		.card {
-			min-height: 185px;
+			padding-right: 25%;
+			
+			&::before {
+				
+				width: 25%;
+				height: 100%;
+			}
 
-			&::after {
+			.caption {
 				display: none;
 			}
+		}
+	}
 
-			&:first-child {
-				margin-left: calc(50% + 7.5px);
+	@include mq.between(sm, lg) {
+		&__header {
+			position: absolute;
+			width: calc(50% - 20px);
+		}
+
+		.grid {
+			grid-template-columns: 1fr 1fr;
+			grid-template-areas:
+				'. a'
+				'b c';
+
+			:nth-child(1) {
+				grid-area: a;
+			}
+
+			:nth-child(2) {
+				grid-area: b;
+			}
+
+			:nth-child(3) {
+				grid-area: c;
+			}
+		}
+
+		.card {
+			padding-right: 30%;
+
+			&::before {
+				top: -5%;
+				right: -5%;
+				width: 35%;
+				height: 100%;
+				background-size: contain;
+				background-position: right top;
 			}
 		}
 	}
 
-	@include breakpoint($breakpoint-xxs) {
+	@include mq.from(lg) {
+		&__header {
+			text-align: center;
+		}
+
 		&__description {
-			max-width: none;
-			margin-bottom: 20px;
-		}
-
-		.cards {
-			margin-top: 0;
+			max-width: 400px;
+			margin: 0 auto;
 		}
 
 		.card {
-			&:first-child {
-				margin-left: 0;
+			padding-top: 50%;
+
+			&::before {
+				top: -5%;
+				right: -10%;
+				width: 100%;
+				height: 50%;
+			}
+
+			.caption {
+				position: absolute;
+				top: 58px;
+				left: 45px;
+				max-width: 142px;
+				color: $purple;
+				font-size: 24px;
+				line-height: 23px;
+				transform: rotate(-15deg);
 			}
 		}
-	}
 
-	@include breakpoint($breakpoint-sm-mobile) {
-		&__title {
-			max-width: none;
-		}
-
-		.card {
-			padding-right: 65px;
-
-			&__title {
-				max-width: 130px;
-			}
+		.asterisk-text {
+			margin-top: 30px;
 		}
 	}
 }
 
 .certificates {
-	&__container {
-		justify-content: space-between;
-	}
-
 	&__header {
-		max-width: 700px;
-		margin-bottom: 30px;
+		margin-bottom: 20px;
 	}
 
 	&__content {
 		display: flex;
-		gap: 40px;
+		gap: 20px;
 	}
 
-	.content {
-		max-width: 470px;
+	@include mq.to(lg) {
+		&__content {
+			padding-bottom: 70px;
+			flex-direction: column;	
+		}
+
+		.content {
+			max-width: 420px;
+		}
 
 		.btn {
-			margin-top: 30px;
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			transform: translateX(-50%);
 		}
 	}
 
-	.image {
-		display: block;
-		width: 638px;
-		height: 286px;
-		margin: -25px -45px 0 0;
-		object-fit: cover;
-	}
+	@include mq.from(lg) {
+		&__header {
+			margin-bottom: 30px;
+		}
 
-	@include breakpoint($breakpoint-md) {
 		&__content {
-			flex-direction: column;
+			gap: 40px;
 		}
 
-		&__text {
-			margin-bottom: 50px;
-			max-width: none;
+		.content,
+		.image {
+			width: 50%;
 		}
-
-		&__img {
-			width: 100%;
-			height: 100%;
-		}
-	}
-
-	@include breakpoint($breakpoint-xxs) {
-		&__text {
-			max-width: 470px;
+		
+		.btn {
+			margin-top: 30px;
 		}
 	}
 }

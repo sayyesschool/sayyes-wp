@@ -1,780 +1,589 @@
-#about-page {
-    
+@use 'styles/components/heading';
+@use 'styles/mixins';
+@use 'styles/mq';
+@use 'styles/theme';
+@use 'styles/variables';
+
+.about-video {
+	@include mq.to(md) {
+		&__title {
+			max-width: 245px;
+		}
+	}
 }
 
 .founders-announcement {
 	&__container {
-		gap: 20px;
+		gap: 10px !important;
 	}
 
 	&__header {
 		width: 100%;
-		padding: 70px 100px;
+		padding: 20px;
 		background-color: #fffcff;
-		border-radius: 30px;
-
-		.text {
-			position: relative;
-    		padding-left: 60px;
-
-			&::before,
-			&::after {
-				content: '';
-				position: absolute;
-				width: 45px;
-				height: 33px;
-				background: url('./static/images/icons/quotes.svg') center center / contain no-repeat;
-			}
-
-			&::before {
-				top: -15px;
-				left: 0px;
-			}
-
-			&::after {
-				bottom: -10px;
-				right: 0px;
-				transform: rotate(180deg);
-			}
-		}		
-	}
-
-	&__title {
-		max-width: 470px;
-		margin-bottom: 40px;
+		@include theme.border-radius;	
 	}
 
 	&__media {
 		position: relative;
-		min-width: 370px;
-    	min-height: 500px;
-		border-radius: 30px;
-		background-color: $pale-pink;
-
-		&::before {
-			content: '';
-			position: absolute;
-			top: 50px;
-			left: 160px;
-			transform: translateX(-50%);
-			width: 227px;
-			height: 71px;
-			background: url('./static/images/decoration/notes/founders-2.svg') center center/contain no-repeat;
-		}
+		display: flex;
+		flex-direction: column;
+		background: linear-gradient(#7464a4, #402e69);
+		padding: 20px 20px 0;
+		@include theme.border-radius;
 
 		.image {
-			position: absolute;
-			width: 120%;
-			left: -15%;
-			bottom: 0;
+			margin-top: auto;
+			margin-left: auto;
 		}
-	}
 
-	@include breakpoint($breakpoint-md) {
-		&__media {
-			min-height: 365px;
+		// TODO: Adjust position and styling
+		.caption {
+			color: white;
+			font-weight: 300;
 
-			&::before {
-				width: 191px;
-				height: 60px;
-				top: 25px;
-				left: 122px;
+			p + p {
+				margin-top: 10px;
 			}
 		}
 	}
 
-	@include breakpoint($breakpoint-xxs) {
+	@include mq.to(md) {
 		&__media {
-			min-height: 165px;
-
-			&::before {
-				width: 191px;
-				height: 60px;
-				top: 59px;
-				left: 140px;
-			}
-
-			.image {
-				left: auto;
-				right: 0;
-				width: 260px;
-			}
-		}
-	}
-
-	@include breakpoint($breakpoint-mobile) {
-		&__title {
-			margin-bottom: 272px;
-			max-width: 270px;
-		}
-
-		&__media {
-			min-height: 215px;
-
-			&::before {
-				width: 158px;
-				height: 49px;
-				top: 20px;
-				left: 98px;
-			}
-
-			.image {
-				width: 260px;
-			}
-		}
-	}
-
-	@include breakpoint($breakpoint-sm-mobile) {
-		&__media {
-			&::before {
-				left: 90px;
-			}
-
 			.image {
 				width: 220px;
 			}
+
+			.caption {
+				max-width: 205px;
+			}
+		}
+	}
+
+	@include mq.from(md) {
+		&__container {
+			padding: 20px; 
+			gap: 20px !important;
+		}
+
+		&__media {
+			.image {
+				width: 260px;
+			}
+		}
+	}
+
+	@include mq.from(lg) {
+		&__header {
+			padding: 50px;
+
+			.text {
+				position: relative;
+				padding-left: 60px;
+	
+				&::before,
+				&::after {
+					content: '';
+					position: absolute;
+					width: 45px;
+					height: 33px;
+					background: url('./static/images/icons/quotes.svg') center center / contain no-repeat;
+				}
+	
+				&::before {
+					top: -15px;
+					left: 0px;
+				}
+	
+				&::after {
+					bottom: -10px;
+					right: 0px;
+					transform: rotate(180deg);
+				}
+			}
+		}
+
+		&__title {
+			max-width: 470px;
+			margin-bottom: 40px;
+		}
+	}
+
+	@include mq.from(xl) {
+		&__header {
+			padding: 60px;
 		}
 	}
 }
 
 .digits {
-	&__container {
-	    justify-content: space-between;
-    }
-
 	&__header {
-		max-width: 190px;
+		padding: 0 20px;
 	}
 
-	&__content {
-		width: 764px;
-		display: grid;
-		gap: 20px;
-		grid-template-areas:
-			'a a a b b b b b'
-			'c c c c c d d d'
-			'e e e e e d d d';
-	}
+	@include mq.to(md) {
+		flex-direction: column;
 
-	.card {
-		min-height: 200px;
-		padding: 45px 0 0 45px;
-
-		&__title {
-			margin-bottom: 10px;
-			font-size: 70px;
-			font-weight: 700;
-			line-height: 60px;
-		}
-	
-		&__description {
-			max-width: 140px;
-		}
-
-		&:nth-child(1) {
-			grid-area: a;
-		}
-
-		&:nth-child(2) {
-			grid-area: b;
-		}
-
-		&:nth-child(3) {
-			grid-area: c;
-			display: flex;
-			min-height: 150px;
-
-			.card__title {
-				margin-right: 70px;
-			}
-		}
-
-		&:nth-child(4) {
-			grid-area: d;
-		}
-
-		&:nth-child(5) {
-			grid-area: e;
-			display: flex;
-			min-height: 150px;
-
-			.card__title {
-				margin-right: 45px;
-			}
-		}
-	}
-
-	@include breakpoint($breakpoint-lg) {
-		&__title {
-			max-width: 150px;
-		}
-	}
-
-	@include breakpoint($breakpoint-md) {
 		&__content {
-			width: 580px;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+	}
+
+	@include mq.from(md) {
+		&__header {
+			flex-basis: 40%;
+		}
+
+		&__title {
+			max-width: 200px;
+		}
+
+		&__content {
+			display: grid;
 			gap: 15px;
 			grid-template-areas:
 				'a b'
 				'c d'
 				'e d';
 		}
+	}
 
-		.card {
-			min-height: 135px;
-			padding: 20px 0 0 20px;
-
-			&__title {
-				margin-bottom: 5px;
-				font-size: 42px;
-				line-height: 40px;
-			}
-
-			&:nth-child(3),
-			&:nth-child(5) {
-				min-height: 135px;
-				display: block;
-
-				.card__title {
-					margin-right: 0;
-				}
-			}
+	@include mq.from(lg) {
+		&__content {
+			width: 764px;
+			gap: 20px;
+			grid-template-areas:
+				'a a a b b b b b'
+				'c c c c c d d d'
+				'e e e e e d d d';
 		}
 	}
 
-	@include breakpoint($breakpoint-xs) {
-		&__content {
-			width: 450px;
-		}
-	}
+	.card {
+		padding: 20px;
 
-	@include breakpoint($breakpoint-xxs) {
-		margin-bottom: 50px;
-		flex-direction: column;
-
-		&__content {
-			width: 100%;
+		&__title {
+			@include heading.h1;
 		}
 
-		.card {
-			&__title {
-				max-width: none;
-				margin-bottom: 25px;
-			}
-		}
-	}
-
-	@include breakpoint($breakpoint-sm-mobile) {
-		&__content {
-			display: flex;
-			flex-direction: column;
-			gap: 10px;
-		}
-
-		.card {
-			min-height: 90px;
-			padding: 0 25px;
+		@include mq.to(md) {
 			display: flex;
 			align-items: center;
-			background-color: $yellow;
+			gap: 30px;
+			background-color: variables.$yellow;
 
-			&__title {
-				width: 140px;
-				margin-right: 25px;
+			&__title,
+			&__description {
+				margin: 0;
 			}
 
 			&__description {
 				max-width: 210px;
 			}
+		}
 
-			&:nth-child(3),
+		@include mq.from(md) {
+			&:nth-child(1) {
+				grid-area: a;
+			}
+	
+			&:nth-child(2) {
+				grid-area: b;
+			}
+	
+			&:nth-child(3) {
+				grid-area: c;
+			}
+	
+			&:nth-child(4) {
+				grid-area: d;
+			}
+	
 			&:nth-child(5) {
-				min-height: 90px;
-				display: flex;
+				grid-area: e;
+			}
+		}
 
-				.card__title {
-					margin-right: 25px;
-				}
+		@include mq.from(lg) {
+			padding: 30px;
+	
+			&__title {
+				margin-bottom: 10px;
+			}
+		
+			&__description {
+				max-width: 140px;
 			}
 		}
 	}
 }
 
 .back-office {
-	position: relative;
-
-	&__title {
-		max-width: 700px;
-		margin-bottom: 15px;
-	}
-
-	&__description {
-		margin-bottom: 35px;
-
-		p:first-of-type {
-			max-width: 470px;
-		}
-		
-		p:last-of-type {
-			max-width: 500px;
-		}
-		
-		p:not(:last-of-type) {
-			margin-bottom: 10px;
-		}
+	// TODO: Refactor to section
+	&__container {
+		padding: 0 20px;
 	}
 
 	.card:first-of-type {
-		&::before {
-			content: '';
-			position: absolute;
-			width: 181px;
-			height: 116px;
-			bottom: 100px;
-			right: 55px;
-			background: url('./static/images/decoration/notes/superpowers.svg')
-				center center/cover no-repeat;
-		}
-	}
-
-	.manager-card {
-		@include decoration('elements/lightning.svg', before) {
-			bottom: 47px;
-			left: -12px;
-			width: 40px;
-			height: 55px;
+		.card__title {
+			@include heading.h3;
 		}
 	}
 
 	.text-card {
-		padding: 50px 35px 50px 50px;
-		align-self: flex-start;
+		padding: 25px;
 	}
 
-	@include breakpoint($breakpoint-md) {
+	@include mq.to(sm) {
 		.card:first-of-type {
-			&::before {
-				width: 145px;
-				height: 93px;
-			}
+			margin-bottom: 10px;
 		}
 
-		.manager-card {
-			&::before {
-				width: 30px;
-				height: 41px;
-				left: -15px;
-			}
+		.caption {
+			display: none;
+		}
+	}
+
+	@include mq.from(sm) {
+		.card:first-of-type {
+			padding-right: 40px;
+		}
+		
+		.text-card {
+			align-self: flex-start;
+		}
+	}
+
+	@include mq.from(md) {
+		&__title {
+			max-width: 400px;
+		}
+	
+		&__description {
+			max-width: 500px;
 		}
 
 		.text-card {
-			padding: 25px;
+			padding: 30px;
+			align-self: flex-start;
 
 			&:last-of-type {
 				margin-top: 0;
 			}
 		}
-	}
 
-	@include breakpoint($breakpoint-xxs) {
-		.cards-grid {
-			margin-top: 165px;
-		}
-
-		.card:first-of-type {
+		// TODO: Adjust position
+		.caption {
 			position: absolute;
-			bottom: 470px;
-			left: 15px;
-
-			&::before {
-				display: none;
-			}
-
-			.card__title {
-				margin-bottom: 10px;
-				font-size: 26px;
-				line-height: 25px;
-			}
-
-			.card__subtitle {
-				max-width: 280px;
-			}
-		}
-
-		.text-card {
-			justify-content: center;
-            
-			.card__text {
-				text-align: center;
-				line-height: 25px;
-			}
+			width: 181px;
+			height: 116px;
+			top: 258px;
+			left: 35px;
 		}
 	}
 }
 
 .behind-the-scenes {
-	padding: 100px 60px;
-	background-color: $white;
-	overflow: hidden;
-
-	&::before {
-		content: '';
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: -4px;
-		left: -5px;
-		background: url('./static/images/decoration/elements/confetti-2.svg') center center/cover no-repeat;
-	}
-
-	&__title {
-		max-width: 590px;
-		margin-bottom: 20px;
-	}
-
-	&__description {
-		max-width: 730px;
-
-		p:not(:last-of-type) {
-			margin-bottom: 10px;
-		}
-	}
+	padding: 20px;
+	background-color: variables.$white;
 
 	&__gallery {
-		margin-top: 40px;
 		display: grid;
-		grid-template-areas:
-			'a a a a a a a b b b b b'
-			'c c d d d d d d . . . .'
-			'e e e e e f f f f f f f'
-			'. . . . g g g g g g h h';
-		gap: 20px;
 	}
 
 	&__media {
-		position: relative;
-
 		.image {
 			height: 100%;
 		}
 
 		.video {
-			max-width: 172px;
-		}
+			height: 100%;
 
-		&:nth-child(1) {
-			grid-area: a;
-
-			&::before {
-				content: '';
-				width: 360px;
-				height: 205px;
-				position: absolute;
-				top: -10px;
-				left: -281px;
-				transform: scaleX(-1) rotate(50deg);
-				background: url('./static/images/decoration/elements/tinsel.svg')
-					center center/cover no-repeat;
-			}
-		}
-
-		&:nth-child(2) {
-			grid-area: b;
-
-			&::before {
-				content: '';
-				width: 157px;
-				height: 142px;
-				position: absolute;
-				top: -193px;
-				right: 134px;
-				background: url('./static/images/decoration/notes/celebration.svg')
-					center center/cover no-repeat;
-			}
-		}
-
-		&:nth-child(3) {
-			grid-area: c;
-
-			&::before {
-				content: '';
-				width: 324px;
-				height: 190px;
-				position: absolute;
-				top: -8%;
-				left: 445%;
-				background: url('./static/images/decoration/elements/tinsel.svg')
-					center center/cover no-repeat;
-			}
-		}
-
-		&:nth-child(4) {
-			grid-area: d;
-
-			&::before {
-				content: '';
-				width: 173px;
-				height: 107px;
-				position: absolute;
-				top: 55%;
-				right: -53%;
-				background: url('./static/images/decoration/notes/fun.svg')
-					center center/cover no-repeat;
-			}
-		}
-
-		&:nth-child(5) {
-			grid-area: e;
-		}
-
-		&:nth-child(6) {
-			grid-area: f;
-		}
-
-		&:nth-child(7) {
-			grid-area: g;
-
-			&::before {
-				content: '';
-				width: 227px;
-				height: 164px;
-				position: absolute;
-				bottom: -13%;
-				left: -82%;
-				background: url('./static/images/decoration/elements/petard.svg')
-					center center/cover no-repeat;
-			}
-		}
-
-		&:nth-child(8) {
-			grid-area: h;
-
-			&::before {
-				content: '';
-				width: 137px;
-				height: 85px;
-				position: absolute;
-				top: 30%;
-				left: -445%;
-				background: url('./static/images/decoration/notes/awards.svg')
-					center center/cover no-repeat;
-			}
-
-			.image:last-child {
-				display: none;
+			video {
+				height: 100%;
+				object-fit: cover;
 			}
 		}
 	}
 
-	@include breakpoint($breakpoint-lg) {
-		padding: 70px 50px;
-
-		&__description {
-			max-width: 600px;
-		}
-
-		&__media {
-			&:nth-child(1) {
-				&::before {
-					width: 324px;
-					height: 184px;
-					top: -30px;
-					left: -260px;
-				}
-			}
-
-			&:nth-child(3) {
-				&::before {
-					width: 248px;
-					height: 143px;
-				}
-			}
-
-			&:nth-child(8) {
-				&::before {
-					width: 126px;
-					height: 78px;
-					top: 10%;
-					left: -485%;
-				}
-			}
-		}
-	}
-
-	@include breakpoint($breakpoint-md) {
-		&__media {
-			&:nth-child(2) {
-				&::before {
-					left: auto;
-					right: 10px;
-				}
-			}
-		}
-	}
-
-	@include breakpoint($breakpoint-sm) {
-		padding: 60px 20px;
-
+	@include mq.to(md) {
 		&__gallery {
 			grid-template-areas:
-				'b a a'
-				'b a a'
-				'd d .'
-				'd d .'
-				'g g c'
-				'g g c'
-				'g g c'
-				'. f f'
-				'. f f'
-				'h e e'
-				'h e e'
-				'h e e';
+				'a a'
+				'b b'
+				'c c'
+				'd d'
+				'e f'
+				'g g'
+				'h h';
 			gap: 15px;
-			grid-auto-rows: 110px;
 		}
 
 		&__media {
 			&:nth-child(1) {
-				&::before {
-					width: 125px;
-					height: 113px;
-					position: absolute;
-					top: -140px;
-					left: auto;
-					right: -10px;
-					transform: none;
-					background: url('./static/images/decoration/notes/celebration.svg')
-						center center/cover no-repeat;
-				}
-			}
+				grid-area: a;
 
-			&:nth-child(2) {
-				&::before {
-					width: 324px;
-					height: 184px;
-					top: -30px;
-					left: -220px;
-					transform: scaleX(-1) rotate(50deg);
-					background: url('./static/images/decoration/elements/tinsel.svg')
-						center center/cover no-repeat;
-				}
-			}
-
-			&:nth-child(3),
-			&:nth-child(7) {
-				&::before {
-					display: none;
-				}
-			}
-
-			&:nth-child(4) {
-				&::before {
-					width: 178px;
-					height: 103px;
-					top: -10%;
-					left: 99%;
-					background: url('./static/images/decoration/elements/tinsel.svg')
-						center center/cover no-repeat;
-				}
-			}
-
-			&:nth-child(8) {
-				&::before {
-					width: 103px;
-					height: 101px;
-					top: -65%;
-					left: 15%;
-					background: url('./static/images/decoration/notes/awards-2.svg')
-						center center/cover no-repeat;
-				}
-			}
-		}
-	}
-
-	@include breakpoint($breakpoint-xxs) {
-		&::before {
-			display: none;
-		}
-
-		&__gallery {
-			display: flex;
-			flex-direction: column;
-			gap: 10px;
-		}
-
-		&__media {
-			&:nth-child(4),
-			&:nth-child(8) {
-				&::before {
-					display: none;
-				}
-			}
-
-			&:nth-child(1) {
-				&::before {
-					display: block;
+				@include mixins.decoration('elements/tinsel.svg') {
 					width: 50%;
 					height: 54%;
 					top: -30px;
 					left: -35%;
-					background: url('./static/images/decoration/elements/tinsel.svg')
-						center center/cover no-repeat;
 				}
 			}
 
 			&:nth-child(2) {
-				&::before {
+				grid-area: b;
+			}
+
+			&:nth-child(3) {
+				grid-area: c;
+			}
+
+			&:nth-child(4) {
+				grid-area: d;
+
+				@include mixins.decoration('elements/tinsel.svg') {
 					width: 238px;
 					height: 139px;
 					top: 20px;
 					left: 69%;
 					transform: rotate(65deg);
-					background: url('./static/images/decoration/elements/tinsel.svg')
-						center center/cover no-repeat;
 				}
 			}
 
-			&:nth-child(3) {
-				display: none;
+			&:nth-child(5) {
+				grid-area: g;
 			}
 
-			&:nth-child(1),
-			&:nth-child(7) {
-				order: -2;
-			}
 			&:nth-child(6) {
-				order: -1;
+				grid-area: h;
 			}
-			&:nth-child(4),
-			&:nth-child(5) {
-				order: 1;
+
+			&:nth-child(7) {
+				grid-area: e;
 			}
 
 			&:nth-child(8) {
-				display: flex;
-				gap: 10px;
-
-				img:last-child {
-					display: block;
-				}
+				grid-area: f;
 			}
 		}
 	}
 
-	@include breakpoint($breakpoint-sm-mobile) {
-		&__picture {
-			&:nth-child(8) {
-				overflow-x: auto;
-				width: calc(100% + 20px);
-				height: 360px;
-				padding-right: 20px;
+	@include mq.from(md) {
+		padding: 30px;
 
-				.image {
-					min-width: 213px;
-					display: block;
+		&__header {
+			max-width: 430px;
+		}
+
+		&__gallery {
+			display: grid;
+			grid-template-areas:
+				'a b b'
+				'c c .'
+				'd d e'
+				'. f f'
+				'g h h';
+			grid-template-rows: 240px 240px 360px 240px 360px;
+			gap: 15px;
+		}
+
+		&__media {
+			&:nth-child(1) {
+				grid-area: b;
+
+				@include mixins.decoration('notes/celebration.svg') {
+					position: absolute;
+					top: -140px;
+					left: auto;
+					right: -10px;
+					width: 125px;
+					height: 113px;
+					transform: none;
 				}
+			}
 
-				&::-webkit-scrollbar {
+			&:nth-child(2) {
+				grid-area: d;
+
+				@include mixins.decoration('elements/tinsel.svg') {
+					width: 324px;
+					height: 184px;
+					top: -30px;
+					left: -220px;
+					transform: scaleX(-1) rotate(50deg);
+				}
+			}
+
+			&:nth-child(3) {
+				grid-area: f;
+			}
+
+			&:nth-child(4) {
+				grid-area: a;
+
+				@include mixins.decoration('elements/tinsel.svg') {
+					width: 178px;
+					height: 103px;
+					top: -10%;
+					left: 99%;
+				}
+			}
+
+			&:nth-child(5) {
+				grid-area: c;
+			}
+
+			&:nth-child(6) {
+				grid-area: h;
+			}
+
+			&:nth-child(7) {
+				grid-area: e;
+			}
+
+			&:nth-child(8) {
+				grid-area: g;
+
+				@include mixins.decoration('elements/awards-2.svg') {
+					width: 103px;
+					height: 101px;
+					top: -65%;
+					left: 15%;
+				}
+			}
+		}
+
+		@include mixins.decoration('elements/confetti-2.svg', after) {
+			width: 100%;
+			height: 100%;
+			top: -4px;
+			left: -5px;
+		}
+	}
+
+	@include mq.from(lg) {
+		padding: 60px;
+
+		&__header {
+			max-width: 430px;
+		}
+
+		&__gallery {
+			display: grid;
+			grid-template-areas:
+				'a a a a a a a b b b b b'
+				'c c c d d d d d d d . .'
+				'e e e e e f f f f f f f'
+				'. . g g g g g g g h h h';
+			grid-template-rows: 280px 320px 280px 320px;
+			gap: 20px;
+		}
+	
+		// TODO: Adjust caption positions
+		&__media {
+			&:nth-child(1) {
+				grid-area: a;
+	
+				&::before {
+					content: '';
+					width: 360px;
+					height: 205px;
+					position: absolute;
+					top: -10px;
+					left: -281px;
+					transform: scaleX(-1) rotate(50deg);
+					background: url('./static/images/decoration/elements/tinsel.svg')
+						center center/cover no-repeat;
+				}
+			}
+	
+			&:nth-child(2) {
+				grid-area: g;
+	
+				&::before {
+					content: '';
+					width: 157px;
+					height: 142px;
+					position: absolute;
+					top: -193px;
+					right: 134px;
+					background: url('./static/images/decoration/notes/celebration.svg')
+						center center/cover no-repeat;
+				}
+			}
+	
+			&:nth-child(3) {
+				grid-area: f;
+	
+				&::before {
+					content: '';
+					width: 324px;
+					height: 190px;
+					position: absolute;
+					top: -8%;
+					left: 445%;
+					background: url('./static/images/decoration/elements/tinsel.svg')
+						center center/cover no-repeat;
+				}
+			}
+	
+			&:nth-child(4) {
+				grid-area: b;
+	
+				&::before {
+					content: '';
+					width: 173px;
+					height: 107px;
+					position: absolute;
+					top: 55%;
+					right: -53%;
+					background: url('./static/images/decoration/notes/fun.svg')
+						center center/cover no-repeat;
+				}
+			}
+	
+			&:nth-child(5) {
+				grid-area: d;
+			}
+	
+			&:nth-child(6) {
+				grid-area: e;
+			}
+	
+			&:nth-child(7) {
+				grid-area: c;
+	
+				&::before {
+					content: '';
+					width: 227px;
+					height: 164px;
+					position: absolute;
+					bottom: -13%;
+					left: -82%;
+					background: url('./static/images/decoration/elements/petard.svg')
+						center center/cover no-repeat;
+				}
+			}
+	
+			&:nth-child(8) {
+				grid-area: h;
+	
+				&::before {
+					content: '';
+					width: 137px;
+					height: 85px;
+					position: absolute;
+					top: 30%;
+					left: -445%;
+					background: url('./static/images/decoration/notes/awards.svg')
+						center center/cover no-repeat;
+				}
+	
+				.image:last-child {
 					display: none;
 				}
 			}

@@ -1,14 +1,21 @@
 {% embed 'components/section.twig' with {
-	name: 'trial-lesson'
+	name: 'trial-lesson',
+	class
 } %}
 	{% block title %}
-		Запишитесь на
-		<span class="color-primary">бесплатный</span>
-		пробный урок
+		{% if title %}
+			{{title}}
+		{% else %}
+			Запишитесь на <span class="color-primary">бесплатный</span> пробный урок
+		{% endif %}
 	{% endblock %}
 
 	{% block description %}
-		На уроке вы узнаете свой уровень, оцените методику школы, познакомитесь с преподавателем
+		{% if description %}
+			{{description}}
+		{% else %}
+			На уроке вы узнаете свой уровень, оцените методику школы, познакомитесь с преподавателем
+		{% endif %}
 	{% endblock %}
 
 	{% block content %}
@@ -27,28 +34,28 @@
 			]
 		} %}
 			{% block content %}
-				<div class="invite invite--adults{{(active_tab == '' or active_tab == 'adults') ? '' : ' hidden'}}" data-tab-panel="adults">
-					<div class="invite__left">
-						<div class="invite__title">Оставьте заявку на пробный урок</div>
+				<div class="trial-lesson-section trial-lesson-section--adults{{(active_tab == '' or active_tab == 'adults') ? '' : ' hidden'}}" data-tab-panel="adults">
+					<div class="trial-lesson-section__left">
+						<div class="trial-lesson-section__title">Оставьте заявку на&nbsp;пробный урок</div>
 
-						<p class="invite__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы, и расскажем о курсах</p>
+						<p class="trial-lesson-section__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы, и расскажем о курсах</p>
 					</div>
 
-					<div class="invite__right">
+					<div class="trial-lesson-section__right">
 						{% include 'blocks/request-form.twig' with {
 							format: true
 						} %}
 					</div>
 				</div>
 
-				<div class="invite invite--children{{active_tab == 'children' ? '' : ' hidden'}}" data-tab-panel="children">
-					<div class="invite__left">
-						<div class="invite__title">Оставьте заявку на пробный урок</div>
+				<div class="trial-lesson-section trial-lesson-section--children{{active_tab == 'children' ? '' : ' hidden'}}" data-tab-panel="children">
+					<div class="trial-lesson-section__left">
+						<div class="trial-lesson-section__title">Оставьте заявку на пробный урок</div>
 
-						<p class="invite__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы, и расскажем о курсах</p>
+						<p class="trial-lesson-section__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы, и расскажем о курсах</p>
 					</div>
 
-					<div class="invite__right">
+					<div class="trial-lesson-section__right">
 						{% include 'blocks/request-form.twig' with {
 							format: true,
 							children: true

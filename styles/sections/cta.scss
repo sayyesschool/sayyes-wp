@@ -1,0 +1,32 @@
+@use 'styles/components/heading';
+@use 'styles/mq';
+@use 'styles/mixins';
+@use 'styles/variables';
+
+.cta {
+	padding: 20px;
+	text-align: center;
+
+	&__content {
+		@include heading.h3;
+		z-index: 1;
+	}
+
+	@include mq.to(md) {
+		&::before,
+		&::after,
+		&__container::before,
+		&__container::after {
+			display: none;
+		}
+	}
+
+	@include mq.from(md) {
+		padding: 50px 60px;
+	}
+
+	@include mq.from(lg) {
+		margin: 100px auto;
+		padding: 60px 180px;
+	}
+}

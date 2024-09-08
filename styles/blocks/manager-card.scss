@@ -1,3 +1,14 @@
+@use 'styles/mixins';
+
 .manager-card {
-    
+    @include mixins.decoration('elements/lightning.svg', before) {
+        bottom: 47px;
+        left: -15px;
+        width: 30px;
+        height: 41px;
+    }
+
+    .card__description {
+        margin-top: 20px;
+    }
 }

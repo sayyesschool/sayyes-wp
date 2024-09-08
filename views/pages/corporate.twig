@@ -19,7 +19,7 @@
 
 	{# {% include 'sections/video.twig' with {
         name: 'corporate-benefits-video',
-        title: 'Управляющий директор SAY YES! Роман Сорочук коротко расскажет о преимуществах нашего обучения и процессе работы с компаниями.',
+        title: 'Управляющий директор ' ~ COMPANY_NAME ~ ' Роман Сорочук коротко расскажет о преимуществах нашего обучения и процессе работы с компаниями.',
         video: {
 			youtube_id: 'nz94F0sSF90',
 			image: {
@@ -42,7 +42,8 @@
     } %}
 
     {% embed 'components/section.twig' with {
-        name: 'corporate-directions'
+        name: 'corporate-directions',
+        padded: true
     } %}
         {% block title %}
             Более {{COMPANY_AGE}} лет мы
@@ -52,7 +53,7 @@
         {% endblock %}
 
         {% block content %}
-            <div class="cards">
+            <div class="grid grid-2-sm grid-4-lg">
                 {% for item in [
                     {
                         title: 'Общий курс',
@@ -75,7 +76,7 @@
                         image: 'comments'
                     }
                 ] %}
-                    <div class="text-card text-card--{{item.image}}-bg card card--yellow">
+                    <div class="text-card text-card--{{item.image}}-bg card card--yellow card--sm">
                         <h4 class="card__title">{{item.title}}</h4>
                         <p class="card__description">{{item.description}}</p>
                     </div>
@@ -85,40 +86,48 @@
     {% endembed %}
 
     {% embed 'components/section.twig' with {
-        name: 'corporate-formats'
+        name: 'corporate-formats',
+        padded: true
     } %}
         {% block title %}
             Наши <span class="color-primary">форматы обучения</span> позволяют подстроиться под месторасположение и график компаний
         {% endblock %}
 
         {% block content %}
-            <div class="cards">
-                {% from 'blocks/format-card.twig' import format_card %}
-
+            <div class="grid grid-3-sm">
                 {% for item in [
                     {
                         title: 'В школе в Москве ',
                         description: 'Наш офис находится в 7 минутах пешком от метро Павелецкая.',
-                        thumbnail: {
+                        image: {
                             src: theme.link ~ '/static/images/corporate-formats/school.jpg'
                         }
                     },
                     {
                         title: 'В офисе вашей компании',
                         description: 'Преподаватель приезжает к вам офис в удобное вам время',
-                        thumbnail: {
+                        image: {
                             src: theme.link ~ '/static/images/corporate-formats/office.jpg'
                         }
                     },
                     {
                         title: 'Обучение онлайн',
                         description: 'Мы обучаем онлайн в группах в Zoom или индивидуально на собственной платформе',
-                        thumbnail: {
+                        image: {
                             src: theme.link ~ '/static/images/corporate-formats/online.jpg'
                         }
                     }
                 ] %}
-                    {{format_card(item)}}
+                    <div class="card card--sm">
+                        <div class="card__media">
+                            <img class="image" src="{{item.image.src}}" alt="{{item.title}}">
+                        </div>
+
+                        <div class="card__body">
+                            <h3 class="card__title">{{item.title}}</h3>
+                            <p class="card__description">{{item.description}}</p>
+                        </div>
+                    </div>
                 {% endfor %}
             </div>
         {% endblock %}
@@ -126,15 +135,16 @@
 
     {% embed 'components/section.twig' with {
         name: 'corporate-benefits',
-        title: 'Сотрудничать с SAY YES! — выгодно'
+        title: 'Сотрудничать с ' ~ COMPANY_NAME ~ ' — выгодно',
+        padded_header: true
     } %}
         {% block content %}
             <picture class="picture">
                 <img class="picture__image" src="{{theme.link}}/static/images/pictures/roman.png" alt="Роман Сорочук">
 
                 <div class="picture__caption">
-                    <h3 class="heading heading--xs">Роман Сорочук</h3>
-                    <p class="text text--sm">Руководитель корпоративного направления</p>
+                    <h3 class="heading">Роман Сорочук</h3>
+                    <p class="text">Руководитель корпоративного направления</p>
                 </div>
             </picture>
 
@@ -160,16 +170,17 @@
                         }
                     ]
                 } %}
-
-                <button class="btn btn--filled btn--md btn--black" data-modal-trigger="callback-modal">Получить точную стоимость обучения</button>
             </div>
+
+            <button class="btn btn--filled btn--md btn--black" data-modal-trigger="callback-modal">Получить точную стоимость обучения</button>
         {% endblock %}
     {% endembed %}
 
 	{% include 'sections/awards.twig' %}
 
     {% embed 'components/section.twig' with {
-        name: 'corporate-teachers'
+        name: 'corporate-teachers',
+        padded: true
     } %}
         {% block title %}
             <span class="color-primary">Наши</span>
@@ -178,7 +189,7 @@
         {% endblock %}
 
         {% block description %}
-            <p>Корпоративные курсы английского в школе “SAY YES!” проводят как носители языка, так и русскоязычные преподаватели с многолетним опытом преподавания, в том числе деловому английскому.</p>
+            <p>Корпоративные курсы английского в школе “{{COMPANY_NAME}}” проводят как носители языка, так и русскоязычные преподаватели с многолетним опытом преподавания, в том числе деловому английскому.</p>
 
             <p>Прежде, чем попасть в нашу команду, преподаватели проходят многоэтапный отбор и обучение методике школы. Это профессионалы, не лишенные чувства юмора и энергичности, с которыми учить английский вашим сотрудникам будет в удовольствие!</p>
         {% endblock %}
@@ -186,7 +197,7 @@
         {% block content %}
             {% from 'blocks/teacher-card.twig' import teacher_card %}
 
-            <div class="cards-grid grid grid--3">
+            <div class="grid grid-2-md grid-3-lg">
                 {% for teacher in teachers %}
                     {{teacher_card(teacher)}}
                 {% endfor %}
@@ -197,16 +208,17 @@
     {% endembed %}
 
     {% embed 'components/section.twig' with {
-        name: 'corporate-extra-benefits'
+        name: 'corporate-extra-benefits',
+        padded: true
     } %}
         {% block title %}
-            Обучение в SAY YES! — это
+            Обучение в {{COMPANY_NAME}} — это
             <span class="color-primary">больше, чем занятия</span>
-            с преподавателем. Сотрудничая с SAY YES! вы также получаете:
+            с преподавателем. Сотрудничая с {{COMPANY_NAME}} вы также получаете:
         {% endblock %}
 
         {% block content %}
-            <div class="cards grid grid--2-1-2">
+            <div class="grid grid-2-1-2">
                 {% for item in [
                     {
                         image: 'contacts',
@@ -241,7 +253,8 @@
 
     {% embed 'components/section.twig' with {
         name: 'corporate-clients',
-        title: 'Нас уже выбрали:'
+        title: 'Нас уже выбрали:',
+        padded_header: true
     } %}
         {% block content %}
             {% embed 'components/slider.twig' with {
@@ -346,7 +359,8 @@
     {% endembed %}
 
     {% embed 'components/section.twig' with {
-        name: 'corporate-reviews'
+        name: 'corporate-reviews',
+        padded: true
     } %}
         {% block title %}
             Благодарственные
@@ -409,15 +423,16 @@
     {% embed 'components/section.twig' with {
         id: 'corporate-steps',
         name: 'corporate-steps',
-        title: 'Чтобы начать обучение вам осталось:'
+        title: 'Чтобы начать обучение вам осталось:',
+        padded_header: true
     } %}
         {% block content %}
             <picture class="picture">
                 <img class="picture__image" src="{{theme.link}}/static/images/pictures/anastasia.png" alt="Анастасия Жителева">
 
                 <div class="picture__caption">
-                    <h3 class="heading heading--xs">Анастасия Жителева</h3>
-                    <p class="text text--sm">Менеджер по работе с клиентами офлайн</p>
+                    <h3 class="heading">Анастасия Жителева</h3>
+                    <p class="text">Менеджер по работе с клиентами офлайн</p>
                 </div>
             </picture>
 

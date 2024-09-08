@@ -1,18 +1,34 @@
+@use 'styles/components/text';
+@use 'styles/mixins';
+@use 'styles/theme';
+@use 'styles/variables';
+
 .video {
 	position: relative;
-
-	video {
-		width: 100%;
-		display: block;
-		border-radius: $border-radius;
-	}
 
 	&__media {
 		width: 100%;
 		height: 100%;
-		display: block;
-		object-fit: cover;
-		border-radius: $border-radius;
+		
+		video {
+			width: 100%;
+			display: block;
+			@include theme.border-radius;
+			overflow: hidden;
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			display: block;
+			object-fit: cover;
+			@include theme.border-radius;
+			overflow: hidden;
+		}
+	}
+
+	&__caption {
+		@include text.handwritten;
 	}
 
 	&__btn {
@@ -22,26 +38,24 @@
 		display: inline-block;
 		width: 50px;
 		height: 50px;
-		border: 2px solid $black;
+		border: 2px solid variables.$black;
 		border-radius: 100%;
-		background: url('./static/images/icons/play.svg') center no-repeat#fffcff80;
+		background: url('./static/images/icons/play.svg') center no-repeat #fffcff80;
 		transition: 0.3s linear background-color;
 		z-index: 1;
 
 		&:hover {
-			background-color: $white;
+			background-color: variables.$white;
 		}
 	}
 
-	&--framed {
-		&::after {
-			content: '';
-			position: absolute;
-			top: -10%;
-			left: -10%;
-			width: 120%;
-			height: 120%;
-			background: url('./static/images/decoration/elements/being-student-border.svg') center center/contain no-repeat;
+	&--framed &__media {
+		@include mixins.decoration('elements/being-student-border.svg', after) {
+			top: -5%;
+			left: -5%;
+			width: 110%;
+			height: 110%;
+			background-size: cover;
 		}
 	}
 }

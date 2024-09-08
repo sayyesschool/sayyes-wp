@@ -20,7 +20,8 @@
 
 			{% if item.icon %}
 				{% include 'components/icon.twig' with {
-					name: item.icon
+					name: item.icon,
+					class: 'list-item__icon'
 				} %}
 			{% endif %}
 

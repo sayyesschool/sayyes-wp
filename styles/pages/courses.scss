@@ -1,38 +1,32 @@
+@use 'styles/mq';
+
 .page-template-page-courses-adults,
 .page-template-page-courses-children {
     .main-section {
-        &__description {
-            max-width: 460px;
-        }
+        --description-max-width: 460px;
     }
 
     .formats {
-        &__header {
-            max-width: 860px;
+        @include mq.to(md) {
+            --header-max-width: 550px;
         }
     
-        @include breakpoint($breakpoint-lg) {
-            &__header {
-                max-width: 650px;
-            }
+        @include mq.from(md) {
+            --header-max-width: 650px;
         }
-    
-        @include breakpoint($breakpoint-xxs) {
-            &__header {
-                max-width: 550px;
-            }
+
+        @include mq.from(lg) {
+            --header-max-width: 860px;
         }
     }
     
     .courses {
-        &__header {
-            max-width: 560px;
+        @include mq.from(md) {
+            --header-max-width: 400px;
         }
-    
-        @include breakpoint($breakpoint-lg) {
-            &__header {
-                max-width: 440px;
-            }
+
+        @include mq.from(lg) {
+            --header-max-width: 550px;
         }
     }
 }

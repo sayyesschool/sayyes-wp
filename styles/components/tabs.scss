@@ -1,80 +1,97 @@
+@use 'styles/components/text';
+@use 'styles/mq';
+@use 'styles/variables';
+
 .tabs {
-	position: relative;
+	--nav-max-width: none;
+
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
 
 	&__nav {
-		max-width: 470px;
+		width: 100%;
+		max-width: var(--nav-max-width);
 		display: flex;
-		justify-content: space-between;
-		gap: 10px;
+		gap: 5px;
 
-		.select {
-			display: none;
+		@include mq.from(sm) {
+			--nav-max-width: 480px;
+			
+			gap: 10px;
 		}
 	}
 
-	&__tab {
-		width: 279px;
-		min-height: 50px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		border: none;
-		border-radius: $border-radius-sm $border-radius-sm 0 0;
-		background-color: $white;
-		font-weight: 700;
+	@include mq.from(md) {
+		gap: 30px;
+	}
 
-		&--active {
-			background-color: $pale-white;
-		}
+	@include mq.from(ld) {
+		gap: 40px;
+	}
+
+	&--centered &__nav {
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	&--pills {
-		.tabs__tab {
+		.tab {
 			&:first-of-type {
-				border-radius: $border-radius 0 0 $border-radius;
+				border-radius: variables.$border-radius 0 0 variables.$border-radius;
 			}
 
 			&:last-of-type {
-				border-radius: 0 $border-radius $border-radius 0;
+				border-radius: 0 variables.$border-radius variables.$border-radius 0;
+			}
+		}
+	}
+
+	&--underline {
+		.tab {
+			min-height: 40px;
+			background-color: variables.$white;
+			border-bottom: 2px solid variables.$pale-white;
+
+			@include mq.from(lg) {
+				min-height: 56px;
+			}
+
+			&--active {
+				border-bottom: 2px solid variables.$black;
 			}
 		}
 	}
 
 	&--yellow {
-		.tabs {
-		    &__tab {
-    		    background-color: $white;
+		.tab {
+			background-color: variables.$white;
 
-				&--active {
-					background-color: $yellow;
-				}
-    		}
+			&--active {
+				background-color: variables.$yellow;
+			}
 		}
 	}
 
 	&--violet {
-		.tabs {
-		    &__tab {
-    		    background-color: $white;
+		.tab {
+			background-color: variables.$white;
 
-				&--active {
-					background-color: $violet;
-					color: $white;
-				}
-    		}
+			&--active {
+				background-color: variables.$violet;
+				color: variables.$white;
+			}
 		}
 	}
 
 	&--purple {
-		.tabs {
-		    &__tab {
-    		    background-color: $white;
+		.tab {
+			background-color: variables.$white;
 
-				&--active {
-					background-color: $purple;
-					color: $white;
-				}
-    		}
+			&--active {
+				background-color: variables.$purple;
+				color: variables.$white;
+			}
 		}
 	}
 
@@ -84,9 +101,27 @@
 		justify-content: space-between;
 		gap: 20px;
 
-		.tabs__tab {
+		.tab {
 			width: 100%;
 			min-height: 60px;
 		}
+	}
+}
+
+.tab {
+	flex: 1 0;
+	padding: 0 20px;
+	min-height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: none;
+	border-radius: variables.$border-radius-sm variables.$border-radius-sm 0 0;
+	background-color: variables.$white;
+	@include text.body1($weight: 700);
+	white-space: nowrap;
+
+	&--active {
+		background-color: variables.$pale-white;
 	}
 }

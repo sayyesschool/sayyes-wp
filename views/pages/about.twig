@@ -15,6 +15,7 @@
 			image: {
 				path: 'video-sections/video-section-1.jpg'
 			},
+			caption: 'Посмотрите короткое видео об обучении в ' ~ COMPANY_NAME,
 			modal: true,
 			framed: true
 		}
@@ -35,20 +36,28 @@
 					<span class="color-primary">влюбить</span>
 					в сам процесс освоения языка. Ведь сам по себе путь может быть не менее прекрасен результата!
 				</p>
+				
 				<p>Мы не только обладаем эффективными методиками обучения, но и стремимся создать атмосферу дружелюбия и уюта, в которую вам захочется возвращаться снова и снова.</p>
+
 				<p>Приходите к нам за новыми знаниями и приятным времяпрепровождением =)</p>
-				<p>Ждем вас в Школе SAY YES! в Москве и онлайн!</p>
+
+				<p>Ждем вас в Школе {{COMPANY_NAME}} в Москве и онлайн!</p>
 			</div>
 		{% endblock %}
 
 		{% block media %}
-			<img class="image" src="{{theme.link}}/static/images/pictures/founders-1.png" alt="Say Yes">
+			<div class="caption handwritten">
+				<p>Основатели школы английского языка {{COMPANY_NAME}}</p>
+				<p>Ольга Письменная<br>и Вера Шаталова</p>
+			</div>
+
+			<img class="image" src="{{theme.link}}/static/images/pictures/founders-2.png" alt="Say Yes">
 		{% endblock %}
 	{% endembed %}
 
 	{% embed 'components/section.twig' with {
 		name: 'digits',
-		title: 'SAY YES! в цифрах',
+		title: COMPANY_NAME ~ ' в цифрах',
 		horizontal: true
 	} %}
 		{% block content %}
@@ -89,7 +98,7 @@
 
 	{% embed 'components/section.twig' with {
 		name: 'back-office',
-		title: 'В бэк-офисе SAY YES! работает 24 человека.',
+		title: 'В бэк-офисе ' ~ COMPANY_NAME ~ ' работает 24 человека.',
 	} %}
 		{% block description %}
 			<p>Главное, что объединяет нас — это любовь к людям и английскому языку.</p>
@@ -99,10 +108,10 @@
 		{% block content %}
 			{% from 'blocks/manager-card.twig' import manager_card %}
 
-			<div class="cards grid grid--3">
+			<div class="grid grid-2-sm grid-3-md">
 				<div class="card card--transparent">
 					<h4 class="card__title">Команда мечты</h4>
-					<p class="card__subtitle">Создает для вас душевную атмосферу и обеспечивает комфорт в обучении.</p>
+					<p class="card__description">Создает для вас душевную атмосферу и обеспечивает комфорт в обучении.</p>
 				</div>
 
 				{% for manager in managers|slice(0, 7) %}
@@ -122,10 +131,12 @@
 				{% endfor %}
 
 				<div class="text-card card card--pink">
-					<p class="text text--block text--lg">Хотите стать членом нашей команды мечты?</p>
-					<p class="text text--lg text--weight-bold">Напишите нам на почту info@sayes.ru</p>
+					<p class="text">Хотите стать членом нашей команды мечты?</p>
+					<p class="text text--bold">Напишите нам на почту <a class="link">info@sayes.ru</a></p>
 				</div>
 			</div>
+
+			<p class="caption handwritten">У команды {{COMPANY_NAME}} есть Superpowers<p>
 		{% endblock %}
 	{% endembed %}
 
@@ -135,40 +146,27 @@
 	} %}
 		{% block description %}
 			<p>Для нас Школа — это не только интересная работа, но и совместное времяпрепровождение.</p>
-			<p>Мы веселимся, вместе учимся новому и делаем жизнь нашего SAY YES! коммьюнити насыщенней яркими моментами и от того счастливее.</p>
+			<p>Мы веселимся, вместе учимся новому и делаем жизнь нашего {{COMPANY_NAME}} коммьюнити насыщенней яркими моментами и от того счастливее.</p>
 		{% endblock %}
 
 		{% block content %}
 			<div class="behind-the-scenes__gallery">
-				{% for i in 1..2 %}
+				{% for i in 1..6 %}
 					<picture class="behind-the-scenes__media">
 						<img class="image" src="{{theme.link}}/static/images/behind-the-scenes/bts-{{i}}.jpg" alt="Say Yes">
 					</picture>
 				{% endfor %}
-
-				<div class="behind-the-scenes__media">
-					{% include 'components/video.twig' with {
-						class: 'atmosphere__celebration-img-2',
-						filename: 'celebration.mp4',
-						autoplay: true
-					} %}
-				</div>
-
-				{% for i in 4..7 %}
-					<picture class="behind-the-scenes__media">
-						<img class="image" src="{{theme.link}}/static/images/behind-the-scenes/bts-{{i}}.jpg" alt="Say Yes">
-					</picture>
-				{% endfor %}
-				
-				{# <picture class="behind-the-scenes__media">
-					{% for i in [8, 3] %}
-						<img class="image" src="{{theme.link}}/static/images/behind-the-scenes/bts-{{i}}.jpg" alt="Say Yes">
-					{% endfor %}
-				</picture> #}
 
 				<div class="behind-the-scenes__media">
 					{% include 'components/video.twig' with {
 						filename: 'graduation.mp4',
+						autoplay: true
+					} %}
+				</div>
+
+				<div class="behind-the-scenes__media">
+					{% include 'components/video.twig' with {
+						filename: 'celebration.mp4',
 						autoplay: true
 					} %}
 				</div>

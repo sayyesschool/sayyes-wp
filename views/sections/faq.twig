@@ -1,6 +1,8 @@
 {% embed 'components/section.twig' with {
 	name: 'faq',
-	title: 'На часто задаваемые вопросы о курсе отвечает Шаталова Вера, сооснователь SAY YES!'
+	title,
+	description,
+	padded_header: true
 } %}
 	{% block content %}
 		<img class="image" src="{{theme.link}}/static/images/pictures/vera.jpg" alt="Вера Шаталова">

@@ -26,12 +26,12 @@
 		title: 'Максимальная практика английского языка'
 	} %}
 		{% block content %}
-			<div class="practice__text">
-				<p class="text">С первого занятия 70% урока говорите вы.</p>
-				<p class="text">Ведь чтобы научиться говорить на языке - нужно очень много практиковать.</p>
+			<div class="text">
+				<p>С первого занятия 70% урока говорите вы.</p>
+				<p>Ведь чтобы научиться говорить на языке - нужно очень много практиковать.</p>
 			</div>
 
-			<div class="practice__image">
+			<div class="picture">
 				<img class="image" src="{{theme.link}}/static/images/pictures/practice.jpg" alt="Практика">
 			</div>
 		{% endblock %}
@@ -44,7 +44,7 @@
 		{% block content %}
 			<div class="dream-team__info">
 				<div class="text">
-					<p>Влюблены в свое дело и не дадут скучать. Преподаватель SAY YES! — это опытный, харизматичный и современный педагог.</p>
+					<p>Влюблены в свое дело и не дадут скучать. Преподаватель {{COMPANY_NAME}} — это опытный, харизматичный и современный педагог.</p>
 
 					<p>Оставьте заявку, мы подберем вам преподавателя и расскажем о курсах.</p>
 				</div>
@@ -52,28 +52,30 @@
 				<button class="btn btn--yellow btn--full" data-modal-trigger="request-modal">Оставить заявку</button>
 			</div>
 
-			<div class="dream-team__video">
-				{% include 'components/video.twig' with {
-					filename: 'teacher.mp4',
-					autoplay: true
-				} %}
-			</div>
+			<div class="dream-team__details">
+				<div class="dream-team__video">
+					{% include 'components/video.twig' with {
+						filename: 'teacher.mp4',
+						autoplay: true
+					} %}
+				</div>
 
-			<div class="dream-team__advantages">
-				{% for item in [
-					{ number: 1, title: 'из 58 кандидатов', description: 'проходит отбор' },
-					{ number: 2, title: 'месяца', description: 'педагоги обучаются методике Школы' },
-					{ number: 8, title: 'лет', description: 'средний стаж преподавателя' },
-				] %}
-					<div class="advantage">
-						<div class="advantage__heading">
-							<strong class="advantage__number">{{item.number}}</strong>
-							<span class="advantage__text">{{item.title}}</span>
+				<div class="dream-team__list">
+					{% for item in [
+						{ number: 1, title: 'из 58 кандидатов', description: 'проходит отбор' },
+						{ number: 2, title: 'месяца', description: 'педагоги обучаются методике Школы' },
+						{ number: 8, title: 'лет', description: 'средний стаж преподавателя' }
+					] %}
+						<div class="item">
+							<div class="item__heading">
+								<span class="item__number">{{item.number}}</span>
+								<span class="item__text">{{item.title}}</span>
+							</div>
+							
+							<div class="item__description">{{item.description}}</div>
 						</div>
-						
-						<div class="advantage__description">{{item.description}}</div>
-					</div>
-				{% endfor %}
+					{% endfor %}
+				</div>
 			</div>
 		{% endblock %}
 	{% endembed %}
@@ -115,7 +117,7 @@
 		title: 'Атмосфера «второго дома»'
 	} %}
 		{% block description %}
-			<p>SAY YES! это место, куда хочется возвращаться.</p>
+			<p>{{COMPANY_NAME}} это место, куда хочется возвращаться.</p>
 			<p>Мы создаем дружескую атмосфру и проводим мероприятия для погружения в языковую среду.</p>
 		{% endblock %}
 
@@ -135,28 +137,40 @@
 					<li class="list-item">Караоке на перемене</li>
 				</ul>
 
-				<div class="atmosphere__celebration-media">
-					{% include 'components/video.twig' with {
-						class: 'atmosphere__celebration-img',
-						filename: 'graduation.mp4',
-						autoplay: true
-					} %}
+				<div class="flex">
+					<figure class="atmosphere__celebration-media">
+						{% include 'components/video.twig' with {
+							class: 'atmosphere__celebration-img',
+							filename: 'graduation.mp4',
+							autoplay: true
+						} %}
 
-					{% include 'components/video.twig' with {
-						filename: 'singing.mp4',
-						image: {
-							path: 'atmosphere/atmosphere-3.jpg',
-							alt: 'Отмечаем праздники вместе'
-						},
-						modal: true,
-						vertical: true
-					} %}
+						<figcaption>Отмечаем завершение обучения</figcaption>
+					</figure>
 
-					{% include 'components/video.twig' with {
-						class: 'atmosphere__celebration-img-2',
-						filename: 'celebration.mp4',
-						autoplay: true
-					} %}
+					<figure class="atmosphere__celebration-media">
+						{% include 'components/video.twig' with {
+							filename: 'singing.mp4',
+							image: {
+								path: 'atmosphere/atmosphere-3.jpg',
+								alt: 'Отмечаем праздники вместе'
+							},
+							modal: true,
+							vertical: true
+						} %}
+
+						<figcaption>Караоке на перемене</figcaption>
+					</figure>
+
+					<figure class="atmosphere__celebration-media">
+						{% include 'components/video.twig' with {
+							class: 'atmosphere__celebration-img-2',
+							filename: 'celebration.mp4',
+							autoplay: true
+						} %}
+
+						<figcaption>Отмечаем праздники вместе</figcaption>
+					</figure>
 				</div>
 			</div>
 		{% endblock %}
@@ -172,7 +186,7 @@
 
 		{% block description %}
 			<p>Лучшие показатели нашей работы — это студенты, уверенно владеющие языком.</p>
-			<p>Ученики рассказывают о своих результатах и процессе обучения в SAY YES! на английском:</p>
+			<p>Ученики рассказывают о своих результатах и процессе обучения в {{COMPANY_NAME}} на английском:</p>
 		{% endblock %}
 
 		{% block content %}

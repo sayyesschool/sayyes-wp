@@ -1,23 +1,26 @@
+@use 'styles/mq';
+
 #formats-page {
     .formats {
-        &__title {
-            max-width: 850px;
-            margin-bottom: 40px;
-        }
+        --header-max-width: 850px;
     
-        .card:last-child {
-            padding: 50px 92px;
+        .text-card {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
     
-            .text {
+            .text,
+            .heading {
                 margin-bottom: 20px;
             }
-    
-            .heading {
-                margin-bottom: 45px;
+        }
+
+        @include mq.from(lg) {
+            .text-card {
+                .heading {
+                    margin-bottom: 40px;
+                }
             }
         }
     }   

@@ -1,7 +1,5 @@
 .page-template-page-courses-children {
     .main-section {
-        &__title {
-            max-width: 680px;
-        }
+        --title-max-width: 680px;
     }
 }

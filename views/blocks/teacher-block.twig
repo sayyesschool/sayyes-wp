@@ -2,7 +2,10 @@
 	<div class="teacher-block__summary">
 		<div class="teacher-block__media">
 			<div class="video">
-				<img class="video__media">
+				<div class="video__media">
+					<img>
+				</div>
+				
 				<button type="button" class="video__btn" data-modal-trigger="video-modal" 
 				></button>
 			</div>
@@ -29,7 +32,8 @@
 					content: 'Отзывы',
 					target: 'reviews'
 				}
-			]
+			],
+			underline: true
 		} %}
 			{% block content %}
 				<section class="teacher-details" data-tab-panel="details">

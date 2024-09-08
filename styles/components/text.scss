@@ -1,60 +1,136 @@
 @use 'sass:list';
 @use 'sass:map';
 
+@use 'styles/mq';
 @use 'styles/variables';
 
+$text-sizes: (
+	'xl': (36px, 36px),
+	'lg': (24px, 25px),
+	'md': (18px, 20px),
+	'sm': (16px, 18px),
+	'xs': (14px, 15px)
+);
+
+$text-sizes_v2: (
+	body1: (
+		sm: (16px, 18px, 600),
+		md: (16px, 18px, 600),
+		lg: (18px, 20px, 600),
+		xl: (18px, 20px, 600),
+	),
+	body2: (
+		sm: (14px, 16px, 600),
+		md: (14px, 16px, 600),
+		lg: (16px, 18px, 600),
+		xl: (16px, 18px, 600)
+	),
+	label: (
+		sm: (14px, 16px, 800),
+		md: (14px, 16px, 800),
+		lg: (14px, 16px, 800),
+		xl: (14px, 16px, 800)
+	)
+);
+
+@mixin text_v2($type: body1, $size: null, $height: null, $weight: null, $responsive: true) {
+	$sizes: map.get($text-sizes_v2, $type);
+	$values: map.get($sizes, sm);
+	$font-size: $size or list.nth($values, 1);
+	$line-height: $height or list.nth($values, 2);
+	$font-weight: $weight or list.nth($values, 3);
+
+	font-size: $font-size;
+	line-height: $line-height;
+	font-weight: $font-weight;
+
+	@if $responsive {
+		@include mq.from(md) {
+			$values: map.get($sizes, md);
+			$font-size: list.nth($values, 1);
+			$line-height: list.nth($values, 2);
+			$font-weight: $weight or list.nth($values, 3);
+
+			font-size: $font-size;
+			line-height: $line-height;
+			font-weight: $font-weight;
+		}
+
+		@include mq.from(lg) {
+			$values: map.get($sizes, lg);
+			$font-size: list.nth($values, 1);
+			$line-height: list.nth($values, 2);
+			$font-weight: $weight or list.nth($values, 3);
+
+			font-size: $font-size;
+			line-height: $line-height;
+			font-weight: $font-weight;
+		}
+
+		@include mq.from(xl) {
+			$values: map.get($sizes, xl);
+			$font-size: list.nth($values, 1);
+			$line-height: list.nth($values, 2);
+			$font-weight: $weight or list.nth($values, 3);
+
+			font-size: $font-size;
+			line-height: $line-height;
+			font-weight: $font-weight;
+		}
+	}
+}
+
 @mixin text($size: 'md', $weight: 600) {
-	$sizes: map.get(variables.$text-sizes, $size);
+	$sizes: map.get($text-sizes, $size);
 	$font-size: list.nth($sizes, 1);
 	$line-height: list.nth($sizes, 2);
 
 	font-size: $font-size;
 	font-weight: $weight;
 	line-height: $line-height;
-	letter-spacing: 0em;
 }
 
-@mixin xl {
-	@include text('xl');
+@mixin body1($weight: null, $responsive: true) {
+	@include text_v2(body1, $weight: $weight, $responsive: $responsive);
 }
 
-@mixin lg {
-	@include text('lg');
+@mixin body2($weight: null, $responsive: true) {
+	@include text_v2(body2, $weight: $weight, $responsive: $responsive);
 }
 
-@mixin md {
-	@include text('md');
+@mixin label($weight: null, $responsive: true) {
+	@include text_v2(label, $weight: $weight, $responsive: $responsive);
+
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
 }
 
-@mixin xs {
-	@include text('xs');
-}
+@mixin handwritten {
+	font-family: 'Shantell Sans';
+	font-size: 14px;
+	font-style: italic;
+	font-weight: 400;
+	line-height: 15px;
 
-@mixin sm {
-	@include text('sm');
+	@include mq.from(md) {
+		font-size: 16px;
+		line-height: 18px;
+	}
 }
 
 .text {
-	@include text;
+	@include text_v2;
 
-	&--xs {
-		@include xs;
+	&--body1 {
+		@include body1;
 	}
 
-	&--sm {
-		@include sm;
+	&--body2 {
+		@include body2;
 	}
 
-	&--md {
-		@include md;
-	}
-	
-	&--lg {
-		@include lg;
-	}
-
-	&--xl {
-		@include xl;
+	&--label {
+		@include label;
 	}
 
 	&--inline {
@@ -110,18 +186,17 @@
 	&--underline {
 		text-decoration: underline;
 	}
+
+	p + p,
+	& + & {
+		margin-top: 10px;
+	}
 }
 
 .asterisk-text {
 	
 }
 
-.handwritten-text {
-	font-family: 'Shantell Sans';
-	font-size: 16px;
-	font-style: italic;
-	font-weight: 400;
-	line-height: 15px;
-	letter-spacing: 0em;
-	text-align: left;
+.handwritten {
+	@include handwritten;
 }

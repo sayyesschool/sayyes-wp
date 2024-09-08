@@ -1,3 +1,5 @@
+@use 'styles/variables' as *;
+
 .link {
 	font-size: inherit;
 	font-weight: inherit;
@@ -18,7 +20,7 @@
 	}
 
 	p & {
-		border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
+		border-bottom: 1px dotted currentColor;
 		color: inherit;
 		font-weight: inherit;
 		line-height: inherit;

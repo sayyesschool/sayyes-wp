@@ -1,7 +1,16 @@
+@use 'styles/mq';
+@use 'styles/mixins' as *;
+@use 'styles/variables' as *;
+
 .cards {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    flex-direction: column;
+    gap: 15px;
+
+    @include mq.from(md) {
+        flex-direction: row;
+        gap: 20px;
+    }
 
     .card {
         flex: 1;
@@ -25,20 +34,11 @@
         }
     }
 
-    @include breakpoint($breakpoint-md) {
-        gap: 15px;
+    &--scroll {
+        @include scroll-x;
     }
 
-	@include breakpoint($breakpoint-xxs) {
-		width: calc(100% + 15px);
-		padding-left: 15px;
-		display: flex;
-        flex-wrap: nowrap;
-		justify-content: space-between;
-		overflow-x: auto;
-
-        &::-webkit-scrollbar {
-			display: none;
-		}
-	}
+    &--wrap {
+        flex-wrap: wrap;
+    }
 }

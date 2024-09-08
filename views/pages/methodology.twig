@@ -19,6 +19,7 @@
 				image: {
 					path: 'video-sections/video-section-2.jpg'
 				},
+				caption: 'Всего 1.5 минуты',
 				modal: true,
 				framed: true
 			} %}
@@ -26,16 +27,18 @@
 	{% endembed %}
 
 	{% embed 'components/section.twig' with {
-		name: 'effective-methods',
-		title: 'Мы применяем методики с доказанной эффективностью'
+		name: 'methodology-methods',
+		title: 'Мы применяем методики с доказанной эффективностью',
+		description: 'Комбинация методик обучения — залог успех студента',
+		padded_header: true
 	} %}
 		{% block content %}
-			<div class="methods">
+			<div class="flex">
 				{% for method in [
 					{
 						title: 'Коммуникативная методика (Communicative approach)',
 						description: 'Это продуманная система развития языковых навыков, эффективность которой была доказана научно на исследовании не одного поколения.',
-						comments: [
+						content: [
 							'В нашей школе студенты не зубрят грамматику ради грамматики и не читают бесконечные тексты вслух.',
 							'Они разыгрывают упражнения, максимально повторяющие ситуации, в которых они будут использовать иностранный язык в реальной жизни.'
 						]
@@ -43,31 +46,36 @@
 					{
 						title: 'Отработка беглости до автоматизма (Fluency Drill)',
 						description: 'Чтобы помочь студентам улучшить беглость и грамотность разговорной речи, наши методисты разработали методику «Отработка беглости» (Fluency Drill).',
-						comments: [
+						content: [
 							'Во время этого упражнения студент многократно повторяет изученную грамматическую структуру с напарником в паре или преподавателем в формате вопрос-ответ.',
 							'Это позволяет довести материал до беглого и грамотного использования в речи.'
 						]
 					}
 				] %}
-					<div class="methods__method">
-						<h2 class="methods__title">{{method.title}}</h2>
+					<div class="method-card text-card card card--sm">
+						<h2 class="card__title">{{method.title}}</h2>
 
-						<p class="methods__description">{{method.description}}</p>
+						<p class="card__description">{{method.description}}</p>
 
-						<div class="methods__comment">
-							{% for comment in method.comments %}
-								<p>{{comment}}</p>
-							{% endfor %}
+						<div class="text-card card card--white">
+							<div class="text">
+								{% for item in method.content %}
+									<p>{{item}}</p>
+								{% endfor %}
+							</div>
 						</div>
 					</div>
 				{% endfor %}
 			</div>
+
+			<p class="caption handwritten">Комбинация методик обучения = успех студента</p>
 		{% endblock %}
 	{% endembed %}
 
 	{% embed 'components/section.twig' with {
-		name: 'advantages',
-		title: 'Важные факты о преимуществах обучения в SAY YES!'
+		name: 'methodology-advantages',
+		title: 'Важные факты о преимуществах обучения в ' ~ COMPANY_NAME,
+		padded: true
 	} %}
 		{% block content %}
 			{% include 'blocks/fact-cards.twig' with {
@@ -77,26 +85,31 @@
 						description: 'Практикуем один подход в офлайн и онлайн формате'
 					},
 					{
-						title: '75% практика языка',
-						description: 'Бóльшую часть занятия говорит студент'
+						title: 'Современные пособия',
+						description: 'Используем новейшие пособия Oxford, Cambridge и Macmillan',
+						image: 'books'
 					},
 					{
 						title: 'Визиты носителей',
 						description: 'Дополнительная практика языка в группе'
 					},
 					{
-						title: 'Онлайн платформа',
-						description: 'Нескучная домашка в интерактивном виде'
+						title: '75% практика языка',
+						description: 'Бóльшую часть занятия говорит студент'
 					},
 					{
-						title: 'Современные пособия',
-						description: 'Используем новейшие пособия Oxford, Cambridge и Macmillan',
-						image: 'books'
+						title: 'Онлайн платформа',
+						description: 'Нескучная домашка в интерактивном виде'
 					}
-				]
+				],
+				size: 'sm'
 			} %}
 		{% endblock %}
 	{% endembed %}
 
-	{% include 'sections/trial-lesson.twig' %}
+	{% include 'sections/trial-lesson.twig' with {
+		class: 'methodology-trial-lesson',
+		title: 'Хотите попробовать методику школы?',
+		description: 'Ждем вас в Школе в&nbsp;Москве или онлайн!'
+	} %}
 {% endblock %}

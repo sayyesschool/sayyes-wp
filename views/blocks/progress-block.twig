@@ -23,7 +23,7 @@
 
             <div class="card__description">
                 <p class="progress-excerpt">
-                    {{item.excerpt({ read_more: false })}}
+                    «{{item.excerpt({ read_more: false })}}»
                 </p>
                 
                 <div class="progress-content">
@@ -31,11 +31,15 @@
                 </div>
             </div>
 
-            <h4 class="card__subtitle">Преподаватель:</h4>
-            <a class="link link--primary link--interactive" href="{{item.teacher.url}}">{{item.teacher}}</a>
+            <div class="card__description">
+                <h4 class="card__subtitle">Преподаватель:</h4>
+                <a class="link link--primary link--interactive" href="{{item.teacher.url}}">{{item.teacher}}</a>
+            </div>
 
-            <h4 class="card__subtitle">Курс:</h4>
-            <a class="link link--primary link--interactive" href="{{item.course.link}}">{{item.course}}</a>
+            <div class="card__description">
+                <h4 class="card__subtitle">Курс:</h4>
+                <a class="link link--primary link--interactive" href="{{item.course.link}}">{{item.course}}</a>
+            </div>
         </div>
     </div>
 </div>

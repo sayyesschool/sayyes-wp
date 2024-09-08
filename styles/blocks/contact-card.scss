@@ -1,0 +1,41 @@
+@use 'styles/mq';
+@use 'styles/variables' as *;
+
+.contact-card {
+	.card {
+		--card-image-aspect-ratio: 1 / 1;
+
+        &__content {
+            margin-top: 20px;
+        }
+	}
+
+    .text {
+        margin-bottom: 10px;
+    }
+
+    .list {
+        .link {
+            color: $primary-color;
+        }
+
+        .icon {
+            color: initial;
+        }
+    }
+
+    @include mq.between(sm, lg) {
+        display: flex;
+        flex-direction: row;
+
+        .card {
+            &__media {
+                width: 40%;
+            }
+
+            &__body {
+                flex: 1;
+            }
+        }
+    }
+}

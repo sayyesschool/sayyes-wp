@@ -1,0 +1,16 @@
+@use 'styles/mq';
+
+.block {
+	display: flex;
+	gap: 20px;
+
+    &--responsive {
+        @include mq.to(sm) {
+            gap: 5px;
+        }
+
+        @include mq.to(md) {
+            gap: 10px;
+        }
+    }
+}

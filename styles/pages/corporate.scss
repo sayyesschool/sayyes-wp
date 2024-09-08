@@ -1,94 +1,39 @@
+@use 'styles/components/heading';
+@use 'styles/mq';
+@use 'styles/theme';
+@use 'styles/mixins' as *;
+@use 'styles/variables' as *;
+
 #corporate-page {
     .main-section {
-        position: relative;
-
-        &__title {
-            max-width: 880px;
-        }
-
-        &__description {
-            max-width: 450px;
-        }
-
         .price-list-button {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
+            margin-top: 15px;
+        }
+
+        @include mq.from(md) {
+            --title-max-width: 880px;
+            --description-max-width: 450px;
+
+            .price-list-button {
+                position: absolute;
+                bottom: 40px;
+                left: 50%;
+                transform: translateX(-50%);
+                margin: 0;
+            }
         }
     }
 
     .video-section {
-        .section {
-            &__header {
-                max-width: 530px;
-            }
-    
-            &__media {
-                position: static;
-
-                &::before {
-                    width: 173px;
-                    height: 38px;
-                    top: auto;
-                    bottom: 0;
-                    left: 0;
-                    background-image: url('./static/images/decoration/notes/only-1.5-min-2.svg');
-                }
-            }
-        }
-        
-
-        .video {
-            &::after {
-				content: none;
-			}
-        }
-
-        @include breakpoint($breakpoint-xl) {
-            &__title {
-                font-size: 32px;
-                line-height: 30px;
-            }
-        }
-    
-        @include breakpoint($breakpoint-lg) {
-            &::before {
-                width: 155px;
-                height: 34px;
-                top: 240px;
-                left: 60px;
-            }
-        }
+        --header-max-width: 530px;
     
         @include breakpoint($breakpoint-md) {
-            align-items: flex-start;
-    
-            &::before {
-                left: auto;
-                top: 210px;
-                right: 200px;
-            }
-
             &__info {
                 max-width: 390px;
-            }
-
-            .video {
-                width: 326px;
-                height: 175px;
             }
         }
     
         @include breakpoint($breakpoint-sm) {
-            &::before {
-                width: 155px;
-                height: 34px;
-                left: auto;
-                top: 210px;
-                right: 200px;
-            }
-
             &__info {
                 max-width: 330px;
             }
@@ -97,262 +42,274 @@
         @include breakpoint($breakpoint-xxs) {
             align-items: center;
     
-            &::before {
-                top: initial;
-                bottom: 215px;
-                left: 35%;
-                width: 171px;
-                height: 70px;
-                background-image: url('./static/images/decoration/notes/only-1.5-min-2.svg');
-            }
-
             &__info {
                 max-width: 530px;
-                margin-bottom: 80px;
             }
         }
     
         @include breakpoint($breakpoint-sm-mobile) {
-            &::before {
-                top: initial;
-                bottom: 190px;
-                left: 30%;
-                width: 171px;
-                height: 70px;
-            }
-
             &__info {
                 max-width: none;
             }
         }
     }
+
+    .founders-card {
+        figure::before,
+        figure::after,
+        figcaption {
+            display: none;
+        }
+
+        @include mq.to(md) {
+            margin-top: 75%;
+        }
+    }
 }
 
 .corporate-directions {    
-    &__header {
-        max-width: 900px;
-        margin-bottom: 40px;
-    }
-
     .card {
         flex: 1;
-        min-height: 275px;
-        padding: 123px 20px 16px 38px;
+        padding-top: 60px;
 
         &__title {
             max-width: 100px;
-            margin: 0 0 15px;
-            font-size: 18px;
-            line-height: 20px;
         }
-    }
 
-    @include breakpoint($breakpoint-lg) {
-        &__header {
-            max-width: 650px;
-        }
-    }
-
-    @include breakpoint($breakpoint-md) {    
-        .card {
-            width: calc(50% - 7.5px);
-            min-height: 210px;
+        @include mq('md') {
             padding-top: 100px;
 
             &__title {
                 max-width: none;
             }
         }
+
+        @include mq('lg') {
+            min-height: 275px;
+            padding: 123px 20px 16px 38px;
+        }
     }
 
-    @include breakpoint($breakpoint-xxs) {
+    @include mq.for(md) {
+
+    }
+
+    @include mq.from(lg) {
         &__header {
-            max-width: 550px;
-        }
-
-        .card {
-            width: 100%;
-            min-height: 155px;
-            padding-top: 60px;
+            max-width: 650px;
         }
     }
 
-    @include breakpoint($breakpoint-sm-mobile) {
-        .card {
-            &__title {
-                max-width: 100px;
-            }
+    @include mq.from(xl) {
+        &__header {
+            max-width: 900px;
         }
     }
 }
 
 .corporate-formats {
-    &__header {
-        max-width: 860px;
-        margin-bottom: 40px;
+    .grid {
+        @include mq.between(sm, lg) {
+            @include scroll-x;
+        }
     }
 
     .card {
-        height: auto;
+        min-width: 250px;
+    }
 
-        &__media {
-            img {
-                aspect-ratio: 1;
-            }
-        }
+    @include mq.from(md) {
+        --header-max-width: 420px;
+    }
 
-        &__title {
-            @include heading('xs', 800);
-        }
+    @include mq.from(lg) {
+        --header-max-width: 900px;
     }
 }
 
 .corporate-benefits,
 .corporate-steps {
-    &__header {
-        max-width: 550px;
-		margin-bottom: 45px;
-	}
-
-    &__content {
-        display: flex;
-        gap: 20px;
-    }
-
     .picture {
         position: relative;
-        min-height: 510px;
-        padding: 38px 15px 0 0;
         display: flex;
-        flex-basis: calc(32% - 10px);
-        justify-content: flex-end;
+        justify-content: space-between;
         background-color: #e5e3e2;
-        border-radius: 30px;
+        @include theme.border-radius;
 
         &__image {
-            position: absolute;
-            left: -55px;
-            bottom: 0;
-            width: 362px;
-            height: 440px;
+            position: relative;
+            margin-top: auto;
             display: block;
-            object-fit: cover;
+            object-fit: contain;
         }
 
         &__caption {
-            max-width: 160px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 20px;
             font-style: italic;
 
             .heading {
-                margin-bottom: 5px;
+                font-size: 18px;
             }
         }
     }
 
     .card {
-        flex-basis: calc(68% - 10px);
-        padding: 54px 40px 0px 80px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
 
-	.btn {
-        min-width: 470px;
-        margin: 30px auto 50px;
-	}
+    .btn {
+        grid-area: c;
+        margin: auto;
+    }
 
-    @include breakpoint($breakpoint-md) {
-		&__header {
-			max-width: 400px;
-		}
-	}
-
-	@include breakpoint($breakpoint-xxs) {
-		padding: 30px 20px;
-		border-radius: $border-radius;
+    @include mq.to(md) {
+		padding: 20px;
 		background-color: $white;
 
-		&__title {
-			max-width: none;
-			margin-bottom: 20px;
-		}
+        &__header {
+            padding: 0 !important;
+        }
+
+        &__content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .picture {
+            &__image {
+                width: 50%;
+                height: auto;
+            }
+
+            &__caption {
+                max-width: 40%;
+            }
+        }
 	}
+
+    @include mq.from(md) {
+        .picture {
+            &__image {
+                width: auto;
+                height: auto;
+                max-width: 100%;
+                max-height: 80%;
+            }
+        }
+
+        .card {
+            padding: 30px;
+        }
+	}
+
+    @include mq.from(lg) {
+        .card {
+            padding: 40px;
+        }
+
+        .list {
+            gap: 15px;
+        }
+
+        .btn {
+            min-width: 470px;
+        }
+    }
 }
 
 .corporate-benefits {
-	margin-bottom: 135px;
+    @include mq.from(md) {
+        --header-max-width: 400px;
 
-    .picture {
-        &__caption {
-            max-width: 160px;
+        &__content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            grid-template-rows: auto auto;
+            grid-template-areas:
+                'a b'
+                'c c';
+            gap: 20px;
+        }
+	}
+
+    @include mq.from(lg) {
+        --header-max-width: 550px;
+
+        &__content {
+            row-gap: 40px;
         }
     }
-
-	@include breakpoint($breakpoint-md) {
-		margin-bottom: 125px;
-
-		&__header {
-			max-width: 400px;
-		}
-	}
-
-	@include breakpoint($breakpoint-xs) {
-		margin-bottom: 115px;
-	}
-
-	@include breakpoint($breakpoint-xxs) {
-		margin-bottom: 105px;
-	}
 }
 
 .corporate-teachers {
-    &__header {
-        margin-bottom: 40px;
-    }
-
     &__title {
         max-width: 880px;
-        margin-bottom: 20px;
     }
 
     &__description {
         max-width: 720px;
-        margin-bottom: 10px;
     }
 
     .grid {
-        margin-bottom: 40px;
+        margin-bottom: 20px;
 
         + .btn {
             max-width: 372px;
             margin: auto;
         }
     }
+
+    @include mq.to(md) {
+        .grid {
+            display: flex;
+            @include scroll-x;
+        }
+
+        .card {
+            min-width: 250px;
+        }
+    }
+
+    @include mq.from(md) {
+        .grid {
+            margin-bottom: 40px;
+        }
+    }
 }
 
 .corporate-extra-benefits {
-	&__header {
-		max-width: 800px;
-		margin-bottom: 45px;
-	}
-
-    &__content {
-		margin-bottom: 30px;
-	}
+    --header-max-width: 800px;
 
     .card {
         display: flex;
-        align-items: flex-end;
-        padding-right: 140px;
+        // TODO: Fix text-card image
+        padding-right: 120px;
     }
 
 	.btn {
 		margin: 40px auto 0;
-        min-width: 372px;
 	}
+    
+    @include mq.from(md) {
+        .btn {
+            min-width: 360px;
+        }
+    }
+
+    @include mq.from(lg) {
+        .card {
+            align-items: flex-end;
+        }
+    }
 }
 
 .corporate-clients {
-	margin-bottom: 130px;
-
 	.card {
         height: 100%;
         display: flex;
@@ -368,36 +325,15 @@
 
 	@include breakpoint($breakpoint-xxs) {
 		.slider {
-			width: calc(100% + 15px);
-
-            &__arrows,
-            &__pagination {
+            &__arrows {
                 display: none;
             }
-		}
-
-		.swiper-wrapper {
-			overflow-x: auto;
-
-			&::-webkit-scrollbar {
-				display: none;
-			}
 		}
 	}
 }
 
 .corporate-reviews {
-	margin-bottom: 150px;
-
-	&__header {
-		max-width: 580px;
-	}
-
-	.slider {
-        &__pagination {
-            margin-top: 40px;
-        }
-	}
+    --header-max-width: 580px;
 
     .card {
         background: none;
@@ -417,66 +353,55 @@
         }
     }
 
-	@include breakpoint($breakpoint-lg) {
-		&__header {
-			max-width: 550px;
-		}
-	}
-
-	@include breakpoint($breakpoint-xxs) {
+    @include mq.to(lg) {
 		.slider {
-			width: calc(100% + 15px);
-
-            &__arrows,
-            &__pagination {
+            &__arrows {
                 display: none;
             }
 		}
-
-		.swiper-wrapper {
-			overflow-x: auto;
-
-			&::-webkit-scrollbar {
-				display: none;
-			}
-		}
 	}
+
+    @include mq.to(md) {
+        .swiper-slide {
+            width: 80%;
+        }
+    }
 }
 
 .corporate-steps {
-    margin-bottom: 150px;
-
-	&__header {
-		max-width: 550px;
-	}
+    --header-max-width: 550px;
+    --caption-max-width: none;
 
     .picture {
-        min-height: 450px;
-        
-        &__image {
-            width: 300px;
-            height: 366px;
-            left: -20px;
-        }
-
         &__caption {
-            max-width: 200px;
+            max-width: var(--caption-max-width);
         }
     }
 
-    .list {
-        align-items: flex-start;
+    @include mq.to(md) {
+        --caption-max-width: 105px;
+    }
 
-        .list-item:nth-child(4),
-        .list-item:nth-child(5) {
-            &::after {
-                content: '';
-                width: 63px;
-                height: 44px;
-                position: absolute;
-                top: -12px;
-                right: -78px;
-                background: url('./static/images/decoration/notes/free.svg') center center / contain no-repeat;
+    @include mq.from(md) {
+        --caption-max-width: 200px;
+
+        &__content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+        }
+
+        .list {
+            align-items: flex-start;
+    
+            .list-item:nth-child(4),
+            .list-item:nth-child(5) {
+                @include decoration('notes/free.svg', after) {
+                    top: -12px;
+                    right: -78px;
+                    width: 63px;
+                    height: 44px;
+                }
             }
         }
     }

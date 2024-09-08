@@ -1,7 +1,12 @@
-<div class="{{html_classes(class ?: [], 'card', color ? 'card--' ~ color : [], {
-    'card--hover': hover,
-    'card--horizontal': horizontal
-})}}">
+<div class="{{html_classes(class ?: [],
+    'card',
+    color ? 'card--' ~ color : [],
+    size ? 'card--' ~ size : [],
+    {
+        'card--hover': hover,
+        'card--horizontal': horizontal,
+    })
+}}">
     {% if image or block('media') is defined %}
         <div class="card__media">
             {% if image %}

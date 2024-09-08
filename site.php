@@ -128,6 +128,7 @@ class SayYesSite extends Site {
             'prices' => $prices,
             'links' => $links
         ];
+        $context['COMPANY_NAME'] = 'SAY&nbsp;YES!';
         $context['COMPANY_AGE'] = date('Y') - 2013;
         $context['FACEBOOK_PIXEL_IDS'] = $this->facebook_pixel_ids;
         $context['GA_MEASUREMENT_ID'] = $this->google_analytics_id;

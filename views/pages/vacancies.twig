@@ -46,7 +46,8 @@
 						description: 'Вы энергичны и дружелюбны. Вы обладаете способностью и желанием «заряжать» учеников.',
 						image: 'heart'
 					}
-				]
+				],
+				size: 'sm'
 			} %}
 		{% endblock %}
 	{% endembed %}
@@ -57,18 +58,18 @@
 		color: 'purple'
 	} %}
 		{% block content %}
-			<div class="cards grid grid--3 grid--sm-2">
+			<div class="grid grid-2-sm grid-3-lg">
 				{% for item in [
 					{
 						title: 'Достойный доход',
 						list: [
 							{
-								label: 'Средний доход:<br>',
-								value: '55 тыс. руб.'
+								label: 'Средний доход:',
+								value: '<strong>55&nbsp;тыс.&nbsp;руб.</strong>'
 							},
 							{
-								label: 'Максимальный доход:<br>',
-								value: '100 тыс. руб.'
+								label: 'Максимальный доход:',
+								value: '<strong>100&nbsp;тыс.&nbsp;руб.</strong>'
 							}
 						]
 					},
@@ -93,7 +94,7 @@
 						description: 'Формат занятости выбираете вы.'
 					}
 				] %}
-					<div class="text-card card">
+					<div class="text-card card card--sm">
 						<h4 class="card__title">{{item.title}}</h4>
 
 						{% if item.description %}
@@ -102,7 +103,7 @@
 
 						{% if item.list %}
 							<div class="card__content">
-								<ul class="list">
+								<ul class="list list--gap-sm">
 									{% for item in item.list %}
 										<li class="list-item">
 											{{item.label}}
@@ -124,12 +125,12 @@
 		horizontal: true
 	} %}
 		{% block content %}
-			<div class="cards grid grid--2">
+			<div class="grid grid-2-sm">
 				{% for item in [
 					{
 						subtitle: 'Шаг 1',
 						title: 'Отклик',
-						description: 'Отправьте резюме на вакансию школы английского языка SAY YES!',
+						description: 'Отправьте резюме на вакансию школы английского языка ' ~ COMPANY_NAME,
 						image: 'mail'
 					},
 					{
@@ -151,8 +152,8 @@
 						image: 'note'
 					}
 				] %}
-					<div class="text-card text-card--{{item.image}}-bg card">
-						<p class="card__subtitle bold">{{item.subtitle}}</p>
+					<div class="text-card text-card--{{item.image}}-bg card card--sm">
+						<p class="card__suptitle">{{item.subtitle}}</p>
 						<h3 class="card__title">{{item.title}}</h3>
 						<p class="card__description">{{item.description}}</p>
 					</div>
@@ -178,9 +179,11 @@
 
 	{% embed 'components/section.twig' with {
 		id: 'vacancies-cta',
-		name: 'vacancies-cta'
+		name: 'cta',
+		class: 'vacancies-cta',
+		color: 'yellow'
 	} %}
-		{% block title %}
+		{% block content %}
 			<a class="link link--primary link--underlined" href="https://hh.ru/employer/1418679" target="_blank" rel="noopener">Отправьте нам свое резюме</a>, а мы окружим вас заботой и мотивированными студентами
 		{% endblock %}
 	{% endembed %}

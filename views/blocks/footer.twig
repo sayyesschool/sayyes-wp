@@ -18,8 +18,7 @@
 								content: 'Напишите нам в WhatsApp',
 								link: links.wa_phone
 							}
-						],
-						gap: 'xs'
+						]
 					} %}
 				</div>
 
@@ -34,6 +33,8 @@
 					<div class="footer__title">Адрес школы:</div>
 					<div class="footer__item">{{site_data.contacts.address}}</div>
 				</div>
+
+				{% include 'blocks/social.twig' %}
 			</div>
 
 			<div class="footer__column"></div>
@@ -58,7 +59,7 @@
 				<div class="footer__courses-formats">
 					<div class="footer__title">Курсы и программы школы</div>
 
-					<div class="flex gap-m">
+					<div class="flex-column-s flex-row-m gap-m">
 						<div class="footer__courses">
 							<div class="footer__title">Курсы</div>
 
@@ -110,7 +111,7 @@
 
 			<div class="footer__column">
 				<div class="footer__copyright">
-					<p>© 2013–{{ "now"|date('Y') }} SAY YES!</p>
+					<p>© 2013–{{ "now"|date('Y') }} {{COMPANY_NAME}}</p>
 					<p>Все права защищены</p>
 				</div>
 			</div>

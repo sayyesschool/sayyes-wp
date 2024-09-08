@@ -1,43 +1,28 @@
+@use 'styles/components/heading';
+@use 'styles/mq';
+@use 'styles/mixins';
+
 .trial-lesson-cta {
-	margin: 100px auto;
-	text-align: center;
-
-	@include mq(desktop) {
-		padding: 60px 204px;
-
-		&__container {
-			@include decoration('elements/hourglass.svg', before) {
-				top: -100px;
-				right: 130px;
-				width: 75px;
-				height: 85px;
-			}
-		}
-	
-		&__content {
-			@include heading('md');
-		}
-	
-		@include decoration('elements/book-with-pen.svg', before) {
-			bottom: -20px;
-			left: -20px;
-			width: 175px;
-			height: 215px;
-		}
-	
-		@include decoration('elements/statue-of-liberty.svg', after) {
-			bottom: -25px;
-			right: 35px;
-			width: 124px;
-			height: 251px;
-		}
+	@include mixins.decoration('elements/book-with-pen.svg', before) {
+		bottom: -20px;
+		left: -20px;
+		width: 175px;
+		height: 215px;
 	}
 
-	@include breakpoint($breakpoint-md) {
-		padding: 60px 145px;
+	@include mixins.decoration('elements/statue-of-liberty.svg', after) {
+		bottom: -25px;
+		right: 35px;
+		width: 124px;
+		height: 251px;
 	}
 
-	@include breakpoint($breakpoint-sm) {
-		padding: 60px 25px;
+	.cta__container {
+		@include mixins.decoration('elements/hourglass.svg', before) {
+			top: -100px;
+			right: 130px;
+			width: 75px;
+			height: 85px;
+		}
 	}
 }

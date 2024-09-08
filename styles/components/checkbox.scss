@@ -1,3 +1,6 @@
+@use 'styles/mq';
+@use 'styles/variables' as *;
+
 .checkbox {
 	position: relative;
 	font-size: 14px;
@@ -50,13 +53,10 @@
 
 	&__description {
 		display: none;
-
-		a {
-			display: block;
-		}
+		padding-left: 20px;
 	}
 
-	@include breakpoint($breakpoint-xs) {
+	@include mq.to(md) {
 		&__label {
 			display: none;
 		}

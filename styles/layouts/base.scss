@@ -1,10 +1,27 @@
+@use 'styles/mq';
+@use 'styles/variables';
+
+body {
+    @include mq.to(md) {
+		padding-top: 65px;
+	}
+
+	@include mq.from(md) {
+		padding-top: 105px;
+	}
+}
+
 .main {
     max-width: 1320px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 20px 10px 0;
 
-    @include breakpoint($breakpoint-md) {
-        padding: 0 15px;
+    @include mq.from(md) {
+        padding: 20px 15px 0;
+    }
+
+    @include mq.from(lg) {
+        padding: 20px 20px 0;
     }
 }
 
@@ -38,7 +55,7 @@
         }
 
         a {
-            color: $purple;
+            color: variables.$purple;
 
             &:hover {
                 text-decoration: underline;

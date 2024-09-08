@@ -1,7 +1,8 @@
 {% embed 'components/section.twig' with {
     name: 'courses',
     title,
-    description
+    description,
+    padded: true
 } %}
     {% block content %}
         {% if not tabs %}
@@ -14,15 +15,16 @@
             {% embed 'components/tabs.twig' with {
                 tabs: [
                     {
-                        content: 'Курсы для взрослых',
+                        content: 'Для взрослых',
                         value: 'adults',
                         active: true
                     },
                     {
-                        content: 'Курсы для детей',
+                        content: 'Для детей',
                         value: 'children'
                     }
                 ],
+                centered: tabs_centered,
                 color: 'yellow',
                 pills: true
             } %}
@@ -41,8 +43,8 @@
                             {% block content %}
                                 {% if with_help %}
                                     <div class="text-card card">
-                                        <p class="text text--lg">Затрудняетесь с выбором курса или ваша цель специфична?</p>
-                                        <h3 class="heading heading--md">Подберем курс под ваши цели или создадим индивидуальный курс под вас!</h3>
+                                        <p class="text">Затрудняетесь с выбором курса или ваша цель специфична?</p>
+                                        <h3 class="heading heading-4">Подберем курс под ваши цели или создадим индивидуальный курс под вас!</h3>
                                         <button class="btn btn--purple btn--full" data-modal-trigger="request-modal" data-modal-options="tab:adults">Попробовать бесплатно</button>
                                     </div>
                                 {% endif %}
@@ -63,8 +65,8 @@
                             {% block content %}
                                 {% if with_help %}
                                     <div class="text-card card">
-                                        <h4 class="text text--lg">Затрудняетесь с выбором курса или ваша цель специфична?</h4>
-                                        <h3 class="heading heading--md">Подберем курс под ваши цели или создадим индивидуальный курс под вас!</h3>
+                                        <h4 class="text">Затрудняетесь с выбором курса или ваша цель специфична?</h4>
+                                        <h3 class="heading heading-4">Подберем курс под ваши цели или создадим индивидуальный курс под вас!</h3>
                                         <button class="btn btn--purple btn-full" data-modal-trigger="request-modal" data-modal-options="tab:children">Попробовать бесплатно</button>
                                     </div>
                                 {% endif %}

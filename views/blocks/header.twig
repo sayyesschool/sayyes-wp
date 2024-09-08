@@ -1,33 +1,37 @@
-<header class="header opened">
+<header class="header">
 	<div class="header__main">
 		<div class="header__container">
 			{% include 'blocks/logo.twig' with {
 				class: 'header__logo'
 			} %}
 
-			<div class="header__buttons">
-				<button class="btn btn--sm btn--outlined btn--uppercase btn--white" data-modal-trigger="request-modal">Бесплатный урок</button>
+			<div class="header__content">
+				<div class="header__buttons">
+					<button class="header__request btn btn--sm btn--outlined btn--uppercase btn--white" data-modal-trigger="request-modal">Бесплатный урок</button>
 
-				<button class="header__test btn btn--sm btn--uppercase btn-white btn--transparent">Онлайн тест</button>
+					<button class="header__test btn btn--sm btn--uppercase btn-white btn--transparent">Онлайн тест</button>
 
-				<button class="header__callback btn btn--sm btn--uppercase btn-white btn--transparent" data-modal-trigger="callback-modal">Обратный звонок</button>
+					<button class="header__callback btn btn--sm btn--uppercase btn-white btn--transparent" data-modal-trigger="callback-modal">Обратный звонок</button>
+				</div>
+
+				<div class="header__contacts">
+					<div class="header__phones">
+						{% include 'blocks/phone-numbers.twig' with {
+							small: true,
+							white: true
+						} %}
+					</div>
+
+					<div class="header__address">
+						<span class="header__city">Москва</span>
+						<span class="header__time">ПН-ПТ с 12:00 до 21:00</span>
+					</div>
+				</div>
 			</div>
 
-			<div class="header__phones">
-				{% include 'blocks/phone-numbers.twig' with {
-					small: true,
-					white: true
-				} %}
-			</div>
+			{# <a class="header__login btn btn--sm btn--uppercase btn-white btn--transparent" href="#">Войти</a> #}
 
-			<div class="header__contacts">
-				<div class="header__city">Москва</div>
-				<div class="header__time">ПН-ПТ с 12:00 до 21:00</div>
-			</div>
-
-			{# <a class="header__login" href="#">Войти</a> #}
-
-			<button class="header__burger">
+			<button class="header__burger btn--transparent">
 				<span class="header__burger-line"></span>
 				<span class="header__burger-line"></span>
 				<span class="header__burger-line"></span>

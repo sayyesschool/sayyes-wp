@@ -1,5 +1,12 @@
+@use 'styles/mixins' as *;
+@use 'styles/variables' as *;
+
 #request-modal {
     z-index: 1001;
+
+    .tabs {
+        --nav-max-width: calc(100% - 60px);
+    }
 
     .feedback-block {
         width: 955px;

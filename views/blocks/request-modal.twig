@@ -22,7 +22,9 @@
                     <div class="feedback-block__content">
                         <p class="feedback-block__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы и расскажем о курсах</p>
 
-                        {% include 'blocks/request-form.twig' %}
+                        {% include 'blocks/request-form.twig' with {
+                            button_text: 'Оставить заявку'
+                        } %}
                     </div>
                 </div>
 
@@ -31,7 +33,8 @@
                         <p class="feedback-block__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы и расскажем о курсах</p>
 
                         {% include 'blocks/request-form.twig' with {
-                            children: true
+                            children: true,
+                            button_text: 'Оставить заявку'
                         } %}
                     </div>
                 </div>

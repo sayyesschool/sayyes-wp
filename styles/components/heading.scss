@@ -1,81 +1,127 @@
 @use 'sass:list';
 @use 'sass:map';
 
+@use 'styles/mq';
 @use 'styles/variables';
-@use 'styles/mixins';
 
-@mixin heading($size: 'md', $weight: 700) {
-    $sizes: map.get(variables.$heading-sizes, $size);
-    $font-size: list.nth($sizes, 1);
-	$line-height: list.nth($sizes, 2);
+$heading-sizes: (
+    h1: (
+        sm: (42px, 40px, 700),
+        md: (42px, 40px, 700),
+        lg: (68px, 60px, 700)
+    ),
+    h2: (
+        sm: (28px, 30px, 700),
+        md: (36px, 35px, 700),
+        lg: (46px, 45px, 700)
+    ),
+    h3: (
+        sm: (26px, 25px, 700),
+        md: (32px, 30px, 700),
+        lg: (42px, 40px, 700)
+    ),
+    h4: (
+        sm: (18px, 20px, 700),
+        md: (24px, 25px, 700),
+        lg: (32px, 30px, 700)
+    ),
+    h5: (
+        sm: (18px, 20px, 700),
+        md: (18px, 20px, 700),
+        lg: (24px, 25px, 700)
+    )
+);
+
+@mixin heading($size, $height: null, $weight: 700) {
+    font-size: $size;
+    @if $height {
+        line-height: $height;
+    }
+    @if $weight {
+        font-weight: $weight;
+    }
+}
+
+@mixin styles($size, $height: null, $weight: null) {
+    font-size: $size;
+    @if $height {
+        line-height: $height;
+    }
+    @if $weight {
+        font-weight: $weight;
+    }
+}
+
+@mixin h1($weight: null) {
+    @include _heading(h1, $weight: $weight);
+}
+
+@mixin h2($weight: null) {
+    @include _heading(h2, $weight: $weight);
+}
+
+@mixin h3($weight: null) {
+    @include _heading(h3, $weight: $weight);
+}
+
+@mixin h4($weight: null) {
+    @include _heading(h4, $weight: $weight);
+}
+
+@mixin h5($weight: null) {
+    @include _heading(h5, $weight: $weight);
+}
+
+@mixin _heading($level, $weight: null) {
+    $sizes: map.get($heading-sizes, $level);
+    $values: map.get($sizes, sm);
+    $font-size: list.nth($values, 1);
+    $line-height: list.nth($values, 2);
+    $font-weight: $weight or list.nth($values, 3);
 
     font-size: $font-size;
-    font-weight: $weight;
     line-height: $line-height;
-    letter-spacing: 0em;
-}
+    font-weight: $font-weight;
 
-@mixin xl {
-    @include heading('xl');
+    @include mq.from(md) {
+        $values: map.get($sizes, md);
+        $font-size: list.nth($values, 1);
+        $line-height: list.nth($values, 2);
+        $font-weight: $weight or list.nth($values, 3);
 
-    @include mixins.bp(lt-lg) {
-        font-size: 42px;
-        line-height: 40px;
+        font-size: $font-size;
+        line-height: $line-height;
+        font-weight: $font-weight;
+    }
+
+    @include mq.from(lg) {
+        $values: map.get($sizes, lg);
+        $font-size: list.nth($values, 1);
+        $line-height: list.nth($values, 2);
+        $font-weight: $weight or list.nth($values, 3);
+
+        font-size: $font-size;
+        line-height: $line-height;
+        font-weight: $font-weight;
     }
 }
 
-@mixin lg {
-    @include heading('lg');
-
-    @include mixins.bp(lt-lg) {
-        font-size: 36px;
-        line-height: 35px;
-    }
+.heading-1 {
+    @include h1;
 }
 
-@mixin md {
-    @include heading('md');
-
-    @include mixins.bp(lt-lg) {
-        font-size: 32px;
-        line-height: 30px;
-    }
+.heading-2 {
+    @include h2;
 }
 
-@mixin sm {
-    @include heading('sm');
-
-    @include mixins.bp(lt-lg) {
-        font-size: 18px;
-        line-height: 20px;
-    }
+.heading-3 {
+    @include h3;
 }
 
-@mixin xs {
-    @include heading('xs');
-
-    @include mixins.bp(lt-lg) {
-        font-size: 16px;
-        line-height: 15px;
-    }
+.heading-4 {
+    @include h4;
 }
 
-.heading--xl {
-    @include xl;
-}
-
-.heading--lg {
-    @include lg;
-}
-
-.heading--md {
-    @include md;
-}
-
-.heading--sm {
-    @include sm;
-}
-
-.heading--xs {
-    @include xs;
+.heading-5 {
+    @include h4;
 }

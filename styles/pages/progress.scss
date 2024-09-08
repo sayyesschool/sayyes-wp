@@ -1,11 +1,19 @@
+@use 'styles/mq';
+
 #progress-page {
     .main-section {
-        &__title {
-            max-width: 680px;
+        @include mq.to(md) {
+            --title-max-width: 300px;
         }
 
-        &__description {
-            max-width: 750px;
+        @include mq.for(md) {
+            --title-max-width: 360px;
+            --description-max-width: 600px;
+        }
+
+        @include mq.from(lg) {
+            --title-max-width: 460px;
+            --description-max-width: 700px;
         }
     }
 }
@@ -13,38 +21,23 @@
 .student-results {
     &__header {
         text-align: center;
-        margin-bottom: 65px;
+    }
+
+    &__title,
+    &__description {
+        margin-left: auto;
+        margin-right: auto;
     }
 
     &__title {
         max-width: 720px;
-        margin: 0 auto 20px;
     }
 
     &__description {
         max-width: 600px;
-        margin: 0 auto;
     }
 
     .btn {
         margin: 0 auto;
-    }
-
-    @include breakpoint($breakpoint-lg) {
-        &__header {
-            margin-bottom: 40px;
-        }
-    }
-
-    @include breakpoint($breakpoint-md) {
-        &__content {
-            gap: 15px;
-        }
-    }
-
-    @include breakpoint($breakpoint-xs) {
-        &__header {
-            margin-bottom: 30px;
-        }
     }
 }

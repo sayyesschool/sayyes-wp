@@ -4,31 +4,33 @@
 	{% include 'sections/main.twig' with {
         title: page.heading ?? page.title,
         description: page.content,
-        button: true,
-        image: page.thumbnail
+        image: page.thumbnail,
+        button: true
     } %}
 
 	{% embed 'components/section.twig' with {
         name: 'about-format',
         title: sections.about.title,
-        horizontal: true
+        horizontal: true,
+        padded: true
     } %}
         {% block content %}
-            <div class="content">
-                <p class="text">{{sections.about.content[0]}}</p>
-                <p class="text text--bold">{{sections.about.content[1]}}</p>
+            <div class="text">
+                <p>{{sections.about.content[0]}}</p>
+                <p>{{sections.about.content[1]}}</p>
             </div>
         {% endblock %}
     {% endembed %}
 
     {% embed 'components/section.twig' with {
         name: 'format-facts',
-        title: sections.facts.title
+        title: sections.facts.title,
+        padded: true
     } %}
         {% block content %}
-            <div class="grid grid--2-1-2">
+            <div class="grid grid-2-1-2">
                 {% for item in sections.facts.items %}
-                    <div class="fact-card text-card--{{item.image}}-bg card">
+                    <div class="text-card text-card--{{item.image}}-bg card card--sm">
                         <h4 class="card__title">{{item.title}}</h4>
                         <p class="card__description">{{item.description}}</p>
                     </div>
@@ -52,9 +54,9 @@
             horizontal: true
         } %}
             {% block content %}
-                <div class="content">
-                    <p class="text">{{sections.lessons.content[0]}}</p>
-                    <p class="text text--bold">{{sections.lessons.content[1]}}</p>
+                <div class="text">
+                    <p>{{sections.lessons.content[0]}}</p>
+                    <p>{{sections.lessons.content[1]}}</p>
                 </div>
             {% endblock %}
         {% endembed %}
@@ -67,6 +69,7 @@
                 image: format.video.image ?: {
                     path: 'video-sections/video-section-2.jpg'
                 },
+                caption: 'Всего 1.5 минуты',
                 framed: true,
                 modal: true
             }
@@ -110,7 +113,8 @@
         {% embed 'components/section.twig' with {
             name: 'online-class',
             title: 'Домашнее задание на удобной онлайн-платформе',
-            horizontal: true
+            horizontal: true,
+            padded: true
         } %}
             {% block description %}
                 <p>Закрепление материала происходитна надежной платформе, специально разработанной нашей школой.</p>
@@ -125,12 +129,13 @@
 
     {% embed 'components/section.twig' with {
         name: 'format-features',
-        title: sections.features.title
+        title: sections.features.title,
+        padded: true
     } %}
         {% block content %}
-            <div class="grid grid--4">
+            <div class="grid grid-2-sm grid-4-xl">
                 {% for item in sections.features.items %}
-                    <div class="text-card card">
+                    <div class="text-card card card--yellow card--sm">
                         <h4 class="card__title">{{item.title}}</h4>
                         <p class="card__description">{{item.description}}</p>
                     </div>
@@ -142,7 +147,8 @@
     {% embed 'components/section.twig' with {
         name: 'format-testimonials',
         title: sections.testimonials.title ?: 'Отзывы о формате <br>' ~ format.title,
-        description: 'За ' ~ COMPANY_AGE ~ ' работы, обучили более 10 000 человек и получили более 800 отзывов'
+        description: 'За ' ~ COMPANY_AGE ~ ' работы, обучили более 10 000 человек и получили более 800 отзывов',
+        padded: true
     } %}
         {% block content %}
             {% include 'blocks/course-testimonials-slider.twig' with {
@@ -152,6 +158,7 @@
     {% endembed %}
 
 	{% include 'sections/faq.twig' with {
+        title: 'На часто задаваемые вопросы об обучении отвечает Шаталова Вера, сооснователь ' ~ COMPANY_NAME,
         items: sections.faq.items
     } %}
 

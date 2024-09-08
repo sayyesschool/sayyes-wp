@@ -1,24 +1,25 @@
-.student-progress-slider {
-	.slider {
-		&__arrows {
-			right: 10%;
-		}
+@use 'styles/mixins';
+@use 'styles/mq';
 
-		@include breakpoint($breakpoint-md) {
-			&__arrows {
-				right: 0;
-			}
-		}
-	
-		@include breakpoint($breakpoint-xxs) {
-			&__pagination {
-				padding-left: 48%;
-			}
-		}
-	
-		@include breakpoint($breakpoint-mobile) {
+.student-progress-slider {
+	@include mq.to(md) {
+		@include mixins.overflow(30px);
+	}
+
+	@include mq.from(lg) {
+		overflow: visible;
+	}
+
+	.slider {
+		@include mq.to(md) {
 			&__arrows {
 				display: none;
+			}
+		}
+
+		@include mq.from(md) {
+			&__pagination {
+				padding-left: 48%;
 			}
 		}
 	}

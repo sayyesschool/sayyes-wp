@@ -24,7 +24,7 @@
 	}
 
 	@include breakpoint($breakpoint-xxs) {
-		.tabs__tab {
+		.tab {
 			display: none;
 		}
 

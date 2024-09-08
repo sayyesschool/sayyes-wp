@@ -1,8 +1,16 @@
+@use 'styles/mq';
+@use 'styles/variables';
+
+// TODO: Add negative margin and padding to make slider fullscreen
+
 .slider {
-	margin-top: -30px;
-	padding-top: 70px;
 	position: relative;
 	overflow: hidden;
+
+	@include mq.from(lg) {
+		margin-top: -70px;
+		padding-top: 70px;
+	}
 
 	&__arrows {
 		display: flex;
@@ -49,7 +57,7 @@
 			width: 2px;
 			height: 12px;
 			border-radius: 5px;
-			background-color: $black;
+			background-color: variables.$black;
 		}
 
 		position: relative;
@@ -59,13 +67,13 @@
 
 		border-radius: 100%;
 		border: none;
-		background-color: $white;
+		background-color: variables.$white;
 		transition: 0.3s ease filter;
 
 		&.swiper-button-disabled {
 			&::before,
 			&::after {
-				background-color: lighten($black, 50%);
+				background-color: lighten(variables.$black, 50%);
 			}
 
 			&:hover {
@@ -87,12 +95,12 @@
 			width: 8px;
 			height: 8px;
 			background-color: transparent;
-			border: 2px solid $black;
+			border: 2px solid variables.$black;
 			border-radius: 100%;
 			opacity: 1;
 
 			&-active {
-				background-color: $black;
+				background-color: variables.$black;
 			}
 		}
 	}

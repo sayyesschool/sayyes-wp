@@ -1,7 +1,11 @@
+@use 'styles/mq';
+@use 'styles/mixins' as *;
+@use 'styles/variables' as *;
+
 .list {
 	display: flex;
 	flex-direction: column;
-	gap: 15px;
+	gap: 10px;
 
 	&-item {
 		position: relative;
@@ -12,9 +16,14 @@
 			align-items: center;
 		}
 
+		&__content {
+			display: flex;
+			flex-direction: column;
+			gap: 5px 10px;
+		}
+
 		&__title {
 			font-weight: 800;
-			margin-bottom: 10px;
 		}
 	
 		&__description {
@@ -28,24 +37,39 @@
 	}
 
 	&--dl {
-		.list-item__content {
-			display: flex;
-			align-items: center;
+		.list-item {
+			&__content {
+				align-items: center;
+			}
 		}
 	}
 
 	&--check {
 		.list-item {
 			display: flex;
-			gap: 1rem;
+			gap: 16px;
 
 			&::before {
 				content: '';
 				display: inline-block;
-				width: 42px;
-				height: 42px;
 				flex-shrink: 0;
+				width: 24px;
+				height: 24px;
 				background: url('./static/images/icons/check.svg') center center/contain no-repeat;
+			}
+
+			@include mq.from(md) {
+				&::before {
+					width: 36px;
+					height: 36px;
+				}
+			}
+
+			@include mq.from(lg) {
+				&::before {
+					width: 42px;
+					height: 42px;
+				}
 			}
 		}
 	}
@@ -73,13 +97,14 @@
 		counter-reset: steps;
 
 		.list-item {
+			display: flex;
+			gap: 16px;
+
 			&::before {
 				content: 'Шаг ' counter(steps) '.';
 				counter-increment: steps;
-				margin-right: 1rem;
-				font-size: 18px;
+				flex-shrink: 0;
 				font-weight: 800;
-				line-height: 20px;
 			}
 		}
 	}
@@ -114,13 +139,13 @@
 		gap: 20px;
 	}
 
-	@include breakpoint($breakpoint-lg) {
+	@include mq.from(lg) {
 		&--ul,
 		&--ul-sm {
-			.list__item {
+			.list-item {
 				&::before {
 					width: 22px;
-					height: 21px;
+					height: 22px;
 					top: -3px;
 					left: -35px;
 				}
@@ -128,9 +153,9 @@
 		}
 	}
 
-	@include breakpoint($breakpoint-md) {
+	@include mq.from(md) {
 		&--ol {
-			.list__item {
+			.list-item {
 				&::before {
 					left: -60px;
 					font-size: 16px;

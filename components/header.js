@@ -33,7 +33,7 @@ export default class Header extends Component {
 
         if (isSmallScreen) {
             this.element.classList.remove('opened');
-            closeAllSubnav();
+            this.closeAllSubnav();
         } else {
             this.element.classList.toggle('opened', isScrollingUp);
         }
@@ -51,12 +51,13 @@ export default class Header extends Component {
         const isItem = target.classList.contains(Header.classes.navItem);
         const subnav = target.querySelector('.subnav');
 
+
         if (subnav && isItem) {
             if (subnav.clientHeight) {
                 target.classList.remove('active');
                 subnav.style.height = 0;
             } else {
-                closeAllSubnav();
+                this.closeAllSubnav();
                 target.classList.add('active');
                 subnav.style.height = `${subnav.scrollHeight}px`;
             }
@@ -64,7 +65,7 @@ export default class Header extends Component {
     }
 
     closeAllSubnav() {
-        this.listItems.forEach(item => {
+        this.navItems.forEach(item => {
             const subnav = item.querySelector('.subnav');
 
             item.classList.remove('active');

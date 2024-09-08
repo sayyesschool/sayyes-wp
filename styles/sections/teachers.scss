@@ -1,0 +1,42 @@
+@use 'styles/mq';
+
+.teachers {
+    // TODO: Move to section
+    &__container {
+        padding: 0 20px;
+    }
+
+    &__title {		
+        max-width: 880px;
+        margin: 0 auto 15px;
+        text-align: center;
+    }
+
+    &__description {
+        max-width: 630px;
+        margin: 0 auto 10px;
+        text-align: center;
+    }
+
+    .tabs {
+        margin: 35px auto 40px;
+
+        &__nav {
+            margin: 0 auto 40px;
+        }
+        
+        @include mq.from(md) {
+            .tab {
+                max-width: 520px;
+            }
+        }
+    }
+
+    .grid {
+        margin-bottom: 40px;
+    }
+
+    .btn {
+        margin: 0 auto;
+    }
+}

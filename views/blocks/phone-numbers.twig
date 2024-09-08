@@ -1,6 +1,6 @@
-<ul class="phone-numbers">
+<ul class="phone-numbers list">
 	{% for name, number in site_data.contacts.phone_numbers %}
-		<li class="phone-numbers__item">
+		<li class="phone-numbers__item list-item">
 			{% include 'components/icon.twig' with {
 				name: name == 'main' ? 'phone' : name
 			} %}

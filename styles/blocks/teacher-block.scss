@@ -1,250 +1,146 @@
+@use 'styles/components/heading';
+@use 'styles/components/text';
+@use 'styles/mq';
+@use 'styles/theme';
+@use 'styles/variables';
+
 .teacher-block {
-	width: 668px;
-	height: 430px;
-	padding: 30px;
+	padding: 20px;
 	display: flex;
 	gap: 15px;
-	background-color: $pale-white;
-	border-radius: $border-radius;
+	background-color: variables.$pale-white;
+	@include theme.border-radius;
 
-	&__summary {
-		width: 33%;
+	&__summary,
+	&__info {
 		display: flex;
 		flex-direction: column;
-		gap: 20px;
+		gap: 10px;
 	}
 
-	&__details {
-		width: 67%;
-		display: flex;
-		flex-direction: column;
-		background-color: $white;
-		border-radius: $border-radius-sm;
-	}
-
-	.tabs {
-		height: 100%;
-		border-radius: 15px;
-    	overflow: hidden;
-
-		&__nav {
-			gap: 0;
-			padding: 0 25px;
-			font-size: 14px;
-			font-weight: 800;
-			line-height: 15px;
-		}
-
-		&__tab {
-			min-height: 40px;
-			background-color: $white;
-			border-bottom: 2px solid $pale-white;
-
-			&--active {
-				border-bottom: 2px solid $black;
-			}
-		}
-
-		&__content {
-			max-height: 100%;
-			padding-bottom: 25px;
-			overflow: auto;
-
-			&::after {
-				content: '';
-				width: calc(100% - 3px);
-				height: 25px;
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				box-shadow: 0px -30px 20px -10px $white inset;
-				border-radius: 0 0 $border-radius-sm $border-radius-sm;
-			}
-
-			&::-webkit-scrollbar {
-				width: 3px;
-			}
-		
-			&::-webkit-scrollbar-thumb {
-				background: $linen;
-				border-radius: 10%;
-			}
-		}
-	}
-
-	.video {
-		width: 100%;
-
-		&__btn {
-			bottom: 10px;
-			right: 10px;
-		}
+	&__info {
+		flex: 1;
 	}
 
 	&__title {
-		margin-bottom: 20px;
-		font-weight: 700;
-		line-height: 25px;
+		@include heading.h4;
 	}
 
 	&__free-lesson {
-		margin-bottom: 15px;
-		font-size: 14px;
-		font-weight: 600;
-		line-height: 15px;
+		@include text.body1;
+		margin-top: auto;
 	}
 
-	&__share-link {
-		position: absolute;
-		top: 35px;
-		right: -25px;
-		width: 50px;
-		height: 50px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		border: none;
-		border-radius: 100%;
-		background-color: $white;
+	&__details {
+		background-color: variables.$white;
+		@include theme.border-radius;
+		overflow: hidden;
+	}
+
+	.tabs {
+		&__nav {
+			gap: 0;
+			padding: 0 20px;
+			max-width: none;
+		}
+
+		&__content {
+			padding: 20px;
+			@include theme.scrollable;
+		}
 	}
 
 	.teacher-details {
-		padding: 25px;
-		font-size: 14px;
-		line-height: 15px;
-
 		&__section {
 			display: flex;
 			gap: 10px;
 			margin-bottom: 20px;
 		}
-	
+
 		&__heading {
 			font-weight: 800;
 		}
-	
+
 		&__content {
 			font-weight: 600;
-			
-			p:not(:last-of-type) {
-				margin-bottom: 10px;
-			}
 		}
 	}
 
-	button.btn {
-		margin: 0;
-		margin-top: auto;
-	}
-
-	@include breakpoint($breakpoint-xxs) {
-		width: 470px;
-		height: 550px;
+	@include mq.to(sm) {
 		flex-direction: column;
 
-		&__summary {
-			width: 100%;
-			flex-direction: row;
-			gap: 15px;
+		&__share-link {
+			display: none;
 		}
 
-		&__details {
-			width: 100%;
-		}
-
-		.video {
-			width: 35%;
-			margin-bottom: 0;
-
-			&__btn {
-				width: 35px;
-				height: 35px;
-				background-size: 40%;
+		.tabs {
+			&__content {
+				max-height: 300px;
 			}
-		}
-
-		&__info {
-			width: 65%;
-		}
-
-		&__free-lesson {
-			margin-bottom: 20px;
-		}
-
-		.teacher-details,
-		.teacher-reviews {
-			height: 310px;
 		}
 	}
 
-	@include breakpoint($breakpoint-mobile) {
-		width: 420px;
-		padding: 20px;
-
+	@include mq.from(sm) {
+		flex-direction: row;
+		
 		&__summary {
-			gap: 10px;
-		}
-
-		&__media {
 			width: 40%;
 		}
 
-		&__info {
+		&__details {
 			width: 60%;
 		}
 
 		&__share-link {
+			position: absolute;
 			top: 30px;
 			right: -15px;
 			width: 40px;
 			height: 40px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border: none;
+			border-radius: 100%;
+			background-color: variables.$white;
 
 			img {
 				width: 70%;
 			}
 		}
+
+		.tabs {
+			&__content {
+				max-height: 360px;
+			}
+		}
 	}
 
-	@include breakpoint($breakpoint-sm-mobile) {
+	@include mq.from(lg) {
+		padding: 30px;
+		gap: 30px;
+
+		&__summary,
+		&__info {
+			gap: 20px;
+		}
+
+		&__share-link {
+			top: 35px;
+			right: -25px;
+			width: 50px;
+			height: 50px;
+		}
+
 		.tabs {
 			&__nav {
-				padding: 0;
-				border-radius: $border-radius $border-radius 0 0;
+				padding: 0 30px;
 			}
 
-			&__tab {
-				display: none;
+			&__content {
+				padding: 30px;
+				max-height: 480px;
 			}
-		}
-	}
-
-	@include breakpoint($breakpoint-sm-mobile) {
-		width: 315px;
-		height: 630px;
-
-		&__summary {
-			width: 100%;
-			flex-direction: column;
-			gap: 10px;
-		}
-
-		&__media {
-			width: 70%;
-			margin: 0 auto;
-		}
-
-		&__info {
-			width: 100%;
-		}
-
-		&__title,
-		&__free-lesson {
-			margin-bottom: 10px;
-		}
-
-		.teacher-details,
-		.teacher-reviews {
-			height: 220px;
 		}
 	}
 }

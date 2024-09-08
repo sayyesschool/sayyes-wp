@@ -1,3 +1,9 @@
+@use 'styles/components/text';
+
+@use './mq';
+@use './theme';
+@use './variables';
+
 *,
 *:before,
 *:after {
@@ -5,24 +11,12 @@
 }
 
 body {
-	background-color: $body-color;
-	padding-top: 105px;
-	font-size: 18px;
-	font-weight: 600;
-	line-height: 20px;
-	color: $font-color;
-	font-family: $font-family;
+	background-color: variables.$body-color;
+	color: variables.$font-color;
+	font-family: variables.$font-family;
 	font-variant-numeric: lining-nums proportional-nums;
+	@include text.body1;
 	overflow-x: hidden;
-
-	@include breakpoint($breakpoint-lg) {
-		font-size: 16px;
-		line-height: 18px;
-	}
-
-	@include breakpoint($breakpoint-xxs) {
-		padding-top: 70px;
-	}
 }
 
 a,
@@ -32,119 +26,22 @@ button {
 	text-decoration: none;
 }
 
+button,
+.menu-item {
+	-webkit-tap-highlight-color: transparent;
+}
+
 strong,
 .bold {
 	font-weight: 800;
 }
 
-.block {
-	display: flex;
-	gap: 20px;
-
-	@include breakpoint($breakpoint-md) {
-		gap: 15px;
-	}
-
-	@include breakpoint($breakpoint-sm) {
-		gap: 10px;
-	}
-
-	@include breakpoint($breakpoint-xs) {
-		gap: 5px;
-	}
-
-	@include breakpoint($breakpoint-xxs) {
-		flex-direction: column;
-		align-items: center;
-	}
-}
-
-.flex {
-	display: flex;
-
-	&--column {
-		flex-direction: column;
-	}
-
-	&--wrap {
-		flex-wrap: wrap;
-	}
-
-	&--gap-lg {
-		gap: 20px;
-	}
-
-	&--gap-md {
-		gap: 15px;
-	}
-
-	&--gap-sm {
-		gap: 10px;
-	}
-
-	&--gap-xs {
-		gap: 5px;
-	}
-}
-
-.heading {
-	display: block;
-	font-size: 24px;
-	font-weight: 700;
-}
-
-.hidden {
-	display: none !important;
-}
-
-.image {
-	width: 100%;
-	display: block;
-	object-fit: cover;
-	border-radius: $border-radius;
-
-	@include breakpoint($breakpoint-sm) {
-		border-radius: $border-radius-sm;
-	}
-}
-
-.tags {
-	display: flex;
-	gap: 10px;
-}
-
-.tag {
-	display: inline-block;
-	padding: 3px 5px;
-	border: 2px solid #262626;
-	border-radius: 10px;
-	font-size: 14px;
-}
-
-.text {
-	p + p {
-		margin-top: 10px;
-	}
-}
-
-.title {
-	font-size: 46px;
-	font-weight: 700;
-	line-height: 45px;
-}
-
-.admin-bar {
-	.header {
-		top: 32px;
-	}
-}
-
 .color-primary {
-	color: $purple;
+	color: variables.$purple;
 }
 
 .color-yellow {
-	color: $purple;
+	color: variables.$yellow;
 }
 
 .content {
@@ -158,6 +55,60 @@ strong,
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
+	}
+}
+
+.gap {
+	@each $size, $value in variables.$gaps {
+		&-#{$size} {
+			gap: $value;
+		}
+	}
+}
+
+.hidden {
+	display: none !important;
+
+	@each $size in variables.$sizes {
+		&-#{$size} {
+			@include mq.for($size) {
+				display: none !important;
+			}
+		}
+	}
+
+	@each $size in variables.$sizes {
+		&-#{$size}-down {
+			@include mq.to($size) {
+				display: none !important;
+			}
+		}
+	}
+
+	@each $size in variables.$sizes {
+		&-#{$size}-up {
+			@include mq.from($size) {
+				display: none !important;
+			}
+		}
+	}
+}
+
+.scrollable {
+	@include theme.scrollable($fade: false);
+}
+
+.scrollable-fade {
+	@include theme.scrollable;
+}
+
+.admin-bar {
+	.header:not(.expanded) {
+		top: 32px;
+
+		@include mq.to(md) {
+			top: 46px;
+		}
 	}
 }
 

@@ -1,124 +1,228 @@
+@use 'styles/components/heading';
+@use 'styles/components/text';
+@use 'styles/mq';
+@use 'styles/mixins';
+@use 'styles/theme';
+@use 'styles/variables';
+
 .trial-lesson {
 	&__container {
 		max-width: unset;
-	}
-
-	&__header {
-		max-width: 1156px;
-		margin: 0 auto 35px;
-	}
-
-	&__title {
-		max-width: 700px;
-		margin-bottom: 20px;
 	}
 
 	&__description {
 		max-width: 380px;
 	}
 
-	.tabs {
-		&__nav {
-			position: absolute;
-			top: -55px;
-			right: 63px;
+	@include mq.to(md) {
+		&__header {
+			padding: 0 20px;
 		}
 
-		&__tab {
-			min-height: 55px;
-			
-			&:first-of-type {
-				background-color: $yellow;
-			}
-
-			&:last-of-type {
-				background-color: $violet;
-			}
-		}
-
-		@include breakpoint($breakpoint-md) {
-			&__nav {
-				max-width: 370px;
-				top: -40px;
-			}
-
-			&__tab {
-				min-height: 40px;
-			}
-		}
-
-		@include breakpoint($breakpoint-xxs) {
-			&__nav {
-				max-width: none;
-				width: 100%;
-				right: auto;
-				left: 0;
-			}
-
-			&__tab {
-				position: relative;
-				width: 100%;
-
-				&::before {
-					content: '';
-					position: absolute;
-					bottom: -50px;
-					width: 50px;
-					height: 50px;
-					background-color: $violet;
-				}
-
-				&:first-of-type {
-					&::before {
-						content: '';
-						left: 0;
-						background-color: $yellow;
-					}
-				}
-
-				&:last-of-type {
-					&::before {
-						content: '';
-						right: 0;
-						background-color: $violet;
-					}
-				}
-			}
+		&__title {
+			max-width: 270px;
+			margin-bottom: 10px;
 		}
 	}
 
-	@include breakpoint($breakpoint-lg) {
+	@include mq.from(md) {
+		&__header {
+			padding: 0 30px;
+		}
+		
+		&__title {
+			max-width: 360px;
+			margin-bottom: 15px;
+		}
+	}
+
+	@include mq.from(lg) {
+		&__header {
+			padding: 0 40px;
+		}
+
+		&__title {
+			max-width: 580px;
+			margin-bottom: 20px;
+		}
+
 		&__description {
 			margin-bottom: 30px;
 		}
 	}
 
-	@include breakpoint($breakpoint-xxs) {
-		&__description {
-			margin-bottom: 65px;
+	@include mq.from(xl) {
+		&__header {
+			padding: 0 50px;
+		}
+	}
+}
+
+.trial-lesson .tabs {
+	gap: 0;
+
+	&__nav {
+		display: flex;
+	}
+
+	.tab {
+		position: relative;
+
+		&:first-of-type {
+			background-color: variables.$yellow;
+		}
+
+		&:last-of-type {
+			background-color: variables.$violet;
 		}
 	}
 
-	.invite {
-		position: relative;
-		display: flex;
-		justify-content: space-between;
-		padding: 40px 60px 55px;
-		background-color: $yellow;
-		border-radius: $border-radius;
-	
+	@include mq.to(md) {
+		&__nav {
+			max-width: unset;
+			width: 100%;
+		}
+
+		.tab {
+			width: 100%;
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: 100%;
+				width: 50px;
+				height: 50px;
+			}
+
+			&:first-of-type {
+				&::before {
+					left: 0;
+					background-color: variables.$yellow;
+				}
+			}
+
+			&:last-of-type {
+				&::before {
+					right: 0;
+					background-color: variables.$violet;
+				}
+			}
+		}
+	}
+
+	@include mq.from(md) {
+		&__nav {
+			position: absolute;
+			max-width: 370px;
+			top: -40px;
+			right: 30px;
+		}
+
+		.tab {
+			min-height: 40px;
+		}
+	}
+
+	@include mq.from(lg) {
+		&__nav {
+			top: -55px;
+		}
+
+		.tab {
+			min-height: 55px;
+		}
+	}
+}
+
+.trial-lesson-section {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+	@include theme.border-radius;
+
+	&__title {
+		margin-bottom: 20px;
+		@include heading.h3;
+	}
+
+	&__description {
+		@include text.body1;
+	}
+
+	&--adults {
+		background-color: variables.$yellow;
+	}
+
+	&--children {
+		background-color: variables.$violet;
+	}
+
+	@include mq.to(md) {
+		padding: 20px;
+		flex-direction: column;
+
 		&__title {
-			max-width: 381px;
-			margin-bottom: 20px;
-			font-size: 42px;
-			font-weight: 700;
-			line-height: 40px;
+			margin-bottom: 10px;
 		}
-	
+	}
+
+	@include mq.from(md) {
+		padding: 30px;
+
 		&__description {
-			max-width: 290px;
+			max-width: 242px;
 		}
-	
+
+		&::after {
+			bottom: 0;
+			transform: translateX(-50%);
+		}
+
+		&--adults {
+			@include mixins.decoration('pictures/invite.png', after) {
+				left: 465px;
+				width: 545px;
+				height: 404px;
+			}
+
+			&::after {
+				height: 290px;
+				left: 220px;
+			}
+		}
+
+		&--adults &__left {
+			flex-basis: 60%;
+		}
+
+		&--adults &__right {
+			flex-basis: 40%;
+		}
+
+		&--children {
+			@include mixins.decoration('pictures/invite-2.png', after) {
+				left: 432px;
+				width: 566px;
+				height: 374px;
+			}
+
+			&::after {
+				height: 270px;
+				left: 220px;
+			}
+		}
+
+		&--children &__left {
+			flex-basis: 40%;
+		}
+
+		&--children &__right {
+			flex-basis: 60%;
+		}
+	}
+
+	@include mq.from(lg) {
 		&__left {
 			flex-basis: 648px;
 		}
@@ -128,134 +232,40 @@
 			z-index: 1;
 		}
 
-		&::after {
-			content: '';
-			position: absolute;
-			bottom: 0;
-			left: 465px;
-			width: 545px;
-			height: 404px;
-			transform: translateX(-50%);
-			background-image: url('./static/images/pictures/invite.png');
-			background-size: cover;
-			background-repeat: no-repeat;
+		&__right {
+			flex-basis: 70%;
 		}
-	
-		&--children {
-			padding: 40px 60px 105px;
-			background-color: $violet;
 
-			&::after {
-				left: 432px;
-				width: 566px;
-				height: 374px;
-				background-image: url('./static/images/pictures/invite-2.png');
-			}
-		}
-	
-		@include breakpoint($breakpoint-xl) {
+		&--adults {
+			padding: 40px 50px 55px;
+
 			&::after {
 				left: 390px;
 			}
-	
-			&--children {
-				&::after {
-					left: 330px;
-				}
+		}
+
+		&--children {
+			padding: 40px 50px 105px;
+
+			&::after {
+				left: 330px;
 			}
 		}
-	
-		@include breakpoint($breakpoint-lg) {
-			&__right {
-				flex-basis: 70%;
-			}
+	}
 
+	@include mq.from(lg) {
+		&--adults {
 			&::after {
 				height: 309px;
 				left: 320px;
 			}
-	
-			&--children {
-				&::after {
-					height: 309px;
-					left: 250px;
-				}
-			}
 		}
-	
-		@include breakpoint($breakpoint-md) {
-			&__right {
-				flex-basis: 100%;
-			}
 
-			&__title {
-				font-size: 32px;
-				line-height: 30px;
-			}
-	
-			&__description {
-				max-width: 242px;
-			}
-
+		&--children {
 			&::after {
-				height: 290px;
-				left: 220px;
+				height: 309px;
+				left: 250px;
 			}
-	
-			&--children {
-				.invite__right {
-					flex-basis: 80%;
-				}
-
-				&::after {
-					height: 270px;
-					left: 220px;
-				}
-			}
-		}
-	
-		@include breakpoint($breakpoint-sm) {
-			padding: 25px 30px 34px;
-	
-			&__title {
-				max-width: 300px;
-			}
-	
-			&::after {
-				height: 260px;
-				left: 200px;
-			}
-	
-			&--children {
-				padding: 25px 30px 34px;
-	
-				&::after {
-					height: 240px;
-					left: 200px;
-				}
-			}
-		}
-	
-		@include breakpoint($breakpoint-xxs) {
-			flex-direction: column;
-	
-			&__left {
-				flex-basis: auto;
-				margin-bottom: 25px;
-			}
-	
-			&__title {
-				max-width: 240px;
-				margin-bottom: 10px;
-			}
-
-			&::after {
-				display: none;
-			}
-		}
-	
-		@include breakpoint($breakpoint-sm-mobile) {
-			padding: 20px;
 		}
 	}
 }

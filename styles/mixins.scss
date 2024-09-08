@@ -1,46 +1,44 @@
+@use 'sass:map';
 @use 'sass:meta';
 
+@use './components/text';
+@use './mq';
 @use './variables';
 
-$breakpoints: (
-    sm: '(max-width: #{variables.$sm - 1})',
-    gt-sm: '(min-width: #{variables.$sm})',
+$bp-xl: map-get(variables.$breakpoints, 'xl');
+$bp-lg: map-get(variables.$breakpoints, 'lg');
+$bp-md: map-get(variables.$breakpoints, 'md');
+$bp-sm: map-get(variables.$breakpoints, 'sm');
+$bp-xs: map-get(variables.$breakpoints, 'xs');
 
-    lt-md: '(max-width: #{variables.$sm - 1})',
-    md: '(min-width: #{variables.$sm}) and (max-width: #{variables.$md - 1})',
-    gt-md: '(min-width: #{variables.$md})',
+$queries: (
+    '< xs': '(max-width: #{$bp-xs - 1})',
+    'xs': '(min-width: #{$bp-xs})',
+    'xs!': '(min-width: #{$bp-xs}) and max-width: #{$bp-sm - 1})',
 
-    lt-lg: '(max-width: #{variables.$md - 1})',
-    lg: '(min-width: #{variables.$md}) and (max-width: #{variables.$lg - 1})',
-    gt-lg: '(min-width: #{variables.$lg})'
+    '< sm': '(max-width: #{$bp-sm - 1})',
+    'sm': '(min-width: #{$bp-sm})',
+    'sm!': '(min-width: #{$bp-sm}) and (max-width: #{$bp-md - 1})',
+
+    '< md': '(max-width: #{$bp-md - 1})',
+    'md': '(min-width: #{$bp-md})',
+    'md!': '(min-width: #{$bp-md}) and (max-width: #{$bp-lg - 1})',
+
+    '< lg': '(max-width: #{$bp-lg - 1})',
+    'lg': '(min-width: #{$bp-lg})',
+    'lg!': '(min-width: #{$bp-lg}) and (max-width: #{$bp-xl - 1})',
+
+    '< xl': '(max-width: #{$bp-xl - 1})',
+    'xl': '(min-width: #{$bp-xl})'
 );
 
-@mixin mq($from, $to: null) {
-    $from-size: map-get(variables.$screen-sizes, $from);
-    $to-size: map-get(variables.$screen-sizes, $to);
-
-    @if $from-size and $to-size {
-        @media (min-width: $from-size) and (max-width: $to-size) {
-            @content;
-        }
-    } @else if $from-size {
-        @media (min-width: $from-size) {
-            @content;
-        }
-    } @else if $to-size {
-        @media (max-width: $to-size) {
-            @content;
-        }
-    }
-}
-
-@mixin bp($point) {
-    $breakpoint: map-get($breakpoints, $point);
+@mixin mq($bp) {
+    $query: map-get($queries, $bp);
     
-    @if not $breakpoint {
+    @if not $bp {
         @error 'Invalid breakpoint';
     } @else {
-        @media #{$breakpoint} {
+        @media #{$query} {
             @content;
         }
     }
@@ -58,13 +56,22 @@ $breakpoints: (
   clear: both;
 }
 
+@mixin caption($text, $position: after) {
+    &::#{$position} {
+        content: '';
+        @include text.handwritten;
+        
+        @content;
+    }
+}
+
 @mixin decoration($path, $position: after) {
     position: relative;
 
     &::#{$position} {
         content: '';
         position: absolute;
-        background-image: url('./static/images/decoration/#{$path}');
+        background-image: url('./static/images/#{$path}');
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
@@ -108,6 +115,13 @@ $breakpoints: (
     }
 }
 
+@mixin flex($dir: null) {
+    display: flex;
+    @if $dir {
+        flex-direction: $dir;
+    }
+}
+
 @mixin hover-active($styles: ()) {
 	transition: 0.3s ease all;
 
@@ -132,6 +146,20 @@ $breakpoints: (
 	}
 }
 
+@mixin overflow($offset, $scrollbar: false) {
+    margin-left: -$offset;
+    margin-right: -$offset;
+    padding-left: $offset;
+    padding-right: $offset;
+    overflow-x: auto;
+
+    @if not $scrollbar {
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}
+
 @mixin raised() {
 -webkit-box-shadow: 0 1px 5px rgba(0,0,0,.15),0 1px 5px 1px rgba(0,0,0,.15);
 box-shadow: 0 1px 5px rgba(0,0,0,.15),0 1px 5px 1px rgba(0,0,0,.15);
@@ -144,5 +172,28 @@ transition: background-color .3s cubic-bezier(.4,0,.2,1),box-shadow .3s cubic-be
         text-decoration: none;
         -webkit-box-shadow: 0 1px 5px rgba(0,0,0,.15),0 5px 10px 1px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.15);
         box-shadow: 0 1px 5px rgba(0,0,0,.15),0 5px 10px 1px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.15);
+    }
+}
+
+@mixin scroll-x($spacing: 30px) {
+    --spacing: #{$spacing};
+
+    width: calc(100% + var(--spacing) * 2);
+    margin-left: calc(var(--spacing) * -1);
+    margin-right: calc(var(--spacing) * -1);
+    padding-left: var(--spacing);
+    padding-right: var(--spacing);
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    @include mq.to(lg) {
+        --spacing: 45px;
+    }
+
+    @include mq.to(md) {
+        --spacing: 30px;
     }
 }

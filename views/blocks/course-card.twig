@@ -1,5 +1,11 @@
-{% macro course_card(course, color, formats = true, large_header) %}
-	<div class="{{html_classes('course-card', large_header ? 'course-card--large-header' : [], 'card', 'card--hover', color ? 'card--' ~ color : [])}}">
+{% macro course_card(course, color, formats = true, large_header = false) %}
+	<div class="{{html_classes(
+		'course-card',
+		large_header ? 'course-card--large-header' : [],
+		'card',
+		'card--hover',
+		color ? 'card--' ~ color : [])
+	}}">
 		{% if course.thumbnail %}
 			<div class="card__media">
 				<img src="{{course.thumbnail.src}}" alt="{{course.thumbnail.alt}}">

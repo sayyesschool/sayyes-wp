@@ -1,66 +1,72 @@
+@use 'styles/mq';
+@use 'styles/theme' as *;
+@use 'styles/variables' as *;
+
 .accordion {
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
+	gap: 15px;
 
-	&-item {
-		padding: 20px 50px;
-		background-color: $white;
-		border-radius: $border-radius;
-		transition: 0.2s linear padding;
-		cursor: pointer;
+	@include mq.from(md) {
+		gap: 20px;
+	}
+}
 
+.accordion-item {
+	padding: 20px 30px;
+	background-color: $white;
+	border-radius: $border-radius-sm;
+	transition: 0.2s linear padding;
+	cursor: pointer;
+
+	&__title {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 20px;
+		padding: 0;
+		border: none;
+		background-color: unset;
+		font-weight: 700;
+		text-align: left;
+		transition: 0.2s linear margin-bottom;
+
+		&::after {
+			content: '';
+			display: inline-block;
+			width: 25px;
+			height: 25px;
+			flex-shrink: 0;
+			background: url('./static/images/icons/plus.svg') center center/cover no-repeat;
+			transition: 0.3s ease transform;
+		}
+	}
+
+	&__content {
+		max-width: 1000px;
+		height: 0;
+		padding-right: 25px;
+		overflow: hidden;
+		font-weight: 500;
+		transition: 0.2s linear height;
+	}
+
+	&--active & {
 		&__title {
-			position: relative;
-			width: 100%;
-			padding: 0;
-			padding-right: 45px;
-			border: none;
-			background-color: $white;
-			border-radius: $border-radius;
-			font-weight: 700;
-			text-align: left;
-			transition: 0.2s linear margin-bottom;
+			margin-bottom: 5px;
 
 			&::after {
-				content: '';
-				position: absolute;
-				top: 10px;
-				right: -5px;
-				width: 25px;
-				height: 25px;
-				background: url('./static/images/icons/plus.svg') center center/cover no-repeat;
-				transform: translateY(-50%);
-				transition: 0.3s ease transform;
+				transform: rotate(45deg);
 			}
 		}
 
 		&__content {
-			max-width: 1000px;
-			height: 0;
-			overflow: hidden;
-			font-weight: 500;
-			transition: 0.2s linear height;
+			height: auto;
 		}
+	}
 
-		&--active {
-			padding: 38px 50px;
-
-			.accordion-item__title {
-				margin-bottom: 5px;
-
-				&::after {
-					transform: rotate(45deg) translate(-10px, -10px);
-				}
-			}
-
-			.accordion-item__content {
-				height: auto;
-			}
-		}
-
-		@include breakpoint($breakpoint-xxs) {
-			padding: 20px 30px;
-		}
+	@include mq.from(lg) {
+		padding: 20px 50px;
 	}
 }

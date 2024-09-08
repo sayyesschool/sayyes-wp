@@ -1,0 +1,43 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+
+@use './variables';
+
+@mixin for($size) {
+    $index: list.index(variables.$sizes, $size);
+    
+    @if $index + 1 < list.length(variables.$sizes) {
+        @include between($size, list.nth(variables.$sizes, $index + 1)) {
+            @content;
+        }
+    } @else {
+        @include from($size);
+    }
+    
+}
+
+@mixin to($size, $included: false) {
+    $bp: map.get(variables.$breakpoints, $size);
+
+    @media (max-width: #{$bp + if($included, 0, -1)}) {
+        @content;
+    }
+}
+
+@mixin from($size) {
+    $bp: map.get(variables.$breakpoints, $size);
+
+    @media (min-width: #{$bp}) {
+        @content;
+    }
+}
+
+@mixin between($from-size, $to-size) {
+    $from-bp: map.get(variables.$breakpoints, $from-size);
+    $to-bp: map.get(variables.$breakpoints, $to-size);
+
+    @media (min-width: #{$from-bp}) and (max-width: #{$to-bp - 1}) {
+        @content;
+    }
+}

@@ -1,0 +1,52 @@
+@use 'styles/components/text';
+@use 'styles/mq';
+@use 'styles/variables';
+
+.founders-card {
+    padding: 25px 30px;
+
+    figure {
+        position: absolute;
+        bottom: 100%;
+        left: -5%;
+        width: 100%;
+        display: flex;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            width: 30%;
+            height: 100%;
+            background: url('./static/images/elements/branch.svg') center center / contain no-repeat;
+            z-index: -1;
+        }
+
+        &::after {
+            right: -10%;
+            transform: scaleX(-1);
+        }
+    }
+
+    // TODO: Add arrow and adjust position
+    figcaption {
+        position: absolute;
+        max-width: 145px;
+        top: -30%;
+        left: 10%;
+        transform: rotateZ(-15deg);
+        color: variables.$pink;
+        @include text.handwritten;
+    }
+
+    @include mq.to(md) {
+        margin-top: 100%;
+        order: -1;
+    }
+
+    @include mq.from(md) {
+        figcaption {
+            max-width: 200px;
+        }
+    }
+}

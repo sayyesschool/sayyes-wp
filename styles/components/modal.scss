@@ -1,3 +1,7 @@
+@use 'styles/mixins';
+@use 'styles/mq';
+@use 'styles/variables';
+
 .modal {
 	width: 100%;
 	height: 100%;
@@ -18,8 +22,20 @@
 		position: relative;
 		opacity: 0;
 		transition: all 0.3s ease-in-out;
-		border-radius: $border-radius;
-		background-color: $pale-white;
+		border-radius: variables.$border-radius;
+		background-color: variables.$pale-white;
+
+		@include mq.to(sm) {
+			max-width: calc(100% - 20px);
+			max-height: calc(100% - 20px);
+		}
+
+		@include mq.from(sm) {
+			width: calc(100% - 20px);
+			max-width: calc(1024px + 20px);
+			max-height: calc(768px + 20px);
+			margin: 20px;
+		}
 	}
 
 	&__title {
@@ -29,7 +45,7 @@
 
 	&__description {
 		margin-bottom: 20px;
-		color: lighten($black, 30%);
+		color: lighten(variables.$black, 30%);
 		font-size: 18px;
 		font-weight: 600;
 		line-height: 20px;
@@ -43,15 +59,15 @@
 		height: 50px;
 		border-radius: 50%;
 		border: none;
-		background-color: $black;
-		color: $white;
+		background-color: variables.$black;
+		color: variables.$white;
 		font-size: 40px;
 		line-height: 1;
 		transform: rotate(45deg);
 		z-index: 1;
 		
-		@include hover-active((
-			background-color: $black
+		@include mixins.hover-active((
+			background-color: variables.$black
 		));
 	}
 
@@ -72,29 +88,29 @@
 				left: 42%;
 			}
 	
-			&__tab {
+			.tab {
 				min-height: 55px;
 			}
 
-			@include breakpoint($breakpoint-lg) {
-				&__tab {
+			@include mixins.breakpoint(variables.$breakpoint-lg) {
+				.tab {
 					width: 180px;
 				}
 			}
 		
-			@include breakpoint($breakpoint-sm) {
+			@include mixins.breakpoint(variables.$breakpoint-sm) {
 				&__nav {
 					top: -40px;
 					left: 38%;
 				}
 	
-				&__tab {
+				.tab {
 					width: 130px;
 					min-height: 40px;
 				}
 			}
 		
-			@include breakpoint($breakpoint-xxs) {
+			@include mixins.breakpoint(variables.$breakpoint-xxs) {
 				&__nav {
 					top: -40px;
 					left: 50%;
@@ -102,12 +118,12 @@
 				}
 			}
 		
-			@include breakpoint($breakpoint-sm-mobile) {
+			@include mixins.breakpoint(variables.$breakpoint-sm-mobile) {
 				&__nav {
 					top: -35px;
 				}
 	
-				&__tab {
+				.tab {
 					width: 100px;
 					min-height: 35px;
 				}
@@ -115,7 +131,7 @@
 		}
 	}
 
-	@include breakpoint($breakpoint-mobile) {
+	@include mixins.breakpoint(variables.$breakpoint-mobile) {
 		&__close {
 			top: -15px;
 			right: -15px;

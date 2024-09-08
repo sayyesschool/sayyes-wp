@@ -1,29 +1,37 @@
-$gaps: (
-    xxs: 5px,
-    xs: 10px,
-    s: 15px,
-    m: 20px,
-    l: 30px,
-    xl: 40px,
-    xxl: 50px
-);
+@use 'styles/mq';
+@use 'styles/variables';
 
-.flex,
-.flex-row {
+.flex {
     display: flex;
+
+    &-row {
+        display: flex;
+        flex-direction: row;
+
+        @each $size in variables.$sizes {
+            &-#{$size} {
+                @include mq.for($size) {
+                    flex-direction: row;
+                }
+            }
+        }
+    }
     
-    &--column {
+    &-column {
+        display: flex;
         flex-direction: column;
-    }
-}
 
-.flex-column {
-    display: flex;
-    flex-direction: column;
-}
-
-@each $gap, $value in $gaps {
-    .gap-#{$gap} {
-        gap: $value;
+        @each $size in variables.$sizes {
+            &-#{$size} {
+                @include mq.for($size) {
+                    flex-direction: column;
+                }
+            }
+        }
     }
+
+    &-wrap {
+        display: flex;
+		flex-wrap: wrap;
+	}
 }

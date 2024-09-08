@@ -1,7 +1,9 @@
 <section
     {% if id %}id="{{id}}"{% endif %}
-    class="{{html_classes(name ?? [], class ?? [], 'section', {
-        'section--horizontal': horizontal
+    class="{{html_classes(class ?? [], name ?? [], 'section', {
+        'section--padded': padded,
+        'section--padded-header': padded_header,
+        'section--horizontal': horizontal,
     }, color ? 'section--' ~ color : [])}}"
 >
     {% if not uncontained %}

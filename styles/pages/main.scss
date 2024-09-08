@@ -1,41 +1,72 @@
+@use 'styles/components/text';
+@use 'styles/mixins';
+@use 'styles/mq';
+@use 'styles/theme';
+@use 'styles/variables';
+
 #main-page {
     .hero {
-        ul {
-            color: $white;
-            margin-left: 25px;
-        
-            li {
-                position: relative;
+		flex-direction: column;
+		padding-right: 0;
+		padding-bottom: 0;
 
-                strong {
-                    color: $yellow;
-                }
-        
-                &::before {
-                    content: '';
-                    display: inline-block;
-                    width: 10px;
-                    height: 18px;
-                    position: absolute;
-                    top: 50%;
-                    left: -20px;
-                    transform: translateY(-50%);
-                    background: url("./static/images/icons/rhomb.svg") center
-                        center/cover no-repeat;
-                }
-        
-                &:not(:last-child) {
-                    margin-bottom: 5px;
-                }
-            }
-        }
+		&__content {
+			ul {
+				margin-left: 25px;
+				display: flex;
+				flex-direction: column;
+				gap: 5px;
+				
+				li {
+					strong {
+						color: variables.$yellow;
+					}
 
-        @include breakpoint($breakpoint-lg) {
-            ul {
-                font-size: 16px;
-			    line-height: 18px;
-            }
-        }
+					@include mixins.decoration('icons/rhomb.svg', before) {
+						display: inline-block;
+						width: 10px;
+						height: 18px;
+						top: 50%;
+						left: -20px;
+						transform: translateY(-50%);
+					}
+				}
+			}
+		}
+
+		@include mq.to(sm) {
+			&__image {
+				width: 120%;
+				left: -20%;
+			}
+		}
+
+		@include mq.to(md) {
+			&__image {
+				width: 110%;
+				left: -10%;
+			}
+		}
+
+		@include mq.from(md) {
+			flex-direction: row;
+
+			&__content {
+				max-width: 35%;
+			}
+
+			&__image {
+				width: 100%;
+				left: unset;
+			}
+
+			@include mixins.decoration('notes/dream-team.svg', after) {
+				bottom: 10%;
+				right: -20%;
+				width: 78px;
+				height: 105px;
+			}
+		}
     }
 }
 
@@ -46,336 +77,217 @@
         max-width: 876px;
     }
 
-    &__title {
-        margin-bottom: 20px;
-    }
-
     &__description {
         max-width: 580px;
         margin: 0 auto;
     }
 
-    @include breakpoint($breakpoint-lg) {        
-        &__title {
-            max-width: 650px;
-            margin: 0 auto 20px;
-        }
-    }
-
-    @include breakpoint($breakpoint-xxs) {
+    @include mq.to(md) {
         display: none;
     }
 }
 
 .practice,
 .dream-team,
+.platform,
+.atmosphere {
+    background-color: variables.$white;
+}
+
+.practice,
+.dream-team,
 .platform {
-    margin-bottom: 0;
-	border-radius: 0;
-    background-color: $white;
+	margin-bottom: 0;
 }
 
 .practice,
 .dream-team,
 .platform,
 .atmosphere {
-	padding-left: 20px;
-	padding-right: 20px;
+	padding: 25px;
 }
 
 .practice {
-    padding: 95px 0 30px;
-    border-radius: $border-radius $border-radius 0 0;
-    
-    &__title {
-        max-width: 570px;
-    }
+	padding-top: 40px;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
 
-    &__content {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 40px;
-    }
+	&__content {
+		display: flex;
+		flex-direction: column;
+		gap: 25px;
+	}
 
-    &__text {
-        max-width: 380px;
-    }
-
-    &__image {
-        width: 640px;
-    }
-
-    @include breakpoint($breakpoint-lg) {
-        &__text {
-            max-width: 370px;
-        }
-
-        &__image {
-            width: 520px;
-            height: 285px;
-        }
-    }
-
-    @include breakpoint($breakpoint-sm) {
-        &__text {
-            max-width: 370px;
-
-            p:not(:last-of-type) {
-                margin-bottom: 20px;
-            }
-        }
-
-        &__image {
-            width: 420px;
-            height: 225px;
-        }
-    }
-
-    @include breakpoint($breakpoint-xxs) {
-        &__title {
+	@include mq.from(md) {
+		&__header {
             max-width: 450px;
         }
 
-        &__content {
-            flex-direction: column;
-        }
+		&__content {
+			flex-direction: row;
+			gap: 50px;
+		}
+	}
 
-        &__text {
-            margin-bottom: 25px;
-            max-width: none;
+	@include mq.from(lg) {
+		padding-top: 95px;
+		padding-bottom: 30px;
 
-            p:not(:last-of-type) {
-                margin-bottom: 10px;
-            }
-        }
-
-        &__image {
-            width: 520px;
-            max-width: 100%;
-            height: 285px;
-        }
-    }
-
-    @include breakpoint($breakpoint-sm-mobile) {
-        &__image {
-            width: 290px;
-            height: 160px;
-        }
-    }
+		&__header {
+			max-width: 570px;
+		}
+	
+		&__content {
+			gap: 100px;
+		}
+	
+		.text {
+			max-width: 380px;
+		}
+	}
 }
 
 .dream-team {
-	padding: 50px 0;
+	border-radius: 0;
 
-	&__content {
-		margin-top: 35px;
+	&__content,
+	&__info,
+	&__details {
 		display: flex;
 		gap: 20px;
 	}
 
 	&__info {
-		max-width: 405px;
-		margin-right: auto;
-
-		.btn {
-			margin-top: 20px;
-		}
+		flex-direction: column;
 	}
 
-	&__video {
-		width: 176px;
+	&__list {
+		display: flex;
+		flex-direction: column;
 	}
 
-	&__advantages {
-		width: 470px;
-	}
-
-    .advantage {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 35px;
-        margin-bottom: 20px;
-        background-color: $pearl-white;
-        border-radius: $border-radius;
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 20px;
-    
-        &__number {
-            padding-right: 20px;
-            font-size: 42px;
-            line-height: 45px;
-        }
-    
-        &__text {
-            display: inline-block;
-            max-width: 150px;
-        }
-
-		&__heading {
-			max-width: 50%;
-		}
-    
-        &__description {
-			max-width: 50%;
-        }
-
-		&:first-child .advantage__description {
-			max-width: 100px;
-			margin-right: auto;
-		}
-    }
-
-	@include breakpoint($breakpoint-lg) {
-		&__content {
-			justify-content: space-between;
-			margin-top: 15px;
-		}
-
-		&__info {
-			max-width: 295px;
-			margin-right: 0;
-
-			.btn {
-				max-width: 100%;
-			}
-		}
-
-		&__video {
-			width: 138px;
-			height: 265px;
-		}
-
-		&__advantages {
-			width: 368px;
-		}
-
-        .advantage {
-            padding: 20px 25px;
-            font-size: 16px;
-            line-height: 18px;
-            margin-bottom: 15px;
-    
-            &__number {
-                padding-right: 10px;
-                font-size: 31px;
-                line-height: 40px;
-            }
-    
-            &__text {
-                max-width: 100px;
-            }
-        }
-	}
-
-	@include breakpoint($breakpoint-sm) {
-		&__info {
-			max-width: 195px;
-		}
-	}
-
-	@include breakpoint($breakpoint-xxs) {
-		&__content {
+	@include mq.to(md) {
+		&__content,
+		&__details {
 			flex-direction: column;
 		}
+	}
 
+	@include mq.for(md) {
+		&__video {
+			display: none;
+		}
+	}
+
+	@include mq.from(md) {
+		&__content {
+			align-items: flex-start;
+			gap: 60px;
+		}
+
+		&__info,
+		&__details {
+			flex: 1;
+		}
+	}
+
+	@include mq.to(lg) {
+		&__list {
+			padding: 25px;
+			gap: 5px;
+			background-color: variables.$pearl-white;
+			@include theme.border-radius;
+		}
+	}
+
+	@include mq.from(lg) {
 		&__info {
-			max-width: 700px;
+			flex-basis: 40%;
+		}
+
+		&__details {
+			flex-basis: 60%;
 		}
 
 		&__video {
-			width: 50%;
-			height: 100%;
-			align-self: center;
+			width: 150px;
 		}
 
-		&__advantages {
-			align-self: center;
-			width: 70%;
-			
-			.advantage {
-				margin-bottom: 0;
-				border-radius: 0;
+		&__list {
+			padding: 0;
+			gap: 20px;
+			background-color: transparent;
+		}
+	}
 
-				&:first-child {
-					border-top-left-radius: $border-radius;
-					border-top-right-radius: $border-radius;
-				}
+	@include mq.from(xl) {
+		&__video {
+			width: 178px;
+		}
+	}
 
-				&:last-child {
-					border-bottom-left-radius: $border-radius;
-					border-bottom-right-radius: $border-radius;
-				}
+    .item {
+		@include text.body1;
+
+		&__heading {
+			font-weight: 800;
+		}
+
+		@include mq.to(lg) {
+			&__heading,
+			&__description {
+				display: inline;
 			}
 		}
-	}
 
-	@include breakpoint($breakpoint-sm-mobile) {
-		&__video {
-			width: 100%;
-			height: 100%;
-			align-self: center;
+		@include mq.from(lg) {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 20px;
+			background-color: variables.$pearl-white;
+			@include theme.border-radius;
+
+			&__heading,
+			&__description {
+				width: 50%;
+			}
+
+			&__number {
+				padding-right: 10px;
+				font-size: 31px;
+				line-height: 40px;
+			}
+		
+			&__text {
+				display: inline-block;
+				max-width: 128px;
+			}
+
+			&:first-child &__description {
+				max-width: 100px;
+				margin-right: auto;
+			}
 		}
 
-		&__advantages {
-			width: 100%;
+		@include mq.from(xl) {
+			padding: 30px;
+
+			&__number {
+				padding-right: 20px;
+				font-size: 42px;
+				line-height: 45px;
+			}
+
+			&__text {
+				max-width: 150px;
+			}
 		}
-	}
+    }
 }
 
 .platform {
-	&__title {
-		max-width: 490px;
-	}
-
-    &__description {
-		max-width: 425px;
-		margin: 20px 0 40px;
-	}
-
-	&__content {
-		display: flex;
-        gap: 40px;
-	}
-
-	.image {
-		width: 50%;
-	}
-
-	@include breakpoint($breakpoint-lg) {
-		&__description {
-			max-width: 400px;
-			margin: 20px 0 40px;
-		}
-	}
-
-	@include breakpoint($breakpoint-xs) {
-		&__content {
-			flex-direction: column;
-			gap: 20px;
-		}
-
-		.image {
-			width: 100%;
-		}
-	}
-}
-
-.atmosphere {
-	margin-bottom: 150px;
-    border-radius: 0 0 $border-radius $border-radius;
-	padding: 50px 0 95px;
-	background-color: $white;
-
-	&__title {
-		margin-bottom: 20px;
-	}
-
-	&__description {
-		max-width: 570px;
-		margin-bottom: 40px;
-	}
+	border-radius: 0;
 
 	&__content {
 		display: flex;
@@ -383,305 +295,206 @@
 		gap: 20px;
 	}
 
-	&__trip,
-	&__celebration {
-		position: relative;
-		display: flex;
-		justify-content: space-between;
-
-		&::after {
-			content: '';
-			position: absolute;
-			background-repeat: no-repeat;
-			background-size: cover;
+	@include mq.from(lg) {
+		&__header {
+			margin-bottom: 40px;
 		}
-	}
 
-	&__trip {
+		&__title {
+			max-width: 490px;
+		}
+	
+		&__description {
+			max-width: 425px;
+		}
+	
+		&__content {
+			flex-direction: row;
+			gap: 40px;
+		}
+	
 		.image {
-			width: 665px;
-			border-radius: $border-radius;
-			object-fit: cover;
-		}
-
-		&::after {
-			top: -120px;
-			right: 150px;
-			width: 92px;
-			height: 102px;
-			background-image: url('./static/images/decoration/notes/picnic.svg');
+			width: 50%;
 		}
 	}
+}
 
+.atmosphere {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+	&__content,
+	&__trip,
+	&__celebration,
 	&__celebration {
-		&::after {
-			top: 235px;
-			left: 257px;
-			width: 133px;
-			height: 61px;
-			background-image: url('./static/images/decoration/notes/celebrating-completion.svg');
-		}
+		display: flex;
 	}
 
 	.list {
-		max-width: 207px;
-
-		&-item {
-			max-width: 180px;
-			font-weight: 700;
-		}
+		gap: 5px;
 	}
 
-	&__celebration-media {
-		display: flex;
-		justify-content: space-between;
-		align-items: flex-start;
-		gap: 20px;
-
-		.video {
-			&__btn {
-				right: 50%;
-				transform: translateX(50%);
-			}
-
-			&:first-of-type {
-				width: 274px;
-			}
-
-			&:last-of-type {
-				width: 176px;
-			}
-		}
-	}
-
-	@include breakpoint($breakpoint-lg) {
-		&__description {
-			max-width: 500px;
-		}
-
-		&__trip {
-            .image {
-                width: 520px;
-                height: 285px;
-            }
-        }
-
-		&__celebration-media {
-			gap: 15px;
-
-			.video {
-				&:nth-of-type(1) {
-					width: 215px;
-				}
-
-				&:nth-of-type(2) {
-					width: 138px;
-				}
-
-				&:nth-of-type(3) {
-					width: 138px;
-				}
-			}
-
-		}
-	}
-
-	@include breakpoint($breakpoint-md) {
-		&__trip {
-			&::after {
-				right: 60px;
-			}
-		}
-		
-		&__celebration {
-			&::after {
-				left: 150px;
-			}
-		}
-	}
-
-	@include breakpoint($breakpoint-sm) {
-		&__celebration {
-			&::after {
-				left: 30px;
-			}
-		}
-	}
-
-	@include breakpoint($breakpoint-xs) {
+	@include mq.to(lg) {
 		&__content {
-			width: calc(100% + 35px);
-			padding-bottom: 30px;
-			display: flex;
-			flex-direction: row;
-			overflow-x: auto;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 15px;
+		}
 
-			&::-webkit-scrollbar {
+		&__trip {
+			flex-direction: column-reverse;
+			gap: 10px;
+		}
+
+		&__celebration {
+			.list {
 				display: none;
 			}
-		}
 
-		&__trip {
-            .list {
-                position: absolute;
-                bottom: 85px;
-                left: 0;
-    
-                &-item {
-                    &:first-child {
-                        margin-bottom: 3px;
-                    }
-                }
-            }
-
-            .image {
-                width: 327px;
-            }
-        }
-
-		&__celebration {
-            .list {
-                &-item {
-                    position: absolute;
-                    bottom: -43px;
-    
-                    &:first-child {
-                        max-width: 150px;
-                        left: 453px;
-                    }
-    
-                    &:last-child {
-                        max-width: 100px;
-                        left: 226px;
-                    }
-                }
-            }
-
-            &::after {
-				left: -170px;
+			.flex {
+				gap: 15px;
 			}
-		}
 
-		.video {
-			width: 212px;
-			border-radius: $border-radius-sm;
-
-            &:last-of-type {
-                margin-right: 40px;
-            }
+			figcaption {
+				margin: 10px;
+			}
 		}
 	}
 
-	@include breakpoint($breakpoint-mobile) {
-		&__content {
-			display: block;
+	@include mq.to(md) {
+		.list {
+			position: absolute;
+			bottom: 5px;
+			left: 5px;
+			flex-direction: column-reverse;
+		}
+
+		.list-item  {
+			width: fit-content;
+			max-width: none;
+			border-radius: variables.$border-radius;
+			padding: 8px 10px;
+			background-color: variables.$white;
+			@include text.body2($responsive: false);
+		}
+
+		figcaption {
+			@include text.body2($responsive: false);
 		}
 
         &__trip {
-            .list {
-                bottom: 3px;
-                left: 5px;
-
-                &-item {
-                    &:last-child {
-                        margin-bottom: 5px;
-                    }
-                }
-            }
-
-			.image {
-                width: 290px;
-            }
+			position: relative;
 		}
 
 		&__celebration {
+			width: calc(100% + 25px);
+			padding-right: 25px;
 			overflow-x: auto;
 
-            .list-item {
-				bottom: auto;
-				top: 5px;
-				width: 100%;
-				z-index: 1;
-
-				&:first-child {
-					left: 463px;
-					max-width: 168px;
-				}
-
-				&:last-child {
-					left: 234px;
-					max-width: 172px;
-				}
+			&::-webkit-scrollbar {
+				display: none;
 			}
+
+			.video {
+				min-width: 214px;
+				max-height: 380px;
+			}
+		}
+	}
+
+	@include mq.from(md) {
+		&__content {
+			flex-direction: row;
+		}
+
+		&__trip {
+			.image {
+				width: 360px;
+			}
+		}
+
+		&__celebration {
+			.video {
+				min-width: 212px;
+				max-height: 380px;
+			}
+		}
+	}
+
+	@include mq.for(md) {
+		&__content {
+			overflow-x: auto;
+			margin-right: -25px;
+			padding-right: 25px;
 
 			&::-webkit-scrollbar {
 				display: none;
 			}
 		}
+	}
 
-        .list {
-			display: flex;
-			flex-direction: column-reverse;
+	@include mq.from(lg) {
+		&__content {
+			flex-direction: column;
+			gap: 20px;
+		}
 
-			&-item {
-				max-width: none;
-				width: fit-content;
-				border-radius: $border-radius;
-				padding: 7px 10px;
-				background-color: $white;
-				font-size: 14px;
-				line-height: 15px;
+		.list-item {
+			@include text.body1($weight: 700, $responsive: false);
+		}
+
+		&__trip {
+			flex-direction: row;
+			justify-content: space-between;
+
+			.image {
+				width: 640px;
 			}
 		}
 
-        .video {
-			width: 214px;
+		&__celebration {
+			.flex {
+				width: 640px;
+				gap: 20px;
+			}
+
+			figure {
+				flex: 1 1 176px;
+
+				&:first-child {
+					flex-basis: 274px;
+				}
+			}
 		}
 	}
 }
 
 .student-progress {
-	margin-bottom: 130px;
-
-	&__container {
-		max-width: 1098px;
-	}
-
-	&__header {
-		max-width: 640px;
-	}
-
-	&__title {
-		margin-bottom: 20px;
-	}
-
-	&__description {
-		max-width: 490px;
-	}
-
-	@include breakpoint($breakpoint-lg) {
-		&__title {
-			max-width: 470px;
-		}
-	}
-	@include breakpoint($breakpoint-sm) {
+	@include mq.to(md) {
 		&__container {
-			max-width: 708px;
-		}
-
-		&__title {
-			max-width: 490px;
-			margin-bottom: 15px;
-		}
-
-		.slider {
-			margin-top: 10px;
+			padding: 0 20px;
 		}
 	}
 
-	@include breakpoint($breakpoint-sm-mobile) {
-		&__title {
-			max-width: 230px;
+	@include mq.from(md) {
+		&__header {
+			max-width: 480px;
+		}
+	}
+
+	@include mq.from(lg) {
+		margin-bottom: 130px;
+
+		&__header {
+			max-width: 640px;
+		}
+
+		&__description {
+			max-width: 480px;
+		}
+
+		&__content {
+			max-width: 1024px;
 		}
 	}
 }

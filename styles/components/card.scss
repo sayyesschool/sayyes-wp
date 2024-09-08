@@ -1,62 +1,77 @@
-@use 'styles/components/heading' as *;
+@use 'styles/components/heading';
+@use 'styles/components/image';
+@use 'styles/components/text';
+@use 'styles/mq';
+@use 'styles/theme';
+@use 'styles/variables' as *;
 
 .card {
 	--card-background-color: #{$white};
 	--card-text-color: #{$black};
+	--card-image-aspect-ratio: 16 / 9;
 
 	position: relative;
-	border-radius: $border-radius;
 	background-color: var(--card-background-color);
 	color: var(--card-text-color);
+	@include theme.border-radius;
 
 	&__media {
 		position: relative;
 		width: 100%;
-		border-radius: $border-radius;
+		@include theme.border-radius;
 
 		img {
-			width: 100%;
-			display: block;
-			object-fit: cover;
-			border-radius: $border-radius;
+			@include image.base;
+			aspect-ratio: var(--card-image-aspect-ratio);
 		}
 	}
 
 	&__header {
-		padding: 30px 40px 0;
+		position: relative;
+		padding: 20px 20px 0;
 
 		&:last-child {
-			padding-bottom: 30px;
+			padding-bottom: 20px;
 		}
 	}
 
 	&__body {
-		padding: 40px;
+		position: relative;
+		padding: 20px;
 
 		&:empty {
 			padding: 0;
 		}
 	}
 
+	&__footer {
+		position: relative;
+		margin-top: auto;
+		padding: 0 20px 10px;
+	}
+
 	&__content {
 		margin-top: 1rem;
 	}
 
-	&__footer {
-		margin-top: auto;
-	}
-
 	&__title {
-		@include heading('sm', 800);
-		margin-bottom: .5rem;
+		margin-bottom: 10px;
+		@include heading.h4($weight: 800);
 	}
 
 	&__subtitle {
-		margin-top: .5rem;
+		margin-top: 10px;
+		@include text.body1($weight: 700);
+	}
+
+	&__suptitle {
+		margin-bottom: 10px;
+		@include text.body1($weight: 700);
 	}
 
 	&__description {
-		margin-top: .5rem;
+		margin-top: 10px;
+		@include text.body1;
 
 		p + p {
 			margin-top: 10px;
@@ -118,16 +133,47 @@
 		width: auto;
 	}
 
-	@include breakpoint($breakpoint-md) {
+	&--sm &__title {
+		@include heading.h5($weight: 800);
+	}
+
+	&--lg &__title {
+		@include heading.h3($weight: 700);
+	}
+
+	@include mq.from(md) {
+		&__header {
+			padding: 30px 30px 0;
+
+			&:last-child {
+				padding-bottom: 30px;
+			}
+		}
+
 		&__body {
-			padding: 25px;
+			padding: 30px;
+		}
+
+		&__footer {
+			padding: 0 30px 30px;
 		}
 	}
 
-	@include breakpoint($breakpoint-xxs) {
-		&__content {
-			font-size: 14px;
-			line-height: 15px;
+	@include mq.from(lg) {
+		&__header {
+			padding: 30px 30px 0;
+
+			&:last-child {
+				padding-bottom: 30px;
+			}
+		}
+
+		&__body {
+			padding: 40px;
+		}
+
+		&__footer {
+			padding: 0 40px 40px;
 		}
 	}
 }

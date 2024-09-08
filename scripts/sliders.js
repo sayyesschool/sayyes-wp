@@ -22,37 +22,38 @@ new Swiper('.student-progress-slider', {
 new Swiper('.corporate-clients-slider', {
 	...defaultOptions,
 	modules: [...defaultOptions.modules, Grid],
-	slidesPerView: 5,
 	grid: {
 		rows: 3,
 		fill: 'row'
 	},
-	// breakpoints: {
-	// 	769: {
-	// 		enabled: true,
-	// 		// slidesPerView: 4,
-	// 		spaceBetween: 15,
-	// 		width: null,
-	// 		gird: {
-	// 			rows: 3,
-	// 			fill: 'row'
-	// 		},
-	// 		navigation: {
-	// 			nextEl: '.slider__right-arrow',
-	// 			prevEl: '.slider__left-arrow',
-	// 		},
-	// 		pagination: {
-	// 			el: '.slider__pagination',
-	// 		},
-	// 	},
-	// },
+	breakpoints: {
+		1024: {
+			slidesPerView: 5
+		},
+		768: {
+			slidesPerView: 4
+		},
+		540: {
+			slidesPerView: 3
+		},
+		360: {
+			slidesPerView: 2
+		}
+	},
 });
 
 new Swiper('.corporate-reviews-slider', {
 	...defaultOptions,
 	breakpoints: {
-		769: {
-			slidesPerView: 4
+		1024: {
+			slidesPerView: 3
+		},
+		768: {
+			slidesPerView: 2
+		},
+		360: {
+			slidesPerView: 'auto',
+			centeredSlides: true
 		}
 	}
 });

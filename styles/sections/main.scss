@@ -1,93 +1,57 @@
+@use 'styles/components/heading';
+@use 'styles/components/text';
+@use 'styles/mq';
+
 .main-section {
-	margin: 25px 0 100px;
+	--title-max-width: unset;
+	--description-max-width: unset;
+
+	margin-bottom: 50px;
+
+	&__title,
+	&__description {
+		text-align: center;
+	}
 
 	&__title {
-		@include heading('lg');
-		max-width: 840px;
-		margin: 0 auto;
-		text-align: center;
+		max-width: var(--title-max-width);
+		margin: 0 auto 10px;
+		@include heading.h2;
 	}
 
 	&__description {
-		@include text('md');
-		max-width: 350px;
-		margin: 15px auto 25px;
-		text-align: center;
+		max-width: var(--description-max-width);
+		margin: 0 auto 25px;
+		@include text.body1;
 	}
 
 	&__image {
-		width: 100%;
-		height: 560px;
-		display: block;
-		object-fit: cover;
-		border-radius: $border-radius;
-		margin-top: 50px;
+		margin-top: 25px;
 	}
 
 	.btn {
 		margin: 0 auto;
 	}
 
-	@include breakpoint($breakpoint-xl) {
-		&__image {
-			height: 500px;
-		}
+	@include mq.to(md) {
+		padding: 0 20px;
 	}
 
-	@include breakpoint($breakpoint-lg) {
-		&__image {
-			height: 460px;
-		}
-	}
-
-	@include breakpoint($breakpoint-md) {
+	@include mq.from(md) {
 		&__title {
-			font-size: 36px;
-			line-height: 35px;
+			margin-bottom: 15px;
 		}
 
 		&__description {
-			margin: 10px auto 25px;
+			margin-bottom: 25px;
 		}
 
 		&__image {
-			height: 400px;
-			margin-top: 25px;
+			margin-top: 50px;
 		}
 	}
 
-	@include breakpoint($breakpoint-sm) {
-		&__image {
-			height: 360px;
-		}
-	}
-
-	@include breakpoint($breakpoint-xs) {
-		&__title {
-			font-size: 28px;
-			line-height: 30px;
-		}
-
-		&__image {
-			height: 315px;
-		}
-	}
-
-	@include breakpoint($breakpoint-xxs) {
-		&__image {
-			height: 280px;
-		}
-	}
-
-	@include breakpoint($breakpoint-mobile) {
-		&__image {
-			height: 240px;
-		}
-	}
-
-	@include breakpoint($breakpoint-sm-mobile) {
-		&__image {
-			height: 190px;
-		}
+	@include mq.from(lg) {
+		margin-bottom: 100px;
 	}
 }

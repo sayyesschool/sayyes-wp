@@ -1,0 +1,63 @@
+{% embed 'components/section.twig' with {
+    name: 'teachers',
+    title: 'В нашей команде более 80 профессиональных преподавателей.'
+} %}
+    {% block description %}
+        <p>Мы ценим не только опыт и образование, но и энергичность, современность и жизнелюбие наших преподавателей.</p>
+        <p>Выберите удобный формат обучения и познакомьтесь с настоящими фанатами своего дела.</p>
+    {% endblock %}
+
+    {% block content %}
+        {% embed 'components/tabs.twig' with {
+            tabs: [
+                {
+                    content: 'Офлайн <span class="hidden-sm-down">&nbsp;в Москве</span>',
+                    value: 'offline',
+                    active: true
+                },
+                {
+                    content: 'Онлайн <span class="hidden-sm-down">по всему миру</span>',
+                    value: 'online'
+                }
+            ],
+            color: 'purple',
+            pills: true
+        } %}
+            {% from 'blocks/teacher-card.twig' import teacher_card %}
+
+            {% block content %}
+                <div class="offline-teachers" data-tab-panel="offline">
+                    <div class="grid grid-2-sm grid-3-lg">
+                        {% for teacher in offline_teachers|slice(0, 6) %}
+                            {{teacher_card(teacher)}}
+                        {% endfor %}
+                    </div>
+
+                    {# {% include 'sections/trial-lesson-cta.twig' only %}
+
+                    <div class="grid grid-2-sm grid-3-lg">
+                        {% for teacher in offline_teachers|slice(6) %}
+                            {{teacher_card(teacher)}}
+                        {% endfor %}
+                    </div> #}
+                </div>
+
+                <div class="online-teachers hidden" data-tab-panel="online">
+                    {# <div class="grid grid-2-sm grid-3-lg">
+                        {% for teacher in online_teachers|slice(0, 6) %}
+                            {{teacher_card(teacher)}}
+                        {% endfor %}
+                    </div>
+
+                    {% include 'sections/trial-lesson-cta.twig' only %}
+
+                    <div class="grid grid-2-sm grid-3-lg">
+                        {% for teacher in online_teachers|slice(6) %}
+                            {{teacher_card(teacher)}}
+                        {% endfor %}
+                    </div> #}
+                </div>
+            {% endblock %}
+        {% endembed %}
+    {% endblock %}
+{% endembed %}

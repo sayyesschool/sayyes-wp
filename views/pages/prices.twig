@@ -14,6 +14,7 @@
         courses,
         card_colors: ['black', 'pink', 'purple'],
         tabs: true,
+        tabs_centered: true,
         large_header: true
 	} %}
 
@@ -22,39 +23,40 @@
 	{% embed 'components/section.twig' with {
         name: 'discounts',
         title: 'Акции и скидки',
-        description: 'Ваше обучение может быть выгоднее!'
+        description: 'Ваше обучение может быть выгоднее!',
+        padded: true
     } %}
         {% block content %}
-            <div class="grid grid--3">
+            <div class="grid grid-3-sm">
                 {% for item in [
                     {
                         title: 'Покупка всего курса',
-                        subtitle: 'Любой курс со скидкой до 20%',
                         description: 'Оплачивайте по три или шесть месяцев сразу и учитесь выгоднее.*',
+                        caption: 'Любой курс со скидкой до 20%',
                         image: 'books-2',
                         image2: 'discount'
                     },
                     {
                         title: 'Приведи друга',
-                        subtitle: '+ 2 урока каждому',
                         description: 'Рекомендуйте нас друзьям, и мы подарим вам и другу 2 урока к любому курсу!*',
+                        caption: '+ 2 урока каждому',
                         image: 'student',
                         image2: 'free-lessons'
                     },
                     {
                         title: 'Семейное обучение',
-                        subtitle: 'Постоянная скидка 20%',
                         description: 'Учите английский всей семьёй и получите постоянную скидку 20%.*',
+                        caption: 'Постоянная скидка 20%',
                         image: 'family',
                         image2: 'discount-2'
                     }
                 ] %}
-                    <div class="text-card text-card--{{item.image}}-bg text-card--{{item.image2}}-bg card">
-                        <div class="card__body">
-                            <p class="card__subtitle handwritten-text">{{item.subtitle}}</p>
-                            <h4 class="card__title">{{item.title}}</h4>
-                            <p class="card__description">{{item.description}}</p>
-                        </div>
+                    <div class="text-card text-card--{{item.image}}-bg text-card--{{item.image2}}-bg card card--sm">
+                        <h4 class="card__title">{{item.title}}</h4>
+
+                        <p class="card__description">{{item.description}}</p>
+
+                        <p class="caption handwritten">{{item.caption}}</p>
                     </div>
                 {% endfor %}
             </div>
@@ -65,7 +67,8 @@
 
 	{% embed 'components/section.twig' with {
         name: 'certificates',
-        title: 'Подарочные сертификаты'
+        title: 'Подарочные сертификаты',
+        padded: true
     } %}
         {% block content %}
             <div class="content">

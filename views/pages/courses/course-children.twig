@@ -21,8 +21,8 @@
 	},
 
 	facts: {
-		description: 'Почему дети начинают разговаривать на английском, любить язык и получать хорошие отметки в школе, обучаясь в SAY YES?',
-		grid: 2,
+		title: 'Почему дети начинают разговаривать на английском, любить язык и получать хорошие отметки в школе, обучаясь в SAY YES?',
+		grid: '2-sm',
 		items: [
 			{
 				title: 'Уроки построены на интересах вашего ребенка',
@@ -57,10 +57,9 @@
 	{% embed 'components/section.twig' with {
 		name: 'request-lesson',
 		title: 'Узнайте уровень английского у вашего ребенка на пробном бесплатном уроке, где вы также:',
-		color: 'yellow',
-		horizontal: true
+		color: 'yellow'
 	} %}
-		{% block description %}
+		{% block content %}
 			{% include 'components/list.twig' with {
 				items: [
 					'Познакомитесь с методикой и программой обучения.',
@@ -68,12 +67,9 @@
 					'Оцените, нравится ли вам преподаватель.'
 				],
 				type: 'check',
-				size: 'sm',
 				align_marker: 'center'
 			} %}
-		{% endblock %}
 
-		{% block content %}
 			<div class="card">
 				{% include 'blocks/request-form.twig' with {
 					children: true
@@ -169,7 +165,7 @@
 				teachers
 			} %}
 
-			<div class="grid grid--3">
+			<div class="grid grid-3">
 				{% for item in [
 					{
 						title: 'Строгий кастинг педагогов',
@@ -202,7 +198,7 @@
 	{% embed 'components/section.twig' with {
         name: 'course-progress',
         title: 'Лучшие показатели нашей работы — это ученики, владеющие языком и довольные родители!',
-        description: 'Родители наших учеников рассказывают о результатах и процессе обучения детей в SAY YES!'
+        description: 'Родители наших учеников рассказывают о результатах и процессе обучения детей в ' ~ COMPANY_NAME
     } %}
         {% block content %}
 			{% include 'blocks/course-results-slider.twig' with {

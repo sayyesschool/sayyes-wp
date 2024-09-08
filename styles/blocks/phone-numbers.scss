@@ -1,11 +1,6 @@
 .phone-numbers {
-	display: flex;
-	flex-direction: column;
-	gap: 5px;
-
 	&__item {
 		display: flex;
-		justify-content: space-between;
 		gap: 8px;
 		font-size: 14px;
 		font-weight: 700;

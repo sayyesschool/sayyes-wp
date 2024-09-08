@@ -117,7 +117,7 @@
 
 	<section class="club-shortly">
         <div class="section__container">
-            <h2 class="subtitle">Коротко о разговорном клубе SAY YES!</h2>
+            <h2 class="subtitle">Коротко о разговорном клубе {{COMPANY_NAME}}</h2>
 
             <div class="club-shortly__blocks">
                 {% for item in [
@@ -287,11 +287,11 @@
 
 	{% embed 'sections/img-comment.twig' with {
         class: 'img-comment--speaking-club',
-        title: 'Разговорный клуб проводят ТОП преподаватели SAY YES!',
+        title: 'Разговорный клуб проводят ТОП преподаватели ' ~ COMPANY_NAME,
         img: 'casey.png'
     } %}
         {% block content %}
-            <p class="appeal__description">Ведущие нашего онлайн клуба — самые опытные и харизматичные преподаватели SAY YES! и носители языка из Англии и США.</p>
+            <p class="appeal__description">Ведущие нашего онлайн клуба — самые опытные и харизматичные преподаватели {{COMPANY_NAME}} и носители языка из Англии и США.</p>
             <p class="appeal__description">Наши ведущие прошли обучение формату ведения уроков онлайн и могут разговорить любого, даже самого интровертного участника.</p>
         {% endblock %}
     {% endembed %}

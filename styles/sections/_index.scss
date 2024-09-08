@@ -1,21 +1,19 @@
-@import './awards';
-@import './big-cards';
-@import './cards-square';
-@import './children-advantages';
+@use './awards';
+@use './courses';
+@use './cta';
+@use './faq';
+@use './formats-tabs';
+@use './hero';
+@use './main';
+@use './teachers';
+@use './trial-lesson';
+@use './trial-lesson-cta';
+@use './video';
+
 @import './club-events';
 @import './club-shortly';
-@import './course-formats';
-@import './course-progress';
-@import './course-results';
-@import './course-teachers';
-@import './course-testimonials';
-@import './courses';
-@import './faq';
 @import './features';
-@import './formats-tabs';
-@import './hero';
 @import './image';
-@import './main';
 @import './meeting';
 @import './meetings';
 @import './online-class';
@@ -25,9 +23,6 @@
 @import './teacher-reviews';
 @import './test';
 @import './test-overview';
-@import './trial-lesson';
-@import './trial-lesson-cta';
-@import './video';
 
 .about-course,
 .cards-square,

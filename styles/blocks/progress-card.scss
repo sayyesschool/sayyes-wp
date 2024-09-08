@@ -1,89 +1,20 @@
+@use 'styles/mq';
+
 .progress-card {
-	.list {
-		margin-top: auto;
-		padding: 0;
-
-		&-item {
-			margin: 0;
-
-			&__title {
-				flex-basis: 200px;
-				margin: 0;
-				font-weight: 700;
-			}
-		}
-	}
-
-	@include breakpoint($breakpoint-md) {
-		min-height: 430px;
-
-		.video {
-			height: 250px;
-		}
-
+	.list-item {
 		&__content {
-			padding: 20px;
-		}
-	}
-
-	@include breakpoint($breakpoint-sm) {
-		min-height: 344px;
-
-		.video {
-			height: 200px;
+			gap: 5px;
+			flex-wrap: wrap;
 		}
 
-		&__start,
-		&__teacher {
-			flex-basis: 160px;
-		}
-	}
-
-	@include breakpoint($breakpoint-xs) {
-		&__start,
-		&__teacher {
-			flex-basis: 150px;
-		}
-	}
-
-	@include breakpoint($breakpoint-xxs) {
-		width: 100%;
-
-		.video {
-			height: 280px;
+		&__title {
+			margin: 0;
+			flex-shrink: 0;
+			font-weight: 700;
 		}
 
-		&__start,
-		&__teacher {
-			flex-basis: 200px;
-		}
-	}
-
-	@include breakpoint($breakpoint-mobile) {
-		.video {
-			height: 250px;
-		}
-
-		&__start,
-		&__teacher {
-			flex-basis: 150px;
-		}
-	}
-
-	@include breakpoint($breakpoint-sm-mobile) {
-		.video {
-			height: 200px;
-		}
-
-		&__start,
-		&__teacher {
-			flex-basis: auto;
-		}
-
-		&__item {
-			align-items: flex-start;
-			flex-direction: column;
-			margin-bottom: 5px;
+		&__description {
+			flex: 1;
 		}
 	}
 }

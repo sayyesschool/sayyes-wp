@@ -1,69 +1,75 @@
+@use 'styles/mq';
+@use 'styles/variables';
+
+$columns: (2, 3, 4, 6);
+
 .grid {
 	display: grid;
-	gap: 20px;
-
-	@include breakpoint($breakpoint-md) {
-		gap: 15px;
+	gap: 15px;
+	
+	@include mq.from(md) {
+		gap: 20px;
 	}
 
-	@include breakpoint($breakpoint-sm) {
-		gap: 15px;
-	}
-
-	&--2 {
+	&-2 {
 		grid-template-columns: repeat(2, minmax(250px, 1fr));
 	}
 
-	&--3 {
+	&-3 {
 		grid-template-columns: repeat(3, minmax(250px, 1fr));
 	}
 
-	&--4 {
+	&-4 {
 		grid-template-columns: repeat(4, minmax(250px, 1fr));
 	}
 
-	&--6 {
+	&-6 {
 		grid-template-columns: repeat(6, minmax(175px, 1fr));
 	}
 
-	&--sm-2 {
-		@include breakpoint($breakpoint-sm) {
-			grid-template-columns: repeat(2, 1fr);
+	@each $size in variables.$sizes {
+		@each $n in $columns {
+			&-#{$n}-#{$size} {
+				@include mq.from($size) {
+					grid-template-columns: repeat($n, 1fr);
+				}
+			}
 		}
 	}
 
-	&--sm-3 {
-		@include breakpoint($breakpoint-sm) {
-			grid-template-columns: repeat(3, 1fr);
+	&-2-1-2 {
+		@include mq.to(sm) {
+			grid-template-rows: repeat(5, auto);
 		}
-	}
 
-	&--2-1-2 {
-		grid-template-columns: 1fr 1fr 1fr;
-		grid-template-rows: 1fr 1fr;
-		grid-template-areas: 
-			'a e b'
-			'c e d';
+		@include mq.from(sm) {
+			grid-template-columns: repeat(2, minmax(250px, 1fr));
+			justify-content: center;
+		}
 
-		:nth-child(1) { grid-area: a; }
-		:nth-child(2) { grid-area: b; }
-		:nth-child(3) { grid-area: c; }
-		:nth-child(4) { grid-area: d; }
-		:nth-child(5) { grid-area: e; }
-
-		@include breakpoint($breakpoint-md) {
+		@include mq.from(md) {
 			gap: 15px;
 			grid-template-columns: 1fr 1fr;
 			grid-template-rows: 1fr 1fr 1fr;
-			grid-template-areas: 
-			'a b'
-			'c b'
-			'd e';
+			grid-template-areas:
+				'a b'
+				'c b'
+				'd e';
+
+			:nth-child(1) { grid-area: a; }
+			:nth-child(2) { grid-area: b; }
+			:nth-child(3) { grid-area: c; }
+			:nth-child(4) { grid-area: d; }
+			:nth-child(5) { grid-area: e; }
 		}
 
-		@include breakpoint($breakpoint-sm) {
-			grid-template-columns: repeat(2, minmax(250px, 1fr));
-			justify-content: center;
+		@include mq.from(lg) {
+			gap: 20px;
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-template-rows: 1fr 1fr;
+			grid-template-areas:
+				'a e b'
+				'c e d';
 		}
 	}
 }

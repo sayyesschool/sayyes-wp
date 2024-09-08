@@ -14,10 +14,11 @@
 
     {% block about %}
         {% include 'components/section.twig' with {
-            name: 'about',
+            name: 'about-course',
             title: course.about.title,
             content: course.about.content,
-            horizontal: true
+            horizontal: true,
+            padded: true
         } %}
     {% endblock %}
 
@@ -25,26 +26,26 @@
         {% embed 'components/section.twig' with {
             name: 'course-formats',
             title: course.formats.title ?: sections.formats.title ?: 'Формы обучения на курсе ' ~ course.title,
-            description: course.formats.description ?: sections.formats.description ?: 'Вы можете проходить курс в различных форматах. Продолжительность и стоимость курса зависят от интенсивности и формата обучения.'
+            description: course.formats.description ?: sections.formats.description ?: 'Вы можете проходить курс в различных форматах. Продолжительность и стоимость курса зависят от интенсивности и формата обучения.',
+            padded: true
         } %}
             {% block content %}
                 {% from 'blocks/format-card.twig' import format_card %}
 
-                <div class="grid grid--2">
+                <div class="grid grid-2-sm">
                     {% for format in sections.formats.items %}
-                        {{format_card(
-                            {
-                                title: format.title,
-                                description: format.description,
-                                price: format.price,
-                                lesson_duration: format.lesson_duration,
-                                link: false
-                            },
-                            {
-                                color: cycle(['white', 'pink', 'purple'], loop.index0),
-                                with_prices: true
-                            }
-                        )}}
+                        {{format_card({
+                            title: format.title,
+                            description: format.description,
+                            price: format.price,
+                            lesson_duration: format.lesson_duration,
+                            link: false
+                        },
+                        {
+                            color: cycle(['white', 'pink', 'purple'], loop.index0),
+                            size: 'lg',
+                            with_prices: true
+                        })}}
                     {% endfor %}
                 </div>
             {% endblock %}
@@ -57,14 +58,16 @@
 
     {% block facts %}
         {% embed 'components/section.twig' with {
-            name: 'advantages',
+            name: 'course-facts',
             title:  course.facts.title ?: sections.facts.title ?: 'Важные факты о курсе <br>' ~ course.title,
-            description: course.facts.description ?: sections.facts.description
+            description: course.facts.description ?: sections.facts.description,
+            padded: true
         } %}
             {% block content %}
                 {% include 'blocks/fact-cards.twig' with {
                     grid: sections.facts.grid,
-                    items: course.facts.items ?: sections.facts.items
+                    items: course.facts.items ?: sections.facts.items,
+                    size: 'sm'
                 } %}
             {% endblock %}
         {% endembed %}
@@ -77,16 +80,16 @@
         {% embed 'components/section.twig' with {
             name: 'course-results',
             title: course.results.title ?: 'Результаты курса <br>' ~ course.title,
-            description: course.results.description ?: sections.results.description
+            description: course.results.description ?: sections.results.description,
+            padded: true
         } %}
             {% block content %}
                 <p class="text">Если вы посетили 100% занятий и выполнили все домашние работы, но не сдали успешно итоговый тест, вы можете пройти уровень повторно и абсолютно бесплатно.</p>
 
-                <div class="card">
+                <div class="text-card card">
                     {% if course.results.list_type == 'simple' %}
                         {% include 'components/list.twig' with {
                             type: 'check',
-                            size: 'sm',
                             items: course.results.simple_list
                         } %}
                     {% elseif course.results.list_type == 'nested' %}
@@ -106,7 +109,8 @@
         {% embed 'components/section.twig' with {
             name: 'course-testimonials',
             title: sections.testimonials.title ?: 'Отзывы о курсе <br>' ~ course.title,
-            description: sections.testimonials.description ?: 'За ' ~ COMPANY_AGE ~ ' лет работы, обучили более 10 000 человек и получили более 800 отзывов'
+            description: sections.testimonials.description ?: 'За ' ~ COMPANY_AGE ~ ' лет работы, обучили более 10 000 человек и получили более 800 отзывов',
+            padded_header: true
         } %}
             {% block content %}
                 {% include 'blocks/course-testimonials-slider.twig' with {

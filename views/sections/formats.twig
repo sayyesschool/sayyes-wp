@@ -1,25 +1,28 @@
 {% embed 'components/section.twig' with {
     name: name ?: 'formats',
-    title: title ?: 'Наша школа предлагает курсы английского языка для разных уровней знаний и в разнообразных форматах.'
+    title: title ?: 'Наша школа предлагает курсы английского языка для разных уровней знаний и в разнообразных форматах:',
+    description,
+    padded,
+    padded_header
 } %}
     {% block content %}
         {% from 'blocks/format-card.twig' import format_card %}
 
-        <div class="grid grid--{{grid ?: 2}}">
+        <div class="grid {{grid_class ?: 'grid-2-md'}}">
             {% for format in formats %}
-                {{format_card(
-                    format,
-                    options: {
-                        color: cycle(colors ?? ['white', 'pink', 'purple'], loop.index0),
-                        with_prices
-                    }
-                )}}
+                {{format_card(format, {
+                    color: cycle(colors ?? ['white', 'pink', 'purple'], loop.index0),
+                    size: 'sm',
+                    with_prices
+                })}}
             {% endfor %}
 
             {% if with_help %}
                 <div class="text-card card">
-                    <p class="text text--lg">Затрудняетесь с выбором формы обучения?</p>
-                    <h3 class="heading heading--md">Подберем для вас удобный курс и формат обучения!</h3>
+                    <p class="text">Затрудняетесь с выбором формы обучения?</p>
+
+                    <h3 class="heading heading-3">Подберем для вас удобный курс и формат обучения!</h3>
+
                     <button class="btn btn--purple" data-modal-trigger="request-modal">Оставить заявку</button>
                 </div>
             {% endif %}

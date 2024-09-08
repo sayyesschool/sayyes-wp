@@ -1,40 +1,37 @@
+@use 'styles/components/heading';
+@use 'styles/mq';
+@use 'styles/theme' as *;
+@use 'styles/variables' as *;
+
 .course-card {
 	display: flex;
 	flex-direction: column;
-	overflow: hidden;
 
 	.card {
-		&__media {
-			img {
-				aspect-ratio: 2 / 1;
+		--card-image-aspect-ratio: 2 / 1;
+
+		@include mq.to(xl) {
+			&__body {
+				.text {
+					display: none;
+				}
 			}
 		}
 
-		&__header {
-			position: relative;
-			padding: 25px 40px 0;
+		@include mq.from(lg) {
+			&__body {
+				display: flex;
+				flex-grow: unset;
+				flex-wrap: wrap;
+				gap: 60px;
+			}
+	
+			&__content {
+				display: flex;
+				justify-content: space-between;
+				padding: 40px;
+			}
 		}
-
-        &__body {
-            flex-grow: unset;
-			display: flex;
-			gap: 60px;
-        }
-
-        &__title {
-			font-weight: 800;
-        }
-    
-        &__description {
-			margin-top: 0;
-        }
-
-        &__content {
-            display: flex;
-            justify-content: space-between;
-            min-height: 145px;
-            padding: 40px;
-        }
 	}
 
 	&__age-tag {
@@ -43,16 +40,20 @@
 		justify-content: center;
 		align-items: center;
 		width: 145px;
-		height: 52px;
+		height: 40px;
 		background-color: $black;
 		color: $white;
+
+		@include mq.from(lg) {
+			height: 50px;
+		}
 	}
 
 	.card__media &__age-tag {
 		bottom: 0;
 		left: 0;
 		border-top-right-radius: $border-radius-sm;
-		border-bottom-left-radius: $border-radius;
+		@include border-radius((bottom-left));
 	}
 
 	.card__header &__age-tag {
@@ -68,8 +69,8 @@
 	}
 
 	.list {
-		gap: 5px;
 		flex: 1;
+		gap: 5px;
 
 		.list-item {
 			display: flex;
@@ -86,38 +87,58 @@
 		}
 	}
 
-	&--large-header {
-		background-color: $white;
-		color: $black;
-		
-		.card {
-			&__media {
-				display: none;
-			}
-
-			&__header {
-				flex-grow: 1;
-				padding: 35px 40px;
-				border-radius: $border-radius;
-				background-color: var(--card-background-color);
-				color: var(--card-text-color);
-				overflow: hidden;
-			}
-
-			&__title {
-				margin-bottom: 10px;
-				font-size: 42px;
-				font-weight: 700;
-				line-height: 40px;
-			}
-
-			&__description {
-				max-width: 360px;
-			}
+	@include mq.to(lg) {
+		&__lesson-cost {
+			display: none;
 		}
 	}
 
-	@include breakpoint($breakpoint-lg) {
+	@include mq.to(md) {
+		&__lesson-type {
+			padding-right: 0;
+		}
+
+		&__list {
+			width: 100%;
+		}
+	}
+
+	@include mq.from(md) {
+		&__description {
+			max-width: none;
+		}
+
+		&__lesson-cost {
+			display: block;
+		}
+
+		&__list {
+			width: auto;
+		}
+	}
+
+	@include mq.from(md) {
+		&__title {
+			font-size: 24px;
+			line-height: 25px;
+		}
+
+		&__header {
+			padding: 24px 30px;
+			min-height: 145px;
+		}
+
+		&__content {
+			min-height: 105px;
+			padding: 22px 15px 22px 24px;
+		}
+
+		&__item {
+			line-height: 15px;
+		}
+	}
+
+	@include mq.from(xl) {
 		&__title {
 			font-size: 32px;
 			font-weight: 700;
@@ -163,68 +184,43 @@
 		}
 	}
 
-	@include breakpoint($breakpoint-sm) {
-		&__title {
-			font-size: 24px;
-			line-height: 25px;
-		}
+	&--large-header {
+		background-color: $white;
+		color: $black;
+		
+		.card {
+			&__media {
+				display: none;
+			}
 
-		&__header {
-			padding: 24px 30px;
-			min-height: 145px;
-		}
+			&__header {
+				flex-grow: 1;
+				padding: 20px 25px;
+				background-color: var(--card-background-color);
+				color: var(--card-text-color);
+				overflow: hidden;
+				@include border-radius;
+			}
 
-		&__content {
-			min-height: 105px;
-			padding: 22px 15px 22px 24px;
-		}
+			&__title {
+				@include heading.h3;
+			}
 
-		&__item {
-			line-height: 15px;
-		}
-	}
+			&__description {
+				max-width: 360px;
+			}
 
-	@include breakpoint($breakpoint-xxs) {
-		width: 100%;
+			@include mq.from(md) {
+				&__header {
+					padding: 25px 30px;
+				}
+			}
 
-		&__title {
-			font-size: 32px;
-			line-height: 30px;
-		}
-
-		&__description {
-			max-width: none;
-		}
-
-		&__lesson-cost {
-			display: block;
-		}
-
-		&__list {
-			width: auto;
-		}
-	}
-
-	@include breakpoint($breakpoint-mobile) {
-		&__title {
-			font-size: 24px;
-			line-height: 25px;
-		}
-
-		&__header {
-			padding: 24px 30px;
-		}
-
-		&__lesson-cost {
-			display: none;
-		}
-
-		&__lesson-type {
-			padding-right: 0;
-		}
-
-		&__list {
-			width: 100%;
+			@include mq.from(lg) {
+				&__header {
+					padding: 35px 40px;
+				}
+			}
 		}
 	}
 }

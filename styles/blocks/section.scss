@@ -1,0 +1,121 @@
+@use 'styles/components/heading';
+@use 'styles/components/text';
+@use 'styles/mq';
+@use 'styles/theme';
+@use 'styles/variables' as *;
+
+.section {
+	--max-width: 1156px;
+	--header-max-width: none;
+	--title-max-width: none;
+	--description-max-width: none;
+	--content-max-width: none;
+
+	position: relative;
+	margin-bottom: 50px;
+	@include theme.border-radius;
+
+	&__container {
+		position: relative;
+		max-width: var(--max-width);
+		margin: 0 auto;
+	}
+
+	&__header {
+		max-width: var(--header-max-width);
+		margin-bottom: 30px;
+
+		@include mq.from(md) {
+			margin-bottom: 40px;
+		}
+
+		@include mq.from(lg) {
+			margin-bottom: 50px;
+		}
+	}
+
+	&__title {
+		max-width: var(--title-max-width);
+		@include heading.h3;
+	}
+
+	&__description {
+		max-width: var(--description-max-width);
+		@include text.body1;
+
+		p + p {
+			margin-top: 10px;
+		}
+	}
+
+	&__title + &__description {
+		margin-top: 20px;
+	}
+
+	&__content {
+		position: relative;
+		max-width: var(--content-max-width);
+	}
+
+	@include mq.from(md) {
+		margin-bottom: 60px;
+	}
+
+	@include mq.from(lg) {
+		margin-bottom: 70px;
+	}
+
+	@include mq.from(xl) {
+		margin-bottom: 80px;
+	}
+
+	&--padded &__container,
+	&--padded-header &__header {
+		@include mq.to(md) {
+			padding: 0 20px;
+		}
+
+		@include mq.between(md, xl) {
+			padding: 0 30px;
+		}
+	}
+
+	&--white {
+		background-color: $white;
+	}
+
+	&--purple {
+		background-color: $purple;
+		color: $white;
+	}
+
+	&--yellow {
+		background-color: $yellow;
+		color: $black;
+	}
+
+	&--horizontal &__container {
+		display: flex;
+	
+		@include mq.to(md) {
+			flex-direction: column;
+			gap: 20px;
+		}
+
+		@include mq.from(md) {
+			gap: 30px;
+		}
+
+		@include mq.from(lg) {
+			gap: 40px;
+		}
+
+		@include mq.from(xl) {
+			gap: 50px;
+		}
+	}
+
+	&--horizontal &__header {
+		margin-bottom: 0;
+	}
+}

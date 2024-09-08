@@ -1,6 +1,12 @@
-@mixin image() {
-    display: block;
+@use 'styles/theme';
+
+@mixin base {
     width: 100%;
+    display: block;
     object-fit: cover;
-    border-radius: $border-radius;
+    @include theme.border-radius;
+}
+
+.image {
+    @include base;
 }

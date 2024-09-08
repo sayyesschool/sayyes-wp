@@ -6,8 +6,8 @@ export default class Tabs extends Component {
 	static classes = {
 		root: this.name,
 		nav: `${this.name}__nav`,
-		tab: `${this.name}__tab`,
-		activeTab: `${this.name}__tab--active`
+		tab: 'tab',
+		activeTab: 'tab--active'
 	};
 
 	constructor(element) {

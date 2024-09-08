@@ -1,39 +1,110 @@
+@use 'styles/mq';
+@use 'styles/mixins' as *;
+
 .single-course {
     .main-section {
-        &__title {
-            max-width: 680px;
-        }
+        --title-max-width: 680px;
+        --description-max-width: 510px;
+    }
+}
 
-        &__description {
-            max-width: 510px;
+.about-course {
+    &__container {
+        gap: 20px;
+    }
+
+    &__header,
+    &__content {
+        flex: 1;
+    }
+
+    &__content {
+        p + p {
+            margin-top: 10px;
         }
     }
 
-    .about {
+    @include mq.from(md) {
+        &__container {
+            gap: 40px;
+        }
+    }
+
+    @include mq.from(lg) {
         &__container {
             gap: 80px;
         }
+    }
+}
 
-        &__header,
-        &__content {
-            flex: 1;
-        }
+.course-formats {
+    --header-max-width: 600px;
 
-        &__content {
-            p + p {
-                margin-top: 10px;
-            }
+    .card {
+        display: flex;
+        flex-direction: column;
+        
+        &__body {
+            margin-top: auto;
         }
     }
+}
 
-    .course-formats {
-        .card {
-            display: flex;
-            flex-direction: column;
-            
-            &__body {
-                margin-top: auto;
-            }
-        }
-    }
+.course-results {
+	&__header {
+		margin-bottom: 20px;
+	}
+
+	&__content {
+		display: flex;
+	}
+
+	@include mq.to(md) {
+		&__content {
+			flex-direction: column;
+			gap: 20px;
+		}
+	}
+
+	@include mq.from(md) {
+		&__content {
+			flex-direction: row;
+			gap: 30px;
+		}
+
+		.text,
+		.card {
+			flex: 1;
+		}
+
+		.text {
+			position: relative;
+	
+			@include decoration('notes/free-2.svg', after) {
+				top: 104px;
+				left: 115px;
+				width: 177px;
+				height: 102px;
+			}
+		}
+	}
+
+	@include mq.from(lg) {
+		&__content {
+			gap: 40px;
+		}
+	}
+}
+
+.course-testimonials {
+	--description-max-width: 390px;
+
+	@include mq.to(md) {
+		.swiper-wrapper {
+			display: flex;
+			flex-direction: column;
+			gap: 15px;
+			overflow: visible;
+		}
+	}
 }

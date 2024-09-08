@@ -10,12 +10,13 @@
 	{% embed 'components/section.twig' with {
 		name: 'student-results',
 		title: 'Лучшие показатели нашей работы — это студенты, уверенно владеющие языком.',
-		description: 'Наши ученики рассказывают о своих результатах и процессе обучения в SAY YES! на английском.'
+		description: 'Наши ученики рассказывают о своих результатах и процессе обучения в ' ~ COMPANY_NAME ~ ' на английском.',
+		padded: true
 	} %}
 		{% block content %}
 			{% from 'blocks/progress-card.twig' import progress_card %}
 
-			<div class="grid grid--2">
+			<div class="grid grid-2-md">
 				{% for item in reports %}
 					{{progress_card(item)}}
 				{% endfor %}

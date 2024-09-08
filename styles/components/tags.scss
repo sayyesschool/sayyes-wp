@@ -1,4 +1,35 @@
+@use 'styles/mq';
+@use 'styles/variables';
+
 .tags {
 	display: flex;
 	gap: 5px;
+
+	@include mq.from(md) {
+		gap: 10px;
+	}
+}
+
+.tag {
+	padding: 5px 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: variables.$black;
+	font-weight: 600;
+	font-size: 14px;
+	border: 2px solid variables.$black;
+	border-radius: variables.$border-radius-xs;
+
+	&--no-border {
+		border: none;
+	}
+
+	&--yellow {
+		background-color: variables.$yellow;
+	}
+
+  &--purple {
+		background-color: variables.$violet;
+	}
 }

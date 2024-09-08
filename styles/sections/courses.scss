@@ -1,97 +1,43 @@
+@use 'styles/components/heading';
+@use 'styles/components/text';
+@use 'styles/mq';
+
 .courses {
-	&__title {
-		max-width: 712px;
-		margin-bottom: 30px;
+	@include mq.from(md) {
+		--header-max-width: 500px;
 	}
 
-	.tabs {
-		&__nav {
-			max-width: 560px;
-			margin-bottom: 40px;
-		}
+	@include mq.from(lg) {
+		--header-max-width: 700px;
 
-		@include breakpoint($breakpoint-md) {
-			&__nav {
-				max-width: 520px;
-			}
-		}
-
-		@include breakpoint($breakpoint-sm-mobile) {
-			&__nav {
-				font-size: 14px;
-				font-weight: 700;
-				line-height: 20px;
-			}
+		.tabs {
+			--nav-max-width: calc(50% - 10px);
 		}
 	}
 
 	.text-card {
 		text-align: center;
-		padding: 35px 85px;
 
-		.text {
-			margin: 0 auto 20px;
-		}
-
+		.text,
 		.heading {
-			margin-bottom: 30px;
+			margin-bottom: 20px;
 		}
 
 		.btn {
 			margin: auto;
 		}
 
-		@include breakpoint($breakpoint-lg) {
-			padding: 35px 65px;
-
-			&__title {
-				max-width: 260px;
-				margin-bottom: 15px;
-				font-size: 16px;
-				font-weight: 600;
-				line-height: 18px;
-			}
-
-			&__description {
-				max-width: none;
-				margin-bottom: 30px;
-				font-size: 32px;
-				line-height: 30px;
-			}
-
-			.btn {
-				min-width: 291px;
-			}
-		}
-
-		@include breakpoint($breakpoint-sm) {
-			padding: 26px 70px;
-
-			&__title {
-				max-width: none;
-				font-size: 16px;
-				font-weight: 600;
-				line-height: 18px;
-			}
-
-			&__description {
-				margin-bottom: 25px;
-				font-size: 24px;
-				line-height: 25px;
-			}
-
+		@include mq.from(md) {
 			.btn {
 				min-width: auto;
 				width: 100%;
 			}
 		}
 
-		@include breakpoint($breakpoint-xxs) {
-			width: 100%;
-		}
-
-		@include breakpoint($breakpoint-mobile) {
-			padding: 26px 20px;
+		@include mq.from(lg) {
+			.btn {
+				min-width: 291px;
+			}
 		}
 	}
 }

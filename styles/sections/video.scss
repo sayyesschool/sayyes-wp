@@ -1,136 +1,102 @@
+@use 'styles/mixins';
+@use 'styles/mq';
+@use 'styles/variables';
+
 .video-section {
-	padding: 65px 60px 55px;
-	background-color: $white;
+	padding: 20px;
+	flex-direction: column;
+	background-color: variables.$white;
 
 	.section {
 		&__container {
 			width: 100%;
 			display: flex;
 			justify-content: space-between;
-			gap: 40px;
+			gap: 20px;
 		}
 	
-		&__header {
-			flex-basis: 50%;
-		}
-	
+		&__header,
 		&__media {
-			position: relative;
 			flex-basis: 50%;
-	
-			&::before {
-				content: '';
-				position: absolute;
-				top: 50%;
-				left: -75%;
-				width: 330px;
-				height: 135px;
-				background: url('./static/images/decoration/notes/shortly-video.svg') center center/contain no-repeat;
+		}
+	}
+
+	.caption {
+		position: absolute;
+	}
+
+	@include mq.from(md) {
+		padding: 30px;
+		flex-direction: row;
+
+		.section {
+			&__container {
+				@include mq.from(md) {
+					gap: 30px;
+				}
 			}
 		}
 	}
 
-	@include breakpoint($breakpoint-xl) {
-		.video {
-			width: 482px;
-			height: 264px;
-
-			&::before {
-				width: 564px;
-				height: 310px;
-			}
-		}
-	}
-
-	@include breakpoint($breakpoint-lg) {
+	@include mq.from(lg) {
 		padding: 40px;
 
-		&::before {
-			top: 170px;
-			width: 231px;
-			height: 94px;
-		}
-
-		&__content {
-			max-width: 370px;
-		}
-
-		.video {
-			width: 397px;
-			height: 217px;
-
-			&::before {
-				width: 464px;
-				height: 255px;
+		.section {
+			&__container {
+				@include mq.from(md) {
+					gap: 40px;
+				}
 			}
 		}
 	}
 
-	@include breakpoint($breakpoint-md) {
-		padding: 30px;
+	@include mq.from(xl) {
+		padding: 65px 60px 55px;
 	}
 
-	@include breakpoint($breakpoint-sm) {
-		&::before {
-			top: 140px;
-			left: 15%;
-			width: 231px;
-			height: 94px;
-		}
-
-		&__content {
-			max-width: 330px;
-		}
-
-		.video {
-			width: 326px;
-			height: 175px;
-
-			&::before {
-				width: 374px;
-				height: 199px;
-				top: -5px;
-				left: -25px;
-			}
+	@include mq.to(md) {
+		.caption {
+			left: 30%;
+			width: 172px;
+			height: 53px;
 		}
 	}
 
-	@include breakpoint($breakpoint-xxs) {
-		padding: 10px;
-		flex-direction: column;
-
-		&::before {
-			display: block;
-			top: auto;
-			bottom: 210px;
-			left: 25%;
-			background-image: url('./static/images/decoration/notes/shortly-video-2.svg');
-		}
-
+	@include mq.from(md) {
 		&__content {
 			text-align: center;
 			max-width: none;
 			margin: 0 auto 100px;
 		}
+
+		.caption {
+			bottom: 210px;
+			left: 25%;
+		}
 	}
 
-	@include breakpoint($breakpoint-sm-mobile) {
-		&::before {
-			left: 30%;
-			width: 172px;
-			height: 53px;
+	@include mq.from(md) {
+		&__content {
+			max-width: 330px;
 		}
 
-		.video {
-			width: 290px;
-			height: 155px;
+		.caption {
+			top: 140px;
+			left: 15%;
+			width: 231px;
+			height: 94px;
+		}
+	}
 
-			&::before {
-				width: 323px;
-				height: 172px;
-				top: -5px;
-				left: -15px;
-			}
+	@include mq.from(lg) {
+		&__content {
+			max-width: 370px;
+		}
+
+		.caption {
+			top: 170px;
+			width: 231px;
+			height: 94px;
 		}
 	}
 }

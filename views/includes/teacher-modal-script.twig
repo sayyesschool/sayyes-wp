@@ -47,14 +47,13 @@
     }
 
     function setTeacherData(teacherBlock, teacher) {
-        console.log(teacher)
         const video = teacherBlock.querySelector('.video');
 
-        const videoImage = video.children[0];
+        const videoImage = video.querySelector('img');
         videoImage.src = teacher.imageUrl;
         videoImage.alt = teacher.name;
 
-        const videoButton = video.children[1];
+        const videoButton = video.querySelector('button');
         videoButton.setAttribute('data-embed-url', teacher.videoUrl);
 
         const title = teacherBlock.querySelector('.teacher-block__title');
