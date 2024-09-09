@@ -1,7 +1,9 @@
+@use 'styles/components/spinner';
 @use 'styles/mixins' as *;
 @use 'styles/variables' as *;
 
 .btn {
+	position: relative;
 	width: 100%;
 	max-width: 372px;
 	min-height: 50px;
@@ -18,6 +20,11 @@
 	font-weight: 700;
 	text-align: center;
 	white-space: nowrap;
+	overflow: hidden;
+
+	&:disabled {
+		opacity: 0.8;
+	}
 
 	&--outlined {
 		border: 2px solid currentColor;
@@ -100,5 +107,32 @@
 
 	&--uppercase {
 		text-transform: uppercase;
+	}
+
+	.spinner {
+		visibility: hidden;
+		position: absolute;
+		left: 50%;
+		height: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	&[data-loading],
+	&--loading {
+		&::before {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background-color: inherit;
+		}
+
+		&::after {
+			content: '';
+			@include spinner.styles($size: 24px);
+			position: absolute;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
 	}
 }

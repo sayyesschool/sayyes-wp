@@ -1,6 +1,7 @@
 @use './callback-modal';
 @use './contact-card';
 @use './course-card';
+@use './error-modal';
 @use './footer';
 @use './format-block';
 @use './format-card';
@@ -13,6 +14,7 @@
 @use './phone-numbers';
 @use './progress-block';
 @use './progress-card';
+@use './request-block';
 @use './request-form';
 @use './request-modal';
 @use './section';

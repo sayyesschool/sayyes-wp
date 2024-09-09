@@ -18,22 +18,28 @@
             ]
         } %}
             {% block content %}
-                <div class="feedback-block feedback-block--adults" data-tab-panel="adults">
-                    <div class="feedback-block__content">
-                        <p class="feedback-block__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы и расскажем о курсах</p>
+                <div class="request-block request-block--adults" data-tab-panel="adults">
+                    <div class="request-block__content">
+                        <h2 class="request-block__title">Оставьте заявку на пробный урок</h2>
+
+                        <p class="request-block__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы и расскажем о курсах</p>
 
                         {% include 'blocks/request-form.twig' with {
+                            format: true,
                             button_text: 'Оставить заявку'
                         } %}
                     </div>
                 </div>
 
-                <div class="feedback-block feedback-block--children hidden" data-tab-panel="children">
-                    <div class="feedback-block__content">
-                        <p class="feedback-block__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы и расскажем о курсах</p>
+                <div class="request-block request-block--children hidden" data-tab-panel="children">
+                    <div class="request-block__content">
+                        <h2 class="request-block__title">Оставьте заявку на пробный урок</h2>
+
+                        <p class="request-block__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы и расскажем о курсах</p>
 
                         {% include 'blocks/request-form.twig' with {
                             children: true,
+                            format: true,
                             button_text: 'Оставить заявку'
                         } %}
                     </div>

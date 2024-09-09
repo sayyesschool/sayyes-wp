@@ -1,26 +1,25 @@
 <?php
-require 'utils.php';
 
-$data = json_decode(file_get_contents('php://input'), true);
+require 'helpers.php';
 
-$title = $data['title'];
-$name = $data['name'];
-$phone = $data['phone'];
-$email = $data['email'];
-$recaptcha = $data['recaptcha'];
+try {
+    // TODO: Add $_REQUEST handling
 
-if (empty($phone) && empty($email)) {
-    http_response_code(400);
-    exit;
+    $data = json_decode(file_get_contents('php://input'), true);
+
+    $crm_response = send_crm_request($data);
+    send_request_email($data);
+    send_json([
+        'ok' => true,
+        'data' => $crm_response,
+        'message' => 'Заявка принята'
+    ]);
+} catch (Exception $e) {
+    http_response_code($e->getCode());
+
+    send_json([
+        'ok' => false,
+        'error' => true,
+        'message' => $e->getMessage()
+    ]);
 }
-
-$message = '<html><body style="font-family: sans-serif">';
-$message .= '<div><b>Имя:</b> '.$name.'</div>';
-$message .= '<div><b>Телефон:</b> '.$phone.'</div>';
-$message .= '<div><b>Электронная почта:</b> '.$email.'</div>';
-$message .= '<div><b>reCAPTCHA: </b>'.($recaptcha['success'] ? ('Пройдена ('.$recaptcha['score'].')') : 'Не пройдена').'</div>';
-$message .= '</body></html>';
-
-send_email('info@sayes.ru', $title ? $title : 'Заявка на пробный урок и консультацию', $message);
-
-send_json(['ok' => true]);

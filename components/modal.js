@@ -7,6 +7,8 @@ export default class Modal extends Component {
         root: this.name,
         surface: `${this.name}__surface`,
         body: `${this.name}__body`,
+        title: `${this.name}__title`,
+        description: `${this.name}__description`,
         close: `${this.name}__close`
     };
 
@@ -48,6 +50,8 @@ export default class Modal extends Component {
         super(element);
 
         this.body = this.getElement(`.${Modal.classes.body}`);
+        this.title = this.getElement(`.${Modal.classes.title}`);
+        this.description = this.getElement(`.${Modal.classes.description}`);
         this.closeButton = this.getElement(`.${Modal.classes.close}`);
 
         this.element.addEventListener('click', this.handleRootClick.bind(this));
@@ -58,6 +62,14 @@ export default class Modal extends Component {
         if (event.target === this.element) {
             this.close(event);
         }
+    }
+
+    setTitle(content) {
+        this.title.textContent = content;
+    }
+
+    setDescription(content) {
+        this.description.textContent = content;
     }
 
     open() {

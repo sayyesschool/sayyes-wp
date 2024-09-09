@@ -7,14 +7,16 @@ use Twig\Extra\Html\HtmlExtension;
 include 'post-classes.php';
 include 'post-types.php';
 include 'taxonomies.php';
+require 'constants.php';
 require 'utils.php';
 
 class SayYesSite extends Site {
     public $version = '2.3.0';
-    public $yandex_metrika_counter = 29661505;
-    public $google_analytics_id = 'UA-47133492-2';
-    public $recaptcha_key = '6LenTzMiAAAAABvM_nwArCX5rtvJQ3TUQS8EsN1q';
+    public $recaptcha_key = RECAPTCHA_PUBLIC_KEY;
+    public $recaptcha_score = 0.5;
     public $facebook_pixel_ids = ['758563291240040', '354901769006910', '1060189581084918'];
+    public $google_analytics_id = 'UA-47133492-2';
+    public $yandex_metrika_counter = 29661505;
 
 	function __construct() {
         // add_theme_support('html5');
@@ -130,10 +132,11 @@ class SayYesSite extends Site {
         ];
         $context['COMPANY_NAME'] = 'SAY&nbsp;YES!';
         $context['COMPANY_AGE'] = date('Y') - 2013;
+        $context['RECAPTCHA_KEY'] = $this->recaptcha_key;
+        $context['RECAPTCHA_SCORE'] = $this->recaptcha_score;
         $context['FACEBOOK_PIXEL_IDS'] = $this->facebook_pixel_ids;
         $context['GA_MEASUREMENT_ID'] = $this->google_analytics_id;
         $context['YANDEX_METRIKA_COUNTER'] = $this->yandex_metrika_counter;
-        $context['RECAPTCHA_KEY'] = $this->recaptcha_key;
 		$context['header_nav'] = Timber::get_menu('header_nav');
         $context['footer_nav'] = Timber::get_menu('footer_nav');
         $context['links'] = $links;

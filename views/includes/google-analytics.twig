@@ -5,13 +5,15 @@
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    var GA_MEASUREMENT_ID = '{{ GA_MEASUREMENT_ID }}';
+    var GA_MEASUREMENT_ID = '{{GA_MEASUREMENT_ID}}';
 
     ga('create', GA_MEASUREMENT_ID, 'sayes.ru');
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ GA_MEASUREMENT_ID }}"></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id={{GA_MEASUREMENT_ID}}"></script>
+
 <script>
     window.dataLayer = window.dataLayer || [];
     

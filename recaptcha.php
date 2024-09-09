@@ -1,7 +1,6 @@
 <?php
-require 'utils.php';
-
-define('RECAPTCHA_V3_SECRET_KEY', '6LenTzMiAAAAAIevbqe4Mss9KmBRFMUVnZkgmhCb');
+require_once 'constants.php';
+require 'helpers.php';
 
 $data = json_decode(file_get_contents('php://input'), true);
 
@@ -14,7 +13,7 @@ if (empty($action) || empty($token)) {
 }
 
 $response = http_post('https://www.google.com/recaptcha/api/siteverify', [
-	'secret' => RECAPTCHA_V3_SECRET_KEY,
+	'secret' => RECAPTCHA_SECRET_KEY,
 	'response' => $token
 ]);
 

@@ -1,11 +1,6 @@
-{% embed 'components/modal.twig' with {
-    class: 'success-modal'
+{% include 'components/modal.twig' with {
+    id: 'success-modal',
+    class: 'success-modal',
+    title: 'Заявка отправлена',
+    description: 'Мы свяжемся с вами, запишем на урок, ответим на вопросы и расскажем о курсах.'
 } %}
-    {% block content %}
-        <img class="success-modal__check-icon" src="{{theme.link}}/static/images/icons/check-2.svg" alt="">
-
-        <h2 class="success-modal__title">Заявка отправлена</h2>
-
-        <p class="success-modal__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы и расскажем о курсах.</p>
-    {% endblock %}
-{% endembed %}

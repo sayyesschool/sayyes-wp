@@ -27,10 +27,17 @@
         {% block styles %}
         {% endblock %}
 
-        {% include 'includes/yandex-metrika.twig' %}
+        {% include 'includes/constants.twig' %}
+        {% include 'includes/recaptcha.twig' %}
+        {# {% include 'includes/yandex-metrika.twig' %}
         {% include 'includes/google-analytics.twig' %}
-        {% include 'includes/facebook-pixel.twig' %}
+        {% include 'includes/facebook-pixel.twig' %} #}
         {# {% include 'includes/jivosite.twig' %} #}
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous" async></script>
+        <script src="https://unpkg.com/petite-vue" async></script>
+        <script src="https://static.sayes.ru/js/crm.js" async></script>
+        <script src="{{theme.link}}/static/scripts/main.js" defer></script>
 
         {% block head %}
         {% endblock %}
@@ -50,20 +57,13 @@
 
         {% include 'blocks/callback-modal.twig' %}
         {% include 'blocks/image-modal.twig' %}
+        {% include 'blocks/error-modal.twig' %}
         {% include 'blocks/request-modal.twig' %}
         {% include 'blocks/success-modal.twig' %}
         {% include 'blocks/video-modal.twig' %}
 
         {% block modal %}
         {% endblock %}
-
-		<script src="https://www.google.com/recaptcha/api.js?render=6LenTzMiAAAAABvM_nwArCX5rtvJQ3TUQS8EsN1q"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://unpkg.com/petite-vue"></script>
-        <script src="https://static.sayes.ru/js/crm.js"></script>
-        <script src="{{theme.link}}/static/scripts/main.js"></script>
-
-        {% include 'includes/request-form-script.twig' %}
 
         {% block scripts %}
         {% endblock %}

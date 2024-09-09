@@ -1,0 +1,57 @@
+@use 'styles/components/heading';
+@use 'styles/components/text';
+@use 'styles/mq';
+@use 'styles/mixins' as *;
+@use 'styles/theme' as *;
+@use 'styles/variables' as *;
+
+.request-block {
+    display: flex;
+    justify-content: space-between;
+    background-color: $pale-white;
+	@include border-radius;
+
+	&__content {
+		padding: 20px;
+	}
+
+	&__title {
+        margin-bottom: 10px;
+		@include heading.h3;
+    }
+
+    &__description {
+        margin-bottom: 20px;
+		@include text.body1;
+    }
+
+	@include mq.from(md) {
+        &__content {
+			width: 60%;
+            padding: 30px;
+        }
+
+		&::before {
+			content: '';
+			width: 40%;
+			border-radius: 0;
+			@include border-radius((top-left, bottom-left));
+			background: var(--background-url) center center/cover no-repeat;
+		}
+
+		&--adults {
+			--background-url: url('./static/images/pictures/feedback.jpg');
+		}
+	
+		&--children {
+			--background-url: url('./static/images/pictures/feedback-2.jpg');
+		}
+
+    }
+
+	@include mq.from(lg) {
+		&__content {
+			padding: 40px;
+		}
+	}
+}

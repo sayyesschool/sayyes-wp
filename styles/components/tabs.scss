@@ -4,6 +4,7 @@
 
 .tabs {
 	--nav-max-width: none;
+	--nav-gap: 5px;
 
 	display: flex;
 	flex-direction: column;
@@ -13,13 +14,12 @@
 		width: 100%;
 		max-width: var(--nav-max-width);
 		display: flex;
-		gap: 5px;
+		gap: var(--nav-gap);
+	}
 
-		@include mq.from(sm) {
-			--nav-max-width: 480px;
-			
-			gap: 10px;
-		}
+	@include mq.from(sm) {
+		--nav-max-width: 480px;
+		--nav-gap: 10px;
 	}
 
 	@include mq.from(md) {

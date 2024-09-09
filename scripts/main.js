@@ -1,9 +1,11 @@
 import Accordion from '../components/accordion';
 import Header from '../components/header';
+import RequestForm from '../components/request-form';
 import Select from '../components/select';
 import Tabs from '../components/tabs';
 import Video from '../components/video';
 
+import './events';
 import './inputmask';
 import './modals';
 import './scroll';
@@ -13,6 +15,7 @@ import './sliders';
 
 Accordion.init();
 Header.init();
+RequestForm.init();
 Select.init();
 Tabs.init();
 Video.init();

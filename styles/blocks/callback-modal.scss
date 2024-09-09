@@ -1,22 +1,24 @@
+@use 'styles/theme' as *;
 @use 'styles/variables' as *;
 
 #callback-modal {
     .modal {
         &__surface {
-            width: 955px;
+            max-width: 960px;
             display: flex;
 
             &::before {
                 content: '';
-                width: 42%;
-                border-radius: $border-radius 0 0 $border-radius;
+                width: 40%;
+                border-radius: 0;
+			    @include border-radius((top-left, bottom-left));
                 background: url('./static/images/pictures/anastasia-2.jpg') center center/cover no-repeat;
             }
         }
 
         &__body {
-            width: 58%;
-		    padding: 35px 45px;
+            width: 60%;
+            padding: 40px;
         }
     }
 }

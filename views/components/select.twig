@@ -1,5 +1,5 @@
 <div class="select">
-	<input class="select__input" type="hidden" name="{{name}}" value="{{options[0]}}">
+	<input class="select__input" type="hidden" name="{{name}}" value="{{options[0]}}" {% if required %} required{% endif %}>
 	
 	{% if label %}
 		<label class="select__label">{{label}}</label>

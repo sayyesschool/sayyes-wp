@@ -130,7 +130,7 @@
 	}
 
 	@include mq.from(lg) {
-		padding-top: 95px;
+		padding-top: 80px;
 		padding-bottom: 30px;
 
 		&__header {
@@ -320,14 +320,23 @@
 }
 
 .atmosphere {
+	padding-bottom: 40px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 
 	&__content,
 	&__trip,
-	&__celebration,
 	&__celebration {
 		display: flex;
+	}
+
+	&__celebration-media {
+		flex: 1;
+		min-width: 200px;
+
+		figcaption {
+			margin: 10px;
+		}
 	}
 
 	.list {
@@ -353,10 +362,6 @@
 
 			.flex {
 				gap: 15px;
-			}
-
-			figcaption {
-				margin: 10px;
 			}
 		}
 	}
@@ -394,11 +399,6 @@
 			&::-webkit-scrollbar {
 				display: none;
 			}
-
-			.video {
-				min-width: 214px;
-				max-height: 380px;
-			}
 		}
 	}
 
@@ -414,10 +414,7 @@
 		}
 
 		&__celebration {
-			.video {
-				min-width: 212px;
-				max-height: 380px;
-			}
+			justify-content: space-between;
 		}
 	}
 
@@ -434,6 +431,8 @@
 	}
 
 	@include mq.from(lg) {
+		padding-bottom: 80px;
+
 		&__content {
 			flex-direction: column;
 			gap: 20px;
@@ -443,10 +442,13 @@
 			@include text.body1($weight: 700, $responsive: false);
 		}
 
-		&__trip {
+		&__trip,
+		&__celebration {
 			flex-direction: row;
 			justify-content: space-between;
+		}
 
+		&__trip {
 			.image {
 				width: 640px;
 			}

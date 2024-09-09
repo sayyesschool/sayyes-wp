@@ -75,8 +75,12 @@
 			padding: 0 20px;
 		}
 
-		@include mq.between(md, xl) {
+		@include mq.from(md) {
 			padding: 0 30px;
+		}
+
+		@include mq.between(lg, xl) {
+			padding: 0 40px;
 		}
 	}
 
