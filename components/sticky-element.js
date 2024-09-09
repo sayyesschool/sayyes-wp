@@ -1,23 +1,21 @@
 export default class StickyElement {
-    constructor(element, className) {
+    constructor(element, className = 'is-sticky') {
         if (!element) throw new Error('Sticky needs an element');
-    
+
         this.element = element;
         this.position = element.offsetTop;
-        this.className = className || 'is-sticky';
-    
-        window.addEventListener('scroll', this.onScroll.bind(this));
-    
-        this.onScroll();
-    
-        return this.element;
+        this.className = className;
+
+        window.addEventListener('scroll', this.handleScroll.bind(this));
+
+        this.handleScroll();
     }
 
     hasScrolled() {
         return this.position < window.scrollY;
     }
 
-    onScroll() {
+    handleScroll() {
         if (this.hasScrolled()) {
             this.setFixed();
         } else {
@@ -43,5 +41,3 @@ export default class StickyElement {
         }
     }
 }
-
-// new Sticky(document.querySelector('#top-bar'));
