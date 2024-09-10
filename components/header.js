@@ -5,9 +5,11 @@ export default class Header extends Component {
 
     static classes = {
         root: this.name,
-        menuButton: `${this.name}__burger`,
+        menuButton: `${this.name}__menu-button`,
         navList: `${this.name}__nav-list`,
-        navItem: `${this.name}__nav-item`
+        navItem: `${this.name}__nav-item`,
+        expanded: `${this.name}--expanded`,
+        open: `${this.name}--open`,
     };
 
     lastScrollY = window.scrollY;
@@ -22,27 +24,33 @@ export default class Header extends Component {
         window.addEventListener('scroll', this.handleScroll.bind(this));
         this.menuButton.addEventListener('click', this.handleMenuButtonClick.bind(this));
         this.navList.addEventListener('click', this.handleNavListClick.bind(this));
+
+        this.handleScroll();
     }
 
     handleScroll() {
         const currentScrollY = window.scrollY;
         const isScrollingUp = currentScrollY < this.lastScrollY;
-        const isSmallScreen = window.innerWidth < 769;
+        const isSmallScreen = window.innerWidth < 1024;
 
-        this.element.classList.toggle('expanded', currentScrollY !== 0);
+        this.element.classList.toggle(Header.classes.expanded, currentScrollY !== 0);
 
         if (isSmallScreen) {
-            this.element.classList.remove('opened');
+            this.element.classList.remove(Header.classes.open);
+            this.menuButton.removeAttribute('data-active');
             this.closeAllSubnav();
+        } else if (currentScrollY === 0) {
+            this.element.classList.add(Header.classes.open);
         } else {
-            this.element.classList.toggle('opened', isScrollingUp);
+            this.element.classList.toggle(Header.classes.open, isScrollingUp);
         }
 
         this.lastScrollY = currentScrollY;
     }
 
     handleMenuButtonClick() {
-        this.element.classList.toggle('opened');
+        this.element.classList.toggle(Header.classes.open);
+        this.menuButton.toggleAttribute('data-active');
         this.closeAllSubnav();
     }
 
@@ -50,7 +58,6 @@ export default class Header extends Component {
         const target = event.target;
         const isItem = target.classList.contains(Header.classes.navItem);
         const subnav = target.querySelector('.subnav');
-
 
         if (subnav && isItem) {
             if (subnav.clientHeight) {

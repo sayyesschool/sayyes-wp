@@ -27,13 +27,14 @@
 			pills: true
 		} %}
 			{% block content %}
-				<div class="format-block" data-tab-panel="offline">
+				<div class="format-block format-block--offline" data-tab-panel="offline">
 					{% include 'components/video.twig' with {
 						youtube_id: 'f3cBgWC2ljM',
 						image: {
 							path: 'formats/offline.jpg',
 							alt: 'Офлайн'
 						},
+						caption: 'Посмотрите как проходят занятия в школе',
 						modal: true
 					} %}
 
@@ -49,17 +50,16 @@
 							<p>Наш офис разположен в пяти минутах ходьбы от метро Павелецкая.</p>
 						</div>
 					</div>
-
-					<p class="caption handwritten">Посмотрите как проходят занятия в школе</p>
 				</div>
 
-				<div class="format-block hidden" data-tab-panel="online">
+				<div class="format-block format-block--online hidden" data-tab-panel="online">
 					{% include 'components/video.twig' with {
 						youtube_id: 'f3cBgWC2ljM',
 						image: {
 							path: 'formats/online.jpg',
 							alt: 'Онлайн'
 						},
+						caption: 'Посмотрите как проходят онлайн-занятия',
 						modal: true
 					} %}
 
@@ -74,8 +74,6 @@
 							<p>Выбирайте формат онлайн уроков — в мини-группе в Zoom или индивидуально на нашей онлайн-платформе.</p>
 						</div>
 					</div>
-
-					<p class="caption handwritten">Посмотрите как проходят онлайн-занятия в школе</p>
 				</div>
 			{% endblock %}
 		{% endembed %}

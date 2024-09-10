@@ -5,36 +5,18 @@
 @use './formats-tabs';
 @use './hero';
 @use './main';
+@use './online-class';
 @use './teachers';
 @use './trial-lesson';
 @use './trial-lesson-cta';
 @use './video';
 
-@import './club-events';
-@import './club-shortly';
-@import './features';
-@import './image';
-@import './meeting';
-@import './meetings';
-@import './online-class';
-@import './participants-feedback';
-@import './registration';
-@import './speaking-club-faq';
-@import './teacher-reviews';
-@import './test';
-@import './test-overview';
-
-.about-course,
-.cards-square,
-.digits,
-.features
-.img-comment,
-.vacancies-cta {
-    margin-left: 62px;
-    margin-right: 62px;
-    
-    @include breakpoint($breakpoint-lg) {
-        margin-left: 0;
-        margin-right: 0;
-    }
-}
+// @import './club-events';
+// @import './club-shortly';
+// @import './meeting';
+// @import './meetings';
+// @import './participants-feedback';
+// @import './registration';
+// @import './speaking-club-faq';
+// @import './test';
+// @import './test-overview';

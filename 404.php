@@ -6,4 +6,4 @@ $page->name = 'not-found';
 
 $context['page'] = $page;
 
-Timber::render('pages/404.twig', $context);
+Timber::render('pages/not-found.twig', $context);

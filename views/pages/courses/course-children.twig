@@ -87,7 +87,7 @@
 		{% block content %}
 			<img class="image" src="{{theme.link}}/static/images/pictures/{{course.name}}.jpg" alt="">
 
-			<div class="card">
+			<div class="card card--sm">
 				{% if course.features %}	
 					<div class="card__body">
 						<h3 class="card__title">
@@ -183,7 +183,7 @@
 						image: 'comment-2'
 					}
 				] %}
-					<div class="text-card text-card--{{item.image}}-bg card card--white">
+					<div class="text-card text-card--{{item.image}}-bg card card--white card--sm">
 						<h4 class="card__title">{{item.title}}</h4>
 						<p class="card__description">{{item.description}}</p>
 					</div>
@@ -198,7 +198,8 @@
 	{% embed 'components/section.twig' with {
         name: 'course-progress',
         title: 'Лучшие показатели нашей работы — это ученики, владеющие языком и довольные родители!',
-        description: 'Родители наших учеников рассказывают о результатах и процессе обучения детей в ' ~ COMPANY_NAME
+        description: 'Родители наших учеников рассказывают о результатах и процессе обучения детей в ' ~ COMPANY_NAME,
+		padded: true
     } %}
         {% block content %}
 			{% include 'blocks/course-results-slider.twig' with {
@@ -243,15 +244,16 @@
 			},
 			framed: true,
 			modal: true
-		}
+		},
+		color: 'purple'
 	} %}
 {% endblock %}
-
 
 {% block platform %}
 	{% embed 'components/section.twig' with {
         name: 'online-class',
-        title: 'Удобный онлайн-класс'
+        title: 'Удобный онлайн-класс',
+		padded: true
     } %}
         {% block content %}
 			<div class="text">

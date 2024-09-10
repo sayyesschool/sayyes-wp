@@ -32,6 +32,10 @@
 	@include mq.from(md) {
 		padding: 30px;
 
+		&__content {
+			justify-content: space-between;
+		}
+
 		.list {
 			@include decoration('notes/free-2.svg') {
 				bottom: 0;
@@ -185,16 +189,86 @@
 	}
 }
 
-.progress-video {
-	@include breakpoint($breakpoint-sm) {
-		&__header {
-			max-width: 320px;
+.course-teachers {
+	padding: 55px 60px 60px;
+	background-color: $purple;
+	color: $white;
+
+	&__title {
+		max-width: 750px;
+		margin-bottom: 20px;
+	}
+
+	&__description {
+		max-width: 500px;
+	}
+
+	.slider {
+		&__arrows {
+			top: -60px;
+		}
+	}
+
+	.text-card {
+		padding-top: 150px;
+
+		.card__title {
+			max-width: 260px;
+		}
+	}
+
+	@include breakpoint($breakpoint-lg) {
+		&__title {
+			max-width: 500px;
+		}
+
+		&__cards {
+			gap: 15px;
+		}
+	}
+
+	@include breakpoint($breakpoint-md) {
+		padding: 30px;
+
+		.text-block {
+			padding: 140px 20px 20px;
 		}
 	}
 
 	@include breakpoint($breakpoint-xxs) {
-		&__header {
-			margin-bottom: 10px;
+		padding: 25px;
+
+		.slider {
+			width: calc(100% + 25px);
+			margin-bottom: 15px;
+
+			&__arrows {
+				display: none;
+			}
+		}
+
+		.swiper-wrapper {
+			overflow-x: auto;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+		}
+	}
+
+	@include breakpoint($breakpoint-mobile) {
+		padding: 20px;
+
+		.slider {
+			width: calc(100% + 25px);
+		}
+
+		.text-block {
+			padding-top: 70px;
+		}
+
+		&__cards {
+			flex-wrap: wrap;
 		}
 	}
 }
@@ -238,101 +312,16 @@
 	}
 }
 
-.course-teachers {
-	padding: 55px 60px 60px;
-	background-color: $purple;
-	color: $white;
-
-	&__title {
-		max-width: 750px;
-		margin-bottom: 20px;
-	}
-
-	&__description {
-		max-width: 500px;
-	}
-
-	.slider {
-		margin-bottom: 20px;
-	}
-
-	.text-card {
-		justify-content: flex-start;
-		padding-right: 25px;
-		padding-top: 200px;
-
-		.card__title {
-			max-width: 260px;
-		}
-
-		.card__description {
-			
-		}
-	}
-
-	@include breakpoint($breakpoint-lg) {
-		&__title {
-			max-width: 500px;
-		}
-
-		&__cards {
-			gap: 15px;
-		}
-	}
-
-	@include breakpoint($breakpoint-md) {
-		padding: 30px;
-
-		.text-block {
-			padding: 140px 20px 20px;
-
-			.text-block__title {
-				font-size: 16px;
-				line-height: 18px;
-				font-weight: 800;
-				max-width: 180px;
-			}
+.progress-video {
+	@include breakpoint($breakpoint-sm) {
+		&__header {
+			max-width: 320px;
 		}
 	}
 
 	@include breakpoint($breakpoint-xxs) {
-		padding: 25px;
-
-		.slider {
-			width: calc(100% + 25px);
-			margin-bottom: 15px;
-
-			&__arrows {
-				display: none;
-			}
-		}
-
-		.swiper-wrapper {
-			overflow-x: auto;
-
-			&::-webkit-scrollbar {
-				display: none;
-			}
-		}
-
-		&__cards {
-			gap: 15px;
-		}
-	}
-
-	@include breakpoint($breakpoint-mobile) {
-		padding: 20px;
-
-		.slider {
-			width: calc(100% + 25px);
-		}
-
-		.text-block {
-			padding-top: 70px;
-		}
-
-		&__cards {
-			flex-wrap: wrap;
+		&__header {
+			margin-bottom: 10px;
 		}
 	}
 }

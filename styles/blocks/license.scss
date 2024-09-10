@@ -1,3 +1,4 @@
+@use 'styles/mq';
 @use 'styles/mixins' as *;
 @use 'styles/variables' as *;
 
@@ -8,6 +9,7 @@
 	flex-direction: column;
 	justify-content: center;
 	padding-left: 110px;
+	padding-right: 20px;
 	border-radius: $border-radius-sm;
 	background-color: $pearl-white;
 	font-size: 16px;
@@ -34,29 +36,12 @@
 		font-weight: 500;
 	}
 
-	@include breakpoint($breakpoint-sm) {
-		background-color: transparent;
+	@include mq.for(sm) {
 		padding: 0;
+		background-color: transparent;
 
 		&::before {
 			display: none;
-		}
-
-		&__title {
-			max-width: 150px;
-		}
-	}
-
-	@include breakpoint($breakpoint-mobile) {
-		background-color: $pearl-white;
-		padding-left: 110px;
-
-		&::before {
-			display: block;
-		}
-
-		&__title {
-			max-width: none;
 		}
 	}
 }

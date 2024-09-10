@@ -4,12 +4,13 @@
  * Author: Oleg Polyakov
 */
 
-@import 'mixins';
-@import 'variables';
-@import 'reset';
-@import 'base';
-@import 'components';
-@import 'blocks';
-@import 'layouts';
-@import 'sections';
-@import 'pages';
+@use 'mixins';
+@use 'variables';
+@use 'reset';
+@use 'base';
+@use 'components';
+@use 'elements';
+@use 'blocks';
+@use 'layouts';
+@use 'sections';
+@use 'pages';

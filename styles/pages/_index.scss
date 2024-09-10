@@ -12,17 +12,15 @@
 @use './format';
 @use './formats';
 @use './methodology';
+@use './not-found';
+@use './offer';
+@use './payment';
+@use './post';
 @use './prices';
 @use './progress';
 @use './teachers';
+@use './test';
 @use './vacancies';
 
-@import './not-found';
-@import './offer';
-@import './online-test';
-@import './payment';
-@import './placement-test';
-@import './post';
-@import './speaking-club';
-@import './teacher';
-@import './thank-you';
+// @import './speaking-club';
+// @import './thank-you';

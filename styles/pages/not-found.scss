@@ -1,5 +1,13 @@
 #not-found-page {
-    .page-title {
-        margin-top: 1rem;
+    .main-section {
+        &::before {
+            content: '';
+            display: block;
+            margin: auto;
+            width: 200px;
+            height: 200px;
+            background-image: url('./static/images/cat/cat-sad.png');
+            background-size: contain;
+        }
     }
 }

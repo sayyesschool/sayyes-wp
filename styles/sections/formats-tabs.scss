@@ -12,14 +12,5 @@
 		&__content {
 			max-width: 80%;
 		}
-
-		// TODO: Consider replacing the picture with the Kremlin
-		@include mixins.decoration('elements/red-square.svg', after) {
-			top: -5%;
-			left: 75%;
-			width: 508px;
-			height: 100%;
-			z-index: -1;
-		}
 	}
 }

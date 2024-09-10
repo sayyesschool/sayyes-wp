@@ -2,13 +2,13 @@
 @use 'styles/components/text';
 @use 'styles/mq';
 @use 'styles/theme';
-@use 'styles/variables';
+@use 'styles/variables' as *;
 
 .teacher-block {
 	padding: 20px;
 	display: flex;
 	gap: 15px;
-	background-color: variables.$pale-white;
+	background-color: $pale-white;
 	@include theme.border-radius;
 
 	&__summary,
@@ -32,7 +32,7 @@
 	}
 
 	&__details {
-		background-color: variables.$white;
+		background-color: $white;
 		@include theme.border-radius;
 		overflow: hidden;
 	}
@@ -63,6 +63,49 @@
 
 		&__content {
 			font-weight: 600;
+		}
+	}
+
+	.teacher-reviews {
+		height: 329px;
+		padding: 20px 25px 25px;
+		overflow-y: auto;
+		background-color: $white;
+		border-radius: 0 0 $border-radius-sm $border-radius-sm;
+	
+		&__review {
+			&:not(:last-child) {
+				padding-bottom: 20px;
+				margin-bottom: 5px;
+				border-bottom: 2px solid $pale-white;
+			}
+		}
+	
+		&__info {
+			display: flex;
+			gap: 5px;
+			margin-bottom: 5px;
+		}
+	
+		&__name {
+			font-size: 14px;
+			font-weight: 800;
+			line-height: 25px;
+		}
+	
+		&__description {
+			font-size: 14px;
+			font-weight: 600;
+			line-height: 15px;
+		}
+	
+		&::-webkit-scrollbar {
+			width: 3px;
+		}
+	
+		&::-webkit-scrollbar-thumb {
+			background: $linen;
+			border-radius: 10%;
 		}
 	}
 
@@ -102,7 +145,7 @@
 			justify-content: center;
 			border: none;
 			border-radius: 100%;
-			background-color: variables.$white;
+			background-color: $white;
 
 			img {
 				width: 70%;

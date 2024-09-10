@@ -1,0 +1,12 @@
+{% extends 'layouts/base.twig' %}
+
+{% block content %}
+    {% embed 'sections/main.twig' with {
+        title: 'Ошибка 404',
+        description: 'Ой ... похоже такой страницы нет :(,'
+    } %}
+        {% block content %}
+            <a href="{{site.link}}" class="btn btn--lg btn--primary">Вернуться на Главную</a>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

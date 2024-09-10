@@ -28,71 +28,9 @@
 		margin: 0 auto;
 		display: flex;
 		align-items: center;
-		gap: 30px;
+		gap: 20px;
 		padding: 0 20px;
 		transition: 0.3s all linear;
-	}
-
-	&__content,
-	&__buttons,
-	&__contacts,
-	&__address {
-		display: flex;
-		align-items: center;
-	}
-
-	&__content {
-		flex: 1;
-		justify-content: space-between;
-		gap: 30px;
-	}
-
-	&__buttons {
-		gap: 20px;
-
-		.btn {
-			@include text.label;
-		}
-	}
-
-	&__contacts {
-		gap: 20px;
-	}
-
-	&__address {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 5px;
-		
-		span {
-			font-weight: 700;
-			line-height: 12px;
-		}
-	}
-
-	&__burger {
-		position: relative;
-		width: 22px;
-		margin-left: auto;
-		padding: 0;
-		border: none;
-		display: inline-flex;
-		flex-direction: column;
-		gap: 3px;
-
-		&-line {
-			display: block;
-			width: 100%;
-			height: 2px;
-			background-color: $white;
-			border-radius: 10px;
-			transition: 0.2s linear all;
-
-			&:not(:last-child) {
-				margin-bottom: 3px;
-			}
-		}
 	}
 
 	&__nav {
@@ -100,11 +38,11 @@
 		height: 40px;
 		background-color: $pearl-white;
 		font-weight: 700;
-		transform: translateY(-120%);
+		transform: translateY(-100%);
 		transition: 0.2s linear all;
-		z-index: -1;
 		backdrop-filter: blur(5px);
 		background-color: rgba(249, 244, 242, .75);
+		z-index: -1;
 	
 		&-list {
 			width: 735px;
@@ -137,84 +75,78 @@
 		}
 	}
 
+	&__logo {
+		flex-shrink: 0;
+	}
+
+	&__content,
+	&__buttons {
+		display: flex;
+		align-items: center;
+	}
+
+	&__content {
+		flex: 1;
+		justify-content: space-evenly;
+		gap: 20px;
+	}
+
+	&__buttons {
+		gap: 20px;
+
+		.btn {
+			width: auto;
+			@include text.label;
+		}
+	}
+
+	&__address {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+		
+		span {
+			font-weight: 700;
+			line-height: 12px;
+		}
+	}
+
+	&__menu-button {
+		flex-shrink: 0;
+		margin-left: auto;
+	}
+
 	&__trial-lesson {
 		margin: auto;
 	}
 
-	&.expanded {
-		.header__main {
+	&--expanded & {
+		&__main {
 			max-width: 100%;
 			width: 100%;
 			border-radius: 0;
 		}
 	}
 
-	&.opened {
-		.header__nav {
+	&--open & {
+		&__nav {
 			transform: translateY(0);
-		}
-
-		.header__burger-line {
-			&:first-child {
-				transform: rotate(45deg);
-				transform-origin: top left;
-			}
-
-			&:nth-child(2) {
-				opacity: 0;
-			}
-
-			&:last-child {
-				transform: rotate(-45deg);
-				transform-origin: bottom left;
-			}
 		}
 	}
 
 	.phone-numbers {
-		&__item {
-			@include text.label($weight: 700);
-		}
+		gap: 5px;
 	}
 
-	@include mq.to(sm) {
-		&__content {
-			display: none;
-		}
-	}
-
-	@include mq.to(lg, true) {
-		&__test,
+	@include mq.to(xl) {
 		&__address {
 			display: none;
 		}
 	}
 
-	@include mq.to(md) {
-		&__main {
-			max-width: calc(100% - 30px);
-		}
-
-		&__container {
-			padding: 0 30px;
-		}
-
-		&__callback {
-			margin-right: 0;
-		}
-
-		&__phones {
-			display: none;
-		}
-	}
-
 	@include mq.to(lg) {
-		&__content {
-			justify-content: unset;
-		}
-
 		&__callback,
-		&__test {
+		&__phones {
 			display: none;
 		}
 
@@ -284,9 +216,21 @@
 		}
 	}
 
-	@include mq.from(md) {
-		&__trial-lesson {
+	@include mq.to(md) {
+		&__test {
 			display: none;
+		}
+	}
+
+	@include mq.to(sm) {
+		&__content {
+			display: none;
+		}
+	}
+
+	@include mq.from(md) {
+		&__main {
+			max-width: calc(100% - 30px);
 		}
 	}
 
@@ -295,11 +239,8 @@
 			padding: 0 60px;
 		}
 
-		&__free-lesson {
-			margin-right: 15px;
-		}
-
-		&__burger {
+		&__trial-lesson,
+		&__menu-button {
 			display: none;
 		}
 	}

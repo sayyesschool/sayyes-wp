@@ -3,6 +3,7 @@
 .link {
 	font-size: inherit;
 	font-weight: inherit;
+	color: inherit;
 	cursor: pointer;
 
 	&--primary {
@@ -10,6 +11,8 @@
 	}
 
 	&--interactive {
+		transition: 0.3s color;
+		
 		&:hover {
 			color: $purple;
 		}

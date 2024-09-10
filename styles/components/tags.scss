@@ -20,6 +20,7 @@
 	font-size: 14px;
 	border: 2px solid variables.$black;
 	border-radius: variables.$border-radius-xs;
+	white-space: nowrap;
 
 	&--no-border {
 		border: none;

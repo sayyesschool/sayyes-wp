@@ -1,0 +1,44 @@
+@use 'styles/variables' as *;
+
+.burger-button {
+    position: relative;
+    width: 22px;
+    margin-left: auto;
+    padding: 0;
+    border: none;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 3px;
+
+    &__line {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: $white;
+        border-radius: 10px;
+        transition: 0.2s linear all;
+
+        &:not(:last-child) {
+            margin-bottom: 3px;
+        }
+    }
+
+    &[data-active] &,
+    &--active & {
+        &__line {
+            &:first-child {
+				transform: rotate(45deg);
+				transform-origin: top left;
+			}
+
+			&:nth-child(2) {
+				opacity: 0;
+			}
+
+			&:last-child {
+				transform: rotate(-45deg);
+				transform-origin: bottom left;
+			}
+        }
+    }
+}

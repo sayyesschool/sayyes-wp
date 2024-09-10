@@ -14,27 +14,25 @@
 					<button class="header__callback btn btn--sm btn--uppercase btn-white btn--transparent" data-modal-trigger="callback-modal">Обратный звонок</button>
 				</div>
 
-				<div class="header__contacts">
-					<div class="header__phones">
-						{% include 'blocks/phone-numbers.twig' with {
-							small: true,
-							white: true
-						} %}
-					</div>
+				<div class="header__phones">
+					{% include 'blocks/phone-numbers.twig' with {
+						small: true,
+						white: true
+					} %}
+				</div>
 
-					<div class="header__address">
-						<span class="header__city">Москва</span>
-						<span class="header__time">ПН-ПТ с 12:00 до 21:00</span>
-					</div>
+				<div class="header__address">
+					<span>Москва</span>
+					<span>ПН-ПТ с&nbsp;12:00&nbsp;до&nbsp;21:00</span>
 				</div>
 			</div>
 
 			{# <a class="header__login btn btn--sm btn--uppercase btn-white btn--transparent" href="#">Войти</a> #}
 
-			<button class="header__burger btn--transparent">
-				<span class="header__burger-line"></span>
-				<span class="header__burger-line"></span>
-				<span class="header__burger-line"></span>
+			<button class="header__menu-button burger-button btn--transparent">
+				<span class="burger-button__line"></span>
+				<span class="burger-button__line"></span>
+				<span class="burger-button__line"></span>
 			</button>
 		</div>
 	</div>

@@ -7,7 +7,7 @@
 		'list--sm': size == 'sm',
 	},
 	align_marker ? 'list--marker-' ~ align_marker : [],
-	gap ? 'list--gap-' ~ gap : []
+	gap ? 'gap-' ~ gap : []
 )}}">
 	{% for item in items %}
 		<li class="list-item" {% if item.modal_open %} data-modal-trigger="{{item.modal_open}}" {% endif %}>
@@ -15,6 +15,7 @@
 				<a class="list-item__link link"
 					href="{{item.link}}"
 					{% if is_url(item.link) and is_link_external(item.link) %} target="_blank"{% endif %}
+					{% if item.title %}{{item.title}}{% endif %}
 				>
 			{% endif %}
 

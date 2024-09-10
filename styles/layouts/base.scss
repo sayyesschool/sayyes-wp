@@ -2,11 +2,11 @@
 @use 'styles/variables';
 
 body {
-    @include mq.to(md) {
-		padding-top: 65px;
+    @include mq.to(lg) {
+		padding-top: 75px;
 	}
 
-	@include mq.from(md) {
+	@include mq.from(lg) {
 		padding-top: 105px;
 	}
 }
@@ -14,7 +14,7 @@ body {
 .main {
     max-width: 1320px;
     margin: 0 auto;
-    padding: 20px 10px 0;
+    padding: 0 10px;
 
     @include mq.from(md) {
         padding: 20px 15px 0;

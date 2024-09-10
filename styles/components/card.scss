@@ -24,6 +24,10 @@
 			@include image.base;
 			aspect-ratio: var(--card-image-aspect-ratio);
 		}
+
+		.video {
+			height: 100%;
+		}
 	}
 
 	&__header {

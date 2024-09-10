@@ -1,444 +1,185 @@
+@use 'styles/components/text';
 @use 'styles/mq';
-@use 'styles/variables';
+@use 'styles/variables' as *;
 
 .footer {
-	padding: 40px 20px 0;
-	background-color: variables.$white;
+	padding: 40px 20px 20px;
+	background-color: $white;
+	font-size: 16px;
+	line-height: 15px;
 
 	&__container {
 		position: relative;
-		max-width: 1156px;
+		max-width: $container-max-width;
 		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
 	}
 
 	&__row {
 		display: flex;
+		gap: 20px;
 	}
 
-	&__title {
-		margin-bottom: 10px;
+	&__bottom-row {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	&__column {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	&__section {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	&__address {
+		max-width: 300px;
+	}
+
+	.heading {
 		font-size: 16px;
-		font-weight: 800;
 		line-height: 15px;
+		font-weight: 800;
 		letter-spacing: 0.8px;
 		text-transform: uppercase;
 	}
 
-	&__item {
-		font-size: 16px;
-		font-weight: 600;
-		line-height: 15px;
-
-		& + & {
-			margin-top: 5px;
-		}
-	}
-
-	&__link {
-		color: variables.$black;
+	.link {
+		color: $black;
 		transition: 0.3s linear all;
 
 		&:hover {
-			color: variables.$purple;
+			color: $purple;
 		}
 	}
 
-	&__call {
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-		font-size: 16px;
-		line-height: 15px;
+	@include mq.to(sm) {
+		&__row {
+			flex-direction: column;
+		}
 
-		.phone-numbers,
+		&__contacts {
+			order: 1;
+		}
+
+		&__social {
+			order: -1;
+		}
+
 		.list {
 			gap: 10px;
 		}
 	}
 
-	@include mq.to(md) {
-		&__row {
-			flex-direction: column;
+	@include mq.from(sm) {
+		&__logo {
+			position: absolute;
+			top: -20px;
 		}
 
-		&__about + .social {
-			display: none;
+		&__top-row {
+			align-items: flex-start;
+			justify-content: space-between;
 		}
 
-		&__email &__title,
-		&__address &__title {
-			margin-bottom: 10px;
+		&__bottom-row {
+			align-items: center;
+			justify-content: space-between;
 		}
 
-		&__courses &__title,
-		&__formats &__title {
-			display: none;
+		&__contacts {
+			margin-top: 40px;
 		}
 
-		&__license {
-			max-width: 500px;
-		}
-
-		&__designer,
-		&__with-love {
-			display: none;
-		}
-
-		&__policy {
-			display: flex;
-			flex-direction: column;
-			margin-top: 0;
-			padding-top: 0;
-
-			.footer-policy,
-			.footer-copyright {
-				display: none;
-			}
-		}
-
-		&__call {
-			order: 1;
-		}
-
-		&__column {
-			display: flex;
-			flex-direction: column;
+		&__nav {
+			display: grid;
 			gap: 20px;
-
-			&:first-child {
-				padding: 45px 0;
-				border-bottom: 1px solid variables.$pearl-white;
-
-				.social {
-					order: 1;
-				}
-			}
-
-			&:nth-child(3) {
-				order: -1;
-				padding-top: 0;
-
-				.logo {
-					display: block;
-				}
-			}
-
-			&:last-child {
-				order: -1;
-				padding-top: 0;
-				border-bottom: 1px solid variables.$pearl-white;
-
-				.footer__sout,
-				.footer__license {
-					display: none;
-				}
-			}
-		}
-
-		&__sout {
-			max-width: none;
+			grid-template-areas:
+				'a b'
+				'c d'
+				'c e'
+			;
 		}
 
 		&__about {
-			margin-bottom: 20px;
-		}
-
-		&__title {
-			margin-bottom: 20px;
-		}
-
-		&__item {
-			&:not(:last-child) {
-				margin-bottom: 20px;
-			}
+			grid-area: a;
 		}
 
 		&__courses {
-			margin-bottom: 25px;
+			grid-area: c;
 		}
 
-		&__courses-programms {
-			display: block;
+		&__formats {
+			grid-area: b;
 		}
 
-		&__address {
-			max-width: 380px;
+		&__sout {
+			grid-area: d;
 		}
 
-		&__mobile-block {
-			display: flex;
-			flex-direction: column;
-
-			.footer-copyright {
-				display: block;
-			}
-
-			.footer-policy {
-				p {
-					margin-bottom: 15px;
-				}
-
-				margin-bottom: 15px;
-			}
-
-			.with-love {
-				margin-bottom: 15px;
-			}
+		&__license {
+			grid-area: e;
 		}
 	}
 
 	@include mq.from(md) {
-		&__row {
-			justify-content: space-between;
+		&__nav {
+			display: grid;
+			gap: 20px;
+			grid-template-areas:
+				'a b c'
+				'a . d'
+				'. e e'
+			;
+		}
+
+		&__about {
+			grid-area: a;
+		}
+
+		&__courses {
+			grid-area: b;
+			position: relative;
+			padding-top: 25px;
+
+			.heading {
+				position: absolute;
+				top: 0;
+				white-space: nowrap;
+
+				&::after {
+					content: ' и программы школы';
+					display: inline;
+				}
+			}
+		}
+
+		&__formats {
+			grid-area: c;
+			padding-top: 25px;
+
+			.heading {
+				display: none;
+			}
+		}
+
+		&__sout {
+			grid-area: d;
+		}
+
+		&__license {
+			grid-area: e;
+		}
+
+		&__copyright {
+			text-align: center;
 		}
 	}
-
-	// &__column {
-	// 	display: flex;
-	// 	flex-direction: column;
-	// 	gap: 15px;
-	// }
-
-	// &__row:first-of-type &__column {
-	// 	&:first-child {
-	// 		margin-top: 69px;
-	// 		flex-basis: 253px;
-	// 	}
-
-	// 	&:nth-child(2) {
-	// 		flex-basis: 335px;
-	// 	}
-
-	// 	&:nth-child(3) {
-	// 		margin-top: 20px;
-	// 		flex-basis: 196px;
-	// 	}
-
-	// 	&:last-child {
-	// 		margin-top: 20px;
-	// 		flex-basis: 372px;
-	// 		justify-content: space-between;
-	// 	}
-	// }
-
-	// &__row:last-of-type {
-	// 	min-height: 70px;
-	// 	margin-top: 20px;
-	// 	border-top: 1px solid variables.$pearl-white;
-	// 	align-items: center;
-	// }
-
-	// &__row:last-of-type &__column {
-	// 	text-align: center;
-
-	// 	&:first-child {
-	// 		text-align: left;
-	// 	}
-
-	// 	&:last-child {
-	// 		text-align: right;
-	// 	}
-	// }
-
-	// &__courses-formats {
-	// 	flex: 20px;
-	// }
-
-	// &__courses &__title,
-	// &__formats &__title {	
-	// 	display: none;
-	// }
-
-	// &__sout {
-	// 	max-width: 172px;
-	// 	font-size: 15px;
-	// 	font-weight: 700;
-	// 	line-height: 15px;
-	// }
-
-	// &__copyright {
-
-	// }
-
-	// &__with-love-img {
-	
-	// }
-
-	// &__policy,
-	// &__copyright,
-	// &__with-love,
-	// &__designer {
-	// 	font-size: 16px;
-	// 	font-weight: 700;
-	// 	line-height: 15px;
-	// }
-
-	// .phone-numbers {
-	// 	margin-bottom: 10px;
-
-	// 	&__item {
-	// 		font-size: 16px;
-	// 		line-height: 15px;
-	// 		font-weight: 800;
-	// 	}
-
-	// 	.icon {
-	// 		display: none;
-	// 	}
-	// }
-
-	// .social {
-	// 	margin-top: auto;
-	// }
-
-	// @include mq.from(md) {
-	// 	padding-bottom: 48px;
-
-	// 	.logo {
-	// 		position: absolute;
-	// 		display: block;
-	// 		width: 163px;
-	// 		height: 54px;
-	// 		margin-bottom: 15px;
-	// 	}
-
-	// 	&__wrapper {
-	// 		justify-content: flex-start;
-	// 	}
-
-	// 	&__courses,
-	// 	&__formats {
-	// 		display: block;
-	// 	}
-
-	// 	.phone-numbers {
-	// 		margin-bottom: 15px;
-
-	// 		&__item {
-	// 			&:not(:last-child) {
-	// 				margin-bottom: 15px;
-	// 			}
-	// 		}
-	// 	}
-
-	// 	.logo {
-	// 		margin-bottom: 30px;
-	// 	}
-
-	// 	.logo,
-	// 	&__email,
-	// 	&__address {
-	// 		order: -1;
-	// 	}
-
-	// 	&__courses-programms {
-	// 		display: none;
-	// 	}
-
-	// 	&__email {
-	// 		margin-bottom: 5px;
-	// 	}
-
-	// 	&__address {
-	// 		margin-bottom: 30px;
-	// 		max-width: 220px;
-	// 	}
-
-	// 	&__call-item {
-	// 		&:not(last-child) {
-	// 			margin-bottom: 15px;
-	// 		}
-	// 	}
-
-	// 	&__item {
-	// 		margin-bottom: 15px;
-	// 	}
-
-	// 	&__about {
-	// 		margin-bottom: 25px;
-	// 	}
-
-	// 	&__sout {
-	// 		margin: 40px 0 15px;
-
-	// 		font-size: 16px;
-	// 		line-height: 18px;
-	// 		font-weight: 700;
-	// 	}
-
-	// 	&__designer {
-	// 		flex-direction: column;
-	// 		margin-top: 80px;
-
-	// 		.social {
-	// 			display: flex;
-	// 			margin-top: 0;
-	// 		}
-	// 	}
-
-	// 	&__column {
-	// 		&:first-child {
-	// 			flex-basis: 39%;
-	// 		}
-
-	// 		&:nth-child(3) {
-	// 			flex-basis: 28%;
-
-	// 			.social {
-	// 				display: none;
-	// 			}
-	// 		}
-
-	// 		&:last-child {
-	// 			flex-basis: auto;
-	// 		}
-	// 	}
-
-	// 	&__policy {
-	// 		margin-top: 10px;
-
-	// 		p {
-	// 			margin-bottom: 15px;
-	// 		}
-
-	// 		.footer-copyright {
-	// 			margin-top: 25px;
-	// 			display: block;
-
-	// 			p {
-	// 				&:first-child {
-	// 					margin-bottom: 5px;
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-	// }
-
-	// @include mq.from($breakpoint-md) {
-	// 	&__column {
-	// 		&:nth-child(2) {
-	// 			display: none;
-	// 		}
-	// 	}
-
-	// 	&__with-love {
-	// 		.with-love {
-	// 			display: none;
-	// 		}
-	// 	}
-
-	// 	&__designer {
-	// 		display: flex;
-	// 		gap: 20px;
-
-	// 		.designer {
-	// 			display: none;
-	// 		}
-
-	// 		.with-love,
-	// 		.footer-copyright {
-	// 			display: block;
-	// 		}
-	// 	}
-	// }
 }

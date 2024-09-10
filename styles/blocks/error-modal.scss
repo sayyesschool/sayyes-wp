@@ -1,4 +1,6 @@
 #error-modal {
+    z-index: 1010;
+    
     .modal__surface {
 		max-width: 480px;
 		text-align: center;

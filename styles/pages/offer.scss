@@ -1,5 +1,13 @@
+@use 'styles/components/heading';
+
 #offer-page {
-    h2 {
+    .main {
+        max-width: 720px;
+        padding: 20px 20px 40px;
+    }
+
+    .title {
+        @include heading.h2;
         margin-bottom: 1rem;
     }
 }

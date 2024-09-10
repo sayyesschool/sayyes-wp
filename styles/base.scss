@@ -36,6 +36,10 @@ strong,
 	font-weight: 800;
 }
 
+address {
+	font-style: normal;
+}
+
 .color-primary {
 	color: variables.$purple;
 }
@@ -45,6 +49,11 @@ strong,
 }
 
 .content {
+	h2 {
+        margin-top: 1rem;
+        margin-bottom: .5rem;
+    }
+
 	p + p {
 		margin-top: 10px;
 	}
@@ -104,11 +113,17 @@ strong,
 
 .admin-bar {
 	.header:not(.expanded) {
-		top: 32px;
+		top: 46px;
 
-		@include mq.to(md) {
-			top: 46px;
+		@include mq.from(md) {
+			top: 32px;
 		}
+	}
+}
+
+#wpadminbar {
+	@include mq.to(md) {
+		position: fixed !important;
 	}
 }
 

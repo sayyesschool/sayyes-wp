@@ -1,5 +1,6 @@
 @use 'styles/mq';
-@use 'styles/variables';
+@use 'styles/mixins' as *;
+@use 'styles/variables' as *;
 
 .format-block {
 	position: relative;
@@ -40,10 +41,9 @@
 
 		// TODO: Adjust position and add arrow
 		.caption {
-			position: absolute;
 			bottom: 0;
 			max-width: 150px;
-			color: variables.$primary-color;
+			color: $primary-color;
 		}
 	}
 
@@ -60,6 +60,26 @@
 			.text:first-of-type {
 				max-width: 230px;
 				margin-bottom: 15px;
+			}
+		}
+
+		&--offline {
+			@include decoration('elements/red-square.svg', after) {
+				top: -40%;
+				right: -40%;
+				width: 500px;
+				height: 100%;
+				z-index: -1;
+			}
+		}
+
+		&--online {
+			@include decoration('elements/laptop.svg', after) {
+				top: -40%;
+				right: -40%;
+				width: 500px;
+				height: 100%;
+				z-index: -1;
 			}
 		}
 	}
