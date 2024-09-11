@@ -27,10 +27,6 @@
 					content: 'Обо мне',
 					value: 'details',
 					active: true
-				},
-				{
-					content: 'Отзывы',
-					target: 'reviews'
 				}
 			],
 			underline: true
@@ -55,19 +51,19 @@
 					<div class="teacher-details__content teacher-details__description"></div>
 				</section>
 
-				<section class="teacher-reviews hidden" data-tab-panel="testimonials">
+				{# <section class="teacher-reviews hidden" data-tab-panel="testimonials">
 					<div class="teacher-reviews__review">
 						<div class="teacher-reviews__info">
 							<h4 class="teacher-reviews__name"></h4>
 
 							<a class="teacher-reviews__social" href="${review.social.url}" target="_blank">
-								{# {% include 'components/icon.twig' with {class: review.social.icon} %} #}
+								{% include 'components/icon.twig' with {class: review.social.icon} %}
 							</a>
 						</div>
 
 						<p class="teacher-reviews__description">${review.content}</p>
 					</div>
-				</section>
+				</section> #}
 			{% endblock %}
 		{% endembed %}
 	</div>
