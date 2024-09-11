@@ -11,7 +11,8 @@ const paths = {
 function styles() {
     return gulp.src(`${paths.src}style.scss`)
         .pipe(sass({
-            includePaths: [paths.vendor]
+            includePaths: [paths.vendor],
+            outputStyle: 'compressed'
         }).on('error', sass.logError))
         .pipe(autoprefixer())
         .pipe(gulp.dest(paths.dest));

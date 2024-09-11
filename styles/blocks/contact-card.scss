@@ -2,9 +2,9 @@
 @use 'styles/variables' as *;
 
 .contact-card {
+    --card-image-aspect-ratio: 1 / 1;
+    
 	.card {
-		--card-image-aspect-ratio: 1 / 1;
-
         &__content {
             margin-top: 20px;
         }
