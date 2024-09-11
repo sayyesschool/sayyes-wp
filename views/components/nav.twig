@@ -1,21 +1,23 @@
-<nav class="nav">
-    <ul class="nav-list">
-        {% for item in items %}
-            {% if item.link %}
-                <li class="nav-item">
-                    <a
-                        class="{{html_classes('nav-link', {
-                            'nav-link--active': item.current
-                        })}}"
-                        href="{{ item.link }}"
-                        {% if item.is_external %} target="_blank"{% endif %}
-                    >{{item.title}}</a>
-                </li>
-            {% else %}
-                <li class="nav-item">
-                    <span class="nav-link">{{ item.title }}</span>
-                </li>
-            {% endif %}
-        {% endfor %}
-    </ul>
+<nav class="{{html_classes(class ?: [], 'nav')}}">
+	<ul class="nav__list">
+		{% for item in items %}
+			<li class="{{html_classes('nav__item', {
+				'nav__item--active': item.current,
+				'nav__item--parent': item.children,
+			}, item.classes|join(' '))}}">
+				{% if item.link %}
+					<a class="nav__link" href="{{item.link}}"{% if item.is_external %} target="_blank"{% endif %}>{{item.title}}</a>
+				{% else %}
+					{{item.title}}
+				{% endif %}
+
+				{% if item.children %}
+					{% include 'components/nav.twig' with {
+						class: 'subnav',
+						items: item.children
+					} %}
+				{% endif %}
+			</li>
+		{% endfor %}
+	</ul>
 </nav>

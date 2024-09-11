@@ -1,5 +1,6 @@
 import Accordion from '../components/accordion';
 import Header from '../components/header';
+import Nav from '../components/nav';
 import RequestForm from '../components/request-form';
 import Select from '../components/select';
 import Tabs from '../components/tabs';
@@ -15,6 +16,7 @@ import './sliders';
 
 Accordion.init();
 Header.init();
+Nav.init();
 RequestForm.init();
 Select.init();
 Tabs.init();

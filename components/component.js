@@ -9,6 +9,7 @@ export default class Component {
     constructor(element) {
         this.element = typeof element === 'string' ?
             document.querySelector(element) : element;
+        this.element.component = this;
     }
 
     getElement(selector) {

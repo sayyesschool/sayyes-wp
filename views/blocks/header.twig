@@ -5,7 +5,7 @@
 				class: 'header__logo'
 			} %}
 
-			<div class="header__content">
+		<div class="header__content">
 				<div class="header__buttons">
 					<button class="header__request btn btn--sm btn--outlined btn--uppercase btn--white" data-modal-trigger="request-modal">Бесплатный урок</button>
 
@@ -37,24 +37,11 @@
 		</div>
 	</div>
 
-	<nav class="header__nav">
-		<ul class="header__nav-list">
-			{% for item in header_nav.items %}
-				<li class="{{html_classes('header__nav-item', item.classes|join(' '), {
-					'active': item.current,
-					'dropdown': item.children
-				})}}"{% if item.is_external %} target="_blank"{% endif %}>
-					<a class="header__nav-link" href="{{item.link}}">{{item.title}}</a>
-
-					{% if item.children %}
-						{% include 'components/subnav.twig' with {
-							items: item.children
-						} %}
-					{% endif %}
-				</li>
-			{% endfor %}
-		</ul>
+	<div class="header__nav">
+		{% include 'components/nav.twig' with {
+			items: header_nav.items
+		} %}
 
 		<button class="header__trial-lesson btn btn--yellow" data-modal-trigger="request-modal">Записаться на пробный урок</button>
-	</nav>
+	</div>
 </header>

@@ -35,44 +35,11 @@
 
 	&__nav {
 		position: relative;
-		height: 40px;
-		background-color: $pearl-white;
-		font-weight: 700;
+		background-color: rgba(249, 244, 242, .75);
+		backdrop-filter: blur(5px);
 		transform: translateY(-100%);
 		transition: 0.2s linear all;
-		backdrop-filter: blur(5px);
-		background-color: rgba(249, 244, 242, .75);
 		z-index: -1;
-	
-		&-list {
-			width: 735px;
-			max-width: calc(100% - 120px);
-			height: 100%;
-			margin: 0 auto;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-		}
-
-		&-item {
-			position: relative;
-
-			&:hover {
-				> .subnav {
-					opacity: 1;
-					visibility: visible;
-				}
-			}
-		}
-
-		&-link {
-			color: $black;
-			transition: color 0.3s linear;
-
-			&:hover {
-				color: $purple;
-			}
-		}
 	}
 
 	&__logo {
@@ -152,67 +119,9 @@
 
 		&__nav {
 			height: auto;
-			margin: 0 20px;
-			padding-bottom: 30px;
-			background-color: $white;
-			border-radius: 0 0 $border-radius $border-radius;
-
-			&-list {
-				width: auto;
-				max-width: none;
-				flex-direction: column;
-				align-items: flex-start;
-				margin: 0;
-			}
-
-			&-item {
-				width: 100%;
-				padding: 12px 30px;
-
-				&:nth-child(7) {
-					order: 1;
-				}
-	
-				&:nth-child(4),
-				&:nth-child(6) {
-					display: block;
-				}
-	
-				&:last-child {
-					display: none;
-				}
-	
-				&:has(.subnav) {
-					cursor: pointer;
-	
-					.header__nav-link {
-						pointer-events: none;
-					}
-	
-					&::before {
-						content: '';
-						background: url('./static/images/icons/check-3.svg')
-							center center/cover no-repeat;
-						width: 12px;
-						height: 6px;
-						position: absolute;
-						top: 20px;
-						right: 28px;
-						transform: scaleY(-1);
-						transition: 0.3s linear transform;
-					}
-	
-					&.active {
-						&::before {
-							transform: scaleY(1);
-						}
-					}
-				}
-
-				.subnav {
-					transition: 0.3s linear;
-				}
-			}
+			margin: 0 10px;
+			padding: 20px 0;
+			border-radius: $border-radius-sm;
 		}
 	}
 
@@ -237,6 +146,41 @@
 	@include mq.from(lg) {
 		&__container {
 			padding: 0 60px;
+		}
+
+		&__nav {
+			position: relative;
+			height: 40px;
+	
+			> .nav {
+				height: 100%;
+				width: 735px;
+				max-width: calc(100% - 120px);
+				margin: 0 auto;
+	
+				> .nav__list {
+					height: 100%;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+
+					> .nav__item  {
+						transition: color 0.3s linear;
+
+						&--active {
+							color: $purple;
+						}
+
+						&:hover {
+							color: $purple;
+						}
+
+						> .nav__link {
+							padding: 0;
+						}
+					}
+				}
+			}
 		}
 
 		&__trial-lesson,

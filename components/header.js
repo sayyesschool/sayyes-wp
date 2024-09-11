@@ -5,9 +5,9 @@ export default class Header extends Component {
 
     static classes = {
         root: this.name,
+        main: `${this.main}__main`,
+        nav: `${this.name}__nav`,
         menuButton: `${this.name}__menu-button`,
-        navList: `${this.name}__nav-list`,
-        navItem: `${this.name}__nav-item`,
         expanded: `${this.name}--expanded`,
         open: `${this.name}--open`,
     };
@@ -18,12 +18,10 @@ export default class Header extends Component {
         super(element);
 
         this.menuButton = this.getElement(`.${Header.classes.menuButton}`);
-        this.navList = this.getElement(`.${Header.classes.navList}`);
-        this.navItems = this.getElements(`${Header.classes.navItem}:has(.subnav__content)`);
+        this.nav = this.getElement(`.${Header.classes.nav} > .nav`);
 
         window.addEventListener('scroll', this.handleScroll.bind(this));
         this.menuButton.addEventListener('click', this.handleMenuButtonClick.bind(this));
-        this.navList.addEventListener('click', this.handleNavListClick.bind(this));
 
         this.handleScroll();
     }
@@ -38,7 +36,7 @@ export default class Header extends Component {
         if (isSmallScreen) {
             this.element.classList.remove(Header.classes.open);
             this.menuButton.removeAttribute('data-active');
-            this.closeAllSubnav();
+            this.nav.component?.closeSubnavs();
         } else if (currentScrollY === 0) {
             this.element.classList.add(Header.classes.open);
         } else {
@@ -51,32 +49,6 @@ export default class Header extends Component {
     handleMenuButtonClick() {
         this.element.classList.toggle(Header.classes.open);
         this.menuButton.toggleAttribute('data-active');
-        this.closeAllSubnav();
-    }
-
-    handleNavListClick(event) {
-        const target = event.target;
-        const isItem = target.classList.contains(Header.classes.navItem);
-        const subnav = target.querySelector('.subnav');
-
-        if (subnav && isItem) {
-            if (subnav.clientHeight) {
-                target.classList.remove('active');
-                subnav.style.height = 0;
-            } else {
-                this.closeAllSubnav();
-                target.classList.add('active');
-                subnav.style.height = `${subnav.scrollHeight}px`;
-            }
-        }
-    }
-
-    closeAllSubnav() {
-        this.navItems.forEach(item => {
-            const subnav = item.querySelector('.subnav');
-
-            item.classList.remove('active');
-            subnav.style.height = 0;
-        });
+        this.nav.component?.closeSubnavs();
     }
 }

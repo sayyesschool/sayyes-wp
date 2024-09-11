@@ -2247,6 +2247,84 @@ button.link {
   }
 }
 
+/*
+ * Theme Name: Say Yes!
+ * Description: A custom theme for sayes.ru
+ * Author: Oleg Polyakov
+*/
+.nav__item {
+  position: relative;
+  color: #262626;
+  font-size: 14px;
+  font-weight: 700;
+}
+.nav__link {
+  display: block;
+  padding: 10px 20px;
+}
+@media (max-width: 1023px) {
+  .nav__item--parent::before {
+    content: "";
+    background: url("./static/images/icons/check-3.svg") center center/cover no-repeat;
+    position: absolute;
+    top: 20px;
+    right: 28px;
+    width: 12px;
+    height: 6px;
+    -webkit-transform: scaleY(-1);
+            transform: scaleY(-1);
+    -webkit-transition: 0.3s linear transform;
+    transition: 0.3s linear transform;
+  }
+  .nav__item--open:hover::before {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+  .nav__item--parent .nav__link {
+    pointer-events: none;
+  }
+  .nav .subnav {
+    position: static;
+    height: 0;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: height 0.3s linear;
+    transition: height 0.3s linear;
+    overflow: hidden;
+  }
+  .nav .subnav .nav__item {
+    margin-left: 20px;
+  }
+}
+@media (min-width: 1024px) {
+  .nav__item--parent:hover > .subnav {
+    opacity: 1;
+    visibility: visible;
+  }
+  .nav .subnav {
+    position: absolute;
+    top: 100%;
+    left: -20px;
+    padding-top: 10px;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+  }
+  .nav .subnav .nav__list {
+    padding: 10px 0;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    border-radius: 20px;
+    background-color: #fffcff;
+    overflow: hidden;
+  }
+  .nav .subnav .nav__item:hover {
+    background-color: #f8f0ee;
+  }
+}
+
 .radio__input {
   display: none;
 }
@@ -3771,47 +3849,14 @@ button.link {
 }
 .header__nav {
   position: relative;
-  height: 40px;
-  background-color: #f9f4f2;
-  font-weight: 700;
+  background-color: rgba(249, 244, 242, 0.75);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
   -webkit-transform: translateY(-100%);
           transform: translateY(-100%);
   -webkit-transition: 0.2s linear all;
   transition: 0.2s linear all;
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-  background-color: rgba(249, 244, 242, 0.75);
   z-index: -1;
-}
-.header__nav-list {
-  width: 735px;
-  max-width: calc(100% - 120px);
-  height: 100%;
-  margin: 0 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.header__nav-item {
-  position: relative;
-}
-.header__nav-item:hover > .subnav {
-  opacity: 1;
-  visibility: visible;
-}
-.header__nav-link {
-  color: #262626;
-  -webkit-transition: color 0.3s linear;
-  transition: color 0.3s linear;
-}
-.header__nav-link:hover {
-  color: #7831b2;
 }
 .header__logo {
   -ms-flex-negative: 0;
@@ -3911,64 +3956,9 @@ button.link {
   }
   .header__nav {
     height: auto;
-    margin: 0 20px;
-    padding-bottom: 30px;
-    background-color: #fffcff;
-    border-radius: 0 0 30px 30px;
-  }
-  .header__nav-list {
-    width: auto;
-    max-width: none;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
-    margin: 0;
-  }
-  .header__nav-item {
-    width: 100%;
-    padding: 12px 30px;
-  }
-  .header__nav-item:nth-child(7) {
-    -webkit-box-ordinal-group: 2;
-        -ms-flex-order: 1;
-            order: 1;
-  }
-  .header__nav-item:nth-child(4), .header__nav-item:nth-child(6) {
-    display: block;
-  }
-  .header__nav-item:last-child {
-    display: none;
-  }
-  .header__nav-item:has(.subnav) {
-    cursor: pointer;
-  }
-  .header__nav-item:has(.subnav) .header__nav-link {
-    pointer-events: none;
-  }
-  .header__nav-item:has(.subnav)::before {
-    content: "";
-    background: url("./static/images/icons/check-3.svg") center center/cover no-repeat;
-    width: 12px;
-    height: 6px;
-    position: absolute;
-    top: 20px;
-    right: 28px;
-    -webkit-transform: scaleY(-1);
-            transform: scaleY(-1);
-    -webkit-transition: 0.3s linear transform;
-    transition: 0.3s linear transform;
-  }
-  .header__nav-item:has(.subnav).active::before {
-    -webkit-transform: scaleY(1);
-            transform: scaleY(1);
-  }
-  .header__nav-item .subnav {
-    -webkit-transition: 0.3s linear;
-    transition: 0.3s linear;
+    margin: 0 10px;
+    padding: 20px 0;
+    border-radius: 20px;
   }
 }
 @media (max-width: 767px) {
@@ -3989,6 +3979,41 @@ button.link {
 @media (min-width: 1024px) {
   .header__container {
     padding: 0 60px;
+  }
+  .header__nav {
+    position: relative;
+    height: 40px;
+  }
+  .header__nav > .nav {
+    height: 100%;
+    width: 735px;
+    max-width: calc(100% - 120px);
+    margin: 0 auto;
+  }
+  .header__nav > .nav > .nav__list {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .header__nav > .nav > .nav__list > .nav__item {
+    -webkit-transition: color 0.3s linear;
+    transition: color 0.3s linear;
+  }
+  .header__nav > .nav > .nav__list > .nav__item--active {
+    color: #7831b2;
+  }
+  .header__nav > .nav > .nav__list > .nav__item:hover {
+    color: #7831b2;
+  }
+  .header__nav > .nav > .nav__list > .nav__item > .nav__link {
+    padding: 0;
   }
   .header__trial-lesson, .header__menu-button {
     display: none;
@@ -4611,98 +4636,6 @@ button.link {
 @media (min-width: 768px) {
   .student-progress-slider .slider__pagination {
     padding-left: 48%;
-  }
-}
-
-/*
- * Theme Name: Say Yes!
- * Description: A custom theme for sayes.ru
- * Author: Oleg Polyakov
-*/
-.subnav {
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  top: 25px;
-  left: -40px;
-  width: 250px;
-  margin-top: -10px;
-  padding-top: 15px;
-  -webkit-transition: opacity 0.3s ease;
-  transition: opacity 0.3s ease;
-  z-index: 1;
-}
-.subnav .subnav {
-  position: static;
-  opacity: 1;
-  overflow: hidden;
-  visibility: visible;
-  -webkit-transition: 0.3s linear height;
-  transition: 0.3s linear height;
-  height: 0;
-  padding-top: 0;
-  margin-top: 0;
-}
-.subnav .subnav .subnav__list {
-  padding: 0;
-  border-radius: 0;
-}
-.subnav .subnav .subnav__link {
-  padding-left: 48px;
-  padding-right: 0;
-}
-.subnav__list {
-  padding: 30px 0;
-  border-radius: 20px;
-  background-color: #fffcff;
-}
-.subnav__item {
-  position: relative;
-}
-.subnav__item:hover {
-  background-color: #f8f0ee;
-}
-.subnav__item:hover > .subnav {
-  height: 220px;
-}
-.subnav__item:has(.subnav)::before {
-  content: "";
-  background: url("./static/images/icons/check-3.svg") center center/cover no-repeat;
-  width: 12px;
-  height: 6px;
-  position: absolute;
-  top: 20px;
-  right: 28px;
-  -webkit-transition: 0.3s linear transform;
-  transition: 0.3s linear transform;
-}
-.subnav__item:has(.subnav):hover::before {
-  -webkit-transform: scaleY(-1);
-          transform: scaleY(-1);
-}
-.subnav__link {
-  display: block;
-  padding: 12px 30px;
-  font-size: 14px;
-  font-weight: 700;
-  color: #262626;
-}
-@media (max-width: 768px) {
-  .subnav {
-    width: 100%;
-    position: static;
-    opacity: 1;
-    visibility: visible;
-    height: 0;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-  .subnav .subnav__list {
-    padding: 10px 0 0;
-  }
-  .subnav .subnav__link {
-    padding-left: 20px;
   }
 }
 

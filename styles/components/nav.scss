@@ -1,0 +1,96 @@
+@use 'styles/mq';
+@use 'styles/mixins' as *;
+@use 'styles/variables' as *;
+
+.nav {
+	&__item {
+		position: relative;
+		color: $black;
+		font-size: 14px;
+		font-weight: 700;
+	}
+
+	&__link {
+		display: block;
+		padding: 10px 20px;
+	}
+
+	@include mq.to(lg) {
+		&__item {
+			&--parent {
+				&::before {
+					content: '';
+					background: url('./static/images/icons/check-3.svg') center
+						center/cover no-repeat;
+					position: absolute;
+					top: 20px;
+					right: 28px;
+					width: 12px;
+					height: 6px;
+					transform: scaleY(-1);
+					transition: 0.3s linear transform;
+				}
+			}
+
+			&--open {
+				&:hover {
+					&::before {
+						transform: scaleY(1);
+					}
+				}
+			}
+		}
+
+		&__item--parent &__link {
+			pointer-events: none;
+		}
+
+		.subnav {
+			position: static;
+			height: 0;
+			opacity: 1;
+			visibility: visible;
+			transition: height 0.3s linear;
+			overflow: hidden;
+	
+			.nav__item {
+				margin-left: 20px;
+			}
+		}
+	}
+
+	@include mq.from(lg) {
+		&__item--parent {
+			&:hover {
+				> .subnav {
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+		}
+
+		.subnav {
+			position: absolute;
+			top: 100%;
+			left: -20px;
+			padding-top: 10px;
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity 0.3s ease;
+
+			.nav__list {
+				padding: 10px 0;
+				width: max-content;
+				border-radius: $border-radius-sm;
+				background-color: $white;
+				overflow: hidden;
+			}
+
+			.nav__item {
+				&:hover {
+					background-color: $pale-white;
+				}
+			}
+		}
+	}
+}
