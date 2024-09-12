@@ -40,7 +40,7 @@
 			}
 		}
 
-		&__item--parent &__link {
+		&__item--parent > &__link {
 			pointer-events: none;
 		}
 
