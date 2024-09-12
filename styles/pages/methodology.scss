@@ -1,6 +1,5 @@
-@use 'styles/mq';
-@use 'styles/theme';
-@use 'styles/variables';
+@use 'global' as *;
+@use 'mq';
 
 #methodology-page {
     .main-section {
@@ -31,11 +30,11 @@
 .methodology-methods {
 	.method-card {
 		&:first-child {
-			background-color: variables.$violet;
+			background-color: $violet;
 		}
 
 		&:last-child {
-			background-color: variables.$yellow;
+			background-color: $yellow;
 		}
 
 		.card__description {
@@ -59,7 +58,7 @@
 		.method-card {
 			&:first-child {
 				border-radius: 0;
-				@include theme.border-radius((top-left, top-right));
+				@include border-radius((top-left, top-right));
 				padding-bottom: 40px;
 			}
 
@@ -89,7 +88,7 @@
 			&:last-child {
 				padding-left: 50px;
 				border-radius: 0;
-				@include theme.border-radius((top-right, bottom-right));
+				@include border-radius((top-right, bottom-right));
 			}
 		}
 

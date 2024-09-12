@@ -1,6 +1,5 @@
-@use 'styles/mq';
-@use 'styles/mixins' as *;
-@use 'styles/variables' as *;
+@use 'global' as *;
+@use 'mq';
 
 .list {
 	display: flex;
@@ -54,7 +53,7 @@
 				flex-shrink: 0;
 				width: 24px;
 				height: 24px;
-				background: url('./static/images/icons/check.svg') center center/contain no-repeat;
+				background: image('icons/check.svg') center center/contain no-repeat;
 			}
 
 			@include mq.from(md) {

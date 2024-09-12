@@ -1,5 +1,5 @@
-@use 'styles/mq';
-@use 'styles/mixins' as *;
+@use 'global' as *;
+@use 'mq';
 
 .single-course {
     .main-section {

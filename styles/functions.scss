@@ -1,0 +1,9 @@
+$root: '../../';
+
+@function path($url) {
+    @return '#{$root}#{$url}';
+}
+
+@function image($url) {
+    @return url('#{$root}static/images/#{$url}');
+}

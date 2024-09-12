@@ -1,6 +1,5 @@
-@use 'styles/mq';
-@use 'styles/mixins' as *;
-@use 'styles/variables' as *;
+@use 'global' as *;
+@use 'mq';
 
 .course-children {
     .course-facts {
@@ -87,7 +86,7 @@
 			height: 104px;
 			top: 200px;
 			left: 331px;
-			background-image: url('./static/images/decoration/notes/only-2-min.svg');
+			background-image: image('notes/only-2-min.svg');
 			background-size: contain;
 		}
 	}

@@ -1,15 +1,16 @@
+@use 'sass:list';
 @use 'sass:map';
 @use 'sass:meta';
 
 @use './components/text';
 @use './mq';
-@use './variables';
+@use './variables' as *;
 
-$bp-xl: map-get(variables.$breakpoints, 'xl');
-$bp-lg: map-get(variables.$breakpoints, 'lg');
-$bp-md: map-get(variables.$breakpoints, 'md');
-$bp-sm: map-get(variables.$breakpoints, 'sm');
-$bp-xs: map-get(variables.$breakpoints, 'xs');
+$bp-xl: map-get($breakpoints, 'xl');
+$bp-lg: map-get($breakpoints, 'lg');
+$bp-md: map-get($breakpoints, 'md');
+$bp-sm: map-get($breakpoints, 'sm');
+$bp-xs: map-get($breakpoints, 'xs');
 
 $queries: (
     '< xs': '(max-width: #{$bp-xs - 1})',
@@ -71,7 +72,7 @@ $queries: (
     &::#{$position} {
         content: '';
         position: absolute;
-        background-image: url('./static/images/#{$path}');
+        background-image: path('./static/images/#{$path}');
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
@@ -195,5 +196,55 @@ transition: background-color .3s cubic-bezier(.4,0,.2,1),box-shadow .3s cubic-be
 
     @include mq.to(md) {
         --spacing: 30px;
+    }
+}
+
+@mixin border-radius($dirs: ()) {
+    @if list.length($dirs) > 0 {
+        @each $dir in $dirs {
+            @include mq.to(lg) {
+                border-#{$dir}-radius: $border-radius-sm;
+            }
+            
+            @include mq.from(lg) {
+                border-#{$dir}-radius: $border-radius-md;
+            }
+        }
+    } @else {
+        @include mq.to(lg) {
+            border-radius: $border-radius-sm;
+        }
+        
+        @include mq.from(lg) {
+            border-radius: $border-radius-md;
+        }
+    }
+}
+
+@mixin scrollable($fade: true, $color: $linen) {
+    overflow: auto;
+
+    @if ($fade) {
+        padding-bottom: 25px;
+
+        &::after {
+            content: '';
+            width: calc(100% - 3px);
+            height: 25px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            box-shadow: 0px -30px 20px -10px $white inset;
+            border-radius: 0 0 $border-radius-sm $border-radius-sm;
+        }
+    }
+
+    &::-webkit-scrollbar {
+        width: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $color;
+        border-radius: 10%;
     }
 }

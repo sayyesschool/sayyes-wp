@@ -1,8 +1,6 @@
-@use 'styles/components/heading';
-@use 'styles/mixins';
-@use 'styles/mq';
-@use 'styles/theme';
-@use 'styles/variables';
+@use 'global' as *;
+@use 'components/heading';
+@use 'mq';
 
 .about-video {
 	@include mq.to(md) {
@@ -21,7 +19,7 @@
 		width: 100%;
 		padding: 20px;
 		background-color: #fffcff;
-		@include theme.border-radius;	
+		@include border-radius;	
 	}
 
 	&__media {
@@ -30,7 +28,7 @@
 		flex-direction: column;
 		background: linear-gradient(#7464a4, #402e69);
 		padding: 20px 20px 0;
-		@include theme.border-radius;
+		@include border-radius;
 
 		.image {
 			margin-top: auto;
@@ -87,7 +85,7 @@
 					position: absolute;
 					width: 45px;
 					height: 33px;
-					background: url('./static/images/icons/quotes.svg') center center / contain no-repeat;
+					background: path('./static/images/icons/quotes.svg') center center / contain no-repeat;
 				}
 	
 				&::before {
@@ -173,7 +171,7 @@
 			display: flex;
 			align-items: center;
 			gap: 30px;
-			background-color: variables.$yellow;
+			background-color: $yellow;
 
 			&__title,
 			&__description {
@@ -288,7 +286,7 @@
 
 .behind-the-scenes {
 	padding: 20px;
-	background-color: variables.$white;
+	background-color: $white;
 
 	&__gallery {
 		display: grid;
@@ -326,7 +324,7 @@
 			&:nth-child(1) {
 				grid-area: a;
 
-				@include mixins.decoration('elements/tinsel.svg') {
+				@include decoration('elements/tinsel.svg') {
 					width: 50%;
 					height: 54%;
 					top: -30px;
@@ -345,7 +343,7 @@
 			&:nth-child(4) {
 				grid-area: d;
 
-				@include mixins.decoration('elements/tinsel.svg') {
+				@include decoration('elements/tinsel.svg') {
 					width: 238px;
 					height: 139px;
 					top: 20px;
@@ -395,7 +393,7 @@
 			&:nth-child(1) {
 				grid-area: b;
 
-				@include mixins.decoration('notes/celebration.svg') {
+				@include decoration('notes/celebration.svg') {
 					position: absolute;
 					top: -140px;
 					left: auto;
@@ -409,7 +407,7 @@
 			&:nth-child(2) {
 				grid-area: d;
 
-				@include mixins.decoration('elements/tinsel.svg') {
+				@include decoration('elements/tinsel.svg') {
 					width: 324px;
 					height: 184px;
 					top: -30px;
@@ -425,7 +423,7 @@
 			&:nth-child(4) {
 				grid-area: a;
 
-				@include mixins.decoration('elements/tinsel.svg') {
+				@include decoration('elements/tinsel.svg') {
 					width: 178px;
 					height: 103px;
 					top: -10%;
@@ -448,7 +446,7 @@
 			&:nth-child(8) {
 				grid-area: g;
 
-				@include mixins.decoration('elements/awards-2.svg') {
+				@include decoration('elements/awards-2.svg') {
 					width: 103px;
 					height: 101px;
 					top: -65%;
@@ -457,7 +455,7 @@
 			}
 		}
 
-		@include mixins.decoration('elements/confetti-2.svg', after) {
+		@include decoration('elements/confetti-2.svg', after) {
 			width: 100%;
 			height: 100%;
 			top: -4px;
@@ -496,7 +494,7 @@
 					top: -10px;
 					left: -281px;
 					transform: scaleX(-1) rotate(50deg);
-					background: url('./static/images/decoration/elements/tinsel.svg')
+					background: path('static/images/decoration/elements/tinsel.svg')
 						center center/cover no-repeat;
 				}
 			}
@@ -511,7 +509,7 @@
 					position: absolute;
 					top: -193px;
 					right: 134px;
-					background: url('./static/images/decoration/notes/celebration.svg')
+					background: path('static/images/decoration/notes/celebration.svg')
 						center center/cover no-repeat;
 				}
 			}
@@ -526,7 +524,7 @@
 					position: absolute;
 					top: -8%;
 					left: 445%;
-					background: url('./static/images/decoration/elements/tinsel.svg')
+					background: image('elements/tinsel.svg')
 						center center/cover no-repeat;
 				}
 			}
@@ -541,7 +539,7 @@
 					position: absolute;
 					top: 55%;
 					right: -53%;
-					background: url('./static/images/decoration/notes/fun.svg')
+					background: path('static/images/decoration/notes/fun.svg')
 						center center/cover no-repeat;
 				}
 			}
@@ -564,7 +562,7 @@
 					position: absolute;
 					bottom: -13%;
 					left: -82%;
-					background: url('./static/images/decoration/elements/petard.svg')
+					background: path('static/images/decoration/elements/petard.svg')
 						center center/cover no-repeat;
 				}
 			}
@@ -579,7 +577,7 @@
 					position: absolute;
 					top: 30%;
 					left: -445%;
-					background: url('./static/images/decoration/notes/awards.svg')
+					background: path('static/images/decoration/notes/awards.svg')
 						center center/cover no-repeat;
 				}
 	

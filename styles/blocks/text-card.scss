@@ -1,4 +1,5 @@
-@use 'styles/mq';
+@use 'mq';
+@use 'functions' as *;
 
 .text-card {
     padding: 20px;
@@ -79,7 +80,7 @@
 			height: 79px;
 			top: 55px;
 			left: 50px;
-			background-image: url('./static/images/notes/discount-20.svg');
+			background-image: image('notes/discount-20.svg');
 		}
 	}
 
@@ -89,7 +90,7 @@
 			height: 76px;
 			top: 60px;
 			left: 50px;
-			background-image: url('./static/images/notes/permanent-discount.svg');
+			background-image: image('notes/permanent-discount.svg');
 		}
 	}
 
@@ -99,7 +100,7 @@
 			height: 60px;
 			top: 60px;
 			left: 50px;
-			background-image: url('./static/images/notes/free-lessons.svg');
+			background-image: image('notes/free-lessons.svg');
 		}
 	}
 
@@ -109,7 +110,7 @@
 			height: 233px;
 			bottom: -20px;
 			right: -55px;
-			background-image: url('./static/images/elements/books.svg');
+			background-image: image('elements/books.svg');
 		}
 	}
 
@@ -119,7 +120,7 @@
 			height: 200px;
 			top: 5px;
 			right: -90px;
-			background-image: url('./static/images/elements/books.svg');
+			background-image: image('elements/books.svg');
 		}
 	}
 
@@ -129,7 +130,7 @@
 			height: 210px;
 			top: -42px;
 			right: 15px;
-			background-image: url('./static/images/elements/hourglass-2.svg');
+			background-image: image('elements/hourglass-2.svg');
 		}
 	}
 
@@ -139,7 +140,7 @@
 			height: 97px;
 			top: -15px;
 			right: -4px;
-			background-image: url('./static/images/elements/comment.svg');
+			background-image: image('elements/comment.svg');
 		}
 	}
 
@@ -149,7 +150,7 @@
 			height: 168px;
 			top: -12px;
 			right: -33px;
-			background-image: url('./static/images/elements/comment.svg');
+			background-image: image('elements/comment.svg');
 		}
 	}
 
@@ -159,7 +160,7 @@
 			height: 163px;
 			top: -36px;
 			right: -40px;
-			background-image: url('./static/images/elements/comments.svg');
+			background-image: image('elements/comments.svg');
 		}
 	}
 
@@ -169,7 +170,7 @@
 			height: 222px;
 			bottom: 13px;
 			right: -120px;
-			background-image: url('./static/images/elements/comments-2.svg');
+			background-image: image('elements/comments-2.svg');
 		}
 	}
 
@@ -179,7 +180,7 @@
 			height: 215px;
 			top: -18px;
 			right: -18px;
-			background-image: url('./static/images/elements/heart.svg');
+			background-image: image('elements/heart.svg');
 		}
 	}
 
@@ -190,7 +191,7 @@
 			bottom: -7px;
 			right: -42px;
 			transform: rotate(-17deg);
-			background-image: url('./static/images/elements/heart.svg');
+			background-image: image('elements/heart.svg');
 		}
 	}
 
@@ -200,7 +201,7 @@
 			height: 124px;
 			top: -21px;
 			right: 0px;
-			background-image: url('./static/images/elements/diploma.svg');
+			background-image: image('elements/diploma.svg');
 		}
 	}
 
@@ -211,7 +212,7 @@
 			top: -20px;
 			right: -35px;
 			transform: rotate(7deg);
-			background-image: url('./static/images/elements/diploma.svg');
+			background-image: image('elements/diploma.svg');
 		}
 	}
 
@@ -221,7 +222,7 @@
 			height: 106px;
 			top: -10px;
 			right: -19px;
-			background-image: url('./static/images/elements/leaves.svg');
+			background-image: image('elements/leaves.svg');
 		}
 	}
 
@@ -231,7 +232,7 @@
 			height: 122px;
 			top: -22px;
 			right: -12px;
-			background-image: url('./static/images/elements/mail.svg');
+			background-image: image('elements/mail.svg');
 		}
 	}
 
@@ -241,7 +242,7 @@
 			height: 123px;
 			top: -12px;
 			right: -9px;
-			background-image: url('./static/images/elements/person.svg');
+			background-image: image('elements/person.svg');
 		}
 	}
 
@@ -251,7 +252,7 @@
 			height: 151px;
 			top: -30px;
 			right: -50px;
-			background-image: url('./static/images/elements/person.svg');
+			background-image: image('elements/person.svg');
 		}
 	}
 
@@ -261,7 +262,7 @@
 			height: 175px;
 			top: -46px;
 			right: -50px;
-			background-image: url('./static/images/elements/people.svg');
+			background-image: image('elements/people.svg');
 		}
 	}
 
@@ -271,7 +272,7 @@
 			height: 147px;
 			top: -36px;
 			right: -33px;
-			background-image: url('./static/images/elements/people.svg');
+			background-image: image('elements/people.svg');
 		}
 	}
 
@@ -281,7 +282,7 @@
 			height: 152px;
 			top: -18px;
 			right: -43px;
-			background-image: url('./static/images/elements/cap.svg');
+			background-image: image('elements/cap.svg');
 		}
 	}
 
@@ -291,7 +292,7 @@
 			height: 150px;
 			top: -25px;
 			right: -35px;
-			background-image: url('./static/images/elements/cap.svg');
+			background-image: image('elements/cap.svg');
 		}
 	}
 
@@ -301,7 +302,7 @@
 			height: 164px;
 			top: -60px;
 			right: -21px;
-			background-image: url('./static/images/elements/note-with-pen.svg');
+			background-image: image('elements/note-with-pen.svg');
 		}
 	}
 
@@ -311,7 +312,7 @@
 			height: 168px;
 			top: -43px;
 			right: -22px;
-			background-image: url('./static/images/elements/notes.svg');
+			background-image: image('elements/notes.svg');
 		}
 	}
 
@@ -321,7 +322,7 @@
 			height: 168px;
 			top: -48px;
 			right: -15px;
-			background-image: url('./static/images/elements/notes.svg');
+			background-image: image('elements/notes.svg');
 		}
 	}
 
@@ -331,7 +332,7 @@
 			height: 262px;
 			top: -91px;
 			right: -68px;
-			background-image: url('./static/images/elements/diary.svg');
+			background-image: image('elements/diary.svg');
 		}
 	}
 
@@ -341,7 +342,7 @@
 			height: 131px;
 			top: -10px;
 			right: -28px;
-			background-image: url('./static/images/elements/worker.svg');
+			background-image: image('elements/worker.svg');
 		}
 	}
 
@@ -351,7 +352,7 @@
 			height: 142px;
 			top: -21px;
 			right: -62px;
-			background-image: url('./static/images/elements/briefcase.svg');
+			background-image: image('elements/briefcase.svg');
 		}
 	}
 
@@ -361,7 +362,7 @@
 			height: 246px;
 			top: -22px;
 			right: -29px;
-			background-image: url('./static/images/elements/monitor.svg');
+			background-image: image('elements/monitor.svg');
 		}
 	}
 
@@ -371,7 +372,7 @@
 			height: 164px;
 			top: -29px;
 			right: -5px;
-			background-image: url('./static/images/elements/format-video.svg');
+			background-image: image('elements/format-video.svg');
 		}
 	}
 
@@ -381,7 +382,7 @@
 			height: 164px;
 			top: -45px;
 			right: -36px;
-			background-image: url('./static/images/elements/person-3.svg');
+			background-image: image('elements/person-3.svg');
 		}
 	}
 
@@ -391,7 +392,7 @@
 			height: 139px;
 			top: -15px;
 			right: -40px;
-			background-image: url('./static/images/elements/person-2.svg');
+			background-image: image('elements/person-2.svg');
 		}
 	}
 
@@ -401,7 +402,7 @@
 			height: 138px;
 			top: -19px;
 			right: -21px;
-			background-image: url('./static/images/elements/levels.svg');
+			background-image: image('elements/levels.svg');
 		}
 	}
 
@@ -412,7 +413,7 @@
 			bottom: -40px;
 			right: -30px;
 			transform: rotate(10deg);
-			background-image: url('./static/images/elements/levels.svg');
+			background-image: image('elements/levels.svg');
 		}
 	}
 
@@ -422,7 +423,7 @@
 			height: 194px;
 			top: -45px;
 			right: -8px;
-			background-image: url('./static/images/elements/fire.svg');
+			background-image: image('elements/fire.svg');
 		}
 	}
 
@@ -432,7 +433,7 @@
 			height: 211px;
 			top: -5px;
 			right: -60px;
-			background-image: url('./static/images/elements/student.svg');
+			background-image: image('elements/student.svg');
 		}
 	}
 
@@ -443,7 +444,7 @@
 			top: -26px;
 			right: -6px;
 			transform: rotate(-22deg);
-			background-image: url('./static/images/elements/student.svg');
+			background-image: image('elements/student.svg');
 		}
 	}
 
@@ -453,7 +454,7 @@
 			height: 218px;
 			top: -5px;
 			right: -50px;
-			background-image: url('./static/images/elements/family.svg');
+			background-image: image('elements/family.svg');
 		}
 	}
 
@@ -463,7 +464,7 @@
 			height: 141px;
 			top: -18px;
 			right: 4px;
-			background-image: url('./static/images/elements/lightning-2.svg');
+			background-image: image('elements/lightning-2.svg');
 		}
 	}
 
@@ -473,7 +474,7 @@
 			height: 269px;
 			bottom: -70px;
 			right: -30px;
-			background-image: url('./static/images/elements/clock.svg');
+			background-image: image('elements/clock.svg');
 		}
 	}
 
@@ -483,7 +484,7 @@
 			height: 110px;
 			top: -26px;
 			right: 2px;
-			background-image: url('./static/images/elements/clock-2.svg');
+			background-image: image('elements/clock-2.svg');
 		}
 	}
 
@@ -493,7 +494,7 @@
 			height: 164px;
 			bottom: -27px;
 			right: -7px;
-			background-image: url('./static/images/elements/rubles.svg');
+			background-image: image('elements/rubles.svg');
 		}
 	}
 
@@ -504,7 +505,7 @@
 			top: -9px;
 			right: -53px;
 			transform: rotate(20deg);
-			background-image: url('./static/images/elements/calendar.svg');
+			background-image: image('elements/calendar.svg');
 		}
 	}
 
@@ -514,7 +515,7 @@
 			height: 187px;
 			bottom: -3px;
 			right: -4px;
-			background-image: url('./static/images/elements/woman.svg');
+			background-image: image('elements/woman.svg');
 		}
 	}
 
@@ -524,7 +525,7 @@
 			height: 187px;
 			bottom: -6px;
 			right: -52px;
-			background-image: url('./static/images/elements/target.svg');
+			background-image: image('elements/target.svg');
 		}
 	}
 
@@ -534,7 +535,7 @@
 			height: 180px;
 			top: -4px;
 			right: -6px;
-			background-image: url('./static/images/elements/casting.svg');
+			background-image: image('elements/casting.svg');
 		}
 	}
 
@@ -544,7 +545,7 @@
 			height: 132px;
 			top: -20px;
 			right: -20px;
-			background-image: url('./static/images/elements/check.svg');
+			background-image: image('elements/check.svg');
 		}
 	}
 
@@ -554,7 +555,7 @@
 			height: 234px;
 			top: -17px;
 			right: -66px;
-			background-image: url('./static/images/elements/question.svg');
+			background-image: image('elements/question.svg');
 		}
 	}
 
@@ -565,7 +566,7 @@
 			top: -34px;
 			right: -24px;
 			transform: rotate(-61deg);
-			background-image: url('./static/images/elements/hourglass-2.svg');
+			background-image: image('elements/hourglass-2.svg');
 		}
 	}
 
@@ -575,7 +576,7 @@
 			height: 171px;
 			top: -27px;
 			right: -32px;
-			background-image: url('./static/images/elements/list.svg');
+			background-image: image('elements/list.svg');
 		}
 	}
 
@@ -585,7 +586,7 @@
 			height: 115px;
 			top: -23px;
 			right: -39px;
-			background-image: url('./static/images/elements/correct.svg');
+			background-image: image('elements/correct.svg');
 		}
 	}
 

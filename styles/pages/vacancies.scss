@@ -1,8 +1,7 @@
-@use 'styles/components/heading';
-@use 'styles/components/text';
-@use 'styles/mixins';
-@use 'styles/mq';
-@use 'styles/variables';
+@use 'global' as *;
+@use 'components/heading';
+@use 'components/text';
+@use 'mq';
 
 #vacancies-page {
     .main-section {
@@ -160,14 +159,14 @@
 }
 
 .vacancies-cta {
-	@include mixins.decoration('elements/letter-sending.svg', before) {
+	@include decoration('elements/letter-sending.svg', before) {
 		bottom: -20px;
 		left: -60px;
 		width: 262px;
 		height: 274px;
 	}
 
-	@include mixins.decoration('elements/statue-of-liberty.svg', after) {
+	@include decoration('elements/statue-of-liberty.svg', after) {
 		bottom: -25px;
 		right: 35px;
 		width: 124px;

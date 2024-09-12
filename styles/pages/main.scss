@@ -1,8 +1,8 @@
-@use 'styles/components/text';
-@use 'styles/mixins';
-@use 'styles/mq';
-@use 'styles/theme';
-@use 'styles/variables';
+@use 'global' as *;
+@use 'components/text';
+@use 'mq';
+
+@use 'global' as *;
 
 #main-page {
     .hero {
@@ -19,10 +19,10 @@
 				
 				li {
 					strong {
-						color: variables.$yellow;
+						color: $yellow;
 					}
 
-					@include mixins.decoration('icons/rhomb.svg', before) {
+					@include decoration('icons/rhomb.svg', before) {
 						display: inline-block;
 						width: 10px;
 						height: 18px;
@@ -60,7 +60,7 @@
 				left: unset;
 			}
 
-			@include mixins.decoration('notes/dream-team.svg', after) {
+			@include decoration('notes/dream-team.svg', after) {
 				bottom: 10%;
 				right: -20%;
 				width: 78px;
@@ -91,7 +91,7 @@
 .dream-team,
 .platform,
 .atmosphere {
-    background-color: variables.$white;
+    background-color: $white;
 }
 
 .practice,
@@ -195,8 +195,8 @@
 		&__list {
 			padding: 25px;
 			gap: 5px;
-			background-color: variables.$pearl-white;
-			@include theme.border-radius;
+			background-color: $pearl-white;
+			@include border-radius;
 		}
 	}
 
@@ -245,8 +245,8 @@
 			justify-content: space-between;
 			align-items: center;
 			padding: 20px;
-			background-color: variables.$pearl-white;
-			@include theme.border-radius;
+			background-color: $pearl-white;
+			@include border-radius;
 
 			&__heading,
 			&__description {
@@ -377,9 +377,9 @@
 		.list-item  {
 			width: fit-content;
 			max-width: none;
-			border-radius: variables.$border-radius;
+			border-radius: $border-radius;
 			padding: 8px 10px;
-			background-color: variables.$white;
+			background-color: $white;
 			@include text.body2($responsive: false);
 		}
 

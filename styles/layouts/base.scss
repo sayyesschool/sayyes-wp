@@ -1,5 +1,5 @@
-@use 'styles/mq';
-@use 'styles/variables';
+@use 'global' as *;
+@use 'mq';
 
 body {
     @include mq.to(lg) {
@@ -55,7 +55,7 @@ body {
         }
 
         a {
-            color: variables.$purple;
+            color: $purple;
 
             &:hover {
                 text-decoration: underline;

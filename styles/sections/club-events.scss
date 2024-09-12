@@ -1,3 +1,5 @@
+@use 'global' as *;
+
 .club-events {
 	position: relative;
 	min-height: 305px;
@@ -28,7 +30,7 @@
 		height: 271px;
 		top: 135px;
 		left: -30px;
-		background: url('./static/images/decoration/elements/letter-sending.svg')
+		background: image('elements/letter-sending.svg')
 			center center/cover no-repeat;
 	}
 

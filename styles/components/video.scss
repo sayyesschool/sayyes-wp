@@ -1,7 +1,7 @@
-@use 'styles/components/text';
-@use 'styles/mixins';
-@use 'styles/theme';
-@use 'styles/variables';
+@use 'components/text';
+@use 'functions' as *;
+@use 'mixins' as *;
+@use 'variables' as *;
 
 .video {
 	position: relative;
@@ -14,7 +14,7 @@
 		video {
 			width: 100%;
 			display: block;
-			@include theme.border-radius;
+			@include border-radius;
 			overflow: hidden;
 		}
 
@@ -23,7 +23,7 @@
 			height: 100%;
 			display: block;
 			object-fit: cover;
-			@include theme.border-radius;
+			@include border-radius;
 			overflow: hidden;
 		}
 	}
@@ -35,14 +35,14 @@
 		display: inline-block;
 		width: 50px;
 		height: 50px;
-		border: 2px solid variables.$black;
+		border: 2px solid $black;
 		border-radius: 100%;
-		background: url('./static/images/icons/play.svg') center no-repeat #fffcff80;
+		background: image('icons/play.svg') center no-repeat #fffcff80;
 		transition: 0.3s linear background-color;
 		z-index: 1;
 
 		&:hover {
-			background-color: variables.$white;
+			background-color: $white;
 		}
 	}
 
@@ -51,7 +51,7 @@
 	}
 
 	&--framed &__media {
-		@include mixins.decoration('elements/being-student-border.svg', after) {
+		@include decoration('elements/being-student-border.svg', after) {
 			top: -5%;
 			left: -5%;
 			width: 110%;

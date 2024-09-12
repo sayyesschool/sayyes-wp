@@ -1,5 +1,5 @@
-@use 'styles/mq';
-@use 'styles/variables';
+@use 'global' as *;
+@use 'mq';
 
 $columns: (2, 3, 4, 6);
 
@@ -27,7 +27,7 @@ $columns: (2, 3, 4, 6);
 		grid-template-columns: repeat(6, minmax(175px, 1fr));
 	}
 
-	@each $size in variables.$sizes {
+	@each $size in $sizes {
 		@each $n in $columns {
 			&-#{$n}-#{$size} {
 				@include mq.from($size) {

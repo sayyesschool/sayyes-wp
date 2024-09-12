@@ -1,8 +1,7 @@
-@use 'styles/components/heading';
-@use 'styles/components/text';
-@use 'styles/mixins';
-@use 'styles/mq';
-@use 'styles/variables';
+@use 'global' as *;
+@use 'components/heading';
+@use 'components/text';
+@use 'mq';
 
 .awards {
 	// TODO: Refactor to card
@@ -25,7 +24,7 @@
 		}
 
 		.grid {
-			@include mixins.overflow(30px);
+			@include overflow(30px);
 		}
 	}
 

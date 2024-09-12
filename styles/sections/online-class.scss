@@ -1,6 +1,4 @@
-@use 'styles/mq';
-@use 'styles/mixins' as *;
-@use 'styles/variables' as *;
+@use 'mq';
 
 .online-class {
     --header-max-width: 540px;

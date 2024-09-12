@@ -1,6 +1,6 @@
-@use 'styles/components/heading';
-@use 'styles/components/text';
-@use 'styles/mq';
+@use 'components/heading';
+@use 'components/text';
+@use 'mq';
 
 .courses {
 	@include mq.from(md) {

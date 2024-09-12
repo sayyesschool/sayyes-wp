@@ -1,6 +1,4 @@
-@use 'styles/mixins';
-@use 'styles/mq';
-@use 'styles/variables';
+@use 'mq';
 
 .formats-tabs {
 	--description-max-width: 400px;

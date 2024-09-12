@@ -1,8 +1,6 @@
-@use 'styles/components/heading';
-@use 'styles/mq';
-@use 'styles/theme';
-@use 'styles/mixins' as *;
-@use 'styles/variables' as *;
+@use 'global' as *;
+@use 'components/heading';
+@use 'mq';
 
 #corporate-page {
     .main-section {
@@ -134,7 +132,7 @@
         display: flex;
         justify-content: space-between;
         background-color: #e5e3e2;
-        @include theme.border-radius;
+        @include border-radius;
 
         &__image {
             position: relative;

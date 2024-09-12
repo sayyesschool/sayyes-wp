@@ -1,9 +1,9 @@
-@use 'styles/mixins';
-@use 'styles/mq';
+@use 'global' as *;
+@use 'mq';
 
 .student-progress-slider {
 	@include mq.to(md) {
-		@include mixins.overflow(30px);
+		@include overflow(30px);
 	}
 
 	@include mq.from(lg) {

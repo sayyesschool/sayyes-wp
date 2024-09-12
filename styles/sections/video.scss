@@ -1,11 +1,10 @@
-@use 'styles/mixins';
-@use 'styles/mq';
-@use 'styles/variables';
+@use 'global' as *;
+@use 'mq';
 
 .video-section {
 	padding: 20px;
 	flex-direction: column;
-	background-color: variables.$white;
+	background-color: $white;
 
 	.section {
 		&__container {

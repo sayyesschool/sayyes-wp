@@ -1,3 +1,5 @@
+@use 'functions' as *;
+
 #error-modal {
     z-index: 1010;
     
@@ -17,7 +19,7 @@
             content: '';
             width: 64px;
             height: 64px;
-            background-image: url('./static/images/icons/x.svg');
+            background-image: image('icons/x.svg');
             background-position: center;
             background-size: contain;
             background-repeat: no-repeat;

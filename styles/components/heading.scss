@@ -1,8 +1,8 @@
 @use 'sass:list';
 @use 'sass:map';
 
-@use 'styles/mq';
-@use 'styles/variables';
+@use 'global' as *;
+@use 'mq';
 
 $heading-sizes: (
     h1: (

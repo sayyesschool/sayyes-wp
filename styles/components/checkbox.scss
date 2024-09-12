@@ -1,5 +1,5 @@
-@use 'styles/mq';
-@use 'styles/variables' as *;
+@use 'global' as *;
+@use 'mq';
 
 .checkbox {
 	position: relative;
@@ -34,7 +34,7 @@
 			left: 0px;
 			width: 14px;
 			height: 10px;
-			background: url('./static/images/icons/check-4.svg') center center/cover no-repeat;
+			background: image('icons/check-4.svg') center center/cover no-repeat;
 		}
 	}
 

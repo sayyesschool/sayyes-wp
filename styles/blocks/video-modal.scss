@@ -1,5 +1,4 @@
-@use 'styles/mixins' as *;
-@use 'styles/variables' as *;
+@use 'global' as *;
 
 #video-modal {
     z-index: 1001;

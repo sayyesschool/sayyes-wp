@@ -1,7 +1,6 @@
-@use 'styles/components/heading';
-@use 'styles/mq';
-@use 'styles/mixins';
-@use 'styles/variables';
+@use 'global' as *;
+@use 'components/heading';
+@use 'mq';
 
 .cta {
 	padding: 20px;

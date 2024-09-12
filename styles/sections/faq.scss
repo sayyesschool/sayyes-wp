@@ -1,6 +1,5 @@
-@use 'styles/mq';
-@use 'styles/mixins' as *;
-@use 'styles/variables' as *;
+@use 'global' as *;
+@use 'mq';
 
 .faq {
 	&__content {

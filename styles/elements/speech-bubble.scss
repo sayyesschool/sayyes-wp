@@ -1,16 +1,15 @@
-@use 'styles/components/text';
-@use 'styles/theme';
-@use 'styles/variables';
+@use 'global' as *;
+@use 'components/text';
 
 .speech-bubble {
 	position: relative;
 	width: 100%;
 	padding: 34px 45px 40px 40px;
-	background-color: variables.$purple;
-	color: variables.$white;
+	background-color: $purple;
+	color: $white;
 	z-index: 1;
 	@include text.handwritten;
-	@include theme.border-radius;
+	@include border-radius;
 
 	p {
 		line-height: 15px;
@@ -25,7 +24,7 @@
 		font-weight: 400;
 		max-width: 276px;
 		padding: 15px 32px;
-		border-radius: variables.$border-radius-sm;
+		border-radius: $border-radius-sm;
 	}
 
 	&--angle {
@@ -41,7 +40,7 @@
 			height: 0;
 			border-style: solid;
 			border-width: 6px 0 0 25px;
-			border-color: transparent transparent transparent variables.$purple;
+			border-color: transparent transparent transparent $purple;
 		}
 	}
 }

@@ -1,6 +1,5 @@
-@use 'styles/mq';
-@use 'styles/mixins' as *;
-@use 'styles/variables' as *;
+@use 'global' as *;
+@use 'mq';
 
 .nav {
 	&__item {
@@ -20,7 +19,7 @@
 			&--parent {
 				&::before {
 					content: '';
-					background: url('./static/images/icons/check-3.svg') center
+					background: image('icons/check-3.svg') center
 						center/cover no-repeat;
 					position: absolute;
 					top: 20px;

@@ -1,15 +1,14 @@
-@use 'styles/components/heading';
-@use 'styles/components/text';
-@use 'styles/mq';
-@use 'styles/theme';
-@use 'styles/variables' as *;
+@use 'global' as *;
+@use 'components/heading';
+@use 'components/text';
+@use 'mq';
 
 .teacher-block {
 	padding: 20px;
 	display: flex;
 	gap: 15px;
 	background-color: $pale-white;
-	@include theme.border-radius;
+	@include border-radius;
 
 	&__summary,
 	&__info {
@@ -33,7 +32,7 @@
 
 	&__details {
 		background-color: $white;
-		@include theme.border-radius;
+		@include border-radius;
 		overflow: hidden;
 	}
 
@@ -46,7 +45,7 @@
 
 		&__content {
 			padding: 20px;
-			@include theme.scrollable;
+			@include scrollable;
 		}
 	}
 

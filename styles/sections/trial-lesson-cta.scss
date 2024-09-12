@@ -1,16 +1,16 @@
-@use 'styles/components/heading';
-@use 'styles/mq';
-@use 'styles/mixins';
+@use 'global' as *;
+@use 'components/heading';
+@use 'mq';
 
 .trial-lesson-cta {
-	@include mixins.decoration('elements/book-with-pen.svg', before) {
+	@include decoration('elements/book-with-pen.svg', before) {
 		bottom: -20px;
 		left: -20px;
 		width: 175px;
 		height: 215px;
 	}
 
-	@include mixins.decoration('elements/statue-of-liberty.svg', after) {
+	@include decoration('elements/statue-of-liberty.svg', after) {
 		bottom: -25px;
 		right: 35px;
 		width: 124px;
@@ -18,7 +18,7 @@
 	}
 
 	.cta__container {
-		@include mixins.decoration('elements/hourglass.svg', before) {
+		@include decoration('elements/hourglass.svg', before) {
 			top: -100px;
 			right: 130px;
 			width: 75px;

@@ -1,3 +1,5 @@
+@use 'global' as *;
+
 .stars {
 	display: flex;
 	
@@ -6,7 +8,7 @@
 		display: inline-block;
 		width: 115px;
 		height: 20px;
-		background: url('./static/images/icons/stars.svg') center
+		background: image('icons/stars.svg') center
 			center/contain no-repeat;
 	}
 }

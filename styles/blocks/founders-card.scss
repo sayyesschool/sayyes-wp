@@ -1,6 +1,7 @@
-@use 'styles/components/text';
-@use 'styles/mq';
-@use 'styles/variables';
+@use 'components/text';
+@use 'mq';
+@use 'functions' as *;
+@use 'variables' as *;
 
 .founders-card {
     padding: 25px 30px;
@@ -18,7 +19,7 @@
             position: absolute;
             width: 30%;
             height: 100%;
-            background: url('./static/images/elements/branch.svg') center center / contain no-repeat;
+            background: image('elements/branch.svg') center center / contain no-repeat;
             z-index: -1;
         }
 
@@ -35,7 +36,7 @@
         top: -30%;
         left: 10%;
         transform: rotateZ(-15deg);
-        color: variables.$pink;
+        color: $pink;
         @include text.handwritten;
     }
 

@@ -1,6 +1,5 @@
-@use 'styles/components/spinner';
-@use 'styles/mixins' as *;
-@use 'styles/variables' as *;
+@use 'global' as *;
+@use 'components/spinner';
 
 .btn {
 	position: relative;

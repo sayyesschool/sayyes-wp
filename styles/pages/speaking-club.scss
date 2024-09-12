@@ -1,7 +1,9 @@
+@use 'global' as *;
+
 #events-page {
     .hero {
         padding: 68px 0 0 106px;
-		background-image: url('./static/images/mainscreens/mainscreen-8.jpg');
+		background-image: image('mainscreens/mainscreen-8.jpg');
 
 		&__title {
 			margin-bottom: 38px;

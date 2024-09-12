@@ -1,3 +1,5 @@
+@use 'global' as *;
+
 .with-love {
     display: inline-flex;
     align-items: center;
@@ -8,6 +10,6 @@
         display: inline;
         width: 12px;
         height: 12px;
-        background-image: url('./static/images/elements/heart-2.svg');
+        background-image: image('elements/heart-2.svg');
     }
 }

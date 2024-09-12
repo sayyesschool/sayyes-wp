@@ -1,6 +1,6 @@
-@use 'styles/mq';
-@use 'styles/mixins' as *;
-@use 'styles/variables' as *;
+@use 'mq';
+@use 'mixins' as *;
+@use 'variables' as *;
 
 .license {
 	position: relative;
@@ -23,7 +23,7 @@
 		width: 145px;
 		height: 79px;
 		display: block;
-		background-image: url('./static/images/pictures/license.png');
+		background-image: image('pictures/license.png');
 		background-size: contain;
 	}
 

@@ -1,5 +1,5 @@
-@use 'styles/mq';
-@use 'styles/variables';
+@use 'global' as *;
+@use 'mq';
 
 .tags {
 	display: flex;
@@ -15,11 +15,11 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: variables.$black;
+	color: $black;
 	font-weight: 600;
 	font-size: 14px;
-	border: 2px solid variables.$black;
-	border-radius: variables.$border-radius-xs;
+	border: 2px solid $black;
+	border-radius: $border-radius-xs;
 	white-space: nowrap;
 
 	&--no-border {
@@ -27,10 +27,10 @@
 	}
 
 	&--yellow {
-		background-color: variables.$yellow;
+		background-color: $yellow;
 	}
 
   &--purple {
-		background-color: variables.$violet;
+		background-color: $violet;
 	}
 }

@@ -1,3 +1,5 @@
+@use 'functions' as *;
+
 #success-modal {
     z-index: 1010;
     
@@ -17,7 +19,7 @@
             content: '';
             width: 64px;
             height: 64px;
-            background-image: url('./static/images/icons/check-2.svg');
+            background-image: image('icons/check-2.svg');
             background-position: center;
             background-size: contain;
             background-repeat: no-repeat;

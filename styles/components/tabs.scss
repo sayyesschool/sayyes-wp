@@ -1,6 +1,6 @@
-@use 'styles/components/text';
-@use 'styles/mq';
-@use 'styles/variables';
+@use 'global' as *;
+@use 'components/text';
+@use 'mq';
 
 .tabs {
 	--nav-max-width: none;
@@ -38,11 +38,11 @@
 	&--pills {
 		.tab {
 			&:first-of-type {
-				border-radius: variables.$border-radius 0 0 variables.$border-radius;
+				border-radius: $border-radius 0 0 $border-radius;
 			}
 
 			&:last-of-type {
-				border-radius: 0 variables.$border-radius variables.$border-radius 0;
+				border-radius: 0 $border-radius $border-radius 0;
 			}
 		}
 	}
@@ -50,47 +50,47 @@
 	&--underline {
 		.tab {
 			min-height: 40px;
-			background-color: variables.$white;
-			border-bottom: 2px solid variables.$pale-white;
+			background-color: $white;
+			border-bottom: 2px solid $pale-white;
 
 			@include mq.from(lg) {
 				min-height: 56px;
 			}
 
 			&--active {
-				border-bottom: 2px solid variables.$black;
+				border-bottom: 2px solid $black;
 			}
 		}
 	}
 
 	&--yellow {
 		.tab {
-			background-color: variables.$white;
+			background-color: $white;
 
 			&--active {
-				background-color: variables.$yellow;
+				background-color: $yellow;
 			}
 		}
 	}
 
 	&--violet {
 		.tab {
-			background-color: variables.$white;
+			background-color: $white;
 
 			&--active {
-				background-color: variables.$violet;
-				color: variables.$white;
+				background-color: $violet;
+				color: $white;
 			}
 		}
 	}
 
 	&--purple {
 		.tab {
-			background-color: variables.$white;
+			background-color: $white;
 
 			&--active {
-				background-color: variables.$purple;
-				color: variables.$white;
+				background-color: $purple;
+				color: $white;
 			}
 		}
 	}
@@ -116,12 +116,12 @@
 	justify-content: center;
 	align-items: center;
 	border: none;
-	border-radius: variables.$border-radius-sm variables.$border-radius-sm 0 0;
-	background-color: variables.$white;
+	border-radius: $border-radius-sm $border-radius-sm 0 0;
+	background-color: $white;
 	@include text.body1($weight: 700);
 	white-space: nowrap;
 
 	&--active {
-		background-color: variables.$pale-white;
+		background-color: $pale-white;
 	}
 }

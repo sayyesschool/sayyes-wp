@@ -1,6 +1,5 @@
-@use 'styles/mq';
-@use 'styles/theme';
-@use 'styles/variables' as *;
+@use 'global' as *;
+@use 'mq';
 
 #contacts-page {
     .main-section {
@@ -61,7 +60,7 @@
 
 	&__map {
 		width: 100%;
-		@include theme.border-radius;
+		@include border-radius;
 	}
 
 	@include mq.to(md) {

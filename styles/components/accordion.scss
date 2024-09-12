@@ -1,6 +1,6 @@
-@use 'styles/mq';
-@use 'styles/theme' as *;
-@use 'styles/variables' as *;
+@use 'mq';
+@use 'functions' as *;
+@use 'variables' as *;
 
 .accordion {
 	display: flex;
@@ -38,7 +38,7 @@
 			width: 25px;
 			height: 25px;
 			flex-shrink: 0;
-			background: url('./static/images/icons/plus.svg') center center/cover no-repeat;
+			background: image('icons/plus.svg') center center/cover no-repeat;
 			transition: 0.3s ease transform;
 		}
 	}

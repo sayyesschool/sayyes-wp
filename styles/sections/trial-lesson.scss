@@ -1,9 +1,7 @@
-@use 'styles/components/heading';
-@use 'styles/components/text';
-@use 'styles/mq';
-@use 'styles/mixins';
-@use 'styles/theme';
-@use 'styles/variables' as *;
+@use 'global' as *;
+@use 'components/heading';
+@use 'components/text';
+@use 'mq';
 
 .trial-lesson {
 	--max-width: unset;
@@ -107,7 +105,7 @@
 	display: flex;
 	justify-content: space-between;
 	gap: 20px;
-	@include theme.border-radius;
+	@include border-radius;
 
 	&__title {
 		margin-bottom: 10px;
@@ -155,7 +153,7 @@
 		}
 
 		&--adults {
-			@include mixins.decoration('pictures/invite.png', after) {
+			@include decoration('pictures/invite.png', after) {
 				bottom: 0;
 				right: 42%;
 				width: 320px;
@@ -164,7 +162,7 @@
 		}
 
 		&--children {
-			@include mixins.decoration('pictures/invite-2.png', after) {
+			@include decoration('pictures/invite-2.png', after) {
 				bottom: 0;
 				right: 42%;
 				width: 343px;

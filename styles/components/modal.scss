@@ -1,8 +1,7 @@
-@use 'styles/components/heading';
-@use 'styles/components/text';
-@use 'styles/mixins';
-@use 'styles/mq';
-@use 'styles/variables';
+@use 'global' as *;
+@use 'components/heading';
+@use 'components/text';
+@use 'mq';
 
 .modal {
 	width: 100%;
@@ -24,8 +23,8 @@
 		position: relative;
 		opacity: 0;
 		transition: all 0.3s ease-in-out;
-		border-radius: variables.$border-radius;
-		background-color: variables.$pale-white;
+		border-radius: $border-radius;
+		background-color: $pale-white;
 
 		@include mq.to(sm) {
 			max-width: calc(100% - 20px);
@@ -65,12 +64,12 @@
 		justify-content: center;
 		border: none;
 		border-radius: 50%;
-		background-color: variables.$black;
-		color: variables.$white;
+		background-color: $black;
+		color: $white;
 		z-index: 1;
 		
-		@include mixins.hover-active((
-			background-color: variables.$black
+		@include hover-active((
+			background-color: $black
 		));
 	}
 

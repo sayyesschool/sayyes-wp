@@ -1,8 +1,7 @@
-@use 'styles/components/text';
-
-@use './mq';
-@use './theme';
-@use './variables';
+@use 'components/text';
+@use 'mq';
+@use 'mixins' as *;
+@use 'variables' as *;
 
 *,
 *:before,
@@ -11,9 +10,9 @@
 }
 
 body {
-	background-color: variables.$body-color;
-	color: variables.$font-color;
-	font-family: variables.$font-family;
+	background-color: $body-color;
+	color: $font-color;
+	font-family: $font-family;
 	font-variant-numeric: lining-nums proportional-nums;
 	@include text.body1;
 	overflow-x: hidden;
@@ -41,11 +40,11 @@ address {
 }
 
 .color-primary {
-	color: variables.$purple;
+	color: $purple;
 }
 
 .color-yellow {
-	color: variables.$yellow;
+	color: $yellow;
 }
 
 .content {
@@ -68,7 +67,7 @@ address {
 }
 
 .gap {
-	@each $size, $value in variables.$gaps {
+	@each $size, $value in $gaps {
 		&-#{$size} {
 			gap: $value;
 		}
@@ -78,7 +77,7 @@ address {
 .hidden {
 	display: none !important;
 
-	@each $size in variables.$sizes {
+	@each $size in $sizes {
 		&-#{$size} {
 			@include mq.for($size) {
 				display: none !important;
@@ -86,7 +85,7 @@ address {
 		}
 	}
 
-	@each $size in variables.$sizes {
+	@each $size in $sizes {
 		&-#{$size}-down {
 			@include mq.to($size) {
 				display: none !important;
@@ -94,7 +93,7 @@ address {
 		}
 	}
 
-	@each $size in variables.$sizes {
+	@each $size in $sizes {
 		&-#{$size}-up {
 			@include mq.from($size) {
 				display: none !important;
@@ -104,11 +103,11 @@ address {
 }
 
 .scrollable {
-	@include theme.scrollable($fade: false);
+	@include scrollable($fade: false);
 }
 
 .scrollable-fade {
-	@include theme.scrollable;
+	@include scrollable;
 }
 
 .admin-bar {
