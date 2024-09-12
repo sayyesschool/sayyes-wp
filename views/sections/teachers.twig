@@ -17,7 +17,7 @@
                     active: true
                 },
                 {
-                    content: 'Онлайн <span class="hidden-sm-down">по всему миру</span>',
+                    content: 'Онлайн <span class="hidden-sm-down">&nbsp;по всему миру</span>',
                     value: 'online'
                 }
             ],
@@ -35,17 +35,17 @@
                         {% endfor %}
                     </div>
 
-                    {# {% include 'sections/trial-lesson-cta.twig' only %}
+                    {% include 'sections/trial-lesson-cta.twig' only %}
 
                     <div class="grid grid-2-sm grid-3-lg">
                         {% for teacher in offline_teachers|slice(6) %}
                             {{teacher_card(teacher)}}
                         {% endfor %}
-                    </div> #}
+                    </div>
                 </div>
 
                 <div class="online-teachers hidden" data-tab-panel="online">
-                    {# <div class="grid grid-2-sm grid-3-lg">
+                    <div class="grid grid-2-sm grid-3-lg">
                         {% for teacher in online_teachers|slice(0, 6) %}
                             {{teacher_card(teacher)}}
                         {% endfor %}
@@ -57,7 +57,7 @@
                         {% for teacher in online_teachers|slice(6) %}
                             {{teacher_card(teacher)}}
                         {% endfor %}
-                    </div> #}
+                    </div>
                 </div>
             {% endblock %}
         {% endembed %}

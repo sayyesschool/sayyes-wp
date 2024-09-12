@@ -17,7 +17,7 @@ $teachers = Timber::get_posts([
 $context['teachers'] = $teachers;
 
 $context['offline_teachers'] = array_filter($teachers, function($teacher) {
-    return !$teacher->has_term('online');
+    return $teacher->has_term('offline');
 });
 $context['online_teachers'] = array_filter($teachers, function($teacher) {
     return $teacher->has_term('online');
