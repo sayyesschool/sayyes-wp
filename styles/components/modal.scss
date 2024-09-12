@@ -33,7 +33,6 @@
 		}
 
 		@include mq.from(sm) {
-			width: calc(100% - 20px);
 			max-width: calc(1024px + 20px);
 			max-height: calc(768px + 20px);
 			margin: 20px;
