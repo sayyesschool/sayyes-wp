@@ -3,15 +3,15 @@ const sass = require('gulp-sass')(require('sass'));
 const autoprefixer = require('gulp-autoprefixer');
 
 const paths = {
-    vendor: './node_modules/',
     src: './styles/',
-    dest: './'
+    dest: './static/styles/',
+    vendor: './node_modules/',
 };
 
 function styles() {
-    return gulp.src(`${paths.src}style.scss`)
+    return gulp.src(`${paths.src}main.scss`)
         .pipe(sass({
-            includePaths: [paths.vendor],
+            includePaths: [paths.src, paths.vendor],
             outputStyle: 'compressed'
         }).on('error', sass.logError))
         .pipe(autoprefixer())
