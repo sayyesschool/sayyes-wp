@@ -4,6 +4,7 @@
 
 @use './components/text';
 @use './mq';
+@use './functions' as *;
 @use './variables' as *;
 
 $bp-xl: map-get($breakpoints, 'xl');
@@ -51,12 +52,6 @@ $queries: (
 	}
 }
 
-@mixin clearfix() {
-  content: '';
-  display: table;
-  clear: both;
-}
-
 @mixin caption($text, $position: after) {
     &::#{$position} {
         content: '';
@@ -72,7 +67,7 @@ $queries: (
     &::#{$position} {
         content: '';
         position: absolute;
-        background-image: path('./static/images/#{$path}');
+        background-image: image('#{$path}');
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
@@ -80,7 +75,7 @@ $queries: (
     }
 }
 
-@mixin fill-container {
+@mixin fill {
     position: absolute;
     top: 0;
     left: 0;
@@ -106,20 +101,25 @@ $queries: (
     }
 }
 
-@mixin position-in-container($position) {
-    position: absolute;
-    
-    @if $position == center {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-}
-
-@mixin flex($dir: null) {
-    display: flex;
-    @if $dir {
-        flex-direction: $dir;
+@mixin border-radius($dirs: ()) {
+    @if list.length($dirs) > 0 {
+        @each $dir in $dirs {
+            @include mq.to(lg) {
+                border-#{$dir}-radius: $border-radius-sm;
+            }
+            
+            @include mq.from(lg) {
+                border-#{$dir}-radius: $border-radius-md;
+            }
+        }
+    } @else {
+        @include mq.to(lg) {
+            border-radius: $border-radius-sm;
+        }
+        
+        @include mq.from(lg) {
+            border-radius: $border-radius-md;
+        }
     }
 }
 
@@ -147,11 +147,31 @@ $queries: (
 	}
 }
 
-@mixin overflow($offset, $scrollbar: false) {
-    margin-left: -$offset;
-    margin-right: -$offset;
-    padding-left: $offset;
-    padding-right: $offset;
+@mixin raised() {
+    $color: rgba(0,0,0,.15);
+    
+    -webkit-box-shadow: 0 1px 5px rgba(0,0,0,.15), 0 1px 5px 1px rgba(0,0,0,.15);
+    box-shadow: 0 1px 5px rgba(0,0,0,.15), 0 1px 5px 1px rgba(0,0,0,.15);
+    -webkit-transition: background-color .3s cubic-bezier(.4,0,.2,1),box-shadow .3s cubic-bezier(.4,0,.2,1);
+    transition: background-color .3s cubic-bezier(.4,0,.2,1),box-shadow .3s cubic-bezier(.4,0,.2,1);
+    -ms-user-select: none;
+    
+    &:hover {
+        outline: 0;
+        text-decoration: none;
+        -webkit-box-shadow: 0 1px 5px rgba(0,0,0,.15), 0 5px 10px 1px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.15);
+        box-shadow: 0 1px 5px rgba(0,0,0,.15), 0 5px 10px 1px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.15);
+    }
+}
+
+@mixin scroll-x($offset: 30px, $scrollbar: false) {
+    --offset: #{$offset};
+
+    width: calc(100% + var(--offset) * 2);
+    margin-left: calc(var(--offset) * -1);
+    margin-right: calc(var(--offset) * -1);
+    padding-left: var(--offset);
+    padding-right: var(--offset);
     overflow-x: auto;
 
     @if not $scrollbar {
@@ -159,69 +179,17 @@ $queries: (
             display: none;
         }
     }
-}
-
-@mixin raised() {
--webkit-box-shadow: 0 1px 5px rgba(0,0,0,.15),0 1px 5px 1px rgba(0,0,0,.15);
-box-shadow: 0 1px 5px rgba(0,0,0,.15),0 1px 5px 1px rgba(0,0,0,.15);
--webkit-transition: background-color .3s cubic-bezier(.4,0,.2,1),box-shadow .3s cubic-bezier(.4,0,.2,1);
-transition: background-color .3s cubic-bezier(.4,0,.2,1),box-shadow .3s cubic-bezier(.4,0,.2,1);
--ms-user-select: none;
-    
-    &:hover {
-        outline: 0;
-        text-decoration: none;
-        -webkit-box-shadow: 0 1px 5px rgba(0,0,0,.15),0 5px 10px 1px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.15);
-        box-shadow: 0 1px 5px rgba(0,0,0,.15),0 5px 10px 1px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.15);
-    }
-}
-
-@mixin scroll-x($spacing: 30px) {
-    --spacing: #{$spacing};
-
-    width: calc(100% + var(--spacing) * 2);
-    margin-left: calc(var(--spacing) * -1);
-    margin-right: calc(var(--spacing) * -1);
-    padding-left: var(--spacing);
-    padding-right: var(--spacing);
-    overflow-x: auto;
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
 
     @include mq.to(lg) {
-        --spacing: 45px;
+        --offset: 45px;
     }
 
     @include mq.to(md) {
-        --spacing: 30px;
+        --offset: 30px;
     }
 }
 
-@mixin border-radius($dirs: ()) {
-    @if list.length($dirs) > 0 {
-        @each $dir in $dirs {
-            @include mq.to(lg) {
-                border-#{$dir}-radius: $border-radius-sm;
-            }
-            
-            @include mq.from(lg) {
-                border-#{$dir}-radius: $border-radius-md;
-            }
-        }
-    } @else {
-        @include mq.to(lg) {
-            border-radius: $border-radius-sm;
-        }
-        
-        @include mq.from(lg) {
-            border-radius: $border-radius-md;
-        }
-    }
-}
-
-@mixin scrollable($fade: true, $color: $linen) {
+@mixin scroll-y($fade: true, $color: $linen) {
     overflow: auto;
 
     @if ($fade) {

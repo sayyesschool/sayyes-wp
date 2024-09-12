@@ -7,6 +7,8 @@ export default class Modal extends Component {
         root: this.name,
         surface: `${this.name}__surface`,
         body: `${this.name}__body`,
+        header: `${this.name}__header`,
+        content: `${this.name}__content`,
         title: `${this.name}__title`,
         description: `${this.name}__description`,
         close: `${this.name}__close`
@@ -50,6 +52,8 @@ export default class Modal extends Component {
         super(element);
 
         this.body = this.getElement(`.${Modal.classes.body}`);
+        this.header = this.getElement(`.${Modal.classes.header}`);
+        this.content = this.getElement(`.${Modal.classes.content}`);
         this.title = this.getElement(`.${Modal.classes.title}`);
         this.description = this.getElement(`.${Modal.classes.description}`);
         this.closeButton = this.getElement(`.${Modal.classes.close}`);
@@ -70,6 +74,10 @@ export default class Modal extends Component {
 
     setDescription(content) {
         this.description.textContent = content;
+    }
+
+    setContent(content) {
+        this.content.innerHTML = content;
     }
 
     open() {

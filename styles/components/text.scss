@@ -188,7 +188,7 @@ $text-sizes_v2: (
 	}
 
 	p + p,
-	& + & {
+	p#{&} + p#{&} {
 		margin-top: 10px;
 	}
 }

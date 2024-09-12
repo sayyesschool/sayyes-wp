@@ -117,26 +117,6 @@
 		}
 	}
 
-	&--gap-none {
-		gap: 0;
-	}
-
-	&--gap-xs {
-		gap: 5px;
-	}
-
-	&--gap-sm {
-		gap: 10px;
-	}
-
-	&--gap-md {
-		gap: 15px;
-	}
-
-	&--gap-lg {
-		gap: 20px;
-	}
-
 	@include mq.from(lg) {
 		&--ul,
 		&--ul-sm {

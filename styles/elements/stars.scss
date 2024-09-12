@@ -1,14 +1,4 @@
-@use 'global' as *;
-
 .stars {
 	display: flex;
-	
-	&::before {
-		content: '';
-		display: inline-block;
-		width: 115px;
-		height: 20px;
-		background: image('icons/stars.svg') center
-			center/contain no-repeat;
-	}
+	color: inherit;
 }

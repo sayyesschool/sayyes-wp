@@ -38,11 +38,11 @@
 		}
 
 		&--adults {
-			--background-url: path('static/images/pictures/feedback.jpg');
+			--background-url: image('pictures/feedback.jpg');
 		}
 	
 		&--children {
-			--background-url: path('static/images/pictures/feedback-2.jpg');
+			--background-url: image('pictures/feedback-2.jpg');
 		}
 
     }

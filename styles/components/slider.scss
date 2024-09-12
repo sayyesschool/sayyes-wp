@@ -1,3 +1,4 @@
+@use 'swiper/swiper';
 @use 'global' as *;
 @use 'mq';
 
@@ -88,6 +89,7 @@
 	&__pagination {
 		display: flex;
 		justify-content: center;
+		gap: 5px;
 		margin-top: 20px;
 
 		.swiper-pagination-bullet {

@@ -85,7 +85,7 @@
 					position: absolute;
 					width: 45px;
 					height: 33px;
-					background: path('./static/images/icons/quotes.svg') center center / contain no-repeat;
+					background: image('icons/quotes.svg') center center / contain no-repeat;
 				}
 	
 				&::before {
@@ -494,7 +494,7 @@
 					top: -10px;
 					left: -281px;
 					transform: scaleX(-1) rotate(50deg);
-					background: path('static/images/decoration/elements/tinsel.svg')
+					background: image('coration/elements/tinsel.svg')
 						center center/cover no-repeat;
 				}
 			}
@@ -509,7 +509,7 @@
 					position: absolute;
 					top: -193px;
 					right: 134px;
-					background: path('static/images/decoration/notes/celebration.svg')
+					background: image('coration/notes/celebration.svg')
 						center center/cover no-repeat;
 				}
 			}
@@ -539,7 +539,7 @@
 					position: absolute;
 					top: 55%;
 					right: -53%;
-					background: path('static/images/decoration/notes/fun.svg')
+					background: image('coration/notes/fun.svg')
 						center center/cover no-repeat;
 				}
 			}
@@ -562,7 +562,7 @@
 					position: absolute;
 					bottom: -13%;
 					left: -82%;
-					background: path('static/images/decoration/elements/petard.svg')
+					background: image('coration/elements/petard.svg')
 						center center/cover no-repeat;
 				}
 			}
@@ -577,7 +577,7 @@
 					position: absolute;
 					top: 30%;
 					left: -445%;
-					background: path('static/images/decoration/notes/awards.svg')
+					background: image('coration/notes/awards.svg')
 						center center/cover no-repeat;
 				}
 	

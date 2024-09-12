@@ -3,7 +3,7 @@
 
 .student-progress-slider {
 	@include mq.to(md) {
-		@include overflow(30px);
+		@include scroll-x(30px);
 	}
 
 	@include mq.from(lg) {

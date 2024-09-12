@@ -90,7 +90,8 @@
                     {% if course.results.list_type == 'simple' %}
                         {% include 'components/list.twig' with {
                             type: 'check',
-                            items: course.results.simple_list
+                            items: course.results.simple_list,
+                            gap: 's'
                         } %}
                     {% elseif course.results.list_type == 'nested' %}
                         {% include 'components/accordion.twig' with {
@@ -139,25 +140,29 @@
 
 
 {% block modal %}
-    {% include 'components/modal.twig' with {
+    {% embed 'components/modal.twig' with {
         id: 'testimonial-modal'
     } %}
+        {% block content %}
+        {% endblock %}
+    {% endembed %}
 {% endblock %}
 
 
 {% block scripts %}
     <script>
         const modal = new window.ui.Modal('#testimonial-modal');
-        const modalContent = modal.getElement('.modal__content');
 
         document.querySelectorAll('.testimonial-modal-button').forEach(button => {
-            button.addEventListener('click', handleButtonClick);
+            button.addEventListener('click', () => {
+                const card = event.target.closest('.testimonial-card');
+                modal.setContent(card.outerHTML);
+                modal.open();
+            });
         });
 
-        function handleButtonClick(event) {
-            const card = event.target.parentElement.parentElement;
-            modalContent.innerHTML = card.outerHTML;
-            modal.open();
-        }
+        modal.on('close', () => {
+            modal.setContent('');
+        })
     </script>
 {% endblock %}

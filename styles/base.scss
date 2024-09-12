@@ -102,14 +102,6 @@ address {
 	}
 }
 
-.scrollable {
-	@include scrollable($fade: false);
-}
-
-.scrollable-fade {
-	@include scrollable;
-}
-
 .admin-bar {
 	.header:not(.expanded) {
 		top: 46px;

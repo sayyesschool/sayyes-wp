@@ -89,26 +89,13 @@ new Swiper('.course-teachers-slider', {
 
 new Swiper('.course-testimonials-slider', {
 	...defaultOptions,
-	enabled: true,
-	width: null,
-	// breakpoints: {
-	// 	801: {
-	// 		enabled: true,
-	// 		width: null,
-	// 	},
-	// 	700: {
-	// 		width: 614,
-	// 	},
-	// 	600: {
-	// 		width: 514,
-	// 	},
-	// 	540: {
-	// 		width: 450,
-	// 	},
-	// 	320: {
-	// 		width: null,
-	// 	},
-	// },
+	enabled: false,
+	breakpoints: {
+		768: {
+			enabled: true,
+			slidesPerView: 'auto'
+		}
+	}
 });
 
 new Swiper('.course-results-slider', {

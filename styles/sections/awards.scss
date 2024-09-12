@@ -4,14 +4,7 @@
 @use 'mq';
 
 .awards {
-	// TODO: Refactor to card
-	&__container {
-		padding: 0 20px;
-	}
-
-	&__header {
-		max-width: 920px;
-	}
+	--header-max-width: 920px;
 
 	&__content {
 		display: flex;
@@ -24,7 +17,7 @@
 		}
 
 		.grid {
-			@include overflow(30px);
+			@include scroll-x(30px);
 		}
 	}
 

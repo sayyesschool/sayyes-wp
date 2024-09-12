@@ -1,12 +1,13 @@
 @use 'global' as *;
+@use 'components/heading';
 
 .testimonial-group {
 	padding: 30px 60px 50px;
 	display: flex;
 	gap: 20px;
 	flex-direction: column;
-	border-radius: $border-radius;
 	background-color: $yellow;
+	@include border-radius;
 
 	&__header {
 		margin-left: 48px;
@@ -23,7 +24,7 @@
 		gap: 15px;
 
 		&-value {
-			// @include heading('lg');
+			@include heading.h2;
 		}
 
 		&-info {
@@ -35,6 +36,10 @@
 				font-weight: 800;
 			}
 		}
+	}
+
+	.stars {
+		color: $purple;
 	}
 
 	@include breakpoint($breakpoint-lg) {
