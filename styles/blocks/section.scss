@@ -69,6 +69,15 @@
 		margin-bottom: 80px;
 	}
 
+	&--centered {
+		&__title,
+		&__description {
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+
 	&--padded &__container,
 	&--padded-header &__header {
 		@include mq.to(md) {

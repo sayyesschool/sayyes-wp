@@ -1,6 +1,7 @@
 {% embed 'components/section.twig' with {
     name: 'teachers',
-    title: 'В нашей команде более 80 профессиональных преподавателей.'
+    title: 'В нашей команде более 80 профессиональных преподавателей.',
+    padded: true
 } %}
     {% block description %}
         <p>Мы ценим не только опыт и образование, но и энергичность, современность и жизнелюбие наших преподавателей.</p>
@@ -20,6 +21,7 @@
                     value: 'online'
                 }
             ],
+            centered: true,
             color: 'purple',
             pills: true
         } %}

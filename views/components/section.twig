@@ -1,6 +1,7 @@
 <section
     {% if id %}id="{{id}}"{% endif %}
     class="{{html_classes(class ?? [], name ?? [], 'section', {
+        'section-centered': centered,
         'section--padded': padded,
         'section--padded-header': padded_header,
         'section--horizontal': horizontal,
