@@ -27,22 +27,32 @@
     const teacherBlock = document.querySelector('#teacher-modal .teacher-block');
     const teacherModal = new window.ui.Modal('#teacher-modal');
 
-    document.querySelectorAll('.teacher-btn').forEach(button => {
-        button.addEventListener('click', handleTeacherButtonClick);
-    });
-
     if (teacher) {
         openTeacherModal(teacher);
     }
 
-    function handleTeacherButtonClick(event) {
-        const id = event.currentTarget.dataset.id;
-        openTeacherModal(teachers[id]);
-    }
+    document.querySelectorAll('.teacher-btn').forEach(button => {
+        button.addEventListener('click', event => {
+            const id = event.currentTarget.dataset.id;
+            const teacher = teachers[id];
+            openTeacherModal(teacher);
+        });
+    });
+
+    teacherModal.on('closed', () => {
+        setTeacherData(teacherBlock, {
+            name: '',
+            imageUrl: '',
+            videoUrl: '',
+            content: '',
+            experience: '',
+            education: '',
+            certificates: ''
+        });
+    });
 
     function openTeacherModal(teacher) {
         setTeacherData(teacherBlock, teacher);
-        // const review = teacherBlock.querySelector('.teacher-reviews__review');
         teacherModal.open();
     }
 
@@ -79,15 +89,10 @@
 
         const shareLink = teacherBlock.querySelector('.teacher-block__share-link');
 
-        shareLink.onclick = async () => {
-            try {
-                await navigator.share({
-                    title: `${teacher.name} / Say Yes`,
-                    text: 'Познакомьтесь с нашим преподавателем',
-                    url: teacher.link
-                });
-            } catch (error) {
-            }
-        };
+        shareLink.onclick = () => navigator.share({
+            title: `${teacher.name} / Say Yes`,
+            text: 'Познакомьтесь с нашим преподавателем',
+            url: teacher.link
+        });
     }
 </script>
