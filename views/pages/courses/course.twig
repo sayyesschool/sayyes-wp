@@ -135,7 +135,8 @@
 
     {% block faq %}
         {% include 'sections/faq.twig' with {
-            items: course.faq ?: []
+            title: course.faq.title,
+            items: course.faq.items ?: []
         } %}
     {% endblock %}
 
