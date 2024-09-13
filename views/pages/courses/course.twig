@@ -79,30 +79,32 @@
     {% endblock %}
 
     {% block results %}
-        {% embed 'components/section.twig' with {
-            name: 'course-results',
-            title: course.results.title ?: 'Результаты курса <br>' ~ course.title,
-            description: course.results.description ?: sections.results.description,
-            padded: true
-        } %}
-            {% block content %}
-                <p class="text">Если вы посетили 100% занятий и выполнили все домашние работы, но не сдали успешно итоговый тест, вы можете пройти уровень повторно и абсолютно бесплатно.</p>
+        {% if course.results.show %}
+            {% embed 'components/section.twig' with {
+                name: 'course-results',
+                title: course.results.title ?: 'Результаты курса <br>' ~ course.title,
+                description: course.results.description ?: sections.results.description,
+                padded: true
+            } %}
+                {% block content %}
+                    <p class="text">Если вы посетили 100% занятий и выполнили все домашние работы, но не сдали успешно итоговый тест, вы можете пройти уровень повторно и абсолютно бесплатно.</p>
 
-                {% if course.results.list_type == 'simple' %}
-                    <div class="text-card card">
-                        {% include 'components/list.twig' with {
-                            type: 'check',
-                            items: course.results.simple_list,
-                            gap: 's'
+                    {% if course.results.list_type == 'simple' %}
+                        <div class="text-card card">
+                            {% include 'components/list.twig' with {
+                                type: 'check',
+                                items: course.results.simple_list,
+                                gap: 's'
+                            } %}
+                        </div>
+                    {% elseif course.results.list_type == 'nested' %}
+                        {% include 'components/accordion.twig' with {
+                            items: course.results.nested_list
                         } %}
-                    </div>
-                {% elseif course.results.list_type == 'nested' %}
-                    {% include 'components/accordion.twig' with {
-                        items: course.results.nested_list
-                    } %}
-                {% endif %}
-            {% endblock %}
-        {% endembed %}
+                    {% endif %}
+                {% endblock %}
+            {% endembed %}
+        {% endif %}
     {% endblock %}
 
     {% block teachers %}
