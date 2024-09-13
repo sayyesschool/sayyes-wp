@@ -59,6 +59,15 @@
 		display: flex;
 	}
 
+	.accordion {
+		ul {
+			list-style: inside;
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+		}
+	}
+
 	@include mq.to(md) {
 		&__content {
 			flex-direction: column;
