@@ -57,20 +57,22 @@
     {% endblock %}
 
     {% block facts %}
-        {% embed 'components/section.twig' with {
-            name: 'course-facts',
-            title:  course.facts.title ?: sections.facts.title ?: 'Важные факты о курсе <br>' ~ course.title,
-            description: course.facts.description ?: sections.facts.description,
-            padded: true
-        } %}
-            {% block content %}
-                {% include 'blocks/fact-cards.twig' with {
-                    grid: sections.facts.grid,
-                    items: course.facts.items ?: sections.facts.items,
-                    size: 'sm'
-                } %}
-            {% endblock %}
-        {% endembed %}
+        {% if course.facts.show %}
+            {% embed 'components/section.twig' with {
+                name: 'course-facts',
+                title:  course.facts.title ?: sections.facts.title ?: 'Важные факты о курсе <br>' ~ course.title,
+                description: course.facts.description ?: sections.facts.description,
+                padded: true
+            } %}
+                {% block content %}
+                    {% include 'blocks/fact-cards.twig' with {
+                        grid: sections.facts.grid,
+                        items: course.facts.items ?: sections.facts.items,
+                        size: 'sm'
+                    } %}
+                {% endblock %}
+            {% endembed %}
+        {% endif %}
     {% endblock %}
 
     {% block video %}
