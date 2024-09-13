@@ -34,7 +34,7 @@
 
                 <div class="grid grid-2-sm">
                     {% for format in sections.formats.items %}
-                        {% if format.price %}
+                        {% if format.price.value %}
                             {{format_card({
                                 title: format.title,
                                 description: format.description,
