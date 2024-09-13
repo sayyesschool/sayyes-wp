@@ -1,6 +1,6 @@
 {% embed 'components/section.twig' with {
 	name: 'faq',
-	title,
+	title: title ?: 'На часто задаваемые вопросы о курсе отвечает Шаталова Вера, сооснователь SAY YES!',
 	description,
 	padded_header: true
 } %}
@@ -10,7 +10,7 @@
 		{% include 'components/accordion.twig' with {
 			items: items|map(item => ({
 				title: item.question,
-				description: item.answer
+				content: item.answer
 			}))
 		} %}
 	{% endblock %}
