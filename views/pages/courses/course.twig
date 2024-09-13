@@ -34,18 +34,20 @@
 
                 <div class="grid grid-2-sm">
                     {% for format in sections.formats.items %}
-                        {{format_card({
-                            title: format.title,
-                            description: format.description,
-                            price: format.price,
-                            lesson_duration: format.lesson_duration,
-                            link: false
-                        },
-                        {
-                            color: cycle(['white', 'pink', 'purple'], loop.index0),
-                            size: 'lg',
-                            with_prices: true
-                        })}}
+                        {% if format.price %}
+                            {{format_card({
+                                title: format.title,
+                                description: format.description,
+                                price: format.price,
+                                lesson_duration: format.lesson_duration,
+                                link: false
+                            },
+                            {
+                                color: cycle(['white', 'pink', 'purple'], loop.index0),
+                                size: 'lg',
+                                with_prices: true
+                            })}}
+                        {% endif %}
                     {% endfor %}
                 </div>
             {% endblock %}
