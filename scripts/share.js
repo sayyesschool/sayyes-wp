@@ -1,8 +1,6 @@
 document.querySelectorAll('[data-share-link]').forEach(element => {
     const { shareLink } = element.dataset;
 
-    console.log(element, shareLink);
-
     element.addEventListener('click', async () => {
         try {
             await navigator.share({

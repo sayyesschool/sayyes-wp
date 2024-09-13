@@ -45,6 +45,8 @@
         {% endif %}
 
         <input class="input" type="tel" name="phone" placeholder="+7 (999) 999-99-99" required>
+
+        <input class="input" type="email" name="email" placeholder="Email" required>
     </div>
 
     <div class="request-form__communication">
@@ -69,7 +71,13 @@
         </button>
 
         {% include 'components/checkbox.twig' with {
-            name: 'consent'
+            name: 'consent',
+            checked: true
+        } %}
+
+        {% include 'components/checkbox.twig' with {
+            name: 'newsletter',
+            checked: false
         } %}
     </div>
 </form>

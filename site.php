@@ -12,11 +12,6 @@ require 'utils.php';
 
 class SayYesSite extends Site {
     public $version = '2.3.0';
-    public $recaptcha_key = RECAPTCHA_PUBLIC_KEY;
-    public $recaptcha_score = 0.5;
-    public $facebook_pixel_ids = ['758563291240040', '354901769006910', '1060189581084918'];
-    public $google_analytics_id = 'UA-47133492-2';
-    public $yandex_metrika_counter = 29661505;
 
 	function __construct() {
         // add_theme_support('html5');
@@ -111,35 +106,41 @@ class SayYesSite extends Site {
 
 
 	function add_to_context($context) {
+        $site_link = $this->link();
+
         $contacts = get_fields('options', 'contacts');
         $prices = get_fields('options', 'prices');
 
         $main_phone = format_phone_number($contacts['phone_numbers']['main']);
         $wa_phone = format_phone_number($contacts['phone_numbers']['whatsapp']);
+
         $links = [
-            'policy' => $this->link().'/politika-konfidentsialnosti',
-            'offer' => $this->link().'/dogovor-oferta',
+            'policy' => $site_link.'/politika-konfidentsialnosti',
+            'offer' => $site_link.'/dogovor-oferta',
             'email' => 'mailto:'.$contacts['email'],
             'main_phone' => 'tel:'.$main_phone,
             'wa_phone' => 'https://api.whatsapp.com/send/?phone='.$wa_phone.'&text&type=phone_number&app_absent=0'
         ];
-
+        
         $context['site'] = $this;
+		$context['header_nav'] = Timber::get_menu('header_nav');
+        $context['footer_nav'] = Timber::get_menu('footer_nav');
+        $context['links'] = $links;
         $context['site_data'] = [
             'contacts' => $contacts,
             'prices' => $prices,
             'links' => $links
         ];
-        $context['COMPANY_NAME'] = 'SAY&nbsp;YES!';
-        $context['COMPANY_AGE'] = date('Y') - 2013;
-        $context['RECAPTCHA_KEY'] = $this->recaptcha_key;
-        $context['RECAPTCHA_SCORE'] = $this->recaptcha_score;
-        $context['FACEBOOK_PIXEL_IDS'] = $this->facebook_pixel_ids;
-        $context['GA_MEASUREMENT_ID'] = $this->google_analytics_id;
-        $context['YANDEX_METRIKA_COUNTER'] = $this->yandex_metrika_counter;
-		$context['header_nav'] = Timber::get_menu('header_nav');
-        $context['footer_nav'] = Timber::get_menu('footer_nav');
-        $context['links'] = $links;
+        
+        $context['COMPANY_NAME'] = COMPANY_NAME;
+        $context['COMPANY_AGE'] = COMPANY_AGE;
+        $context['JIVOSITE_KEY'] = JIVOSITE_KEY;
+        $context['RECAPTCHA_KEY'] = RECAPTCHA_PUBLIC_KEY;
+        $context['RECAPTCHA_SCORE'] = RECAPTCHA_SCORE;
+        $context['RECAPTCHA_SCORE'] = RECAPTCHA_SCORE;
+        $context['RECAPTCHA_URL'] = $site_link.'/recaptcha.php';
+        $context['REQUEST_URL'] = $site_link.'/request.php';
+        $context['YANDEX_METRIKA_COUNTER'] = YANDEX_METRIKA_COUNTER;
 
 		return $context;
 	}
