@@ -11,7 +11,7 @@ require 'constants.php';
 require 'utils.php';
 
 class SayYesSite extends Site {
-    public $version = '2.3.0';
+    public $version = '3.0.0-rc.0';
 
 	function __construct() {
         // add_theme_support('html5');
