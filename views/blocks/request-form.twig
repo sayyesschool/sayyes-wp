@@ -39,9 +39,9 @@
                 } %}
             </div>
 
-            <input class="input" type="text" name="parent-name" placeholder="Имя родителя" required>
+            <input class="input" type="text" name="parent-name" placeholder="Имя родителя*" required>
         {% else %}
-            <input class="input" type="text" name="name" placeholder="Имя" required>
+            <input class="input" type="text" name="name" placeholder="Имя*" required>
         {% endif %}
 
         <input class="input" type="tel" name="phone" placeholder="+7 (999) 999-99-99" required>
@@ -66,18 +66,10 @@
             {% if button_text %}
                 {{ button_text }}
             {% else %}
-                Записаться на бесплатный урок
+                Записаться
             {% endif %}
         </button>
 
-        {% include 'components/checkbox.twig' with {
-            name: 'consent',
-            checked: true
-        } %}
-
-        {% include 'components/checkbox.twig' with {
-            name: 'newsletter',
-            checked: false
-        } %}
+        <small class="text text--small">Нажимая «Записаться», я принимаю <a class="link link--underlined" href="{{links.agreement}}">Пользовательское соглашение</a> и даю согласие на обработку своих персональных данных на условиях <a class="link link--underlined" href="{{links.policy}}">Политики конфиденциальности</a>.</small>
     </div>
 </form>

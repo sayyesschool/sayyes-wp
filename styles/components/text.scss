@@ -30,6 +30,12 @@ $text-sizes_v2: (
 		md: (14px, 16px, 800),
 		lg: (14px, 16px, 800),
 		xl: (14px, 16px, 800)
+	),
+	small: (
+		sm: (12px, 14px, 600),
+		md: (12px, 14px, 600),
+		lg: (12px, 14px, 600),
+		xl: (12px, 14px, 600)
 	)
 );
 
@@ -105,6 +111,10 @@ $text-sizes_v2: (
 	text-transform: uppercase;
 }
 
+@mixin small($weight: null, $responsive: true) {
+	@include text_v2(small, $weight: $weight, $responsive: $responsive);
+}
+
 @mixin handwritten {
 	font-family: 'Shantell Sans';
 	font-size: 14px;
@@ -131,6 +141,10 @@ $text-sizes_v2: (
 
 	&--label {
 		@include label;
+	}
+
+	&--small {
+		@include small;
 	}
 
 	&--inline {

@@ -38,11 +38,28 @@
 			}
 		}
 
-		// TODO: Adjust position and add arrow
 		.caption {
-			bottom: 0;
+			position: absolute;
+			top: 115%;
+			left: 30%;
+			display: block;
+			width: 100%;
 			max-width: 150px;
 			color: $primary-color;
+			transform: rotate(-10deg);
+
+			&::after {
+				content: '';
+				position: absolute;
+				display: block;
+				top: -5%;
+				left: 95%;		
+				width: 15px;
+				height: 25px;
+				background-image: image('arrows/arrow-3.svg');
+				background-size: contain;
+				background-repeat: no-repeat;
+			}
 		}
 	}
 
@@ -59,6 +76,21 @@
 			.text:first-of-type {
 				max-width: 230px;
 				margin-bottom: 15px;
+			}
+		}
+
+		.caption {
+			top: -70%;
+			left: 115%;
+			max-width: 200px;
+			transform: rotate(-15deg);
+
+			&::after {
+				top: 115%;
+				left: -50%;
+				width: 111px;
+				height: 84px;
+				background-image: image('arrows/arrow-2.svg');
 			}
 		}
 

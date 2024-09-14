@@ -20,6 +20,10 @@
 	{% if image %}
 		<div class="hero__image">
 			<img class="image" src="{{theme.link}}/static/images/mainscreens/{{image}}" alt="Команда мечты">
+
+			{% if caption %}
+				<p class="caption handwritten">{{caption}}</p>
+			{% endif %}
 		</div>
 	{% endif %}
 </section>

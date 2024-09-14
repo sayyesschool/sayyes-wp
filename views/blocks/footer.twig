@@ -13,14 +13,14 @@
 					{% include 'components/list.twig' with {
 						items: [{
 							content: 'Заказать звонок',
-							link: '#',
+							interactive: true,
 							modal_open: 'callback-modal'
 						},
 						{
 							content: 'Напишите нам в WhatsApp',
 							link: links.wa_phone
 						}],
-						gap: 'xxs'
+						gap: 'xs'
 					} %}
 				</div>
 
@@ -40,7 +40,7 @@
 				<div class="footer__section footer__about">
 					<div class="heading">О SAY YES</div>
 
-					<ul class="list gap-xxs">
+					<ul class="list gap-xs">
 						{% for item in footer_nav.items[0].children %}
 							<li class="list-item">
 								<a class="link" href="{{item.link}}">{{item.title}}</a>
@@ -52,7 +52,7 @@
 				<div class="footer__section footer__courses">
 					<div class="heading">Курсы</div>
 
-					<ul class="list gap-xxs">
+					<ul class="list gap-xs">
 						{% for item in footer_nav.items[1].children %}
 							<li class="list-item">
 								<a class="link" href="{{item.link}}">{{item.title}}</a>
@@ -64,7 +64,7 @@
 				<div class="footer__section footer__formats">
 					<div class="heading">Формы обучения</div>
 
-					<ul class="list gap-xxs">
+					<ul class="list gap-xs">
 						{% for item in footer_nav.items[2].children %}
 							<li class="list-item">
 								<a class="link" href="{{item.link}}">{{item.title}}</a>
@@ -80,29 +80,19 @@
 				<div class="footer__section footer__license">
 					{% include 'blocks/license.twig' %}
 				</div>
-
-				{# <div class="flex-column gap-m">
-					<div class="footer__section footer__courses-formats">
-						<div class="footer__title">Курсы и программы школы</div>
-
-						<div class="flex flex-column-sm flex-row-md gap-m">
-							
-						</div>
-					</div>
-				</div> #}
 			</div>
 		</div>
 
 		<div class="footer__row footer__bottom-row">
 			<div class="footer__policy">
-				<div class="list gap-xxs">
+				<div class="list gap-xs">
 					<a href="{{links.policy}}">Политика конфиденциальности</a>
 					<a href="{{links.offer}}">Договор-оферта</a>
 				</div>
 			</div>
 
 			<div class="footer__copyright">
-				<div class="footer__copyright list gap-xxs">
+				<div class="footer__copyright list gap-xs">
 					<small>© 2013–{{'now'|date('Y')}} {{COMPANY_NAME}}</small>
 					<small>Все права защищены</small>
 				</div>

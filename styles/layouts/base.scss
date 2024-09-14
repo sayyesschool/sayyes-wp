@@ -1,4 +1,3 @@
-@use 'global' as *;
 @use 'mq';
 
 body {
@@ -22,44 +21,5 @@ body {
 
     @include mq.from(lg) {
         padding: 20px 20px 0;
-    }
-}
-
-.page-template-page-simple {
-    .main {
-        max-width: 1024px;
-        padding: 40px 20px 60px;
-    }
-
-    .title {
-        margin-bottom: 1.5rem;
-    }
-
-    .content {
-        h2 {
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        > p + p {
-            margin-top: 10px;
-        }
-
-        ol, ul {
-            list-style: initial;
-            margin: 1rem 0 1rem 2rem;
-
-            li {
-                margin-top: 5px;
-            }
-        }
-
-        a {
-            color: $purple;
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
     }
 }

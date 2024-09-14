@@ -106,7 +106,8 @@ class SayYesSite extends Site {
 
 
 	function add_to_context($context) {
-        $site_link = $this->link();
+        $site_url = $this->link();
+        $theme_url = $this->theme->link();
 
         $contacts = get_fields('options', 'contacts');
         $prices = get_fields('options', 'prices');
@@ -115,8 +116,8 @@ class SayYesSite extends Site {
         $wa_phone = format_phone_number($contacts['phone_numbers']['whatsapp']);
 
         $links = [
-            'policy' => $site_link.'/politika-konfidentsialnosti',
-            'offer' => $site_link.'/dogovor-oferta',
+            'policy' => $site_url.'/politika-konfidentsialnosti',
+            'offer' => $site_url.'/dogovor-oferta',
             'email' => 'mailto:'.$contacts['email'],
             'main_phone' => 'tel:'.$main_phone,
             'wa_phone' => 'https://api.whatsapp.com/send/?phone='.$wa_phone.'&text&type=phone_number&app_absent=0'
@@ -138,8 +139,12 @@ class SayYesSite extends Site {
         $context['RECAPTCHA_KEY'] = RECAPTCHA_PUBLIC_KEY;
         $context['RECAPTCHA_SCORE'] = RECAPTCHA_SCORE;
         $context['RECAPTCHA_SCORE'] = RECAPTCHA_SCORE;
-        $context['RECAPTCHA_URL'] = $site_link.'/recaptcha.php';
-        $context['REQUEST_URL'] = $site_link.'/request.php';
+        $context['RECAPTCHA_URL'] = $theme_url.'/recaptcha.php';
+        $context['REQUEST_URL'] = $theme_url.'/request.php';
+        $context['SITE_URL'] = $site_url;
+        $context['THEME_URL'] = $theme_url;
+        $context['TEST_DATA_URL'] = $theme_url.'/test/data/data.json';
+        $context['TEST_SUBMIT_URL'] = $theme_url.'/test.php';
         $context['YANDEX_METRIKA_COUNTER'] = YANDEX_METRIKA_COUNTER;
 
 		return $context;

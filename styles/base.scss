@@ -39,11 +39,26 @@ address {
 	font-style: normal;
 }
 
-.color-primary {
+.pink {
+	color: $pink;
+}
+
+.m-auto {
+	margin: auto;
+}
+
+.primary-color,
+.color-primary,
+.purple {
 	color: $purple;
 }
 
-.color-yellow {
+.violet {
+	color: $violet;
+}
+
+.color-yellow,
+.yellow {
 	color: $yellow;
 }
 

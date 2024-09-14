@@ -4,6 +4,9 @@
 @use 'mq';
 
 .modal {
+	--surface-max-width: 1024px;
+	--surface-max-height: 768px;
+
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -32,8 +35,8 @@
 		}
 
 		@include mq.from(sm) {
-			max-width: calc(1024px + 20px);
-			max-height: calc(768px + 20px);
+			max-width: var(--surface-max-width);
+			max-height: var(--surface-max-height);
 			margin: 20px;
 		}
 	}

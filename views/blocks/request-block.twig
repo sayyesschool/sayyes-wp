@@ -1,0 +1,10 @@
+<div class="{{html_classes('request-block', 'request-block--' ~ name, class ?? [])}}" data-tab-panel="{{name}}">
+    <div class="request-block__content">
+        <h2 class="request-block__title">{{title}}</h2>
+
+        <p class="request-block__description">{{description}}</p>
+
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>

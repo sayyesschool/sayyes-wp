@@ -35,11 +35,16 @@
 			]
 		} %}
 			{% block content %}
+				{% set title = 'Оставьте заявку на&nbsp;пробный урок' %}
+				{% set description = 'Мы свяжемся с вами, запишем на урок, ответим на вопросы, и расскажем о курсах' %}
+
 				<div class="trial-lesson-section trial-lesson-section--adults{{(active_tab == '' or active_tab == 'adults') ? '' : ' hidden'}}" data-tab-panel="adults">
 					<div class="trial-lesson-section__left">
-						<div class="trial-lesson-section__title">Оставьте заявку на&nbsp;пробный урок</div>
+						<h3 class="trial-lesson-section__title">{{title}}</h3>
 
-						<p class="trial-lesson-section__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы, и расскажем о курсах</p>
+						<p class="trial-lesson-section__description">{{description}}</p>
+
+						<p class="trial-lesson-section__caption caption handwritten primary-color">Ольга мечтает о карьере в международной компании</p>
 					</div>
 
 					<div class="trial-lesson-section__right">
@@ -51,9 +56,11 @@
 
 				<div class="trial-lesson-section trial-lesson-section--children{{active_tab == 'children' ? '' : ' hidden'}}" data-tab-panel="children">
 					<div class="trial-lesson-section__left">
-						<div class="trial-lesson-section__title">Оставьте заявку на пробный урок</div>
+						<h3 class="trial-lesson-section__title">{{title}}</h3>
 
-						<p class="trial-lesson-section__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы, и расскажем о курсах</p>
+						<p class="trial-lesson-section__description">{{description}}</p>
+
+						<p class="trial-lesson-section__caption caption handwritten color-yellow">Родители Вани планируют его учебу за границей</p>
 					</div>
 
 					<div class="trial-lesson-section__right">

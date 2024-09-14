@@ -1,0 +1,262 @@
+[
+  {
+    "id": 1,
+    "content": "<p>- Are you on vacation?</p><p>- _____</p>",
+    "options": [
+      "Yes, I be.",
+      "Yes, I do.",
+      "Yes, I is.",
+      "Yes I am."
+    ],
+    "answer": "Yes I am.",
+    "topic": "To be",
+    "level": 1
+  },
+  {
+    "id": 2,
+    "content": "<p>I _____ up early every morning.</p>",
+    "options": [
+      "am getting",
+      "get",
+      "gets",
+      "am get"
+    ],
+    "answer": "get",
+    "topic": "Present Simple",
+    "level": 1
+  },
+  {
+    "id": 3,
+    "content": "<p>What time _____ go to work?</p>",
+    "options": [
+      "does they",
+      "do she",
+      "is he",
+      "does he"
+    ],
+    "answer": "does he",
+    "topic": "Present Simple",
+    "level": 1
+  },
+  {
+    "id": 4,
+    "content": "<p>_____ a park near my house.</p>",
+    "options": [
+      "It is",
+      "There is",
+      "They are",
+      "There are"
+    ],
+    "answer": "There is",
+    "topic": "There is/are",
+    "level": 1
+  },
+  {
+    "id": 5,
+    "content": "<p>Did you have a favorite toy when you _____ a kid?</p>",
+    "options": [
+      "was",
+      "are",
+      "be",
+      "were"
+    ],
+    "answer": "were",
+    "topic": "To be",
+    "level": 1
+  },
+  {
+    "id": 6,
+    "content": "<p>- What's the weather forecast for tomorrow?<br>- It _____ tomorrow again.</p>",
+    "options": [
+      "rains",
+      "is raining",
+      "is going to rain",
+      "rained"
+    ],
+    "answer": "is going to rain",
+    "topic": "To be going to",
+    "level": 2
+  },
+  {
+    "id": 7,
+    "content": "<p>- What _____ when you broke your arm?<br>- I was climing a tree.</p>",
+    "options": [
+      "are you doing",
+      "did you do",
+      "were you doing",
+      "do you do"
+    ],
+    "answer": "were you doing",
+    "topic": "Past Continuous",
+    "level": 2
+  },
+  {
+    "id": 8,
+    "content": "<p>I _____ be at the hotel after 8p.m.</p>",
+    "options": [
+      "maybe",
+      "will be",
+      "might",
+      "might to"
+    ],
+    "answer": "might",
+    "topic": "Might",
+    "level": 2
+  },
+  {
+    "id": 9,
+    "content": "<p>If Rebecca _____ go to college, her parents will be disappointed.</p>",
+    "options": [
+      "won't",
+      "don't",
+      "doesn't",
+      "will"
+    ],
+    "answer": "doesn't",
+    "topic": "Conditional senteces",
+    "level": 2
+  },
+  {
+    "id": 10,
+    "content": "<p>- I'm not a good tennis player.<br>- _____</p>",
+    "options": [
+      "I'm not too.",
+      "I'm not either.",
+      "I don't too.",
+      "I don't neither"
+    ],
+    "answer": "I'm not either.",
+    "topic": "Too/Either",
+    "level": 2
+  },
+  {
+    "id": 11,
+    "content": "<p>I _____ over to my sister's house a lot.</p>",
+    "options": [
+      "was used to go",
+      "used to go",
+      "would to go",
+      "used to going"
+    ],
+    "answer": "used to go",
+    "topic": "Used to",
+    "level": 3
+  },
+  {
+    "id": 12,
+    "content": "<p>When I was a kid, my parents always made me _____ my homework.</p>",
+    "options": [
+      "to do",
+      "doing",
+      "do",
+      "did"
+    ],
+    "answer": "do",
+    "topic": "Infinitives",
+    "level": 3
+  },
+  {
+    "id": 13,
+    "content": "<p>I wish I _____ something more exciting with my life.</p>",
+    "options": [
+      "do",
+      "can do",
+      "will do",
+      "could do"
+    ],
+    "answer": "could do",
+    "topic": "I wish",
+    "level": 3
+  },
+  {
+    "id": 14,
+    "content": "<p>Anna _____ an art class since September, and she loves it.</p>",
+    "options": [
+      "is taking",
+      "has taken",
+      "took",
+      "has been taking"
+    ],
+    "answer": "has been taking",
+    "topic": "Present Perfect Continuous",
+    "level": 3
+  },
+  {
+    "id": 15,
+    "content": "<p>Several flights _____ earlier today because of severe thunderstorms.</p>",
+    "options": [
+      "delayed",
+      "was delayed",
+      "were delayed",
+      "be delayed"
+    ],
+    "answer": "were delayed",
+    "topic": "Passive Voice",
+    "level": 3
+  },
+  {
+    "id": 16,
+    "content": "<p>We _____ to a soccer game last night, but the weather was awful, so we stayed home.</p>",
+    "options": [
+      "are supposed to go",
+      "are going to go",
+      "went",
+      "were supposed to go"
+    ],
+    "answer": "were supposed to go",
+    "topic": "Be supposed to",
+    "level": 4
+  },
+  {
+    "id": 17,
+    "content": "<p>Last week I ran into an old friend of mine whom I _____ in a long time.</p>",
+    "options": [
+      "haven't seen",
+      "didn't see",
+      "wasn't seeing",
+      "hadn't seen"
+    ],
+    "answer": "hadn't seen",
+    "topic": "Past Perfect",
+    "level": 4
+  },
+  {
+    "id": 18,
+    "content": "<p>We'd love to get our neighbors _____ their yard. It's really a mess!</p>",
+    "options": [
+      "cleaned up",
+      "will clean up",
+      "to clean up",
+      "clean up"
+    ],
+    "answer": "to clean up",
+    "topic": "Infinitive",
+    "level": 4
+  },
+  {
+    "id": 19,
+    "content": "<p>If Dennis had been in the right place at the right time, his career _____.</p>",
+    "options": [
+      "would take off",
+      "is taking off",
+      "has taken off",
+      "would have taken off"
+    ],
+    "answer": "would have taken off",
+    "topic": "Conditional Senteces",
+    "level": 4
+  },
+  {
+    "id": 20,
+    "content": "<p>She asked me _____.</p>",
+    "options": [
+      "whether I could stick to a monthly budget",
+      "what is my main source of income",
+      "if had I some loans",
+      "how did I usually pay of things"
+    ],
+    "answer": "whether I could stick to a monthly budget",
+    "topic": "Reported Questions",
+    "level": 4
+  }
+]

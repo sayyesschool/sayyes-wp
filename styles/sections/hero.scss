@@ -19,13 +19,6 @@
 		z-index: 1;
 	}
 
-	&__image {
-		position: relative;
-		display: block;
-		width: 100%;
-		object-fit: contain;
-	}
-
 	&__title {
 		margin-bottom: 25px;
 		@include heading.h1;
@@ -37,6 +30,13 @@
 		strong {
 			font-weight: inherit;
 		}
+	}
+
+	&__image {
+		position: relative;
+		display: block;
+		width: 100%;
+		object-fit: contain;
 	}
 
 	@include mq.from(md) {

@@ -18,6 +18,8 @@
 				gap: 5px;
 				
 				li {
+					position: relative;
+					
 					strong {
 						color: $yellow;
 					}
@@ -30,6 +32,28 @@
 						left: -20px;
 						transform: translateY(-50%);
 					}
+				}
+			}
+		}
+
+		&__image {
+			.caption {
+				color: $pink;
+				position: absolute;
+				font-size: 18px;
+				transform: rotateZ(-15deg);
+				bottom: 15%;
+
+				&::after {
+					content: '';
+					position: absolute;
+					display: block;
+					width: 49px;
+					height: 44px;
+					background-image: image('arrows/arrow-1.svg');
+					background-size: contain;
+					top: -150%;
+					left: 50%;
 				}
 			}
 		}

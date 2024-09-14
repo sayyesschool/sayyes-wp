@@ -2,6 +2,7 @@
 @use 'mq';
 
 #request-modal {
+    --surface-max-width: 1280px;
     z-index: 1001;
 
     @include mq.to(md) {

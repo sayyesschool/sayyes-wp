@@ -1,11 +1,13 @@
 <ul class="social">
 	{% for key, url in site_data.contacts.social_accounts %}
-		<li class="social__item">
-			<a class="social__link" href="{{url}}" target="_blank">
-				{% include 'components/icon.twig' with {
-					name: key
-				} %}
-			</a>
-		</li>
+		{% if url %}
+			<li class="social__item">
+				<a class="social__link" href="{{url}}" target="_blank">
+					{% include 'components/icon.twig' with {
+						name: key
+					} %}
+				</a>
+			</li>
+		{% endif %}
 	{% endfor %}
 </ul>

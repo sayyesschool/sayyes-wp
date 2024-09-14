@@ -1,6 +1,5 @@
+@use 'global' as *;
 @use 'mq';
-@use 'mixins' as *;
-@use 'variables' as *;
 
 .license {
 	position: relative;

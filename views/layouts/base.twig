@@ -20,6 +20,7 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&family=Shantell+Sans:ital,wght@1,300..400&display=swap">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700&subset=latin,cyrillic">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/css/intlTelInput.css">
         <link rel="stylesheet" href="{{theme.link}}/static/styles/main.css?v={{site.version}}">
 
         {% block styles %}
@@ -32,8 +33,8 @@
 
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous" async></script>
         <script src="https://unpkg.com/petite-vue" async></script>
-        <script src="{{theme.link}}/static/scripts/main.js?v={{site.version}}" defer></script>
-
+        <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/js/intlTelInput.min.js" defer></script>
+        
         {% block head %}
         {% endblock %}
 
@@ -59,6 +60,8 @@
 
         {% block modal %}
         {% endblock %}
+
+        <script src="{{theme.link}}/static/scripts/main.js?v={{site.version}}"></script>
 
         {% block scripts %}
         {% endblock %}

@@ -10,7 +10,9 @@
 	gap ? 'gap-' ~ gap : []
 )}}">
 	{% for item in items %}
-		<li class="list-item" {% if item.modal_open %} data-modal-trigger="{{item.modal_open}}" {% endif %}>
+		<li class="{{html_classes('list-item', {
+			'list-item--interactive': item.interactive
+		})}}" {% if item.modal_open %} data-modal-trigger="{{item.modal_open}}" {% endif %}>
 			{% if item.link %}
 				<a class="list-item__link link"
 					href="{{item.link}}"

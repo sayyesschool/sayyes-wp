@@ -1,9 +1,12 @@
-@mixin styles($size: auto) {
-    --size: #{$size};
+@use 'variables' as *;
 
-    width: var(--size);
-    height: var(--size);
-    border: 5px solid #fff;
+@mixin styles($size: auto) {
+    --spinner-size: #{$size};
+
+    width: var(--spinner-size);
+    height: var(--spinner-size);
+    color: var(--spinner-color);
+    border: 5px solid currentColor;
     border-bottom-color: transparent;
     border-radius: 50%;
     display: inline-block;
@@ -12,18 +15,28 @@
 }
 
 .spinner {
+    --spinner-color: #{$black};
+
     @include styles;
 
     &--sm {
-        --size: 24px;
+        --spinner-size: 24px;
     }
 
     &--md {
-        --size: 36px;
+        --spinner-size: 36px;
     }
 
     &--lg {
-        --size: 48px;
+        --spinner-size: 48px;
+    }
+
+    &--black {
+        --spinner-color: $black;
+    }
+
+    &--white {
+        --spinner-color: $white;
     }
 }
 

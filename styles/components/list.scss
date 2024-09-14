@@ -2,6 +2,7 @@
 @use 'mq';
 
 .list {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 
@@ -26,6 +27,15 @@
 	
 		&__description {
 			font-weight: 600;
+		}
+
+		&--interactive {
+			transition: 0.3s color;
+			cursor: pointer;
+		
+			&:hover {
+				color: $purple;
+			}
 		}
 	}
 

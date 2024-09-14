@@ -1,10 +1,13 @@
 const path = require('node:path');
 
 module.exports = argv => ({
-    entry: './scripts/main.js',
+    entry: {
+        main: './scripts/main.js',
+        test: './test/index.jsx'
+    },
     output: {
         path: path.resolve(__dirname, 'static', 'scripts'),
-        filename: 'main.js'
+        filename: '[name].js'
     },
     module: {
         rules: [
@@ -51,24 +54,12 @@ module.exports = argv => ({
         //     filename: 'index.css'
         // })
     ],
-    externals: {
-        'react': {
-            root: 'React',
-            commonjs: 'react',
-            commonjs2: 'react'
-        },
-        'react-dom': {
-            root: 'ReactDOM',
-            commonjs: 'react-dom',
-            commonjs2: 'react-dom'
-        }
-    },
     resolve: {
         alias: {
             '@': path.resolve(__dirname, 'src/'),
             'react': 'preact/compat',
-            'react/jsx-runtime': 'preact/jsx-runtime',
-            'react-dom': 'preact/compat'
+            'react-dom': 'preact/compat',
+            'react/jsx-runtime': 'preact/jsx-runtime'
         },
         extensions: ['.jsx', '.js'],
     }

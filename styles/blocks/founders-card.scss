@@ -1,7 +1,6 @@
+@use 'global' as *;
 @use 'components/text';
 @use 'mq';
-@use 'functions' as *;
-@use 'variables' as *;
 
 .founders-card {
     padding: 25px 30px;
@@ -29,15 +28,16 @@
         }
     }
 
-    // TODO: Add arrow and adjust position
-    figcaption {
+    .caption {
         position: absolute;
-        max-width: 145px;
         top: -30%;
-        left: 10%;
-        transform: rotateZ(-15deg);
-        color: $pink;
-        @include text.handwritten;
+        left: 20%;
+        transform: rotateZ(-10deg);
+
+        @include decoration('arrows/arrow-4.svg') {
+            width: 41px;
+            height: 57px;
+        }
     }
 
     @include mq.to(md) {

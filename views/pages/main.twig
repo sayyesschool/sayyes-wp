@@ -4,7 +4,8 @@
 	{% include 'sections/hero.twig' with {
 		title: page.heading ?? page.title,
 		description: page.content,
-		image: 'team.png'
+		image: 'team.png',
+		caption: 'Команда<br>мечты'
 	} %}
 
 	{% include 'sections/trial-lesson.twig' %}
@@ -107,7 +108,8 @@
 						title: 'Удобный личный кабинет',
 						description: 'Преподаватель добавляет в электронный учебник упражнения, которые полезны именно вам.'
 					}
-				]
+				],
+				gap: 's'
 			} %}
 		{% endblock %}
 	{% endembed %}

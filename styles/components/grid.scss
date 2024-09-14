@@ -23,6 +23,10 @@ $columns: (2, 3, 4, 6);
 		grid-template-columns: repeat(4, minmax(250px, 1fr));
 	}
 
+	&-5 {
+		grid-template-columns: repeat(5, minmax(250px, 1fr));
+	}
+
 	&-6 {
 		grid-template-columns: repeat(6, minmax(175px, 1fr));
 	}

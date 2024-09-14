@@ -1,0 +1,48 @@
+@use 'global' as *;
+@use 'components/heading';
+@use 'components/text';
+
+.page-template-page-simple {
+    .main {
+        max-width: 1024px;
+        padding: 40px 20px 60px;
+    }
+
+    .title {
+        margin-bottom: 1.5rem;
+        @include heading.h2;
+    }
+
+    .content {
+        h2 {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            @include heading.h3;
+        }
+
+        p {
+            @include text.body1;
+
+            + p {
+                margin-top: 10px;
+            }
+        }
+
+        ol, ul {
+            list-style: initial;
+            margin: 1rem 0 1rem 2rem;
+
+            li {
+                margin-top: 5px;
+            }
+        }
+
+        a {
+            color: $purple;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

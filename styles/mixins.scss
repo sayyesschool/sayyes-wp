@@ -62,8 +62,6 @@ $queries: (
 }
 
 @mixin decoration($path, $position: after) {
-    position: relative;
-
     &::#{$position} {
         content: '';
         position: absolute;

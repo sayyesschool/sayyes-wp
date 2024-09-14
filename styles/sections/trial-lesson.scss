@@ -158,6 +158,15 @@
 				right: 42%;
 				width: 320px;
 				height: 80%;
+				background-position: center bottom;
+			}
+
+			.caption {
+				position: absolute;
+				bottom: 20%;
+				left: 20%;
+				max-width: 200px;
+				transform: rotateZ(-15deg);
 			}
 		}
 
@@ -167,6 +176,15 @@
 				right: 42%;
 				width: 343px;
 				height: 75%;
+				background-position: center bottom;
+			}
+
+			.caption {
+				position: absolute;
+				bottom: 20%;
+				left: 15%;
+				max-width: 200px;
+				transform: rotateZ(-15deg);
 			}
 		}
 	}

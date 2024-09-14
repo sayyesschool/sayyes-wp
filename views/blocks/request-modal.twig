@@ -18,32 +18,34 @@
             ]
         } %}
             {% block content %}
-                <div class="request-block request-block--adults" data-tab-panel="adults">
-                    <div class="request-block__content">
-                        <h2 class="request-block__title">Оставьте заявку на пробный урок</h2>
+                {% set title = 'Запишитесь на бесплатный пробный урок' %}
+                {% set description = 'Мы свяжемся с вами, запишем на урок, ответим на вопросы и расскажем о курсах' %}
 
-                        <p class="request-block__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы и расскажем о курсах</p>
-
+                {% embed 'blocks/request-block.twig' with {
+                    name: 'adults',
+                    title,
+                    description
+                } %}
+                    {% block content %}
                         {% include 'blocks/request-form.twig' with {
-                            format: true,
-                            button_text: 'Оставить заявку'
+                            format: true
                         } %}
-                    </div>
-                </div>
+                    {% endblock %}
+                {% endembed %}
 
-                <div class="request-block request-block--children hidden" data-tab-panel="children">
-                    <div class="request-block__content">
-                        <h2 class="request-block__title">Оставьте заявку на пробный урок</h2>
-
-                        <p class="request-block__description">Мы свяжемся с вами, запишем на урок, ответим на вопросы и расскажем о курсах</p>
-
+                {% embed 'blocks/request-block.twig' with {
+                    name: 'children',
+                    class: 'hidden',
+                    title,
+                    description
+                } %}
+                    {% block content %}
                         {% include 'blocks/request-form.twig' with {
                             children: true,
-                            format: true,
-                            button_text: 'Оставить заявку'
+                            format: true
                         } %}
-                    </div>
-                </div>
+                    {% endblock %}
+                {% endembed %}
             {% endblock %}
         {% endembed %}
     {% endblock %}

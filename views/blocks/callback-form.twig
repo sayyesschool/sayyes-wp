@@ -15,7 +15,5 @@
 
     <button class="btn btn--full" type="submit">Оставить заявку</button>
 
-    {% include 'components/checkbox.twig' with {
-        name: 'consent'
-    } %}
+    <small class="text text--small">Нажимая «Записаться», я принимаю <a class="link link--underlined" href="{{links.agreement}}">Пользовательское соглашение</a> и даю согласие на обработку своих персональных данных на условиях <a class="link link--underlined" href="{{links.policy}}">Политики конфиденциальности</a>.</small>
 </form>
