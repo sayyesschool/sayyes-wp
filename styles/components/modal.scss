@@ -85,40 +85,35 @@
 		}
 	}
 
-	&.active {
+	&--open {
 		visibility: visible;
 		opacity: 1;
 	}
 
-	&.active &__surface {
+	&--open &__surface {
 		opacity: 1;
 	}
 
 	&--with-tabs {
+		--tabs-height: 40px;
+
+		.modal__surface {
+			margin-top: calc(var(--tabs-height) + 20px);
+		}
+
 		.tabs {
 			&__nav {
 				position: absolute;
-			}
-		
-			@include mq.to(md) {
-				&__nav {
-					top: -40px;
-				}
-	
-				.tab {
-					min-height: 40px;
-				}
+				top: calc(var(--tabs-height) * -1);
 			}
 
-			@include mq.from(md) {
-				&__nav {
-					top: -50px;
-				}
-		
-				.tab {
-					min-height: 50px;
-				}
+			.tab {
+				min-height: var(--tabs-height);
 			}
+		}
+
+		@include mq.from(md) {
+			--tabs-height: 50px;
 		}
 	}
 }

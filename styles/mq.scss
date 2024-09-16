@@ -13,8 +13,7 @@
         }
     } @else {
         @include from($size);
-    }
-    
+    }   
 }
 
 @mixin to($size, $included: false) {

@@ -11,7 +11,8 @@ export default class Modal extends Component {
         content: `${this.name}__content`,
         title: `${this.name}__title`,
         description: `${this.name}__description`,
-        close: `${this.name}__close`
+        close: `${this.name}__close`,
+        open: `${this.name}--open`
     };
 
     static init() {
@@ -81,13 +82,13 @@ export default class Modal extends Component {
     }
 
     open() {
-        this.element.classList.add('active');
+        this.element.classList.add(Modal.classes.open);
         this.emit('open');
         toggleBodyScroll(true);
     }
 
     close() {
-        this.element.classList.remove('active');
+        this.element.classList.remove(Modal.classes.open);
         this.emit('close');
         setTimeout(() => {
             toggleBodyScroll(false);
