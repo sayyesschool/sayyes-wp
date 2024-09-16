@@ -1,4 +1,4 @@
-import { errorModal, successModal } from './modals';
+import { errorModal, successModal } from './components';
 
 document.querySelector('.whatsapp-button')?.addEventListener('click', () => {
     ym(YANDEX_METRIKA_COUNTER, 'reachGoal', 'WA');

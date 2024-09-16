@@ -484,4 +484,43 @@
     {% include 'includes/teacher-modal-script.twig' with {
         teachers
     } %}
+
+    <script>
+        new ui.Slider('.corporate-clients-slider', {
+            modules: [ui.Slider.Grid],
+            grid: {
+                rows: 3,
+                fill: 'row'
+            },
+            breakpoints: {
+                1024: {
+                    slidesPerView: 5
+                },
+                768: {
+                    slidesPerView: 4
+                },
+                540: {
+                    slidesPerView: 3
+                },
+                360: {
+                    slidesPerView: 2
+                }
+            },
+        });
+
+        new ui.Slider('.corporate-reviews-slider', {
+            breakpoints: {
+                1024: {
+                    slidesPerView: 3
+                },
+                768: {
+                    slidesPerView: 2
+                },
+                360: {
+                    slidesPerView: 'auto',
+                    centeredSlides: true
+                }
+            }
+        });
+    </script>
 {% endblock %}

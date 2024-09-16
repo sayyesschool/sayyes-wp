@@ -215,3 +215,11 @@
 
 	{% include 'sections/trial-lesson.twig' %}
 {% endblock %}
+
+{% block scripts %}
+<script>
+	new ui.Slider('.student-progress-slider', {
+		spaceBetween: 150
+	});
+</script>
+{% endblock %}

@@ -3,8 +3,10 @@
 
 .course-children {
     .course-facts {
-		.fact-card {
-			padding-right: 110px;
+		@include mq.from(lg) {
+			.fact-card {
+				padding-right: 200px;
+			}
 		}
 	}
 }
@@ -32,12 +34,13 @@
 		padding: 30px;
 
 		&__content {
+			align-items: flex-start;
 			justify-content: space-between;
 		}
 
 		.list {
 			@include decoration('notes/free-2.svg') {
-				bottom: 0;
+				top: 120%;
 				right: 0;
 				width: 200px;
 				height: 117px;
@@ -189,97 +192,83 @@
 }
 
 .course-teachers {
-	padding: 55px 60px 60px;
-	background-color: $purple;
-	color: $white;
-
-	&__title {
-		max-width: 750px;
-		margin-bottom: 20px;
-	}
-
-	&__description {
-		max-width: 500px;
+	&__content {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
 	}
 
 	.slider {
-		&__arrows {
-			top: -60px;
-		}
+		--slider-pagination-color: #{$white};
 	}
 
-	.text-card {
-		padding-top: 150px;
-
-		.card__title {
-			max-width: 260px;
-		}
-	}
-
-	@include breakpoint($breakpoint-lg) {
-		&__title {
-			max-width: 500px;
-		}
-
-		&__cards {
-			gap: 15px;
-		}
-	}
-
-	@include breakpoint($breakpoint-md) {
-		padding: 30px;
-
-		.text-block {
-			padding: 140px 20px 20px;
-		}
-	}
-
-	@include breakpoint($breakpoint-xxs) {
-		padding: 25px;
+	@include mq.to(md) {
+		padding: 20px;
 
 		.slider {
-			width: calc(100% + 25px);
-			margin-bottom: 15px;
-
 			&__arrows {
 				display: none;
 			}
 		}
 
-		.swiper-wrapper {
-			overflow-x: auto;
+		.teacher-card {
+			flex-direction: column;
+		}
 
-			&::-webkit-scrollbar {
-				display: none;
+		.text-card {
+			padding-top: 70px;
+		}
+	}
+
+	@include mq.from(sm) {
+		.teacher-card {
+			display: flex;
+			flex-direction: row;
+
+			.card__media {
+				width: 40%;
 			}
 		}
 	}
 
-	@include breakpoint($breakpoint-mobile) {
-		padding: 20px;
+	@include mq.from(md) {
+		--title-max-width: 500px;
 
-		.slider {
-			width: calc(100% + 25px);
+		padding: 30px;
+
+		.teacher-card {
+			.card__media {
+				width: 25%;
+			}
 		}
 
-		.text-block {
-			padding-top: 70px;
+		.text-card {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			padding-top: 140px;
 		}
+	}
 
-		&__cards {
-			flex-wrap: wrap;
+	@include mq.from(lg) {
+		--title-max-width: 750px;
+		--description-max-width: 500px;
+
+		padding: 50px;
+
+		.text-card {
+			padding-top: 150px;
+	
+			.card__title {
+				max-width: 260px;
+			}
 		}
 	}
 }
 
 .course-progress {
-	&__title {
-		max-width: 1000px;
-	}
-
-	&__description {
-		max-width: 500px;
-	}
+	--title-max-width: 1000px;
+	--description-max-width: 500px;
 
 	@include breakpoint($breakpoint-lg) {
 		&__title {

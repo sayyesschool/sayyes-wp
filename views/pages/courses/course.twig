@@ -155,21 +155,30 @@
     {% endembed %}
 {% endblock %}
 
-
 {% block scripts %}
-    <script>
-        const modal = new window.ui.Modal('#testimonial-modal');
+<script>
+    const modal = new ui.Modal('#testimonial-modal');
 
-        document.querySelectorAll('.testimonial-modal-button').forEach(button => {
-            button.addEventListener('click', () => {
-                const card = event.target.closest('.testimonial-card');
-                modal.setContent(card.outerHTML);
-                modal.open();
-            });
+    document.querySelectorAll('.testimonial-modal-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const card = event.target.closest('.testimonial-card');
+            modal.setContent(card.outerHTML);
+            modal.open();
         });
+    });
 
-        modal.on('close', () => {
-            modal.setContent('');
-        })
-    </script>
+    modal.on('close', () => {
+        modal.setContent('');
+    });
+
+    new ui.Slider('.course-testimonials-slider', {
+        enabled: false,
+        breakpoints: {
+            768: {
+                enabled: true,
+                slidesPerView: 'auto'
+            }
+        }
+    });
+</script>
 {% endblock %}

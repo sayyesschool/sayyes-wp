@@ -4,7 +4,7 @@
     {% block content %}
         {% for teacher in teachers %}
             <div class="swiper-slide">
-                <div class="card card--white card--horizontal">
+                <div class="teacher-card card card--white card--sm">
                     <div class="card__media">
                         {% include 'components/video.twig' with {
                             youtube_id: teacher.video.youtube_id,

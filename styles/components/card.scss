@@ -8,6 +8,7 @@
 	--card-background-color: #{$white};
 	--card-text-color: #{$black};
 	--card-image-aspect-ratio: 16 / 9;
+	--card-title-max-width: none;
 
 	position: relative;
 	background-color: var(--card-background-color);
@@ -57,18 +58,18 @@
 		margin-top: 1rem;
 	}
 
-	&__title {
+	&__suptitle {
 		margin-bottom: 10px;
+		@include text.body1($weight: 700);
+	}
+
+	&__title {
+		max-width: var(--card-title-max-width);
 		@include heading.h4($weight: 800);
 	}
 
 	&__subtitle {
 		margin-top: 10px;
-		@include text.body1($weight: 700);
-	}
-
-	&__suptitle {
-		margin-bottom: 10px;
 		@include text.body1($weight: 700);
 	}
 

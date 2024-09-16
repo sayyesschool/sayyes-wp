@@ -2,6 +2,10 @@
 	--card-image-aspect-ratio: 1 / 1;
 	
 	.card {
+		&__media {
+			flex-shrink: 0;
+		}
+
 		&__description {
 			margin-bottom: 20px;
 		}

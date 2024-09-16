@@ -15,7 +15,7 @@
         {% block content %}
             {% if options.with_prices %}
                 <div class="card__body">
-                    <ul class="list">
+                    <ul class="list gap-xs">
                         <li class="list-item">
                             <span class="text text--semibold">Стоимость обучения:</span>
 
@@ -26,7 +26,7 @@
 
                         {% if format.lesson_duration %}
                             <li class="list-item">
-                                Продолжительность урока:
+                                <span class="text text--semibold">Продолжительность урока:</span>
 
                                 <span>{{format.lesson_duration}}</span>
                             </li>

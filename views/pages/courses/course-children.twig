@@ -67,7 +67,8 @@
 					'Оцените, нравится ли вам преподаватель.'
 				],
 				type: 'check',
-				align_marker: 'center'
+				align_marker: 'center',
+				gap: 's'
 			} %}
 
 			<div class="card">
@@ -158,7 +159,8 @@
 	{% embed 'components/section.twig' with {
 		name: 'course-teachers',
 		title: 'Наши преподаватели найдут подход к любому ребенку',
-		description: 'В нашей команде только внимательные и заботливые преподаватели с опытом обучения детей'
+		description: 'В нашей команде только внимательные и заботливые преподаватели с опытом обучения детей',
+		color: 'purple'
 	} %}
 		{% block content %}
 			{% include 'blocks/course-teachers-slider.twig' with {
@@ -265,4 +267,35 @@
 			<img class="image" src="{{theme.link}}/static/images/pictures/oc.jpg" alt="Say Yes">
 		{% endblock %}
     {% endembed %}
+{% endblock %}
+
+{% block scripts %}
+{{ parent() }}
+
+<script>
+	new window.ui.Slider('.course-results-slider', {
+		breakpoints: {
+			769: {
+				enabled: true,
+				slidesPerView: 2,
+				spaceBetween: 20,
+				width: null
+			},
+			400: {
+				width: 327,
+				enabled: false,
+				slidesPerView: 1,
+				spaceBetween: 15,
+			},
+			320: {
+				width: 290,
+				enabled: false,
+				slidesPerView: 1,
+				spaceBetween: 15,
+			},
+		},
+	});
+
+	new window.ui.Slider('.course-teachers-slider');
+</script>
 {% endblock %}
