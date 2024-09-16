@@ -3,28 +3,13 @@
 
 #methodology-page {
     .main-section {
-        &__title {
-            max-width: 880px;
-        }
-
-        &__description {
-            max-width: 520px;
-        }
+		--title-max-width: 880px;
+		--description-max-width: 520px;
     }
 }
 
 .methodology-video {
-	&__header {
-		max-width: 400px;
-	}
-
-	.video {
-		// TODO: Adjust position
-		.caption {
-			top: 145px;
-			left: 25%;
-		}
-	}
+	--header-max-width: 400px;
 }
 
 .methodology-methods {

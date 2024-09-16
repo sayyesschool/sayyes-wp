@@ -47,7 +47,17 @@
 	&--dl {
 		.list-item {
 			&__content {
+				flex-direction: row;
+				flex-wrap: wrap;
 				align-items: center;
+			}
+
+			&__title {
+				flex-shrink: 0;
+			}
+
+			&__description {
+				flex: 1;
 			}
 		}
 	}

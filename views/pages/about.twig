@@ -99,6 +99,7 @@
 	{% embed 'components/section.twig' with {
 		name: 'back-office',
 		title: 'В бэк-офисе ' ~ COMPANY_NAME ~ ' работает 24 человека.',
+		padded: true
 	} %}
 		{% block description %}
 			<p>Главное, что объединяет нас — это любовь к людям и английскому языку.</p>
@@ -136,7 +137,7 @@
 				</div>
 			</div>
 
-			<p class="caption handwritten">У команды {{COMPANY_NAME}} есть Superpowers<p>
+			<p class="caption handwritten purple">У команды {{COMPANY_NAME}} есть Superpowers<p>
 		{% endblock %}
 	{% endembed %}
 

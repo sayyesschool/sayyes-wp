@@ -1,6 +1,8 @@
 @use 'global' as *;
 
 .manager-card {
+    --card-image-aspect-ratio: 1;
+
     @include decoration('elements/lightning.svg', before) {
         bottom: 47px;
         left: -15px;

@@ -1,1 +1,21 @@
-@use 'intl-tel-input/build/css/intlTelInput.css';
+// @use 'intl-tel-input/build/css/intlTelInput.css';
+
+.iti {
+    --iti-border-width: 0px;
+    
+    &__selected-country {
+        border-radius: 30px 0 0 30px;;
+        overflow: hidden;
+    }
+
+    &__search-input {
+        padding: 10px;
+    }
+
+    &--inline-dropdown &__dropdown-content {
+        border: none;
+        border-radius: 20px;
+        overflow: hidden;
+        z-index: 100;
+    }
+}

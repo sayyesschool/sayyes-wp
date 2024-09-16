@@ -1,6 +1,13 @@
 @use 'global' as *;
 @use 'mq';
 
+#business-course-page {
+	.main-section {
+		--title-max-width: 500px;
+		--description-max-width: 450px;
+	}
+}
+
 .single-course {
     .main-section {
         --title-max-width: 680px;

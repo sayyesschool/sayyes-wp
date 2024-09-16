@@ -10,12 +10,9 @@
 		@include mq.from(sm) {
 			&__header {
 				text-align: center;
-			}
-		}
-
-		@include mq.from(lg) {
-			&__title {
-				max-width: 880px;
+				max-width: 790px;
+				margin-left: auto;
+				margin-right: auto;
 			}
 		}
     }

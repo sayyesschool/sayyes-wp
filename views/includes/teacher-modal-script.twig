@@ -73,19 +73,19 @@
         content.innerHTML = teacher.content;
 
         const experience = teacherBlock.querySelector('.teacher-details__experience');
-        experience.classList.toggle('hidden', !teacher.experience);
         const experienceContent = experience.children[1];
         experienceContent.innerHTML = teacher.experience;
+        experience.classList.toggle('hidden', !teacher.experience.trim());
 
         const education = teacherBlock.querySelector('.teacher-details__education');
-        education.classList.toggle('hidden', !teacher.education);
         const educationContent = education.children[1];
         educationContent.innerHTML = teacher.education;
+        education.classList.toggle('hidden', !teacher.education.trim());
 
         const certificates = teacherBlock.querySelector('.teacher-details__certificates');
-        certificates.classList.toggle('hidden', !teacher.certificates);
         const certificatesContent = certificates.children[1];
         certificatesContent.innerHTML = teacher.certificates;
+        certificates.classList.toggle('hidden', !teacher.certificates.trim());
 
         const shareLink = teacherBlock.querySelector('.teacher-block__share-link');
 

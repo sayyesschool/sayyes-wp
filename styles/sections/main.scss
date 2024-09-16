@@ -3,8 +3,8 @@
 @use 'mq';
 
 .main-section {
-	--title-max-width: unset;
-	--description-max-width: unset;
+	--title-max-width: 700px;
+	--description-max-width: 600px;
 
 	margin-bottom: 50px;
 
