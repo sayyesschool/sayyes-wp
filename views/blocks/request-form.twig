@@ -4,7 +4,7 @@
     {% if format %}
         <div class="request-form__format">
             {% include 'components/radio-group.twig' with {
-                name: 'format' ~ (children ? '-children' : ''),
+                name: 'format',
                 label: 'Выберите желаемый формат обучения:',
                 items: [
                     {

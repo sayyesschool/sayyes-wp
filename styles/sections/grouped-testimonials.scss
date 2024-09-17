@@ -1,3 +1,6 @@
+@use 'global' as *;
+@use 'mq';
+
 .grouped-testimonials {
 	.swiper-slide:nth-child(2) {
 		.testimonial-group {

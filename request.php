@@ -8,7 +8,8 @@ try {
     $data = json_decode(file_get_contents('php://input'), true);
 
     $crm_response = send_crm_request($data);
-    send_request_email($data);
+    send_request_email(REQUEST_EMAIL, $data);
+    send_request_email(TEAMS_REQUEST_EMAIL, $data);
     send_json([
         'ok' => true,
         'data' => $crm_response,

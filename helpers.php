@@ -41,11 +41,13 @@ function send_email($to, $subject, $message) {
     return mail($to, $subject, $message, $headers);
 }
 
-function send_request_email($data) {
+function send_request_email($to, $data) {
     $type = isset($data['type']) ? $data['type'] : 'Заявка на пробный урок и консультацию';
     $name = isset($data['name']) ? $data['name'] : '';
     $phone = isset($data['phone']) ? $data['phone'] : '';
     $email = isset($data['email']) ? $data['email'] : '';
+    $format = isset($data['format']) ? $data['format'] : '';
+    $communication = isset($data['communication']) ? $data['communication'] : '';
     $origin = isset($data['origin']) ? $data['origin'] : '';
     $recaptcha = isset($data['recaptcha']) ? $data['recaptcha'] : null;
 
@@ -61,6 +63,12 @@ function send_request_email($data) {
 
     if ($email)
         $message .= '<div><b>Электронная почта:</b> '.$email.'</div>';
+
+    if ($format)
+        $message .= '<div><b>Формат обучения:</b> '.$format.'</div>';
+
+    if ($communication)
+        $message .= '<div><b>Способ связи:</b> '.$communication.'</div>';
 
     if ($origin)
         $message .= '<div><b>Сайт:</b> '.$origin.'</div>';
@@ -79,7 +87,7 @@ function send_request_email($data) {
 
     $message .= '</body></html>';
 
-    send_email(REQUEST_EMAIL, $subject, $message);
+    send_email($to, $subject, $message);
 }
 
 function send_crm_request($data) {
