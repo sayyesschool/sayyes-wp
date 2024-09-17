@@ -34,9 +34,9 @@ function send_email($to, $subject, $message) {
     $headers = "MIME-Version: 1.0\r\n";
     $headers .= "Content-Type: text/html; charset=utf-8\r\n";
     $headers .= "Organization: Школа SAY YES\r\n";
-	$headers .= "From: Школа SAY YES <info@sayes.ru>\r\n";
+	$headers .= "From: Сайт SAY YES <site@sayes.ru>\r\n";
 	$headers .= "Reply-To: Школа SAY YES <info@sayes.ru>\r\n";
-    $headers .= "X-Mailer: E-mail from sayes website \r\n";
+    $headers .= "X-Mailer: E-mail from Say Yes website \r\n";
     
     return mail($to, $subject, $message, $headers);
 }
