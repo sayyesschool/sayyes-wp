@@ -113,18 +113,12 @@
     {% endblock %}
 
     {% block testimonials %}
-        {% embed 'components/section.twig' with {
-            name: 'course-testimonials',
+        {% include 'sections/grouped-testimonials.twig' with {
+            class: 'course-testimonials',
             title: sections.testimonials.title ?: 'Отзывы о курсе <br>' ~ course.title,
             description: sections.testimonials.description ?: 'За ' ~ COMPANY_AGE ~ ' лет работы, обучили более 10 000 человек и получили более 800 отзывов',
-            padded_header: true
+            testimonials: course.testimonials_by_group
         } %}
-            {% block content %}
-                {% include 'blocks/course-testimonials-slider.twig' with {
-                    groups: course.testimonials_by_group
-                } %}
-            {% endblock %}
-        {% endembed %}
     {% endblock %}
 
     {% block progress %}
@@ -171,7 +165,7 @@
         modal.setContent('');
     });
 
-    new ui.Slider('.course-testimonials-slider', {
+    new ui.Slider('.grouped-testimonials-slider', {
         breakpoints: {
             768: {
                 enabled: true,

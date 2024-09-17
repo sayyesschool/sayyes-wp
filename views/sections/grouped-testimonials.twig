@@ -1,0 +1,13 @@
+{% embed 'components/section.twig' with {
+    name: 'grouped-testimonials',
+    class,
+    title,
+    description,
+    padded_header: true
+} %}
+    {% block content %}
+        {% include 'blocks/grouped-testimonials-slider.twig' with {
+            groups: testimonials
+        } %}
+    {% endblock %}
+{% endembed %}

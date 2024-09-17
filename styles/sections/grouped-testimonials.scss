@@ -1,0 +1,39 @@
+.grouped-testimonials {
+	.swiper-slide:nth-child(2) {
+		.testimonial-group {
+			background-color: $purple;
+			color: $white;
+
+			.stars {
+				color: $yellow;
+			}
+		}
+	}
+
+	@include mq.to(md) {
+		.swiper-wrapper {
+			display: flex;
+			flex-direction: column;
+			gap: 15px;
+			overflow: visible;
+		}
+
+		.slider {
+			&__pagination {
+				display: none;
+			}
+		}
+	}
+
+	@include mq.for(md) {
+		.swiper-slide {
+			max-width: 90%;
+		}
+	}
+
+	@include mq.from(lg) {
+		.slider {
+			overflow: hidden;
+		}
+	}
+}
