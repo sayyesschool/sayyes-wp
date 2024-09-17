@@ -6,7 +6,7 @@ define('COMPANY_AGE', date('Y') - COMPANY_YEAR);
 
 define('JIVOSITE_KEY', 'N60okSsqRQ');
 
-define('REQUEST_EMAIL', 'info@sayyes.school');
+define('REQUEST_EMAIL', 'info@sayes.ru');
 define('TEAMS_REQUEST_EMAIL', '326fe14f.sayyes.school@apac.teams.ms');
 
 define('RECAPTCHA_PUBLIC_KEY', '6LenTzMiAAAAABvM_nwArCX5rtvJQ3TUQS8EsN1q');
