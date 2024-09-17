@@ -1,6 +1,7 @@
 @use 'sass:list';
 @use 'sass:map';
 @use 'sass:meta';
+@use 'sass:string';
 
 @use './components/text';
 @use './mq';
@@ -34,6 +35,16 @@ $queries: (
     'xl': '(min-width: #{$bp-xl})'
 );
 
+@mixin var($name, $value) {
+    #{if(is-var-name($name), $name, '--#{$name}')}: #{$value};
+}
+
+@mixin vars($vars) {
+    @each $name, $value in $vars {
+        @include var($name, $value);
+    }
+}
+
 @mixin mq($bp) {
     $query: map-get($queries, $bp);
     
@@ -65,7 +76,7 @@ $queries: (
     &::#{$position} {
         content: '';
         position: absolute;
-        background-image: image('#{$path}');
+        background-image: if(is-var($path), $path, image($path));
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;

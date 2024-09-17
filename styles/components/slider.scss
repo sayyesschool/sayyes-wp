@@ -13,12 +13,6 @@
 	
 	position: relative;
 
-	@include mq.from(lg) {
-		margin-top: -70px;
-		padding-top: 70px;
-		overflow: hidden;
-	}
-
 	&__arrows {
 		display: flex;
 		gap: 5px;
@@ -111,5 +105,17 @@
 				background-color: var(--slider-pagination-color);
 			}
 		}
+	}
+
+	@include mq.to(md) {
+		&__arrows {
+			display: none;
+		}
+	}
+
+	@include mq.from(lg) {
+		margin-top: -70px;
+		padding-top: 70px;
+		overflow: hidden;	
 	}
 }

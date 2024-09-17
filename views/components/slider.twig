@@ -6,13 +6,9 @@
 		</div>
 	{% endif %}
 
-	<div class="swiper-wrapper">
+	<div class="swiper-wrapper slider__wrapper">
 		{% block content %}
 		{% endblock %}
-
-		{# <div class="slider__slide swiper-slide">
-			{{block('content')}}
-		</div> #}
 	</div>
 
 	{% if not pagination %}

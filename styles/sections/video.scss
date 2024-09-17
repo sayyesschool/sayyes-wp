@@ -4,7 +4,6 @@
 .video-section {
 	padding: 20px;
 	flex-direction: column;
-	background-color: $white;
 
 	.section {
 		&__container {
@@ -21,6 +20,11 @@
 	}
 
 	.caption {
+		@include vars((
+			--caption-icon: image('elements/clock-2.svg'),
+			--caption-arrow: image('elements/arrow-5.svg')
+		));
+
 		display: none;
 
 		@include mq.from(lg) {
@@ -29,7 +33,7 @@
 			top: 60%;
 			left: -40%;
 
-			@include decoration('elements/clock-2.svg', before) {
+			@include decoration(var(--caption-icon), before) {
 				top: 0;
 				left: -55px;
 				display: block;
@@ -37,12 +41,19 @@
 				height: 40px;
 			}
 	
-			@include decoration('arrows/arrow-5.svg', after) {
+			@include decoration(var(--caption-arrow), after) {
 				width: 158px;
 				height: 85px;
 				left: 55%;
 				top: 80%;
 			}
+		}
+
+		&.yellow {
+			@include vars((
+				--caption-icon: image('elements/clock-2-yellow.svg'),
+				--caption-arrow: image('arrows/arrow-5-yellow.svg')
+			));
 		}
 	}
 
@@ -55,13 +66,25 @@
 	@include mq.from(md) {
 		padding: 30px;
 		flex-direction: row;
+
+		.section__container {
+			gap: 30px;
+		}
 	}
 
 	@include mq.from(lg) {
 		padding: 40px;
+
+		.section__container {
+			gap: 40px;
+		}
 	}
 
 	@include mq.from(xl) {
 		padding: 50px;
+
+		.section__container {
+			gap: 50px;
+		}
 	}
 }

@@ -1,3 +1,5 @@
+@use 'sass:string';
+
 $root: '../../';
 
 @function path($url) {
@@ -6,4 +8,12 @@ $root: '../../';
 
 @function image($url) {
     @return url('#{$root}static/images/#{$url}');
+}
+
+@function is-var($value) {
+    @return string.index($value, 'var(') == 1;
+}
+
+@function is-var-name($name) {
+    @return string.index($name, '--') == 1;
 }

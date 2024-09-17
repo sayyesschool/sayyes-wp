@@ -133,6 +133,7 @@
 		name: 'online-video',
 		class: 'video-section',
 		title: 'Занятия онлайн — это удобно!',
+		color: 'purple',
 		horizontal: true
 	} %}
 		{% block description %}
@@ -143,6 +144,8 @@
 		{% endblock %}
 
 		{% block media %}
+			<p class="caption handwritten yellow">Всего<br>две минуты</p>
+
 			{% include 'components/video.twig' with {
 				youtube_id: 'Vsfz_1QzwDA',
 				image: {
@@ -167,7 +170,7 @@
 				teachers
 			} %}
 
-			<div class="grid grid-3">
+			<div class="grid grid-3-md">
 				{% for item in [
 					{
 						title: 'Строгий кастинг педагогов',
@@ -273,25 +276,15 @@
 {{ parent() }}
 
 <script>
-	new window.ui.Slider('.course-results-slider', {
+	new ui.Slider('.course-results-slider', {
 		breakpoints: {
 			769: {
-				enabled: true,
 				slidesPerView: 2,
-				spaceBetween: 20,
-				width: null
-			},
-			400: {
-				width: 327,
-				enabled: false,
-				slidesPerView: 1,
-				spaceBetween: 15,
+				spaceBetween: 20
 			},
 			320: {
-				width: 290,
-				enabled: false,
-				slidesPerView: 1,
-				spaceBetween: 15,
+				slidesPerView: 'auto',
+				spaceBetween: 15
 			},
 		},
 	});

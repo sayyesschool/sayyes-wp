@@ -56,6 +56,10 @@
 		max-width: var(--content-max-width);
 	}
 
+	&__media {
+		position: relative;
+	}
+
 	@include mq.from(md) {
 		margin-bottom: 60px;
 	}

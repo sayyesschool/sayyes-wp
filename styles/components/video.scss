@@ -51,7 +51,7 @@
 	}
 
 	&--framed &__media {
-		@include decoration('elements/being-student-border.svg', after) {
+		@include decoration('elements/video-frame.svg', after) {
 			top: -5%;
 			left: -5%;
 			width: 110%;

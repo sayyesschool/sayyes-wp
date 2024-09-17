@@ -320,14 +320,6 @@
             object-fit: contain;
         }
 	}
-
-	@include breakpoint($breakpoint-xxs) {
-		.slider {
-            &__arrows {
-                display: none;
-            }
-		}
-	}
 }
 
 .corporate-reviews {

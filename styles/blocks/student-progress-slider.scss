@@ -6,21 +6,15 @@
 		@include scroll-x(30px);
 	}
 
-	@include mq.from(lg) {
-		overflow: visible;
-	}
-
-	.slider {
-		@include mq.to(md) {
-			&__arrows {
-				display: none;
-			}
-		}
-
-		@include mq.from(md) {
+	@include mq.from(md) {
+		.slider {
 			&__pagination {
 				padding-left: 48%;
 			}
 		}
+	}
+
+	@include mq.from(lg) {
+		overflow: visible;
 	}
 }
