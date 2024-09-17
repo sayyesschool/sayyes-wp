@@ -172,11 +172,13 @@
     });
 
     new ui.Slider('.course-testimonials-slider', {
-        enabled: false,
         breakpoints: {
             768: {
                 enabled: true,
                 slidesPerView: 'auto'
+            },
+            360: {
+                enabled: false
             }
         }
     });
