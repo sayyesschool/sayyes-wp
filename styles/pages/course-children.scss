@@ -118,11 +118,10 @@
 		}
 
 		.image {
-			flex-basis: 33%;
+			max-width: 33%;
 		}
 
 		.card {
-			width: 100%;
 			padding: 30px 60px;
 		}
 	}
