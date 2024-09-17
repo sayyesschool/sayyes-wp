@@ -164,3 +164,42 @@
 
 	{% include 'sections/trial-lesson.twig' %}
 {% endblock %}
+
+{% block modal %}
+    {% embed 'components/modal.twig' with {
+        id: 'testimonial-modal'
+    } %}
+        {% block content %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const modal = new ui.Modal('#testimonial-modal');
+
+    document.querySelectorAll('.testimonial-modal-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const card = event.target.closest('.card');
+            modal.setContent(card.outerHTML);
+            modal.open();
+        });
+    });
+
+    modal.on('close', () => {
+        modal.setContent('');
+    });
+
+    new ui.Slider('.course-testimonials-slider', {
+        breakpoints: {
+            768: {
+                enabled: true,
+                slidesPerView: 'auto'
+            },
+            360: {
+                enabled: false
+            }
+        }
+    });
+</script>
+{% endblock %}
