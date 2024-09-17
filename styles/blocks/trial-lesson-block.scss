@@ -37,6 +37,12 @@
         }
 	}
 
+	@include mq.to(md) {
+		.caption {
+			display: none;
+		}
+	}
+
 	@include mq.from(md) {
 		padding: 30px;
         flex-direction: row;
