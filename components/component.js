@@ -2,6 +2,7 @@ export default class Component {
     events = new Map();
 
     static init() {
+        console.log('init', this.classes);
         return Array.from(document.querySelectorAll(`.${this.classes.root}`))
             .map(element => new this(element));
     }

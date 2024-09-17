@@ -31,7 +31,6 @@
     "webpack-cli": "^5.1.4"
   },
   "browserslist": [
-    "last 2 versions",
-    "ie 10"
+    "defaults"
   ]
 }

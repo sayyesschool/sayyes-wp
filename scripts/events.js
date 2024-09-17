@@ -1,4 +1,4 @@
-import { errorModal, successModal } from './components';
+import { callbackModal, errorModal, requestModal, successModal } from './components';
 
 document.querySelector('.whatsapp-button')?.addEventListener('click', () => {
     ym(YANDEX_METRIKA_COUNTER, 'reachGoal', 'WA');
@@ -6,11 +6,27 @@ document.querySelector('.whatsapp-button')?.addEventListener('click', () => {
     return true;
 });
 
-window.addEventListener('request.sent', () => {
+window.addEventListener('callback-form.sent', () => {
+    callbackModal.close();
+    successModal.setDescription('Мы свяжемся с вами и ответим на вопросы в ближайшее время.');
     successModal.open();
 });
 
-window.addEventListener('request.error', event => {
+window.addEventListener('callback-form.error', event => {
+    const error = event.detail;
+
+    errorModal.setTitle('Не удалось отправить заявку');
+    errorModal.setDescription(error.message);
+    errorModal.open();
+});
+
+window.addEventListener('request-form.sent', () => {
+    requestModal.close();
+    successModal.setDescription('Мы свяжемся с вами, запишем на урок, ответим на вопросы и расскажем о курсах.');
+    successModal.open();
+});
+
+window.addEventListener('request-form.error', event => {
     const error = event.detail;
 
     errorModal.setTitle('Не удалось отправить заявку');

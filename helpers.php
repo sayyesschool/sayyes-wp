@@ -16,9 +16,11 @@ function http_post($url, $data) {
 function http_post_json($url, $data) {
 	$ch = curl_init($url);
 	$payload = json_encode($data);
+    $referer = $_SERVER['HTTP_REFERER'] ? $_SERVER['HTTP_REFERER'] : SITE_DOMAIN;
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
 	curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_REFERER, $referer);
 	$response = curl_exec($ch);
 	curl_close($ch);
 	return json_decode($response, true);
@@ -92,7 +94,7 @@ function send_request_email($to, $data) {
 
 function send_crm_request($data) {
     return http_post_json('https://sayes.t8s.ru/Api/V2/AddStudyRequest', [
-        'type' => isset($data['type']) ? $data['type'] : 'Заявка на обучение',
+        'type' => isset($data['format']) ? 'Заявка на обучение ('.$data['format'].')' : 'Заявка на обратный звонок',
         'fullName' => isset($data['name']) ? $data['name'] : '',
         'phone' => isset($data['phone']) ? $data['phone'] : '',
         'eMail' => isset($data['email']) ? $data['email'] : '',

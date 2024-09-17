@@ -5,7 +5,7 @@ export default class Header extends Component {
 
     static classes = {
         root: this.name,
-        main: `${this.main}__main`,
+        main: `${this.name}__main`,
         nav: `${this.name}__nav`,
         menuButton: `${this.name}__menu-button`,
         expanded: `${this.name}--expanded`,

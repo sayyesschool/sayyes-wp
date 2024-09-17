@@ -1,11 +1,13 @@
 import Component from './component';
 
-export default class RequestForm extends Component {
-    static name = 'request-form';
+export default class Form extends Component {
+    static name = 'form';
 
-    static classes = {
-        root: this.name
-    };
+    static get classes() {
+        return {
+            root: this.name
+        };
+    }
 
     loading = false;
 
@@ -37,8 +39,6 @@ export default class RequestForm extends Component {
                 // if (!recaptcha.success || recaptcha.score < window.RECAPTCHA_SCORE)
                 //     throw 'ReCAPTCHA test failed';
 
-                window.dispatchEvent(new CustomEvent('marketing.lead'));
-
                 fetch(REQUEST_URL, {
                     method: 'POST',
                     headers: {
@@ -52,12 +52,12 @@ export default class RequestForm extends Component {
                     .then(response => response.json())
                     .then(response => {
                         if (response.ok) {
-                            window.dispatchEvent(new CustomEvent('request.sent'));
+                            window.dispatchEvent(new CustomEvent(`${this.constructor.name}.sent`));
                         } else if (response.error) {
                             throw response;
                         }
                     }).catch(error => {
-                        window.dispatchEvent(new CustomEvent('request.error', {
+                        window.dispatchEvent(new CustomEvent(`${this.constructor.name}.error`, {
                             detail: error
                         }));
                     }).finally(() => {
@@ -73,6 +73,14 @@ export default class RequestForm extends Component {
         this.submitButton.disabled = isLoading;
         this.submitButton.toggleAttribute('data-loading', isLoading);
     }
+}
+
+export class CallbackForm extends Form {
+    static name = 'callback-form';
+}
+
+export class RequestForm extends Form {
+    static name = 'request-form';
 }
 
 function getRecaptcha() {
