@@ -201,39 +201,14 @@
 
 {% block progress %}
 	{% embed 'components/section.twig' with {
-        name: 'course-progress',
+        name: 'course-parents-testimonials',
         title: 'Лучшие показатели нашей работы — это ученики, владеющие языком и довольные родители!',
         description: 'Родители наших учеников рассказывают о результатах и процессе обучения детей в ' ~ COMPANY_NAME,
 		padded: true
     } %}
         {% block content %}
-			{% include 'blocks/course-results-slider.twig' with {
-				items: [
-					{
-						parent: {
-							name: 'Ольга',
-							icon: 'icon--fb',
-							url: '#'
-						},
-						baby: 'Мама ученицы Кати, 10 лет',
-						description: '«Всем привет! Моя дочь Катюша в 4 классе, где-то полгода назад мы начали заниматься в языковой школе Say Yes! Изначально я относилась немного скептически к идее...»',
-						img: 'review-1',
-						videoId: 'video-21',
-						videoUrl: 'https://www.youtube.com/embed/6ISA01NE2rY'
-					},
-					{
-						parent: {
-							name: 'Ирина',
-							icon: 'icon--inst',
-							url: '#'
-						},
-						baby: 'Мама ученицы Маши, 12 лет',
-						description: '«Меня зовут Ирина, моя дочь Маша занимается в школе Say Yes! В этом году мы решили заняться английским дополнительно, потому что появились проблемы в школе...»',
-						img: 'review-2',
-						videoId: 'video-22',
-						videoUrl: 'https://www.youtube.com/embed/6ISA01NE2rY'
-					}
-				]
+			{% include 'blocks/course-parents-testimonials-slider.twig' with {
+				items: testimonials
 			} %}
 		{% endblock %}
     {% endembed %}
@@ -272,11 +247,34 @@
     {% endembed %}
 {% endblock %}
 
+{% block modal %}
+    {% embed 'components/modal.twig' with {
+        id: 'content-modal'
+    } %}
+        {% block content %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
 {% block scripts %}
 {{ parent() }}
 
 <script>
-	new ui.Slider('.course-results-slider', {
+	const contentModal = new ui.Modal('#content-modal');
+
+	document.querySelectorAll('.content-modal-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const card = event.target.closest('.card__body');
+            contentModal.setContent(card.outerHTML);
+            contentModal.open();
+        });
+    });
+
+    contentModal.on('close', () => {
+        contentModal.setContent('');
+    });
+
+	new ui.Slider('.course-parents-testimonials-slider', {
 		breakpoints: {
 			769: {
 				slidesPerView: 2,

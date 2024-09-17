@@ -8,6 +8,7 @@ document.querySelectorAll('input[type=tel]').forEach(input =>
         i18n: ru,
         formatAsYouType: true,
         strictMode: true,
+        separateDialCode: true,
         hiddenInput: telInputName => ({
             phone: 'phone',
             country: 'country'

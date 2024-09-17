@@ -1,0 +1,14 @@
+<div class="trial-lesson-block trial-lesson-block--{{type}}{{hidden ? ' hidden' : ''}}" data-tab-panel="{{type}}">
+    <div class="trial-lesson-block__info">
+        <h3 class="trial-lesson-block__title">{{title}}</h3>
+
+        <p class="trial-lesson-block__description">{{description}}</p>
+
+        <p class="trial-lesson-block__caption caption handwritten">{{caption}}</p>
+    </div>
+
+    <div class="trial-lesson-block__content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>

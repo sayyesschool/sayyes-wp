@@ -4,6 +4,7 @@
 @use 'mq';
 
 .request-block {
+	position: relative;
     display: flex;
     justify-content: space-between;
     background-color: $pale-white;

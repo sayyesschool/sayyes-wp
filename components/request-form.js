@@ -19,51 +19,53 @@ export default class RequestForm extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        const isValid = this.element.reportValidity();
+        setTimeout(() => {
+            const isValid = this.element.reportValidity();
 
-        if (!isValid) return;
+            if (!isValid) return;
 
-        const formData = new FormData(this.element);
-        const data = Array.from(formData.entries())
-            .reduce((data, [key, value]) => {
-                data[key] = value;
-                return data;
-            }, {});
+            const formData = new FormData(this.element);
+            const data = Array.from(formData.entries())
+                .reduce((data, [key, value]) => {
+                    data[key] = value;
+                    return data;
+                }, {});
 
-        this.setLoading(true);
+            this.setLoading(true);
 
-        getRecaptcha().then(recaptcha => {
-            // if (!recaptcha.success || recaptcha.score < window.RECAPTCHA_SCORE)
-            //     throw 'ReCAPTCHA test failed';
+            getRecaptcha().then(recaptcha => {
+                // if (!recaptcha.success || recaptcha.score < window.RECAPTCHA_SCORE)
+                //     throw 'ReCAPTCHA test failed';
 
-            window.dispatchEvent(new CustomEvent('marketing.lead'));
+                window.dispatchEvent(new CustomEvent('marketing.lead'));
 
-            fetch(REQUEST_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json; charset=utf-8',
-                },
-                body: JSON.stringify({
-                    ...data,
-                    recaptcha
+                fetch(REQUEST_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8',
+                    },
+                    body: JSON.stringify({
+                        ...data,
+                        recaptcha
+                    })
                 })
-            })
-                .then(response => response.json())
-                .then(response => {
-                    if (response.ok) {
-                        window.dispatchEvent(new CustomEvent('request.sent'));
-                    } else if (response.error) {
-                        throw response;
-                    }
-                }).catch(error => {
-                    window.dispatchEvent(new CustomEvent('request.error', {
-                        detail: error
-                    }));
-                }).finally(() => {
-                    this.setLoading(false);
-                    this.element.reset();
-                });
-        });
+                    .then(response => response.json())
+                    .then(response => {
+                        if (response.ok) {
+                            window.dispatchEvent(new CustomEvent('request.sent'));
+                        } else if (response.error) {
+                            throw response;
+                        }
+                    }).catch(error => {
+                        window.dispatchEvent(new CustomEvent('request.error', {
+                            detail: error
+                        }));
+                    }).finally(() => {
+                        this.setLoading(false);
+                        this.element.reset();
+                    });
+            });
+        }, 0);
     }
 
     setLoading(isLoading = true) {

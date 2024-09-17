@@ -1,0 +1,32 @@
+{% embed 'components/slider.twig' with {
+    name: 'course-parents-testimonials'
+} %}
+    {% block content %}
+        {% for item in items %}
+            <div class="swiper-slide">
+                <div class="card card--sm">
+                    <div class="card__media">
+                        {% include 'components/video.twig' with {
+                            youtube_id: item.video.youtube_id,
+                            modal: true
+                        } %}
+                    </div>
+
+                    <div class="card__body">
+                        <h3 class="card__title">{{item.person.firstname}}</h3>
+                        
+                        <p class="card__subtitle">{{item.person.description}}</p>
+
+                        <div class="card__description">
+                            {{item.excerpt({ words: 25, read_more: '', strip: false })}}
+
+                            <button class="link link--underlined content-modal-button">Развернуть</button>
+                        </div>
+
+                        <div class="card__description">{{item.content}}</div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endblock %}
+{% endembed %}

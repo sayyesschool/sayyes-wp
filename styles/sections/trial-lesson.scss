@@ -24,172 +24,78 @@
 			padding: 0 50px;
 		}
 	}
-}
 
-.trial-lesson .tabs {
-	gap: 0;
-
-	.tab {
-		position: relative;
-
-		&:first-of-type {
-			background-color: $yellow;
-		}
-
-		&:last-of-type {
-			background-color: $violet;
-		}
-	}
-
-	@include mq.to(md) {
-		--nav-max-width: unset;
-
+	.tabs {
+		gap: 0;
+	
 		.tab {
-			width: 100%;
-			min-height: 40px;
-
-			&::before {
-				content: '';
-				position: absolute;
-				top: 100%;
-				width: 50px;
-				height: 50px;
-			}
-
+			position: relative;
+	
 			&:first-of-type {
-				&::before {
-					left: 0;
-					background-color: $yellow;
-				}
+				background-color: $yellow;
 			}
-
+	
 			&:last-of-type {
+				background-color: $violet;
+			}
+		}
+	
+		@include mq.to(md) {
+			--nav-max-width: unset;
+	
+			.tab {
+				width: 100%;
+				min-height: 40px;
+	
 				&::before {
-					right: 0;
-					background-color: $violet;
+					content: '';
+					position: absolute;
+					top: 100%;
+					width: 50px;
+					height: 50px;
+				}
+	
+				&:first-of-type {
+					&::before {
+						left: 0;
+						background-color: $yellow;
+					}
+				}
+	
+				&:last-of-type {
+					&::before {
+						right: 0;
+						background-color: $violet;
+					}
 				}
 			}
 		}
-	}
-
-	@include mq.from(md) {
-		--nav-max-width: 320px;
-
-		&__nav {
-			position: absolute;
-			top: -40px;
-			right: 30px;
-		}
-
-		.tab {
-			min-height: 40px;
-		}
-	}
-
-	@include mq.from(lg) {
-		--nav-max-width: 460px;
-
-		&__nav {
-			top: -55px;
-			right: 40px;
-		}
-
-		.tab {
-			min-height: 55px;
-		}
-	}
-}
-
-.trial-lesson-section {
-	position: relative;
-	display: flex;
-	justify-content: space-between;
-	gap: 20px;
-	@include border-radius;
-
-	&__title {
-		margin-bottom: 10px;
-		@include heading.h3;
-	}
-
-	&__description {
-		@include text.body1;
-	}
-
-	&--adults {
-		background-color: $yellow;
-	}
-
-	&--children {
-		background-color: $violet;
-	}
-
-	@include mq.to(md) {
-		padding: 20px;
-		flex-direction: column;
-	}
-
-	@include mq.from(md) {
-		padding: 30px;
-
-		&__title {
-			max-width: 360px;
-			margin-bottom: 20px;
-		}
-
-		&__description {
-			max-width: 240px;
-		}
-
-		&--adults &,
-		&--children & {
-			&__left {
-				flex-basis: 60%;
-			}
-
-			&__right {
-				flex-basis: 40%;
-			}
-		}
-
-		&--adults {
-			@include decoration('pictures/invite.png', after) {
-				bottom: 0;
-				right: 42%;
-				width: 320px;
-				height: 80%;
-				background-position: center bottom;
-			}
-
-			.caption {
+	
+		@include mq.from(md) {
+			--nav-max-width: 320px;
+	
+			&__nav {
 				position: absolute;
-				bottom: 20%;
-				left: 20%;
-				max-width: 200px;
-				transform: rotateZ(-15deg);
+				top: -40px;
+				right: 30px;
+			}
+	
+			.tab {
+				min-height: 40px;
 			}
 		}
-
-		&--children {
-			@include decoration('pictures/invite-2.png', after) {
-				bottom: 0;
-				right: 42%;
-				width: 343px;
-				height: 75%;
-				background-position: center bottom;
+	
+		@include mq.from(lg) {
+			--nav-max-width: 460px;
+	
+			&__nav {
+				top: -55px;
+				right: 40px;
 			}
-
-			.caption {
-				position: absolute;
-				bottom: 20%;
-				left: 15%;
-				max-width: 200px;
-				transform: rotateZ(-15deg);
+	
+			.tab {
+				min-height: 55px;
 			}
 		}
-	}
-
-	@include mq.from(lg) {
-		padding: 40px;
 	}
 }

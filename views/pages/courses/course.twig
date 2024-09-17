@@ -161,7 +161,7 @@
 
     document.querySelectorAll('.testimonial-modal-button').forEach(button => {
         button.addEventListener('click', () => {
-            const card = event.target.closest('.testimonial-card');
+            const card = event.target.closest('.card');
             modal.setContent(card.outerHTML);
             modal.open();
         });

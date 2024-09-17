@@ -209,7 +209,7 @@
 	}
 }
 
-.course-progress {
+.course-parents-testimonials {
 	@include mq.to(md) {
 		--title-max-width: 460px;
 	}
@@ -222,6 +222,19 @@
 		--title-max-width: 1000px;
 		--description-max-width: 500px;
 	}
+
+	.card {
+		.card__description +
+		.card__description {
+			display: none;
+		}
+
+		.card__description {
+			.link {
+				margin-top: 1rem;
+			}
+		}
+	}
 }
 
 .progress-video {
@@ -229,5 +242,11 @@
 		&::after {
 			background-image: image('elements/video-frame_white.svg');
 		}
+	}
+}
+
+#content-modal {
+	.card__description:first-of-type {
+		display: none;
 	}
 }

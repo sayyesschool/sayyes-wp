@@ -1,0 +1,104 @@
+@use 'global' as *;
+@use 'components/heading';
+@use 'components/text';
+@use 'mq';
+
+.trial-lesson-block {
+	position: relative;
+    padding: 20px;
+	display: flex;
+    flex-direction: column;
+	justify-content: space-between;
+	gap: 20px;
+	@include border-radius;
+
+	&__title {
+		margin-bottom: 10px;
+		@include heading.h3;
+	}
+
+	&__description {
+		@include text.body1;
+	}
+
+	&--adults {
+		background-color: $yellow;
+
+        .caption {
+            color: $purple;
+        }
+	}
+
+	&--children {
+		background-color: $violet;
+
+        .caption {
+            color: $yellow;
+        }
+	}
+
+	@include mq.from(md) {
+		padding: 30px;
+        flex-direction: row;
+
+		&__title {
+			max-width: 360px;
+			margin-bottom: 20px;
+		}
+
+		&__description {
+			max-width: 240px;
+		}
+
+		&--adults &,
+		&--children & {
+			&__info {
+				flex-basis: 60%;
+			}
+
+			&__content {
+				flex-basis: 40%;
+			}
+		}
+
+        .caption {
+            position: absolute;
+            max-width: 200px;
+            transform: rotateZ(-15deg);
+        }
+
+		&--adults {
+			@include decoration('pictures/invite.png', after) {
+				bottom: 0;
+				right: 42%;
+				width: 320px;
+				height: 80%;
+				background-position: center bottom;
+			}
+
+			.caption {
+				bottom: 20%;
+				left: 20%;
+			}
+		}
+
+		&--children {
+			@include decoration('pictures/invite-2.png', after) {
+				bottom: 0;
+				right: 42%;
+				width: 343px;
+				height: 75%;
+				background-position: center bottom;
+			}
+
+			.caption {
+				bottom: 20%;
+				left: 15%;
+			}
+		}
+	}
+
+	@include mq.from(lg) {
+		padding: 40px;
+	}
+}

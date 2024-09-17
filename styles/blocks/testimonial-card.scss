@@ -1,7 +1,8 @@
 @use 'global' as *;
+@use 'mq';
 
 .testimonial-card {
-    padding: 45px 40px 45px 50px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -38,11 +39,11 @@
         line-height: 15px;
     }
 
-    @include breakpoint($breakpoint-lg) {
+    @include mq.from(md) {
         padding: 25px 30px;
     }
 
-    @include breakpoint($breakpoint-mobile) {
-		padding: 15px;
-	}
+    @include mq.from(lg) {
+        padding: 45px 40px 45px 50px;
+    }
 }

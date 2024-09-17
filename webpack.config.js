@@ -48,7 +48,7 @@ module.exports = argv => ({
             }
         ]
     },
-    devtool: argv.mode === 'production' ? 'source-map' : 'eval-source-map',
+    //devtool: argv.mode === 'production' ? 'source-map' : 'eval-source-map',
     plugins: [
         // new CssExtractPlugin({
         //     filename: 'index.css'
