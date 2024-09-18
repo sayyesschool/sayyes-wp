@@ -7,7 +7,7 @@ use Twig\Extra\Html\HtmlExtension;
 include 'post-classes.php';
 include 'post-types.php';
 include 'taxonomies.php';
-require 'constants.php';
+require_once 'constants.php';
 require 'utils.php';
 
 class SayYesSite extends Site {

@@ -1,6 +1,7 @@
 <?php
 
 require_once 'constants.php';
+require 'email.php';
 
 function http_post($url, $data) {
 	$ch = curl_init();
@@ -32,19 +33,7 @@ function send_json($data) {
     echo json_encode($data);
 }
 
-function send_email($to, $subject, $message) {
-    $headers = "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: text/html; charset=utf-8\r\n";
-    $headers .= "Organization: Школа SAY YES\r\n";
-	$headers .= "From: Сайт SAY YES <site@sayes.ru>\r\n";
-	$headers .= "Reply-To: Школа SAY YES <info@sayes.ru>\r\n";
-    $headers .= "X-Mailer: E-mail from Say Yes website \r\n";
-    
-    return mail($to, $subject, $message, $headers);
-}
-
-function send_request_email($to, $data) {
-    $type = isset($data['type']) ? $data['type'] : 'Заявка на пробный урок и консультацию';
+function send_request_email($data) {
     $name = isset($data['name']) ? $data['name'] : '';
     $phone = isset($data['phone']) ? $data['phone'] : '';
     $email = isset($data['email']) ? $data['email'] : '';
@@ -56,7 +45,7 @@ function send_request_email($to, $data) {
     if (empty($phone))
         throw new Exception('Не указан телефон', 400);
 
-    $subject = $type.($origin ? ' ('.$origin.')' : '');
+    $subject = isset($data['format']) ? 'Заявка на обучение ('.$data['format'].')' : 'Заявка на обратный звонок';
 
     $message = '<html><body style="font-family: sans-serif">';
 
@@ -89,12 +78,14 @@ function send_request_email($to, $data) {
 
     $message .= '</body></html>';
 
-    send_email($to, $subject, $message);
+    send_email(SITE_EMAIL, REQUEST_EMAIL, $subject, $message);
 }
 
 function send_crm_request($data) {
-    return http_post_json('https://sayes.t8s.ru/Api/V2/AddStudyRequest', [
-        'type' => isset($data['format']) ? 'Заявка на обучение ('.$data['format'].')' : 'Заявка на обратный звонок',
+    $type = isset($data['format']) ? 'Заявка на обучение ('.$data['format'].')' : 'Заявка на обратный звонок';
+
+    return http_post_json(CRM_REQUEST_URL, [
+        'type' => $type,
         'fullName' => isset($data['name']) ? $data['name'] : '',
         'phone' => isset($data['phone']) ? $data['phone'] : '',
         'eMail' => isset($data['email']) ? $data['email'] : '',
