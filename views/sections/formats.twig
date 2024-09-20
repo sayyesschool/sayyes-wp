@@ -11,7 +11,7 @@
         <div class="grid {{grid_class ?: 'grid-2-md'}}">
             {% for format in formats %}
                 {{format_card(format, {
-                    color: cycle(colors ?? ['white', 'pink', 'purple'], loop.index0),
+                    color: cycle(colors ?: ['white', 'pink', 'purple'], loop.index0),
                     size: 'sm',
                     with_prices
                 })}}
