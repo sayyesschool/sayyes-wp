@@ -1,8 +1,11 @@
 import { useState } from 'preact/hooks';
-import { submitResults } from '../helpers/test';
+import cn from 'classnames';
 
-export default function Results({ results }) {
-    const [name, setName] = useState();
+import { submitResults } from '../helpers/test';
+import PhoneInput from './PhoneInput';
+
+export default function Results({ results = {} }) {
+    const [phone, setPhone] = useState();
     const [email, setEmail] = useState();
     const [state, setState] = useState();
 
@@ -11,56 +14,58 @@ export default function Results({ results }) {
 
         setState('sending');
 
-        submitResults(results)
-            .then(() => {
-                setState('sent');
-            })
-            .catch(() => {
-                setState('error');
-            });
+        submitResults({
+            name: '',
+            phone,
+            email,
+            level: results.level,
+            questions: results.questions
+        }).then(() => {
+            setState('sent');
+        }).catch(() => {
+            setState('error');
+        });
     }
 
+    const isValid = phone && email;
     const isSending = state === 'sending';
-    const isSent = state === 'sent';
 
     return (
-        <section id="results" class="section">
-            <div class="container">
-                <div class="text-center mb-3">
-                    <h2 class="title page-title">Поздравляем! Вы завершили online-тест!</h2>
+        <section class="test-results">
+            <div class="test-results__text">
+                <h2 class="heading-2">Поздравляем! Вы завершили online-тест!</h2>
 
-                    <p>Ваш уровень, а также таблицу с Вашими ответами мы вышлем на Вашу почту.<sup>*</sup></p>
+                <p class="text">Ваш уровень, а также таблицу с Вашими ответами мы вышлем на Вашу почту.</p>
+            </div>
 
-                    <p>Заполните, пожалуйста, форму ниже.</p>
+            <div class="test-results__form">
+                <div class="card card--yellow">
+                    <form class="form" onSubmit={handleSubmit}>
+                        <p class="text">Заполните, пожалуйста, форму:</p>
 
-                    <div class="uil-reload-css" v-if="isSending">
-                        <div></div>
-                    </div>
-                </div>
+                        <div class="flex-column gap-xxs">
+                            <PhoneInput
+                                name="phone"
+                                placeholder="*"
+                                required
+                                onNumberChange={setPhone}
+                            />
 
-                {isSent &&
-                    <div class="text-center mb-3" v-if="isSent">
-                        <p class="lead">Результаты были отправлены на указанный Вами почтовый адрес.</p>
-
-                        <p><small>P.S. Если письма нет во <i>Входящих</i>, проверьте <i>Спам</i>!</small></p>
-
-                        <div><a href="/" class="btn btn-primary">Вернуться на главную</a></div>
-                    </div>
-                }
-
-                {!isSent &&
-                    <form onSubmit={handleSubmit}>
-                        <div class="form-group">
-                            <input type="text" name="name" placeholder="Ваше имя" required />
+                            <input
+                                class="input"
+                                type="email"
+                                name="email"
+                                placeholder="Email*"
+                                required
+                                onInput={event => setEmail(event.target.value)}
+                            />
                         </div>
 
-                        <div class="form-group">
-                            <input type="email" name="email" placeholder="Ваш email" required />
-                        </div>
-                        
-                        <button class="btn btn-primary btn-block">Получить результат</button>
+                        <button class={cn('btn btn--black btn--full', isSending && 'btn--loading')} disabled={!isValid}>Оставить заявку</button>
+
+                        <small class="text text--small">Оставляя заявку, вы принимаете <a class="link link--underlined" href="{{links.agreement}}">Пользовательское соглашение</a> и даете согласие на обработку своих персональных данных на условиях <a class="link link--underlined" href="{{links.policy}}">Политики конфиденциальности</a>.</small>
                     </form>
-                }
+                </div>
             </div>
         </section>
     );

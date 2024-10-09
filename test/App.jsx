@@ -1,7 +1,6 @@
 import Loading from './components/Loading';
+import Main from './components/Main';
 import Results from './components/Results';
-import Test from './components/Test';
-import Welcome from './components/Welcome';
 import { useTest } from './hooks/test';
 
 export default function App() {
@@ -10,18 +9,15 @@ export default function App() {
         results,
         isCompleted,
         isLoading,
-        isStarted,
-        setResults,
-        setStarted
+        setResults
     } = useTest();
 
     return (
         isLoading ? <Loading /> :
-        !isStarted ? <Welcome onStart={() => setStarted(true)} /> :
         isCompleted ? <Results results={results} /> :
-            <Test
-                questions={data}
-                onComplete={setResults}
-            />
+        <Main
+            questions={data}
+            onComplete={setResults}
+        />
     );
 }

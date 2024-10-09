@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "content": "<p>- Are you on vacation?</p><p>- _____</p>",
+    "content": "<p>- Are you on vacation?</p><p>- <span class=\"blank\"></span></p>",
     "options": [
       "Yes, I be.",
       "Yes, I do.",
@@ -14,7 +14,7 @@
   },
   {
     "id": 2,
-    "content": "<p>I _____ up early every morning.</p>",
+    "content": "<p>I <span class=\"blank\"></span> up early every morning.</p>",
     "options": [
       "am getting",
       "get",
@@ -27,7 +27,7 @@
   },
   {
     "id": 3,
-    "content": "<p>What time _____ go to work?</p>",
+    "content": "<p>What time <span class=\"blank\"></span> go to work?</p>",
     "options": [
       "does they",
       "do she",
@@ -40,7 +40,7 @@
   },
   {
     "id": 4,
-    "content": "<p>_____ a park near my house.</p>",
+    "content": "<p><span class=\"blank\"></span> a park near my house.</p>",
     "options": [
       "It is",
       "There is",
@@ -53,7 +53,7 @@
   },
   {
     "id": 5,
-    "content": "<p>Did you have a favorite toy when you _____ a kid?</p>",
+    "content": "<p>Did you have a favorite toy when you <span class=\"blank\"></span> a kid?</p>",
     "options": [
       "was",
       "are",
@@ -66,7 +66,7 @@
   },
   {
     "id": 6,
-    "content": "<p>- What's the weather forecast for tomorrow?<br>- It _____ tomorrow again.</p>",
+    "content": "<p>- What's the weather forecast for tomorrow?<br>- It <span class=\"blank\"></span> tomorrow again.</p>",
     "options": [
       "rains",
       "is raining",
@@ -79,7 +79,7 @@
   },
   {
     "id": 7,
-    "content": "<p>- What _____ when you broke your arm?<br>- I was climing a tree.</p>",
+    "content": "<p>- What <span class=\"blank\"></span> when you broke your arm?<br>- I was climbing a tree.</p>",
     "options": [
       "are you doing",
       "did you do",
@@ -92,7 +92,7 @@
   },
   {
     "id": 8,
-    "content": "<p>I _____ be at the hotel after 8p.m.</p>",
+    "content": "<p>I <span class=\"blank\"></span> be at the hotel after 8p.m.</p>",
     "options": [
       "maybe",
       "will be",
@@ -105,7 +105,7 @@
   },
   {
     "id": 9,
-    "content": "<p>If Rebecca _____ go to college, her parents will be disappointed.</p>",
+    "content": "<p>If Rebecca <span class=\"blank\"></span> go to college, her parents will be disappointed.</p>",
     "options": [
       "won't",
       "don't",
@@ -113,12 +113,12 @@
       "will"
     ],
     "answer": "doesn't",
-    "topic": "Conditional senteces",
+    "topic": "Conditional sentences",
     "level": 2
   },
   {
     "id": 10,
-    "content": "<p>- I'm not a good tennis player.<br>- _____</p>",
+    "content": "<p>- I'm not a good tennis player.<br>- <span class=\"blank\"></span></p>",
     "options": [
       "I'm not too.",
       "I'm not either.",
@@ -131,7 +131,7 @@
   },
   {
     "id": 11,
-    "content": "<p>I _____ over to my sister's house a lot.</p>",
+    "content": "<p>I <span class=\"blank\"></span> over to my sister's house a lot.</p>",
     "options": [
       "was used to go",
       "used to go",
@@ -144,7 +144,7 @@
   },
   {
     "id": 12,
-    "content": "<p>When I was a kid, my parents always made me _____ my homework.</p>",
+    "content": "<p>When I was a kid, my parents always made me <span class=\"blank\"></span> my homework.</p>",
     "options": [
       "to do",
       "doing",
@@ -157,7 +157,7 @@
   },
   {
     "id": 13,
-    "content": "<p>I wish I _____ something more exciting with my life.</p>",
+    "content": "<p>I wish I <span class=\"blank\"></span> something more exciting with my life.</p>",
     "options": [
       "do",
       "can do",
@@ -170,7 +170,7 @@
   },
   {
     "id": 14,
-    "content": "<p>Anna _____ an art class since September, and she loves it.</p>",
+    "content": "<p>Anna <span class=\"blank\"></span> an art class since September, and she loves it.</p>",
     "options": [
       "is taking",
       "has taken",
@@ -183,7 +183,7 @@
   },
   {
     "id": 15,
-    "content": "<p>Several flights _____ earlier today because of severe thunderstorms.</p>",
+    "content": "<p>Several flights <span class=\"blank\"></span> earlier today because of severe thunderstorms.</p>",
     "options": [
       "delayed",
       "was delayed",
@@ -196,7 +196,7 @@
   },
   {
     "id": 16,
-    "content": "<p>We _____ to a soccer game last night, but the weather was awful, so we stayed home.</p>",
+    "content": "<p>We <span class=\"blank\"></span> to a soccer game last night, but the weather was awful, so we stayed home.</p>",
     "options": [
       "are supposed to go",
       "are going to go",
@@ -209,7 +209,7 @@
   },
   {
     "id": 17,
-    "content": "<p>Last week I ran into an old friend of mine whom I _____ in a long time.</p>",
+    "content": "<p>Last week I ran into an old friend of mine whom I <span class=\"blank\"></span> in a long time.</p>",
     "options": [
       "haven't seen",
       "didn't see",
@@ -222,7 +222,7 @@
   },
   {
     "id": 18,
-    "content": "<p>We'd love to get our neighbors _____ their yard. It's really a mess!</p>",
+    "content": "<p>We'd love to get our neighbors <span class=\"blank\"></span> their yard. It's really a mess!</p>",
     "options": [
       "cleaned up",
       "will clean up",
@@ -235,7 +235,7 @@
   },
   {
     "id": 19,
-    "content": "<p>If Dennis had been in the right place at the right time, his career _____.</p>",
+    "content": "<p>If Dennis had been in the right place at the right time, his career <span class=\"blank\"></span>.</p>",
     "options": [
       "would take off",
       "is taking off",
@@ -243,12 +243,12 @@
       "would have taken off"
     ],
     "answer": "would have taken off",
-    "topic": "Conditional Senteces",
+    "topic": "Conditional Sentences",
     "level": 4
   },
   {
     "id": 20,
-    "content": "<p>She asked me _____.</p>",
+    "content": "<p>She asked me <span class=\"blank\"></span>.</p>",
     "options": [
       "whether I could stick to a monthly budget",
       "what is my main source of income",

@@ -3,6 +3,16 @@
 @use 'mq';
 
 .radio {
+	--radio-color: #{$black};
+	--radio-hover-color: #{$black};
+	--radio-checked-color: #{$black};
+
+	transition: 0.3s ease color;
+
+	&:hover {
+		color: var(--radio-hover-color);
+	}
+
 	&__input {
 		display: none;
 	}
@@ -23,16 +33,19 @@
 			height: 14px;
 			transform: translateY(-50%);
 			border-radius: 50%;
-			border: 2px solid $black;
+			border: 2px solid var(--radio-color);
 		}
 	}
 
 	&__input:checked ~ &__label {
+		color: var(--radio-checked-color);
+
 		&:before {
+			border-color: var(--radio-checked-color);
 			background: radial-gradient(
 				circle at center,
-				$black 0,
-				$black 3.25px,
+				var(--radio-checked-color) 0,
+				var(--radio-checked-color) 3.25px,
 				transparent 3.25px
 			);
 		}

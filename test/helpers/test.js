@@ -1,15 +1,3 @@
-export function submitResults(data) {
-    window.dispatchEvent(new CustomEvent('test.submit'));
-
-    return fetch(window.TEST_SUBMIT_URL, {
-        method: 'post',
-        headers: {
-            'ContentType': 'application/json; charset=utf-8'
-        },
-        body: JSON.stringify(data)
-    });
-}
-
 export function isComplete(questions, answers) {
     const questionsCount = questions.length;
     const answersCount = answers.length;
@@ -19,10 +7,6 @@ export function isComplete(questions, answers) {
         questionsCount > 0 &&
         answersCount === questionsCount
     );
-}
-
-export function getProgress(questions, answers) {
-    return answers.length / questions.length * 100;
 }
 
 export function getLevel(questions, answers) {
@@ -57,10 +41,31 @@ export function getLevel(questions, answers) {
 }
 
 export function getResults(questions, answers) {
-    return questions.map((question, index) => {
-        return {
+    return {
+        level: getLevel(questions, answers),
+        questions: questions.map((question, index) => ({
             ...question,
             userAnswer: answers[index]
-        };
+        }))
+    };
+}
+
+export function submitResults(data) {
+    return fetch(window.TEST_SUBMIT_URL, {
+        method: 'post',
+        headers: {
+            'ContentType': 'application/json; charset=utf-8'
+        },
+        body: JSON.stringify(data)
+    }).then(response => {
+        if (!response.ok) {
+            return response.json().then(data => {
+                throw data;
+            });
+        }
+
+        window.dispatchEvent(new CustomEvent('test.submit'));
+    }).catch(error => {
+        window.dispatchEvent(new CustomEvent('test.error', { detail: error }));
     });
 }

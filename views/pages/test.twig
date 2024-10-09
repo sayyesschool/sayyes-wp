@@ -1,28 +1,47 @@
 {% extends 'layouts/base.twig' %}
 
 {% block content %}
-    <div id="app"></div>
+    {% include 'sections/main.twig' with {
+		title: page.heading ?? page.title,
+        description: page.content,
+	} %}
 
-    {# <div id="confirm-modal" class="modal fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <header class="modal-header">
-                    <h3 class="modal-title">Получилось!</h3>
+    {% embed 'components/section.twig' with {
+        id: 'app',
+        name: 'test',
+        centered: true,
+        padded: true
+    } %}
+        {% block content %}
+            <div class="flex flex-column gap-l">
+                <div class="grid grid-2-1-2">
+                    <div class="text-card text-card--check-bg card card--yellow">
+                        <p class="text">Тест состоит из 20 вопросов.</p>
+                    </div>
 
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </header>
+                    <div class="text-card text-card--correct-bg card card--yellow">
+                        <p class="text">В конце теста Вы сможете узнать правильные ответы.</p>
+                    </div>
+                    
+                    <div class="text-card text-card--hourglass-2-bg card card--yellow">
+                        <p class="text">Ограничения по времени нет.</p>
+                    </div>
 
-                <section class="modal-body text-center">
-                    <p class="lead">Результаты были отправлены на указанный Вами почтовый адрес.</p>
-                    <small>P.S. Если письма нет во <i>Входящих</i>, проверьте <i>Спам</i>!</small>
-                </section>
+                    <div class="text-card text-card--list-bg card card--yellow">
+                        <p class="text">Если вы не знаете правильного ответа, выбирайте ответ <i>Не знаю</i>.</p>
+                    </div>
+
+                    <div class="text-card text-card--question-bg card card--yellow">
+                        <p class="text">На каждый вопрос есть только один правильный ответ.</p>
+                    </div>
+                </div>
+                
+                <button class="test-start-button btn btn-primary m-auto">Начать тест</button>
             </div>
-        </div>
-    </div> #}
+        {% endblock %}
+    {% endembed %}
 {% endblock %}
 
 {% block scripts %}
-<script src="{{theme.link}}/static/scripts/test.js?v={{site.version}}"></script>
+    <script src="{{theme.link}}/static/scripts/test.js?v={{site.version}}"></script>
 {% endblock %}

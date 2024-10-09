@@ -11,7 +11,7 @@ require_once 'constants.php';
 require 'utils.php';
 
 class SayYesSite extends Site {
-    public $version = '3.0.0-rc.2';
+    public $version = '3.0.0-rc.3';
 
 	function __construct() {
         // add_theme_support('html5');
@@ -22,6 +22,7 @@ class SayYesSite extends Site {
 		add_action('init', [$this, 'register_post_types']);
 		add_action('init', [$this, 'register_taxonomies']);
         add_action('after_setup_theme', [$this, 'register_menus']);
+        add_action("rest_api_init", [$this, 'init_rest_api']);
         add_action('widgets_init', [$this, 'init_widgets']);
         add_action('wp_enqueue_scripts', [$this, 'include_styles']);
         add_action('wp_enqueue_scripts', [$this, 'include_scripts']);
@@ -91,6 +92,15 @@ class SayYesSite extends Site {
     function include_scripts() {
         //if ( !is_admin() ) { wp_deregister_script('jquery'); }
     }
+
+    function init_rest_api() {
+        register_rest_route("options", "/test", [
+            "methods" => "GET",
+            "callback" => function() {
+              return get_fields('options')['questions'];
+            },
+        ]);
+    }
     
     function init_widgets() {
         register_sidebar([
@@ -103,7 +113,6 @@ class SayYesSite extends Site {
             'after_title'   => '</h2>',
         ]);
     }
-
 
 	function add_to_context($context) {
         $site_url = $this->link();
