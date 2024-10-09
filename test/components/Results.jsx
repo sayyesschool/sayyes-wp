@@ -2,10 +2,9 @@ import { useState } from 'preact/hooks';
 import cn from 'classnames';
 
 import { submitResults } from '../helpers/test';
-import PhoneInput from './PhoneInput';
 
 export default function Results({ results = {} }) {
-    const [phone, setPhone] = useState();
+    const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [state, setState] = useState();
 
@@ -15,8 +14,7 @@ export default function Results({ results = {} }) {
         setState('sending');
 
         submitResults({
-            name: '',
-            phone,
+            name,
             email,
             level: results.level,
             questions: results.questions
@@ -27,7 +25,7 @@ export default function Results({ results = {} }) {
         });
     }
 
-    const isValid = phone && email;
+    const isValid = name && email;
     const isSending = state === 'sending';
 
     return (
@@ -44,11 +42,13 @@ export default function Results({ results = {} }) {
                         <p class="text">Заполните, пожалуйста, форму:</p>
 
                         <div class="flex-column gap-xxs">
-                            <PhoneInput
-                                name="phone"
-                                placeholder="*"
+                            <input
+                                class="input"
+                                type="text"
+                                name="name"
+                                placeholder="Имя*"
                                 required
-                                onNumberChange={setPhone}
+                                onInput={event => setName(event.target.value)}
                             />
 
                             <input
@@ -61,9 +61,9 @@ export default function Results({ results = {} }) {
                             />
                         </div>
 
-                        <button class={cn('btn btn--black btn--full', isSending && 'btn--loading')} disabled={!isValid}>Оставить заявку</button>
+                        <button class={cn('btn btn--black btn--full', isSending && 'btn--loading')} disabled={!isValid}>Получить результаты</button>
 
-                        <small class="text text--small">Оставляя заявку, вы принимаете <a class="link link--underlined" href="{{links.agreement}}">Пользовательское соглашение</a> и даете согласие на обработку своих персональных данных на условиях <a class="link link--underlined" href="{{links.policy}}">Политики конфиденциальности</a>.</small>
+                        <small class="text text--small">Оставляя заявку, вы принимаете <a class="link link--underlined" href={window.AGREEMENT_URL}>Пользовательское соглашение</a> и даете согласие на обработку своих персональных данных на условиях <a class="link link--underlined" href={window.POLICY_URL}>Политики конфиденциальности</a>.</small>
                     </form>
                 </div>
             </div>

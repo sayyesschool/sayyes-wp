@@ -125,8 +125,9 @@ class SayYesSite extends Site {
         $wa_phone = format_phone_number($contacts['phone_numbers']['whatsapp']);
 
         $links = [
-            'policy' => $site_url.'/politika-konfidentsialnosti',
+            'agreement' => $site_url.'/agreement',
             'offer' => $site_url.'/dogovor-oferta',
+            'policy' => $site_url.'/politika-konfidentsialnosti',
             'email' => 'mailto:'.$contacts['email'],
             'main_phone' => 'tel:'.$main_phone,
             'wa_phone' => 'https://api.whatsapp.com/send/?phone='.$wa_phone.'&text&type=phone_number&app_absent=0'
@@ -154,6 +155,9 @@ class SayYesSite extends Site {
         $context['THEME_URL'] = $theme_url;
         $context['TEST_DATA_URL'] = $theme_url.'/test/data/data.json';
         $context['TEST_SUBMIT_URL'] = $theme_url.'/test.php';
+        $context['AGREEMENT_URL'] = $links['agreement'];
+        $context['OFFER_URL'] = $links['offer'];
+        $context['POLICY_URL'] = $links['policy'];
         $context['YANDEX_METRIKA_COUNTER'] = YANDEX_METRIKA_COUNTER;
 
 		return $context;

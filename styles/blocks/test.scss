@@ -28,9 +28,12 @@
 	background-color: $white;
 	border-radius: $border-radius;
 
+	@include mq.from(sm) {
+		padding: 30px;
+	}
+
 	@include mq.from(md) {
-		padding: 40px 80px;
-		gap: 40px;
+		padding: 40px;
 	}
 }
 
@@ -53,11 +56,18 @@
 		display: flex;
 		justify-content: center;
 	}
+
+	@include mq.to(md) {
+		padding-top: 25px;
+	}
+
+	@include mq.from(md) {
+		padding: 40px 80px;
+	}
 }
 
 .test-results {
 	max-width: 1024px;
-	padding-top: 25px;
 	flex-direction: column;
 
 	&__text {
@@ -70,12 +80,16 @@
 		padding: 20px;
 	}
 
-	@include mq.to(md) {
+	@include mq.from(md) {
 		flex-direction: row;
 
 		.card {
 			padding: 30px;
 		}
+	}
+
+	@include mq.from(lg) {
+		padding: 50px;
 	}
 }
 
