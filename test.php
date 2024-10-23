@@ -5,14 +5,11 @@ try {
     $data = json_decode(file_get_contents('php://input'), true);
 
     $name = isset($data['name']) ? $data['name'] : '';
-    $phone = isset($data['phone']) ? $data['phone'] : '';
     $email = isset($data['email']) ? $data['email'] : '';
     $recipient = isset($data['recipient']) ? $data['recipient'] : 'info@sayes.ru';
     $level = isset($data['level']) ? $data['level'] : null;
     $questions = isset($data['questions']) ? $data['questions'] : null;
-
-    if (empty($phone))
-        throw new Exception('Не указан телефон', 400);
+    
     if (empty($email))
         throw new Exception('Не указан адрес эл. почты', 400);
     if (empty($level))
