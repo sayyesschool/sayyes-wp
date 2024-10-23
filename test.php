@@ -20,9 +20,9 @@ try {
     $message = wordwrap(getHtml($name, $email, $level, $questions), 70);
     $admin_message = wordwrap(getHtml($name, $email, $level, $questions, true), 70);
 
-    send_email(SITE_EMAIL, $email, 'Результаты теста', $message);
-    send_email(SITE_EMAIL, $recipient, 'Результаты теста', $admin_message);
-    send_email(SITE_EMAIL, '85ed1f6c.sayes.ru@apac.teams.ms', 'Результаты теста', $admin_message);
+    send_email_builtin(SITE_EMAIL, $email, 'Результаты теста', $message);
+    send_email_builtin(SITE_EMAIL, $recipient, 'Результаты теста', $admin_message);
+    send_email_builtin(SITE_EMAIL, '85ed1f6c.sayes.ru@apac.teams.ms', 'Результаты теста', $admin_message);
 
     send_json([ 'ok' => true ]);
 } catch (Exception $e) {
