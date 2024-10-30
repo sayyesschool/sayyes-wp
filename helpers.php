@@ -78,7 +78,7 @@ function send_request_email($data) {
 
     $message .= '</body></html>';
 
-    send_email(SITE_EMAIL, REQUEST_EMAIL, $subject, $message);
+    send_email_builtin(SITE_EMAIL, REQUEST_EMAIL, $subject, $message);
 }
 
 function send_crm_request($data) {
