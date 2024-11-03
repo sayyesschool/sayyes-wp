@@ -3,7 +3,8 @@ const path = require('node:path');
 module.exports = argv => ({
     entry: {
         main: './scripts/main.js',
-        test: './test/index.jsx'
+        shared: './scripts/shared.js',
+        test: './test/index.jsx',
     },
     output: {
         path: path.resolve(__dirname, 'static', 'scripts'),

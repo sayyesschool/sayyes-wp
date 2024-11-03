@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "gulpfile.js",
   "scripts": {
-    "build": "webpack --mode=production",
+    "build": "webpack --mode=production && gulp build",
     "dev": "webpack --mode=development --watch",
     "start": "gulp"
   },

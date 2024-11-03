@@ -8,7 +8,7 @@ const paths = {
     vendor: './node_modules/',
 };
 
-function styles() {
+function main() {
     return gulp.src(`${paths.src}main.scss`)
         .pipe(sass({
             includePaths: [paths.src, paths.vendor],
@@ -18,6 +18,17 @@ function styles() {
         .pipe(gulp.dest(paths.dest));
 }
 
-gulp.watch('./styles/**/*.scss', styles);
+function shared() {
+    return gulp.src(`${paths.src}shared.scss`)
+        .pipe(sass({
+            includePaths: [paths.src, paths.vendor],
+            outputStyle: 'compressed'
+        }).on('error', sass.logError))
+        .pipe(autoprefixer())
+        .pipe(gulp.dest(paths.dest));
+}
 
-module.exports.default = styles;
+
+
+module.exports.default = () => gulp.watch('./styles/**/*.scss', { ignoreInitial: false }, main);
+module.exports.build = gulp.series(main, shared);
