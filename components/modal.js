@@ -1,5 +1,7 @@
 import Component from './component';
 
+const MODAL_TIMEOUT = 300;
+
 export default class Modal extends Component {
     static name = 'modal';
 
@@ -85,6 +87,9 @@ export default class Modal extends Component {
         this.element.classList.add(Modal.classes.open);
         this.emit('open');
         toggleBodyScroll(true);
+        setTimeout(() => {
+            this.emit('opened');
+        }, MODAL_TIMEOUT);
     }
 
     close() {
@@ -93,7 +98,7 @@ export default class Modal extends Component {
         setTimeout(() => {
             toggleBodyScroll(false);
             this.emit('closed');
-        }, 300);
+        }, MODAL_TIMEOUT);
     }
 }
 
