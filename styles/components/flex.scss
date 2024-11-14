@@ -37,3 +37,39 @@
 		flex-wrap: wrap;
 	}
 }
+
+.fill {
+    flex: 1;
+}
+
+.align {
+    &-start {
+        align-items: flex-start;
+    }
+
+    &-end {
+        align-items: flex-end;
+    }
+
+    &-center {
+        align-items: center;
+    }
+}
+
+.justify {
+    &-center {
+        justify-content: center;
+    }
+
+    &-start {
+        justify-content: flex-start;
+    }
+
+    &-end {
+        justify-content: flex-end;
+    }
+
+    &-between {
+        justify-content: space-between;
+    }
+}

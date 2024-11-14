@@ -43,10 +43,6 @@ address {
 	color: $pink;
 }
 
-.m-auto {
-	margin: auto;
-}
-
 .primary-color,
 .color-primary,
 .purple {
@@ -79,60 +75,4 @@ address {
 		flex-direction: column;
 		gap: 10px;
 	}
-}
-
-.gap {
-	@each $size, $value in $gaps {
-		&-#{$size} {
-			gap: $value;
-		}
-	}
-}
-
-.hidden {
-	display: none !important;
-
-	@each $size in $sizes {
-		&-#{$size} {
-			@include mq.for($size) {
-				display: none !important;
-			}
-		}
-	}
-
-	@each $size in $sizes {
-		&-#{$size}-down {
-			@include mq.to($size) {
-				display: none !important;
-			}
-		}
-	}
-
-	@each $size in $sizes {
-		&-#{$size}-up {
-			@include mq.from($size) {
-				display: none !important;
-			}
-		}
-	}
-}
-
-.admin-bar {
-	.header:not(.expanded) {
-		top: 46px;
-
-		@include mq.from(md) {
-			top: 32px;
-		}
-	}
-}
-
-#wpadminbar {
-	@include mq.to(md) {
-		position: fixed !important;
-	}
-}
-
-[v-cloak] {
-    display: none
 }

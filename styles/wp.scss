@@ -1,0 +1,17 @@
+@use 'mq';
+
+.admin-bar {
+	.header:not(.expanded) {
+		top: 46px;
+
+		@include mq.from(md) {
+			top: 32px;
+		}
+	}
+}
+
+#wpadminbar {
+	@include mq.to(md) {
+		position: fixed !important;
+	}
+}

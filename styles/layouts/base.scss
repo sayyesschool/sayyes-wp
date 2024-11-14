@@ -1,6 +1,6 @@
 @use 'mq';
 
-body {
+.page {
     @include mq.to(lg) {
 		padding-top: 75px;
 	}

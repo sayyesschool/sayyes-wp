@@ -29,9 +29,10 @@ $border-radius-lg: 40px;
 $border-radius-xl: 50px;
 $border-radius: $border-radius-md;
 
+$dirs: (top, right, bottom, left);
 $sizes: (xs, sm, md, lg, xl);
 
-$gaps: (
+$spacing: (
     xxs: 5px,
     xs: 10px,
     s: 15px,

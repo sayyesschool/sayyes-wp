@@ -1,0 +1,143 @@
+@use 'sass:string';
+
+@use 'components/text';
+@use 'mq';
+@use 'mixins' as *;
+@use 'variables' as *;
+
+
+// Dimensions
+
+.h {
+    &-auto {
+        height: auto;
+    }
+
+    &-100,
+    &-full {
+        height: 100%;
+    }
+
+    &-50,
+    &-half {
+        height: 50%;
+    }
+
+    &-33
+    &-third {
+        height: 33.333333%;
+    }
+
+    &-25,
+    &-quarter {
+        height: 25%;
+    }
+}
+
+.w {
+    &-auto {
+        width: auto;
+    }
+
+    &-100,
+    &-full {
+        width: 100%;
+    }
+
+    &-50,
+    &-half {
+        width: 50%;
+    }
+
+    &-33
+    &-third {
+        width: 33.333333%;
+    }
+
+    &-25,
+    &-quarter {
+        width: 25%;
+    }
+}
+
+// Margin
+
+.m {
+    &-0,
+    &-none {
+        margin: 0;
+    }
+
+    &-auto {
+        margin: auto;
+    }
+
+    &h-auto {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    &v-auto {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    @each $dir in $dirs {
+        @each $size, $value in $spacing {
+            &#{string.slice($dir, 0, 1)}-#{$size} {
+                margin-#{$dir}: $value;
+            } 
+        }
+    }
+}
+
+// Padding
+
+.p {
+    @each $dir in $dirs {
+        @each $size, $value in $spacing {
+            &#{string.slice($dir, 0, 1)}-#{$size} {
+                padding-#{$dir}: $value;
+            } 
+        }
+    }
+}
+
+// Gap
+
+.g,
+.gap {
+	@each $size, $value in $spacing {
+		&-#{$size} {
+			gap: $value;
+		}
+	}
+}
+
+.hidden {
+	display: none !important;
+
+	@each $size in $sizes {
+		&-#{$size} {
+			@include mq.for($size) {
+				display: none !important;
+			}
+		}
+	}
+
+	@each $size in $sizes {
+		&-#{$size}-down {
+			@include mq.to($size) {
+				display: none !important;
+			}
+		}
+	}
+
+	@each $size in $sizes {
+		&-#{$size}-up {
+			@include mq.from($size) {
+				display: none !important;
+			}
+		}
+	}
+}

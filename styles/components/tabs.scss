@@ -37,6 +37,8 @@
 
 	&--pills {
 		.tab {
+			border-radius: 0;
+
 			&:first-of-type {
 				border-radius: $border-radius 0 0 $border-radius;
 			}
