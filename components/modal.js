@@ -103,6 +103,12 @@ export default class Modal extends Component {
 }
 
 export class ImageModal extends Modal {
+    constructor(props) {
+        super(props);
+
+        this.handleClosed = this.handleClosed.bind(this);
+    }
+
     open(event) {
         if (event.target.src) {
             const image = document.createElement('img');
@@ -120,6 +126,11 @@ export class ImageModal extends Modal {
         this.once('closed', () => {
             this.body.removeChild(this.image);
         });
+    }
+
+    handleClosed() {
+        this.body.removeChild(this.image);
+        this.off('closed', this.handleClosed);
     }
 }
 
@@ -146,6 +157,8 @@ export class VideoModal extends Modal {
         this.iframe.className = 'video';
         this.iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
         this.iframe.allowFullscreen = true;
+
+        this.handleClosed = this.handleClosed.bind(this);
     }
 
     open(event, options) {
@@ -179,9 +192,15 @@ export class VideoModal extends Modal {
 
         if (this.media instanceof HTMLVideoElement)
             this.media.pause();
+
+        this.once('closed', this.handleClosed);
+    }
+
+    handleClosed() {
         this.media.src = '';
         this.media.classList.remove('video--vertical');
         this.body.removeChild(this.media);
+        this.off('closed', this.handleClosed);
     }
 }
 
