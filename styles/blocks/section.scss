@@ -9,6 +9,7 @@
 	--title-max-width: none;
 	--description-max-width: none;
 	--content-max-width: none;
+	--section-padding: 0;
 
 	position: relative;
 	margin-bottom: 50px;
@@ -83,16 +84,18 @@
 
 	&--padded &__container,
 	&--padded-header &__header {
+		padding: 0 var(--section-padding);
+
 		@include mq.to(md) {
-			padding: 0 20px;
+			--section-padding: 20px;
 		}
 
 		@include mq.from(md) {
-			padding: 0 30px;
+			--section-padding: 30px;
 		}
 
 		@include mq.between(lg, xl) {
-			padding: 0 40px;
+			--section-padding: 40px;
 		}
 	}
 
