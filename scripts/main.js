@@ -10,7 +10,7 @@ import {
     Tabs,
     Video
 } from './components';
-import './events';
+import { setupEvents } from './events';
 import './scroll';
 import './share';
 import './tel-input';
@@ -25,10 +25,10 @@ Select.init();
 Tabs.init();
 Video.init();
 
-export const callbackModal = new Modal('#callback-modal');
-export const requestModal = new RequestModal('#request-modal');
-export const errorModal = new Modal('#error-modal');
-export const successModal = new Modal('#success-modal');
+const callbackModal = new Modal('#callback-modal');
+const requestModal = new RequestModal('#request-modal');
+const errorModal = new Modal('#error-modal');
+const successModal = new Modal('#success-modal');
 // const videoModal = new VideoModal('#video-modal');
 
 window.ui = Object.assign(window.ui || {}, {
@@ -38,3 +38,5 @@ window.ui = Object.assign(window.ui || {}, {
     successModal,
     // videoModal
 });
+
+setupEvents({ callbackModal, errorModal, requestModal, successModal });
