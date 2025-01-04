@@ -51,6 +51,17 @@ export function getResults(questions, answers) {
 }
 
 export function submitResults(data) {
+    const params = new URLSearchParams(window.location.search);
+    const utm = {
+        source: params.get('utm_source'),
+        medium: params.get('utm_medium'),
+        campaign: params.get('utm_campaign'),
+        term: params.get('utm_term'),
+        content: params.get('utm_content')
+    };
+
+    data.utm = utm;
+
     return fetch(window.TEST_SUBMIT_URL, {
         method: 'post',
         headers: {
