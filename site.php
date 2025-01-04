@@ -154,7 +154,7 @@ class SayYesSite extends Site {
         $context['THEME_URL'] = $theme_url;
         $context['TEST_DATA_URL'] = $theme_url.'/test/data/data.json';
         $context['TEST_URL'] = $site_url.'/online-test';
-        $context['TEST_SUBMIT_URL'] = $theme_url.'/test.php';
+        $context['TEST_SUBMIT_URL'] = 'https://sayyes.school/api/test';
         $context['AGREEMENT_URL'] = $links['agreement'];
         $context['OFFER_URL'] = $links['offer'];
         $context['POLICY_URL'] = $links['policy'];
