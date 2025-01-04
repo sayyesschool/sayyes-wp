@@ -54,7 +54,7 @@ export function submitResults(data) {
     return fetch(window.TEST_SUBMIT_URL, {
         method: 'post',
         headers: {
-            'ContentType': 'application/json; charset=utf-8'
+            'Content-Type': 'application/json; charset=utf-8'
         },
         body: JSON.stringify(data)
     }).then(response => {
