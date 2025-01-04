@@ -1,6 +1,6 @@
 @use 'sass:string';
 
-$root: 'https://sayes.ru/wp-content/themes/sayyes/';
+$root: 'https://sayyes.school/wp-content/themes/sayyes/';
 
 @function path($url) {
     @return '#{$root}#{$url}';

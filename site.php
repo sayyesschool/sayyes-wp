@@ -148,7 +148,6 @@ class SayYesSite extends Site {
         $context['JIVOSITE_KEY'] = JIVOSITE_KEY;
         $context['RECAPTCHA_KEY'] = RECAPTCHA_PUBLIC_KEY;
         $context['RECAPTCHA_SCORE'] = RECAPTCHA_SCORE;
-        $context['RECAPTCHA_SCORE'] = RECAPTCHA_SCORE;
         $context['RECAPTCHA_URL'] = $theme_url.'/recaptcha.php';
         $context['REQUEST_URL'] = $theme_url.'/request.php';
         $context['SITE_URL'] = $site_url;

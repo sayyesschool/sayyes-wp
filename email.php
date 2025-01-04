@@ -40,7 +40,7 @@ function send_email_builtin($from, $to, $subject, $message) {
     $headers .= "Content-Type: text/html; charset=utf-8\r\n";
     $headers .= "Organization: Школа SAY YES\r\n";
 	$headers .= "From: Сайт SAY YES <".$from.">\r\n";
-	$headers .= "Reply-To: Школа SAY YES <info@sayes.ru>\r\n";
+	$headers .= "Reply-To: Школа SAY YES <info@sayyes.school>\r\n";
     $headers .= "X-Mailer: E-mail from Say Yes website \r\n";
     
     return mail($to, $subject, $message, $headers);

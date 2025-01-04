@@ -6,7 +6,7 @@ try {
 
     $name = isset($data['name']) ? $data['name'] : '';
     $email = isset($data['email']) ? $data['email'] : '';
-    $recipient = isset($data['recipient']) ? $data['recipient'] : 'info@sayes.ru';
+    $recipient = isset($data['recipient']) ? $data['recipient'] : 'info@sayyes.school';
     $level = isset($data['level']) ? $data['level'] : null;
     $questions = isset($data['questions']) ? $data['questions'] : null;
     
@@ -59,7 +59,7 @@ function getHtml($name, $email, $level, $questions, $is_admin = false) {
         $output .= '</div><hr>';
     }
 
-    $output .= 'Хотите перейти на уровень выше за 3 месяца обучения по методике "Английский до автоматизма"? <b><a href="https://free.sayes.ru">Оставьте заявку на тестирование и пробный урок</a></b> в группе вашего уровня и испытайте наш метод обучения на себе!';
+    $output .= 'Хотите перейти на уровень выше за 3 месяца обучения по методике "Английский до автоматизма"? <b><a href="https://free.sayyes.school">Оставьте заявку на тестирование и пробный урок</a></b> в группе вашего уровня и испытайте наш метод обучения на себе!';
     
     $output .= '<p>Have a nice day!</p><p>SAY YES! English School</p></body></html>';
 
