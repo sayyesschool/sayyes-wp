@@ -60,7 +60,7 @@ export function submitResults(data) {
         content: params.get('utm_content')
     };
 
-    data.utm = Object.keys(utm).filter(Boolean).length ? utm : undefined;
+    data.utm = Object.values(utm).filter(Boolean).length ? utm : undefined;
 
     return fetch(window.TEST_SUBMIT_URL, {
         method: 'post',
