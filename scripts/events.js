@@ -37,9 +37,28 @@ export function setupEvents({ callbackModal, errorModal, requestModal, successMo
         // fbq('track', 'Lead');
     });
 
+    window.addEventListener('test.open', () => {
+        window?.ym(YANDEX_METRIKA_COUNTER, 'reachGoal', 'test.open');
+    });
+
+    window.addEventListener('test.start', () => {
+        window?.ym(YANDEX_METRIKA_COUNTER, 'reachGoal', 'test.start');
+    });
+
+    window.addEventListener('test.end', () => {
+        window?.ym(YANDEX_METRIKA_COUNTER, 'reachGoal', 'test.end');
+    });
+
     window.addEventListener('test.submit', () => {
+        window?.ym(YANDEX_METRIKA_COUNTER, 'reachGoal', 'test.submit');
+
         successModal.setTitle('Результаты были отправлены на указанный Вами почтовый адрес.');
         successModal.setDescription('P.S. Если письма нет во Входящих, проверьте Спам!');
+        successModal.setContent(`
+            <p>И не забудьте подписаться на наш канал в Телеграм, чтобы прокачивать английский регулярно</p>
+            <a href="https://t.me/sayyes2english" target="_blank" class="btn btn--black btn--full">Подписаться</a>
+        `);
+
         successModal.open();
 
         successModal.on('close', () => {

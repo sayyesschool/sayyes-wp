@@ -1,23 +1,31 @@
+import { useCallback } from 'preact/hooks';
+
 import Loading from './components/Loading';
+import Form from './components/Form';
 import Main from './components/Main';
-import Results from './components/Results';
 import { useTest } from './hooks/test';
 
-export default function App() {
+export default function App({ onEnd, onSubmit }) {
     const {
-        data,
-        results,
+        questions,
         isCompleted,
         isLoading,
-        setResults
+        setAnswers,
+        submitResults
     } = useTest();
 
-    return (
-        isLoading ? <Loading /> :
-        isCompleted ? <Results results={results} /> :
-        <Main
-            questions={data}
-            onComplete={setResults}
-        />
-    );
+    const handleEnd = useCallback(answers => {
+        setAnswers(answers);
+        onEnd?.();
+    }, [onEnd]);
+
+    const handleSubmit = useCallback(data => {
+        return submitResults(data).then(() => onSubmit?.());
+    }, [submitResults, onSubmit]);
+
+    return isLoading 
+        ? <Loading />
+        : !isCompleted
+            ? <Main questions={questions} onEnd={handleEnd} />
+            : <Form onSubmit={handleSubmit} />;
 }

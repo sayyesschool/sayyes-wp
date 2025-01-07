@@ -2,9 +2,8 @@ import { useState } from 'preact/hooks';
 
 import Stepper from './Stepper';
 import Item from './Item';
-import { isComplete, getResults } from '../helpers/test'
 
-export default function Main({ questions, onComplete }) {
+export default function Main({ questions, onEnd }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [answers, setAnswers] = useState([]);
 
@@ -19,14 +18,20 @@ export default function Main({ questions, onComplete }) {
         setCurrentIndex(i => i + 1);
     };
 
-    const handleComplete = () => {
-        onComplete(getResults(questions, answers));
+    const handleEnd = () => {
+        onEnd(answers);
     };
 
     const currentQuestion = questions[currentIndex];
     const currentAnswer = answers[currentIndex];
     const totalNumberOfQuestions = questions.length;
     const answeredNumberOfQuestions = currentIndex + 1;
+    const questionsCount = questions.length;
+    const answersCount = answers.length;
+    const isComplete = 
+        answersCount > 0 &&
+        questionsCount > 0 &&
+        answersCount === questionsCount;
 
     return (
         <article class="test-main">
@@ -53,7 +58,7 @@ export default function Main({ questions, onComplete }) {
                 {isComplete(questions, answers) ?
                     <button
                         class="btn btn-primary"
-                        onClick={handleComplete}
+                        onClick={handleEnd}
                     >
                         Завершить тест
                     </button>

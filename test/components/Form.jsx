@@ -1,9 +1,7 @@
 import { useState } from 'preact/hooks';
 import cn from 'classnames';
 
-import { submitResults } from '../helpers/test';
-
-export default function Results({ results = {} }) {
+export default function Form({ onSubmit }) {
     const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [state, setState] = useState();
@@ -11,13 +9,12 @@ export default function Results({ results = {} }) {
     const handleSubmit = event => {
         event.preventDefault();
 
-        setState('sending');
+        setState('loading');
 
-        submitResults({
+        onSubmit({
             name,
             email,
-            level: results.level,
-            questions: results.questions
+            results
         }).then(() => {
             setState('sent');
         }).catch(() => {
@@ -26,7 +23,7 @@ export default function Results({ results = {} }) {
     }
 
     const isValid = name && email;
-    const isSending = state === 'sending';
+    const isLoading = state === 'loading';
 
     return (
         <section class="test-results">
@@ -61,7 +58,7 @@ export default function Results({ results = {} }) {
                             />
                         </div>
 
-                        <button class={cn('btn btn--black btn--full', isSending && 'btn--loading')} disabled={!isValid}>Получить результаты</button>
+                        <button class={cn('btn btn--black btn--full', isLoading && 'btn--loading')} disabled={!isValid}>Получить результаты</button>
 
                         <small class="text text--small">Оставляя заявку, вы принимаете <a class="link link--underlined" href={window.AGREEMENT_URL}>Пользовательское соглашение</a> и даете согласие на обработку своих персональных данных на условиях <a class="link link--underlined" href={window.POLICY_URL}>Политики конфиденциальности</a>.</small>
                     </form>
