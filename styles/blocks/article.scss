@@ -1,0 +1,40 @@
+.article {
+    max-width: 1024px;
+    padding-bottom: 4rem;
+    line-height: 1.4;
+
+    header + section,
+    section + section {
+        margin-top: 2rem;
+    }
+
+    h1 {
+        font-size: 42px;
+        line-height: 40px;
+        font-weight: 700;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    ul,
+    ol,
+    p:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+
+    ul,
+    ol {
+        list-style: inside;
+    }
+
+    li:not(:last-child) {
+        margin-bottom: .5rem;
+    }
+
+    p a {
+        color: var(--primary-color);
+        text-decoration: underline;
+    }
+}

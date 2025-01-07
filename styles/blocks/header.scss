@@ -3,6 +3,12 @@
 @use 'mq';
 
 .header {
+	--header-max-width: 1280px;
+	--header-background-color: #{$dark-purple};
+    --header-font-color: #{$white};
+	--header-border-radius: #{$border-radius-sm};
+	--header-blur: none;
+
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -16,18 +22,19 @@
 		width: 1280px;
 		height: 65px;
 		margin: 0 auto;
-		border-radius: $border-radius-sm;
-		background-color: $dark-purple;
-		color: $white;
+		border-radius: var(--header-border-radius);
+		background-color: var(--header-background-color);
+		color: var(--header-font-color);
 		transition: 0.2s linear all;
 	}
 
 	&__container {
-		max-width: 1280px;
+		max-width: var(--header-max-width);
 		height: 100%;
 		margin: 0 auto;
 		display: flex;
 		align-items: center;
+		justify-content: space-between;
 		gap: 20px;
 		padding: 0 20px;
 		transition: 0.3s all linear;
@@ -43,6 +50,7 @@
 	}
 
 	&__logo {
+		display: inline-flex;
 		flex-shrink: 0;
 	}
 
@@ -86,6 +94,12 @@
 	&__trial-lesson {
 		margin: 10px auto 0;
     	width: calc(100% - 40px);
+	}
+
+	&--blurred {
+		&__main {
+			backdrop-filter: var(--header-blur);
+		}
 	}
 
 	&--expanded & {

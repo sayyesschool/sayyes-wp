@@ -3,15 +3,21 @@
 @use 'mq';
 
 .footer {
-	padding: 40px 20px 20px;
-	background-color: $white;
+	--footer-max-width: 1280px;
+	--footer-padding: 40px 20px 20px;
+	--footer-background-color: #{$background-color};
+    --footer-font-color: #{$font-color};
+
+	background-color: var(--footer-background-color);
+	color: var(--footer-font-color);
 	font-size: 16px;
 	line-height: 15px;
 
 	&__container {
 		position: relative;
-		max-width: $container-max-width;
+		max-width: var(--footer-max-width);
 		margin: 0 auto;
+		padding: var(--footer-padding);
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
@@ -19,6 +25,8 @@
 
 	&__row {
 		display: flex;
+		align-items: center;
+		justify-content: space-between;
 		gap: 20px;
 	}
 

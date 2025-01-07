@@ -73,6 +73,12 @@
 		margin-bottom: 80px;
 	}
 
+	&--card & {
+		&__container {
+			padding: calc(var(--section-padding) * 1.5) 0;
+		}
+	}
+
 	&--centered & {
 		&__title,
 		&__description {
