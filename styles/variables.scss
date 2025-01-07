@@ -17,11 +17,14 @@ $red: #e71919;
 
 $primary-color: $purple;
 $secondary-color: $yellow;
+
 $body-color: $pearl-white;
+$background-color: $white;
 $font-color: $black;
 
 $container-max-width: 1156px;
 
+// TODO: Remove
 $border-radius-xs: 10px;
 $border-radius-sm: 20px;
 $border-radius-md: 30px;
@@ -31,6 +34,16 @@ $border-radius: $border-radius-md;
 
 $dirs: (top, right, bottom, left);
 $sizes: (xs, sm, md, lg, xl);
+
+$border-radius: (
+    xxs: 5px,
+    xs: 10px,
+    s: 15px,
+    m: 20px,
+    l: 30px,
+    xl: 40px,
+    xxl: 50px
+);
 
 $spacing: (
     xxs: 5px,
@@ -50,6 +63,7 @@ $breakpoints: (
 	xl: 1280px
 );
 
+// TODO: Remove
 $breakpoint-xl: 1300px;
 $breakpoint-lg: 1160px;
 $breakpoint-md: 1024px;

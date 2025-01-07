@@ -9,6 +9,19 @@
 	box-sizing: border-box;
 }
 
+:root {
+    --font-family: #{$font-family};
+	
+    --primary-color: #{$primary-color};
+    --on-primary-color: #{$white};
+    --secondary-color: #{$secondary-color};
+    --on-secondary-color: #{$black};
+	
+    --body-color: #{$body-color};
+    --background-color: #{$background-color};
+    --font-color: #{$font-color};
+}
+
 body {
 	background-color: $body-color;
 	color: $font-color;

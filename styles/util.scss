@@ -82,6 +82,22 @@
         margin-bottom: auto;
     }
 
+    &t-auto {
+        margin-top: auto;
+    }
+
+    &r-auto {
+        margin-right: auto;
+    }
+
+    &b-auto {
+        margin-bottom: auto;
+    }
+
+    &l-auto {
+        margin-left: auto;
+    }
+
     @each $dir in $dirs {
         @each $size, $value in $spacing {
             &#{string.slice($dir, 0, 1)}-#{$size} {
