@@ -1,0 +1,13 @@
+@use 'global' as *;
+
+.textarea {
+    display: block;
+    width: 100%;
+    min-height: 150px;
+    padding: 15px 20px;
+    border: none;
+    @include border-radius;
+    font-family: $font-family;
+    font-weight: 500;
+    resize: none;
+}

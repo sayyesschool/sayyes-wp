@@ -18,19 +18,20 @@
 	color: $black;
 	font-weight: 600;
 	font-size: 14px;
-	border: 2px solid $black;
 	border-radius: $border-radius-xs;
 	white-space: nowrap;
 
-	&--no-border {
-		border: none;
+	&--outlined {
+		border: 2px solid currentColor;
 	}
 
 	&--yellow {
 		background-color: $yellow;
+		color: $black;
 	}
 
   	&--purple {
 		background-color: $violet;
+		color: $white;
 	}
 }
