@@ -8,28 +8,22 @@
 @use './functions' as *;
 @use './variables' as *;
 
-$bp-xl: map-get($breakpoints, 'xl');
-$bp-lg: map-get($breakpoints, 'lg');
-$bp-md: map-get($breakpoints, 'md');
-$bp-sm: map-get($breakpoints, 'sm');
-$bp-xs: map-get($breakpoints, 'xs');
-
 $queries: (
     '< xs': '(max-width: #{$bp-xs - 1})',
     'xs': '(min-width: #{$bp-xs})',
-    'xs!': '(min-width: #{$bp-xs}) and max-width: #{$bp-sm - 1})',
+    'xs!': '(min-width: #{$bp-xs}) and max-width: #{$bp-s - 1})',
 
-    '< sm': '(max-width: #{$bp-sm - 1})',
-    'sm': '(min-width: #{$bp-sm})',
-    'sm!': '(min-width: #{$bp-sm}) and (max-width: #{$bp-md - 1})',
+    '< sm': '(max-width: #{$bp-s - 1})',
+    'sm': '(min-width: #{$bp-s})',
+    'sm!': '(min-width: #{$bp-s}) and (max-width: #{$bp-m - 1})',
 
-    '< md': '(max-width: #{$bp-md - 1})',
-    'md': '(min-width: #{$bp-md})',
-    'md!': '(min-width: #{$bp-md}) and (max-width: #{$bp-lg - 1})',
+    '< md': '(max-width: #{$bp-m - 1})',
+    'md': '(min-width: #{$bp-m})',
+    'md!': '(min-width: #{$bp-m}) and (max-width: #{$bp-l - 1})',
 
-    '< lg': '(max-width: #{$bp-lg - 1})',
-    'lg': '(min-width: #{$bp-lg})',
-    'lg!': '(min-width: #{$bp-lg}) and (max-width: #{$bp-xl - 1})',
+    '< lg': '(max-width: #{$bp-l - 1})',
+    'lg': '(min-width: #{$bp-l})',
+    'lg!': '(min-width: #{$bp-l}) and (max-width: #{$bp-xl - 1})',
 
     '< xl': '(max-width: #{$bp-xl - 1})',
     'xl': '(min-width: #{$bp-xl})'
@@ -114,20 +108,20 @@ $queries: (
     @if list.length($dirs) > 0 {
         @each $dir in $dirs {
             @include mq.to(lg) {
-                border-#{$dir}-radius: $border-radius-sm;
+                border-#{$dir}-radius: $br-s;
             }
             
             @include mq.from(lg) {
-                border-#{$dir}-radius: $border-radius-md;
+                border-#{$dir}-radius: $br-m;
             }
         }
     } @else {
         @include mq.to(lg) {
-            border-radius: $border-radius-sm;
+            border-radius: $br-s;
         }
         
         @include mq.from(lg) {
-            border-radius: $border-radius-md;
+            border-radius: $br-m;
         }
     }
 }
@@ -212,7 +206,7 @@ $queries: (
             bottom: 0;
             left: 0;
             box-shadow: 0px -30px 20px -10px $white inset;
-            border-radius: 0 0 $border-radius-sm $border-radius-sm;
+            border-radius: 0 0 $br-m $br-m;
         }
     }
 

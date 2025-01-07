@@ -5,10 +5,9 @@
 @use 'mixins' as *;
 @use 'variables' as *;
 
-
-// Dimensions
-
-.h {
+// height
+.h,
+.height {
     &-auto {
         height: auto;
     }
@@ -25,7 +24,7 @@
 
     &-33
     &-third {
-        height: 33.333333%;
+        height: 33.33%;
     }
 
     &-25,
@@ -34,7 +33,9 @@
     }
 }
 
-.w {
+// width
+.w,
+.width {
     &-auto {
         width: auto;
     }
@@ -51,7 +52,7 @@
 
     &-33
     &-third {
-        width: 33.333333%;
+        width: 33.33%;
     }
 
     &-25,
@@ -60,9 +61,9 @@
     }
 }
 
-// Margin
-
-.m {
+// margin
+.m,
+.margin {
     &-0,
     &-none {
         margin: 0;
@@ -107,9 +108,9 @@
     }
 }
 
-// Padding
-
-.p {
+// padding
+.p,
+.padding {
     @each $dir in $dirs {
         @each $size, $value in $spacing {
             &#{string.slice($dir, 0, 1)}-#{$size} {
@@ -119,15 +120,40 @@
     }
 }
 
-// Gap
-
-.g,
+// gap
+.g
 .gap {
 	@each $size, $value in $spacing {
 		&-#{$size} {
 			gap: $value;
 		}
 	}
+}
+
+// row gap
+.gr,
+.gap-row,
+.rg,
+.row-gap {
+	@each $size, $value in $spacing {
+		&-#{$size} {
+			row-gap: $value;
+		}
+	}
+}
+
+// column gap
+.gc,
+.gap-col,
+.gap-column,
+.cg,
+.col-gap,
+.column-gap {
+    @each $size, $value in $spacing {
+        &-#{$size} {
+            column-gap: $value;
+        }
+    }
 }
 
 .hidden {

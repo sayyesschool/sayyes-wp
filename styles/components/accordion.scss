@@ -1,6 +1,5 @@
+@use 'global' as *;
 @use 'mq';
-@use 'functions' as *;
-@use 'variables' as *;
 
 .accordion {
 	display: flex;
@@ -15,7 +14,7 @@
 .accordion-item {
 	padding: 20px 30px;
 	background-color: $white;
-	border-radius: $border-radius-sm;
+	@include border-radius;
 	transition: 0.2s linear padding;
 	cursor: pointer;
 

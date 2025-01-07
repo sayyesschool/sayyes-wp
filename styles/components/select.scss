@@ -19,7 +19,7 @@
 		padding: 10px 35px 10px 20px;
 		transition: 0.3s ease;
 		background-color: $white;
-		border-radius: $border-radius-sm;
+		border-radius: $br-m;
 		border: none;
 		text-align: left;
 		font-weight: 600;
@@ -43,7 +43,7 @@
 		width: 100%;
 		padding: 5px 0;
 		background-color: $white;
-		border-radius: $border-radius-sm;
+		border-radius: $br-m;
 		transition: 0.3s ease;
 		transform: translateY(-25%) scaleY(0);
 		transform-origin: top;
@@ -64,7 +64,7 @@
 
 	&--active & {
 		&__button {
-			border-radius: $border-radius-sm $border-radius-sm 0 0;
+			border-radius: $br-m $br-m 0 0;
 		}
 
 		&__arrow {
@@ -72,7 +72,7 @@
 		}
 
 		&__list {
-			border-radius: 0 0 $border-radius-sm $border-radius-sm;
+			border-radius: 0 0 $br-m $br-m;
 			transform: translateY(0) scaleY(1);
 			opacity: 1;
 			visibility: visible;

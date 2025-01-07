@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 $font-family: 'Raleway', 'Open Sans', 'Helvetica', Arial, sans-serif;
 
 $black: #262626;
@@ -24,18 +26,10 @@ $font-color: $black;
 
 $container-max-width: 1156px;
 
-// TODO: Remove
-$border-radius-xs: 10px;
-$border-radius-sm: 20px;
-$border-radius-md: 30px;
-$border-radius-lg: 40px;
-$border-radius-xl: 50px;
-$border-radius: $border-radius-md;
-
 $dirs: (top, right, bottom, left);
 $sizes: (xs, sm, md, lg, xl);
 
-$border-radius: (
+$border-radii: (
     xxs: 5px,
     xs: 10px,
     s: 15px,
@@ -44,6 +38,14 @@ $border-radius: (
     xl: 40px,
     xxl: 50px
 );
+
+$br-xxs: map-get($border-radii, 'xxs');
+$br-xs: map-get($border-radii, 'xs');
+$br-s: map-get($border-radii, 's');
+$br-m: map-get($border-radii, 'm');
+$br-l: map-get($border-radii, 'l');
+$br-xl: map-get($border-radii, 'xl');
+$br-xxl: map-get($border-radii, 'xxl');
 
 $spacing: (
     xxs: 5px,
@@ -55,13 +57,27 @@ $spacing: (
     xxl: 50px
 );
 
+$sp-xxs: map-get($spacing, 'xxs');
+$sp-xs: map-get($spacing, 'xs');
+$sp-s: map-get($spacing, 's');
+$sp-m: map-get($spacing, 'm');
+$sp-l: map-get($spacing, 'l');
+$sp-xl: map-get($spacing, 'xl');
+$sp-xxl: map-get($spacing, 'xxl');
+
 $breakpoints: (
 	xs: 360px,
-	sm: 540px,
-	md: 768px,
-	lg: 1024px,
+	s: 540px,
+	m: 768px,
+	l: 1024px,
 	xl: 1280px
 );
+
+$bp-xl: map-get($breakpoints, 'xl');
+$bp-l: map-get($breakpoints, 'l');
+$bp-m: map-get($breakpoints, 'm');
+$bp-s: map-get($breakpoints, 's');
+$bp-xs: map-get($breakpoints, 'xs');
 
 // TODO: Remove
 $breakpoint-xl: 1300px;

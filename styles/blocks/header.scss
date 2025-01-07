@@ -6,7 +6,7 @@
 	--header-max-width: 1280px;
 	--header-background-color: #{$dark-purple};
     --header-font-color: #{$white};
-	--header-border-radius: #{$border-radius-sm};
+	--header-border-radius: #{$br-m};
 	--header-blur: none;
 
 	position: fixed;
@@ -136,7 +136,7 @@
 			height: auto;
 			margin: 0 10px;
 			padding: 20px 0;
-			border-radius: $border-radius-sm;
+			border-radius: $br-m;
 		}
 	}
 

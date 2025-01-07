@@ -401,7 +401,7 @@
 		.list-item  {
 			width: fit-content;
 			max-width: none;
-			border-radius: $border-radius;
+			border-radius: $br-l;
 			padding: 8px 10px;
 			background-color: $white;
 			@include text.body2($responsive: false);

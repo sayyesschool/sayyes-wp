@@ -26,7 +26,7 @@
 	display: flex;
 	gap: 30px;
 	background-color: $white;
-	border-radius: $border-radius;
+	@include border-radius;
 
 	@include mq.from(sm) {
 		padding: 30px;
@@ -109,7 +109,7 @@
 		display: inline-block;
 		align-items: center;
 		padding: 0 10px;
-		border-radius: $border-radius-sm;
+		border-radius: $br-m;
 		background-color: $linen;
 		color: $purple;
 		vertical-align: middle;

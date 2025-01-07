@@ -51,7 +51,7 @@
 	.card__media &__age-tag {
 		bottom: 0;
 		left: 0;
-		border-top-right-radius: $border-radius-sm;
+		border-top-right-radius: $br-m;
 		@include border-radius((bottom-left));
 	}
 
@@ -59,7 +59,7 @@
 		display: none;
 		bottom: 46px;
 		right: -47px;
-		border-top-right-radius: $border-radius-sm;
+		border-top-right-radius: $br-m;
 		transform: rotate(-90deg);
 
 		.card--black & {
