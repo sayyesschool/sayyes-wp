@@ -141,7 +141,7 @@
 	&--white &__container,
 	&--purple &__container,
 	&--yellow &__container {
-		padding-top: calc(var(--section-padding) * 1.5);
-		padding-bottom: calc(var(--section-padding) * 1.5);
+		padding: calc(var(--section-padding) * 1.5) 0;
+		padding: calc(var(--section-padding) * 1.5) 0;
 	}
 }
