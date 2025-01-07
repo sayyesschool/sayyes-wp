@@ -121,7 +121,7 @@
 }
 
 // gap
-.g
+.g,
 .gap {
 	@each $size, $value in $spacing {
 		&-#{$size} {

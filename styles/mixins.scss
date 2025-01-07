@@ -29,14 +29,10 @@ $queries: (
     'xl': '(min-width: #{$bp-xl})'
 );
 
-@mixin var($name, $value) {
-    #{if(is-var-name($name), $name, '--#{$name}')}: #{$value};
-}
-
-@mixin vars($vars) {
-    @each $name, $value in $vars {
-        @include var($name, $value);
-    }
+@mixin breakpoint($bp) {
+	@media (max-width: $bp) {
+		@content;
+	}
 }
 
 @mixin mq($bp) {
@@ -51,10 +47,14 @@ $queries: (
     }
 }
 
-@mixin breakpoint($bp) {
-	@media (max-width: $bp) {
-		@content;
-	}
+@mixin var($name, $value) {
+    #{if(is-var-name($name), $name, '--#{$name}')}: #{$value};
+}
+
+@mixin vars($vars) {
+    @each $name, $value in $vars {
+        @include var($name, $value);
+    }
 }
 
 @mixin caption($text, $position: after) {

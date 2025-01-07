@@ -96,9 +96,9 @@
     	width: calc(100% - 40px);
 	}
 
-	&--blurred {
+	&--blurred & {
 		&__main {
-			backdrop-filter: var(--header-blur);
+			backdrop-filter: blur(var(--header-blur));
 		}
 	}
 

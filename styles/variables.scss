@@ -68,8 +68,11 @@ $sp-xxl: map-get($spacing, 'xxl');
 $breakpoints: (
 	xs: 360px,
 	s: 540px,
+	sm: 540px,
 	m: 768px,
+	md: 768px,
 	l: 1024px,
+	lg: 1024px,
 	xl: 1280px
 );
 
