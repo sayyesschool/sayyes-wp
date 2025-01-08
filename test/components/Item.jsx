@@ -32,8 +32,8 @@ export default function Item({ question, answer, onAnswer }) {
                             <Radio
                                 name="option"
                                 value={option}
-                                label={option}
-                                checked={option === answer}
+                                label={option.content}
+                                checked={option.content === answer}
                                 onClick={handleClick}
                             />
                         )}
