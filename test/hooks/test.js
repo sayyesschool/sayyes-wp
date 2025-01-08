@@ -14,10 +14,6 @@ export function useTest() {
     }, []);
 
     const submitResults = useCallback(data => {
-        const results = questions.map((question, index) => ({
-            ...question,
-            userAnswer: answers[index]
-        }));
         const utm = getUTM();
 
         return fetch(window.TEST_SUBMIT_URL, {
@@ -27,7 +23,7 @@ export function useTest() {
             },
             body: JSON.stringify({
                 ...data,
-                results,
+                answers,
                 utm
             })
         }).then(response => {
@@ -39,7 +35,7 @@ export function useTest() {
         }).catch(error => {
             emitEvent('test.error', error);
         });
-    }, [questions, answers]);
+    }, [answers]);
 
     const isLoading = !questions;
     const isCompleted = answers && answers.length === questions.length;
