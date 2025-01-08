@@ -32,6 +32,12 @@ export function useTest() {
                     throw data;
                 });
             }
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error(response.error);
+            }
+
+            return response.data;
         }).catch(error => {
             emitEvent('test.error', error);
         });
