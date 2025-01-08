@@ -17,7 +17,7 @@ export default function Form({ onSubmit }) {
         onSubmit({
             name,
             email,
-            results
+            goal
         }).then(() => {
             setState('sent');
         }).catch(() => {

@@ -10,7 +10,7 @@ export function useTest() {
     useEffect(() => {
         fetch(window.TEST_DATA_RUL)
             .then(response => response.json())
-            .then(data => setQuestions(data.questions));
+            .then(data => setQuestions(data.data.questions));
     }, []);
 
     const submitResults = useCallback(data => {
