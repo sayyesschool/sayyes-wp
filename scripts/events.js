@@ -53,10 +53,10 @@ export function setupEvents({ callbackModal, errorModal, requestModal, successMo
         window?.ym(YANDEX_METRIKA_COUNTER, 'reachGoal', 'test.submit');
 
         successModal.setTitle('Результаты были отправлены на указанный Вами почтовый адрес.');
-        successModal.setDescription('P.S. Если письма нет во Входящих, проверьте Спам!');
+        successModal.setDescription('Если письма нет во Входящих, проверьте Спам!');
         successModal.setContent(`
-            <p>И не забудьте подписаться на наш канал в Телеграм, чтобы прокачивать английский регулярно</p>
-            <a href="https://t.me/sayyes2english" target="_blank" class="btn btn--black btn--full">Подписаться</a>
+            <div class="flex-column gap-s"><p>И не забудьте подписаться на наш канал в Телеграм, чтобы прокачивать английский регулярно</p>
+            <a href="https://t.me/sayyes2english" target="_blank" class="btn btn--black btn--full">Подписаться</a></div>
         `);
 
         successModal.open();
