@@ -97,6 +97,9 @@ export default class Modal extends Component {
         this.emit('close');
         setTimeout(() => {
             toggleBodyScroll(false);
+            this.setTitle('');
+            this.setDescription('');
+            this.setContent('');
             this.emit('closed');
         }, MODAL_TIMEOUT);
     }
