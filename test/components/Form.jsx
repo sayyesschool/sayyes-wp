@@ -1,9 +1,12 @@
 import { useState } from 'preact/hooks';
 import cn from 'classnames';
 
+import Select from './Select';
+
 export default function Form({ onSubmit }) {
     const [name, setName] = useState();
     const [email, setEmail] = useState();
+    const [goal, setGoal] = useState();
     const [state, setState] = useState();
 
     const handleSubmit = event => {
@@ -56,11 +59,24 @@ export default function Form({ onSubmit }) {
                                 required
                                 onInput={event => setEmail(event.target.value)}
                             />
+
+                            <Select
+                                label="Цель изучения английского языка"
+                                name="goal"
+                                value={goal}
+                                options={[
+                                    'Для путешествий',
+                                    'Для учебы',
+                                    'Для работы',
+                                    'Для себя'
+                                ]}
+                                onChange={setGoal}
+                            />
                         </div>
 
                         <button class={cn('btn btn--black btn--full', isLoading && 'btn--loading')} disabled={!isValid}>Получить результаты</button>
 
-                        <small class="text text--small">Оставляя заявку, вы принимаете <a class="link link--underlined" href={window.AGREEMENT_URL}>Пользовательское соглашение</a> и даете согласие на обработку своих персональных данных на условиях <a class="link link--underlined" href={window.POLICY_URL}>Политики конфиденциальности</a>.</small>
+                        <small class="text text--small">Отправляя данные, вы даете согласие на обработку своих персональных данных на условиях <a class="link link--underlined" href={window.POLICY_URL}>Политики конфиденциальности</a>.</small>
                     </form>
                 </div>
             </div>

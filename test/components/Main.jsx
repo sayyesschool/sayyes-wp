@@ -55,7 +55,7 @@ export default function Main({ questions, onEnd }) {
             </section>
 
             <footer class="test-main__footer">
-                {isComplete(questions, answers) ?
+                {isComplete ?
                     <button
                         class="btn btn-primary"
                         onClick={handleEnd}
@@ -65,8 +65,8 @@ export default function Main({ questions, onEnd }) {
                     :
                     <button
                         class="btn btn-primary"
-                        onClick={handleNext}
                         disabled={!currentAnswer}
+                        onClick={handleNext}
                     >
                         Следующий вопрос
                     </button>
