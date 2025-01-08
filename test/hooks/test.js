@@ -32,6 +32,8 @@ export function useTest() {
                     throw data;
                 });
             }
+
+            return response.json();
         }).then(response => {
             if (!response.ok) {
                 throw new Error(response.error);
