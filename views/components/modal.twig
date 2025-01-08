@@ -25,9 +25,15 @@
 				</div>
 			{% endif %}
 
-			{% if block('content') is defined %}
+			{% if content or block('content') is defined %}
 				<div class="modal__content">
-					{{block('content')}}
+					{% if content %}
+						{{content}}
+					{% endif %}
+
+					{% if block('content') is defined %}
+						{{block('content')}}
+					{% endif %}
 				</div>
 			{% endif %}
 		</div>
