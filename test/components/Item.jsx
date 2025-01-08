@@ -31,7 +31,7 @@ export default function Item({ question, answer, onAnswer }) {
                         {question.options.map(option =>
                             <Radio
                                 name="option"
-                                value={option}
+                                value={option.content}
                                 label={option.content}
                                 checked={option.content === answer}
                                 onClick={handleClick}
