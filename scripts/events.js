@@ -56,7 +56,7 @@ export function setupEvents({ callbackModal, errorModal, requestModal, successMo
         successModal.setDescription('Если письма нет во Входящих, проверьте Спам!');
         successModal.setContent(`
             <div class="flex-column gap-s"><p>И не забудьте подписаться на наш канал в Телеграм, чтобы прокачивать английский регулярно</p>
-            <a href="https://t.me/sayyes2english" target="_blank" class="btn btn--black btn--full">Подписаться</a></div>
+            <a href="https://click.tgtrack.ru/9d1bc4ff1e4ba" target="_blank" class="btn btn--black btn--full">Подписаться</a></div>
         `);
 
         successModal.open();
