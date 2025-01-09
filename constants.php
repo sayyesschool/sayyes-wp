@@ -6,9 +6,9 @@ define('COMPANY_AGE', date('Y') - COMPANY_YEAR);
 
 define('JIVOSITE_KEY', 'N60okSsqRQ');
 
-define('SITE_DOMAIN', 'sayyes.school');
-define('SITE_EMAIL', 'site@sayyes.school');
-define('REQUEST_EMAIL', 'request@sayyes.school');
+define('SITE_DOMAIN', $_ENV['SERVER_NAME']);
+define('SITE_EMAIL', 'site@'.$_ENV['SERVER_NAME']);
+define('REQUEST_EMAIL', 'request@'.$_ENV['SERVER_NAME']);
 define('CRM_REQUEST_URL', 'https://sayes.t8s.ru/Api/V2/AddStudyRequest');
 
 define('SMTP_HOST', 'smtp.office365.com');
