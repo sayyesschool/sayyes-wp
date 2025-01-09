@@ -50,19 +50,4 @@
 		padding-left: 20px;
 		cursor: pointer;
 	}
-
-	&__description {
-		display: none;
-		padding-left: 20px;
-	}
-
-	@include mq.to(md) {
-		&__label {
-			display: none;
-		}
-
-		&__description {
-			display: block;
-		}
-	}
 }
