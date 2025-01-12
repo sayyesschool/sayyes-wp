@@ -72,15 +72,21 @@ export default class Modal extends Component {
     }
 
     setTitle(content) {
-        this.title.textContent = content;
+        if (this.title) {
+            this.title.textContent = content;
+        }
     }
 
     setDescription(content) {
-        this.description.textContent = content;
+        if (this.description) {
+            this.description.textContent = content;
+        }
     }
 
     setContent(content) {
-        this.content.innerHTML = content;
+        if (this.content) {
+            this.content.innerHTML = content;
+        }
     }
 
     open() {
