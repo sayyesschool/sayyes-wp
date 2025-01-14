@@ -14,8 +14,8 @@ define('RECAPTCHA_KEY', '6LenTzMiAAAAABvM_nwArCX5rtvJQ3TUQS8EsN1q');
 define('RECAPTCHA_SCORE', 0.5);
 
 define('REQUEST_EMAIL', 'request@'.$_ENV['SERVER_NAME']);
-define('REQUEST_URL', 'https://api.'.$_ENV['SERVER_NAME'].'/test');
+define('REQUEST_URL', 'https://api.'.$_ENV['SERVER_NAME'].'/request');
 
-define('TEST_URL', 'https://api.'.$_ENV['SERVER_NAME'].'/request');
+define('TEST_URL', 'https://api.'.$_ENV['SERVER_NAME'].'/test');
 
 define('YANDEX_METRIKA_COUNTER', 99371064);
