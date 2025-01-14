@@ -128,6 +128,7 @@ class SayYesSite extends Site {
             'agreement' => $site_url.'/agreement',
             'offer' => $site_url.'/dogovor-oferta',
             'policy' => $site_url.'/politika-konfidentsialnosti',
+            'test' => $site_url.'/online-test',
             'email' => 'mailto:'.$contacts['email'],
             'main_phone' => 'tel:'.$main_phone,
             'wa_phone' => 'https://api.whatsapp.com/send/?phone='.$wa_phone.'&text&type=phone_number&app_absent=0'
@@ -145,20 +146,19 @@ class SayYesSite extends Site {
         
         $context['COMPANY_NAME'] = COMPANY_NAME;
         $context['COMPANY_AGE'] = COMPANY_AGE;
+        $context['COMPANY_YEAR'] = COMPANY_YEAR;
         $context['JIVOSITE_KEY'] = JIVOSITE_KEY;
-        $context['RECAPTCHA_KEY'] = RECAPTCHA_PUBLIC_KEY;
+        $context['RECAPTCHA_URL'] = RECAPTCHA_URL;
+        $context['RECAPTCHA_KEY'] = RECAPTCHA_KEY;
         $context['RECAPTCHA_SCORE'] = RECAPTCHA_SCORE;
-        $context['RECAPTCHA_URL'] = $theme_url.'/recaptcha.php';
-        $context['REQUEST_URL'] = $theme_url.'/request.php';
+        $context['REQUEST_URL'] = REQUEST_URL;
+        $context['TEST_URL'] = TEST_URL;
+        $context['YANDEX_METRIKA_COUNTER'] = YANDEX_METRIKA_COUNTER;
+
         $context['SITE_URL'] = $site_url;
-        $context['THEME_URL'] = $theme_url;
-        $context['TEST_URL'] = $site_url.'/online-test';
-        $context['TEST_DATA_URL'] = 'https://api.'.SITE_DOMAIN.'/test';
-        $context['TEST_SUBMIT_URL'] = 'https://api.'.SITE_DOMAIN.'/test';
         $context['AGREEMENT_URL'] = $links['agreement'];
         $context['OFFER_URL'] = $links['offer'];
         $context['POLICY_URL'] = $links['policy'];
-        $context['YANDEX_METRIKA_COUNTER'] = YANDEX_METRIKA_COUNTER;
 
 		return $context;
 	}

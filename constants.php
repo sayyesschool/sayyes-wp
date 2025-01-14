@@ -8,16 +8,14 @@ define('JIVOSITE_KEY', 'N60okSsqRQ');
 
 define('SITE_DOMAIN', $_ENV['SERVER_NAME']);
 define('SITE_EMAIL', 'site@'.$_ENV['SERVER_NAME']);
-define('REQUEST_EMAIL', 'request@'.$_ENV['SERVER_NAME']);
-define('CRM_REQUEST_URL', 'https://sayes.t8s.ru/Api/V2/AddStudyRequest');
 
-define('SMTP_HOST', 'smtp.office365.com');
-define('SMTP_PORT', 587);
-define('SMTP_USER', 'o.polyakov@sayyes.school');
-define('SMTP_PASS', 'L-Kj96fnpne6fb.');
-
-define('RECAPTCHA_PUBLIC_KEY', '6LenTzMiAAAAABvM_nwArCX5rtvJQ3TUQS8EsN1q');
-define('RECAPTCHA_SECRET_KEY', '6LenTzMiAAAAAIevbqe4Mss9KmBRFMUVnZkgmhCb');
+define('RECAPTCHA_URL', 'https://api.'.$_ENV['SERVER_NAME'].'/recaptcha');
+define('RECAPTCHA_KEY', '6LenTzMiAAAAABvM_nwArCX5rtvJQ3TUQS8EsN1q');
 define('RECAPTCHA_SCORE', 0.5);
+
+define('REQUEST_EMAIL', 'request@'.$_ENV['SERVER_NAME']);
+define('REQUEST_URL', 'https://api.'.$_ENV['SERVER_NAME'].'/test');
+
+define('TEST_URL', 'https://api.'.$_ENV['SERVER_NAME'].'/request');
 
 define('YANDEX_METRIKA_COUNTER', 99371064);
