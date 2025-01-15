@@ -28,35 +28,35 @@
     <div class="request-form__contact">
         {% if children %}
             <div class="request-form__children">
-                <input class="input" type="text" name="child-name" placeholder="Имя ребёнка" required>
+                <input class="input" type="text" name="contact[childName]" placeholder="Имя ребёнка" required>
 
                 {% include 'components/select.twig' with {
                     name: 'age',
                     options: [
-                        'От 6 до 11 лет',
-                        'От 11 до 16 лет'
+                        { value: '6-11', content: 'От 6 до 11 лет' },
+                        { value: '11-16', content: 'От 11 до 16 лет' }
                     ]
                 } %}
             </div>
 
-            <input class="input" type="text" name="parent-name" placeholder="Имя родителя*" required>
+            <input class="input" type="text" name="contact[parentName]" placeholder="Имя родителя*" required>
         {% else %}
-            <input class="input" type="text" name="name" placeholder="Имя*" required>
+            <input class="input" type="text" name="contact[name]" placeholder="Имя*" required>
         {% endif %}
 
-        <input class="input" type="tel" name="phone" placeholder="*" required>
+        <input class="input" type="tel" name="contact[phone]" placeholder="*" required>
 
-        <input class="input" type="email" name="email" placeholder="Email*" required>
+        <input class="input" type="email" name="contact[email]" placeholder="Email*" required>
     </div>
 
     <div class="request-form__communication">
         {% include 'components/select.twig' with {
-            name: 'communication',
+            name: 'channel',
             label: 'Выберите удобный способ связи:',
             options: [
-                'Позвоните мне',
-                'Напишите мне в WhatsApp',
-                'Напишите мне в Telegram'
+                { value: 'call', content: 'Позвоните мне' },
+                { value: 'whatsapp', content: 'Напишите мне в WhatsApp' },
+                { value: 'telegram', content: 'Напишите мне в Telegram' }
             ]
         } %}
     </div>

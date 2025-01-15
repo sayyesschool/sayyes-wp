@@ -1,12 +1,12 @@
 <div class="select">
-	<input class="select__input" type="hidden" name="{{name}}" value="{{options[0]}}" {% if required %} required{% endif %}>
+	<input class="select__input" type="hidden" name="{{name}}" value="{{options[0].value}}" {% if required %} required{% endif %}>
 	
 	{% if label %}
 		<label class="select__label">{{label}}</label>
 	{% endif %}
 
 	<button class="select__button" type="button">
-		<span class="select__value">{{options[0]}}</span>
+		<span class="select__value">{{options[0].content}}</span>
 
 		<span class="select__arrow">
 			<svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -17,7 +17,7 @@
 
 	<ul class="select__list">
 		{% for option in options %}
-			<li class="select__option">{{option}}</li>
+			<li class="select__option" data-value="{{option.value}}">{{option.content}}</li>
 		{% endfor %}
 	</ul>
 </div>

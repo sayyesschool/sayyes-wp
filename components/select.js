@@ -35,10 +35,11 @@ export default class Select extends Component {
 	handleOptionClick(event) {
 		event.preventDefault();
 
-		const { textContent } = event.target;
+		const value = event.target.dataset.value;
+		const content = event.target.textContent;
 
-		this.input.value = textContent;
-		this.value.textContent = textContent;
+		this.input.value = value;
+		this.value.textContent = content;
 		this.element.classList.remove(Select.classes.active);
 	}
 }

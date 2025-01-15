@@ -4,14 +4,14 @@
     <input class="input" type="tel" name="phone" placeholder="+7 (999) 999-99-99" required>
 
     {% include 'components/select.twig' with {
-        name: 'communication',
-        label: 'Выберите удобный способ связи:',
-        options: [
-            'Позвоните мне',
-            'Напишите мне в WhatsApp',
-            'Напишите мне в Telegram'
-        ]
-    } %}
+            name: 'channel',
+            label: 'Выберите удобный способ связи:',
+            options: [
+                { value: 'call', content: 'Позвоните мне' },
+                { value: 'whatsapp', content: 'Напишите мне в WhatsApp' },
+                { value: 'telegram', content: 'Напишите мне в Telegram' }
+            ]
+        } %}
 
     <button class="btn btn--full" type="submit">Оставить заявку</button>
 
