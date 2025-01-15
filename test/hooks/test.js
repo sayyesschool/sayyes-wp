@@ -8,7 +8,7 @@ export function useTest() {
     const [answers, setAnswers] = useState();
 
     useEffect(() => {
-        fetch(window.TEST_DATA_RUL)
+        fetch(window.TEST_URL)
             .then(response => response.json())
             .then(data => setQuestions(data.data.questions));
     }, []);
@@ -16,7 +16,7 @@ export function useTest() {
     const submitResults = useCallback(data => {
         const utm = getUTM();
 
-        return fetch(window.TEST_SUBMIT_URL, {
+        return fetch(window.TEST_URL, {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json; charset=utf-8'
