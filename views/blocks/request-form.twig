@@ -6,7 +6,7 @@
     {% if format %}
         <div class="request-form__format">
             {% include 'components/radio-group.twig' with {
-                name: 'format',
+                name: 'data.format',
                 label: 'Выберите желаемый формат обучения:',
                 items: [
                     {
@@ -30,10 +30,12 @@
     <div class="request-form__contact">
         {% if children %}
             <div class="request-form__children">
-                <input class="input" type="text" name="contact[childName]" placeholder="Имя ребёнка" required>
+                <input type="hidden" name="data.child" value="true">
+
+                <input class="input" type="text" name="data.childName" placeholder="Имя ребёнка" required>
 
                 {% include 'components/select.twig' with {
-                    name: 'age',
+                    name: 'data.childAge',
                     options: [
                         { value: '6-11', content: 'От 6 до 11 лет' },
                         { value: '11-16', content: 'От 11 до 16 лет' }
@@ -41,7 +43,7 @@
                 } %}
             </div>
 
-            <input class="input" type="text" name="contact.parentName" placeholder="Имя родителя*" required>
+            <input class="input" type="text" name="contact.name" placeholder="Имя родителя*" required>
         {% else %}
             <input class="input" type="text" name="contact.name" placeholder="Имя*" required>
         {% endif %}
