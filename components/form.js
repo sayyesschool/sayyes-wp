@@ -29,7 +29,13 @@ export default class Form extends Component {
             const formData = new FormData(this.element);
             const data = Array.from(formData.entries())
                 .reduce((data, [key, value]) => {
-                    data[key] = value;
+                    if (key.includes('.')) {
+                        const [parent, child] = key.split('.');
+                        if (!data[parent]) data[parent] = {};
+                        data[parent][child] = value;
+                    } else {
+                        data[key] = value;
+                    }
                     return data;
                 }, {});
 

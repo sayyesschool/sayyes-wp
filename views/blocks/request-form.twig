@@ -39,14 +39,14 @@
                 } %}
             </div>
 
-            <input class="input" type="text" name="contact[parentName]" placeholder="Имя родителя*" required>
+            <input class="input" type="text" name="contact.parentName" placeholder="Имя родителя*" required>
         {% else %}
-            <input class="input" type="text" name="contact[name]" placeholder="Имя*" required>
+            <input class="input" type="text" name="contact.name" placeholder="Имя*" required>
         {% endif %}
 
-        <input class="input" type="tel" name="contact[phone]" placeholder="*" required>
+        <input class="input" type="tel" name="contact.phone" placeholder="*" required>
 
-        <input class="input" type="email" name="contact[email]" placeholder="Email*" required>
+        <input class="input" type="email" name="contact.email" placeholder="Email*" required>
     </div>
 
     <div class="request-form__communication">
