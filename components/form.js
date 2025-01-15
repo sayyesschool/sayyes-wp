@@ -1,5 +1,12 @@
 import Component from './component';
 
+const valueMap = {
+    'true': true,
+    'false': false,
+    'yes': true,
+    'no': false,
+};
+
 export default class Form extends Component {
     static name = 'form';
 
@@ -28,7 +35,9 @@ export default class Form extends Component {
 
             const formData = new FormData(this.element);
             const data = Array.from(formData.entries())
-                .reduce((data, [key, value]) => {
+                .reduce((data, [key, _value]) => {
+                    const value = valueMap[_value.toLowerCase()] || _value;
+
                     if (key.includes('.')) {
                         const [parent, child] = key.split('.');
                         if (!data[parent]) data[parent] = {};
@@ -52,7 +61,7 @@ export default class Form extends Component {
                     },
                     body: JSON.stringify({
                         ...data,
-                        recaptcha
+                        captcha: recaptcha.success,
                     })
                 })
                     .then(response => response.json())
