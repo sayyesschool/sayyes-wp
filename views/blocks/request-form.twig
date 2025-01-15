@@ -1,6 +1,8 @@
 {% set id = 'request-form-' ~ random() %}
 
 <form id="{{id}}" class="request-form form">
+    <input type="hidden" name="type" value="lesson">
+
     {% if format %}
         <div class="request-form__format">
             {% include 'components/radio-group.twig' with {
