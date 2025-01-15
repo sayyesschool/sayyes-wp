@@ -147,15 +147,18 @@ class SayYesSite extends Site {
         $context['COMPANY_NAME'] = COMPANY_NAME;
         $context['COMPANY_AGE'] = COMPANY_AGE;
         $context['COMPANY_YEAR'] = COMPANY_YEAR;
+
         $context['JIVOSITE_KEY'] = JIVOSITE_KEY;
-        $context['RECAPTCHA_URL'] = RECAPTCHA_URL;
+
         $context['RECAPTCHA_KEY'] = RECAPTCHA_KEY;
         $context['RECAPTCHA_SCORE'] = RECAPTCHA_SCORE;
+        $context['RECAPTCHA_URL'] = RECAPTCHA_URL;
+
         $context['REQUEST_URL'] = REQUEST_URL;
         $context['TEST_URL'] = TEST_URL;
+
         $context['YANDEX_METRIKA_COUNTER'] = YANDEX_METRIKA_COUNTER;
 
-        $context['SITE_URL'] = $site_url;
         $context['AGREEMENT_URL'] = $links['agreement'];
         $context['OFFER_URL'] = $links['offer'];
         $context['POLICY_URL'] = $links['policy'];
