@@ -10,7 +10,7 @@ document.querySelectorAll('input[type=tel]').forEach(input =>
         strictMode: true,
         separateDialCode: true,
         hiddenInput: telInputName => ({
-            phone: 'phone',
+            phone: 'contact.phone',
             country: 'country'
         }),
         customPlaceholder: (selectedCountryPlaceholder, selectedCountryData) =>
