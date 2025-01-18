@@ -29,6 +29,10 @@ export default class Form extends Component {
         event.preventDefault();
 
         setTimeout(() => {
+            this.element.querySelectorAll('.input').forEach(input => {
+                input.value = input.value.trim();
+            });
+
             const isValid = this.element.reportValidity();
 
             if (!isValid) return;
