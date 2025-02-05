@@ -116,12 +116,6 @@
 		&__share-link {
 			display: none;
 		}
-
-		.tabs {
-			&__content {
-				max-height: 300px;
-			}
-		}
 	}
 
 	@include mq.from(sm) {
@@ -133,6 +127,11 @@
 
 		&__details {
 			width: 60%;
+			display: flex;
+
+			.tabs {
+				position: relative;
+			}
 		}
 
 		&__share-link {
@@ -150,12 +149,6 @@
 
 			img {
 				width: 70%;
-			}
-		}
-
-		.tabs {
-			&__content {
-				max-height: 360px;
 			}
 		}
 	}
@@ -183,7 +176,6 @@
 
 			&__content {
 				padding: 30px;
-				max-height: 480px;
 			}
 		}
 	}
