@@ -52,10 +52,13 @@
 	}
 
 	.teacher-details {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+
 		&__section {
 			display: flex;
 			gap: 10px;
-			margin-bottom: 20px;
 		}
 
 		&__heading {
@@ -68,10 +71,6 @@
 	}
 
 	.teacher-reviews {
-		height: 329px;
-		padding: 20px 25px 25px;
-		overflow-y: auto;
-		background-color: $white;
 		border-radius: 0 0 $br-m $br-m;
 	
 		&__review {
