@@ -130,8 +130,6 @@
 			content: '';
 			@include spinner.styles($size: 24px);
 			position: absolute;
-			left: 50%;
-			transform: translate(-50%, -50%);
 		}
 	}
 }
