@@ -4,8 +4,8 @@
 @use 'mq';
 
 .modal {
-	--surface-max-width: 1024px;
-	--surface-max-height: 768px;
+	--modal-max-width: 1024px;
+	--modal-max-height: 768px;
 
 	width: 100%;
 	height: 100%;
@@ -28,6 +28,13 @@
 		transition: all 0.3s ease-in-out;
 		background-color: $pale-white;
 		@include border-radius;
+	}
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		overflow: hidden;
 
 		@include mq.to(sm) {
 			max-width: calc(100% - 20px);
@@ -35,16 +42,10 @@
 		}
 
 		@include mq.from(sm) {
-			max-width: var(--surface-max-width);
-			max-height: var(--surface-max-height);
+			max-width: var(--modal-max-width);
+			max-height: var(--modal-max-height);
 			margin: 20px;
 		}
-	}
-
-	&__body {
-		display: flex;
-		flex-direction: column;
-		gap: 20px;
 	}
 
 	&__title {
@@ -54,6 +55,11 @@
 	&__description {
 		margin-top: 10px;
 		@include text.body1;
+	}
+
+	&__content {
+		display: flex;
+    	overflow: hidden;
 	}
 
 	&__close {
