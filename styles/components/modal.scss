@@ -28,6 +28,10 @@
 		transition: all 0.3s ease-in-out;
 		background-color: $pale-white;
 		@include border-radius;
+
+		@include mq.from(sm) {
+			margin: 20px;
+		}
 	}
 
 	&__body {
@@ -44,7 +48,6 @@
 		@include mq.from(sm) {
 			max-width: var(--modal-max-width);
 			max-height: var(--modal-max-height);
-			margin: 20px;
 		}
 	}
 
