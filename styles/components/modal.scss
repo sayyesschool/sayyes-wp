@@ -28,7 +28,7 @@
 		transition: all 0.3s ease-in-out;
 		
 		@include mq.from(sm) {
-			margin: 20px;
+			margin: 25px;
 		}
 	}
 	
@@ -68,8 +68,8 @@
 
 	&__close {
 		position: absolute;
-		top: -15px;
-		right: -15px;
+		top: -20px;
+		right: -20px;
 		width: 40px;
 		height: 40px;
 		display: inline-flex;
