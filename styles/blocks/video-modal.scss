@@ -8,9 +8,11 @@
         display: block;
         background-color: $pale-white;
         @include border-radius;
+        aspect-ratio: 16/9;
 
         &--vertical {
             height: 80vh;
+            aspect-ratio: unset;
         }
     }
 }

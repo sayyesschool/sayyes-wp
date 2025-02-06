@@ -9,4 +9,8 @@
 
 .image {
     @include base;
+
+    &--16x9 {
+		aspect-ratio: 16/9;
+	}
 }

@@ -26,20 +26,20 @@
 		position: relative;
 		opacity: 0;
 		transition: all 0.3s ease-in-out;
-		background-color: $pale-white;
-		@include border-radius;
-
+		
 		@include mq.from(sm) {
 			margin: 20px;
 		}
 	}
-
+	
 	&__body {
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
+		background-color: $pale-white;
 		overflow: hidden;
-
+		@include border-radius;
+		
 		@include mq.to(sm) {
 			max-width: calc(100% - 20px);
 			max-height: calc(100% - 20px);

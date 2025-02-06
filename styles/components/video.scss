@@ -1,7 +1,6 @@
+@use 'global' as *;
 @use 'components/text';
-@use 'functions' as *;
-@use 'mixins' as *;
-@use 'variables' as *;
+@use 'components/spinner';
 
 .video {
 	position: relative;
@@ -50,6 +49,10 @@
 		@include text.handwritten;
 	}
 
+	&--16x9 {
+		aspect-ratio: 16/9;
+	}
+
 	&--framed &__media {
 		@include decoration('elements/video-frame.svg', after) {
 			top: -5%;
@@ -58,5 +61,10 @@
 			height: 110%;
 			background-size: cover;
 		}
+	}
+
+	&[data-loading],
+	&--loading {
+		@include loading-indicator(48px);
 	}
 }

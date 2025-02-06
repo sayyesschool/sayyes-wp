@@ -112,16 +112,14 @@ export class ImageModal extends Modal {
     constructor(props) {
         super(props);
 
+        this.image = this.getElement(`.${Modal.classes.body} .image`);
+
         this.handleClosed = this.handleClosed.bind(this);
     }
 
     open(event) {
         if (event.target.src) {
-            const image = document.createElement('img');
-            image.src = event.target.src;
-            image.className = 'image';
-            this.image = image;
-            this.body.appendChild(image);
+            this.image.src = event.target.src;
         }
 
         super.open(event);
@@ -129,13 +127,11 @@ export class ImageModal extends Modal {
 
     close(event) {
         super.close(event);
-        this.once('closed', () => {
-            this.body.removeChild(this.image);
-        });
+        this.once('closed', this.handleClosed);
     }
 
     handleClosed() {
-        this.body.removeChild(this.image);
+        this.image.src = '';
         this.off('closed', this.handleClosed);
     }
 }
@@ -176,9 +172,12 @@ export class VideoModal extends Modal {
             const video = this.video;
 
             video.src = videoUrl;
+            video.classList.add('video--loading');
             video.addEventListener('loadeddata', () => {
-                if (video.readyState >= 2)
+                if (video.readyState >= 2) {
+                    video.classList.remove('video--loading');
                     video.play();
+                }
             });
 
             this.media = video;
@@ -204,6 +203,7 @@ export class VideoModal extends Modal {
 
     handleClosed() {
         this.media.src = '';
+        this.media.classList.remove('video--loading');
         this.media.classList.remove('video--vertical');
         this.body.removeChild(this.media);
         this.off('closed', this.handleClosed);
