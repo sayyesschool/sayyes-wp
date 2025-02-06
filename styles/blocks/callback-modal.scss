@@ -3,9 +3,10 @@
 @use 'variables' as *;
 
 #callback-modal {
+    --modal-max-width: 960px;
+    
     .modal {
         &__surface {
-            max-width: 960px;
             display: flex;
 
             &::before {
@@ -20,6 +21,8 @@
         &__body {
             width: 60%;
             padding: 40px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
         }
     }
 }
