@@ -1,28 +1,29 @@
-@use 'functions' as *;
-@use 'mixins' as *;
-@use 'variables' as *;
+@use 'global' as *;
+@use 'mq';
 
 #callback-modal {
     --modal-max-width: 960px;
+
+    @include md.from(md) {
+        .modal {
+            &__surface {
+                display: flex;
     
-    .modal {
-        &__surface {
-            display: flex;
-
-            &::before {
-                content: '';
-                width: 40%;
-                border-radius: 0;
-			    @include border-radius((top-left, bottom-left));
-                background: image('pictures/anastasia-2.jpg') center center/cover no-repeat;
+                &::before {
+                    content: '';
+                    width: 40%;
+                    border-radius: 0;
+                    @include border-radius((top-left, bottom-left));
+                    background: image('pictures/anastasia-2.jpg') center center/cover no-repeat;
+                }
             }
-        }
-
-        &__body {
-            width: 60%;
-            padding: 40px;
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
+    
+            &__body {
+                width: 60%;
+                padding: 40px;
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
         }
     }
 }
