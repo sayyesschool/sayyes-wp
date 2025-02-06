@@ -4,6 +4,12 @@
 #callback-modal {
     --modal-max-width: 960px;
 
+    @include mq.to(md) {
+        &__body {
+            padding: 30px;
+        }
+    }
+
     @include mq.from(md) {
         .modal {
             &__surface {
