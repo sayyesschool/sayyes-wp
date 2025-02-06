@@ -4,7 +4,7 @@
 #callback-modal {
     --modal-max-width: 960px;
 
-    @include md.from(md) {
+    @include mq.from(md) {
         .modal {
             &__surface {
                 display: flex;
