@@ -234,7 +234,7 @@ $queries: (
     }
 }
 
-@include loading-indicator($size: 24px) {
+@mixin loading-indicator($size: 24px) {
     &::before {
         content: '';
         position: absolute;
