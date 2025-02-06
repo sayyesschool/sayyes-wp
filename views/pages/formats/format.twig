@@ -37,11 +37,11 @@
                 {% endfor %}
             </div>
 
-            <div class="text text--center">
-                <p class="asterisk-text">*Даты старта групп, точное расписание и информацию по действующим группам вы можете уточнить у менеджеров по телефонам:</p>
-
-                <p>8 499 650-53-47 / 8 925 091-64-16</p>
-            </div>
+            {% if sections.facts.note %}
+                <div class="text text--center">
+                    <p class="asterisk-text">{{sections.facts.note}}</p>
+                </div>
+            {% endif %}
         {% endblock %}
     {% endembed %}
 
@@ -147,7 +147,7 @@
     {% include 'sections/grouped-testimonials.twig' with {
         class: 'format-testimonials',
         title: sections.testimonials.title ?: 'Отзывы о формате <br>' ~ format.title,
-        description: 'За ' ~ COMPANY_AGE ~ ' работы, обучили более 10 000 человек и получили более 800 отзывов',
+        description: 'За ' ~ COMPANY_AGE ~ ' лет работы, обучили более 10 000 человек и получили более 800 отзывов',
         testimonials: sections.testimonials.items
     } %}
 
