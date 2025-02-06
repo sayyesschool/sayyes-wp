@@ -4,6 +4,7 @@
 @use 'sass:string';
 
 @use './components/text';
+@use './components/spinner';
 @use './mq';
 @use './functions' as *;
 @use './variables' as *;
@@ -230,5 +231,21 @@ $queries: (
     &::-webkit-scrollbar-thumb {
         background: $color;
         border-radius: 10%;
+    }
+}
+
+@include loading-indicator($size: 24px) {
+    &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: inherit;
+    }
+
+    &::after {
+        content: '';
+        @include spinner.styles($size);
+        position: absolute;
     }
 }
