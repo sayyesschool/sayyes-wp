@@ -1,3 +1,7 @@
 #teacher-modal {
     --modal-max-height: 640px;
+
+    .modal__content {
+        display: flex;
+    }
 }
