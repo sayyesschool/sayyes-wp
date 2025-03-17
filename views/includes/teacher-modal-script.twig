@@ -4,7 +4,7 @@
         slug: t.slug,
         name: t.name,
         imageUrl: t.thumbnail.src('medium'),
-        videoUrl: 'https://www.youtube.com/embed/' ~ t.video.youtube_id,
+        videoUrl: t.video.file_url ?? ('https://www.youtube.com/embed/' ~ t.video.youtube_id),
         content: t.content,
         experience: t.experience,
         education: t.education,
@@ -17,13 +17,13 @@
         return result;
     }, {});
 
-    const teahcersBySlug = Object.values(teachers).reduce((map, teacher) => {
+    const teachersBySlug = Object.values(teachers).reduce((map, teacher) => {
         map[teacher.slug] = teacher;
         return map;
     }, {});
 
     const teacherSlug = window.location.hash.slice(1);
-    const teacher = teahcersBySlug[teacherSlug];
+    const teacher = teachersBySlug[teacherSlug];
     const teacherBlock = document.querySelector('#teacher-modal .teacher-block');
     const teacherModal = new window.ui.Modal('#teacher-modal');
 
