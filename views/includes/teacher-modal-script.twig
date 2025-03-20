@@ -64,13 +64,13 @@
         videoImage.alt = teacher.name;
 
         const videoButton = video.querySelector('button');
-        if (teacher.video.url) {
+        if (teacher.video?.url) {
             videoButton.setAttribute('data-video-url', teacher.video.url);
-        } else if (teacher.video.file_url) {
+        } else if (teacher.video?.file_url) {
             videoButton.setAttribute('data-video-url', teacher.video.file_url);
-        } else if (teacher.video.youtube_id) {
+        } else if (teacher.video?.youtube_id) {
             videoButton.setAttribute('data-embed-url', `https://www.youtube.com/embed/${t.video.youtube_id}`);
-        } else if (teacher.video.embed_url) {
+        } else if (teacher.video?.embed_url) {
             videoButton.setAttribute('data-embed-url', teacher.video.embed_url);
         }
 
