@@ -8,5 +8,6 @@ $page->host = $host;
 
 $context['page'] = $page;
 $context['event'] = $page;
+$context['layout_class'] = 'page';
 
 Timber::render('pages/events/event.twig', $context);

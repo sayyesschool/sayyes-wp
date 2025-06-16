@@ -7,7 +7,7 @@ $course_type = $course->type();
 
 $context['page'] = $page;
 $context['course'] = $page;
-$context['layout_class'] = 'course-'.$course_type;
+$context['layout_class'] = 'page course-'.$course_type;
 
 if ($course_type == 'children') {
     $context['teachers'] = Timber::get_posts([
