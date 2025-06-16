@@ -7,7 +7,7 @@
 		{% if title %}
 			{{title}}
 		{% else %}
-			Запишитесь на {% if is_free == false %}{% else %}<span class="color-primary">бесплатный</span> пробный урок
+			Запишитесь на {% if is_free == false %}{% else %}<span class="color-primary">бесплатный</span>{% endif %} пробный урок
 		{% endif %}
 	{% endblock %}
 
