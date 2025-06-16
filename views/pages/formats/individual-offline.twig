@@ -1,6 +1,10 @@
 {% extends 'pages/formats/format.twig' %}
 
 {% set sections = {
+    main: {
+        button: false
+    },
+
     about: {
         title: 'Наша школа предлагает индивидуальные офлайн уроки под ваши цели и темп обучения.',
         content: [
@@ -95,5 +99,9 @@
                 answer: 'Предусмотрена рассрочка платежа на 20, 40 и 60 занятий: 50% предоплата, через 14 дней оставшиеся 50%.'
             }
         ]
+    },
+
+    trial_lesson: {
+        is_free: false
     }
 } %}
