@@ -157,7 +157,7 @@
     } %}
 
 	{% include 'sections/trial-lesson.twig' with {
-        is_free: sections.trial_lesson && sections.trial_lesson.is_free
+        is_free: sections.trial_lesson ? sections.trial_lesson.is_free : true
     } %}
 {% endblock %}
 
