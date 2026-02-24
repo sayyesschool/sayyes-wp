@@ -41,8 +41,8 @@
 		@include border-radius;
 		
 		@include mq.to(sm) {
-			max-width: calc(100% - 20px);
-			max-height: calc(100% - 20px);
+			max-height: calc(100vh - 30px);
+			max-width: calc(100vw - 30px);
 		}
 
 		@include mq.from(sm) {
@@ -86,7 +86,17 @@
 		));
 	}
 
-	@include mq.from(md) {
+	@include mq.from(l) {
+		&__close {
+			top: -25px;
+			right: -25px;
+			width: 50px;
+			height: 50px;
+		}
+	}
+
+
+	@include mq.from(s) {
 		&__close {
 			top: -25px;
 			right: -25px;

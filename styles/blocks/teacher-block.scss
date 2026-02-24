@@ -4,6 +4,7 @@
 @use 'mq';
 
 .teacher-block {
+	height: 100%;
 	padding: 20px;
 	display: flex;
 	gap: 15px;
@@ -34,6 +35,24 @@
 		background-color: $white;
 		@include border-radius;
 		overflow: hidden;
+	}
+
+	&__share-link {
+		position: absolute;
+		top: 30px;
+		right: -15px;
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: none;
+		border-radius: 100%;
+		background-color: $white;
+
+		img {
+			width: 70%;
+		}
 	}
 
 	.tabs {
@@ -111,10 +130,6 @@
 
 	@include mq.to(sm) {
 		flex-direction: column;
-
-		&__share-link {
-			display: none;
-		}
 	}
 
 	@include mq.from(sm) {
@@ -132,24 +147,6 @@
 				position: relative;
 			}
 		}
-
-		&__share-link {
-			position: absolute;
-			top: 30px;
-			right: -15px;
-			width: 40px;
-			height: 40px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			border: none;
-			border-radius: 100%;
-			background-color: $white;
-
-			img {
-				width: 70%;
-			}
-		}
 	}
 
 	@include mq.from(lg) {
@@ -159,13 +156,6 @@
 		&__summary,
 		&__info {
 			gap: 20px;
-		}
-
-		&__share-link {
-			top: 35px;
-			right: -25px;
-			width: 50px;
-			height: 50px;
 		}
 
 		.tabs {
