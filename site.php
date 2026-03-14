@@ -123,6 +123,7 @@ class SayYesSite extends Site {
 
         $main_phone = format_phone_number($contacts['phone_numbers']['main']);
         $wa_phone = format_phone_number($contacts['phone_numbers']['whatsapp']);
+        $tg_link = $contacts['social_accounts']['telegram'];
 
         $links = [
             'agreement' => $site_url.'/agreement',
@@ -131,7 +132,8 @@ class SayYesSite extends Site {
             'test' => $site_url.'/online-test',
             'email' => 'mailto:'.$contacts['email'],
             'main_phone' => 'tel:'.$main_phone,
-            'wa_phone' => 'https://api.whatsapp.com/send/?phone='.$wa_phone.'&text&type=phone_number&app_absent=0'
+            'wa_phone' => 'https://api.whatsapp.com/send/?phone='.$wa_phone.'&text&type=phone_number&app_absent=0',
+            'telegram' => $tg_link
         ];
         
         $context['site'] = $this;
