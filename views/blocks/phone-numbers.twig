@@ -5,11 +5,7 @@
 				name: name == 'main' ? 'phone' : name
 			} %}
 			
-			{% if name == 'whatsapp' %}
-				<a href="{{links.wa_phone}}" title="Написать в WhatsApp" target="_blank">{{number}}</a>
-			{% else %}
-				<a href="tel:{{format_phone_number(number)}}" title="Позвонить">{{number}}</a>
-			{% endif %}
+			<a href="tel:{{format_phone_number(number)}}" title="Позвонить">{{number}}</a>
 		</li>
 	{% endfor %}
 </ul>
