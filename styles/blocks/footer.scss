@@ -89,7 +89,7 @@
 	@include mq.from(sm) {
 		&__logo {
 			position: absolute;
-			top: -20px;
+			top: 20px;
 		}
 
 		&__top-row {
