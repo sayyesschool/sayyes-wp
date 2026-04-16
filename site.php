@@ -115,6 +115,15 @@ class SayYesSite extends Site {
     }
 
 	function add_to_context($context) {
+        $kristina = Timber::get_posts([
+            'post_type' => 'manager',
+            'name' => 'кристина-бахтурина',
+            'posts_per_page' => 1
+        ]);
+
+        $kristina = $kristina ? $kristina[0] : null;
+
+
         $site_url = $this->link();
         $theme_url = $this->theme->link();
 
@@ -122,9 +131,10 @@ class SayYesSite extends Site {
         $prices = get_fields('options', 'prices');
 
         $main_phone = format_phone_number($contacts['phone_numbers']['main']);
-        $tg_link = $contacts['social_accounts']['telegram'];
-        $max_link = $contacts['social_accounts']['max'];
-        $whatsapp_link = $contacts['social_accounts']['whatsapp'];
+        
+        $tg_link = $kristina ? 'https://t.me/' . $kristina->telegram : $contacts['social_accounts']['telegram'];
+        $max_link = $kristina ? $kristina->max : $contacts['social_accounts']['max'];
+        $whatsapp_link = $kristina ? $kristina->whatsapp :$contacts['social_accounts']['whatsapp'];
 
         $links = [
             'agreement' => $site_url.'/agreement',

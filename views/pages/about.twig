@@ -115,7 +115,7 @@
 					<p class="card__description">Создает для вас душевную атмосферу и обеспечивает комфорт в обучении.</p>
 				</div>
 
-				{% for manager in managers|slice(0, 7) %}
+				{% for manager in managers|slice(0, 4) %}
 					{{manager_card(manager)}}
 				{% endfor %}
 
@@ -127,7 +127,7 @@
 					<p class="text text--lg">Менеджеры школы — это «ангелы-хранители» наших студентов, готовые прийти на помощь и дать поддержку в процессе обучения.</p>
 				</div>
 
-				{% for manager in managers|slice(7) %}
+				{% for manager in managers|slice(4) %}
 					{{manager_card(manager)}}
 				{% endfor %}
 
