@@ -11,7 +11,7 @@ require_once 'constants.php';
 require 'utils.php';
 
 class SayYesSite extends Site {
-    public $version = '3.1.0';
+    public $version = '3.1.1';
 
 	function __construct() {
         // add_theme_support('html5');
@@ -123,6 +123,8 @@ class SayYesSite extends Site {
 
         $main_phone = format_phone_number($contacts['phone_numbers']['main']);
         $tg_link = $contacts['social_accounts']['telegram'];
+        $max_link = $contacts['social_accounts']['max'];
+        $whatsapp_link = $contacts['social_accounts']['whatsapp'];
 
         $links = [
             'agreement' => $site_url.'/agreement',
@@ -131,7 +133,9 @@ class SayYesSite extends Site {
             'test' => $site_url.'/online-test',
             'email' => 'mailto:'.$contacts['email'],
             'main_phone' => 'tel:'.$main_phone,
-            'telegram' => $tg_link
+            'telegram' => $tg_link,
+            'max' => $max_link,
+            'whatsapp' => $whatsapp_link,
         ];
         
         $context['site'] = $this;
