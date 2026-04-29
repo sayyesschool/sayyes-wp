@@ -1,0 +1,13 @@
+<ul class="main-links">
+	{% for key, url in site_data.contacts.main_contacts %}
+		{% if url %}
+			<li class="main-links__item">
+				<a class="main-links__link" href="{{url}}" target="_blank">
+					{% include 'components/icon.twig' with {
+						name: key
+					} %}
+				</a>
+			</li>
+		{% endif %}
+	{% endfor %}
+</ul>

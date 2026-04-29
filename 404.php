@@ -2,7 +2,10 @@
 
 $context = Timber::context();
 $page = Timber::get_post();
-$page->name = 'not-found';
+
+if ($page) {
+    $page->name = 'not-found';
+}
 
 $context['page'] = $page;
 

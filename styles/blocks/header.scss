@@ -75,6 +75,12 @@
 		}
 	}
 
+	&__contacts {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+	}
+
 	&__address {
 		display: flex;
 		flex-direction: column;
@@ -128,7 +134,7 @@
 
 	@include mq.to(lg) {
 		&__callback,
-		&__phones {
+		&__contacts {
 			display: none;
 		}
 

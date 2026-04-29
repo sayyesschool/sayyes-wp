@@ -10,7 +10,6 @@ $context['managers'] = Timber::get_posts([
     'posts_per_page' => -1,
     'post_name__in' => [
         'роман-сорочук',
-        'стефани-васике',
         'кристина-бахтурина',
         'татьяна-андреева'
     ],

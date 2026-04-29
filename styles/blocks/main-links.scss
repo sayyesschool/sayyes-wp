@@ -1,0 +1,28 @@
+@use 'global' as *;
+
+.main-links {
+	display: flex;
+	justify-content: space-around;
+	gap: 10px;
+
+	&__item {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 15px;
+		height: 15px;
+		background-color: transparent;
+		color: $white;
+
+		svg {
+			width: 15px;
+			height: 15px;
+		}
+	}
+
+	&__link {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}

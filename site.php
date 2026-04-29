@@ -11,7 +11,7 @@ require_once 'constants.php';
 require 'utils.php';
 
 class SayYesSite extends Site {
-    public $version = '3.1.1';
+    public $version = '3.1.2';
 
 	function __construct() {
         // add_theme_support('html5');
@@ -115,15 +115,6 @@ class SayYesSite extends Site {
     }
 
 	function add_to_context($context) {
-        $kristina = Timber::get_posts([
-            'post_type' => 'manager',
-            'name' => 'кристина-бахтурина',
-            'posts_per_page' => 1
-        ]);
-
-        $kristina = $kristina ? $kristina[0] : null;
-
-
         $site_url = $this->link();
         $theme_url = $this->theme->link();
 
@@ -132,9 +123,9 @@ class SayYesSite extends Site {
 
         $main_phone = format_phone_number($contacts['phone_numbers']['main']);
         
-        $tg_link = $kristina ? 'https://t.me/' . $kristina->telegram : $contacts['social_accounts']['telegram'];
-        $max_link = $kristina ? $kristina->max : $contacts['social_accounts']['max'];
-        $whatsapp_link = $kristina ? $kristina->whatsapp :$contacts['social_accounts']['whatsapp'];
+        $tg_link = $contacts['main_contacts']['telegram'];
+        $max_link = $contacts['main_contacts']['max'];
+        $whatsapp_link = $contacts['main_contacts']['whatsapp'];
 
         $links = [
             'agreement' => $site_url.'/agreement',

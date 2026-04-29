@@ -14,11 +14,13 @@
 					<button class="header__callback btn btn--sm btn--uppercase btn-white btn--transparent" data-modal-trigger="callback-modal">Обратный звонок</button>
 				</div>
 
-				<div class="header__phones">
+				<div class="header__contacts">
 					{% include 'blocks/phone-numbers.twig' with {
 						small: true,
 						white: true
 					} %}
+
+					{% include 'blocks/main-links.twig' %}
 				</div>
 
 				<div class="header__address">
