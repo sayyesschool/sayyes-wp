@@ -11,7 +11,7 @@ $context['managers'] = Timber::get_posts([
     'post_name__in' => [
         'роман-сорочук',
         'кристина-бахтурина',
-        'татьяна-андреева'
+        'стефани-васике'
     ],
     'orderby' => 'menu_order',
     'order' => 'ASC'
